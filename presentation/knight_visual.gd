@@ -8,6 +8,11 @@ const MotionFrames=preload("res://data/knight_motion_frames.tres")
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
 const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
+const UnarmedSheet=preload("res://art/characters/unarmed-v001/run.png")
+var _unarmed: Sprite2D
+var _unarmed_frame: AtlasTexture=AtlasTexture.new()
+var unarmed: bool=false
+var breathing: bool=false
 var mounted:=false
 var _mount: Sprite2D
 var _mount_frame:=AtlasTexture.new()
@@ -22,6 +27,9 @@ var _motion_time:=0.0
 var _was_grounded:=true
 var _landing:=0.0
 func _init() -> void:
+	_unarmed=Sprite2D.new()
+	_unarmed.visible=false
+	add_child(_unarmed)
 	_mount=Sprite2D.new()
 	_mount.name="MountedKnight"
 	_mount.visible=false
@@ -91,6 +99,17 @@ func present(pose: Dictionary, seconds: float) -> void:
 		_present_mount(pose,seconds)
 		return
 	_mount.visible=false
+	_unarmed.visible=false
+	if unarmed and pose.alive:
+		_motion_time+=maxf(0,seconds)
+		rotation=pose.facing*0.08 if breathing else 0
+		scale=Vector2(1.02,0.94+sin(_motion_time*7)*0.018) if breathing else Vector2.ONE
+		var drawing: int=int(fposmod(_gait_time*9,8)) if striding else 0
+		_unarmed_frame.atlas=UnarmedSheet
+		_unarmed_frame.region=Rect2((drawing%4)*128,(drawing/4)*96,128,96)
+		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
+		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
+		return
 	if hurt_active or not pose.alive: return
 	var gait:=int(fposmod(_gait_time*sprite_frames.get_animation_speed(&"run"),sprite_frames.get_frame_count(&"run")))
 	if animation==&"run": frame=gait
@@ -121,6 +140,10 @@ func present(pose: Dictionary, seconds: float) -> void:
 		scale=Vector2(1+amount,1-amount)
 		offset.y+=amount*24
 
+	if breathing:
+		rotation=pose.facing*0.08+sin(_motion_time*5)*0.02
+		scale=Vector2(1.02,0.94+sin(_motion_time*7)*0.018)
+		offset.y=2
 	if animation==&"attack" and combo_motion!=null and combo_motion.planted_atlas!=null:
 		var step:=clampi(int(pose.get("combo_step",1)),1,3)
 		var drawing: int=combo_motion.frame_at(step,float(pose.attack_progress))

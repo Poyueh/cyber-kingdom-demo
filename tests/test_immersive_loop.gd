@@ -1,0 +1,118 @@
+extends RefCounted
+const Campaign = preload("res://application/campaign_session.gd")
+const Hold = preload("res://application/investment_hold.gd")
+const Pouch = preload("res://domain/crystal_pouch.gd")
+const Codec = preload("res://application/campaign_snapshot.gd")
+
+func test_unlit_camp_and_tools(t) -> void:
+ var sim = Campaign.new({"immersive_loop":1})
+ t.truth(not sim.can_wield_sword(),"arrival has no sword")
+ t.truth(sim.interact(sim.world.sites.hall,"hall"),"draw sword lights camp")
+ t.equal(sim.frontier.city_level,1,"sword ignites first camp")
+ t.truth(sim.can_wield_sword(),"lit camp grants sword")
+ t.truth(sim.built.workshop and sim.built.hunt_tools,"work and bow facilities assemble")
+ t.truth(sim.context_for_key(sim.world.sites.forge,"forge").id.is_empty(),"shield equipment absent")
+ t.truth(sim.context_for_key(sim.world.sites.armory,"armory").id.is_empty(),"spear rack locked before tier three")
+ sim.frontier.city_level=3
+ t.truth(sim.context_for_key(sim.world.sites.armory,"armory").enabled,"tier three unlocks spear equipment")
+
+func test_unfinished_payment_returns_to_ground(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.world.people.clear();sim.frontier.city_level=1
+ var hold=Hold.new()
+ var before: int=sim.pouch.amount
+ hold.step(0.016,true,true,sim,sim.world.sites.workshop)
+ hold.step(0.016,false,true,sim,sim.world.sites.workshop)
+ t.equal(sim.pouch.amount,before-1,"refund must be physically collected")
+ t.equal(sim.pouch.ground_total(),1,"unfinished crystal falls back")
+ t.truth(sim.investments.is_empty(),"cancelled slots no longer stay filled")
+
+func test_residents_collect_offer_and_recruit(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.world.people.clear();sim.frontier.city_level=1;sim.pouch.amount=0
+ sim.world.people.append({"x":30.0,"role":"wanderer","hurt":0.0,"cooldown":0.0,"region":-1})
+ sim.pouch.drop(1,30)
+ sim.advance(0.5,1000)
+ t.equal(sim.world.people[0].role,"citizen","ordinary nearby crystal recruits wanderer")
+ sim.pouch.drop(3,sim.world.people[0].x)
+ sim.advance(0.5,1000)
+ t.equal(sim.world.people[0].get("crystals",0),3,"resident holds ground yield")
+ sim.advance(0.1,sim.world.people[0].x)
+ t.equal(sim.world.people[0].get("crystals",0),0,"approaching knight receives an offering burst")
+ t.equal(sim.pouch.ground_total()+sim.pouch.amount,3,"offering conserves held crystals")
+ for i in range(120):sim.advance(1.0/60,sim.world.people[0].x)
+ t.equal(sim.pouch.amount,3,"resident cannot recapture their gift before it reaches knight")
+
+func test_fast_run_exhaustion_and_rest(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.hero.stamina=0
+ t.equal(sim.travel_axis(1,0.1),0.0,"empty fast run stops to breathe")
+ sim.hero.stamina=10
+ t.equal(sim.travel_axis(0.5,0.1),0.0,"short drag cannot bypass breathing")
+ sim.hero.stamina=sim.hero.stats.max_stamina
+ sim.travel_axis(0,3.0)
+ t.truth(sim.travel_axis(0.5,0.1)>0,"movement resumes after recovery")
+
+func test_repeated_yield_is_bounded_and_conserved(t) -> void:
+ var pouch=Pouch.new(12,12)
+ for i in range(1200):pouch.drop(1,800)
+ t.equal(pouch.ground_total(),1200,"merged harvest retains all crystals")
+ t.truth(pouch.drops.size()<=2,"same-position yield cannot grow per-crystal storage")
+
+func test_new_rules_save_and_resume(t) -> void:
+ var config: Dictionary={"seed":42,"immersive_loop":1}
+ var sim=Campaign.new(config)
+ sim.world.people.clear();sim.frontier.city_level=1
+ sim.world.people.append({"x":30.0,"role":"engineer","hurt":0.0,"cooldown":0.0,"region":-1,"crystals":4})
+ sim.hero.stamina=0;sim.travel_axis(1,0.1)
+ var codec=Codec.new()
+ var snapshot: Dictionary=codec.capture(sim,config,{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
+ var restored: Dictionary=codec.restore(snapshot)
+ t.truth(not restored.is_empty(),"new journey restores resident wallet and exhaustion")
+ if restored.is_empty():return
+ t.equal(restored.session.world.people[0].crystals,4,"resident wallet survives save")
+ t.truth(restored.session.travel.exhausted,"reloading does not bypass exhaustion")
+ t.equal(restored.session.travel_axis(0.65,0.1),0.0,"restored knight must finish breathing")
+ var old=Campaign.new({"seed":42})
+ var legacy: Dictionary=codec.capture(old,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
+ legacy.version=6;legacy.erase("travel")
+ t.truth(not codec.restore(legacy).is_empty(),"v6 saves migrate without losing their original rules")
+
+func test_night_work_and_threat_retreat(t) -> void:
+ var sim=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+ sim.world.people.clear();sim.frontier.city_level=1
+ sim.clock.is_night=true;sim.clock.remaining=100
+ sim.world.people.append({"x":-350.0,"role":"farmer","hurt":0.0,"cooldown":0.0,"region":-1})
+ sim.frontier.farm_active=true
+ sim.advance(0.5,900)
+ t.truth(not sim.world.people[0].sheltering,"night alone does not stop work")
+ var enemy: Dictionary=sim._spawn_raider();enemy.x=-430;sim.raiders.append(enemy)
+ sim.advance(0.1,900)
+ t.truth(sim.world.people[0].sheltering,"nearby enemy interrupts work")
+
+func test_full_pouch_sinks_excess(t) -> void:
+ var sim=Campaign.new({"seed":42,"immersive_loop":1})
+ sim.world.people.clear();sim.pouch.amount=sim.pouch.capacity
+ sim.pouch.drop(1,800)
+ sim.advance(0.1,800)
+ t.equal(sim.pouch.ground_total(),0,"extra crystal falls into water at full pouch")
+ t.truth(sim.effects.any(func(e):return e.kind=="crystal_sink"),"overflow produces visible water feedback")
+
+func test_every_resident_job_carries_and_offers(t) -> void:
+ for role in ["citizen","engineer","farmer","hunter","guard"]:
+  var sim=Campaign.new({"immersive_loop":1})
+  sim.world.people.clear();sim.pouch.amount=0
+  var person: Dictionary={"x":30.0,"role":role,"hurt":0.0,"cooldown":0.0}
+  sim.world.people.append(person);sim.pouch.drop(2,30)
+  sim.life.collect(sim.world,sim.pouch,[],1000,430)
+  t.equal(person.get("crystals",0),2,role+" collects and holds crystals")
+  sim.life.collect(sim.world,sim.pouch,[],30,430)
+  t.equal(person.crystals,0,role+" offers crystals when knight approaches")
+  t.equal(sim.pouch.ground_total(),2,role+" gift is conserved")
+
+func test_damaged_v6_config_is_protected(t) -> void:
+ var codec=Codec.new()
+ var sim=Campaign.new({"seed":42})
+ var packet: Dictionary=codec.capture(sim,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
+ packet.version=6;packet.erase("travel");packet.config=[]
+ t.truth(codec.restore(packet).is_empty(),"malformed legacy config is rejected before constructing a campaign")

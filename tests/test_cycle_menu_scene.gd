@@ -1,6 +1,6 @@
 extends "res://tests/test_scene.gd"
 func run_scene() -> void:
-	var game=load("res://scenes/frontier.tscn").instantiate()
+	var game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false
 	check(game.has_method("save_manual_campaign"),"pause menu supports an independent manual checkpoint")
 	if failures>0:game.free();quit(1);return
 	ProjectSettings.set_setting("campaign/persistence_enabled",true)
@@ -42,7 +42,7 @@ func run_scene() -> void:
 	game._physics_process(0)
 	check(game.knight.visual.weapon_tier==2 and game.knight.visual.armor_tier==1,"equipment visuals follow actual upgrade state")
 	game.queue_free();await process_frame
-	game=load("res://scenes/frontier.tscn").instantiate()
+	game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false
 	game.campaign_save_path=path;game.audio_preferences_path=path+".cfg"
 	root.add_child(game);await frames(2);game.set_physics_process(false)
 	check(is_equal_approx(game.audio.music_volume,0.23) and is_equal_approx(game.audio.effects_volume,0.67),"volume preferences survive reopening")

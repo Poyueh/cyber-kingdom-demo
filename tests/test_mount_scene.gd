@@ -1,6 +1,6 @@
 extends "res://tests/test_scene.gd"
 func run_scene() -> void:
- var scene=load("res://scenes/frontier.tscn").instantiate();root.add_child(scene)
+ var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;root.add_child(scene)
  await frames(8);scene.set_physics_process(false)
  check(not scene.knight.mounted,"new knight begins on foot")
  check(scene.knight.get_node("Camera2D").limit_left<=scene.sim.frontier.left_boundary-80 and scene.knight.get_node("Camera2D").limit_right>=scene.sim.frontier.right_boundary+80,"camera keeps whole mounted silhouette inside both map ends")

@@ -3,6 +3,7 @@ const Icons=preload("res://presentation/ui_icons.gd")
 const Layout=preload("res://presentation/campaign_layout.gd")
 var panels: Dictionary={}
 var values: Dictionary={}
+var immersive: bool=false
 var health_ratio:=1.0
 var phase_ratio:=1.0
 var is_night:=false
@@ -20,6 +21,9 @@ func number(value: String, at: Vector2, color:=Color("e6e7d2"), size: int=15) ->
 	draw_string(_font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 func _draw() -> void:
 	if panels.is_empty():panels=Layout.arrange(get_viewport_rect()).panels
+	if immersive:
+		if (dead or victory) and not is_paused:_draw_outcome()
+		return
 	var at: Vector2=panels.health.position
 	draw_style_box(_panel(),panels.health)
 	icon("heart",at+Vector2(20,19),24)

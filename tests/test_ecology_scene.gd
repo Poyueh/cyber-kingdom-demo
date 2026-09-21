@@ -4,7 +4,7 @@ func dawn(scene) -> void:
 	scene.sim.clock.remaining=0.01
 	scene._physics_process(0.02)
 func run_scene() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate()
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false
 	# Keep this renewal/recruitment fixture below the population ceiling.
 	scene.tuning=scene.tuning.duplicate()
 	scene.tuning.outer_regions_per_side=0

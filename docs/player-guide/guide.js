@@ -14,8 +14,8 @@
   if (matchMedia('(pointer: coarse)').matches || innerWidth < 760) setMode('mobile');
 
   const projects = {
-    camp: {title:t('建立營地'), cost:2, done:t('營火已成為營地。接著招攬居民、準備器具。')},
-    tools: {title:t('升級兵營'), cost:3, done:t('兵營升級完成，全體弓兵火力提高。')},
+    camp: {title:t('升級聚落'), cost:4, done:t('營火已成為營地。接著招攬居民、準備器具。')},
+    tools: {title:t('弓箭器具'), cost:2, done:t('弓已放上器具架，等待居民領取。')},
     rift: {title:t('委託裂隙封印'), cost:4, done:t('委託完成。接著護送工匠，清除附近的敵人。')}
   };
   const projectButtons = [...document.querySelectorAll('[data-project]')];
@@ -43,6 +43,7 @@
     invest.textContent = complete ? t('這筆投入已完成 ✓') : t('投入一顆龍晶 ＋');
   }
   projectButtons.forEach(button => button.addEventListener('click', () => {
+    if (paid[active] < projects[active].cost) { wallet += paid[active]; paid[active] = 0; }
     active = button.dataset.project;
     renderInvestment();
   }));

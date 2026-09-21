@@ -26,6 +26,7 @@ var dashboard: Node2D
 var fullscreen_button: Button
 var drag_controls: Node2D
 var _gesture_can_invest:=false
+var immersive_feedback: Node2D
 
 func _ready() -> void:
 	super._ready()
@@ -88,6 +89,8 @@ func _ready() -> void:
 			interact_requested.emit()
 		else:throw_requested.emit())
 	drag_controls.offering_ended.connect(func():interact_held=false)
+	immersive_feedback=preload("res://presentation/immersive_feedback.gd").new()
+	add_child(immersive_feedback)
 	guide_view=GuideView.new()
 	add_child(guide_view)
 
@@ -161,7 +164,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		get_node(action).visible=touch and action=="attack" and not is_paused and sim.is_running()
 	interact_button.visible=false
 	drop_button.visible=false
-	_gesture_can_invest=not interact_button.disabled
+	_gesture_can_invest=not interact_button.disabled and not (sim.life.enabled and choice.id=="recruit")
 	var gestures_enabled: bool=touch and not is_paused and sim.is_running()
 	if drag_controls.enabled and not gestures_enabled:drag_controls.cancel()
 	drag_controls.enabled=gestures_enabled
@@ -171,6 +174,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		var button=get_node(key)
 		if button.visible:drag_controls.exclusions.append(Rect2(button.position,Vector2(64,64)))
 	drag_controls.queue_redraw()
+	$attack.visible=$attack.visible and sim.can_wield_sword()
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
 	options_menu.visible=is_paused
@@ -180,6 +184,8 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	audio_button.visible=is_paused
 	drop_button.disabled=is_paused or not sim.is_running() or sim.pouch.amount<=0
 	var map=sim.frontier
+	dashboard.immersive=sim.life.enabled
+	immersive_feedback.present(sim,get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),_last_safe_rect,is_paused)
 	dashboard.values={"hp":sim.hero.hp,"shield":sim.hero.shield,"crystal":"%d/%d" % [sim.pouch.amount,sim.pouch.capacity],"day":sim.clock.day,"survived":sim.clock.survived,"full":sim.pouch.amount>=sim.pouch.capacity}
 	var pressure: Dictionary=sim.raid_pressure()
 	dashboard.values["damage"]=sim.hero.stats.damage
@@ -206,6 +212,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.queue_redraw()
 	var advice: Dictionary=Guide.next(sim,at) if first_day_guidance and not is_paused else {}
 	if advice.is_empty() and expedition_guidance and not is_paused:advice=ExpeditionGuide.next(sim,at,sim._player_y)
+	if sim.life.enabled and sim.workforce.elapsed>150:advice={}
 	var ready: bool=not advice.is_empty() and advice.action in ["invest","open"] and advice.key==choice.key and not interact_button.disabled
 	guide_view.touch_hint=touch
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
@@ -237,10 +244,16 @@ func cancel_touch_gestures() -> void:
 func set_audio_enabled(value: bool) -> void:
 	audio_button.icon=Icons.get_icon("sound" if value else "muted")
 
+var _detected_touch: Variant=null
 func uses_touch_controls() -> bool:
 	var mode:=control_mode if control_mode!=0 else int(ProjectSettings.get_setting("campaign/control_preview",0))
 	if mode!=0:return mode==1
-	return OS.has_feature("mobile") or (OS.has_feature("web") and DisplayServer.is_touchscreen_available())
+	if _detected_touch==null:
+		_detected_touch=OS.has_feature("mobile")
+		if OS.has_feature("web"):
+			# Engine touch emulation is also enabled on desktop; ask for real hardware.
+			_detected_touch=bool(JavaScriptBridge.eval("navigator.maxTouchPoints > 0 && window.matchMedia('(pointer: coarse)').matches",true))
+	return _detected_touch
 
 func movement_axis() -> float:
 	return drag_controls.state.axis if is_instance_valid(drag_controls) and drag_controls.enabled else 0.0

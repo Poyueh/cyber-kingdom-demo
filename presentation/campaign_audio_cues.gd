@@ -1,6 +1,6 @@
 extends RefCounted
 ## Ephemeral presentation observer. No sound history enters campaign saves.
-const EFFECTS={"tower_arrow":"slash1","tower_laser":"dash","construction_done":"build","pay":"pay","chest_burst":"chest","recruited":"recruit","crystal_pickup":"pickup","hit":"hit"}
+const EFFECTS={"core_hit":"heavy","tower_arrow":"slash1","tower_laser":"dash","construction_done":"build","pay":"pay","chest_burst":"chest","recruited":"recruit","crystal_pickup":"pickup","hit":"hit"}
 var _session: RefCounted
 var _seen: Array=[]
 var _active:=false
@@ -21,7 +21,7 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
   if sim.hero.dash_remaining>_dash:result.append("dash")
   for effect in sim.effects:
    if _seen.any(func(old):return is_same(old,effect)):continue
-   if absf(effect.x-x)>800:continue
+   if absf(effect.x-x)>800 and effect.kind!="core_hit":continue
    var kind: String=EFFECTS.get(effect.kind,"")
    if kind=="hit" and effect.get("heavy",false):kind="heavy"
    if not kind.is_empty() and not result.has(kind):result.append(kind)

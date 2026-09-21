@@ -1,6 +1,6 @@
 extends "res://tests/test_scene.gd"
 func run_scene() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate()
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false
 	scene.tuning=scene.tuning.duplicate()
 	scene.tuning.return_margin=18.0
 	scene.tuning.hunter_damage=14
