@@ -15,7 +15,7 @@ func _draw() -> void:
 	_refresh_span()
 	var left: float = _span.x
 	# Frame the complete skyline above the real floor, independently of camera zoom.
-	draw_texture_rect(art.woodland,_background_rect(),false)
+	_draw_sky(_background_rect())
 	Scenery.forest(self,art.forest_layer,_background_rect(),art.forest_scroll)
 	# Draw beyond both viewport edges, even during camera smoothing at world limits.
 	preload("res://presentation/scenery_tiles.gd").draw(self,art.ground,_background_rect(),430)
@@ -51,6 +51,9 @@ func _draw() -> void:
 var _world_alpha:=1.0
 func _region_reveal(index: int) -> float:
 	return 1.0 if index<0 or _sim.frontier.regions[index].discovered else 0.0
+
+func _draw_sky(bounds: Rect2) -> void:
+	draw_texture_rect(art.woodland,bounds,false)
 
 func _background_rect() -> Rect2:
 	var inverse:=get_viewport().get_canvas_transform().affine_inverse()

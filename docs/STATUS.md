@@ -1062,3 +1062,13 @@ Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 
 - 驗證先重現原本 HP 承傷與沒有誘敵的失敗，再實作；完整 tools/check.sh 通過，共 1990 項 Godot 斷言、無 SCRIPT ERROR。涵蓋承傷順序、無敵、左右撤退、資源守恆、龍息、掉劍拾回、相同 seed／輸入、存讀檔後續演算一致、v7 升級及損壞檔拒絕。三語指南與 Python 打包／語系檢查通過。
 - 實際 Godot 渲染檢查站姿、移動、空／满袋、隱藏晶袋、失劍與抱晶；H5 新旅程按 Q 可見出袋、閒置後淡出，瀏覽器無錯誤或警告。尚未做 iPhone 真機長時間驗證；動作美感仍待使用者試玩回饋。
 - 本機 H5 已更新於 builds/immersive-preview/web；未公開推送或更新桌面下載。feature/crystal-survival-and-offerings 按 Gitflow 驗證後整合本機 develop，原有 11 個未提交檔案保留。教學 docs/lessons/61-crystals-as-survival.md。
+
+## 2026-09-21：太陽日夜與晶袋重力堆疊
+
+- 主戰役使用同一個戰役時鐘呈現清晨、正午、夕陽和月夜；像素太陽從左方升起，在右方落下，夜晚換成月亮與少量星點。天空保留原本雲、遠山、古城和森林輪廓。
+- 世界光照同步影響騎士、居民、建物和地面；操作介面使用獨立 CanvasLayer，不再被全畫面夜色遮罩壓暗。顏色及太陽大小可從 WorldView → Daylight Style 調整。
+- 晶袋仍固定右上、收支後顯示 3 秒再淡出。龍晶加大，改為各自旋轉、落下、碰撞及不規則堆疊；支出抽走上層晶，剩餘晶會下落。最多 30 顆袋內物件、42 個短暫轉移物件；隱藏與暫停時不推進碰撞。不改背包、戰鬥、存檔或核心亂數。
+- 驗證：完整 tools/check.sh 通過 1,990 項斷言，零 SCRIPT ERROR／ERROR；原生實際場景檢查清晨、正午、夕陽、夜晚、滿袋與收支畫面。額外 300 次快速收支檢查確認顯示顆數守恆、集合上限、淡出；30 顆穩定堆疊的碰撞計算在此 Mac 約 1.17 ms／60fps 畫格，不含繪製，不能當作 iPhone 效能結論。
+- 本機 Web Demo 匯出成功，內建瀏覽器新旅程、丟晶、晶袋顯示／淡出與天色實際運行正常，瀏覽器錯誤與警告清單為空。手機真機流暢度仍待驗證。
+- 教學：docs/lessons/62-daylight-and-physical-purse.md。最新試玩包 builds/immersive-preview/web/，本機 http://127.0.0.1:8798/。
+- 以 feature/daylight-and-purse-physics 完成並整合本地 develop；未推送遠端、未更新線上 Pages。保留開工前的 11 個未提交資源／場景檔案。

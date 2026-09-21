@@ -1,6 +1,22 @@
 extends "res://presentation/frontier_view.gd"
 const HitFeedback=preload("res://presentation/campaign_hit_feedback.gd")
 var hit_feedback:=HitFeedback.new()
+const Daylight=preload("res://presentation/daylight_view.gd")
+@export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
+var _daylight: Daylight
+
+func _ready() -> void:
+	super._ready()
+	_daylight=Daylight.new()
+	_daylight.style=daylight_style
+	add_child(_daylight)
+
+func _draw_sky(bounds: Rect2) -> void:
+	if _daylight==null:
+		super._draw_sky(bounds)
+		return
+	_daylight.present(_sim.clock,art.woodland,bounds)
+
 var _reveal=preload("res://presentation/exploration_reveal.gd").new()
 var _mist=preload("res://presentation/exploration_mist.gd").new()
 const Details=preload("res://presentation/frontier_details.gd")
@@ -93,8 +109,6 @@ func _draw_atmosphere(_left: float) -> void:
 		var bottom_right := inverse*get_viewport_rect().size
 		Scenery.river(self,art,_sim,Rect2(top_left,bottom_right-top_left))
 	if art.show_power_grid: _draw_power_grid()
-	if _sim.clock.is_night:
-		draw_rect(_background_rect(),Color(0.03,0.07,0.18,0.32))
 
 func _draw_power_grid() -> void:
 	# Decorative circuitry follows actual constructed sites and the paused game clock.
