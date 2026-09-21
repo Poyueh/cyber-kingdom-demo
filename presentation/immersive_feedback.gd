@@ -38,8 +38,6 @@ func _caption(text: String, y: float, size: int, ink: Color) -> void:
 func _draw() -> void:
  if sim==null or _font==null or not sim.life.enabled:return
  var viewport: Rect2=get_viewport_rect()
- var night: float=1.0 if sim.clock.is_night else smoothstep(45,0,sim.clock.remaining)
- draw_rect(viewport,Color(0.015,0.045,0.16,night*0.24))
  if paused:return
  var danger: float=(1.0 if sim.pouch.amount==0 and not sim.can_wield_sword() else 0.0) if sim.survival.enabled else 1.0-clampf(float(sim.hero.hp)/sim.hero.stats.max_hp/0.4,0,1)
  if danger>0:

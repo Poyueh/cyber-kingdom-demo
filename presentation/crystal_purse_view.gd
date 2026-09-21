@@ -1,88 +1,180 @@
 extends Node2D
-## Open cutaway HUD purse: gems are visible inside, activity reveals it briefly.
+## A small bounded, physical heap in an activity-only HUD purse.
+const Gem=preload("res://presentation/purse_gem.gd")
 const HOLD_SECONDS: float=3.0
 const FADE_SECONDS: float=0.65
-const FLIGHT_SECONDS: float=0.48
-const MAX_FLIGHTS: int=12
+const FLIGHT_SECONDS: float=0.42
+const CAPACITY: int=30
+const MAX_FLIGHTS: int=42 # Up to 30 incoming and 12 outgoing decorations.
+const STEP: float=1.0/120.0
+const GRAVITY: float=950.0
 var bounds: Rect2=Rect2()
 var _fill: float=0.0
 var _shown: float=-1.0
 var _pulse: float=0.0
 var _remaining: float=0.0
-var _age: float=0.0
 var _paused: bool=false
-var _flights: Array[Dictionary]=[] # UI-only particles, bounded and never saved.
-var _slots: Array[Vector2]=[]
+var _flights: Array[Gem]=[]
+var _gems: Array[Gem]=[]
+var _rng: RandomNumberGenerator=RandomNumberGenerator.new()
+var _accumulator: float=0.0
 
 func _init() -> void:
- for row in range(6):
-  var count: int=[4,6,6,6,5,3][row]
-  for column in range(count):
-   _slots.append(Vector2((column-(count-1)*0.5)*8+sin((row*6+column)*2.3)*1.2,32-row*9+sin(column*1.9+row)*1.3))
+ _rng.seed=71843 # Cosmetic stream, independent of the campaign RNG.
 
 func reset() -> void:
- _shown=-1;_remaining=0;_flights.clear();_pulse=0
+ _shown=-1;_remaining=0;_flights.clear();_gems.clear();_pulse=0;_accumulator=0
+ _rng.seed=71843
 
 func reveal() -> void:
  _remaining=HOLD_SECONDS+FADE_SECONDS
  modulate.a=1.0
  queue_redraw()
 
+func _new_gem() -> Gem:
+ var gem: Gem=Gem.new()
+ gem.radius=_rng.randf_range(7.6,9.1)
+ gem.angle=_rng.randf_range(-PI,PI)
+ gem.spin=_rng.randf_range(-4.0,4.0)
+ gem.ink=Color("399ca9").lerp(Color("83dcc6"),_rng.randf())
+ return gem
+
 func present(fullness: float, area: Rect2, stopped: bool) -> void:
- var next_bounds: Rect2=Rect2(Vector2(area.end.x-112,area.position.y+14),Vector2(96,104))
+ var next_bounds: Rect2=Rect2(Vector2(area.end.x-144,area.position.y+10),Vector2(128,150))
  if bounds!=next_bounds:bounds=next_bounds;queue_redraw()
  _paused=stopped
  var next: float=clampf(fullness,0,1)
+ var count: int=roundi(next*CAPACITY)
  if _shown<0:
+  for i in range(count):
+   var gem: Gem=_new_gem()
+   gem.position=Vector2(_rng.randf_range(-25,25),-44-i*12)
+   _gems.append(gem)
+  # Loaded saves begin with a settled heap, not a shower of starting inventory.
+  for step in range(240):_step(STEP)
   _shown=next;reveal()
  elif not is_equal_approx(_fill,next):
-  var difference: int=roundi(next*30)-roundi(_fill*30)
-  for i in range(mini(8,absi(difference))):
-   if _flights.size()>=MAX_FLIGHTS:_flights.pop_front()
-   _flights.append({"age":-i*0.045,"incoming":difference>0,"slot":clampi(roundi(next*30)-1-i,0,29)})
+  var difference: int=count-roundi(_fill*CAPACITY)
+  for i in range(absi(difference)):
+   if difference>0:
+    var gem: Gem=_new_gem()
+    gem.age=-i*0.055
+    gem.start=Vector2(_rng.randf_range(-42,-24),-74)
+    gem.position=Vector2(_rng.randf_range(-16,16),-48)
+    _flights.append(gem)
+   else:_remove_gem()
+  while _flights.size()>MAX_FLIGHTS:
+   for i in range(_flights.size()):
+    if not _flights[i].incoming:_flights.remove_at(i);break
   _pulse=0.45;reveal()
  _fill=next
 
+func _remove_gem() -> void:
+ var gem: Gem
+ if not _gems.is_empty():
+  var top: int=0
+  for i in range(1,_gems.size()):
+   if _gems[i].position.y<_gems[top].position.y:top=i
+  gem=_gems.pop_at(top)
+  gem.start=gem.position
+ else:
+  for i in range(_flights.size()-1,-1,-1):
+   if _flights[i].incoming:gem=_flights.pop_at(i);gem.start=Vector2(0,-55);break
+ if gem==null:return
+ gem.incoming=false;gem.age=0
+ _flights.append(gem)
+ for other in _gems:other.velocity.x+=_rng.randf_range(-7,7)
+
 func _process(seconds: float) -> void:
  if not visible or _paused or _remaining<=0:return
- _age=fposmod(_age+seconds,120.0)
+ var elapsed: float=minf(seconds,0.067)
  _remaining=maxf(0,_remaining-seconds)
  modulate.a=smoothstep(0,FADE_SECONDS,_remaining)
- _pulse=maxf(0,_pulse-seconds)
- _shown=move_toward(_shown,_fill,seconds*1.4)
- for flight in _flights:flight.age+=seconds
- _flights=_flights.filter(func(flight):return flight.age<FLIGHT_SECONDS)
+ _pulse=maxf(0,_pulse-elapsed)
+ for i in range(_flights.size()-1,-1,-1):
+  var gem: Gem=_flights[i]
+  gem.age+=elapsed
+  if gem.age<FLIGHT_SECONDS:continue
+  _flights.remove_at(i)
+  if gem.incoming:
+   gem.velocity=Vector2(_rng.randf_range(-35,35),95)
+   _gems.append(gem)
+ _accumulator+=elapsed
+ while _accumulator>=STEP:
+  _step(STEP)
+  _accumulator-=STEP
  queue_redraw()
 
-func _gem(at: Vector2, ink: Color=Color("82e3cc"), alpha: float=1.0) -> void:
- draw_colored_polygon(PackedVector2Array([at+Vector2(0,-5),at+Vector2(4,0),at+Vector2(0,5),at+Vector2(-4,0)]),Color("25494f")*Color(1,1,1,alpha))
- draw_colored_polygon(PackedVector2Array([at+Vector2(0,-4),at+Vector2(3,0),at+Vector2(0,4),at]),Color(ink,alpha))
- draw_line(at+Vector2(0,-3),at+Vector2(-2,0),Color(0.9,1,0.84,alpha),1)
+func _step(seconds: float) -> void:
+ for gem in _gems:
+  gem.velocity.y+=GRAVITY*seconds
+  gem.velocity*=0.993
+  gem.position+=gem.velocity*seconds
+  gem.angle+=gem.spin*seconds
+  gem.spin*=0.986
+ for iteration in range(5):
+  for i in range(_gems.size()):
+   var a: Gem=_gems[i]
+   _contain(a)
+   for j in range(i+1,_gems.size()):
+    var b: Gem=_gems[j]
+    var delta: Vector2=b.position-a.position
+    var reach: float=a.radius+b.radius
+    var distance_squared: float=delta.length_squared()
+    if distance_squared>=reach*reach:continue
+    var distance: float=sqrt(maxf(0.0001,distance_squared))
+    var normal: Vector2=delta/distance if distance_squared>0.0001 else Vector2.RIGHT
+    var correction: Vector2=normal*(reach-distance)*0.5
+    a.position-=correction;b.position+=correction
+    var impact: float=(b.velocity-a.velocity).dot(normal)
+    if impact<0:
+     a.velocity+=normal*impact*0.58;b.velocity-=normal*impact*0.58
+     a.velocity.x*=0.88;b.velocity.x*=0.88
+     a.spin+=normal.x*impact*0.012;b.spin-=normal.x*impact*0.012
+ for gem in _gems:_contain(gem)
+
+func _contain(gem: Gem) -> void:
+ var half_width: float=lerpf(25,45,clampf((gem.position.y+45)/55.0,0,1))-gem.radius
+ if absf(gem.position.x)>half_width:
+  gem.position.x=signf(gem.position.x)*half_width
+  gem.velocity.x*=-0.2
+ var floor_y: float=62.0-pow(absf(gem.position.x)/43.0,3)*21.0-gem.radius
+ if gem.position.y>floor_y:
+  gem.position.y=floor_y
+  gem.velocity.y=-absf(gem.velocity.y)*0.12
+  gem.velocity.x*=0.83;gem.spin*=0.8
+
+func _gem(gem: Gem, at: Vector2, alpha: float=1.0) -> void:
+ var radius: float=gem.radius
+ var points: PackedVector2Array=PackedVector2Array()
+ for vertex in [Vector2(0,-1.13),Vector2(0.68,-0.36),Vector2(0.67,0.48),Vector2(0,1.13),Vector2(-0.64,0.38),Vector2(-0.67,-0.35)]:
+  points.append((at+(vertex*radius).rotated(gem.angle)).round())
+ draw_colored_polygon(points,Color("173f4b")*Color(1,1,1,alpha))
+ draw_colored_polygon(PackedVector2Array([points[0],points[1],points[2],points[3],at]),Color(gem.ink,alpha))
+ draw_colored_polygon(PackedVector2Array([points[0],at,points[4],points[5]]),Color(gem.ink.darkened(0.30),alpha))
+ draw_line(points[0],points[5],Color(0.86,1,0.86,alpha),1.4)
+ draw_line(points[0],at,Color(gem.ink.lightened(0.35),alpha),1)
 
 func _draw() -> void:
  if _shown<0 or modulate.a<=0:return
  var bounce: float=sin(_pulse/0.45*TAU)*(_pulse/0.45)
- draw_set_transform(bounds.get_center()+Vector2(0,2),bounce*0.028,Vector2(1+absf(bounce)*0.025,1-absf(bounce)*0.025))
- var outline: PackedVector2Array=PackedVector2Array([Vector2(-25,-34),Vector2(25,-34),Vector2(21,-19),Vector2(23,-8),Vector2(33,15),Vector2(34,29),Vector2(26,41),Vector2(12,47),Vector2(-12,47),Vector2(-26,41),Vector2(-34,29),Vector2(-33,15),Vector2(-23,-8),Vector2(-21,-19)])
- draw_colored_polygon(outline,Color("111d29"))
+ draw_set_transform(bounds.get_center(),bounce*0.018)
+ var outline: PackedVector2Array=PackedVector2Array([Vector2(-32,-52),Vector2(32,-52),Vector2(28,-32),Vector2(35,-13),Vector2(49,12),Vector2(49,36),Vector2(35,56),Vector2(15,67),Vector2(-15,67),Vector2(-35,56),Vector2(-49,36),Vector2(-49,12),Vector2(-35,-13),Vector2(-28,-32)])
+ draw_colored_polygon(outline,Color("121e25"))
  draw_polyline(outline+PackedVector2Array([outline[0]]),Color("c0a367"),3)
- draw_colored_polygon(PackedVector2Array([Vector2(-19,-25),Vector2(19,-25),Vector2(16,-12),Vector2(28,16),Vector2(28,29),Vector2(20,38),Vector2(8,42),Vector2(-8,42),Vector2(-20,38),Vector2(-28,29),Vector2(-28,16),Vector2(-16,-12)]),Color("3c3630"))
- # Thirty distinct gems rise from the bottom; capacity is read without a counter.
- for index in range(clampi(roundi(_shown*30),0,30)):
-  _gem(_slots[index]+Vector2(sin(_age*6+index)*absf(bounce),0))
- # Leather edge, seams and open mouth stay in front of the contents.
+ for gem in _gems:_gem(gem,gem.position.round())
  for side in [-1,1]:
-  draw_polyline(PackedVector2Array([Vector2(side*22,-12),Vector2(side*30,12),Vector2(side*30,29),Vector2(side*22,39),Vector2(side*10,43)]),Color("76523c"),4)
-  for y in range(4,33,7):draw_line(Vector2(side*29,y),Vector2(side*27,y+2),Color("d0af73"),1)
- draw_colored_polygon(PackedVector2Array([Vector2(-26,-36),Vector2(26,-36),Vector2(23,-29),Vector2(-23,-29)]),Color("756449"))
- draw_line(Vector2(-23,-34),Vector2(23,-34),Color("e4cc8d"),2)
- draw_line(Vector2(-19,-29),Vector2(19,-29),Color("15232a"),2)
- draw_polyline(PackedVector2Array([Vector2(-20,-20),Vector2(-29,-17),Vector2(-29,-8),Vector2(-25,-5)]),Color("c7a473"),2)
- for flight in _flights:
-  if flight.age<0:continue
-  var progress: float=clampf(flight.age/FLIGHT_SECONDS,0,1)
-  var start: Vector2=Vector2(-32,-45) if flight.incoming else Vector2(0,-35)
-  var end: Vector2=_slots[flight.slot] if flight.incoming else Vector2(-48,34)
-  var at: Vector2=start.lerp(end,progress)+Vector2(0,-sin(progress*PI)*8)
-  _gem(at,Color("b8ffe2"),1 if flight.incoming else 1-progress*progress)
+  draw_polyline(PackedVector2Array([Vector2(side*28,-32),Vector2(side*34,-10),Vector2(side*45,14),Vector2(side*44,36),Vector2(side*32,53),Vector2(side*14,62)]),Color("76523c"),5)
+  for y in range(5,42,8):draw_line(Vector2(side*45,y),Vector2(side*42,y+3),Color("d0af73"),1)
+ draw_polyline(PackedVector2Array([Vector2(-30,56),Vector2(-13,64),Vector2(13,64),Vector2(30,56)]),Color("a0784e"),3)
+ draw_colored_polygon(PackedVector2Array([Vector2(-33,-54),Vector2(33,-54),Vector2(30,-46),Vector2(-30,-46)]),Color("756449"))
+ draw_line(Vector2(-30,-52),Vector2(30,-52),Color("e4cc8d"),2)
+ draw_line(Vector2(-26,-46),Vector2(26,-46),Color("15232a"),2)
+ draw_polyline(PackedVector2Array([Vector2(-28,-37),Vector2(-38,-31),Vector2(-37,-19),Vector2(-32,-16)]),Color("c7a473"),2)
+ for gem in _flights:
+  if gem.age<0:continue
+  var progress: float=clampf(gem.age/FLIGHT_SECONDS,0,1)
+  var end: Vector2=gem.position if gem.incoming else Vector2(-68,-35)
+  var at: Vector2=gem.start.lerp(end,progress)+Vector2(0,-sin(progress*PI)*(12 if gem.incoming else 54))
+  _gem(gem,at,1.0 if gem.incoming else 1.0-progress*progress)
  draw_set_transform(Vector2.ZERO)
