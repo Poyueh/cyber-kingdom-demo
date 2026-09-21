@@ -152,6 +152,8 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	loot=loot.filter(func(drop):return not drop.taken)
 	world.supplies=world.supplies.filter(func(supply):return not supply.taken)
 
+func _can_claim_tool(_kind: String) -> bool:return true
+
 func _advance_people(seconds: float) -> void:
 	for index in range(world.people.size()):
 		var person: Dictionary = world.people[index]
@@ -176,7 +178,7 @@ func _advance_people(seconds: float) -> void:
 					var nearest := INF
 					for kind in world.tools:
 						var rack: float = world.tool_location(kind)
-						if world.tools[kind]>0 and absf(rack-person.x)<nearest:
+						if _can_claim_tool(kind) and world.tools[kind]>0 and absf(rack-person.x)<nearest:
 							nearest = absf(rack-person.x)
 							target = rack
 							world.claim_tool(index,kind)

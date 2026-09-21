@@ -77,7 +77,7 @@ func test_new_rules_save_and_resume(t) -> void:
  t.equal(restored.session.travel_axis(0.65,0.1),1.0,"restored exhausted knight can still walk")
  var old=Campaign.new({"seed":42})
  var legacy: Dictionary=codec.capture(old,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
- legacy.version=6;legacy.erase("spirit");legacy.erase("survival");legacy.erase("travel")
+ legacy.version=6;legacy.erase("modules");legacy.erase("spirit");legacy.erase("survival");legacy.erase("travel")
  t.truth(not codec.restore(legacy).is_empty(),"v6 saves migrate without losing their original rules")
 
 func test_night_work_and_threat_retreat(t) -> void:
@@ -116,7 +116,7 @@ func test_damaged_v6_config_is_protected(t) -> void:
  var codec=Codec.new()
  var sim=Campaign.new({"seed":42})
  var packet: Dictionary=codec.capture(sim,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
- packet.version=6;packet.erase("spirit");packet.erase("survival");packet.erase("travel");packet.config=[]
+ packet.version=6;packet.erase("modules");packet.erase("spirit");packet.erase("survival");packet.erase("travel");packet.config=[]
  t.truth(codec.restore(packet).is_empty(),"malformed legacy config is rejected before constructing a campaign")
 
 func test_single_taps_resume_during_refund_grace(t) -> void:

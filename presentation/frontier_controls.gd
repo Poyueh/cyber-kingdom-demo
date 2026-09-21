@@ -1,8 +1,14 @@
 extends "res://presentation/settlement_controls.gd"
 signal new_map_requested
 signal throw_requested
+signal special_requested
+signal loadout_requested
 var _interaction_pressed: bool=false
 func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode in [KEY_K,KEY_F]:
+		if event.physical_keycode==KEY_K:special_requested.emit()
+		else:loadout_requested.emit()
+		get_viewport().set_input_as_handled()
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode==KEY_E:
 		_interaction_pressed=true
 		get_viewport().set_input_as_handled()

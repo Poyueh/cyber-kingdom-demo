@@ -4,6 +4,8 @@ const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
 const Spirit=preload("res://application/spirit_guidance.gd")
 var spirit: Spirit
+const Modules=preload("res://application/knight_modules.gd")
+var modules: Modules
 const Survival=preload("res://domain/crystal_survival.gd")
 var survival: Survival=Survival.new()
 const Forager=preload("res://application/crystal_forager.gd")
@@ -137,7 +139,29 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	build_seconds=clampf(config.get("building_seconds",3.0),1,30)
 	tower_damage=clampi(config.get("tower_damage",12),1,100)
 	tower_range=clampf(config.get("tower_range",460.0),200,800)
+	modules=Modules.new(frontier,config)
 	time_to_raid = clock.remaining
+
+func agriculture_available() -> bool:
+	return not life.enabled or frontier.city_level>=2
+
+func site_visible(site: String) -> bool:
+	if site=="trade":return false
+	if not life.enabled:return true
+	if site in ["forge","heal"]:return false
+	if site=="armory":return frontier.city_level>=3
+	if site in ["farm","farm_tools"]:return agriculture_available()
+	return true
+
+func _can_claim_tool(kind: String) -> bool:
+	return kind!="hoe" or agriculture_available()
+
+func equip_module(id: String, x: float) -> bool:
+	return is_running() and life.enabled and frontier.city_level>0 and absf(x-world.sites.drill)<73 and modules.equip(id)
+
+func activate_module(x: float) -> bool:
+	if not is_running() or not life.enabled or not can_wield_sword() or travel.exhausted:return false
+	return modules.activate(self,x)
 
 func _add_person(x: float, region: int) -> void:
 	world.people.append({"x":x,"role":"wanderer","hurt":0.0,"cooldown":0.0,"region":region})
@@ -180,7 +204,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		candidates.append(choice)
 	if absf(_player_y-430)<=42:
 		for site in world.sites:
-			if life.enabled and (site=="forge" or (survival.enabled and site=="heal") or (site=="armory" and frontier.city_level<3)):continue
+			if not site_visible(site):continue
 			if site=="trade":continue # Retained in legacy snapshots only.
 			if not defenses.visible(site):continue
 			if frontier.city_level==0 and site!="hall": continue
@@ -361,6 +385,7 @@ func _execute(choice: Dictionary) -> void:
 				built.workshop=true;built.hunt_tools=true
 				if survival.enabled:survival.armed=true
 				effects.append({"kind":"camp_ignition","x":world.sites.hall,"life":2.4})
+			if life.enabled and frontier.city_level>=2:built.farm_tools=true
 			if life.enabled and frontier.city_level==3:built.armory=true
 		"armory":
 			if life.enabled:world.tools.blade+=1
@@ -429,6 +454,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if life.enabled:
 		var opening_goal: bool=not spirit.opening_finished and frontier.city_level>0 and world.people.any(func(p):return p.role=="engineer") and frontier.nodes.any(func(n):return n.kind!="cache" and (n.marked or n.collected))
 		spirit.advance(int(workforce.elapsed*Spirit.TICKS_PER_SECOND),opening_goal)
+		modules.observe(self,hero_x,hero_y)
 
 func throw_crystal(x: float, y: float, facing: int) -> bool:
 	return is_running() and pouch.toss(x,y,facing)
@@ -658,6 +684,7 @@ func _receive_hunt(at: float) -> void:
 	pouch.drop(2,at)
 
 func _advance_farm(seconds: float, farmers: int) -> void:
+	if not agriculture_available():return
 	var before: int=frontier.food
 	frontier.advance_farm(seconds,farmers)
 	var produced: int=frontier.food-before
@@ -744,6 +771,7 @@ func _idle_hunter_target(person: Dictionary, seconds: float) -> float:
 	return Roaming.destination(person,index,center,110,seconds,frontier.left_boundary,frontier.right_boundary)
 
 func _farm_target(person: Dictionary) -> float:
+	if not agriculture_available():return world.sites.hall
 	var fields: Array[float]=[]
 	if frontier.farm_active:fields.append(float(world.sites.farm))
 	for site in buildings.values():
@@ -762,7 +790,7 @@ func _register_building_walls() -> void:
 
 func building_visible(id: String) -> bool:
 	var site: Dictionary=buildings[id]
-	return frontier.city_level>0 and (site.level>0 or site.pending or BuildingSites.cleared(frontier,site))
+	return (site.kind!="farm" or agriculture_available()) and frontier.city_level>0 and (site.level>0 or site.pending or BuildingSites.cleared(frontier,site))
 
 func building_context(id: String) -> Dictionary:
 	var site: Dictionary=buildings[id]

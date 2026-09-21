@@ -1162,5 +1162,21 @@
   "流浪者旁或無建築時下滑": {
     "en": "Swipe down by a wanderer or away from buildings",
     "zh_CN": "流浪者旁或无建筑时下滑"
+  },
+  "避難所二級自動搭起農具製造所；提供農具後，居民自行成為農夫，前往晶蕾農田產出龍晶。": {
+    "zh_CN": "避难所二级自动搭起农具制造所；提供农具后，居民自行成为农夫，前往晶蕾农田产出龙晶。",
+    "en": "Refuge tier 2 automatically builds the farming workshop. Stock a hoe and a resident will become a farmer, growing dragon crystals in a field."
+  },
+  "避難所二級解鎖；尋找有犁溝與灌溉水道的土地，花 3 晶開墾。農夫持續耕作，附近有敵人才避難。": {
+    "zh_CN": "避难所二级解锁；寻找有犁沟与灌溉水道的土地，花 3 晶开垦。农夫持续耕作，附近有敌人才避难。",
+    "en": "Unlocks at refuge tier 2. Look for furrows and an irrigation channel, then invest 3 crystals. Farmers keep working until nearby enemies force them to retreat."
+  },
+  "工匠清掉樹木或礦產後，土地可用來建城牆、守護塔或農地；農地須避難所二級才開放。用途隨地圖種子決定，讀檔不會重抽。走近投入龍晶，再由工匠建造。": {
+    "zh_CN": "工匠清掉树木或矿产后，土地可用来建城墙、守护塔或农地；农地须避难所二级才开放。用途随地图种子决定，读档不会重抽。走近投入龙晶，再由工匠建造。",
+    "en": "Cleared resources reveal wall, tower or farm sites; farms require refuge tier 2. The map seed fixes each use, even after loading. Invest crystals nearby and an engineer will build it."
+  },
+  "向地圖兩側探索，尋找雷弧震盪與穿甲雷槍。帶回騎士升級設施後，按 F 或點齒輪選配；按 K 或雙指向上滑使用。兩種部件共用冷卻，並消耗體力。獨立戰鬥練習模式與騎士補血設施已移除。": {
+    "zh_CN": "向地图两侧探索，寻找雷弧震荡与穿甲雷枪。带回骑士升级设施后，按 F 或点齿轮选配；按 K 或双指向上滑使用。两种部件共用冷却，并消耗体力。独立战斗练习模式与骑士补血设施已移除。",
+    "en": "Explore both ends of the map for Arc Pulse and Piercing Lance. Return them to the knight upgrade station, then press F or tap the gear to choose a module. Press K or swipe up with two fingers to activate it. Both use stamina and share a cooldown. The standalone combat practice mode and knight healing station have been removed."
   }
 }

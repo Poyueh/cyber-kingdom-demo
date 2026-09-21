@@ -20,6 +20,10 @@ var _seed_initialized := false
 var _requested_new_map := false
 var _terrain: Node2D
 var _requested_throw := false
+@export var ambience: Resource=preload("res://data/world_ambience.gd").new()
+var _water: Node2D
+var _lantern: Node2D
+var _requested_special: bool=false
 
 func _ready() -> void:
 	if get_tree().has_meta("campaign_launch"):
@@ -34,9 +38,18 @@ func _ready() -> void:
 		audio.enabled=not audio.enabled
 		hud.set_audio_enabled(audio.enabled))
 	hud.set_audio_enabled(audio.enabled)
+	_water=preload("res://presentation/water_reflection.gd").new();_water.style=ambience;add_child(_water)
+	_lantern=preload("res://presentation/knight_lantern.gd").new();_lantern.style=ambience;add_child(_lantern)
 	view.crystal_radius=tuning.crystal_radius
 	hud.throw_requested.connect(func(): _requested_throw = true)
 	controls.throw_requested.connect(func(): _requested_throw = true)
+	controls.special_requested.connect(func():_requested_special=true)
+	hud.special_requested.connect(func():_requested_special=true)
+	controls.loadout_requested.connect(_open_loadout)
+	hud.loadout_requested.connect(_open_loadout)
+	hud.loadout_closed.connect(_close_loadout)
+	hud.module_selected.connect(func(id: String):
+		if sim.equip_module(id,knight.position.x):hud.module_menu.present(sim.modules,hud.uses_touch_controls()))
 	$Knight/Camera2D.zoom=Vector2.ONE*tuning.camera_zoom
 	# Browser canvas dimensions and pointer coordinates must remain browser-owned.
 	if tuning.larger_desktop_window and DisplayServer.get_name()!= "headless" and not OS.has_feature("mobile") and not OS.has_feature("web"):
@@ -105,6 +118,8 @@ func restart() -> void:
 	_requested_interaction = false
 	_requested_throw = false
 	controls.release_all()
+	_requested_special=false
+	if is_instance_valid(hud.module_menu):hud.module_menu.hide()
 	hud.cancel_touch_gestures()
 	_build_terrain()
 	if progress!=null:save_campaign()
@@ -125,6 +140,9 @@ func _physics_process(seconds: float) -> void:
 		sim.throw_crystal(knight.position.x,knight.position.y,sim.hero.facing)
 		hud.present_world(sim,paused,knight.position.x,knight.is_on_floor())
 	_requested_throw = false
+	if _requested_special and not paused:sim.activate_module(knight.position.x)
+	_requested_special=false
+	if hud.module_menu.visible and not paused:hud.module_menu.hide()
 	if paused or not sim.is_running():
 		sim.cancel_all_investments(knight.position.x)
 		investment.cancel()
@@ -140,6 +158,8 @@ func _physics_process(seconds: float) -> void:
 	view.interactions_visible=not paused and sim.is_running()
 	view.keyboard_hint=not hud.uses_touch_controls()
 	_sync_knight_equipment()
+	if is_instance_valid(_water):_water.present(sim)
+	if is_instance_valid(_lantern):_lantern.present(sim,knight)
 	audio.observe(seconds,sim,knight.position.x,paused)
 
 func _travel_axis(direction: float, seconds: float) -> float:
@@ -164,6 +184,7 @@ func _notification(what: int) -> void:
 	super._notification(what)
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_APPLICATION_PAUSED:
 		_requested_throw = false
+		_requested_special=false
 		if is_instance_valid(audio):
 			audio.suspended=true
 			audio.stop()
@@ -229,6 +250,18 @@ func _present_save() -> void:
 func _exit_tree() -> void:
 	if progress!=null and is_instance_valid(knight):save_campaign()
 
+func _open_loadout() -> void:
+	if paused or not sim.is_running() or sim.frontier.city_level<=0 or absf(knight.position.x-sim.world.sites.drill)>=73:return
+	paused=true;controls.release_all();hud.cancel_touch_gestures()
+	hud.module_menu.show();hud.module_menu.present(sim.modules,hud.uses_touch_controls())
+	hud.present_world(sim,true,knight.position.x,knight.is_on_floor())
+
+func _close_loadout() -> void:
+	hud.module_menu.hide();paused=false;controls.release_all();hud.cancel_touch_gestures()
+
+func _leave() -> void:
+	return_to_title()
+
 func return_to_title() -> void:
 	if not save_campaign():return
 	controls.release_all()
@@ -246,6 +279,8 @@ func _build_terrain() -> void:
 	$RightWall.position.x = map.right_boundary+10
 	$Knight/Camera2D.limit_left = int(map.left_boundary)-160
 	$Knight/Camera2D.limit_right = int(map.right_boundary)+160
+	$Knight/Camera2D.position.y=ambience.camera_offset_y
+	$Knight/Camera2D.limit_bottom=740
 	$Knight/Camera2D.reset_smoothing()
 	if is_instance_valid(_terrain):
 		remove_child(_terrain)

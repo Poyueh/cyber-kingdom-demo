@@ -2,7 +2,7 @@ extends RefCounted
 ## Closed, versioned state graph. No script paths or object construction come from a save.
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=9
+const VERSION:=10
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -61,7 +61,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries"]),
-		"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -112,9 +112,10 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9]:keys.append("travel")
-	if data.get("version",0) in [8,9]:keys.append("survival")
-	if data.get("version",0)==9:keys.append("spirit")
+	if data.get("version",0) in [7,8,9,10]:keys.append("travel")
+	if data.get("version",0) in [8,9,10]:keys.append("survival")
+	if data.get("version",0) in [9,10]:keys.append("spirit")
+	if data.get("version",0)==10:keys.append("modules")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -128,6 +129,10 @@ func restore(raw) -> Dictionary:
 		data.version=7
 	if data.version==7 and not _upgrade_v7(data,raw.get("version",0)==7):return _invalid()
 	if data.version==8 and not _upgrade_v8(data):return _invalid()
+	if data.version==9:
+		data["modules"]={"found":[],"stored":[],"equipped":"","ready_tick":0}
+		if data.config is Dictionary and data.frontier is Dictionary and data.session is Dictionary and data.config.get("immersive_loop",0)==1 and data.frontier.get("city_level") is int and data.frontier.city_level>=2 and data.session.get("built") is Dictionary:data.session.built.farm_tools=true
+		data.version=10
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -144,6 +149,7 @@ func restore(raw) -> Dictionary:
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
 	if not _restore_spirit(sim,data):return _invalid()
+	if not sim.modules.restore(data.modules,sim.workforce.elapsed):return _invalid()
 	var survival=sim.survival
 	if survival.enabled!=(sim.life.enabled and int(data.config.get("crystal_survival",0))==1):return _invalid()
 	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()
