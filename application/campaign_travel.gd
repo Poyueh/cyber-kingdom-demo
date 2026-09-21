@@ -1,5 +1,5 @@
 extends RefCounted
-## Ready -> winded slow walk -> recovering run -> rested sprint.
+## Ready -> compulsory breathing stop -> winded slow walk -> recovering run -> rested sprint.
 const Rules=preload("res://domain/travel_recovery_rules.gd")
 var rules: Rules=Rules.new()
 var exhausted: bool=false
@@ -10,6 +10,7 @@ var rest_remaining: float=0.0 # Legacy checkpoint field, retained for older jour
 var winded: bool=false
 var rest_ticks: int=0
 var last_tick: int=0
+var breath_ticks: int=0
 
 func configure(config: Dictionary) -> void:
  rules.apply(config)
@@ -20,6 +21,8 @@ func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> floa
  var elapsed: int=maxi(0,tick-last_tick)
  last_tick=tick
  if exhausted:
+  breath_ticks=maxi(0,breath_ticks-elapsed)
+  if breath_ticks>0:return 0
   if hero.stamina>=hero.stats.max_stamina*rules.run_recovery_ratio:winded=false
   if absf(request)>0 or hero.attack_remaining>0 or winded:rest_ticks=0
   else:rest_ticks=mini(rest_ticks+elapsed,rules.rest_tick_limit)
@@ -31,7 +34,8 @@ func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> floa
  var cost: float=(drain_per_second+hero.stats.stamina_regen)*seconds
  if not hero.spend_stamina(cost):
   hero.stamina=0;exhausted=true;winded=true;rest_ticks=0
-  return signf(request)*rules.tired_speed_multiplier
+  breath_ticks=rules.breath_tick_limit
+  return 0
  return signf(request)*fast_multiplier
 
 func breath_load(hero: RefCounted) -> float:
