@@ -12,10 +12,14 @@ var _time: float=0.0
 var _last_sim: RefCounted
 var paused: bool=false
 var _font: Font
+var purse: Node2D=preload("res://presentation/crystal_purse_view.gd").new()
 func _ready() -> void:
+ add_child(purse)
  _font=preload("res://presentation/localized_font.gd").current()
 func present(run: RefCounted, at: Vector2, area: Rect2, stopped: bool) -> void:
  sim=run;hero_screen=at;safe=area;paused=stopped
+ purse.visible=sim.life.enabled and sim.is_running() and not stopped
+ purse.present(float(sim.pouch.amount)/sim.pouch.capacity,area,stopped)
  if not is_same(_last_sim,sim):
   _last_sim=sim;_day=0;_core=sim.mission.core_hp;_alarm=0;_dawn_age=0
  if _day!=sim.clock.day:_day=sim.clock.day;_dawn_age=3.5
@@ -52,14 +56,3 @@ func _draw() -> void:
   for edge in [0,1]:draw_rect(Rect2(viewport.position+Vector2(edge*(viewport.size.x-7),0),Vector2(7,viewport.size.y)),Color(1,0.32,0.13,alpha*0.45))
   _caption(tr("營火正在受襲！"),safe.position.y+175,23,Color(1,0.71,0.47,alpha))
  if not sim.is_running():return
- # Crystal pouch sits by the knight rather than in a top HUD; no count text.
- var at: Vector2=hero_screen+Vector2(42,-12)
- at.x=clampf(at.x,safe.position.x+25,safe.end.x-25)
- var fullness: float=float(sim.pouch.amount)/sim.pouch.capacity
- var sway: float=sin(_time*2.5)*1.5
- draw_colored_polygon(PackedVector2Array([at+Vector2(-13,-22),at+Vector2(13,-22),at+Vector2(18,4+sway),at+Vector2(11,12+sway),at+Vector2(-12,12+sway),at+Vector2(-18,4+sway)]),Color("564738"))
- draw_rect(Rect2(at+Vector2(-13,-19),Vector2(26,3)),Color("c3aa77"))
- var crystals: int=ceili(fullness*9)
- for i in range(crystals):
-  var gem: Vector2=at+Vector2((i%3-1)*8,6-floori(i/3.0)*8+sway)
-  draw_colored_polygon(PackedVector2Array([gem+Vector2(0,-4),gem+Vector2(3,0),gem+Vector2(0,4),gem+Vector2(-3,0)]),Color("9ef1dd"))

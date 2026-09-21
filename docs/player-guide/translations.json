@@ -1118,5 +1118,21 @@
   "下方點擊示意只用來解說龍晶空格，不會改變存檔；實際遊戲必須持續按住直到填滿。裂隙等目標另有解鎖條件。": {
     "zh_CN": "下方点击示意只用来解说龙晶空格，不会改变存档；实际游戏必须持续按住直到填满。裂隙等目标另有解锁条件。",
     "en": "This click-through diagram only explains crystal sockets and does not affect your save. In the actual game, hold until all sockets fill. Rifts have additional prerequisites."
+  },
+  "按住可連續投入；鬆手後還有一秒。期間可點擊懸空龍晶格，或再按 E，一次補一顆並重新計時。": {
+    "zh_CN": "按住可连续投入；松手后还有一秒。期间可点击悬空龙晶格，或再按 E，一次补一颗并重新计时。",
+    "en": "Hold to invest repeatedly. After release, you have one second to tap the suspended sockets or press E again. Each tap adds one crystal and renews the window."
+  },
+  "停止投入後，未填滿的龍晶會在建築上方停留一秒。期間可續填；超時才落回原建築下方，需要重新收取。": {
+    "zh_CN": "停止投入后，未填满的龙晶会在建筑上方停留一秒。期间可续填；超时才落回原建筑下方，需要重新收取。",
+    "en": "Partial payments hang above the building for one second after you stop. Resume within that window, or collect the refund beneath the original building after it expires."
+  },
+  "看畫面右下角皮革晶袋的滿度估算龍晶，不顯示數字。袋子固定、不跟隨騎士；滿袋再收取的龍晶會落水。": {
+    "zh_CN": "看画面右下角皮革晶袋的满度估算龙晶，不显示数字。袋子固定、不跟随骑士；满袋再收取的龙晶会落水。",
+    "en": "Estimate crystals from the leather purse fixed at the bottom-right. There is no counter and it does not follow the knight. Collected overflow falls into the water."
+  },
+  "下方示意可連點投入；停一秒未填滿就會退回。這不影響遊戲存檔，裂隙等目標另有解鎖條件。": {
+    "zh_CN": "下方示意可连点投入；停一秒未填满就会退回。这不影响游戏存档，裂隙等目标另有解锁条件。",
+    "en": "Tap repeatedly in this diagram. An unfinished payment is refunded after one second without another tap. This does not affect your save; rifts have additional prerequisites."
   }
 }

@@ -21,6 +21,7 @@
   const projectButtons = [...document.querySelectorAll('[data-project]')];
   const paid = {camp:0, tools:0, rift:0};
   let active = 'camp', wallet = 12;
+  const refundTimers = {};
   const invest = document.getElementById('invest');
   function renderInvestment() {
     const project = projects[active];
@@ -43,15 +44,21 @@
     invest.textContent = complete ? t('這筆投入已完成 ✓') : t('投入一顆龍晶 ＋');
   }
   projectButtons.forEach(button => button.addEventListener('click', () => {
-    if (paid[active] < projects[active].cost) { wallet += paid[active]; paid[active] = 0; }
     active = button.dataset.project;
     renderInvestment();
   }));
   invest.addEventListener('click', () => {
     if (wallet <= 0 || paid[active] >= projects[active].cost) return;
-    wallet--; paid[active]++; renderInvestment();
+    wallet--; paid[active]++;
+    const key = active;
+    clearTimeout(refundTimers[key]);
+    if (paid[key] < projects[key].cost) refundTimers[key] = setTimeout(() => {
+      wallet += paid[key]; paid[key] = 0; renderInvestment();
+    }, 1000);
+    renderInvestment();
   });
   document.getElementById('reset-demo').addEventListener('click', () => {
+    Object.values(refundTimers).forEach(clearTimeout);
     wallet = 12; Object.keys(paid).forEach(key => paid[key] = 0); renderInvestment();
   });
   renderInvestment();

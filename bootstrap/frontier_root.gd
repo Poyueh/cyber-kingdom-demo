@@ -97,7 +97,7 @@ func restart() -> void:
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
 	knight.configure(sim.hero,knight_tuning)
 	knight.position = Vector2(sim.world.sites.hall-tuning.arrival_walk_distance,430)
-	investment=InvestmentHold.new(tuning.investment_hold_delay,tuning.investment_interval)
+	investment=InvestmentHold.new(tuning.investment_hold_delay,tuning.investment_interval,tuning.investment_refund_delay)
 	investment.cancel()
 	hud.interact_held=false
 	_sync_investment_focus()
@@ -146,7 +146,7 @@ func _travel_axis(direction: float, seconds: float) -> float:return sim.travel_a
 
 func _apply_interaction(command: Dictionary, seconds: float) -> void:
 	# Keep a completed swipe until physics consumes it; each new swipe releases the previous order.
-	if _requested_interaction:investment.step(seconds,false,true,sim,knight.position.x)
+	if _requested_interaction:investment.step(0.0,false,true,sim,knight.position.x)
 	var held: bool=command.interaction_held or hud.interact_held or _requested_interaction
 	investment.step(seconds,held,knight.is_on_floor() and not (command.jump or command.jump_held) and sim.is_running(),sim,knight.position.x)
 	_sync_investment_focus()
@@ -187,6 +187,8 @@ func _apply_restored(restored: Dictionary) -> void:
 	knight.position=Vector2(restored.body.x,restored.body.y)
 	knight.velocity=Vector2(restored.body.vx,restored.body.vy)
 	_sync_knight_equipment()
+	# Saved input gestures cannot resume automatically after loading.
+	sim.cancel_all_investments(knight.position.x)
 	investment.cancel()
 	controls.release_all()
 	hud.cancel_touch_gestures()
@@ -252,7 +254,8 @@ func _build_terrain() -> void:
 func _sync_knight_equipment() -> void:
 	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
 	knight.visual.unarmed=not sim.can_wield_sword()
-	knight.visual.breathing=sim.life.enabled and sim.travel.exhausted
+	var tired_idle: bool=sim.hero.stamina<sim.hero.stats.attack_cost and sim.hero.attack_remaining<=0 and absf(knight.velocity.x)<1
+	knight.visual.breathing=sim.life.enabled and (sim.travel.exhausted or tired_idle)
 	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
 
 func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.exhausted)

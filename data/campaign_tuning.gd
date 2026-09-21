@@ -29,6 +29,7 @@ extends "res://data/frontier_tuning.gd"
 @export_group("Hold to invest")
 @export_range(0.2,1.5,0.05) var investment_hold_delay: float = 0.5
 @export_range(0.1,1,0.05) var investment_interval: float = 0.28
+@export_range(0.1,3.0,0.1) var investment_refund_delay: float=1.0
 @export_group("Crystal motion")
 @export_range(48,220,4) var magnet_radius: float = 112.0
 @export_range(100,600,10) var magnet_speed: float = 300.0

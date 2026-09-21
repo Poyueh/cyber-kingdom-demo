@@ -13,6 +13,7 @@ var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
 var breathing: bool=false
+var fatigue: Sprite2D=preload("res://presentation/knight_fatigue_view.gd").new()
 var mounted:=false
 var _mount: Sprite2D
 var _mount_frame:=AtlasTexture.new()
@@ -27,6 +28,7 @@ var _motion_time:=0.0
 var _was_grounded:=true
 var _landing:=0.0
 func _init() -> void:
+	add_child(fatigue)
 	_unarmed=Sprite2D.new()
 	_unarmed.visible=false
 	add_child(_unarmed)
@@ -95,6 +97,14 @@ func present(pose: Dictionary, seconds: float) -> void:
 	_moving_attack.visible=false
 	_combo_attack.visible=false
 	_moving_attack.offset=Vector2.ZERO
+	fatigue.visible=false
+	if not breathing:fatigue.reset()
+	if breathing and pose.alive and not hurt_active:
+		_mount.visible=false;_unarmed.visible=false
+		rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
+		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
+		self_modulate=Color(1,1,1,0)
+		return
 	if mounted and pose.alive:
 		_present_mount(pose,seconds)
 		return
@@ -181,6 +191,7 @@ func set_equipment(weapon: int, armor: int) -> void:
 		material=equipment_material
 		_combo_attack.material=equipment_material
 		_moving_attack.material=equipment_material
+		fatigue.material=equipment_material
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
