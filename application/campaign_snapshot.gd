@@ -2,7 +2,7 @@ extends RefCounted
 ## Closed, versioned state graph. No script paths or object construction come from a save.
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=6
+const VERSION:=7
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -61,7 +61,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries"]),
-		"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"travel":_fields(sim.travel),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -112,6 +112,7 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
+	if data.get("version",0)==7:keys.append("travel")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -119,6 +120,10 @@ func restore(raw) -> Dictionary:
 	if data.version==3 and not _upgrade_v3(data):return _invalid()
 	if data.version==4 and not _upgrade_v4(data):return _invalid()
 	if data.version==5 and not _upgrade_v5(data):return _invalid()
+	if data.version==6:
+		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
+		data["travel"]=_fields(Campaign.new(data.config).travel)
+		data.version=7
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -132,6 +137,10 @@ func restore(raw) -> Dictionary:
 		[sim.growth,data.growth,[]],[sim.ecology,data.ecology,[]],[sim.pouch,data.pouch,["pickups"]],
 		[sim.workforce,data.workforce,["deliveries"]]]:
 		if not _copy_fields(part[0],part[1],part[2]):return _invalid()
+	if not _copy_fields(sim.travel,data.travel):return _invalid()
+	if sim.travel.rest_remaining<0 or sim.travel.rest_remaining>1.5:return _invalid()
+	if sim.travel.forced_rest!=sim.life.enabled:return _invalid()
+	if not Rules.in_range(sim.travel.fast_multiplier,1.1,2.0) or not Rules.in_range(sim.travel.drain_per_second,5,40):return _invalid()
 	if not _restore_fighter(sim.hero,data.hero):return _invalid()
 	if not data.nodes is Array or data.nodes.size()!=sim.frontier.nodes.size():return _invalid()
 	for i in range(data.nodes.size()):
@@ -249,5 +258,5 @@ func _upgrade_v5(data: Dictionary) -> bool:
 	for id in current.world.walls:
 		if not data.world.walls.has(id):data.world.walls[id]=current.world.walls[id]
 	if data.session.built.get("beacon",false):data.session.buildings.beacon.level=1
-	data.version=VERSION
+	data.version=6
 	return true

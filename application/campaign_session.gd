@@ -1,5 +1,7 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const Life=preload("res://application/kingdom_life.gd")
+var life: Life=Life.new()
 const Defenses=preload("res://domain/frontier_defenses.gd")
 var defenses: Defenses
 const Ecology=preload("res://domain/frontier_ecology.gd")
@@ -44,6 +46,7 @@ const TOOL_KINDS := {"workshop":"hammer","farm_tools":"hoe","hunt_tools":"bow"}
 const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","farm_tools":"農具","hunt_tools":"獵弓","forge":"義肢爐","beacon":"守護塔","wall":"右防線","wall_left":"左防線","farm":"農田","drill":"劍術訓練","heal":"龍晶治療"}
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
+	life.enabled=int(config.get("immersive_loop",0))==1
 	var resolved:=config.duplicate(true)
 	var economy: Dictionary=config.get("economy",{}).duplicate(true)
 	var left_post:=minf(-950.0,float(config.get("left_defense_x",-1100.0)))
@@ -58,6 +61,13 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	hero.stats.attack_cost=maxf(0,float(config.get("attack_stamina",12.0)))
 	hero.stats.jump_cost=maxf(0,float(config.get("jump_stamina",18.0)))
 	hero.stats.dash_cost=maxf(0,float(config.get("dash_stamina",30.0)))
+	if life.enabled:
+		world.tool_roles.blade="guard";world.tool_sites.blade="armory"
+		hero.stats.stamina_regen=float(config.get("rest_regen",10.0))
+		hero.stats.max_hp=int(config.get("knight_health",70))
+		hero.stats.damage=int(config.get("knight_damage",18))
+		hero.hp=hero.stats.max_hp
+	travel.forced_rest=life.enabled
 	world.add_wall("wall_left",left_post)
 	mission=Mission.new(config)
 	growth=Growth.new(config,world.shield_value)
@@ -159,6 +169,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		candidates.append(choice)
 	if absf(_player_y-430)<=42:
 		for site in world.sites:
+			if life.enabled and (site=="forge" or (site=="armory" and frontier.city_level<3)):continue
 			if site=="trade":continue # Retained in legacy snapshots only.
 			if not defenses.visible(site):continue
 			if frontier.city_level==0 and site!="hall": continue
@@ -214,7 +225,7 @@ func _campaign_site(site: String) -> Dictionary:
 	if site=="hall":
 		if frontier.city_level>0 and mission.core_hp<mission.core_max_hp:
 			return _choice("core_charge",at,"核心充能",prices.core_charge)
-		if frontier.city_level==0: return _choice("hall",at,"營火 · 建立第一座營地",prices.camp)
+		if frontier.city_level==0: return _choice("hall",at,"營火 · 建立第一座營地",0 if life.enabled else prices.camp)
 		choice.text = "升級聚落"
 		choice.key = "hall:%d" % frontier.city_level
 		choice.cost = mini(12,prices.hall+2*(frontier.city_level-1))
@@ -225,6 +236,12 @@ func _campaign_site(site: String) -> Dictionary:
 	if frontier.city_level==0:
 		choice.enabled=false
 		choice.reason="先回營火投入 2 顆龍晶建立營地"
+		return choice
+	if site=="armory" and life.enabled:
+		choice.cost=prices.armory
+		choice.enabled=frontier.city_level>=3 and world.tools.blade<3
+		choice.reason="需要三級聚落，或器具架已滿"
+		choice["prerequisites"]=[] if frontier.city_level>=3 else [{"icon":"camp","value":3}]
 		return choice
 	if site=="armory":
 		choice.key="armory:%d"%barracks_level
@@ -326,9 +343,16 @@ func _execute(choice: Dictionary) -> void:
 			opened_chests[choice.node_index]=workforce.elapsed
 			effects.append({"kind":"chest_burst","x":node.x,"y":node.y,"life":0.7})
 		"mark": frontier.mark(frontier.nodes[choice.node_index])
-		"hall": frontier.city_level+=1
+		"hall":
+			frontier.city_level+=1
+			if life.enabled and frontier.city_level==1:
+				built.workshop=true;built.hunt_tools=true
+				effects.append({"kind":"camp_ignition","x":world.sites.hall,"life":2.4})
+			if life.enabled and frontier.city_level==3:built.armory=true
 		"armory":
-			barracks_level+=1;built.armory=true
+			if life.enabled:world.tools.blade+=1
+			else:barracks_level+=1
+			built.armory=true
 		"workshop","farm_tools","hunt_tools":
 			world.tools[TOOL_KINDS[choice.id]]+=1
 			built[choice.id]=true
@@ -366,9 +390,12 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	_summon_dragon(hero_x)
 	mission.resolve(hero.is_alive(),raiders.is_empty())
 	if not is_running():return
-	# Offered currency can recruit; ordinary treasure and delivered pay cannot.
+	if life.enabled:
+		hero.shield=0;world.barrier=0
+		life.collect(world,pouch,raiders,hero_x,hero_y)
+	# Legacy offering-only recruitment.
 	for person in world.people:
-		if person.role=="wanderer" and person.hurt<=0 and person_visible(person) and pouch.consume_offering(person.x,person.get("y",430)):
+		if not life.enabled and person.role=="wanderer" and person.hurt<=0 and person_visible(person) and pouch.consume_offering(person.x,person.get("y",430)):
 			var key := "recruit:%d" % world.people.find(person)
 			investments[key]=int(investments.get(key,0))+1
 			if investments[key]<prices.recruit: continue
@@ -376,6 +403,12 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 			person.role="citizen"
 			effects.append({"kind":"recruited","x":person.x,"y":person.get("y",430),"life":0.7})
 	pouch.advance(seconds,hero_x,hero_y)
+	if life.enabled and pouch.amount>=pouch.capacity:
+		for gem in pouch.drops:
+			if gem.grace<=0 and absf(gem.x-hero_x)<22 and absf(gem.y-hero_y)<24:
+				effects.append({"kind":"crystal_sink","x":hero_x,"y":hero_y,"life":0.85})
+				gem.amount=0
+		pouch.drops=pouch.drops.filter(func(gem):return gem.amount>0)
 	for pickup in pouch.pickups:
 		effects.append({"kind":"crystal_pickup","x":pickup.x,"y":pickup.y,"life":0.25})
 	pouch.pickups.clear()
@@ -415,9 +448,18 @@ func _advance_people(seconds: float) -> void:
 
 func _override_resident_target(index: int, seconds: float) -> float:
 	var person: Dictionary = world.people[index]
+	if life.enabled:
+		if person.role=="guard":
+			_shoot_nearest_raider(person,90.0,24,1.1)
+			return _defense_position(index,28.0)
+		if life.threatened(person,raiders) and person.role not in ["wanderer","guard","hunter"]:
+			person["sheltering"]=true;person["work_state"]="walk"
+			return defenses.shelter(person.x,world.sites.hall+(index%5-2)*22)
+		var crystal_x: float=life.crystal_target(person,pouch,_hero_x)
+		if is_finite(crystal_x) and not life.threatened(person,raiders):return crystal_x
 	var expedition_target:=expedition.target(index,seconds)
 	if is_finite(expedition_target):return expedition_target
-	if person.role=="engineer" and (clock.is_night or clock.remaining<=return_margin):
+	if not life.enabled and person.role=="engineer" and (clock.is_night or clock.remaining<=return_margin):
 		var construction:=Construction.target(self,index,seconds,true)
 		if is_finite(construction):return construction
 	if person.role not in ["citizen","engineer","farmer","hunter"]: return NAN
@@ -426,6 +468,7 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		home = _defense_position(index,90.0)
 	if person.role=="hunter":
 		_shoot_nearest_raider(person,hunter_range,archer_damage(),hunter_interval)
+	if life.enabled and not life.threatened(person,raiders):return NAN
 	if not Schedule.should_return(clock.is_night,clock.remaining,person.x,home,_person_speed,return_margin):
 		return NAN
 	person["sheltering"] = true
@@ -460,12 +503,12 @@ func _override_resident_target(index: int, seconds: float) -> float:
 func travel_axis(request: float, seconds: float) -> float:
 	return travel.axis(hero,request,seconds)
 
-func archer_damage() -> int:return hunter_damage+barracks_level*6
+func archer_damage() -> int:return hunter_damage if life.enabled else hunter_damage+barracks_level*6
 
 func _assign_defense_posts() -> void:
 	var counts: Dictionary={"wall":0,"wall_left":0}
 	for person in world.people:
-		if person.role=="guard":person.role="hunter"
+		if person.role=="guard" and not life.enabled:person.role="hunter"
 		if person.role not in ["guard","hunter"]:
 			person.erase("defense_post")
 		elif person.has("defense_post"):
@@ -505,6 +548,7 @@ func _strategic_target(_raider: Dictionary) -> Dictionary:
 
 func _hit_structure(target: Dictionary, amount: int) -> void:
 	if target.kind=="core":
+		effects.append({"kind":"core_hit","x":world.sites.hall,"life":1.5})
 		mission.damage_core(amount)
 		mission.resolve(hero.is_alive(),false)
 	else:super._hit_structure(target,amount)
@@ -602,7 +646,7 @@ func _advance_farm(seconds: float, farmers: int) -> void:
 	var produced: int=frontier.food-before
 	frontier.food=before
 	pouch.drop(produced,world.sites.farm)
-	if clock.is_night:return
+	if clock.is_night and not life.enabled:return
 	for site in buildings.values():
 		if site.kind!="farm" or site.level==0:continue
 		var workers:=world.people.filter(func(p):return p.role=="farmer" and not p.get("sheltering",false) and absf(p.x-site.x)<24).size()
@@ -643,6 +687,7 @@ func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: f
 	else:super._advance_raider(enemy,seconds,hero_x,hero_y)
 
 func strike_from(x: float, y: float) -> void:
+	if not can_wield_sword():return
 	# The dragon is massive: a finisher damages it but cannot cancel its breath forever.
 	var stable: Array=[]
 	for enemy in raiders:
@@ -665,7 +710,7 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 	for animal in frontier.animals:
 		if not animal.alive or not frontier.regions[animal.region].discovered:continue
 		var travel: float=(absf(person.x-animal.x)+absf(animal.x-world.sites.hall))/_person_speed
-		if clock.is_night or travel+return_margin+3>clock.remaining:continue
+		if not life.enabled and (clock.is_night or travel+return_margin+3>clock.remaining):continue
 		var distance: float=absf(animal.x-person.x)
 		if distance<nearest:nearest=distance;prey=animal
 	return prey
@@ -733,3 +778,15 @@ func _advance_towers(seconds: float) -> void:
 		nearest.fighter.take_damage(power.damage)
 		site.cooldown=power.interval
 		effects.append({"kind":"tower_laser" if site.level==3 else "tower_arrow","x":site.x,"to":nearest.x,"life":0.28,"tier":site.level})
+
+func can_wield_sword() -> bool:
+	return not life.enabled or frontier.city_level>0
+
+func cancel_investment(key: String, x: float) -> void:
+	if not life.enabled or not investments.has(key):return
+	var count: int=investments[key]
+	investments.erase(key)
+	pouch.burst(count,x,370.0)
+
+func cancel_all_investments(x: float) -> void:
+	for key in investments.keys():cancel_investment(key,x)

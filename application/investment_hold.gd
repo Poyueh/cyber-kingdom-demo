@@ -14,12 +14,14 @@ func _init(initial_delay: float = 0.5, interval: float = 0.28) -> void:
 
 func step(seconds: float, held: bool, allowed: bool, session, x: float) -> bool:
 	if not held:
+		if session.has_method("cancel_investment"):session.cancel_investment(target_key,x)
 		_down=false
 		_waiting_for_release=false
 		target_key=""
 		return false
 	if seconds<=0 or not is_finite(seconds): return false
 	if not allowed:
+		if session.has_method("cancel_investment"):session.cancel_investment(target_key,x)
 		cancel()
 		return false
 	if _waiting_for_release: return false
@@ -33,6 +35,7 @@ func step(seconds: float, held: bool, allowed: bool, session, x: float) -> bool:
 		return _invest(session,x,choice,_initial_delay)
 	var choice: Dictionary=session.context_for_key(x,target_key)
 	if not choice.enabled:
+		if session.has_method("cancel_investment"):session.cancel_investment(target_key,x)
 		cancel()
 		return false
 	_remaining-=seconds

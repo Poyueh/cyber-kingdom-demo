@@ -1,5 +1,7 @@
 # 製作進度
 
+最新本機版：`builds/immersive-preview/web/index.html`，用 HTTP 預覽並選「新遊戲」。本輪規格見 `docs/design/immersive-kingdom-loop.md`；既有旅程保留原玩法。
+
 目前試玩：Godot 打開 scenes/frontier.tscn 按 F6，或使用 builds/desktop-audio-20260913 的桌面程式直接進入營火戰役。最新進度見本文最後一節；前段保留歷次開發紀錄。美術沿用大致認可的 v002 營地基準與 v004 騎士劍術提案。
 
 ## 方向與時程
@@ -1008,3 +1010,22 @@ Release 觸發 35313731415 與 Pages 部署 35313736833 均成功。H5 ZIP 與�
 - 補齊 218 個匯入設定及腳本 UID，均確認有對應來源檔。既有場景、Resource 與 project.godot 的本機變更未納入本次提交。
 - 驗證：git diff --cached --check 通過；bash tools/check.sh 執行至 investment 測試，holding E finishes the camp without repeated tapping 失敗（13 項斷言、1 失敗），未執行後續主場景 smoke check；本次不宣稱遊戲完整驗證通過。
 - 下一步：調查營火長按投入測試失敗，並另外檢閱本機場景及數值變更。
+
+
+## 感受式王國循環（2026-09-21）
+
+本輪新增：無劍荒地開局、拔劍點火與自動搭起工程／弓箭設施；三級營火解鎖槍盾兵，移除新旅程的能量護盾與弓兵營升級。重繪訓練設施和三級側面牆，新增無劍跑步。
+
+上方數值 HUD 改為袋子填滿程度、日夜色調、日出天數、營火受擊方向警告。快跑耗盡強制停下喘氣、回復較慢且騎士基礎戰力降低。居民夜間照常工作，敵人靠近才退避；居民各職業會撿晶並在騎士靠近時獻出，流浪者撿晶加入，滿袋再收取會落水。投入龍晶向上填槽，未完成時放開／離開／缺晶會退回地面。
+
+加入約 22.5 秒可略過前導，鬼魂依觸控／鍵盤提供三語操作文字，開局最多 150 秒後退出。修正桌面 Web 因引擎模擬觸控誤判手機操作。玩家指南同步新規則。
+
+存檔 v7 保存居民持晶與喘氣狀態，支援舊 v6 與更早遷移；舊紀錄保留原玩法。額外驗證損壞 v6 config，先拒絕不合法設定再建立模擬，避免 SCRIPT ERROR。
+
+驗證：`bash tools/check.sh` 全部通過，Godot 1919 項斷言零失敗（純行為 1521、新規則實際場景 16，含觸控下滑點火與退晶）；另有 Python 打包／語系測試。實際 Godot 渲染與本機 H5 新旅程已檢查，瀏覽器未回報錯誤。
+
+效能：已拾取紀錄清理與靜止晶堆合併。同情境模擬第 600 秒的 advance 由 506 降至 389 微秒，晶堆由 198 降至 81；新規則 30 分鐘加速模擬的物件數維持約 1610、static memory 約 41.9 MB，七次存讀成功。詳見 `docs/design/immersive-performance.md`。**尚未完成 iPhone Safari 真機長時間驗證，不能宣稱閃退已根治。**
+
+前導／拔劍仍是首版演出，拔劍以劍圖示升起、火花與建築搭起呈現；全專案舊素材尚未全面重繪。下一次試玩重點：開局是否看得懂、喘氣節奏、居民獻晶距離與實機長玩。
+
+Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 develop。本輪沒有公開上線或更新 Win／Mac 下載包；原有 11 個 Resource／scene／project.godot 本機差異保留。教學見 `docs/lessons/58-immersive-campaign.md`。

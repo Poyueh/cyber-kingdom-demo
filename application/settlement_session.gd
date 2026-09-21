@@ -149,6 +149,8 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		if not drop.taken and absf(drop.x-hero_x)<28 and absf(hero_y-430)<45:
 			drop.taken = true
 			_collect_loot(drop)
+	loot=loot.filter(func(drop):return not drop.taken)
+	world.supplies=world.supplies.filter(func(supply):return not supply.taken)
 
 func _advance_people(seconds: float) -> void:
 	for index in range(world.people.size()):

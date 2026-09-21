@@ -113,9 +113,10 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if not in_range(data.body.x,left,right) or not in_range(data.body.y,-1000,500):return false
 	if not in_range(data.body.vx,-2000,2000) or not in_range(data.body.vy,-2000,2000):return false
 	var optional={"y":0.0,"moving":false,"direction":0.0,"sheltering":false,"work_state":"","walk_distance":0.0,
-		"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
+		"crystals":0,"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
 	for person in people:
 		if not shape(person,{"x":0.0,"role":"","hurt":0.0,"cooldown":0.0,"region":0},optional):return false
+		if not in_range(person.get("crystals",0),0,12):return false
 		if person.role not in ROLES or person.hurt<0 or person.cooldown<0:return false
 		if not index_valid(person.region,base.frontier.regions.size()):return false
 		if person.has("defense_post") and person.defense_post not in ["wall","wall_left"]:return false

@@ -1014,5 +1014,109 @@
   "工匠清掉一片樹木或礦產後，可出現城牆、守護塔或農地圖示。用途隨地圖種子決定，讀檔不會重抽；走近投入龍晶，再由工匠建造。農地需要農夫，白天產出龍晶。": {
     "en": "Cleared trees and mineral sites can reveal a wall, tower or farm plot. Its purpose is fixed by the map seed and does not reroll on loading. Fund it nearby and let an engineer build it. Farms need farmers and produce crystals during the day.",
     "zh_CN": "工匠清掉一片树木或矿产后，可出现城墙、守护塔或农地图标。用途随地图种子决定，读档不会重抽；走近投入龙晶，再由工匠建造。农地需要农夫，白天产出龙晶。"
+  },
+  "啟動先有可跳過的前導演出，再進入主選單。新遊戲採用以下新規則；既有旅程保留原規則與紀錄。": {
+    "zh_CN": "启动先有可跳过的前导演出，再进入主菜单。新游戏采用以下新规则；已有旅程保留原规则与记录。",
+    "en": "A skippable prologue leads to the title. New journeys use the rules below; existing journeys retain their saved rules."
+  },
+  "你從荒地徒步抵達，跟著鬼魂尋找營火。它會依手機或鍵盤顯示操作文字，開局一段時間後淡出；你仍可自由探索。": {
+    "zh_CN": "你从荒地徒步抵达，跟着鬼魂寻找营火。它会依手机或键盘显示操作文字，开局一段时间后淡出；你仍可自由探索。",
+    "en": "Walk out of the wilds and follow the spirit to the campfire. Its optional, device-specific hints fade after the opening minutes."
+  },
+  "開局沒有劍。靠近營火互動，拔劍點火，不需付款；工程與弓箭設施會搭起。此後守住這團火。": {
+    "zh_CN": "开局没有剑。靠近营火互动，拔剑点火，不需付款；工程与弓箭设施会搭起。此后守住这团火。",
+    "en": "You start without a sword. Interact at the campfire to draw it and kindle the fire for free. The workshop and bow rack assemble. Protect this fire."
+  },
+  "在流浪者附近丟下一顆龍晶。他會自己撿起，成為居民。": {
+    "zh_CN": "在流浪者附近丢下一颗龙晶。他会自己捡起，成为居民。",
+    "en": "Drop a crystal near a wanderer. They will pick it up and join your settlement."
+  },
+  "左右拖曳越遠跑得越快；快跑耗盡體力後會停下喘氣。稍候恢復，別在敵人面前跑到力竭。": {
+    "zh_CN": "左右拖曳越远跑得越快；快跑耗尽体力后会停下喘气。稍候恢复，别在敌人面前跑到力竭。",
+    "en": "Drag farther to run faster. Exhaustion forces a breathing stop. Allow time to recover before enemies arrive."
+  },
+  "必須持續投入到填滿。放開、走遠或龍晶不足，未完成的付款會掉回地面，需要重新收取。": {
+    "zh_CN": "必须持续投入到填满。放开、走远或龙晶不足，未完成的付款会掉回地面，需要重新收取。",
+    "en": "Keep holding until every socket is filled. Releasing, walking away or running out refunds incomplete payments onto the ground. Collect them again."
+  },
+  "看騎士身旁袋子的填滿程度估算龍晶，不顯示數字。居民會撿晶保管，靠近騎士時獻出；滿袋後再收取的龍晶會落水消失。": {
+    "zh_CN": "看骑士身旁袋子的填满程度估算龙晶，不显示数字。居民会捡晶保管，靠近骑士时献出；满袋后再收取的龙晶会落水消失。",
+    "en": "Estimate your crystals from the visible fullness of your pouch. Residents collect and carry crystals, then offer them when you approach. Overflow collected with a full pouch falls into the water."
+  },
+  "獵人自主狩獵，遇敵射箭。弓箭設施提供器具，不再升級；三級營火會解鎖槍盾器具，由居民自行領取並守住兩側。": {
+    "zh_CN": "猎人自主狩猎，遇敌射箭。弓箭设施提供器具，不再升级；三级营火会解锁枪盾器具，由居民自行领取并守住两侧。",
+    "en": "Hunters hunt and shoot approaching enemies. The bow rack supplies tools without upgrades. A tier-three camp unlocks spear-and-shield equipment for residents to defend both sides."
+  },
+  "攻擊與快跑消耗體力，力竭會停下喘氣，恢復較慢。受傷時角色會閃光與後仰；營火受擊有全畫面方向警示與音效。此版沒有能量護盾。": {
+    "zh_CN": "攻击与快跑消耗体力，力竭会停下喘气，恢复较慢。受伤时角色会闪光与后仰；营火受击有全画面方向警示与音效。此版没有能量护盾。",
+    "en": "Attacks and running use stamina. Exhaustion forces a pause with slower recovery. Hits cause a flash and recoil. Campfire damage triggers a directional warning and sound. Energy shields are removed."
+  },
+  "投入龍晶升級劍術，較高階需要較高的聚落等級。最高階自動騎上機械戰馬；原有義肢電容設備已移除。": {
+    "zh_CN": "投入龙晶升级剑术，较高阶需要较高的聚落等级。最高阶自动骑上机械战马；原有义肢电容设备已移除。",
+    "en": "Invest crystals in sword training. Higher tiers require a stronger settlement. The highest tier grants a mechanical mount. The former capacitor facility is removed."
+  },
+  "每筆訓練都要衡量：先強化自己，還是把龍晶留給居民與防線？": {
+    "zh_CN": "每笔训练都要衡量：先强化自己，还是把龙晶留给居民与防线？",
+    "en": "With every upgrade, choose between strengthening yourself and funding your people and defenses."
+  },
+  "騎乘仍須站定出刀，連斬會向前踏進。沒有劍時不能攻擊，拔劍點火是你的第一步。": {
+    "zh_CN": "骑乘仍须站定出刀，连斩会向前踏进。没有剑时不能攻击，拔剑点火是你的第一步。",
+    "en": "Mounted attacks still start from a standstill and combos step forward. You cannot attack before drawing the sword at the campfire."
+  },
+  "居民晚上也會採集、耕作與施工；附近出現魔物才停下工作退回安全處。槍盾兵留在兩側防守。": {
+    "zh_CN": "居民晚上也会采集、耕作与施工；附近出现魔物才停下工作退回安全处。枪盾兵留在两侧防守。",
+    "en": "Residents gather, farm and build at night, retreating when monsters approach. Spear soldiers defend the two sides."
+  },
+  "靠近物件後，看發光、龍晶空格與限制圖示。營火代表需要聚落升級，錘子代表施工，人物代表器具等待領取，打勾代表已完成。未完成的付款會退回地面。": {
+    "zh_CN": "靠近物件后，看发光、龙晶空格与限制图示。营火代表需要聚落升级，锤子代表施工，人物代表器具等待领取，打勾代表已完成。未完成的付款会退回地面。",
+    "en": "Approach the glow and inspect the sockets and icons: camp means a settlement prerequisite, hammer means construction, person means waiting for tools to be taken, and check means complete. Unfinished payments fall back to the ground."
+  },
+  "未拔劍不能出刀。快跑力竭後要停下喘氣；恢復後才可行動。連斬需再次按攻擊，按住不會自動出刀。": {
+    "zh_CN": "未拔剑不能出刀。快跑力竭后要停下喘气；恢复后才可行动。连斩需再次按攻击，按住不会自动出刀。",
+    "en": "Draw the sword before attacking. Running exhaustion forces a breathing stop until recovery. Tap attack again to combo; holding does not auto-attack."
+  },
+  "袋子滿了，再收取的龍晶會落水。居民也會撿起龍晶保管，騎士靠近才會獻出；剛丟出的晶體有短暫拾取等待。": {
+    "zh_CN": "袋子满了，再收取的龙晶会落水。居民也会捡起龙晶保管，骑士靠近才会献出；刚丢出的晶体有短暂拾取等待。",
+    "en": "Overflow falls into the water when your pouch is full. Residents may be carrying crystals and will offer them when you approach. Freshly thrown crystals have a short pickup delay."
+  },
+  "留意喘氣與受擊": {
+    "zh_CN": "留意喘气与受击",
+    "en": "Watch breathing and hit reactions"
+  },
+  "強化騎士，或保護居民。": {
+    "zh_CN": "强化骑士，或保护居民。",
+    "en": "Upgrade your knight, or protect your people."
+  },
+  "先招募獵人與槍盾兵、準備防線": {
+    "zh_CN": "先招募猎人与枪盾兵、准备防线",
+    "en": "Recruit hunters and spear soldiers, and prepare defenses"
+  },
+  "弓箭器具": {
+    "zh_CN": "弓箭器具",
+    "en": "Bow tools"
+  },
+  "本頁適用新旅程；圖例與舊截圖仍可能顯示數字。遊戲已改用袋子、天色、日出天數與動作回饋，舊紀錄保持原規則。": {
+    "zh_CN": "本页适用新旅程；图例与旧截图仍可能显示数字。游戏已改用袋子、天色、日出天数与动作反馈，旧记录保持原规则。",
+    "en": "This guide covers new journeys. Diagrams and older screenshots may show numbers; gameplay uses the pouch, lighting, dawn day announcement and character reactions. Existing saves retain their original rules."
+  },
+  "升級聚落": {
+    "zh_CN": "升级聚落",
+    "en": "Upgrade settlement"
+  },
+  "弓已放上器具架，等待居民領取。": {
+    "zh_CN": "弓已放上器具架，等待居民领取。",
+    "en": "A bow is on the rack, ready for a resident."
+  },
+  "巨龍以第 6 天為基準：提前封門不會降低它的基礎強度；第 7 天起，每延後一天，生命增加 240、傷害增加 4。強度在召喚時決定。先招募獵人與槍盾兵、準備防線，再選擇封門時機；噴息蓄力時離開地面的橙色預警區。": {
+    "zh_CN": "巨龙最低以第 6 天的强度出现，延后召唤会更强。先招募猎人与枪盾兵、准备防线，再决定封门时机。蓄力喷息时离开橙色预警区。",
+    "en": "The dragon has at least day-six strength and grows stronger if summoned later. Recruit hunters and spear soldiers, prepare defenses, then choose when to seal the gates. Leave the orange warning area before its breath attack."
+  },
+  "按住直到填滿。電腦按住 E；手機下拖後按住。每次只完成一筆交易，放開後再開始下一筆。": {
+    "zh_CN": "按住直到填满。电脑按住 E；手机下拖后按住。每次只完成一笔交易，放开后再开始下一笔。",
+    "en": "Hold until all sockets fill: E on keyboard, or drag down and hold on mobile. Each hold completes one transaction; release before starting another."
+  },
+  "下方點擊示意只用來解說龍晶空格，不會改變存檔；實際遊戲必須持續按住直到填滿。裂隙等目標另有解鎖條件。": {
+    "zh_CN": "下方点击示意只用来解说龙晶空格，不会改变存档；实际游戏必须持续按住直到填满。裂隙等目标另有解锁条件。",
+    "en": "This click-through diagram only explains crystal sockets and does not affect your save. In the actual game, hold until all sockets fill. Rifts have additional prerequisites."
   }
 }

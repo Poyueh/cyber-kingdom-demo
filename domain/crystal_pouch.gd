@@ -34,9 +34,16 @@ func _new_drop(count: int, x: float, y: float) -> Dictionary:
 	return {"id":_next_id,"x":x,"y":y,"amount":count,"vx":0.0,"vy":0.0,"age":0.0,"grace":0.0,"offering":false,"attracted":false}
 
 func drop(count: int, x: float, y: float = 430.0) -> void:
-	if count>0: drops.append(_new_drop(count,x,y))
+	if count<=0:return
+	for gem in drops:
+		if not gem.offering and gem.vx==0 and gem.vy==0 and gem.grace==0 and absf(gem.x-x)<12 and absf(gem.y-y)<1:
+			gem.amount+=count
+			return
+	drops.append(_new_drop(count,x,y))
+	if drops.size()>64:_compact_resting()
 
 func burst(count: int, x: float, y: float = 430.0) -> void:
+	if drops.size()>64:_compact_resting()
 	for index in range(maxi(0,count)):
 		var gem := _new_drop(1,x,y-18)
 		gem.vx=(float(index)-float(count-1)*0.5)*32.0
@@ -45,6 +52,7 @@ func burst(count: int, x: float, y: float = 430.0) -> void:
 		drops.append(gem)
 
 func toss(x: float, y: float, facing: int) -> bool:
+	if drops.size()>64:_compact_resting()
 	if not spend(): return false
 	var gem := _new_drop(1,x+signf(facing)*12,y-20)
 	gem.vx=signf(facing)*130.0
@@ -125,3 +133,16 @@ func ground_total() -> int:
 	var total := 0
 	for pile in drops: total+=pile.amount
 	return total
+
+func _compact_resting() -> void:
+	var buckets: Dictionary={}
+	var compact: Array[Dictionary]=[]
+	for gem in drops:
+		if gem.grace>0 or not _settled(gem):
+			compact.append(gem)
+			continue
+		var key: String="%d:%s"%[floori(gem.x/24),gem.offering]
+		if buckets.has(key):buckets[key].amount+=gem.amount
+		else:
+			buckets[key]=gem;compact.append(gem)
+	drops=compact

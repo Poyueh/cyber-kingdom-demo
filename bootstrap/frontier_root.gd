@@ -126,6 +126,7 @@ func _physics_process(seconds: float) -> void:
 		hud.present_world(sim,paused,knight.position.x,knight.is_on_floor())
 	_requested_throw = false
 	if paused or not sim.is_running():
+		sim.cancel_all_investments(knight.position.x)
 		investment.cancel()
 		hud.interact_held=false
 		_sync_investment_focus()
@@ -163,7 +164,9 @@ func _notification(what: int) -> void:
 		if is_instance_valid(audio):
 			audio.suspended=true
 			audio.stop()
-		if investment!=null: investment.cancel()
+		if investment!=null:
+			sim.cancel_all_investments(knight.position.x)
+			investment.cancel()
 		if is_instance_valid(hud): hud.cancel_touch_gestures()
 		if progress!=null:save_campaign()
 	if what in [NOTIFICATION_APPLICATION_FOCUS_IN,NOTIFICATION_APPLICATION_RESUMED] and is_instance_valid(audio):audio.suspended=false
@@ -247,5 +250,9 @@ func _build_terrain() -> void:
 	add_child(_terrain)
 
 func _sync_knight_equipment() -> void:
-	knight.visual.set_equipment(sim.frontier.drill_level,sim.growth.capacitor_level)
-	knight.set_mounted(sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
+	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
+	knight.visual.unarmed=not sim.can_wield_sword()
+	knight.visual.breathing=sim.life.enabled and sim.travel.exhausted
+	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
+
+func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.exhausted)
