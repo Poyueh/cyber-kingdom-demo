@@ -1001,3 +1001,10 @@ Release 觸發 35313731415 與 Pages 部署 35313736833 均成功。H5 ZIP 與�
 11 個個人修改檔仍保留未提交；其中 `project.godot` 被編輯器重存時掉的
 `window/handheld/orientation` 與 `textures/default_filters/use_nearest_mipmap_filter` 已補回工作區
 （已提交版本一直都有這兩行，發行包不受影響）。
+
+## 2026-09-21：Godot 版控中繼資料整理
+
+- 納入專案 .gitignore，保留 .godot/、builds/ 與測試產物排除；明確保留 *.import、*.uid。
+- 補齊 218 個匯入設定及腳本 UID，均確認有對應來源檔。既有場景、Resource 與 project.godot 的本機變更未納入本次提交。
+- 驗證：git diff --cached --check 通過；bash tools/check.sh 執行至 investment 測試，holding E finishes the camp without repeated tapping 失敗（13 項斷言、1 失敗），未執行後續主場景 smoke check；本次不宣稱遊戲完整驗證通過。
+- 下一步：調查營火長按投入測試失敗，並另外檢閱本機場景及數值變更。
