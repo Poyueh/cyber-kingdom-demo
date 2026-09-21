@@ -61,7 +61,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	super(resolved,hero_stats)
 	if config.get("flat_frontier",1):
 		world.tool_roles.blade="hunter";world.tool_sites.blade="hunt_tools"
-	travel.fast_multiplier=clampf(config.get("fast_run_multiplier",1.65),1.1,2.0)
+	travel.fast_multiplier=clampf(config.get("fast_run_multiplier",1.65),1.1,3.0)
 	travel.drain_per_second=clampf(config.get("fast_run_drain",18.0),5,40)
 	hero.stats.attack_cost=maxf(0,float(config.get("attack_stamina",12.0)))
 	hero.stats.jump_cost=maxf(0,float(config.get("jump_stamina",18.0)))

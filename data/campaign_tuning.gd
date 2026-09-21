@@ -19,7 +19,8 @@ extends "res://data/frontier_tuning.gd"
 @export_range(1.0,1.4,0.05) var camera_zoom: float = 1.15
 @export var larger_desktop_window: bool = true
 @export_group("Fast running")
-@export_range(1.1,2.0,0.05) var fast_run_multiplier:=1.65
+@export_range(60,190,5) var walking_speed: float=120.0
+@export_range(1.1,3.0,0.05) var fast_run_multiplier:=2.6
 @export_range(5,40,1) var fast_run_drain:=18.0
 @export_group("Knight stamina")
 @export_range(1,50,1) var attack_stamina: float=12.0
@@ -27,7 +28,7 @@ extends "res://data/frontier_tuning.gd"
 @export_range(1,80,1) var dash_stamina: float=30.0
 @export_group("Knight backpack")
 @export_range(2,30,1) var backpack_capacity: int = 30
-@export_range(0,30,1) var initial_crystals: int = 12
+@export_range(0,30,1) var initial_crystals: int = 6
 @export_group("Hold to invest")
 @export_range(0.2,1.5,0.05) var investment_hold_delay: float = 0.5
 @export_range(0.1,1,0.05) var investment_interval: float = 0.28

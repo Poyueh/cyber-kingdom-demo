@@ -1,13 +1,13 @@
 extends "res://tests/test_scene.gd"
 func make_scene(location: String):
-	var game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false
+	var game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false;game.tuning.initial_crystals=12
 	game.campaign_save_path=location
 	root.add_child(game)
 	await frames(3)
 	game.set_physics_process(false)
 	return game
 func run_scene() -> void:
-	var prototype=load("res://scenes/frontier.tscn").instantiate();prototype.tuning=prototype.tuning.duplicate();prototype.tuning.immersive_loop=false
+	var prototype=load("res://scenes/frontier.tscn").instantiate();prototype.tuning=prototype.tuning.duplicate();prototype.tuning.immersive_loop=false;prototype.tuning.initial_crystals=12
 	check(prototype.has_method("save_campaign"),"real campaign scene can save and resume")
 	prototype.free()
 	if failures>0:quit(1);return

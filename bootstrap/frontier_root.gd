@@ -142,7 +142,9 @@ func _physics_process(seconds: float) -> void:
 	_sync_knight_equipment()
 	audio.observe(seconds,sim,knight.position.x,paused)
 
-func _travel_axis(direction: float, seconds: float) -> float:return sim.travel_axis(direction,seconds)
+func _travel_axis(direction: float, seconds: float) -> float:
+	var pace: float=tuning.walking_speed/maxf(1,knight_tuning.move_speed) if sim.life.enabled else 1.0
+	return sim.travel_axis(direction,seconds)*pace
 
 func _apply_interaction(command: Dictionary, seconds: float) -> void:
 	# Keep a completed swipe until physics consumes it; each new swipe releases the previous order.
@@ -255,6 +257,10 @@ func _sync_knight_equipment() -> void:
 	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
 	knight.visual.unarmed=not sim.can_wield_sword()
 	knight.visual.damage_serial=sim.survival.hits
+	knight.visual.ceremony_age=-1.0
+	for effect in sim.effects:
+		if effect.kind=="camp_ignition" and absf(knight.position.x-effect.x)<96:
+			knight.visual.ceremony_age=2.4-effect.life
 	var tired_idle: bool=sim.hero.stamina<sim.hero.stats.attack_cost and sim.hero.attack_remaining<=0 and absf(knight.velocity.x)<1
 	knight.visual.breathing=sim.life.enabled and (sim.travel.exhausted or tired_idle)
 	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))

@@ -19,6 +19,8 @@ var music_player: AudioStreamPlayer
 var cues=Cues.new()
 var voices: Array[AudioStreamPlayer]=[]
 var _cooldowns: Dictionary={}
+var _ignition_run: RefCounted
+var _ignition_released: bool=false
 func _ready() -> void:
  music_player=AudioStreamPlayer.new()
  music_player.name="Music"
@@ -42,6 +44,12 @@ func observe(seconds: float,sim,x: float,paused: bool) -> void:
  if paused or not enabled or suspended:
   for voice in voices:voice.stop()
   return
+ if not is_same(_ignition_run,sim):_ignition_run=sim;_ignition_released=false
+ if not _ignition_released:
+  for effect in sim.effects:
+   if effect.kind=="camp_ignition" and effect.life<=1.58:
+    _ignition_released=true
+    _play("seal")
  for kind in pending:_play(kind)
 func _play(kind: String) -> void:
  if effects_volume<=0:return

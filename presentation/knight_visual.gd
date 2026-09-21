@@ -13,6 +13,9 @@ var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
 var breathing: bool=false
+var ceremony_age: float=-1.0
+var _fatigue_weight: float=0.0
+var _ceremony: Sprite2D=preload("res://presentation/knight_ceremony_view.gd").new()
 var damage_serial: int=0
 var _last_damage_serial: int=0
 var fatigue: Sprite2D=preload("res://presentation/knight_fatigue_view.gd").new()
@@ -31,6 +34,7 @@ var _was_grounded:=true
 var _landing:=0.0
 func _init() -> void:
 	add_child(fatigue)
+	add_child(_ceremony)
 	_unarmed=Sprite2D.new()
 	_unarmed.visible=false
 	add_child(_unarmed)
@@ -82,12 +86,40 @@ func reset_pose() -> void:
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
 	fatigue.reset()
+	_fatigue_weight=0
+	ceremony_age=-1
+	_ceremony.visible=false
 	_motion_time=0
 	_landing=0
 	_was_grounded=true
 	rotation=0
 	scale=Vector2.ONE
 func present(pose: Dictionary, seconds: float) -> void:
+	_present_body(pose,seconds)
+	var resting: bool=breathing and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
+	var safe_pose: bool=pose.alive and not hurt_active and not pose.get("dashing",false)
+	var target: float=1.0 if resting and safe_pose else 0.0
+	_fatigue_weight=move_toward(_fatigue_weight,target,maxf(0,seconds)/0.38)
+	if not safe_pose:_fatigue_weight=0
+	var ceremony: bool=ceremony_age>=0 and ceremony_age<2.4 and safe_pose and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
+	if ceremony:
+		_fatigue_weight=0
+		var blend: float=smoothstep(0,0.13,ceremony_age)*(1.0-smoothstep(2.12,2.4,ceremony_age))
+		_dim_body(1.0-blend)
+		_ceremony.present(ceremony_age,int(pose.facing))
+		_ceremony.modulate.a=blend
+	elif _fatigue_weight>0:
+		var weight: float=smoothstep(0,1,_fatigue_weight)
+		_dim_body(1.0-weight)
+		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
+		fatigue.modulate.a=weight
+	else:fatigue.reset()
+
+func _dim_body(alpha: float) -> void:
+	self_modulate.a*=alpha
+	for body in [_unarmed,_mount,_moving_attack,_combo_attack]:body.modulate.a=alpha
+
+func _present_body(pose: Dictionary, seconds: float) -> void:
 	var striding: bool=pose.get("moving",false) and pose.get("grounded",true) and not pose.get("dashing",false)
 	if striding and seconds>0 and is_finite(seconds):
 		_gait_time+=seconds*float(pose.get("locomotion_rate",1.0))
@@ -100,13 +132,6 @@ func present(pose: Dictionary, seconds: float) -> void:
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
 	_moving_attack.offset=Vector2.ZERO
-	if not breathing:fatigue.reset()
-	if breathing and pose.alive and not hurt_active:
-		_mount.visible=false;_unarmed.visible=false
-		rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
-		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
-		self_modulate=Color(1,1,1,0)
-		return
 	if mounted and pose.alive:
 		_present_mount(pose,seconds)
 		return
@@ -152,10 +177,6 @@ func present(pose: Dictionary, seconds: float) -> void:
 		scale=Vector2(1+amount,1-amount)
 		offset.y+=amount*24
 
-	if breathing:
-		rotation=pose.facing*0.08+sin(_motion_time*5)*0.02
-		scale=Vector2(1.02,0.94+sin(_motion_time*7)*0.018)
-		offset.y=2
 	if animation==&"attack" and combo_motion!=null and combo_motion.planted_atlas!=null:
 		var step:=clampi(int(pose.get("combo_step",1)),1,3)
 		var drawing: int=combo_motion.frame_at(step,float(pose.attack_progress))
@@ -202,8 +223,9 @@ func set_mounted(value: bool) -> void:
 	mounted=value
 
 func _hide_alternate_bodies() -> void:
-	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue]:
+	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue, _ceremony]:
 		body.visible=false
+		body.modulate.a=1.0
 
 func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if seconds>0:_motion_time+=seconds

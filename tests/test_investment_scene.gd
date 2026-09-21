@@ -1,7 +1,7 @@
 extends "res://tests/test_crystal_scene.gd"
 ## Reuses the real input helpers; this suite exercises held investment gestures.
 func run_test() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
 	root.add_child(scene)
 	await frames(6)
 	scene.knight.position.x=30

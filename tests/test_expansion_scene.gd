@@ -5,7 +5,7 @@ func pay(scene) -> void:
 	scene.hud.interact_button.button_up.emit()
 	scene._physics_process(1.0/60)
 func run_scene() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
 	root.add_child(scene)
 	await frames(8)
 	scene.set_physics_process(false)
