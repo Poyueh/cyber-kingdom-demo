@@ -15,6 +15,10 @@ func run_scene() -> void:
  check(game.progress==null and game.preferences==null,"cinematic cannot read or write a campaign or audio preferences")
  check(game.get_world_2d()!=root.world_2d,"cinematic owns an isolated physics world")
  check(not game.hud.visible and not game.controls.is_processing_unhandled_key_input(),"cinematic hides gameplay UI and rejects live controls")
+ check(stage.elapsed==0.0 and not stage.is_physics_processing(),"opening fade holds the performance before narration")
+ check(cinema._caption.modulate.a==0.0,"opening fade contains no premature caption")
+ await create_timer(1.9).timeout
+ check(stage.elapsed>0.0 and stage.is_physics_processing(),"performance starts only after opening fade")
  stage.elapsed=4.01;await frames(3)
  check(game.sim.frontier.city_level==1 and game.sim.can_wield_sword(),"performance lights camp and equips the knight")
  stage.elapsed=10.01;await frames(3)

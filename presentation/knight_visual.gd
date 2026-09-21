@@ -1,13 +1,14 @@
 extends "res://presentation/fighter_visual.gd"
 ## New locomotion drawings are isolated from the editable combat animation resource.
 const MotionFrames=preload("res://data/knight_motion_frames.tres")
-@export var running_atlas: Texture2D=preload("res://art/characters/combo-v005/run.png")
+@export var running_atlas: Texture2D=preload("res://art/characters/stride-v001/armed.png")
 @export var texture_overrides: Dictionary = {}
 @export var moving_attack_atlas: Texture2D
 @export var combo_motion: Resource
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
 const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
+const UnarmedRun=preload("res://art/characters/stride-v001/unarmed.png")
 const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
 var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
@@ -25,9 +26,9 @@ var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
-@export_range(6,16,0.5) var walking_frame_rate: float=10.0
-@export_range(12,24,0.5) var running_frame_rate: float=16.0
-var _gait_rate: float=10.0
+@export_range(6,16,0.5) var walking_frame_rate: float=12.0
+@export_range(12,24,0.5) var running_frame_rate: float=18.0
+var _gait_rate: float=12.0
 var _moving_attack: Sprite2D
 var _moving_region:=AtlasTexture.new()
 var _combo_attack: Sprite2D
@@ -148,7 +149,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		if not hurt_active and pose.alive:
 			rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
 		var drawing: int=int(fposmod(_gait_time*12,8)) if striding and pose.alive and not hurt_active else 8+int(fposmod(_motion_time*3,4))
-		_unarmed_frame.atlas=UnarmedSheet
+		_unarmed_frame.atlas=UnarmedRun if drawing<8 else UnarmedSheet
 		_unarmed_frame.region=Rect2((drawing%4)*128,(drawing/4)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
 		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
@@ -246,12 +247,12 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 		index=3 if progress<0.3 else 4 if progress<0.58 else 5
 		if step==2:index=5 if progress<0.3 else 4 if progress<0.58 else 3
 	elif not pose.get("grounded",true):index=2
-	elif pose.get("moving",false) or pose.get("dashing",false):index=1+int(_motion_time*7)%2
+	elif pose.get("moving",false) or pose.get("dashing",false):index=1+int(_gait_time*6)%2
 	if hurt_active:index=0
 	_mount_frame.atlas=MountedSheet
 	_mount_frame.region=Rect2(index*160,0,160,128)
 	_mount.texture=_mount_frame
-	_mount.position=Vector2(0,-absf(sin(_motion_time*7))*1.5 if index in [1,2] else sin(_motion_time*2)*0.5)
+	_mount.position=Vector2(0,-absf(sin(_gait_time*TAU*1.5))*1.0 if index in [1,2] else sin(_motion_time*2)*0.5)
 
 	# Brace the horse through the cut, then ease back to a balanced stance.
 	if progress<1 and not hurt_active:

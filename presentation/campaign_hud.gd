@@ -208,6 +208,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	var gestures_enabled: bool=touch and not is_paused and sim.is_running()
 	if drag_controls.enabled and not gestures_enabled:drag_controls.cancel()
 	drag_controls.enabled=gestures_enabled
+	drag_controls.fast_available=not sim.travel.exhausted
 	drag_controls.safe=_last_safe_rect
 	drag_controls.exclusions.clear()
 	if _tap_fill.visible:drag_controls.exclusions.append(Rect2(_tap_fill.position-_tap_shape.size/2,_tap_shape.size))

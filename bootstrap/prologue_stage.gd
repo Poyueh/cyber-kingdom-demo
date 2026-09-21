@@ -26,6 +26,10 @@ func _ready() -> void:
  game.sim.pouch.amount=0
  game.sim.clock.remaining=game.sim.clock.day_seconds*0.55
  game.audio.music_volume=0.22;game.audio.effects_volume=0.4
+ game.get_node("Knight/Camera2D").force_update_scroll()
+ game.knight.refresh_visual(0);game._sync_knight_equipment()
+ game.view.present(game.sim,game.knight.position.x)
+ game._water.present(game.sim);game._lantern.present(game.sim,game.knight);game._sunbeams.present(game.sim)
 func _physics_process(seconds: float) -> void:
  if _finished or game==null:return
  elapsed+=seconds
