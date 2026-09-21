@@ -78,8 +78,8 @@ func reset_pose() -> void:
 	super.reset_pose()
 	_gait_time=0
 	self_modulate=Color.WHITE
-	_moving_attack.visible=false
-	_combo_attack.visible=false
+	_hide_alternate_bodies()
+	fatigue.reset()
 	_motion_time=0
 	_landing=0
 	_was_grounded=true
@@ -94,10 +94,8 @@ func present(pose: Dictionary, seconds: float) -> void:
 	super.present(pose,seconds)
 	if equipment_material!=null:equipment_material.set_shader_parameter("facing",-1.0 if flip_h else 1.0)
 	self_modulate=Color.WHITE
-	_moving_attack.visible=false
-	_combo_attack.visible=false
+	_hide_alternate_bodies()
 	_moving_attack.offset=Vector2.ZERO
-	fatigue.visible=false
 	if not breathing:fatigue.reset()
 	if breathing and pose.alive and not hurt_active:
 		_mount.visible=false;_unarmed.visible=false
@@ -196,9 +194,12 @@ func set_equipment(weapon: int, armor: int) -> void:
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
 func set_mounted(value: bool) -> void:
+	# Equipment is state; only present/reset own which body is drawn.
 	mounted=value
-	_mount.visible=value
-	if not value:self_modulate=Color.WHITE
+
+func _hide_alternate_bodies() -> void:
+	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue]:
+		body.visible=false
 
 func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if seconds>0:_motion_time+=seconds

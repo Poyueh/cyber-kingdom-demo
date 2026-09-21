@@ -49,7 +49,7 @@ func _ready() -> void:
 		var shape:=CircleShape2D.new()
 		shape.radius=32
 		button.shape=shape
-		button.texture_normal=_button_texture({"move_left":"left","move_right":"right","attack":"sword"}.get(key,key))
+		button.texture_normal=_button_texture({"move_left":"left","move_right":"right","attack":"sword","pause":"menu"}.get(key,key))
 		button.texture_pressed=button.texture_normal
 		# The native texture origin is top-left, while the touch shape is centered.
 		button.shape_centered=true
@@ -143,7 +143,7 @@ func _process(_seconds: float) -> void:
 
 func _layout() -> void:
 	_last_safe_rect=safe_rect()
-	var layout:=Layout.arrange(_last_safe_rect)
+	var layout:=Layout.arrange(_last_safe_rect,dashboard.immersive)
 	for key in ["move_left","move_right","dash","jump","attack","pause","restart"]:
 		get_node(key).position=layout.buttons[key].position
 	var buttons={"drop":drop_button,"interact":interact_button,"new_map":new_map_button,"refuge":$Refuge,"fullscreen":fullscreen_button,"save":save_button,"audio":audio_button}
@@ -154,15 +154,18 @@ func _layout() -> void:
 	dashboard.panels=layout.panels
 	dashboard.queue_redraw()
 	_attack_home=$attack.position
-	fullscreen_button.visible=not uses_touch_controls()
+	fullscreen_button.visible=_pause_icon_state and not uses_touch_controls()
 	if is_instance_valid(options_menu):
 		options_menu.size=Vector2(minf(370,_last_safe_rect.size.x-24),244)
-		options_menu.position=Vector2(_last_safe_rect.get_center().x-options_menu.size.x/2,minf(layout.buttons.new_map.end.y+8,_last_safe_rect.end.y-options_menu.size.y-12))
+		options_menu.position=_last_safe_rect.position+Vector2(16,90) if dashboard.immersive else Vector2(_last_safe_rect.get_center().x-options_menu.size.x/2,minf(layout.buttons.new_map.end.y+8,_last_safe_rect.end.y-options_menu.size.y-12))
 
 func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
+	if dashboard.immersive!=sim.life.enabled:
+		dashboard.immersive=sim.life.enabled
+		_layout()
 	if _pause_icon_state!=is_paused:
 		_pause_icon_state=is_paused
-		$pause.texture_normal=_button_texture("play" if is_paused else "pause")
+		$pause.texture_normal=_button_texture("menu")
 		$pause.texture_pressed=$pause.texture_normal
 	# No textual panel participates in the playable HUD.
 	var choice: Dictionary=sim.context(at) if focus_key.is_empty() else sim.context_for_key(at,focus_key)
@@ -177,7 +180,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		_tap_fill.position=canvas*Vector2(choice.x,y+22)
 		_tap_shape.size=Vector2(maxf(96,choice.cost*23+48),90)*canvas.get_scale().abs()
 	var touch:=uses_touch_controls()
-	$attack.position=_attack_home-Vector2(112 if sim.life.enabled and touch else 0,0)
+	$attack.position=_attack_home
 	for action in ["move_left","move_right","jump","dash","attack"]:
 		get_node(action).visible=touch and action=="attack" and not is_paused and sim.is_running()
 	interact_button.visible=false
@@ -196,6 +199,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	$attack.visible=$attack.visible and sim.can_wield_sword()
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
+	fullscreen_button.visible=is_paused and not touch
 	options_menu.visible=is_paused
 	$restart.visible=is_paused or not sim.is_running()
 	new_map_button.visible=is_paused or not sim.is_running()

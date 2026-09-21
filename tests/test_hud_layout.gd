@@ -29,3 +29,20 @@ func test_safe_area_conversion_handles_scaling_and_letterboxing(t):
 	var safe=layout.screen_to_canvas(viewport,to_screen,Rect2(160,20,1800,1000))
 	t.equal(safe,Rect2(30,10,900,500),"safe physical pixels convert into local HUD coordinates")
 	t.equal(layout.screen_to_canvas(viewport,to_screen,Rect2()),viewport,"unavailable platform safe area uses full viewport")
+
+func test_corner_menu_and_purse_fit_phone_safe_area(t):
+	var layout=preload("res://presentation/campaign_layout.gd")
+	var purse=preload("res://presentation/crystal_purse_view.gd").new()
+	for safe in [Rect2(0,0,960,540),Rect2(90,18,840,490),Rect2(40,8,760,420)]:
+		var result=layout.arrange(safe,true)
+		purse.present(0.5,safe,false)
+		var rectangles: Array=[purse.bounds,Rect2(safe.position+Vector2(16,90),Vector2(370,258))]
+		for key in ["pause","fullscreen","save","refuge","restart","new_map","audio"]:
+			rectangles.append(result.buttons[key])
+		var clear=true
+		for i in range(rectangles.size()):
+			clear=clear and safe.encloses(rectangles[i])
+			for j in range(i+1,rectangles.size()):
+				clear=clear and not rectangles[i].intersects(rectangles[j])
+		t.truth(clear,"corner menu, options and purse fit without overlap on phones")
+	purse.free()
