@@ -1,8 +1,9 @@
 extends RefCounted
 ## Closed, versioned state graph. No script paths or object construction come from a save.
+const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=10
+const VERSION:=11
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -112,10 +113,10 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10]:keys.append("travel")
-	if data.get("version",0) in [8,9,10]:keys.append("survival")
-	if data.get("version",0) in [9,10]:keys.append("spirit")
-	if data.get("version",0)==10:keys.append("modules")
+	if data.get("version",0) in [7,8,9,10,11]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11]:keys.append("survival")
+	if data.get("version",0) in [9,10,11]:keys.append("spirit")
+	if data.get("version",0) in [10,11]:keys.append("modules")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -133,6 +134,8 @@ func restore(raw) -> Dictionary:
 		data["modules"]={"found":[],"stored":[],"equipped":"","ready_tick":0}
 		if data.config is Dictionary and data.frontier is Dictionary and data.session is Dictionary and data.config.get("immersive_loop",0)==1 and data.frontier.get("city_level") is int and data.frontier.city_level>=2 and data.session.get("built") is Dictionary:data.session.built.farm_tools=true
 		data.version=10
+	if data.version==10:
+		if not _upgrade_v10(data):return _invalid()
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -157,6 +160,8 @@ func restore(raw) -> Dictionary:
 	if not Rules.in_range(survival.sword_grace,0,1.2) or survival.hits<0:return _invalid()
 	if survival.armed and (survival.sword_on_ground or sim.frontier.city_level==0):return _invalid()
 	if survival.sword_on_ground and not Rules.in_range(survival.sword_x,sim.frontier.left_boundary,sim.frontier.right_boundary):return _invalid()
+	if sim.travel.rest_ticks<0 or sim.travel.rest_ticks>RecoveryClock.ticks_for(sim.travel.rules.sprint_rest_seconds) or sim.travel.last_tick<0:return _invalid()
+	if sim.travel.winded and (not sim.travel.exhausted or not sim.travel.forced_rest):return _invalid()
 	if sim.travel.rest_remaining<0 or sim.travel.rest_remaining>1.5:return _invalid()
 	if sim.travel.forced_rest!=sim.life.enabled:return _invalid()
 	if not Rules.in_range(sim.travel.fast_multiplier,1.1,3.0) or not Rules.in_range(sim.travel.drain_per_second,5,40):return _invalid()
@@ -320,4 +325,17 @@ func _restore_spirit(sim: RefCounted, data: Dictionary) -> bool:
 	if spirit.opening_ticks!=expected.opening_ticks or spirit.visit_ticks!=expected.visit_ticks:return false
 	if not Rules.in_range(spirit.expires_tick,0,maxf(spirit.opening_ticks,sim.workforce.elapsed*spirit.TICKS_PER_SECOND+spirit.visit_ticks+1)):return false
 	if spirit.summoned and not spirit.opening_finished:return false
+	return true
+
+func _upgrade_v10(data: Dictionary) -> bool:
+	if not data.get("travel") is Dictionary or not data.get("workforce") is Dictionary:return false
+	var travel: Dictionary=data.travel
+	if not travel.get("exhausted") is bool or not travel.get("forced_rest") is bool:return false
+	# Earlier migrations may already carry new default fields; never overwrite them.
+	if not travel.has("winded"):travel.winded=travel.exhausted and travel.forced_rest
+	if not travel.has("rest_ticks"):travel.rest_ticks=0
+	if not travel.has("last_tick"):
+		if not Rules.number(data.workforce.get("elapsed")):return false
+		travel.last_tick=int(round(data.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+	data.version=11
 	return true

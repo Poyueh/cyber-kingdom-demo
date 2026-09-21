@@ -1,0 +1,27 @@
+extends "res://tests/test_scene.gd"
+func run_scene() -> void:
+ var game: Node=load("res://scenes/frontier.tscn").instantiate()
+ game.tuning=game.tuning.duplicate();game.tuning.larger_desktop_window=false
+ root.add_child(game);await frames(10)
+ game.sim.interact(30,"hall");game.knight.position=Vector2(30,430)
+ key(KEY_D,true);await frames(6)
+ var normal: float=game.knight.velocity.x
+ check(normal>0,"ordinary input moves the real knight")
+ key(KEY_SHIFT,true);await frames(6)
+ check(game.knight.velocity.x>normal*1.5,"second tier is visibly faster than the normal run")
+ game.sim.hero.stamina=0;await frames(4)
+ check(game.knight.velocity.x>0 and game.knight.velocity.x<normal*0.6,"actual exhaustion falls back to a distinct slow walk")
+ game.sim.hero.stamina=40;await frames(4)
+ check(is_equal_approx(game.knight.velocity.x,normal) and game.sim.travel.exhausted,"partial recovery restores running but keeps sprint locked")
+ game.sim.hero.stamina=100;await frames(6)
+ check(is_equal_approx(game.knight.velocity.x,normal),"holding the second tier cannot auto-cycle into sprint")
+ key(KEY_D,false);await frames(60)
+ key(KEY_D,true);await frames(3)
+ check(is_equal_approx(game.knight.velocity.x,normal),"a one-second stop cannot clear the rest requirement")
+ key(KEY_D,false);await frames(140)
+ key(KEY_D,true);await frames(3)
+ check(game.knight.velocity.x>normal*1.5,"two seconds of uninterrupted rest rearms the second tier")
+ key(KEY_D,false);key(KEY_SHIFT,false)
+ game.queue_free();await frames(3)
+ print("Running recovery scene assertions: %d; failures: %d"%[assertions,failures])
+ quit(0 if failures==0 else 1)

@@ -302,6 +302,8 @@ func _sync_knight_equipment() -> void:
 			knight.visual.ceremony_age=2.4-effect.life
 	var tired_idle: bool=sim.hero.stamina<sim.hero.stats.attack_cost and sim.hero.attack_remaining<=0 and absf(knight.velocity.x)<1
 	knight.visual.breathing=sim.life.enabled and (sim.travel.exhausted or tired_idle)
+	knight.visual.tired_walk=sim.life.enabled and sim.travel.winded
+	knight.visual.exertion=sim.travel.breath_load(sim.hero)
 	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
 
-func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.exhausted)
+func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.winded)
