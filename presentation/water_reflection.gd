@@ -16,11 +16,11 @@ func present(sim: RefCounted) -> void:
  var inverse: Transform2D=canvas.affine_inverse()
  var left: Vector2=inverse*Vector2.ZERO
  var right: Vector2=inverse*size
- var y: float=style.water_line
+ var y: float=style.water_line-22.0
  visible=right.y>y
  if not visible:return
  _surface.polygon=PackedVector2Array([Vector2(left.x-4,y),Vector2(right.x+4,y),right+Vector2(4,4),Vector2(left.x-4,right.y+4)])
- _shader.set_shader_parameter("bank_uv",(canvas*Vector2(0,y)).y/size.y)
+ _shader.set_shader_parameter("bank_uv",(canvas*Vector2(0,style.water_line)).y/size.y)
  _shader.set_shader_parameter("ground_uv",(canvas*Vector2(0,430)).y/size.y)
  _shader.set_shader_parameter("elapsed",sim.workforce.elapsed)
  _shader.set_shader_parameter("strength",style.reflection_strength)

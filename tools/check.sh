@@ -38,6 +38,7 @@ run_check expansion --script res://tests/test_expansion_scene.gd
 run_check fortifications --script res://tests/test_fortification_scene.gd
 run_check stamina --script res://tests/test_stamina_scene.gd
 run_check languages --script res://tests/test_language_scene.gd
+run_check prologue --script res://tests/test_prologue_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check campaign_save --script res://tests/test_campaign_save_scene.gd

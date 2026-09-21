@@ -12,14 +12,15 @@ static func prop(canvas: Node2D, texture: Texture2D, kind: String, at: Vector2, 
 			var wind := sin(phase+height_ratio*1.1)*3.0
 			if kind=="campfire": wind=sin(time*13+row*0.8)*2.2
 			var offset := roundf(wind*height_ratio*height_ratio)*scale
-			canvas.draw_texture_rect_region(texture,Rect2(at-Vector2(size.x*0.5,size.y)+Vector2(offset,row*scale),Vector2(size.x,height*scale)),Rect2(0,row,texture.get_width(),height),tint)
+			var lift: float=roundf(sin(time*9.0+row*0.11)*8.0*height_ratio*height_ratio)*scale if kind=="campfire" else 0.0
+			canvas.draw_texture_rect_region(texture,Rect2(at-Vector2(size.x*0.5,size.y)+Vector2(offset,row*scale+lift),Vector2(size.x,height*scale*(1.5 if kind=="campfire" and height_ratio>0.3 else 1.0))),Rect2(0,row,texture.get_width(),height),tint)
 	else:
 		if kind=="deer": size.y*=1.0+sin(phase*1.5)*0.012
 		canvas.draw_texture_rect(texture,Rect2(at-Vector2(size.x*0.5,size.y),size),false,tint)
 	if tint.a<0.6: return
 	if kind in ["campfire","forge"]:
-		for index in range(5):
-			var rise := fposmod(time*0.6+index*0.21,1.0)
+		for index in range(10 if kind=="campfire" else 5):
+			var rise := fposmod(time*0.85+index*0.17,1.0)
 			var point := at+Vector2(sin(index*4.1+time*1.2)*12,-12-rise*65)*scale
 			canvas.draw_rect(Rect2(point.round(),Vector2.ONE*2),Color(1,0.62+rise*0.2,0.25,(1-rise)*0.85))
 	elif kind in ["cache","crystal","beacon","outpost","hall-1","hall-2","hall-3","workshop","armory","wall","stone","plot","stump"]:

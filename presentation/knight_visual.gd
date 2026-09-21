@@ -25,6 +25,9 @@ var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
+@export_range(6,16,0.5) var walking_frame_rate: float=10.0
+@export_range(12,24,0.5) var running_frame_rate: float=16.0
+var _gait_rate: float=10.0
 var _moving_attack: Sprite2D
 var _moving_region:=AtlasTexture.new()
 var _combo_attack: Sprite2D
@@ -122,9 +125,12 @@ func _dim_body(alpha: float) -> void:
 func _present_body(pose: Dictionary, seconds: float) -> void:
 	var striding: bool=pose.get("moving",false) and pose.get("grounded",true) and not pose.get("dashing",false)
 	if striding and seconds>0 and is_finite(seconds):
-		_gait_time+=seconds*float(pose.get("locomotion_rate",1.0))
+		var speed: float=absf(pose.get("horizontal_speed",190.0*float(pose.get("locomotion_rate",1.0))))
+		var desired: float=lerpf(walking_frame_rate,running_frame_rate,smoothstep(120,312,speed))
+		_gait_rate=lerpf(_gait_rate,desired,1.0-exp(-seconds*12))
+		_gait_time+=seconds*_gait_rate/12.0
 	elif not striding and not pose.get("dashing",false):
-		_gait_time=0
+		_gait_rate=walking_frame_rate
 	if damage_serial>_last_damage_serial:_reaction.trigger(-float(pose.facing))
 	_last_damage_serial=damage_serial
 	super.present(pose,seconds)
@@ -149,7 +155,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		return
 	if hurt_active or not pose.alive: return
 	var gait:=int(fposmod(_gait_time*sprite_frames.get_animation_speed(&"run"),sprite_frames.get_frame_count(&"run")))
-	if animation==&"run": frame=gait
+	if animation==&"run": frame=_action_frame(&"run",fposmod(_gait_time*12.0/8.0,1.0))
 	if combo_motion==null and animation==&"attack" and int(pose.get("combo_step",0))==2:
 		# Reverse time, not just the index: respect authored frame weights.
 		frame=_action_frame(&"attack",1.0-clampf(float(pose.attack_progress),0.0,1.0))
@@ -169,7 +175,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	elif animation==&"idle":
 		offset=Vector2(0,sin(_motion_time*2.8)*0.7)
 	elif animation==&"run":
-		offset=Vector2(0,-absf(sin(_motion_time*TAU*3))*0.7)
+		offset=Vector2(0,-absf(sin(_gait_time*TAU*1.5))*0.5)
 	elif animation==&"attack":
 		offset=Vector2.ZERO
 	if _landing>0 and grounded:

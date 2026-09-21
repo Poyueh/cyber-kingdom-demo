@@ -194,7 +194,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var choice: Dictionary
 	var shrine: float=spirit.shrine_x(world.sites.hall)
 	if life.enabled and frontier.city_level>0 and absf(x-shrine)<65 and absf(_player_y-430)<=42:
-		candidates.append(_choice("spirit",shrine,"召喚引路之魂",0,not spirit.active(int(workforce.elapsed*Spirit.TICKS_PER_SECOND)),"引路之魂正在指引你"))
+		candidates.append(_choice("spirit",shrine,"召喚引路之魂",int(prices.get("spirit",1)),not spirit.active(int(workforce.elapsed*Spirit.TICKS_PER_SECOND)),"引路之魂正在指引你"))
 	for index in range(world.people.size()):
 		var person: Dictionary = world.people[index]
 		if person.role!="wanderer" or not person_visible(person) or absf(person.x-x)>=73.0 or absf(person.get("y",430)-_player_y)>42: continue

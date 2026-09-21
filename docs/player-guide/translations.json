@@ -1151,9 +1151,9 @@
     "zh_CN": "未拔剑不能出刀。快跑力竭后仍可慢走恢复，站着也会恢复；体力足够后才能再快跑。连斩需再次按攻击，按住不会自动出刀。",
     "en": "Draw the sword before attacking. After sprint exhaustion, walk or stand to recover; sprint again once enough stamina returns. Tap attack again to combo; holding does not auto-attack."
   },
-  "鬼魂會引導點火、招募工匠與委託採集，然後告別。需要下一步提示時，到營火右側的引魂壇免費召喚；每次停留約 18 秒。你仍可自由探索。": {
-    "en": "The spirit guides you through lighting the campfire, recruiting an engineer and ordering a harvest, then leaves. Summon it for free at the shrine to the right of the campfire for another hint. Each visit lasts about 18 seconds. You remain free to explore.",
-    "zh_CN": "鬼魂会引导点火、招募工匠与委托采集，然后告别。需要下一步提示时，到营火右侧的引魂坛免费召唤；每次停留约 18 秒。你仍可自由探索。"
+  "鬼魂會引導點火、招募工匠與委託採集，然後告別。需要下一步提示時，到營火右側的引魂壇投入一顆龍晶召喚；每次停留約 18 秒。你仍可自由探索。": {
+    "en": "The spirit guides you through lighting the campfire, recruiting an engineer and ordering a harvest, then leaves. Offer one crystal to summon it at the shrine to the right of the campfire for another hint. Each visit lasts about 18 seconds. You remain free to explore.",
+    "zh_CN": "鬼魂会引导点火、招募工匠与委托采集，然后告别。需要下一步提示时，到营火右侧的引魂坛投入一颗龙晶召唤；每次停留约 18 秒。你仍可自由探索。"
   },
   "按 E／手機下滑丟一顆，流浪者撿起會加入，小怪撿起會撤退。建築旁會優先投入；Q 可隨時直接丟出。": {
     "en": "Press E or swipe down to offer one crystal. Wanderers pick it up to join you; small monsters take it and retreat. Nearby buildings take priority. Q always drops a crystal.",

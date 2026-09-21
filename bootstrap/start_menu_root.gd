@@ -18,6 +18,7 @@ func _ready() -> void:
 		get_tree().set_meta("campaign_prologue_seen",true)
 		view.hide()
 		var prologue=preload("res://presentation/campaign_prologue.gd").new()
+		prologue.stage=preload("res://bootstrap/prologue_stage.gd").new()
 		add_child(prologue)
 		prologue.completed.connect(func():view.show())
 

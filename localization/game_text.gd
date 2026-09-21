@@ -813,5 +813,15 @@ const ROWS=[
  ["點齒輪選配特殊部件", "點齒輪選配特殊部件", "点齿轮选配特殊部件", "Tap the gear to choose a module."],
  ["按 F 選配特殊部件", "按 F 選配特殊部件", "按 F 选配特殊部件", "Press F to choose a module."],
  ["發現特殊部件！帶回騎士升級設施。", "發現特殊部件！帶回騎士升級設施。", "发现特殊部件！带回骑士升级设施。", "Module found! Return it to the knight upgrade station."],
- ["部件已入庫，可以選配安裝。", "部件已入庫，可以選配安裝。", "部件已入库，可以选配安装。", "Module stored. Open the loadout to install it."]
+ ["部件已入庫，可以選配安裝。", "部件已入庫，可以選配安裝。", "部件已入库，可以选配安装。", "Module stored. Open the loadout to install it."],
+ ["黎明再次升起。", "黎明再次升起。", "黎明再次升起。", "Dawn rises again."],
+ ["人類的火光，終於照亮了這片荒野。", "人類的火光，終於照亮了這片荒野。", "人类的火光，终于照亮了这片荒野。", "At last, humanity lights the wilderness."],
+ ["營火熄滅了。", "營火熄滅了。", "营火熄灭了。", "The campfire has gone dark."],
+ ["人類的希望之火，再度逝去。", "人類的希望之火，再度逝去。", "人类的希望之火，再度逝去。", "The flame of human hope fades once more."],
+ ["無劍的騎士啊，", "無劍的騎士啊，", "无剑的骑士啊，", "O knight without a sword,"],
+ ["這一次，你未能守住任何事物。", "這一次，你未能守住任何事物。", "这一次，你未能守住任何事物。", "this time, nothing could be saved."],
+ ["曾守護這片土地 %d 天", "曾守護這片土地 %d 天", "曾守护这片土地 %d 天", "You guarded this land for %d days."],
+ ["最後一縷火光。", "最後一縷火光。", "最后一缕火光。", "One last flame."],
+ ["守住它。", "守住它。", "守住它。", "Keep it alive."],
+ ["直到黎明。", "直到黎明。", "直到黎明。", "Until dawn."]
 ]
