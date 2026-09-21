@@ -63,8 +63,8 @@ func test_opening_finishes_after_first_worker_order_and_can_be_recalled(t) -> vo
  t.equal(guide.advice(sim,30),{},"ghost leaves after its farewell fade")
  var at: float=guide.shrine_x(sim.world.sites.hall)
  var wallet: int=sim.pouch.amount
- t.truth(sim.interact(at,"spirit"),"camp shrine recalls the guide for free")
- t.equal(sim.pouch.amount,wallet,"help never costs scarce crystals")
+ t.truth(sim.interact(at,"spirit"),"camp shrine recalls the guide after an offering")
+ t.equal(sim.pouch.amount,wallet-1,"recalling help spends one crystal")
  t.truth(not guide.advice(sim,at).is_empty(),"recalled guide gives the next actual objective")
  t.truth(not sim.interact(at,"spirit"),"holding summon cannot extend an active visit")
  for i in range(1200):sim.advance(1.0/60,at)
@@ -99,3 +99,17 @@ func test_late_recall_survives_save_and_v8_migrates_safely(t) -> void:
  var broken: Dictionary=saved.duplicate(true)
  broken.spirit.expires_tick=-1
  t.truth(codec.restore(broken).is_empty(),"corrupt guidance timer is rejected")
+
+func test_empty_pouch_cannot_recall_and_configured_slots_refund(t) -> void:
+ var cfg: Dictionary=config();cfg.prices.spirit=2
+ var sim=Campaign.new(cfg);sim.interact(30,"hall")
+ sim.workforce.elapsed=200;sim.advance(0.01,30)
+ var at: float=sim.spirit.shrine_x(30)
+ sim.pouch.amount=0
+ t.truth(not sim.interact(at,"spirit"),"empty pouch cannot summon")
+ t.truth(not sim.spirit.active(6000),"failed offering leaves spirit absent")
+ sim.pouch.amount=2
+ t.truth(sim.interact(at,"spirit"),"first crystal fills a slot")
+ t.truth(not sim.spirit.active(6000),"partial payment does not summon")
+ sim.cancel_all_investments(at)
+ t.equal(sim.pouch.ground_total(),1,"unfinished summon returns a physical crystal")

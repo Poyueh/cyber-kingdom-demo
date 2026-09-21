@@ -66,7 +66,7 @@ func refresh_visual(seconds: float) -> void:
 	_trail_interval -= seconds
 	if visual != null:
 		visual.present({"alive": model.is_alive(), "facing": action_facing(),
-			"moving": absf(velocity.x) > 0.1 and not (model.stats.attack_movement_locked and model.attack_remaining > 0.0), "locomotion_rate": velocity.x*action_facing()/maxf(1,tuning.move_speed), "grounded": is_on_floor(), "vertical_speed":velocity.y,
+			"moving": absf(velocity.x) > 0.1 and not (model.stats.attack_movement_locked and model.attack_remaining > 0.0), "horizontal_speed":absf(velocity.x), "locomotion_rate": velocity.x*action_facing()/maxf(1,tuning.move_speed), "grounded": is_on_floor(), "vertical_speed":velocity.y,
 			"telegraph": telegraph, "dashing": model.dash_remaining > 0.0, "dash_progress": model.dash_progress(), "attack_progress": model.attack_progress(), "combo_step": model.combo_step,
 			"hp":model.hp,"shield":model.shield,"invulnerable": model.invulnerability_remaining > 0.0}, seconds)
 		if model.dash_remaining > 0.0 and model.is_alive() and not mounted:

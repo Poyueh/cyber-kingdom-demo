@@ -23,6 +23,7 @@ var _requested_throw := false
 @export var ambience: Resource=preload("res://data/world_ambience.gd").new()
 var _water: Node2D
 var _lantern: Node2D
+var _sunbeams: Node2D
 var _requested_special: bool=false
 
 func _ready() -> void:
@@ -40,6 +41,7 @@ func _ready() -> void:
 	hud.set_audio_enabled(audio.enabled)
 	_water=preload("res://presentation/water_reflection.gd").new();_water.style=ambience;add_child(_water)
 	_lantern=preload("res://presentation/knight_lantern.gd").new();_lantern.style=ambience;add_child(_lantern)
+	_sunbeams=preload("res://presentation/sunbeams.gd").new();_sunbeams.strength=ambience.sunbeam_strength;add_child(_sunbeams)
 	view.crystal_radius=tuning.crystal_radius
 	hud.throw_requested.connect(func(): _requested_throw = true)
 	controls.throw_requested.connect(func(): _requested_throw = true)
@@ -74,7 +76,7 @@ func _ready() -> void:
 	if progress!=null:
 		manual_progress=CampaignProgress.new(CampaignStore.new(campaign_save_path+".manual"))
 		_manual_available=not manual_progress.open().is_empty()
-	var allow_preferences: bool=ProjectSettings.get_setting("campaign/persistence_enabled",true) and (audio_preferences_path!="user://audio.cfg" or "--no-campaign-save" not in OS.get_cmdline_user_args())
+	var allow_preferences: bool=not audio_preferences_path.is_empty() and ProjectSettings.get_setting("campaign/persistence_enabled",true) and (audio_preferences_path!="user://audio.cfg" or "--no-campaign-save" not in OS.get_cmdline_user_args())
 	if allow_preferences:
 		preferences=AudioPreferences.new(audio_preferences_path)
 		var levels: Dictionary=preferences.read()
@@ -158,6 +160,7 @@ func _physics_process(seconds: float) -> void:
 	view.interactions_visible=not paused and sim.is_running()
 	view.keyboard_hint=not hud.uses_touch_controls()
 	_sync_knight_equipment()
+	if is_instance_valid(_sunbeams):_sunbeams.present(sim)
 	if is_instance_valid(_water):_water.present(sim)
 	if is_instance_valid(_lantern):_lantern.present(sim,knight)
 	audio.observe(seconds,sim,knight.position.x,paused)

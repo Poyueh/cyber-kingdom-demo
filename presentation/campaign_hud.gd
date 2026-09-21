@@ -220,8 +220,8 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
 	fullscreen_button.visible=is_paused and not touch
 	options_menu.visible=is_paused and not module_menu.visible
-	$restart.visible=is_paused or not sim.is_running()
-	new_map_button.visible=is_paused or not sim.is_running()
+	$restart.visible=is_paused or (not sim.is_running() and (not sim.life.enabled or dashboard.outcome_age>2.8))
+	new_map_button.visible=$restart.visible
 	$Refuge.visible=false # Standalone combat arena is no longer a player mode.
 	audio_button.visible=is_paused
 	_present_modules(sim,at,is_paused,touch)

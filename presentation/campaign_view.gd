@@ -108,6 +108,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 		draw_texture_rect(emission,Rect2(preload("res://presentation/grounded_art.gd").anchor(texture,at,scale)-Vector2(size.x*0.5,size.y),size),false,Color(1,1,1,pulse*tint.a))
 
 func _draw_atmosphere(_left: float) -> void:
+	preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
 	Details.draw_background(self,_details,_sim.frontier.regions)
 	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
@@ -142,7 +143,9 @@ func _draw_structures() -> void:
 	if _camp_ignition_age>=0:core_tint.a*=smoothstep(0.82,1.35,_camp_ignition_age)
 	if map.city_level>0: _prop("hall-%d" % map.city_level,Vector2(hall,430),1.0,core_tint)
 	if _camp_ignition_age>=0 and _camp_ignition_age<1.1:_prop("stone",Vector2(hall,430),0.45)
-	if not _sim.life.enabled or map.city_level>0:
+	if _sim.mission.core_hp<=0:
+		_prop("stone",Vector2(hall+104,430),0.35,Color("4a5158"))
+	elif not _sim.life.enabled or map.city_level>0:
 		_prop("campfire",Vector2(hall+(104 if map.city_level>0 else 0),430),0.7 if map.city_level>0 else 1.0,core_tint)
 	else:
 		_prop("stone",Vector2(hall,430),0.45)
@@ -208,6 +211,7 @@ func _draw_structures() -> void:
 			draw_rect(Rect2(at.x-40,355,80*map.farm_progress/map.farm_cycle,3),Color("d8dd9f"))
 
 	_draw_buildings()
+	preload("res://presentation/building_attendants.gd").draw_on(self,_sim,_view_player_x)
 
 func _draw_buildings() -> void:
 	for id in _sim.buildings:
@@ -552,4 +556,5 @@ func _draw() -> void:
 		draw_set_transform(at,progress*TAU if grace>0 else -0.35)
 		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
 		draw_set_transform(Vector2.ZERO)
+	preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

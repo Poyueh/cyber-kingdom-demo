@@ -7,7 +7,8 @@ uniform float elapsed = 0.0;
 uniform float strength = 0.68;
 uniform vec4 water_color : source_color = vec4(0.05,0.15,0.23,1.0);
 void fragment() {
- float depth = max(0.0, SCREEN_UV.y - bank_uv);
+ float shore = bank_uv + (sin(SCREEN_UV.x*49.0+elapsed*0.4)*2.0+sin(SCREEN_UV.x*137.0-elapsed*0.6))*SCREEN_PIXEL_SIZE.y;
+ float depth = max(0.0, SCREEN_UV.y - shore);
  float row = floor(depth / SCREEN_PIXEL_SIZE.y / 3.0);
  float drift = (sin(row * 0.71 + elapsed * 1.1) * 1.8 + sin(row * 0.19 - elapsed * 0.8)) * SCREEN_PIXEL_SIZE.x;
  vec2 source = vec2(clamp(SCREEN_UV.x + drift, 0.001, 0.999), clamp(ground_uv - depth * 1.35, 0.001, ground_uv));
@@ -16,5 +17,7 @@ void fragment() {
  vec3 ink = mix(water_color.rgb,reflected * vec3(0.74,0.90,0.96),fade);
  float glint = step(0.995, sin(row * 1.93 + floor(SCREEN_UV.x*34.0)*2.71 + elapsed*0.45));
  ink += glint * 0.035;
- COLOR = vec4(ink,1.0);
+ float shallows=smoothstep(shore-22.0*SCREEN_PIXEL_SIZE.y,shore+12.0*SCREEN_PIXEL_SIZE.y,SCREEN_UV.y);
+ vec3 bank=texture(screen_texture,SCREEN_UV).rgb;
+ COLOR = vec4(mix(bank,ink,shallows),1.0);
 }
