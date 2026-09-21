@@ -148,8 +148,9 @@ func _travel_axis(direction: float, seconds: float) -> float:
 
 func _apply_interaction(command: Dictionary, seconds: float) -> void:
 	# Keep a completed swipe until physics consumes it; each new swipe releases the previous order.
-	if _requested_interaction:investment.step(0.0,false,true,sim,knight.position.x)
-	var held: bool=command.interaction_held or hud.interact_held or _requested_interaction
+	var pressed: bool=_requested_interaction or command.get("interaction_pressed",false)
+	if pressed:investment.step(0.0,false,true,sim,knight.position.x)
+	var held: bool=command.interaction_held or hud.interact_held or pressed
 	investment.step(seconds,held,knight.is_on_floor() and not (command.jump or command.jump_held) and sim.is_running(),sim,knight.position.x)
 	_sync_investment_focus()
 	_sync_knight_equipment()

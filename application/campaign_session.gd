@@ -2,6 +2,8 @@ extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
+const Spirit=preload("res://application/spirit_guidance.gd")
+var spirit: Spirit
 const Survival=preload("res://domain/crystal_survival.gd")
 var survival: Survival=Survival.new()
 const Forager=preload("res://application/crystal_forager.gd")
@@ -49,6 +51,7 @@ const TOOL_KINDS := {"workshop":"hammer","farm_tools":"hoe","hunt_tools":"bow"}
 const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","farm_tools":"農具","hunt_tools":"獵弓","forge":"義肢爐","beacon":"守護塔","wall":"右防線","wall_left":"左防線","farm":"農田","drill":"劍術訓練","heal":"龍晶治療"}
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
+	spirit=Spirit.new(config)
 	life.enabled=int(config.get("immersive_loop",0))==1
 	survival.enabled=life.enabled and int(config.get("crystal_survival",0))==1
 	survival.hit_loss=int(config.get("hit_crystal_loss",0))
@@ -165,6 +168,9 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	var shrine: float=spirit.shrine_x(world.sites.hall)
+	if life.enabled and frontier.city_level>0 and absf(x-shrine)<65 and absf(_player_y-430)<=42:
+		candidates.append(_choice("spirit",shrine,"召喚引路之魂",0,not spirit.active(int(workforce.elapsed*Spirit.TICKS_PER_SECOND)),"引路之魂正在指引你"))
 	for index in range(world.people.size()):
 		var person: Dictionary = world.people[index]
 		if person.role!="wanderer" or not person_visible(person) or absf(person.x-x)>=73.0 or absf(person.get("y",430)-_player_y)>42: continue
@@ -336,6 +342,7 @@ func interact(x: float, target_key: String = "") -> bool:
 
 func _execute(choice: Dictionary) -> void:
 	match choice.id:
+		"spirit": spirit.summon(int(workforce.elapsed*Spirit.TICKS_PER_SECOND))
 		"tower","field": buildings[choice.building_id].pending=true
 		"rift": mission.order(choice.rift_index)
 		"core_charge": mission.recharge_core()
@@ -419,6 +426,9 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	for pickup in pouch.pickups:
 		effects.append({"kind":"crystal_pickup","x":pickup.x,"y":pickup.y,"life":0.25})
 	pouch.pickups.clear()
+	if life.enabled:
+		var opening_goal: bool=not spirit.opening_finished and frontier.city_level>0 and world.people.any(func(p):return p.role=="engineer") and frontier.nodes.any(func(n):return n.kind!="cache" and (n.marked or n.collected))
+		spirit.advance(int(workforce.elapsed*Spirit.TICKS_PER_SECOND),opening_goal)
 
 func throw_crystal(x: float, y: float, facing: int) -> bool:
 	return is_running() and pouch.toss(x,y,facing)

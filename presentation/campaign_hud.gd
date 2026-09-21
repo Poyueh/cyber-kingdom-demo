@@ -233,9 +233,13 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.dead=sim.mission.outcome=="defeat"
 	dashboard.victory=sim.mission.outcome=="victory"
 	dashboard.queue_redraw()
-	var advice: Dictionary=Guide.next(sim,at) if first_day_guidance and not is_paused else {}
-	if advice.is_empty() and expedition_guidance and not is_paused:advice=ExpeditionGuide.next(sim,at,sim._player_y)
-	if sim.life.enabled and sim.workforce.elapsed>150:advice={}
+	var advice: Dictionary={}
+	if not is_paused and (first_day_guidance or expedition_guidance):
+		if sim.life.enabled:advice=sim.spirit.advice(sim,at,first_day_guidance,expedition_guidance)
+		else:
+			if first_day_guidance:advice=Guide.next(sim,at)
+			if advice.is_empty() and expedition_guidance:advice=ExpeditionGuide.next(sim,at,sim._player_y)
+	guide_view.modulate.a=sim.spirit.opacity(int(sim.workforce.elapsed*sim.spirit.TICKS_PER_SECOND)) if sim.life.enabled else 1.0
 	var ready: bool=not advice.is_empty() and advice.action in ["invest","open"] and advice.key==choice.key and not interact_button.disabled
 	guide_view.touch_hint=touch
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
