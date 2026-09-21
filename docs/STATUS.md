@@ -1125,3 +1125,8 @@ Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 
 ## 2026-09-21：H5 v0.0.7 發行
 
 使用者授權發布。目前已測試的本機 H5 匯出包製成 v0.0.7，公開內容含本輪及 v0.0.6 以後累積更新；原有 11 個 Godot 設定檔納入 release/0.0.7 快照，以便對應實測素材、動畫及數值。原始修改備份於 builds/release-0.0.7/original-adjustments.patch。遊戲來源沿用上一輪 2,101 項斷言與原生／H5 驗收，沒有新增玩法；ZIP CRC 與 SHA-256 已驗證。Windows／macOS 不重建。公開部署與網址驗收完成後另記。
+
+
+## 2026-09-21：H5 v0.0.7 公開驗收完成
+
+Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.7 已公開，tag 指向 a71eb2953f29c68c133770f80112c3c06fb77f03。main／develop／release/0.0.7 與標籤已推送，Gitflow 發行已回合 develop。兩個下載附件 SHA-256 與 GitHub digest 一致。Pages 觸發 35618373307、部署 35618389006 成功；https://poyueh.github.io/cyber-kingdom/ 的 14 個檔案逐一 HTTP 200 且雜湊與實測發行包相同，WASM MIME 正確。公開瀏覽器標題、新旅程、森林／倒影／騎士與鬼魂提示實際載入，警告與錯誤清單為空。完整證據見 docs/reports/release-0.0.7/verification.json。Windows／macOS 保持 v0.0.1；尚未完成 iPhone 長時真機驗收。原本 Godot 設定內容逐檔保持並納入發行，原修改 patch 與 Git stash 留存備份。

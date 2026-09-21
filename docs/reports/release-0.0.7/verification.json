@@ -1,0 +1,100 @@
+{
+  "version": "v0.0.7",
+  "release_commit": "a71eb2953f29c68c133770f80112c3c06fb77f03",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.7",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom/",
+  "deployment": {
+    "conclusion": "success",
+    "headSha": "a71eb2953f29c68c133770f80112c3c06fb77f03",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom/actions/runs/35618389006"
+  },
+  "files": {
+    "index.apple-touch-icon.png": {
+      "sha256": "01d4f63e525941e06ce74f5187dad030d20a8d52a07ce365ae4e94af97a3b1f5",
+      "status": 200,
+      "bytes": 11944,
+      "content_type": "image/png"
+    },
+    "index.wasm": {
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "status": 200,
+      "bytes": 39514754,
+      "content_type": "application/wasm"
+    },
+    "index.icon.png": {
+      "sha256": "ad3c35ad0facf487c618204bd98db543034fc95224eadc7f08c7a9ff38d5b3b5",
+      "status": 200,
+      "bytes": 5700,
+      "content_type": "image/png"
+    },
+    "guide-reader.css": {
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "status": 200,
+      "bytes": 1750,
+      "content_type": "text/css; charset=utf-8"
+    },
+    "FONT-LICENSE.txt": {
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "status": 200,
+      "bytes": 4301,
+      "content_type": "text/plain; charset=utf-8"
+    },
+    "index.html": {
+      "sha256": "6f127ac949dba3342a9d8cf44173b8c34ec5ce3036b0d54c1c11b7b58f9128fc",
+      "status": 200,
+      "bytes": 5537,
+      "content_type": "text/html; charset=utf-8"
+    },
+    "guide.html": {
+      "sha256": "817943df87dff4f79298f9fde9ec7afc18418fd58bc9f485d550f0525e5551f5",
+      "status": 200,
+      "bytes": 2804389,
+      "content_type": "text/html; charset=utf-8"
+    },
+    "index.png": {
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "status": 200,
+      "bytes": 21443,
+      "content_type": "image/png"
+    },
+    "index.audio.worklet.js": {
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "status": 200,
+      "bytes": 7298,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    "index.js": {
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "status": 200,
+      "bytes": 279815,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    "index.audio.position.worklet.js": {
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "status": 200,
+      "bytes": 2973,
+      "content_type": "application/javascript; charset=utf-8"
+    },
+    "README.txt": {
+      "sha256": "07a8c5d6daf27111b6c27a3f663b381d448350552016f8a5bfb1e52b4c086d59",
+      "status": 200,
+      "bytes": 244,
+      "content_type": "text/plain; charset=utf-8"
+    },
+    "index.pck": {
+      "sha256": "034de717db957b8dba997f0a681c6e64d3f10b9d96e1772015276f7f7742a8a6",
+      "status": 200,
+      "bytes": 37493224,
+      "content_type": "application/octet-stream"
+    },
+    "guide-reader.js": {
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "status": 200,
+      "bytes": 2969,
+      "content_type": "application/javascript; charset=utf-8"
+    }
+  },
+  "archive_sha256": "9673b63c5eb6e5a0988213d803049250428632150e0200d23c00d93a5a7d03de",
+  "browser_playtest": "Public title and new journey loaded; layered forest, water reflection, knight and ghost guidance visibly present; console warnings/errors empty."
+}
