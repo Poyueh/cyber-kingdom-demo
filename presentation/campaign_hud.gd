@@ -16,6 +16,14 @@ var _tap_fill: TouchScreenButton
 var _tap_shape: RectangleShape2D
 const Icons=preload("res://presentation/ui_icons.gd")
 const Dashboard=preload("res://presentation/icon_dashboard.gd")
+signal special_requested
+signal loadout_requested
+signal module_selected(id: String)
+signal loadout_closed
+var module_menu: PanelContainer
+var module_button: Button
+var module_hint: Label
+var _near_modules: bool=false
 signal audio_toggled
 var audio_button: Button
 signal save_requested
@@ -92,6 +100,14 @@ func _ready() -> void:
 			interact_requested.emit()
 		else:throw_requested.emit())
 	drag_controls.offering_ended.connect(func():interact_held=false)
+	drag_controls.special_requested.connect(func():special_requested.emit())
+	module_button=Button.new();_skin(module_button,"gear");module_button.pressed.connect(func():loadout_requested.emit());add_child(module_button)
+	module_hint=Label.new();module_hint.add_theme_font_override("font",preload("res://presentation/localized_font.gd").current())
+	module_hint.add_theme_font_size_override("font_size",16);module_hint.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+	module_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;module_hint.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(module_hint)
+	module_menu=preload("res://presentation/module_menu.gd").new();add_child(module_menu)
+	module_menu.module_selected.connect(func(id: String):module_selected.emit(id))
+	module_menu.closed.connect(func():loadout_closed.emit())
 	immersive_feedback=preload("res://presentation/immersive_feedback.gd").new()
 	add_child(immersive_feedback)
 	_tap_fill=TouchScreenButton.new()
@@ -140,6 +156,9 @@ func safe_rect() -> Rect2:
 
 func _process(_seconds: float) -> void:
 	if safe_rect()!=_last_safe_rect:_layout()
+	if is_instance_valid(module_menu) and module_menu.visible:
+		module_menu.size=Vector2(minf(510,_last_safe_rect.size.x-32),module_menu.get_combined_minimum_size().y)
+		module_menu.position=_last_safe_rect.get_center()-module_menu.size*0.5
 
 func _layout() -> void:
 	_last_safe_rect=safe_rect()
@@ -200,11 +219,12 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
 	fullscreen_button.visible=is_paused and not touch
-	options_menu.visible=is_paused
+	options_menu.visible=is_paused and not module_menu.visible
 	$restart.visible=is_paused or not sim.is_running()
 	new_map_button.visible=is_paused or not sim.is_running()
-	$Refuge.visible=is_paused
+	$Refuge.visible=false # Standalone combat arena is no longer a player mode.
 	audio_button.visible=is_paused
+	_present_modules(sim,at,is_paused,touch)
 	drop_button.disabled=is_paused or not sim.is_running() or sim.pouch.amount<=0
 	var map=sim.frontier
 	dashboard.immersive=sim.life.enabled
@@ -245,13 +265,31 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
 	guide_view.track(get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),sim.workforce.elapsed)
 
+func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) -> void:
+	_near_modules=sim.life.enabled and sim.is_running() and sim.frontier.city_level>0 and absf(at-sim.world.sites.drill)<73
+	module_button.visible=_near_modules and not is_paused
+	module_button.position=Vector2(_last_safe_rect.get_center().x-30,_last_safe_rect.end.y-82);module_button.size=Vector2(60,60)
+	if module_button.visible:drag_controls.exclusions.append(Rect2(module_button.position,module_button.size))
+	module_menu.size=Vector2(minf(510,_last_safe_rect.size.x-32),0)
+	module_menu.position=_last_safe_rect.get_center()-module_menu.size*0.5
+	if module_menu.visible:module_menu.present(sim.modules,touch)
+	var message: String=""
+	if _near_modules and not is_paused:message=tr("點齒輪選配特殊部件") if touch else tr("按 F 選配特殊部件")
+	for effect in sim.effects:
+		if effect.kind=="module_pickup":message=tr("發現特殊部件！帶回騎士升級設施。")
+		elif effect.kind=="module_stored":message=tr("部件已入庫，可以選配安裝。")
+	module_hint.text=message;module_hint.visible=not message.is_empty() and not is_paused
+	module_hint.position=Vector2(_last_safe_rect.get_center().x-200,_last_safe_rect.end.y-126);module_hint.size=Vector2(400,42)
+	if module_menu.visible:
+		for button in [fullscreen_button,save_button,audio_button,new_map_button,$restart]:button.hide()
+
 func _toggle_fullscreen() -> void:
 	var window:=get_window()
 	window.mode=Window.MODE_WINDOWED if window.mode==Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
 
 func present_save(status: String, is_paused: bool) -> void:
 	if not is_instance_valid(save_button):return
-	save_button.visible=status!="disabled" and (is_paused or status in ["error","protected"])
+	save_button.visible=status!="disabled" and (is_paused or status in ["error","protected"]) and not module_menu.visible
 	save_button.disabled=status=="protected"
 	save_button.icon=Icons.get_icon("lock" if status=="protected" else "save_retry" if status=="error" else "save")
 	save_button.modulate=Color("ffba78") if status in ["error","protected"] else Color("86d9cc")

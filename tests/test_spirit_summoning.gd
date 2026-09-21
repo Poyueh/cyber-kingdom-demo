@@ -90,7 +90,7 @@ func test_late_recall_survives_save_and_v8_migrates_safely(t) -> void:
   sim.advance(1.0/60,at);resumed.session.advance(1.0/60,at)
  t.truth(Rules.same(codec.capture(sim,rules,body),codec.capture(resumed.session,rules,body)),"save/resume is identical to uninterrupted guidance")
  var legacy: Dictionary=saved.duplicate(true)
- legacy.version=8;legacy.erase("spirit")
+ legacy.version=8;legacy.erase("modules");legacy.erase("spirit")
  var migrated: Dictionary=codec.restore(legacy)
  t.truth(not migrated.is_empty(),"v8 save upgrades without losing progress")
  if not migrated.is_empty():

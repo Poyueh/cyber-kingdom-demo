@@ -800,5 +800,18 @@ const ROWS=[
   "等待工匠施工，或先升級聚落",
   "等待工匠施工，或先升级聚落",
   "Await construction, or upgrade the settlement first"
- ]
+ ],
+ ["雷弧震盪", "雷弧震盪", "雷弧震荡", "Arc Pulse"],
+ ["穿甲雷槍", "穿甲雷槍", "穿甲雷枪", "Piercing Lance"],
+ ["震退附近敵人；消耗體力，冷卻 %d 秒。", "震退附近敵人；消耗體力，冷卻 %d 秒。", "震退附近敌人；消耗体力，冷却 %d 秒。", "Repel nearby foes. Uses stamina; %ds cooldown."],
+ ["向前方射出穿甲能量；消耗體力，冷卻 %d 秒。", "向前方射出穿甲能量；消耗體力，冷卻 %d 秒。", "向前方射出穿甲能量；消耗体力，冷却 %d 秒。", "Fire piercing energy ahead. Uses stamina; %ds cooldown."],
+ ["特殊部件選配", "特殊部件選配", "特殊部件选配", "Special Modules"],
+ ["探索取得，帶回此處安裝", "探索取得，帶回此處安裝", "探索取得，带回此处安装", "Find in the wild and return here to install."],
+ ["雙指向上滑使用已裝部件", "雙指向上滑使用已裝部件", "双指向上滑使用已装部件", "Swipe up with two fingers to use your module."],
+ ["按 K 使用已裝部件；F 開啟選配", "按 K 使用已裝部件；F 開啟選配", "按 K 使用已装部件；F 开启选配", "K: use module. F: open loadout here."],
+ ["返回旅程", "返回旅程", "返回旅程", "Return to Journey"],
+ ["點齒輪選配特殊部件", "點齒輪選配特殊部件", "点齿轮选配特殊部件", "Tap the gear to choose a module."],
+ ["按 F 選配特殊部件", "按 F 選配特殊部件", "按 F 选配特殊部件", "Press F to choose a module."],
+ ["發現特殊部件！帶回騎士升級設施。", "發現特殊部件！帶回騎士升級設施。", "发现特殊部件！带回骑士升级设施。", "Module found! Return it to the knight upgrade station."],
+ ["部件已入庫，可以選配安裝。", "部件已入庫，可以選配安裝。", "部件已入库，可以选配安装。", "Module stored. Open the loadout to install it."]
 ]

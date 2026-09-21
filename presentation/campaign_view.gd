@@ -81,15 +81,16 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 	if not _on_screen(at.x,320):return
 	tint.a*=_world_alpha
 	if tint.a<=0:return
-	if not _context.is_empty() and _context.enabled and absf(_context.x-at.x)<3:tint=tint.lightened(0.14)
+	if not _context.is_empty() and _context.enabled and (absf(_context.x-at.x)<3 or (name=="campfire" and _context.id in ["hall","core_charge"] and absf(at.x-_context.x-104)<3)):
+		tint=Color(tint.r*1.8,tint.g*1.9,tint.b*1.65,tint.a)
 	if name=="outpost":
 		var regions=_sim.frontier.regions.filter(func(r):return is_equal_approx(r.outpost_x,at.x))
 		if not regions.is_empty() and not regions[0].outpost_built:name="plot"
 	if name=="plot":
 		if absf(at.x-_view_player_x)<130:
 			for side in [-1,1]:
-				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b"))
-				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72"))
+				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b")*tint)
+				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72")*tint)
 		return
 	var texture: Texture2D=Details.harvest_texture(name,at.x,_sim.map_seed)
 	if texture==null:texture=EXTRA_ART.get(name,art.props.get(name))
@@ -108,11 +109,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 
 func _draw_atmosphere(_left: float) -> void:
 	Details.draw_background(self,_details,_sim.frontier.regions)
-	if art.show_river:
-		var inverse := get_viewport().get_canvas_transform().affine_inverse()
-		var top_left := inverse*Vector2.ZERO
-		var bottom_right := inverse*get_viewport_rect().size
-		Scenery.river(self,art,_sim,Rect2(top_left,bottom_right-top_left))
+	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
 
 func _draw_power_grid() -> void:
@@ -156,6 +153,7 @@ func _draw_structures() -> void:
 	_text(tr("營火 · 王國由此開始") if map.city_level==0 else tr("聚落 %d/3 · 收貨點") % map.city_level,hall,282,Color("f3d299"),15)
 	_draw_mission()
 	_draw_recruitment_camps()
+	preload("res://presentation/module_visual.gd").relics(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
 	if _sim.life.enabled:
@@ -165,13 +163,13 @@ func _draw_structures() -> void:
 	for site in world.sites:
 		var x: float=world.sites[site]
 		if not _sim.defenses.visible(site):continue
-		if _sim.life.enabled and (site=="forge" or (site=="armory" and map.city_level<3)):continue
+		if not _sim.site_visible(site):continue
 		if _sim.life.enabled and not _sim._campaign_site(site).get("prerequisites",[]).is_empty() and not _sim.built.get(site,false):continue
 		if site=="hall" or not interactions_visible or absf(x-_view_player_x)>130: continue
 		if not _context.id.is_empty() and absf(_context.x-x)<1:continue
 		_icon("wall" if world.walls.has(site) else SITE_ICONS.get(site,"hand"),Vector2(x,276 if _sim.built.get(site,false) else 343),23)
 	for site in ["workshop","armory","farm_tools","hunt_tools","forge"]:
-		if _sim.life.enabled and (site=="forge" or (site=="armory" and map.city_level<3)):continue
+		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
 		var asset: String = {"farm_tools":"workshop","hunt_tools":"armory"}.get(site,site)
 		if _sim.built.get(site,false):
@@ -201,7 +199,9 @@ func _draw_structures() -> void:
 			_icon("hammer",Vector2(wall_x,307),18)
 			draw_rect(Rect2(wall_x-28,326,56.0*minf(1.0,defense.progress/3.0),3),Color("f4d49d"))
 	for site in ["farm","drill","heal"]:
+		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
+		if site=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.id=="farm" and _context.enabled,1.0)
 		_prop("crops" if site=="farm" and map.farm_active else ("herbs" if site=="heal" else "drill" if site=="drill" and _sim.life.enabled else "plot"),at)
 		_text(_sim.NAMES[site],at.x,345,Color("d0d9b8"),13)
 		if site=="farm" and map.farm_active:
@@ -215,6 +215,7 @@ func _draw_buildings() -> void:
 		if site.kind=="wall" or not _sim.building_visible(id):continue
 		_world_alpha=1.0 if site.region<0 else _region_reveal(site.region)
 		var at:=Vector2(site.x,430)
+		if site.kind=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.get("building_id","")==id and _context.enabled,_world_alpha)
 		if site.level>0:_prop("tower-%d"%site.level if site.kind=="tower" else "crops",at)
 		else:_prop("plot",at)
 		if absf(site.x-_view_player_x)<130 and _context.get("building_id","")!=id:
@@ -274,7 +275,7 @@ func _person(person: Dictionary, protected: bool) -> void:
 		if hit.active:pose.frame=0
 		var at:=Vector2(person.x,person.get("y",430))
 		draw_set_transform(at+hit.offset,hit.rotation,hit.scale*Vector2(person.get("direction",1.0),1))
-		_draw_person_texture(resident_atlas,Rect2(pose.frame*64,row*64,64,64),Color(1.8,1.15,1.1).lerp(Color.WHITE,1-hit.flash) if hit.active else Color.WHITE)
+		_draw_person_texture(resident_atlas,Rect2(pose.frame*64,row*64,64,64),Color(1.8,1.15,1.1).lerp(Color.WHITE,1-hit.flash) if hit.active else Color(1.8,1.9,1.65) if _context.get("person_index",-2)==index and _context.enabled else Color.WHITE)
 		draw_set_transform(Vector2.ZERO)
 		if protected and person.role!="wanderer": draw_arc(at+Vector2(0,-24),29,PI,TAU,16,Color("81ddda"),1)
 
@@ -320,6 +321,7 @@ func _draw_activity() -> void:
 	# Render rewards after actors so the collection journey stays legible.
 	super._draw_activity()
 	_draw_fallen()
+	preload("res://presentation/module_visual.gd").effects(self,_sim)
 	for pile in _sim.pouch.drops:
 		if not _on_screen(pile.x,CRYSTAL_MARGIN):continue
 		for index in range(mini(3,pile.amount)):

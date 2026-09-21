@@ -108,7 +108,7 @@ func test_v7_immersive_journey_migrates_to_crystal_survival(t) -> void:
  var sim=Campaign.new(old_rules);sim.interact(30,"hall")
  var codec=Codec.new()
  var saved: Dictionary=codec.capture(sim,old_rules,{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
- saved.version=7;saved.erase("spirit");saved.erase("survival")
+ saved.version=7;saved.erase("modules");saved.erase("spirit");saved.erase("survival")
  var restored: Dictionary=codec.restore(saved)
  t.truth(not restored.is_empty(),"known v7 checkpoint upgrades")
  if restored.is_empty():return
@@ -130,5 +130,5 @@ func test_corrupt_v7_wallet_is_not_repaired_by_larger_capacity(t) -> void:
  var sim=Campaign.new(old_rules)
  var codec=Codec.new()
  var saved: Dictionary=codec.capture(sim,old_rules,{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
- saved.version=7;saved.erase("spirit");saved.erase("survival");saved.pouch.amount=13
+ saved.version=7;saved.erase("modules");saved.erase("spirit");saved.erase("survival");saved.pouch.amount=13
  t.truth(codec.restore(saved).is_empty(),"v7 overflow corruption is rejected before capacity migration")
