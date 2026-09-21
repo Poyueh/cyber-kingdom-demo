@@ -187,8 +187,13 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		var without_target=enemy.state.duplicate(true)
 		without_target.target={}
 		if not shape(without_target,{"x":0.0,"windup":0.0,"cooldown":0.0,"target":{}},
-			{"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":""}):return false
+			{"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
 		var state: Dictionary=enemy.state
+		if not state.get("carried_crystals",0) is int or not in_range(state.get("carried_crystals",0),0,1):return false
+		if state.get("carried_crystals",0)>0:
+			if state.get("kind","") in ["dragon","warden"] or state.get("side") not in [-1,1]:return false
+			var portal: float=data.mission.rifts[0 if state.side==-1 else 1].x
+			if not number(state.get("retreat_x")) or state.retreat_x!=portal:return false
 		if state.windup<0 or state.cooldown<0 or not state.target is Dictionary:return false
 		if state.target.is_empty():
 			if state.windup>0:return false

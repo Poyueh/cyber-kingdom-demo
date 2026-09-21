@@ -2,7 +2,7 @@ extends RefCounted
 ## Closed, versioned state graph. No script paths or object construction come from a save.
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=7
+const VERSION:=8
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -61,7 +61,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries"]),
-		"travel":_fields(sim.travel),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -112,7 +112,8 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0)==7:keys.append("travel")
+	if data.get("version",0) in [7,8]:keys.append("travel")
+	if data.get("version",0)==8:keys.append("survival")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -124,6 +125,7 @@ func restore(raw) -> Dictionary:
 		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
 		data["travel"]=_fields(Campaign.new(data.config).travel)
 		data.version=7
+	if data.version==7 and not _upgrade_v7(data,raw.get("version",0)==7):return _invalid()
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -138,6 +140,14 @@ func restore(raw) -> Dictionary:
 		[sim.workforce,data.workforce,["deliveries"]]]:
 		if not _copy_fields(part[0],part[1],part[2]):return _invalid()
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
+	if not _copy_fields(sim.survival,data.survival):return _invalid()
+	var survival=sim.survival
+	if survival.enabled!=(sim.life.enabled and int(data.config.get("crystal_survival",0))==1):return _invalid()
+	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()
+	if survival.enabled and not Rules.in_range(survival.hit_loss,1,10):return _invalid()
+	if not Rules.in_range(survival.sword_grace,0,1.2) or survival.hits<0:return _invalid()
+	if survival.armed and (survival.sword_on_ground or sim.frontier.city_level==0):return _invalid()
+	if survival.sword_on_ground and not Rules.in_range(survival.sword_x,sim.frontier.left_boundary,sim.frontier.right_boundary):return _invalid()
 	if sim.travel.rest_remaining<0 or sim.travel.rest_remaining>1.5:return _invalid()
 	if sim.travel.forced_rest!=sim.life.enabled:return _invalid()
 	if not Rules.in_range(sim.travel.fast_multiplier,1.1,2.0) or not Rules.in_range(sim.travel.drain_per_second,5,40):return _invalid()
@@ -259,4 +269,22 @@ func _upgrade_v5(data: Dictionary) -> bool:
 		if not data.world.walls.has(id):data.world.walls[id]=current.world.walls[id]
 	if data.session.built.get("beacon",false):data.session.buildings.beacon.level=1
 	data.version=6
+	return true
+
+func _upgrade_v7(data: Dictionary, upgrade_immersive: bool) -> bool:
+	if not data.config is Dictionary or not Rules.config_valid(data.config):return false
+	if not data.frontier is Dictionary or not data.pouch is Dictionary:return false
+	if not data.frontier.get("city_level") is int:return false
+	if not data.body is Dictionary or not ["x","y","vx","vy"].all(func(k):return data.body.has(k) and Rules.number(data.body[k])):return false
+	var original=Campaign.new(data.config)
+	if not Rules.valid(data,capture(original,data.config,data.body)):return false
+	# Earlier classic campaigns keep their rules. Current immersive journeys adopt
+	# crystal protection and retain both their money and their already drawn sword.
+	if upgrade_immersive and data.config.get("immersive_loop",0)==1 and not data.config.has("crystal_survival"):
+		data.config.crystal_survival=1;data.config.hit_crystal_loss=3
+		data.config.capacity=30;data.pouch.capacity=30
+	var fresh=Campaign.new(data.config)
+	data["survival"]=_fields(fresh.survival)
+	data.survival.armed=fresh.survival.enabled and data.frontier.city_level>0
+	data.version=8
 	return true
