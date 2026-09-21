@@ -23,13 +23,20 @@ func run_scene() -> void:
  await frames(4)
  var wallet: int=game.sim.pouch.amount
  key(KEY_E,true);await frames(2);key(KEY_E,false);await frames(2)
- check(game.sim.investments.is_empty(),"keyboard release refunds unfinished investment")
+ check(not game.sim.investments.is_empty(),"keyboard release keeps sockets for grace period")
+ await frames(62)
+ check(game.sim.investments.is_empty(),"expired keyboard payment returns to world")
  check(game.sim.pouch.amount==wallet-1,"refund flies through world before collection")
  game.sim.hero.stamina=0
+ key(KEY_J,true);await frames(2);key(KEY_J,false)
+ check(game.sim.hero.attack_remaining==0 and game.knight.visual.fatigue.visible,"empty attack stamina also shows a tired resting pose")
  key(KEY_SHIFT,true);key(KEY_D,true)
  await frames(3)
  check(game.sim.travel.exhausted and game.knight.velocity.x==0,"fast-run exhaustion physically stops knight")
- check(game.knight.visual.breathing,"exhaustion connects to breathing animation")
+ check(game.knight.visual.breathing and game.knight.visual.fatigue.visible,"exhaustion renders authored hunched pose")
+ var purse: Rect2=game.hud.immersive_feedback.purse.bounds
+ game.knight.position.x+=200;await frames(2)
+ check(game.hud.immersive_feedback.purse.bounds==purse,"purse stays fixed when knight moves")
  key(KEY_D,false);key(KEY_SHIFT,false)
  game.sim.workforce.elapsed=155
  game.hud.present_world(game.sim,false,game.knight.position.x,true)
@@ -49,7 +56,16 @@ func run_scene() -> void:
  game.knight.position.x=game.sim.world.sites.workshop;await frames(3)
  touch(21,Vector2(450,210),true);drag(21,Vector2(450,270));await frames(2)
  touch(21,Vector2(450,270),false);await frames(2)
- check(game.sim.investments.is_empty() and game.sim.pouch.ground_total()>0,"phone release refunds incomplete tool purchase physically")
+ check(not game.sim.investments.is_empty(),"phone release preserves slots for a second")
+ var tool_count: int=game.sim.world.tools.hammer
+ var slots_at: Vector2=game.get_viewport().get_canvas_transform()*Vector2(game.sim.world.sites.workshop,320)
+ touch(22,slots_at,true);await frames(2);touch(22,slots_at,false);await frames(2)
+ check(game.sim.world.tools.hammer==tool_count+1,"single tap on suspended sockets completes the phone payment")
+ touch(23,Vector2(450,210),true);drag(23,Vector2(450,270));await frames(2)
+ touch(23,Vector2(450,270),false);await frames(2)
+ await frames(62)
+ check(game.sim.investments.is_empty() and game.sim.pouch.ground_total()>0,"phone grace expiry refunds incomplete tool purchase physically")
+ check(not game.hud.immersive_feedback.purse.bounds.intersects(Rect2(game.hud.get_node("attack").position,Vector2(64,64))),"fixed purse does not cover touch attack button")
  game.queue_free();await process_frame
  print("Immersive scene assertions: %d; failures: %d"%[assertions,failures])
  quit(0 if failures==0 else 1)

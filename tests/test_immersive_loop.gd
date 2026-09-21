@@ -23,6 +23,8 @@ func test_unfinished_payment_returns_to_ground(t) -> void:
  var before: int=sim.pouch.amount
  hold.step(0.016,true,true,sim,sim.world.sites.workshop)
  hold.step(0.016,false,true,sim,sim.world.sites.workshop)
+ t.equal(sim.pouch.ground_total(),0,"unfinished payment hangs above building for one second")
+ hold.step(1.01,false,true,sim,sim.world.sites.workshop)
  t.equal(sim.pouch.amount,before-1,"refund must be physically collected")
  t.equal(sim.pouch.ground_total(),1,"unfinished crystal falls back")
  t.truth(sim.investments.is_empty(),"cancelled slots no longer stay filled")
@@ -116,3 +118,47 @@ func test_damaged_v6_config_is_protected(t) -> void:
  var packet: Dictionary=codec.capture(sim,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
  packet.version=6;packet.erase("travel");packet.config=[]
  t.truth(codec.restore(packet).is_empty(),"malformed legacy config is rejected before constructing a campaign")
+
+func test_single_taps_resume_during_refund_grace(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.world.people.clear();sim.frontier.city_level=1
+ var hold=Hold.new()
+ var x: float=sim.world.sites.workshop
+ hold.step(0.01,true,true,sim,x)
+ hold.step(0.01,false,true,sim,x)
+ hold.step(0.8,false,true,sim,x)
+ t.equal(sim.context(x).paid,1,"partial payment remains visible inside one-second grace")
+ hold.step(0.01,true,true,sim,x)
+ hold.step(0.01,false,true,sim,x)
+ hold.step(1.2,false,true,sim,x)
+ t.equal(sim.world.tools.hammer,1,"second single tap completes tool during grace")
+ t.equal(sim.pouch.ground_total(),0,"completed purchase has no late refund")
+
+func test_refund_waits_then_falls_at_building_when_knight_leaves(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.world.people.clear();sim.frontier.city_level=1
+ var hold=Hold.new()
+ var x: float=sim.world.sites.workshop
+ hold.step(0.01,true,true,sim,x)
+ hold.step(0.01,false,true,sim,x+500)
+ hold.step(0.8,false,true,sim,x+500)
+ t.equal(sim.pouch.ground_total(),0,"leaving does not skip the grace period")
+ hold.step(0.21,false,true,sim,x+500)
+ t.equal(sim.pouch.ground_total(),1,"expired payment refunds exactly once")
+ t.truth(absf(sim.pouch.drops[0].x-x)<1,"refund falls at the building rather than following the knight")
+ hold.step(2,false,true,sim,x+500)
+ t.equal(sim.pouch.ground_total(),1,"expired grace cannot duplicate crystals")
+
+func test_each_tap_renews_the_payment_window(t) -> void:
+ var sim=Campaign.new({"immersive_loop":1})
+ sim.world.people.clear();sim.frontier.city_level=1
+ var hold=Hold.new()
+ var x: float=sim.world.sites.hall
+ var cost: int=sim.context(x).cost
+ for i in range(cost):
+  hold.step(0.01,true,true,sim,x)
+  hold.step(0.01,false,true,sim,x)
+  hold.step(0.8,false,true,sim,x)
+ t.equal(sim.frontier.city_level,2,"spaced single taps each renew one second until camp upgrade completes")
+ hold.step(2,false,true,sim,x)
+ t.equal(sim.pouch.ground_total(),0,"renewed completed payment never refunds later")

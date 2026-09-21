@@ -11,6 +11,9 @@ var guide_view: Node2D
 const Layout=preload("res://presentation/campaign_layout.gd")
 @export var preview_safe_margins:=Vector4.ZERO
 var _last_safe_rect:=Rect2()
+var _attack_home: Vector2=Vector2.ZERO
+var _tap_fill: TouchScreenButton
+var _tap_shape: RectangleShape2D
 const Icons=preload("res://presentation/ui_icons.gd")
 const Dashboard=preload("res://presentation/icon_dashboard.gd")
 signal audio_toggled
@@ -91,6 +94,11 @@ func _ready() -> void:
 	drag_controls.offering_ended.connect(func():interact_held=false)
 	immersive_feedback=preload("res://presentation/immersive_feedback.gd").new()
 	add_child(immersive_feedback)
+	_tap_fill=TouchScreenButton.new()
+	_tap_shape=RectangleShape2D.new();_tap_fill.shape=_tap_shape
+	_tap_fill.visibility_mode=TouchScreenButton.VISIBILITY_ALWAYS
+	_tap_fill.pressed.connect(func():interact_requested.emit())
+	add_child(_tap_fill)
 	guide_view=GuideView.new()
 	add_child(guide_view)
 
@@ -145,6 +153,7 @@ func _layout() -> void:
 	layout.panels.damage=Rect2(_last_safe_rect.position+Vector2(16,86),Vector2(72,38))
 	dashboard.panels=layout.panels
 	dashboard.queue_redraw()
+	_attack_home=$attack.position
 	fullscreen_button.visible=not uses_touch_controls()
 	if is_instance_valid(options_menu):
 		options_menu.size=Vector2(minf(370,_last_safe_rect.size.x-24),244)
@@ -159,7 +168,16 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	var choice: Dictionary=sim.context(at) if focus_key.is_empty() else sim.context_for_key(at,focus_key)
 	interact_button.disabled=is_paused or not grounded or not choice.enabled or not sim.is_running()
 	interact_button.icon=Icons.get_icon("chest" if choice.id=="chest" else "crystal" if choice.cost>0 else "hand")
+	_tap_fill.visible=sim.life.enabled and not is_paused and grounded and choice.enabled and choice.paid>0 and choice.cost>choice.paid
+	if _tap_fill.visible:
+		var y: float=430-(184 if choice.id=="rift" else 141)
+		if choice.id=="tower":y-=90
+		elif choice.has("wall_id"):y-=50
+		var canvas: Transform2D=get_viewport().get_canvas_transform()
+		_tap_fill.position=canvas*Vector2(choice.x,y+22)
+		_tap_shape.size=Vector2(maxf(96,choice.cost*23+48),90)*canvas.get_scale().abs()
 	var touch:=uses_touch_controls()
+	$attack.position=_attack_home-Vector2(112 if sim.life.enabled and touch else 0,0)
 	for action in ["move_left","move_right","jump","dash","attack"]:
 		get_node(action).visible=touch and action=="attack" and not is_paused and sim.is_running()
 	interact_button.visible=false
@@ -170,6 +188,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	drag_controls.enabled=gestures_enabled
 	drag_controls.safe=_last_safe_rect
 	drag_controls.exclusions.clear()
+	if _tap_fill.visible:drag_controls.exclusions.append(Rect2(_tap_fill.position-_tap_shape.size/2,_tap_shape.size))
 	for key in ["attack","jump","dash","pause"]:
 		var button=get_node(key)
 		if button.visible:drag_controls.exclusions.append(Rect2(button.position,Vector2(64,64)))

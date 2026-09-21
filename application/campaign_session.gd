@@ -786,7 +786,7 @@ func cancel_investment(key: String, x: float) -> void:
 	if not life.enabled or not investments.has(key):return
 	var count: int=investments[key]
 	investments.erase(key)
-	pouch.burst(count,x,370.0)
+	pouch.burst(count,x,320.0)
 
 func cancel_all_investments(x: float) -> void:
 	for key in investments.keys():cancel_investment(key,x)
