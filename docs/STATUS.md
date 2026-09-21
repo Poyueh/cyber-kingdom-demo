@@ -1041,3 +1041,13 @@ Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 
 驗證：付款先重現立即退款，再驗證一秒保留、續填重計、超時原地退款和不重複退款；真實場景驗證觸控直接點格、按鈕不重疊、固定袋位置及疲勞姿勢。完整 tools/check.sh 通過，共 1935 項 Godot 斷言，零失敗與 SCRIPT ERROR。已目視檢查空／半／滿袋、三種疲勞的 Godot 畫面並輸出本機 H5。iPhone 實機手感仍待試玩回饋。
 
 功能分支 feature/pouch-payment-rest 依 Gitflow 驗證後整合本機 develop；原本11個本機檔案改動保留。本機預覽沿用 builds/immersive-preview/web，未更新公開試玩站或桌面下載包。
+
+## 騎士疊圖修復與角落介面（2026-09-21）
+
+- 根因：角色 `present()` 隱藏基本身體後，每幀裝備同步的 `set_mounted(false)` 又把基本身體打開。改為裝備只改狀態，顯示由 `present/reset` 統一負責；也清除騎乘與重置時殘留的替代姿勢。
+- 晶袋改為安全區右上角深色細框 UI，保留袋口晶堆滿度、收支彈動且不顯示數字。新旅程左上漢堡開關選單，全螢幕收在展開選單中；手機攻擊回右下。展開選單的工具按鈕排到面板右側，避免較矮手機畫面重疊；舊存檔仍保留原數值 HUD 排列。
+- 三語指南更新，Godot 教學：`docs/lessons/60-one-body-and-corner-ui.md`。
+- TDD：先重現空手、喘氣、連斬、騎乘切換、重置的五個重疊失敗；修正後實際主場景驗證空手／疲勞不再打開底層圖。安全區檢查涵蓋 760×420 和瀏海橫向畫面，觸控漢堡可開關暫停。
+- 完整 `bash tools/check.sh` 通過：1953 項 Godot 斷言，零失敗及 SCRIPT ERROR；Python 打包／語系檢查通過。已實際渲染空手／疲勞／騎乘與選單，並操作本機 H5 新旅程及漢堡選單，瀏覽器錯誤與警告紀錄為空。未完成 iPhone 真機驗證。
+- 使用者提供的 YouTube 影片要求登入驗證，無法觀看影片內容；本次介面依使用者明確需求及截圖調整。
+- 本機 H5：`builds/immersive-preview/web`，http://127.0.0.1:8798/ 。功能分支 `feature/knight-layers-corner-hud` 驗證後以 no-ff 整合 develop，未推送／發布；原本 11 個未提交檔案保留。

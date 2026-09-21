@@ -205,3 +205,34 @@ func test_authored_combo_uses_independent_forward_frames_and_freezes(t) -> void:
 	view.present(pose,0)
 	t.truth(not sprite.visible and not moving.visible,"recovery restores normal locomotion without stale overlay")
 	view.free()
+
+func test_equipment_refresh_never_reopens_another_body(t) -> void:
+	var view = KnightVisual.new()
+	view.combo_motion = preload("res://data/combo_motion.gd").new()
+	view.combo_motion.planted_atlas = preload("res://art/characters/fluid-v001/moving-attack.png")
+	var pose = {"alive":true,"facing":1,"moving":true,"grounded":true,"invulnerable":false,"attack_progress":1.0}
+	for mode in ["unarmed", "rest", "mounted_rest", "mounted", "combo", "run"]:
+		view.unarmed = mode == "unarmed"
+		view.breathing = mode in ["rest", "mounted_rest"]
+		view.set_mounted(mode in ["mounted", "mounted_rest"])
+		pose.attack_progress = 0.45 if mode == "combo" else 1.0
+		view.present(pose, 0.1)
+		# The real campaign refreshes equipment after presenting each physics frame.
+		view.set_equipment(3, 0)
+		view.set_mounted(mode in ["mounted", "mounted_rest"])
+		t.equal(_visible_bodies(view), 1, mode + " has exactly one body after equipment refresh")
+	view.unarmed = true
+	view.present(pose, 0.1)
+	view.set_mounted(true)
+	view.present(pose, 0.1)
+	t.equal(_visible_bodies(view), 1, "mounting replaces the previously visible unarmed body")
+	view.reset_pose()
+	t.equal(_visible_bodies(view), 1, "reset removes stale alternative bodies")
+	view.free()
+
+func _visible_bodies(view) -> int:
+	var count: int = 1 if view.visible and view.self_modulate.a > 0 else 0
+	for child in view.get_children():
+		if child is Sprite2D and child.visible and child.texture != null:
+			count += 1
+	return count

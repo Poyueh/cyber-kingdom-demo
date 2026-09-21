@@ -1,5 +1,5 @@
 extends Node2D
-## Screen-fixed leather purse; only fullness is shown, never a numerical counter.
+## Screen-fixed framed purse; only fullness is shown, never a numerical counter.
 const PURSE=preload("res://art/ui/purse-v001/purse.png")
 const GEMS: Array[Vector2]=[Vector2(28,29),Vector2(36,30),Vector2(44,30),Vector2(52,29),Vector2(24,24),Vector2(32,24),Vector2(40,24),Vector2(48,24),Vector2(56,24),Vector2(32,19),Vector2(40,18),Vector2(48,19)]
 var bounds: Rect2=Rect2()
@@ -9,7 +9,7 @@ var _pulse: float=0.0
 var _age: float=0.0
 var _paused: bool=false
 func present(fullness: float, area: Rect2, stopped: bool) -> void:
- bounds=Rect2(area.end-Vector2(112,112),Vector2(96,96))
+ bounds=Rect2(Vector2(area.end.x-112,area.position.y+14),Vector2(96,104))
  _paused=stopped
  if _shown<0:_shown=fullness
  elif not is_equal_approx(_fill,fullness):_pulse=0.3
@@ -23,8 +23,16 @@ func _process(seconds: float) -> void:
  queue_redraw()
 func _draw() -> void:
  var bounce: float=sin(_pulse/0.3*PI)*0.045
- var scale_factor: float=bounds.size.x/80
- draw_set_transform(bounds.get_center(),0,Vector2(1+bounce,1-bounce)*scale_factor)
+ # A crisp HUD frame separates the purse from scenery even over dark water.
+ draw_rect(Rect2(bounds.position+Vector2(3,4),bounds.size),Color(0,0,0,0.35))
+ draw_rect(bounds,Color("182632"))
+ draw_rect(bounds.grow(-2),Color("617176"),false,1)
+ draw_rect(bounds.grow(-5),Color("0e1722"))
+ for corner in [bounds.position,bounds.position+Vector2(bounds.size.x-10,0),bounds.end-Vector2(10,2),bounds.position+Vector2(0,bounds.size.y-2)]:
+  draw_rect(Rect2(corner,Vector2(10,2)),Color("c5ac70"))
+ draw_line(bounds.position+Vector2(16,14),bounds.position+Vector2(80,14),Color("364b56"),1)
+ draw_line(bounds.position+Vector2(40,14),bounds.position+Vector2(56,14),Color("85d8c6"),2)
+ draw_set_transform(bounds.get_center()+Vector2(0,5),0,Vector2(1+bounce,1-bounce))
  draw_texture(PURSE,Vector2(-40,-40))
  for i in range(ceili(_shown*GEMS.size())):
   var at: Vector2=GEMS[i]-Vector2(40,40)
