@@ -1,16 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cfe2x0l7u48tf"]
 
-[ext_resource type="Texture2D" path="res://art/characters/sentinel/processed/sentinel-v001.png" id="sheet"]
-
-[sub_resource type="AtlasTexture" id="pose_0"]
-atlas = ExtResource("sheet")
-region = Rect2(0, 0, 128, 96)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="pose_1"]
-atlas = ExtResource("sheet")
-region = Rect2(128, 0, 128, 96)
-filter_clip = true
+[ext_resource type="Texture2D" uid="uid://b485o47c1e4mh" path="res://art/characters/sentinel/processed/sentinel-v001.png" id="sheet"]
 
 [sub_resource type="AtlasTexture" id="pose_2"]
 atlas = ExtResource("sheet")
@@ -22,10 +12,56 @@ atlas = ExtResource("sheet")
 region = Rect2(128, 96, 128, 96)
 filter_clip = true
 
+[sub_resource type="AtlasTexture" id="pose_0"]
+atlas = ExtResource("sheet")
+region = Rect2(0, 0, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="pose_1"]
+atlas = ExtResource("sheet")
+region = Rect2(128, 0, 128, 96)
+filter_clip = true
+
 [resource]
-animations = [
-{"frames": [{"duration": 1, "texture": SubResource("pose_0")}], "loop": true, "name": &"idle", "speed": 3},
-{"frames": [{"duration": 1, "texture": SubResource("pose_0")}, {"duration": 1, "texture": SubResource("pose_1")}], "loop": true, "name": &"run", "speed": 6},
-{"frames": [{"duration": 1, "texture": SubResource("pose_2")}], "loop": false, "name": &"windup", "speed": 1},
-{"frames": [{"duration": 0.4, "texture": SubResource("pose_2")}, {"duration": 0.35, "texture": SubResource("pose_3")}, {"duration": 0.25, "texture": SubResource("pose_0")}], "loop": false, "name": &"attack", "speed": 2.941176}
-]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("pose_2")
+}, {
+"duration": 0.35,
+"texture": SubResource("pose_3")
+}, {
+"duration": 0.25,
+"texture": SubResource("pose_0")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 2.941176
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("pose_0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("pose_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("pose_1")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("pose_2")
+}],
+"loop": 0,
+"name": &"windup",
+"speed": 1.0
+}]

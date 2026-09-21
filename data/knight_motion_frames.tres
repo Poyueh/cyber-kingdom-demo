@@ -1,56 +1,113 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3]
-[ext_resource type="Texture2D" path="res://art/characters/knight/motion-v002/run.png" id="run"]
-[ext_resource type="Texture2D" path="res://art/characters/knight/motion-v002/jump.png" id="jump"]
-[sub_resource type="AtlasTexture" id="run_0"]
-atlas = ExtResource("run")
-region = Rect2(0, 0, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_1"]
-atlas = ExtResource("run")
-region = Rect2(128, 0, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_2"]
-atlas = ExtResource("run")
-region = Rect2(256, 0, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_3"]
-atlas = ExtResource("run")
-region = Rect2(384, 0, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_4"]
-atlas = ExtResource("run")
-region = Rect2(0, 96, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_5"]
-atlas = ExtResource("run")
-region = Rect2(128, 96, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_6"]
-atlas = ExtResource("run")
-region = Rect2(256, 96, 128, 96)
-filter_clip = true
-[sub_resource type="AtlasTexture" id="run_7"]
-atlas = ExtResource("run")
-region = Rect2(384, 96, 128, 96)
-filter_clip = true
+[gd_resource type="SpriteFrames" format=3 uid="uid://dyn1k0sijnqkd"]
+
+[ext_resource type="Texture2D" uid="uid://dufhqd3h7ay81" path="res://art/characters/knight/motion-v002/jump.png" id="jump"]
+[ext_resource type="Texture2D" uid="uid://c7qtxmgunev2y" path="res://art/characters/knight/motion-v002/run.png" id="run"]
+
 [sub_resource type="AtlasTexture" id="jump_0"]
 atlas = ExtResource("jump")
 region = Rect2(0, 0, 128, 96)
 filter_clip = true
+
 [sub_resource type="AtlasTexture" id="jump_1"]
 atlas = ExtResource("jump")
 region = Rect2(128, 0, 128, 96)
 filter_clip = true
+
 [sub_resource type="AtlasTexture" id="jump_2"]
 atlas = ExtResource("jump")
 region = Rect2(256, 0, 128, 96)
 filter_clip = true
+
 [sub_resource type="AtlasTexture" id="jump_3"]
 atlas = ExtResource("jump")
 region = Rect2(384, 0, 128, 96)
 filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_0"]
+atlas = ExtResource("run")
+region = Rect2(0, 0, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_1"]
+atlas = ExtResource("run")
+region = Rect2(128, 0, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_2"]
+atlas = ExtResource("run")
+region = Rect2(256, 0, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_3"]
+atlas = ExtResource("run")
+region = Rect2(384, 0, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_4"]
+atlas = ExtResource("run")
+region = Rect2(0, 96, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_5"]
+atlas = ExtResource("run")
+region = Rect2(128, 96, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_6"]
+atlas = ExtResource("run")
+region = Rect2(256, 96, 128, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="run_7"]
+atlas = ExtResource("run")
+region = Rect2(384, 96, 128, 96)
+filter_clip = true
+
 [resource]
-animations = [
-{"name": &"run", "loop": true, "speed": 12.0, "frames": [{"duration": 1.0, "texture": SubResource("run_0")}, {"duration": 1.0, "texture": SubResource("run_1")}, {"duration": 1.0, "texture": SubResource("run_2")}, {"duration": 1.0, "texture": SubResource("run_3")}, {"duration": 1.0, "texture": SubResource("run_4")}, {"duration": 1.0, "texture": SubResource("run_5")}, {"duration": 1.0, "texture": SubResource("run_6")}, {"duration": 1.0, "texture": SubResource("run_7")}]},
-{"name": &"jump", "loop": true, "speed": 12.0, "frames": [{"duration": 1.0, "texture": SubResource("jump_0")}, {"duration": 1.0, "texture": SubResource("jump_1")}, {"duration": 1.0, "texture": SubResource("jump_2")}, {"duration": 1.0, "texture": SubResource("jump_3")}]},
-]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("jump_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("jump_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("jump_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("jump_3")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("run_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("run_7")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}]
