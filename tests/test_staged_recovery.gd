@@ -16,7 +16,10 @@ func test_exhaustion_requires_walk_then_run_then_stationary_rest(t: Object) -> v
  var normal: float=step(sim,0.65,1)
  sim.hero.stamina=0
  var tired: float=step(sim,1,1)
- t.truth(tired>0 and tired<normal,"exhaustion permits only a slower walk, not normal running")
+ t.equal(tired,0.0,"exhaustion first forces the knight to stop and catch breath")
+ t.equal(step(sim,1,50),0.0,"held sprint cannot bypass the two-second breathing stop")
+ var walking: float=step(sim,1,12)
+ t.truth(walking>0 and walking<normal,"after breathing the knight initially walks slowly")
  var recovered_run: float=step(sim,1,120)
  t.equal(recovered_run,normal,"recovering enough stamina restores normal run while sprint is held")
  t.truth(sim.travel.exhausted,"normal running does not clear sprint lock")
@@ -49,7 +52,7 @@ func test_v10_checkpoint_retains_exhaustion_during_upgrade(t: Object) -> void:
  var codec: RefCounted=Codec.new()
  var old: Dictionary=codec.capture(sim,CONFIG,BODY)
  old.version=10
- for key: String in ["winded","rest_ticks","last_tick"]:old.travel.erase(key)
+ for key: String in ["winded","rest_ticks","last_tick","breath_ticks"]:old.travel.erase(key)
  var before: Dictionary=old.duplicate(true)
  var restored: Dictionary=codec.restore(old)
  t.truth(not restored.is_empty(),"v10 fatigue checkpoint upgrades")
@@ -65,3 +68,18 @@ func test_zero_time_does_not_advance_recovery(t: Object) -> void:
  var before: Dictionary=codec.capture(sim,CONFIG,BODY)
  for index: int in range(100):sim.travel_axis(0,0)
  t.equal(codec.capture(sim,CONFIG,BODY),before,"paused input cannot consume the rest timer")
+
+func test_breathing_stop_survives_reload_and_rejects_corruption(t: Object) -> void:
+ var sim: RefCounted=Campaign.new(CONFIG)
+ sim.hero.stamina=0;step(sim,1,1);step(sim,0,20)
+ var codec: RefCounted=Codec.new()
+ var saved: Dictionary=codec.capture(sim,CONFIG,BODY)
+ var resumed: Dictionary=codec.restore(saved)
+ t.truth(not resumed.is_empty(),"save during compulsory breathing can resume")
+ if resumed.is_empty():return
+ t.equal(step(resumed.session,1,30),0.0,"reload and renewed input cannot skip remaining breathing")
+ step(sim,1,30)
+ t.equal(step(resumed.session,1,14),step(sim,1,14),"breathing expires on the same simulation tick after reload")
+ var broken: Dictionary=saved.duplicate(true)
+ broken.travel["breath_ticks"]=-1
+ t.truth(codec.restore(broken).is_empty(),"invalid breathing timer is rejected")

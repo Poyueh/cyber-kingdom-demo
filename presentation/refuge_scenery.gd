@@ -2,7 +2,7 @@ extends RefCounted
 ## Optional presentation-only scenery. Time is supplied by the paused simulation.
 static func forest(canvas: Node2D, texture: Texture2D, bounds: Rect2, scroll: float) -> void:
 	if texture == null: return
-	preload("res://presentation/scenery_tiles.gd").draw(canvas,texture,bounds,430-texture.get_height(),scroll)
+	preload("res://presentation/scenery_tiles.gd").draw(canvas,texture,bounds,468-texture.get_height(),scroll)
 
 static func river(canvas: Node2D, art: Resource, sim, bounds: Rect2) -> void:
 	var line: float = 465.0

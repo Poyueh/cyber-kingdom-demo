@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=11
+const VERSION:=12
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -113,10 +113,10 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11]:keys.append("survival")
-	if data.get("version",0) in [9,10,11]:keys.append("spirit")
-	if data.get("version",0) in [10,11]:keys.append("modules")
+	if data.get("version",0) in [7,8,9,10,11,12]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12]:keys.append("modules")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -136,6 +136,10 @@ func restore(raw) -> Dictionary:
 		data.version=10
 	if data.version==10:
 		if not _upgrade_v10(data):return _invalid()
+	if data.version==11:
+		if not data.get("travel") is Dictionary:return _invalid()
+		if not data.travel.has("breath_ticks"):data.travel.breath_ticks=0
+		data.version=12
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -161,6 +165,8 @@ func restore(raw) -> Dictionary:
 	if survival.armed and (survival.sword_on_ground or sim.frontier.city_level==0):return _invalid()
 	if survival.sword_on_ground and not Rules.in_range(survival.sword_x,sim.frontier.left_boundary,sim.frontier.right_boundary):return _invalid()
 	if sim.travel.rest_ticks<0 or sim.travel.rest_ticks>RecoveryClock.ticks_for(sim.travel.rules.sprint_rest_seconds) or sim.travel.last_tick<0:return _invalid()
+	if sim.travel.breath_ticks<0 or sim.travel.breath_ticks>sim.travel.rules.breath_tick_limit:return _invalid()
+	if sim.travel.breath_ticks>0 and (not sim.travel.exhausted or not sim.travel.winded):return _invalid()
 	if sim.travel.winded and (not sim.travel.exhausted or not sim.travel.forced_rest):return _invalid()
 	if sim.travel.rest_remaining<0 or sim.travel.rest_remaining>1.5:return _invalid()
 	if sim.travel.forced_rest!=sim.life.enabled:return _invalid()

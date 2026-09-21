@@ -8,19 +8,19 @@ static func layout(seed: int,regions: Array) -> Array[Dictionary]:
 	for index in range(regions.size()):
 		var region: Dictionary=regions[index]
 		var palettes: Dictionary={
-			"forest":[["fir","cedar","oak"],["dead_tree","oak"],["log","mushrooms","ferns"]],
-			"quarry":[["basalt","dead_tree"],["quartz","basalt"],["gear","ferns"]],
-			"ruins":[["arch","dragon_statue"],["dead_tree","dragon_statue"],["gear","mushrooms","ferns"]]}
+			"forest":[["fir","cedar","oak"],["dead_tree","oak","quartz"],["log","mushrooms","ferns","gear"]],
+			"quarry":[["basalt","dead_tree"],["quartz","basalt","dead_tree"],["gear","ferns","mushrooms","log"]],
+			"ruins":[["arch","dragon_statue"],["dead_tree","dragon_statue","oak"],["gear","mushrooms","ferns","quartz"]]}
 		var palette: Array=palettes[region.kind]
 		# One tall focal point per region, an offset middle cluster and a quiet gap.
 		var anchor: float=region.x+region.width*rng.randf_range(0.28,0.60)
 		for layer in range(3):
-			var count:=1 if layer==0 else 2 if layer==1 else 4
+			var count:=1 if layer==0 else rng.randi_range(1,3) if layer==1 else rng.randi_range(3,6)
 			for i in range(count):
 				var kind: String=palette[layer][rng.randi_range(0,palette[layer].size()-1)]
-				var height: float=rng.randf_range(225,315) if layer==0 else rng.randf_range(85,150) if layer==1 else rng.randf_range(18,43)
+				var height: float=rng.randf_range(210,355) if layer==0 else rng.randf_range(65,170) if layer==1 else rng.randf_range(18,43)
 				var x: float=anchor if layer==0 else anchor+105+i*83 if layer==1 else anchor-110+i*62+rng.randf_range(-16,16)
-				result.append({"region":index,"x":clampf(x,region.x+24,region.x+region.width-24),"kind":kind,"scale":height/TEXTURES[kind].get_height(),"flip":rng.randf()<0.5,"layer":layer,"y":430})
+				result.append({"region":index,"x":clampf(x,region.x+24,region.x+region.width-24),"kind":kind,"scale":height/TEXTURES[kind].get_height(),"flip":rng.randf()<0.5,"layer":layer,"y":432})
 	result.sort_custom(func(a,b):return a.layer<b.layer)
 
 	return result
@@ -41,6 +41,6 @@ static func draw_background(view: Node2D,details: Array,regions: Array) -> void:
 		tint.a=view._region_reveal(detail.region)
 		# A fully hidden region still costs a draw call, so skip it outright.
 		if tint.a<=0.0:continue
-		view.draw_set_transform(preload("res://presentation/grounded_art.gd").anchor(texture,Vector2(detail.x,430),detail.scale),0,Vector2(-1 if detail.flip else 1,1))
+		view.draw_set_transform(preload("res://presentation/grounded_art.gd").anchor(texture,Vector2(detail.x,detail.y),detail.scale),0,Vector2(-1 if detail.flip else 1,1))
 		view.draw_texture_rect(texture,Rect2(Vector2(-size.x/2,-size.y),size),false,tint)
 	view.draw_set_transform(Vector2.ZERO)
