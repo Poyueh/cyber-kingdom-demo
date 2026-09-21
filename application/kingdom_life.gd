@@ -25,7 +25,7 @@ func collect(world, pouch, enemies: Array, hero_x: float, hero_y: float) -> void
    continue
   if person.role!="wanderer" and absf(person.x-hero_x)<OFFER_RADIUS:continue
   for gem in pouch.drops:
-   if gem.amount<=0 or gem.grace>0 or absf(gem.x-person.x)>COLLECT_RADIUS or absf(gem.y-430)>20:continue
+   if not _available(gem) or absf(gem.x-person.x)>COLLECT_RADIUS:continue
    if person.role=="wanderer":
     gem.amount-=1;person.role="citizen"
     break
@@ -40,6 +40,10 @@ func crystal_target(person: Dictionary, pouch, hero_x: float) -> float:
  var target: float=NAN
  var distance: float=SEEK_RADIUS
  for gem in pouch.drops:
-  if gem.amount>0 and gem.grace<=0 and absf(gem.y-430)<20 and absf(gem.x-person.x)<distance:
+  if _available(gem) and absf(gem.x-person.x)<distance:
    target=gem.x;distance=absf(gem.x-person.x)
  return target
+
+func _available(gem: Dictionary) -> bool:
+ # Throw grace belongs to the knight; inhabitants may accept a landed offering.
+ return gem.amount>0 and absf(gem.y-430)<20 and (gem.grace<=0 or (gem.offering and gem.age>=0.15))

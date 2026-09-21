@@ -2,7 +2,7 @@ extends RefCounted
 ## Closed, versioned state graph. No script paths or object construction come from a save.
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=8
+const VERSION:=9
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -61,7 +61,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries"]),
-		"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -112,8 +112,9 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8]:keys.append("travel")
-	if data.get("version",0)==8:keys.append("survival")
+	if data.get("version",0) in [7,8,9]:keys.append("travel")
+	if data.get("version",0) in [8,9]:keys.append("survival")
+	if data.get("version",0)==9:keys.append("spirit")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -126,6 +127,7 @@ func restore(raw) -> Dictionary:
 		data["travel"]=_fields(Campaign.new(data.config).travel)
 		data.version=7
 	if data.version==7 and not _upgrade_v7(data,raw.get("version",0)==7):return _invalid()
+	if data.version==8 and not _upgrade_v8(data):return _invalid()
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -141,6 +143,7 @@ func restore(raw) -> Dictionary:
 		if not _copy_fields(part[0],part[1],part[2]):return _invalid()
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
+	if not _restore_spirit(sim,data):return _invalid()
 	var survival=sim.survival
 	if survival.enabled!=(sim.life.enabled and int(data.config.get("crystal_survival",0))==1):return _invalid()
 	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()
@@ -287,4 +290,28 @@ func _upgrade_v7(data: Dictionary, upgrade_immersive: bool) -> bool:
 	data["survival"]=_fields(fresh.survival)
 	data.survival.armed=fresh.survival.enabled and data.frontier.city_level>0
 	data.version=8
+	return true
+
+func _upgrade_v8(data: Dictionary) -> bool:
+	if not data.config is Dictionary or not Rules.config_valid(data.config):return false
+	if not data.workforce is Dictionary or not Rules.number(data.workforce.get("elapsed")):return false
+	var fresh=Campaign.new(data.config)
+	# Keep old early journeys guided; completed/expired openings must not restart.
+	var complete: bool=false
+	if data.nodes is Array and data.world is Dictionary and data.world.get("people") is Array:
+		var worker: bool=data.world.people.any(func(p):return p is Dictionary and p.get("role")=="engineer")
+		complete=worker and data.nodes.any(func(n):return n is Dictionary and n.get("kind")!="cache" and (n.get("marked",false)==true or n.get("collected",false)==true))
+	fresh.spirit.advance(int(data.workforce.elapsed*fresh.spirit.TICKS_PER_SECOND),complete)
+	if fresh.spirit.opening_finished:fresh.spirit.expires_tick=0
+	data["spirit"]=_fields(fresh.spirit)
+	data.version=9
+	return true
+
+func _restore_spirit(sim: RefCounted, data: Dictionary) -> bool:
+	var expected=preload("res://application/spirit_guidance.gd").new(data.config)
+	if not _copy_fields(sim.spirit,data.spirit):return false
+	var spirit=sim.spirit
+	if spirit.opening_ticks!=expected.opening_ticks or spirit.visit_ticks!=expected.visit_ticks:return false
+	if not Rules.in_range(spirit.expires_tick,0,maxf(spirit.opening_ticks,sim.workforce.elapsed*spirit.TICKS_PER_SECOND+spirit.visit_ticks+1)):return false
+	if spirit.summoned and not spirit.opening_finished:return false
 	return true

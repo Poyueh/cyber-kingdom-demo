@@ -37,6 +37,9 @@ func step(seconds: float, held: bool, allowed: bool, session: RefCounted, x: flo
  if not _down:
   _down=true
   var choice: Dictionary=session.context(x)
+  if session.life.enabled and (not choice.enabled or choice.id=="recruit"):
+   _stop()
+   return session.throw_crystal(x,session._player_y,session.hero.facing)
   if not choice.enabled:
    _stop();return false
   target_key=choice.key;_target_x=choice.x

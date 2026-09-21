@@ -66,6 +66,15 @@ func run_test() -> void:
 	await frames(3)
 	key(KEY_E,false)
 	check(scene.sim.world.wall.pending,"pending wall order stays intact after another press")
+	scene.restart()
+	scene.knight.position.x=30
+	await frames(3)
+	var quick_before: int=scene.sim.pouch.amount
+	key(KEY_E,true);key(KEY_E,false)
+	await frames(3)
+	check(scene.sim.pouch.amount==quick_before-1,"quick E tap is retained until physics even when already released")
+	await frames(3)
+	check(scene.sim.pouch.amount==quick_before-1,"retained short tap is consumed only once")
 	scene.queue_free()
 	await process_frame
 	print("Investment scene assertions: %d; failures: %d" % [assertions,failures])

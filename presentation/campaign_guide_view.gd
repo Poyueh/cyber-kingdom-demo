@@ -68,13 +68,15 @@ func track(hero_screen: Vector2, game_time: float) -> void:
    command=tr("點右側劍鈕攻擊，再點可連斬") if touch_hint else tr("按 J 攻擊，再按可連斬")
   if spirit_pose.get("near",false):
    if hint.action in ["invest","open"]:command=tr("向下拖曳並按住投入／互動") if touch_hint else tr("按住 E 投入／互動")
-   if hint.kind=="recruit":command=tr("在附近向下滑動丟出龍晶") if touch_hint else tr("按 Q 丟出龍晶")
+   if hint.kind=="recruit":command=tr("在附近向下滑動丟出龍晶") if touch_hint else tr("按 E 丟出龍晶")
    if hint.action=="wait":command=tr("等待居民自行領取器具")
+  if hint.kind=="farewell":
+   goal=tr("你已學會建立家園。需要指引時，回營火旁的引魂壇找我。")
+   command=""
   _guide_label.text=goal+"\n"+command
   _guide_label.size=Vector2(minf(310,safe.size.x-24),64)
   var target: Vector2=spirit_pose.get("position",hero_screen)+Vector2(-_guide_label.size.x/2,-155)
   _guide_label.position=Vector2(clampf(target.x,safe.position.x+12,safe.end.x-_guide_label.size.x-12),clampf(target.y,safe.position.y+12,safe.end.y-90))
-  modulate.a=minf(1,maxf(0,(150-game_time)/5.0))
  queue_redraw()
 func _icon(key: String,at: Vector2,size: float=24,tint:=Color("dce9dc")) -> void:
  draw_texture_rect(Icons.get_icon(key),Rect2(at-Vector2.ONE*size/2,Vector2.ONE*size),false,tint)
@@ -115,7 +117,7 @@ func _draw() -> void:
  var badge:=at+Vector2(0,-65)
  draw_circle(badge,guidance_icon_size*0.67,Color(0.025,0.10,0.14,0.88))
  draw_arc(badge,guidance_icon_size*0.67,0,TAU,24,Color(0.55,0.92,0.8,0.6+sin(phase*3)*0.15),2)
- _icon(SYMBOLS.get(hint.kind,"map"),badge,guidance_icon_size,Color("c7ffe2"))
+ _icon("spirit" if hint.kind=="farewell" else SYMBOLS.get(hint.kind,"map"),badge,guidance_icon_size,Color("c7ffe2"))
  if can_invest:_icon("crystal",at+Vector2(40,-58),26)
  if hint.has("seal_progress"):
   draw_rect(Rect2(at+Vector2(-18,26),Vector2(36,3)),Color("294650"))

@@ -1,5 +1,6 @@
 extends "res://presentation/frontier_view.gd"
 const HitFeedback=preload("res://presentation/campaign_hit_feedback.gd")
+const Shrine=preload("res://presentation/spirit_shrine.gd")
 var hit_feedback:=HitFeedback.new()
 const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
@@ -157,6 +158,10 @@ func _draw_structures() -> void:
 	_draw_recruitment_camps()
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
+	if _sim.life.enabled:
+		var shrine_x: float=_sim.spirit.shrine_x(hall)
+		if _on_screen(shrine_x,100):
+			Shrine.draw_on(self,Vector2(shrine_x,430),_sim.workforce.elapsed,_context.id=="spirit",not _sim.spirit.active(int(_sim.workforce.elapsed*_sim.spirit.TICKS_PER_SECOND)))
 	for site in world.sites:
 		var x: float=world.sites[site]
 		if not _sim.defenses.visible(site):continue
@@ -413,6 +418,7 @@ func _draw_interaction() -> void:
 	elif _context.has("wall_id"):y-=50
 	# Floating cost sockets stay in the world; no rectangular signboard.
 	var key: String="sword" if _sim.life.enabled and _context.id=="armory" else SITE_ICONS.get(_context.id,"hand")
+	if _context.id=="spirit":key="spirit"
 	if _context.id=="mark":
 		key={"tree":"tree","crystal":"pickaxe","berries":"food","stone":"stone","herbs":"herbs"}.get(_sim.frontier.nodes[_context.node_index].kind,"hammer")
 	_icon(key,Vector2(x,y),28)

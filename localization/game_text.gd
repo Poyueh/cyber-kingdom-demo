@@ -1,6 +1,10 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["按 E 丟出龍晶","按 E 丟出龍晶","按 E 丢出龙晶","Press E to drop a crystal."],
+ ["召喚引路之魂","召喚引路之魂","召唤引路之魂","Summon the guiding spirit"],
+ ["引路之魂正在指引你","引路之魂正在指引你","引路之魂正在指引你","The spirit is already guiding you."],
+ ["你已學會建立家園。需要指引時，回營火旁的引魂壇找我。","你已學會建立家園。需要指引時，回營火旁的引魂壇找我。","你已学会建立家园。需要指引时，回营火旁的引魂坛找我。","Your refuge has begun. Find my shrine by the campfire when you need guidance."],
  ["點右側劍鈕攻擊，再點可連斬","點右側劍鈕攻擊，再點可連斬","点右侧剑钮攻击，再点可连斩","Tap the sword button. Tap again to combo."],
  ["按 J 攻擊，再按可連斬","按 J 攻擊，再按可連斬","按 J 攻击，再按可连斩","Press J to attack. Press again to combo."],
  ["第 %d 天", "第 %d 天", "第 %d 天", "Day %d"],
