@@ -12,6 +12,8 @@ const Layout=preload("res://presentation/campaign_layout.gd")
 @export var preview_safe_margins:=Vector4.ZERO
 var _last_safe_rect:=Rect2()
 var _attack_home: Vector2=Vector2.ZERO
+const ATTACK_SIZE: int=104
+const ATTACK_HIT_RADIUS: float=58.0
 var _tap_fill: TouchScreenButton
 var _tap_shape: RectangleShape2D
 const Icons=preload("res://presentation/ui_icons.gd")
@@ -55,9 +57,10 @@ func _ready() -> void:
 		button.get_node("Fill").hide()
 		button.get_node("Label").hide()
 		var shape:=CircleShape2D.new()
-		shape.radius=32
+		shape.radius=ATTACK_HIT_RADIUS if key=="attack" else 32
 		button.shape=shape
 		button.texture_normal=_button_texture({"move_left":"left","move_right":"right","attack":"sword","pause":"menu"}.get(key,key))
+		if key=="attack":button.texture_normal=_button_texture("sword",ATTACK_SIZE,60)
 		button.texture_pressed=button.texture_normal
 		# The native texture origin is top-left, while the touch shape is centered.
 		button.shape_centered=true
@@ -118,13 +121,14 @@ func _ready() -> void:
 	guide_view=GuideView.new()
 	add_child(guide_view)
 
-func _button_texture(key: String) -> Texture2D:
+func _button_texture(key: String, side: int=64, glyph_size: int=32) -> Texture2D:
 	# SVG drawing remains editable and matches the resource and interaction symbols.
-	var image:=Image.create(64,64,false,Image.FORMAT_RGBA8)
+	var image:=Image.create(side,side,false,Image.FORMAT_RGBA8)
 	image.fill(Color(0.04,0.09,0.12,0.72))
 	var glyph:=Icons.get_icon(key).get_image()
-	glyph.resize(32,32,Image.INTERPOLATE_LANCZOS)
-	image.blend_rect(glyph,Rect2i(0,0,32,32),Vector2i(16,16))
+	glyph.resize(glyph_size,glyph_size,Image.INTERPOLATE_LANCZOS)
+	var inset: int=(side-glyph_size)/2
+	image.blend_rect(glyph,Rect2i(0,0,glyph_size,glyph_size),Vector2i(inset,inset))
 	return ImageTexture.create_from_image(image)
 
 func _skin(button: Button, key: String) -> void:
@@ -172,11 +176,29 @@ func _layout() -> void:
 	layout.panels.damage=Rect2(_last_safe_rect.position+Vector2(16,86),Vector2(72,38))
 	dashboard.panels=layout.panels
 	dashboard.queue_redraw()
+	$attack.position=_last_safe_rect.end-Vector2(ATTACK_SIZE+12,ATTACK_SIZE+12)
 	_attack_home=$attack.position
 	fullscreen_button.visible=_pause_icon_state and not uses_touch_controls()
 	if is_instance_valid(options_menu):
 		options_menu.size=Vector2(minf(370,_last_safe_rect.size.x-24),244)
 		options_menu.position=_last_safe_rect.position+Vector2(16,90) if dashboard.immersive else Vector2(_last_safe_rect.get_center().x-options_menu.size.x/2,minf(layout.buttons.new_map.end.y+8,_last_safe_rect.end.y-options_menu.size.y-12))
+
+	_refresh_gesture_exclusions()
+
+func _refresh_gesture_exclusions() -> void:
+	if not is_instance_valid(drag_controls):return
+	drag_controls.safe=_last_safe_rect
+	drag_controls.exclusions.clear()
+	if is_instance_valid(_tap_fill) and _tap_fill.visible:drag_controls.exclusions.append(Rect2(_tap_fill.position-_tap_shape.size/2,_tap_shape.size))
+	for key in ["attack","jump","dash","pause"]:
+		var button=get_node(key)
+		if button.visible:
+			var side: float=ATTACK_SIZE if key=="attack" else 64
+			var margin: float=ATTACK_HIT_RADIUS-side/2 if key=="attack" else 0
+			drag_controls.exclusions.append(Rect2(button.position-Vector2.ONE*margin,Vector2.ONE*(side+margin*2)))
+	if is_instance_valid(module_button) and module_button.visible:
+		drag_controls.exclusions.append(Rect2(module_button.position,module_button.size))
+	drag_controls.queue_redraw()
 
 func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	if dashboard.immersive!=sim.life.enabled:
@@ -209,13 +231,6 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	if drag_controls.enabled and not gestures_enabled:drag_controls.cancel()
 	drag_controls.enabled=gestures_enabled
 	drag_controls.fast_available=not sim.travel.exhausted
-	drag_controls.safe=_last_safe_rect
-	drag_controls.exclusions.clear()
-	if _tap_fill.visible:drag_controls.exclusions.append(Rect2(_tap_fill.position-_tap_shape.size/2,_tap_shape.size))
-	for key in ["attack","jump","dash","pause"]:
-		var button=get_node(key)
-		if button.visible:drag_controls.exclusions.append(Rect2(button.position,Vector2(64,64)))
-	drag_controls.queue_redraw()
 	$attack.visible=$attack.visible and sim.can_wield_sword()
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
@@ -226,6 +241,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	$Refuge.visible=false # Standalone combat arena is no longer a player mode.
 	audio_button.visible=is_paused
 	_present_modules(sim,at,is_paused,touch)
+	_refresh_gesture_exclusions()
 	drop_button.disabled=is_paused or not sim.is_running() or sim.pouch.amount<=0
 	var map=sim.frontier
 	dashboard.immersive=sim.life.enabled
@@ -270,7 +286,6 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	_near_modules=sim.life.enabled and sim.is_running() and sim.frontier.city_level>0 and absf(at-sim.world.sites.drill)<73
 	module_button.visible=_near_modules and not is_paused
 	module_button.position=Vector2(_last_safe_rect.get_center().x-30,_last_safe_rect.end.y-82);module_button.size=Vector2(60,60)
-	if module_button.visible:drag_controls.exclusions.append(Rect2(module_button.position,module_button.size))
 	module_menu.size=Vector2(minf(510,_last_safe_rect.size.x-32),0)
 	module_menu.position=_last_safe_rect.get_center()-module_menu.size*0.5
 	if module_menu.visible:module_menu.present(sim.modules,touch)

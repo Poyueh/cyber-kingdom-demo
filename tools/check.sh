@@ -42,6 +42,7 @@ run_check prologue --script res://tests/test_prologue_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check campaign_save --script res://tests/test_campaign_save_scene.gd
+run_check large_attack --script res://tests/test_large_attack_scene.gd
 run_check mobile --script res://tests/test_mobile_scene.gd
 run_check modules --script res://tests/test_modules_scene.gd
 run_check mount --script res://tests/test_mount_scene.gd
