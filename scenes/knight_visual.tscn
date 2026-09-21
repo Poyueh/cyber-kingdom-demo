@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgjsbn334endb"]
 
 [ext_resource type="Script" uid="uid://bou2m4twpldb0" path="res://presentation/knight_visual.gd" id="1"]
-[ext_resource type="SpriteFrames" path="res://data/knight_animation_frames.tres" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://cx41eoc7xyqlb" path="res://data/knight_animation_frames.tres" id="2"]
 
 [node name="KnightVisual" type="AnimatedSprite2D" unique_id=320824938]
 texture_filter = 1

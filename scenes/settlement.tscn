@@ -1,47 +1,63 @@
-[gd_scene load_steps=11 format=3]
-[ext_resource type="Script" path="res://bootstrap/settlement_root.gd" id="1"]
+[gd_scene format=3 uid="uid://d17r2i3t31ld3"]
+
+[ext_resource type="Script" uid="uid://dcn70xualjghw" path="res://bootstrap/settlement_root.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/actor.tscn" id="2"]
-[ext_resource type="Script" path="res://presentation/arena_view.gd" id="3"]
-[ext_resource type="Script" path="res://presentation/settlement_controls.gd" id="4"]
+[ext_resource type="Script" uid="uid://bmhi88hjn571e" path="res://presentation/arena_view.gd" id="3"]
+[ext_resource type="Script" uid="uid://bnm4g63lbsmce" path="res://presentation/settlement_controls.gd" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/training_hud.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/knight_visual.tscn" id="knight_visual"]
-[ext_resource type="Script" path="res://presentation/settlement_view.gd" id="world"]
-[ext_resource type="Script" path="res://presentation/settlement_hud.gd" id="hud_script"]
+[ext_resource type="Script" uid="uid://chy5w8620e4v5" path="res://presentation/settlement_hud.gd" id="hud_script"]
+[ext_resource type="PackedScene" uid="uid://dgjsbn334endb" path="res://scenes/knight_visual.tscn" id="knight_visual"]
+[ext_resource type="Script" uid="uid://wn3om74mg8to" path="res://presentation/settlement_view.gd" id="world"]
+
 [sub_resource type="RectangleShape2D" id="floor"]
 size = Vector2(1800, 110)
+
 [sub_resource type="RectangleShape2D" id="wall"]
 size = Vector2(20, 540)
-[node name="Settlement" type="Node2D"]
-script = ExtResource("1")
-[node name="Arena" type="Node2D" parent="."]
-script = ExtResource("3")
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(900, 485)
-[node name="Shape" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("floor")
-[node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(-10, 270)
-[node name="Shape" type="CollisionShape2D" parent="LeftWall"]
-shape = SubResource("wall")
-[node name="RightWall" type="StaticBody2D" parent="."]
-position = Vector2(1810, 270)
-[node name="Shape" type="CollisionShape2D" parent="RightWall"]
-shape = SubResource("wall")
-[node name="Knight" parent="." instance=ExtResource("2")]
-position = Vector2(150, 420)
-z_index = 2
-[node name="KnightVisual" parent="Knight" instance=ExtResource("knight_visual")]
 
-[node name="Camera2D" type="Camera2D" parent="Knight"]
+[node name="Settlement" type="Node2D" unique_id=428362523]
+script = ExtResource("1")
+
+[node name="Arena" type="Node2D" parent="." unique_id=1442671240]
+script = ExtResource("3")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1509252813]
+position = Vector2(900, 485)
+
+[node name="Shape" type="CollisionShape2D" parent="Floor" unique_id=852260270]
+shape = SubResource("floor")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1149482184]
+position = Vector2(-10, 270)
+
+[node name="Shape" type="CollisionShape2D" parent="LeftWall" unique_id=125318138]
+shape = SubResource("wall")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1476023027]
+position = Vector2(1810, 270)
+
+[node name="Shape" type="CollisionShape2D" parent="RightWall" unique_id=627020843]
+shape = SubResource("wall")
+
+[node name="Knight" parent="." unique_id=1493289178 instance=ExtResource("2")]
+z_index = 2
+position = Vector2(150, 420)
+
+[node name="KnightVisual" parent="Knight" unique_id=1692756058 instance=ExtResource("knight_visual")]
+
+[node name="Camera2D" type="Camera2D" parent="Knight" unique_id=2090686935]
 position = Vector2(200, -160)
 limit_left = 0
 limit_top = 0
 limit_right = 1800
 limit_bottom = 540
-[node name="WorldView" type="Node2D" parent="."]
-script = ExtResource("world")
+
+[node name="WorldView" type="Node2D" parent="." unique_id=1505309493]
 z_index = 1
-[node name="InputAdapter" type="Node" parent="."]
+script = ExtResource("world")
+
+[node name="InputAdapter" type="Node" parent="." unique_id=1655318544]
 script = ExtResource("4")
-[node name="HUD" parent="." instance=ExtResource("5")]
+
+[node name="HUD" parent="." unique_id=132672899 instance=ExtResource("5")]
 script = ExtResource("hud_script")

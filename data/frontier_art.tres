@@ -1,26 +1,28 @@
-[gd_resource type="Resource" load_steps=23 format=3]
-[ext_resource type="Script" path="res://data/frontier_art.gd" id="script"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/woodland.png" id="woodland"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/ground.png" id="ground"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/engineer-atlas.png" id="engineer-atlas"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/citizens-atlas.png" id="citizens-atlas"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/tree.png" id="tree"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/crystal.png" id="crystal"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/berries.png" id="berries"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/cache.png" id="cache"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/outpost.png" id="outpost"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/crops.png" id="crops"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/stump.png" id="stump"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/deer.png" id="deer"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/hall-1.png" id="hall-1"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/hall-2.png" id="hall-2"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/hall-3.png" id="hall-3"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/workshop.png" id="workshop"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/armory.png" id="armory"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/forge.png" id="forge"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/beacon.png" id="beacon"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/wall.png" id="wall"]
-[ext_resource type="Texture2D" path="res://art/frontier/v002/tree-plain.png" id="tree-plain"]
+[gd_resource type="Resource" format=3 uid="uid://clr0w4s6nhd45"]
+
+[ext_resource type="Texture2D" uid="uid://b6c5bpccvac8f" path="res://art/frontier/v002/armory.png" id="armory"]
+[ext_resource type="Texture2D" uid="uid://ce8yucv8xodtd" path="res://art/frontier/v002/beacon.png" id="beacon"]
+[ext_resource type="Texture2D" uid="uid://25a81tojb8i" path="res://art/frontier/v002/berries.png" id="berries"]
+[ext_resource type="Texture2D" uid="uid://d1qcx4uis7mbh" path="res://art/frontier/v002/cache.png" id="cache"]
+[ext_resource type="Texture2D" uid="uid://iwusvqpltfg6" path="res://art/frontier/v002/citizens-atlas.png" id="citizens-atlas"]
+[ext_resource type="Texture2D" uid="uid://dhigbo7umiyk5" path="res://art/frontier/v002/crops.png" id="crops"]
+[ext_resource type="Texture2D" uid="uid://dbhfcu545ppir" path="res://art/frontier/v002/crystal.png" id="crystal"]
+[ext_resource type="Texture2D" uid="uid://da0vee15dm2j5" path="res://art/frontier/v002/deer.png" id="deer"]
+[ext_resource type="Texture2D" uid="uid://brdg0t7qamv7g" path="res://art/frontier/v002/engineer-atlas.png" id="engineer-atlas"]
+[ext_resource type="Texture2D" uid="uid://cbrwmg3dqg0u4" path="res://art/frontier/v002/forge.png" id="forge"]
+[ext_resource type="Texture2D" uid="uid://bcyla2gmkstfl" path="res://art/frontier/v002/ground.png" id="ground"]
+[ext_resource type="Texture2D" uid="uid://bfiwvtn7t4557" path="res://art/frontier/v002/hall-1.png" id="hall-1"]
+[ext_resource type="Texture2D" uid="uid://xe6124uabres" path="res://art/frontier/v002/hall-2.png" id="hall-2"]
+[ext_resource type="Texture2D" uid="uid://cocsaaxpve8b1" path="res://art/frontier/v002/hall-3.png" id="hall-3"]
+[ext_resource type="Texture2D" uid="uid://nhntlluo6v0d" path="res://art/frontier/v002/outpost.png" id="outpost"]
+[ext_resource type="Script" uid="uid://bq628nrbss40r" path="res://data/frontier_art.gd" id="script"]
+[ext_resource type="Texture2D" uid="uid://dk343hau4h0q6" path="res://art/frontier/v002/stump.png" id="stump"]
+[ext_resource type="Texture2D" uid="uid://bgejx1bi4dltk" path="res://art/frontier/v002/tree.png" id="tree"]
+[ext_resource type="Texture2D" uid="uid://7wuhjxsxkd0a" path="res://art/frontier/v002/tree-plain.png" id="tree-plain"]
+[ext_resource type="Texture2D" uid="uid://g8fmv8onsat1" path="res://art/frontier/v002/wall.png" id="wall"]
+[ext_resource type="Texture2D" uid="uid://b2hjfwfobrafe" path="res://art/frontier/v002/woodland.png" id="woodland"]
+[ext_resource type="Texture2D" uid="uid://4mdknklhmed8" path="res://art/frontier/v002/workshop.png" id="workshop"]
+
 [resource]
 script = ExtResource("script")
 woodland = ExtResource("woodland")
@@ -28,21 +30,21 @@ ground = ExtResource("ground")
 engineer_atlas = ExtResource("engineer-atlas")
 citizens_atlas = ExtResource("citizens-atlas")
 props = {
-"tree": ExtResource("tree"),
-"tree-plain": ExtResource("tree-plain"),
-"crystal": ExtResource("crystal"),
+"armory": ExtResource("armory"),
+"beacon": ExtResource("beacon"),
 "berries": ExtResource("berries"),
 "cache": ExtResource("cache"),
-"outpost": ExtResource("outpost"),
 "crops": ExtResource("crops"),
-"stump": ExtResource("stump"),
+"crystal": ExtResource("crystal"),
 "deer": ExtResource("deer"),
+"forge": ExtResource("forge"),
 "hall-1": ExtResource("hall-1"),
 "hall-2": ExtResource("hall-2"),
 "hall-3": ExtResource("hall-3"),
-"workshop": ExtResource("workshop"),
-"armory": ExtResource("armory"),
-"forge": ExtResource("forge"),
-"beacon": ExtResource("beacon"),
-"wall": ExtResource("wall")
+"outpost": ExtResource("outpost"),
+"stump": ExtResource("stump"),
+"tree": ExtResource("tree"),
+"tree-plain": ExtResource("tree-plain"),
+"wall": ExtResource("wall"),
+"workshop": ExtResource("workshop")
 }

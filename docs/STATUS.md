@@ -1120,3 +1120,8 @@ Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 
 - 實際原生渲染驗證日夜、水岸、營火動態、無劍／持劍步態、死亡文字與前導戰鬥／巨龍。初次預覽發現錯用 SubViewport 的 World2D 設定及敘事陣列型別，修正後重跑原生預覽無腳本錯誤或資源釋放警告。手機長時效能仍需真機驗收。
 - H5 已更新 builds/immersive-preview/web/，本機 http://127.0.0.1:8798/；瀏覽器實見前導巨龍戰鬥與自動回到主選單。feature/living-world-cinematic 驗證後整合本地 develop；未推送遠端、未更新桌面包。原有 11 個資源／場景修改以雜湊確認保留。
 - 教學：docs/lessons/66-living-world-and-prologue.md；規格：docs/design/living-world-cinematic.md。
+
+
+## 2026-09-21：H5 v0.0.7 發行
+
+使用者授權發布。目前已測試的本機 H5 匯出包製成 v0.0.7，公開內容含本輪及 v0.0.6 以後累積更新；原有 11 個 Godot 設定檔納入 release/0.0.7 快照，以便對應實測素材、動畫及數值。原始修改備份於 builds/release-0.0.7/original-adjustments.patch。遊戲來源沿用上一輪 2,101 項斷言與原生／H5 驗收，沒有新增玩法；ZIP CRC 與 SHA-256 已驗證。Windows／macOS 不重建。公開部署與網址驗收完成後另記。
