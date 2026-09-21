@@ -1,6 +1,7 @@
 extends Node2D
 ## A small bounded, physical heap in an activity-only HUD purse.
 const Gem=preload("res://presentation/purse_gem.gd")
+const DRAW_SCALE: float=0.62
 const HOLD_SECONDS: float=3.0
 const FADE_SECONDS: float=0.65
 const FLIGHT_SECONDS: float=0.42
@@ -40,7 +41,7 @@ func _new_gem() -> Gem:
  return gem
 
 func present(fullness: float, area: Rect2, stopped: bool) -> void:
- var next_bounds: Rect2=Rect2(Vector2(area.end.x-144,area.position.y+10),Vector2(128,150))
+ var next_bounds: Rect2=Rect2(Vector2(area.end.x-96,area.position.y+8),Vector2(80,96))
  if bounds!=next_bounds:bounds=next_bounds;queue_redraw()
  _paused=stopped
  var next: float=clampf(fullness,0,1)
@@ -158,17 +159,22 @@ func _gem(gem: Gem, at: Vector2, alpha: float=1.0) -> void:
 func _draw() -> void:
  if _shown<0 or modulate.a<=0:return
  var bounce: float=sin(_pulse/0.45*TAU)*(_pulse/0.45)
- draw_set_transform(bounds.get_center(),bounce*0.018)
+ draw_set_transform(bounds.get_center(),bounce*0.018,Vector2.ONE*DRAW_SCALE)
  var outline: PackedVector2Array=PackedVector2Array([Vector2(-32,-52),Vector2(32,-52),Vector2(28,-32),Vector2(35,-13),Vector2(49,12),Vector2(49,36),Vector2(35,56),Vector2(15,67),Vector2(-15,67),Vector2(-35,56),Vector2(-49,36),Vector2(-49,12),Vector2(-35,-13),Vector2(-28,-32)])
- draw_colored_polygon(outline,Color("121e25"))
- draw_polyline(outline+PackedVector2Array([outline[0]]),Color("c0a367"),3)
+ draw_colored_polygon(outline,Color("332b29"))
+ draw_polyline(outline+PackedVector2Array([outline[0]]),Color("a18459"),2)
+ # Warm interior and broad folded leather edges, rather than a bright wire outline.
+ draw_colored_polygon(PackedVector2Array([Vector2(-25,-43),Vector2(25,-43),Vector2(30,-8),Vector2(43,17),Vector2(40,35),Vector2(28,53),Vector2(-28,53),Vector2(-40,35),Vector2(-43,17),Vector2(-30,-8)]),Color("1c2427"))
  for gem in _gems:_gem(gem,gem.position.round())
  for side in [-1,1]:
-  draw_polyline(PackedVector2Array([Vector2(side*28,-32),Vector2(side*34,-10),Vector2(side*45,14),Vector2(side*44,36),Vector2(side*32,53),Vector2(side*14,62)]),Color("76523c"),5)
+  var fold: PackedVector2Array=PackedVector2Array()
+  for at in [Vector2(29,-32),Vector2(36,-8),Vector2(48,13),Vector2(47,35),Vector2(33,56),Vector2(15,65),Vector2(22,56),Vector2(37,34),Vector2(39,12),Vector2(29,-8)]:fold.append(Vector2(at.x*side,at.y))
+  draw_colored_polygon(fold,Color("654735") if side<0 else Color("49372e"))
+  draw_polyline(PackedVector2Array([Vector2(side*28,-32),Vector2(side*34,-10),Vector2(side*45,14),Vector2(side*44,36),Vector2(side*32,53),Vector2(side*14,62)]),Color("8f6742"),2)
   for y in range(5,42,8):draw_line(Vector2(side*45,y),Vector2(side*42,y+3),Color("d0af73"),1)
  draw_polyline(PackedVector2Array([Vector2(-30,56),Vector2(-13,64),Vector2(13,64),Vector2(30,56)]),Color("a0784e"),3)
  draw_colored_polygon(PackedVector2Array([Vector2(-33,-54),Vector2(33,-54),Vector2(30,-46),Vector2(-30,-46)]),Color("756449"))
- draw_line(Vector2(-30,-52),Vector2(30,-52),Color("e4cc8d"),2)
+ draw_line(Vector2(-30,-52),Vector2(30,-52),Color("c6a56d"),2)
  draw_line(Vector2(-26,-46),Vector2(26,-46),Color("15232a"),2)
  draw_polyline(PackedVector2Array([Vector2(-28,-37),Vector2(-38,-31),Vector2(-37,-19),Vector2(-32,-16)]),Color("c7a473"),2)
  for gem in _flights:

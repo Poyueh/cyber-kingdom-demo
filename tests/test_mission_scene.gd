@@ -12,7 +12,7 @@ func step(scene, count: int) -> void:
 		scene._physics_process(1.0/60)
 
 func run_scene() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
 	scene.tuning=scene.tuning.duplicate()
 	scene.tuning.core_max_hp=40
 	scene.tuning.core_recharge=10

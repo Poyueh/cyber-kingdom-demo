@@ -150,7 +150,7 @@ func restore(raw) -> Dictionary:
 	if survival.sword_on_ground and not Rules.in_range(survival.sword_x,sim.frontier.left_boundary,sim.frontier.right_boundary):return _invalid()
 	if sim.travel.rest_remaining<0 or sim.travel.rest_remaining>1.5:return _invalid()
 	if sim.travel.forced_rest!=sim.life.enabled:return _invalid()
-	if not Rules.in_range(sim.travel.fast_multiplier,1.1,2.0) or not Rules.in_range(sim.travel.drain_per_second,5,40):return _invalid()
+	if not Rules.in_range(sim.travel.fast_multiplier,1.1,3.0) or not Rules.in_range(sim.travel.drain_per_second,5,40):return _invalid()
 	if not _restore_fighter(sim.hero,data.hero):return _invalid()
 	if not data.nodes is Array or data.nodes.size()!=sim.frontier.nodes.size():return _invalid()
 	for i in range(data.nodes.size()):

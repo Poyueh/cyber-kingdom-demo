@@ -1027,10 +1027,6 @@
     "zh_CN": "在流浪者附近丢下一颗龙晶。他会自己捡起，成为居民。",
     "en": "Drop a crystal near a wanderer. They will pick it up and join your settlement."
   },
-  "左右拖曳越遠跑得越快；快跑耗盡體力後會停下喘氣。稍候恢復，別在敵人面前跑到力竭。": {
-    "zh_CN": "左右拖曳越远跑得越快；快跑耗尽体力后会停下喘气。稍候恢复，别在敌人面前跑到力竭。",
-    "en": "Drag farther to run faster. Exhaustion forces a breathing stop. Allow time to recover before enemies arrive."
-  },
   "必須持續投入到填滿。放開、走遠或龍晶不足，未完成的付款會掉回地面，需要重新收取。": {
     "zh_CN": "必须持续投入到填满。放开、走远或龙晶不足，未完成的付款会掉回地面，需要重新收取。",
     "en": "Keep holding until every socket is filled. Releasing, walking away or running out refunds incomplete payments onto the ground. Collect them again."
@@ -1042,10 +1038,6 @@
   "獵人自主狩獵，遇敵射箭。弓箭設施提供器具，不再升級；三級營火會解鎖槍盾器具，由居民自行領取並守住兩側。": {
     "zh_CN": "猎人自主狩猎，遇敌射箭。弓箭设施提供器具，不再升级；三级营火会解锁枪盾器具，由居民自行领取并守住两侧。",
     "en": "Hunters hunt and shoot approaching enemies. The bow rack supplies tools without upgrades. A tier-three camp unlocks spear-and-shield equipment for residents to defend both sides."
-  },
-  "攻擊與快跑消耗體力，力竭會停下喘氣，恢復較慢。受傷時角色會閃光與後仰；營火受擊有全畫面方向警示與音效。此版沒有能量護盾。": {
-    "zh_CN": "攻击与快跑消耗体力，力竭会停下喘气，恢复较慢。受伤时角色会闪光与后仰；营火受击有全画面方向警示与音效。此版没有能量护盾。",
-    "en": "Attacks and running use stamina. Exhaustion forces a pause with slower recovery. Hits cause a flash and recoil. Campfire damage triggers a directional warning and sound. Energy shields are removed."
   },
   "投入龍晶升級劍術，較高階需要較高的聚落等級。最高階自動騎上機械戰馬；原有義肢電容設備已移除。": {
     "zh_CN": "投入龙晶升级剑术，较高阶需要较高的聚落等级。最高阶自动骑上机械战马；原有义肢电容设备已移除。",
@@ -1066,10 +1058,6 @@
   "靠近物件後，看發光、龍晶空格與限制圖示。營火代表需要聚落升級，錘子代表施工，人物代表器具等待領取，打勾代表已完成。未完成的付款會退回地面。": {
     "zh_CN": "靠近物件后，看发光、龙晶空格与限制图示。营火代表需要聚落升级，锤子代表施工，人物代表器具等待领取，打勾代表已完成。未完成的付款会退回地面。",
     "en": "Approach the glow and inspect the sockets and icons: camp means a settlement prerequisite, hammer means construction, person means waiting for tools to be taken, and check means complete. Unfinished payments fall back to the ground."
-  },
-  "未拔劍不能出刀。快跑力竭後要停下喘氣；恢復後才可行動。連斬需再次按攻擊，按住不會自動出刀。": {
-    "zh_CN": "未拔剑不能出刀。快跑力竭后要停下喘气；恢复后才可行动。连斩需再次按攻击，按住不会自动出刀。",
-    "en": "Draw the sword before attacking. Running exhaustion forces a breathing stop until recovery. Tap attack again to combo; holding does not auto-attack."
   },
   "袋子滿了，再收取的龍晶會落水。居民也會撿起龍晶保管，騎士靠近才會獻出；剛丟出的晶體有短暫拾取等待。": {
     "zh_CN": "袋子满了，再收取的龙晶会落水。居民也会捡起龙晶保管，骑士靠近才会献出；刚丢出的晶体有短暂拾取等待。",
@@ -1150,5 +1138,17 @@
   "一般小怪會優先撿附近的龍晶，一次拿走一顆並撤回原本的地獄之門。危急時可丟晶換取逃跑時間；擊敗抱晶怪可取回它攜帶的龍晶。": {
     "zh_CN": "普通小怪会优先捡附近的龙晶，一次拿走一颗并撤回原本的地狱之门。危急时可丢晶换取逃跑时间；击败抱晶怪可取回它携带的龙晶。",
     "en": "Ordinary small monsters prefer a nearby crystal. Each takes one and retreats to its original hell gate. Drop crystals to buy escape time; defeat a carrier to recover its stolen crystal."
+  },
+  "短拖慢走、長拖快跑。慢走與站立會逐漸恢復體力；力竭仍能慢走，恢復足夠後才可再次快跑。": {
+    "zh_CN": "短拖慢走、长拖快跑。慢走与站立会逐渐恢复体力；力竭仍能慢走，恢复足够后才可再次快跑。",
+    "en": "Drag a little to walk, farther to sprint. Walking and standing gradually restore stamina. Exhaustion still allows walking; recover enough before sprinting again."
+  },
+  "攻擊與快跑消耗體力。疲憊時停步會漸漸彎身喘氣，也能繼續慢走恢復；不要在敵人面前跑到力竭。受傷時角色會閃光與後仰，營火受擊有方向警示與音效。": {
+    "zh_CN": "攻击与快跑消耗体力。疲惫时停步会渐渐弯身喘气，也能继续慢走恢复；不要在敌人面前跑到力竭。受伤时角色会闪光与后仰，营火受击有方向警示与音效。",
+    "en": "Attacks and sprinting consume stamina. Stop while tired to ease into a breathing pose, or keep walking to recover. Hits cause a flash and recoil; camp damage triggers directional warnings and sound."
+  },
+  "未拔劍不能出刀。快跑力竭後仍可慢走恢復，站著也會恢復；體力足夠後才能再快跑。連斬需再次按攻擊，按住不會自動出刀。": {
+    "zh_CN": "未拔剑不能出刀。快跑力竭后仍可慢走恢复，站着也会恢复；体力足够后才能再快跑。连斩需再次按攻击，按住不会自动出刀。",
+    "en": "Draw the sword before attacking. After sprint exhaustion, walk or stand to recover; sprint again once enough stamina returns. Tap attack again to combo; holding does not auto-attack."
   }
 }

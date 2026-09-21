@@ -4,6 +4,7 @@ var hit_feedback:=HitFeedback.new()
 const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
 var _daylight: Daylight
+var _camp_ignition_age: float=-1.0
 
 func _ready() -> void:
 	super._ready()
@@ -50,6 +51,9 @@ func present(sim, player_x: float) -> void:
 		_mist=preload("res://presentation/exploration_mist.gd").new()
 		_details=Details.layout(sim.map_seed,sim.frontier.regions)
 	_sim=sim
+	_camp_ignition_age=-1.0
+	for effect in sim.effects:
+		if effect.kind=="camp_ignition":_camp_ignition_age=2.4-effect.life
 	_reveal.observe(sim.frontier.regions+sim.mission.rifts,sim.workforce.elapsed)
 	hit_feedback.present(sim)
 	_view_player_x=player_x
@@ -91,7 +95,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 	if _sim.life.enabled and name in ["workshop","armory"]:
 		for effect in _sim.effects:
 			if effect.kind=="camp_ignition":
-				var assembled: float=smoothstep(0.3,1.4,2.4-effect.life)
+				var assembled: float=smoothstep(1.0,2.1,2.4-effect.life)
 				tint.a*=assembled
 				at.y+=(1-assembled)*24
 	Ambient.prop(self,texture,name,at,scale,tint,_sim.workforce.elapsed)
@@ -137,7 +141,9 @@ func _draw_structures() -> void:
 	var map = _sim.frontier
 	var hall: float = world.sites.hall
 	var core_tint:=Color.WHITE if _sim.mission.core_hp>0 else Color("566779")
+	if _camp_ignition_age>=0:core_tint.a*=smoothstep(0.82,1.35,_camp_ignition_age)
 	if map.city_level>0: _prop("hall-%d" % map.city_level,Vector2(hall,430),1.0,core_tint)
+	if _camp_ignition_age>=0 and _camp_ignition_age<1.1:_prop("stone",Vector2(hall,430),0.45)
 	if not _sim.life.enabled or map.city_level>0:
 		_prop("campfire",Vector2(hall+(104 if map.city_level>0 else 0),430),0.7 if map.city_level>0 else 1.0,core_tint)
 	else:
@@ -326,15 +332,16 @@ func _draw_activity() -> void:
 			continue
 		if effect.kind in ["core_hit","camp_ignition"]:
 			var ink: Color=Color(1,0.3,0.12,clampf(effect.life,0,1)*0.4) if effect.kind=="core_hit" else Color(0.5,1,0.8,clampf(effect.life/2.4,0,1)*0.3)
-			draw_circle(Vector2(effect.x,408),55+sin(effect.life*14)*8,ink)
+			if effect.kind=="core_hit":draw_circle(Vector2(effect.x,408),55+sin(effect.life*14)*8,ink)
 			if effect.kind=="camp_ignition":
 				var age: float=2.4-effect.life
-				var rise: float=smoothstep(0,0.65,age)
-				var at:=Vector2(effect.x,398-rise*72)
-				_icon("sword",at,42,Color(0.8,1,0.9,1-smoothstep(0.7,1.2,age)))
-				for i in range(7):
-					var spark:=Vector2(effect.x+sin(i*2.7)*age*30,412-age*(22+i*9))
-					draw_rect(Rect2(spark.round(),Vector2(3,5)),Color(1,0.7,0.25,effect.life/2.4))
+				var burst: float=maxf(0,age-0.82)
+				if burst>0:
+					var fade: float=1.0-smoothstep(0.25,1.25,burst)
+					draw_arc(Vector2(effect.x,425),18+burst*110,PI,TAU,24,Color(0.55,1,0.82,fade*0.6),2)
+					for i in range(12):
+						var spark:=Vector2(effect.x+sin(i*2.7)*burst*55,416-burst*(42+i*7)+burst*burst*35)
+						draw_rect(Rect2(spark.round(),Vector2(2,4)),Color(1,0.7,0.25,fade))
 			continue
 		if effect.kind in ["tower_arrow","tower_laser"]:
 			var origin:=Vector2(effect.x,430-[0,118,134,132][effect.tier])
