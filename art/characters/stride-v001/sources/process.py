@@ -21,4 +21,3 @@ for row in range(4):
   info.append({'row':row,'column':col,'helmet_center':[float(np.mean(hx)),float(np.mean(hy))],'paste':[px,py]})
 for n,im in zip(['armed.png','unarmed.png'],outputs):im.save(dest/n)
 (dest/'sources/cutting.json').write_text(json.dumps(info,indent=2)+'\n')
-

@@ -1140,3 +1140,5 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.7 已公開，
 - 前導先以 1.6 秒淡入靜止場景，不顯示字幕也不推進演出；之後才播放原有內容，總長約 26.6 秒，仍可隨時跳過。淡入時間可調，三語字幕沿用現有文字。
 - 原生實際送出觸控，檢查單／雙箭頭、左向、力竭、邊界微晃與暫停清除；擷取前導黑場／半亮／完全顯現／字幕，以及無劍／持劍跑步序列，未出現 SCRIPT ERROR 或資源釋放警告。完整 tools/check.sh 通過 2,110 項斷言，額外實際觸控檢查 3 項通過。
 - 本機 H5 更新至 builds/immersive-preview/web，http://127.0.0.1:8798/。此單元不發布遠端，線上仍為 v0.0.7；iPhone 真機手感待玩家回饋。教學 docs/lessons/67-drag-tiers-and-opening-fade.md。
+
+H5 補充驗收：新版前導結束後正常回到標題，瀏覽器警告／錯誤清單為空；本機試玩保留供使用者比較。
