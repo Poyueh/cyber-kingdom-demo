@@ -9,7 +9,7 @@ const THREAT_RADIUS: float = 240.0
 
 func threatened(person: Dictionary, enemies: Array) -> bool:
  for enemy in enemies:
-  if enemy.fighter.is_alive() and absf(enemy.x-person.x)<THREAT_RADIUS:return true
+  if enemy.fighter.is_alive() and int(enemy.get("carried_crystals",0))==0 and absf(enemy.x-person.x)<THREAT_RADIUS:return true
  return false
 
 func collect(world, pouch, enemies: Array, hero_x: float, hero_y: float) -> void:

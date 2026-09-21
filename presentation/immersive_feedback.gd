@@ -18,6 +18,7 @@ func _ready() -> void:
  _font=preload("res://presentation/localized_font.gd").current()
 func present(run: RefCounted, at: Vector2, area: Rect2, stopped: bool) -> void:
  sim=run;hero_screen=at;safe=area;paused=stopped
+ if not is_same(_last_sim,sim):purse.reset()
  purse.visible=sim.life.enabled and sim.is_running() and not stopped
  purse.present(float(sim.pouch.amount)/sim.pouch.capacity,area,stopped)
  if not is_same(_last_sim,sim):
@@ -40,7 +41,7 @@ func _draw() -> void:
  var night: float=1.0 if sim.clock.is_night else smoothstep(45,0,sim.clock.remaining)
  draw_rect(viewport,Color(0.015,0.045,0.16,night*0.24))
  if paused:return
- var danger: float=1.0-clampf(float(sim.hero.hp)/sim.hero.stats.max_hp/0.4,0,1)
+ var danger: float=(1.0 if sim.pouch.amount==0 and not sim.can_wield_sword() else 0.0) if sim.survival.enabled else 1.0-clampf(float(sim.hero.hp)/sim.hero.stats.max_hp/0.4,0,1)
  if danger>0:
   for side in [0,1]:
    draw_rect(Rect2(viewport.position+Vector2(side*(viewport.size.x-12),0),Vector2(12,viewport.size.y)),Color(0.8,0.08,0.1,danger*(0.16+sin(_time*3)*0.08)))

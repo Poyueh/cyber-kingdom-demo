@@ -498,6 +498,7 @@ func _raider(enemy: Dictionary) -> void:
 	draw_rect(Rect2(enemy.x-22,380,44,4),Color("482a3a"))
 	draw_rect(Rect2(enemy.x-22,380,44.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,4),Color("df8491"))
 	if enemy.windup>0:_icon("sword",Vector2(enemy.x,368),20,Color("ffd087"))
+	if enemy.get("carried_crystals",0)>0:_icon("crystal",Vector2(enemy.x+enemy.direction*15,395+sin(_sim.workforce.elapsed*9)*2),19,Color("c1ffe4"))
 func _draw_fallen() -> void:
 	var texture: Texture2D=EnemyFrames.get_frame_texture("idle",0)
 	for body in hit_feedback.fallen:
@@ -515,4 +516,11 @@ func _draw_fallen() -> void:
 func _draw() -> void:
 	super._draw()
 	if _sim==null:return
+	if _sim.survival.enabled and _sim.survival.sword_on_ground and _on_screen(_sim.survival.sword_x):
+		var grace: float=_sim.survival.sword_grace
+		var progress: float=1.0-clampf(grace/1.2,0,1)
+		var at: Vector2=Vector2(_sim.survival.sword_x,411-sin(progress*PI)*52)
+		draw_set_transform(at,progress*TAU if grace>0 else -0.35)
+		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
+		draw_set_transform(Vector2.ZERO)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

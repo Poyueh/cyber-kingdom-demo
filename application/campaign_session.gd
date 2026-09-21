@@ -2,6 +2,9 @@ extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
+const Survival=preload("res://domain/crystal_survival.gd")
+var survival: Survival=Survival.new()
+const Forager=preload("res://application/crystal_forager.gd")
 const Defenses=preload("res://domain/frontier_defenses.gd")
 var defenses: Defenses
 const Ecology=preload("res://domain/frontier_ecology.gd")
@@ -47,6 +50,8 @@ const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","far
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	life.enabled=int(config.get("immersive_loop",0))==1
+	survival.enabled=life.enabled and int(config.get("crystal_survival",0))==1
+	survival.hit_loss=int(config.get("hit_crystal_loss",0))
 	var resolved:=config.duplicate(true)
 	var economy: Dictionary=config.get("economy",{}).duplicate(true)
 	var left_post:=minf(-950.0,float(config.get("left_defense_x",-1100.0)))
@@ -81,7 +86,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	hunter_range = maxf(30.0,float(config.get("hunter_range",170.0)))
 	hunter_interval = maxf(0.2,float(config.get("hunter_interval",1.2)))
 	stroll_speed=maxf(1.0,float(config.get("stroll_speed",24.0)))
-	pouch = Pouch.new(config.get("capacity",12),config.get("starting_crystals",12))
+	pouch = Pouch.new(clampi(config.get("capacity",30),1,30) if survival.enabled else config.get("capacity",12),config.get("starting_crystals",12))
 	pouch.magnet_radius = maxf(32,config.get("magnet_radius",112.0))
 	pouch.magnet_speed = maxf(32,config.get("magnet_speed",300.0))
 	pouch.throw_grace = maxf(0.5,config.get("throw_grace",2.0))
@@ -169,7 +174,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		candidates.append(choice)
 	if absf(_player_y-430)<=42:
 		for site in world.sites:
-			if life.enabled and (site=="forge" or (site=="armory" and frontier.city_level<3)):continue
+			if life.enabled and (site=="forge" or (survival.enabled and site=="heal") or (site=="armory" and frontier.city_level<3)):continue
 			if site=="trade":continue # Retained in legacy snapshots only.
 			if not defenses.visible(site):continue
 			if frontier.city_level==0 and site!="hall": continue
@@ -347,6 +352,7 @@ func _execute(choice: Dictionary) -> void:
 			frontier.city_level+=1
 			if life.enabled and frontier.city_level==1:
 				built.workshop=true;built.hunt_tools=true
+				if survival.enabled:survival.armed=true
 				effects.append({"kind":"camp_ignition","x":world.sites.hall,"life":2.4})
 			if life.enabled and frontier.city_level==3:built.armory=true
 		"armory":
@@ -378,6 +384,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	mission.resolve(hero.is_alive(),raiders.is_empty())
 	if not is_running():return
 	_hero_x=hero_x
+	if survival.advance(seconds,hero,hero_x,hero_y):effects.append({"kind":"sword_recovered","x":hero_x,"y":hero_y,"life":0.7})
 	mission.reveal(hero_x)
 	for animal in frontier.animals:
 		if not animal.alive:continue
@@ -682,6 +689,7 @@ func _summon_dragon(hero_x: float) -> void:
 	effects.append({"kind":"dragon_arrival","x":dragon.x,"to":hero_x,"life":5.0})
 
 func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
+	if survival.enabled and Forager.advance(self,enemy,seconds):return
 	if enemy.get("kind","")=="dragon":
 		preload("res://application/dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
 	else:super._advance_raider(enemy,seconds,hero_x,hero_y)
@@ -779,7 +787,11 @@ func _advance_towers(seconds: float) -> void:
 		site.cooldown=power.interval
 		effects.append({"kind":"tower_laser" if site.level==3 else "tower_arrow","x":site.x,"to":nearest.x,"life":0.28,"tier":site.level})
 
+func hit_hero(damage: int, x: float, y: float) -> bool:
+	return survival.receive_hit(hero,pouch,damage,x,y)
+
 func can_wield_sword() -> bool:
+	if survival.enabled:return survival.armed
 	return not life.enabled or frontier.city_level>0
 
 func cancel_investment(key: String, x: float) -> void:

@@ -274,7 +274,7 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 			if absf(at-raider.x)<38:
 				match target.kind:
 					"hero":
-						if absf(hero_y-430)<42: hero.take_damage(raider.fighter.stats.damage)
+						if absf(hero_y-430)<42: hit_hero(raider.fighter.stats.damage,hero_x,hero_y)
 					"wall","core": _hit_structure(target,raider.get("wall_damage",20))
 					"person":
 						if absf(world.people[target.index].get("y",430)-430)<42: world.hit_person(target.index)
@@ -332,3 +332,6 @@ func _spawn_raider() -> Dictionary:
 
 func _collect_loot(_drop: Dictionary) -> void:
 	world.scrap += 2
+
+func hit_hero(damage: int, _x: float, _y: float) -> bool:
+	return hero.take_damage(damage)

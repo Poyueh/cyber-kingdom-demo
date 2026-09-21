@@ -8,11 +8,13 @@ const MotionFrames=preload("res://data/knight_motion_frames.tres")
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
 const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
-const UnarmedSheet=preload("res://art/characters/unarmed-v001/run.png")
+const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
 var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
 var breathing: bool=false
+var damage_serial: int=0
+var _last_damage_serial: int=0
 var fatigue: Sprite2D=preload("res://presentation/knight_fatigue_view.gd").new()
 var mounted:=false
 var _mount: Sprite2D
@@ -91,6 +93,8 @@ func present(pose: Dictionary, seconds: float) -> void:
 		_gait_time+=seconds*float(pose.get("locomotion_rate",1.0))
 	elif not striding and not pose.get("dashing",false):
 		_gait_time=0
+	if damage_serial>_last_damage_serial:_reaction.trigger(-float(pose.facing))
+	_last_damage_serial=damage_serial
 	super.present(pose,seconds)
 	if equipment_material!=null:equipment_material.set_shader_parameter("facing",-1.0 if flip_h else 1.0)
 	self_modulate=Color.WHITE
@@ -108,11 +112,11 @@ func present(pose: Dictionary, seconds: float) -> void:
 		return
 	_mount.visible=false
 	_unarmed.visible=false
-	if unarmed and pose.alive:
+	if unarmed:
 		_motion_time+=maxf(0,seconds)
-		rotation=pose.facing*0.08 if breathing else 0
-		scale=Vector2(1.02,0.94+sin(_motion_time*7)*0.018) if breathing else Vector2.ONE
-		var drawing: int=int(fposmod(_gait_time*9,8)) if striding else 0
+		if not hurt_active and pose.alive:
+			rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
+		var drawing: int=int(fposmod(_gait_time*12,8)) if striding and pose.alive and not hurt_active else 8+int(fposmod(_motion_time*3,4))
 		_unarmed_frame.atlas=UnarmedSheet
 		_unarmed_frame.region=Rect2((drawing%4)*128,(drawing/4)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0

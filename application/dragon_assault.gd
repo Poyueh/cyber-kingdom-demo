@@ -14,7 +14,7 @@ static func advance(sim, dragon: Dictionary, seconds: float, hero_x: float, hero
    if not obstacle.is_empty():
     sim._hit_structure(obstacle,dragon.wall_damage)
    else:
-    if absf(hero_x-aim)<100 and absf(hero_y-430)<48:sim.hero.take_damage(dragon.fighter.stats.damage)
+    if absf(hero_x-aim)<100 and absf(hero_y-430)<48:sim.hit_hero(dragon.fighter.stats.damage,hero_x,hero_y)
     for i in range(sim.world.people.size()):
      var p: Dictionary=sim.world.people[i]
      if p.role!="wanderer" and absf(p.x-aim)<100 and absf(p.get("y",430)-430)<48:sim.world.hit_person(i)

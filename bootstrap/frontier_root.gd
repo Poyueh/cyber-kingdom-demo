@@ -254,6 +254,7 @@ func _build_terrain() -> void:
 func _sync_knight_equipment() -> void:
 	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
 	knight.visual.unarmed=not sim.can_wield_sword()
+	knight.visual.damage_serial=sim.survival.hits
 	var tired_idle: bool=sim.hero.stamina<sim.hero.stats.attack_cost and sim.hero.attack_remaining<=0 and absf(knight.velocity.x)<1
 	knight.visual.breathing=sim.life.enabled and (sim.travel.exhausted or tired_idle)
 	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))

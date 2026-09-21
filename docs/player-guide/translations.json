@@ -1134,5 +1134,21 @@
   "看畫面右上角晶袋介面的滿度估算龍晶，不顯示數字。袋子固定、不跟隨騎士；滿袋再收取的龍晶會落水。": {
     "zh_CN": "看画面右上角晶袋界面的满度估算龙晶，不显示数字。袋子固定、不跟随骑士；满袋再收取的龙晶会落水。",
     "en": "Estimate crystals from the framed purse at the top-right. There is no counter and it does not follow the knight. Collected overflow falls into the water."
+  },
+  "晶袋最多裝 30 顆龍晶。收取或花費時，右上晶袋會顯示晶體飛入、飛出；停止收支約 3 秒後淡出。看袋內晶堆估算存量，滿袋溢出的龍晶會落水。": {
+    "zh_CN": "晶袋最多装 30 颗龙晶。收取或花费时，右上晶袋会显示晶体飞入、飞出；停止收支约 3 秒后淡出。看袋内晶堆估算存量，满袋溢出的龙晶会落水。",
+    "en": "The purse holds up to 30 crystals. Collecting or spending reveals it at the top-right with crystals flying in or out; after about 3 seconds without activity, it fades. Estimate your reserve from the pile inside. Overflow falls into the water."
+  },
+  "啟動先有可跳過的前導演出，再進入主選單。新遊戲採用以下規則；上一版感受式旅程會升級龍晶生存規則，保留龍晶與已取得的劍。更早期旅程保留舊規則。": {
+    "zh_CN": "启动先有可跳过的前导演出，再进入主菜单。新游戏采用以下规则；上一版沉浸式旅程会升级龙晶生存规则，保留龙晶与已取得的剑。更早期旅程保留旧规则。",
+    "en": "A skippable prologue leads to the title menu. New journeys use these rules. Previous immersive journeys upgrade to crystal survival while keeping their crystals and acquired sword. Earlier classic journeys keep their old rules."
+  },
+  "龍晶就是你的生存餘裕：每次有效受擊掉落最多 3 顆。空袋後，下一擊會掉劍；再受擊就死亡。掉劍後不能攻擊，可以回頭靠近拾回。": {
+    "zh_CN": "龙晶就是你的生存余裕：每次有效受击掉落最多 3 颗。空袋后，下一击会掉剑；再受击就死亡。掉剑后不能攻击，可以回头靠近拾回。",
+    "en": "Crystals are your survival reserve: each unblocked hit spills up to 3. With an empty purse, the next hit drops your sword; another hit kills you. You cannot attack without the sword, but can return and pick it up."
+  },
+  "一般小怪會優先撿附近的龍晶，一次拿走一顆並撤回原本的地獄之門。危急時可丟晶換取逃跑時間；擊敗抱晶怪可取回它攜帶的龍晶。": {
+    "zh_CN": "普通小怪会优先捡附近的龙晶，一次拿走一颗并撤回原本的地狱之门。危急时可丢晶换取逃跑时间；击败抱晶怪可取回它携带的龙晶。",
+    "en": "Ordinary small monsters prefer a nearby crystal. Each takes one and retreats to its original hell gate. Drop crystals to buy escape time; defeat a carrier to recover its stolen crystal."
   }
 }
