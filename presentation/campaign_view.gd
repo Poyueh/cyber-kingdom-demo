@@ -2,6 +2,7 @@ extends "res://presentation/frontier_view.gd"
 const HitFeedback=preload("res://presentation/campaign_hit_feedback.gd")
 const Shrine=preload("res://presentation/spirit_shrine.gd")
 var hit_feedback:=HitFeedback.new()
+var _raider_motion: RefCounted=preload("res://presentation/raider_motion_view.gd").new()
 const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
 var _daylight: Daylight
@@ -57,6 +58,7 @@ func present(sim, player_x: float) -> void:
 		if effect.kind=="camp_ignition":_camp_ignition_age=2.4-effect.life
 	_reveal.observe(sim.frontier.regions+sim.mission.rifts,sim.workforce.elapsed)
 	hit_feedback.present(sim)
+	_raider_motion.present(sim)
 	_view_player_x=player_x
 	_context=sim.context(player_x) if focus_key.is_empty() else sim.context_for_key(player_x,focus_key)
 	if _context.key!=_slot_key or _context.paid!=_slot_paid:
@@ -521,13 +523,7 @@ func _raider(enemy: Dictionary) -> void:
 		return
 	if not enemy.fighter.is_alive():return
 	var hit:=hit_feedback.enemy_pose(enemy)
-	var clip: String="idle" if hit.active else "windup" if enemy.windup>0 else "run"
-	var frame: int=posmod(int(enemy.x/12),2) if clip=="run" else 0
-	var texture: Texture2D=EnemyFrames.get_frame_texture(clip,frame)
-	var at:=Vector2(enemy.x,430)
-	draw_set_transform(at+hit.offset,hit.rotation,hit.scale*Vector2(enemy.get("direction",-1.0),1))
-	preload("res://presentation/compact_people.gd").draw(self,texture,Rect2(Vector2.ZERO,texture.get_size()),Color(1.8,1.1,1.05).lerp(Color.WHITE,1-hit.flash),41,80)
-	draw_set_transform(Vector2.ZERO)
+	_raider_motion.draw(self,enemy,hit)
 	draw_rect(Rect2(enemy.x-22,380,44,4),Color("482a3a"))
 	draw_rect(Rect2(enemy.x-22,380,44.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,4),Color("df8491"))
 	if enemy.windup>0:_icon("sword",Vector2(enemy.x,368),20,Color("ffd087"))

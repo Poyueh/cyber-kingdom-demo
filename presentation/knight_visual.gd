@@ -1,16 +1,16 @@
 extends "res://presentation/fighter_visual.gd"
 ## New locomotion drawings are isolated from the editable combat animation resource.
 const MotionFrames=preload("res://data/knight_motion_frames.tres")
-@export var running_atlas: Texture2D=preload("res://art/characters/flight-run-v001/run-armed.png")
+@export var running_atlas: Texture2D=preload("res://art/characters/grounded-run-v001/run-armed.png")
 @export var texture_overrides: Dictionary = {}
 @export var moving_attack_atlas: Texture2D
 @export var combo_motion: Resource
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
 const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
-const STRIDE_FRAMES: int=8
-const STRIDE_COLUMNS: int=4
-const UnarmedRun=preload("res://art/characters/flight-run-v001/run-unarmed.png")
+const STRIDE_FRAMES: int=16
+const STRIDE_COLUMNS: int=8
+const UnarmedRun=preload("res://art/characters/grounded-run-v001/run-unarmed.png")
 const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
 var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
@@ -19,10 +19,10 @@ var breathing: bool=false
 var tired_walk: bool=false
 var exertion: float=0.0
 var _breath_weight: float=0.0
-const SprintArmed=preload("res://art/characters/flight-run-v001/sprint-armed.png")
-const SprintUnarmed=preload("res://art/characters/flight-run-v001/sprint-unarmed.png")
-const WalkArmed=preload("res://art/characters/planted-stride-v001/armed.png")
-const WalkUnarmed=preload("res://art/characters/planted-stride-v001/unarmed.png")
+const SprintArmed=preload("res://art/characters/grounded-run-v001/sprint-armed.png")
+const SprintUnarmed=preload("res://art/characters/grounded-run-v001/sprint-unarmed.png")
+const WalkArmed=preload("res://art/characters/grounded-run-v001/walk-armed.png")
+const WalkUnarmed=preload("res://art/characters/grounded-run-v001/walk-unarmed.png")
 var _breath: Node2D=preload("res://presentation/knight_breath_view.gd").new()
 var ceremony_age: float=-1.0
 var _fatigue_weight: float=0.0
@@ -36,9 +36,9 @@ var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
-@export_range(12,28,0.5) var walking_frame_rate: float=20.0
-@export_range(20,40,0.5) var running_frame_rate: float=28.0
-var _gait_rate: float=20.0
+@export_range(20,44,0.5) var walking_frame_rate: float=32.0
+@export_range(32,60,0.5) var running_frame_rate: float=48.0
+var _gait_rate: float=32.0
 var _moving_attack: Sprite2D
 var _moving_region:=AtlasTexture.new()
 var _combo_attack: Sprite2D
@@ -92,7 +92,7 @@ func _bind_motion() -> void:
 			if clip==&"run" and drawing is AtlasTexture and running_atlas!=null:
 				drawing=drawing.duplicate();drawing.atlas=running_atlas
 			sprite_frames.add_frame(clip,drawing,MotionFrames.get_frame_duration(clip,index))
-	_bind_stride(&"sprint",SprintArmed,8,4)
+	_bind_stride(&"sprint",SprintArmed,16,8)
 	_bind_stride(&"tired_walk",WalkArmed,16,8)
 
 func _bind_stride(clip: StringName, atlas: Texture2D, count: int, columns: int) -> void:
@@ -160,7 +160,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if striding and seconds>0 and is_finite(seconds):
 		var speed: float=absf(pose.get("horizontal_speed",190.0*float(pose.get("locomotion_rate",1.0))))
 		var desired: float=lerpf(walking_frame_rate,running_frame_rate,smoothstep(165,322,speed))
-		if tired_walk:desired=12.0
+		if tired_walk:desired=20.0
 		_gait_rate=lerpf(_gait_rate,desired,1.0-exp(-seconds*12))
 		_gait_time+=seconds*_gait_rate/12.0
 	elif not striding and not pose.get("dashing",false):
@@ -186,7 +186,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		var sprinting: bool=running and absf(pose.get("horizontal_speed",0.0))>240
 		var count: int=16 if slow else STRIDE_FRAMES
 		var drawing: int=int(fposmod(_gait_time*12,count)) if running else 8+int(fposmod(_motion_time*3,4))
-		var columns: int=8 if slow else 4
+		var columns: int=8 if running else 4
 		_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else UnarmedSheet
 		_unarmed_frame.region=Rect2((drawing%columns)*128,(drawing/columns)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
