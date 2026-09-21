@@ -3,6 +3,7 @@ const Icons=preload("res://presentation/ui_icons.gd")
 const Layout=preload("res://presentation/campaign_layout.gd")
 var panels: Dictionary={}
 var values: Dictionary={}
+var immersive: bool=false
 var health_ratio:=1.0
 var phase_ratio:=1.0
 var is_night:=false
@@ -20,6 +21,9 @@ func number(value: String, at: Vector2, color:=Color("e6e7d2"), size: int=15) ->
 	draw_string(_font,at,value,HORIZONTAL_ALIGNMENT_LEFT,-1,size,color)
 func _draw() -> void:
 	if panels.is_empty():panels=Layout.arrange(get_viewport_rect()).panels
+	if immersive:
+		if (dead or victory) and not is_paused:_draw_outcome()
+		return
 	var at: Vector2=panels.health.position
 	draw_style_box(_panel(),panels.health)
 	icon("heart",at+Vector2(20,19),24)
@@ -79,6 +83,8 @@ func _process(seconds: float) -> void:
 		outcome_age=minf(4,outcome_age+seconds)
 		queue_redraw()
 func _draw_outcome() -> void:
+	if immersive:
+		_draw_epilogue();return
 	var viewport:=get_viewport_rect()
 	var center: Vector2=panels.overlay.get_center()+Vector2(0,18)
 	var reveal:=smoothstep(0.15,0.95,outcome_age)
@@ -102,6 +108,27 @@ func _draw_outcome() -> void:
 	icon("survived",center+Vector2(49,63),25,ink)
 	number(str(values.get("survived",0)),center+Vector2(67,70),ink,22)
 	# Action controls stay at their existing safe-area positions above this panel.
+
+func _draw_epilogue() -> void:
+	var viewport: Rect2=get_viewport_rect()
+	var reveal: float=smoothstep(0.6,2.8,outcome_age)
+	draw_rect(viewport,Color(0.015,0.025,0.04,reveal*0.48))
+	var lines: Array[String]=[]
+	if victory:lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
+	elif values.get("defeat_reason","")=="core":lines.assign(["營火熄滅了。","人類的希望之火，再度逝去。"])
+	else:lines.assign(["無劍的騎士啊，","這一次，你未能守住任何事物。"])
+	var font: Font=preload("res://presentation/localized_font.gd").current()
+	for i in range(lines.size()):
+		var text: String=tr(lines[i])
+		var size: int=30 if i==0 else 23
+		var width: float=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
+		if width>viewport.size.x-48:size=int(size*(viewport.size.x-48)/width);width=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
+		var at: Vector2=Vector2(viewport.get_center().x-width*0.5,viewport.get_center().y-15+i*50)
+		draw_string(font,at,text,HORIZONTAL_ALIGNMENT_LEFT,-1,size,Color(0.9,0.87,0.76,reveal))
+	if outcome_age>2.8:
+		var text: String=tr("曾守護這片土地 %d 天")%int(values.get("survived",0))
+		var width: float=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
+		draw_string(font,Vector2(viewport.get_center().x-width/2,viewport.get_center().y+87),text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(0.64,0.72,0.73,reveal))
 
 func _draw_mission() -> void:
 	if not values.has("core_hp"):return

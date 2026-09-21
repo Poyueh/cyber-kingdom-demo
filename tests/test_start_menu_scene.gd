@@ -18,7 +18,7 @@ func run_scene() -> void:
  game.set_physics_process(false)
  var first: String=game.campaign_save_path
  check(first.begins_with(folder) and FileAccess.file_exists(first),"new game autosaves to an independent path")
- game.sim.interact(30);game.sim.interact(30)
+ game.sim.interact(30) # New journeys ignite freely by drawing the sword.
  check(game.save_manual_campaign(),"first journey records manual checkpoint")
  game.sim.pouch.spend()
  check(game.save_campaign(),"newer automatic progress is saved separately")
@@ -34,16 +34,16 @@ func run_scene() -> void:
  check(menu.rows.size()==2,"record picker shows automatic and manual choices")
  var automatic: int=0 if not menu.rows[0].manual else 1
  var manual: int=1-automatic
- check(menu.rows[automatic].crystals==9 and menu.rows[manual].crystals==10,"picker previews distinct automatic and manual records")
+ check(menu.rows[automatic].crystals==5 and menu.rows[manual].crystals==6,"picker previews distinct automatic and manual records")
  menu.select_record(manual);await frames(15)
  game=current_scene;game.set_physics_process(false)
- check(game.campaign_save_path!=first and game.sim.frontier.city_level==1 and game.sim.pouch.amount==10,"manual choice forks a playable journey at the checkpoint")
+ check(game.campaign_save_path!=first and game.sim.frontier.city_level==1 and game.sim.pouch.amount==6,"manual choice forks a playable journey at the checkpoint")
  check(FileAccess.get_file_as_string(first)==latest,"manual fork preserves newer automatic progress")
  game.return_to_title();await frames(5)
  menu=current_scene;use_catalog(menu,folder)
  menu.start_new_game();await frames(15)
  game=current_scene;game.set_physics_process(false)
- check(game.sim.frontier.city_level==0 and game.sim.pouch.amount==12,"another new game begins fresh")
+ check(game.sim.frontier.city_level==0 and game.sim.pouch.amount==6,"another new game begins fresh")
  check(FileAccess.get_file_as_string(first)==latest,"another new game keeps the first journey intact")
  game.return_to_title();await frames(5)
  menu=current_scene;use_catalog(menu,folder);menu.show_records()

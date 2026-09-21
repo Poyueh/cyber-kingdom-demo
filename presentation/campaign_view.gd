@@ -1,6 +1,24 @@
 extends "res://presentation/frontier_view.gd"
 const HitFeedback=preload("res://presentation/campaign_hit_feedback.gd")
+const Shrine=preload("res://presentation/spirit_shrine.gd")
 var hit_feedback:=HitFeedback.new()
+const Daylight=preload("res://presentation/daylight_view.gd")
+@export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
+var _daylight: Daylight
+var _camp_ignition_age: float=-1.0
+
+func _ready() -> void:
+	super._ready()
+	_daylight=Daylight.new()
+	_daylight.style=daylight_style
+	add_child(_daylight)
+
+func _draw_sky(bounds: Rect2) -> void:
+	if _daylight==null:
+		super._draw_sky(bounds)
+		return
+	_daylight.present(_sim.clock,art.woodland,bounds)
+
 var _reveal=preload("res://presentation/exploration_reveal.gd").new()
 var _mist=preload("res://presentation/exploration_mist.gd").new()
 const Details=preload("res://presentation/frontier_details.gd")
@@ -25,7 +43,7 @@ var _view_player_x := 0.0
 var investment_progress := 0.0
 const Icons=preload("res://presentation/ui_icons.gd")
 const SITE_ICONS={"shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
-const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"wall-1":preload("res://art/structures/fortifications-v001/wall-1.png"),"wall-2":preload("res://art/structures/fortifications-v001/wall-2.png"),"wall-3":preload("res://art/structures/fortifications-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
+const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"drill":preload("res://art/structures/immersive-v001/drill.png"),"wall-1":preload("res://art/structures/immersive-v001/wall-1.png"),"wall-2":preload("res://art/structures/immersive-v001/wall-2.png"),"wall-3":preload("res://art/structures/immersive-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
 
 func present(sim, player_x: float) -> void:
 	if not is_same(_sim,sim):
@@ -34,6 +52,9 @@ func present(sim, player_x: float) -> void:
 		_mist=preload("res://presentation/exploration_mist.gd").new()
 		_details=Details.layout(sim.map_seed,sim.frontier.regions)
 	_sim=sim
+	_camp_ignition_age=-1.0
+	for effect in sim.effects:
+		if effect.kind=="camp_ignition":_camp_ignition_age=2.4-effect.life
 	_reveal.observe(sim.frontier.regions+sim.mission.rifts,sim.workforce.elapsed)
 	hit_feedback.present(sim)
 	_view_player_x=player_x
@@ -57,18 +78,28 @@ func _work_marker(resource, at: Vector2) -> void:
 		draw_rect(Rect2(at+Vector2(-16,3),Vector2(32*clampf(1-resource.remaining_work/75.0,0,1),2)),Color("a8d5b3"))
 
 func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -> void:
+	if not _on_screen(at.x,320):return
 	tint.a*=_world_alpha
+	if tint.a<=0:return
+	if not _context.is_empty() and _context.enabled and (absf(_context.x-at.x)<3 or (name=="campfire" and _context.id in ["hall","core_charge"] and absf(at.x-_context.x-104)<3)):
+		tint=Color(tint.r*1.8,tint.g*1.9,tint.b*1.65,tint.a)
 	if name=="outpost":
 		var regions=_sim.frontier.regions.filter(func(r):return is_equal_approx(r.outpost_x,at.x))
 		if not regions.is_empty() and not regions[0].outpost_built:name="plot"
 	if name=="plot":
 		if absf(at.x-_view_player_x)<130:
 			for side in [-1,1]:
-				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b"))
-				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72"))
+				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b")*tint)
+				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72")*tint)
 		return
 	var texture: Texture2D=Details.harvest_texture(name,at.x,_sim.map_seed)
-	if texture==null:texture=art.props.get(name,EXTRA_ART.get(name))
+	if texture==null:texture=EXTRA_ART.get(name,art.props.get(name))
+	if _sim.life.enabled and name in ["workshop","armory"]:
+		for effect in _sim.effects:
+			if effect.kind=="camp_ignition":
+				var assembled: float=smoothstep(1.0,2.1,2.4-effect.life)
+				tint.a*=assembled
+				at.y+=(1-assembled)*24
 	Ambient.prop(self,texture,name,at,scale,tint,_sim.workforce.elapsed)
 	var emission: Texture2D=art.emission_masks.get(name)
 	if emission!=null:
@@ -77,15 +108,10 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 		draw_texture_rect(emission,Rect2(preload("res://presentation/grounded_art.gd").anchor(texture,at,scale)-Vector2(size.x*0.5,size.y),size),false,Color(1,1,1,pulse*tint.a))
 
 func _draw_atmosphere(_left: float) -> void:
+	preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
 	Details.draw_background(self,_details,_sim.frontier.regions)
-	if art.show_river:
-		var inverse := get_viewport().get_canvas_transform().affine_inverse()
-		var top_left := inverse*Vector2.ZERO
-		var bottom_right := inverse*get_viewport_rect().size
-		Scenery.river(self,art,_sim,Rect2(top_left,bottom_right-top_left))
+	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
-	if _sim.clock.is_night:
-		draw_rect(_background_rect(),Color(0.03,0.07,0.18,0.32))
 
 func _draw_power_grid() -> void:
 	# Decorative circuitry follows actual constructed sites and the paused game clock.
@@ -114,23 +140,39 @@ func _draw_structures() -> void:
 	var map = _sim.frontier
 	var hall: float = world.sites.hall
 	var core_tint:=Color.WHITE if _sim.mission.core_hp>0 else Color("566779")
+	if _camp_ignition_age>=0:core_tint.a*=smoothstep(0.82,1.35,_camp_ignition_age)
 	if map.city_level>0: _prop("hall-%d" % map.city_level,Vector2(hall,430),1.0,core_tint)
-	_prop("campfire",Vector2(hall+(104 if map.city_level>0 else 0),430),0.7 if map.city_level>0 else 1.0,core_tint)
+	if _camp_ignition_age>=0 and _camp_ignition_age<1.1:_prop("stone",Vector2(hall,430),0.45)
+	if _sim.mission.core_hp<=0:
+		_prop("stone",Vector2(hall+104,430),0.35,Color("4a5158"))
+	elif not _sim.life.enabled or map.city_level>0:
+		_prop("campfire",Vector2(hall+(104 if map.city_level>0 else 0),430),0.7 if map.city_level>0 else 1.0,core_tint)
+	else:
+		_prop("stone",Vector2(hall,430),0.45)
+		_icon("sword",Vector2(hall,398),35,Color("c7e1d7"))
 	if art.props.has("relay"):
 		_prop("relay",Vector2(hall-115,430),0.8)
 		if map.city_level>0: _prop("relay",Vector2(_sim.world.sites.workshop-100,430),0.8)
 	_text(tr("營火 · 王國由此開始") if map.city_level==0 else tr("聚落 %d/3 · 收貨點") % map.city_level,hall,282,Color("f3d299"),15)
 	_draw_mission()
 	_draw_recruitment_camps()
+	preload("res://presentation/module_visual.gd").relics(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
+	if _sim.life.enabled:
+		var shrine_x: float=_sim.spirit.shrine_x(hall)
+		if _on_screen(shrine_x,100):
+			Shrine.draw_on(self,Vector2(shrine_x,430),_sim.workforce.elapsed,_context.id=="spirit",not _sim.spirit.active(int(_sim.workforce.elapsed*_sim.spirit.TICKS_PER_SECOND)))
 	for site in world.sites:
 		var x: float=world.sites[site]
 		if not _sim.defenses.visible(site):continue
+		if not _sim.site_visible(site):continue
+		if _sim.life.enabled and not _sim._campaign_site(site).get("prerequisites",[]).is_empty() and not _sim.built.get(site,false):continue
 		if site=="hall" or not interactions_visible or absf(x-_view_player_x)>130: continue
 		if not _context.id.is_empty() and absf(_context.x-x)<1:continue
 		_icon("wall" if world.walls.has(site) else SITE_ICONS.get(site,"hand"),Vector2(x,276 if _sim.built.get(site,false) else 343),23)
 	for site in ["workshop","armory","farm_tools","hunt_tools","forge"]:
+		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
 		var asset: String = {"farm_tools":"workshop","hunt_tools":"armory"}.get(site,site)
 		if _sim.built.get(site,false):
@@ -141,6 +183,8 @@ func _draw_structures() -> void:
 			var kind: String = _sim.TOOL_KINDS[site]
 			for index in range(world.tools[kind]): _tool(at+Vector2(-20+index*20,-22),kind)
 		elif site=="armory":
+			if _sim.life.enabled:
+				for i in range(world.tools.blade):_tool(at+Vector2(-20+i*20,-22),"blade")
 			for tier in range(_sim.barracks_level):_icon("bow",at+Vector2(-22+tier*22,-90),16,Color("9cf5d8"))
 		elif site=="beacon" and world.barrier>0: _text(tr("防護 ×%d") % world.barrier,at.x,310,Color("8ce2dc"),13)
 	for id in world.walls:
@@ -149,20 +193,25 @@ func _draw_structures() -> void:
 		var defense: Dictionary=world.walls[id]
 		if defense.level>0:
 			_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color.WHITE if defense.hp>0 else Color(0.4,0.35,0.38))
-			draw_rect(Rect2(wall_x-28,316,56,4),Color("263940"))
-			draw_rect(Rect2(wall_x-28,316,56.0*defense.hp/_sim.world.wall_max_hp(defense.level),4),Color("8fdbbe"))
+			if not _sim.life.enabled:
+				draw_rect(Rect2(wall_x-28,316,56,4),Color("263940"))
+				draw_rect(Rect2(wall_x-28,316,56.0*defense.hp/_sim.world.wall_max_hp(defense.level),4),Color("8fdbbe"))
+
 		else: _prop("plot",Vector2(wall_x,430))
 		if defense.pending:
 			_icon("hammer",Vector2(wall_x,307),18)
 			draw_rect(Rect2(wall_x-28,326,56.0*minf(1.0,defense.progress/3.0),3),Color("f4d49d"))
 	for site in ["farm","drill","heal"]:
+		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
-		_prop("crops" if site=="farm" and map.farm_active else ("herbs" if site=="heal" else "plot"),at)
+		if site=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.id=="farm" and _context.enabled,1.0)
+		_prop("crops" if site=="farm" and map.farm_active else ("herbs" if site=="heal" else "drill" if site=="drill" and _sim.life.enabled else "plot"),at)
 		_text(_sim.NAMES[site],at.x,345,Color("d0d9b8"),13)
 		if site=="farm" and map.farm_active:
 			draw_rect(Rect2(at.x-40,355,80*map.farm_progress/map.farm_cycle,3),Color("d8dd9f"))
 
 	_draw_buildings()
+	preload("res://presentation/building_attendants.gd").draw_on(self,_sim,_view_player_x)
 
 func _draw_buildings() -> void:
 	for id in _sim.buildings:
@@ -170,6 +219,7 @@ func _draw_buildings() -> void:
 		if site.kind=="wall" or not _sim.building_visible(id):continue
 		_world_alpha=1.0 if site.region<0 else _region_reveal(site.region)
 		var at:=Vector2(site.x,430)
+		if site.kind=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.get("building_id","")==id and _context.enabled,_world_alpha)
 		if site.level>0:_prop("tower-%d"%site.level if site.kind=="tower" else "crops",at)
 		else:_prop("plot",at)
 		if absf(site.x-_view_player_x)<130 and _context.get("building_id","")!=id:
@@ -188,7 +238,7 @@ func _draw_recruitment_camps() -> void:
 		var x: float=_sim.ecology.camp_x(i)
 		var active: bool=_sim.ecology.habitat(i)
 		_prop("campfire" if active else "stone",Vector2(x,430),0.35,Color.WHITE if active else Color("5b6876"))
-		if absf(_view_player_x-x)>180:continue
+		if _sim.life.enabled or absf(_view_player_x-x)>180:continue
 		var count: int=_sim.ecology.waiting(i,_sim.world.people)
 		var full: bool=_sim.world.people.size()>=_sim.ecology.population_limit
 		draw_style_box(_bubble_style(),Rect2(x-46,326,92,34))
@@ -205,9 +255,10 @@ func _draw_mission() -> void:
 	var x: float=_sim.world.sites.hall
 	var y:=314.0 if _sim.frontier.city_level==0 else 267.0
 	var ratio: float=float(mission.core_hp)/mission.core_max_hp
-	_icon("camp",Vector2(x-42,y),18,Color("9edbd3"))
-	draw_rect(Rect2(x-28,y-3,56,5),Color("25373e"))
-	draw_rect(Rect2(x-28,y-3,56*ratio,5),Color("eea097") if ratio<0.35 else Color("9edbd3"))
+	if not _sim.life.enabled:
+		_icon("camp",Vector2(x-42,y),18,Color("9edbd3"))
+		draw_rect(Rect2(x-28,y-3,56,5),Color("25373e"))
+		draw_rect(Rect2(x-28,y-3,56*ratio,5),Color("eea097") if ratio<0.35 else Color("9edbd3"))
 	for index in range(mission.rifts.size()):
 		var rift: Dictionary=mission.rifts[index]
 		if rift.discovered:RiftVisual.draw_gate(self,rift,_sim.workforce.elapsed,mission.seal_seconds,_reveal.amount(_sim.frontier.regions.size()+index))
@@ -228,13 +279,21 @@ func _person(person: Dictionary, protected: bool) -> void:
 		if hit.active:pose.frame=0
 		var at:=Vector2(person.x,person.get("y",430))
 		draw_set_transform(at+hit.offset,hit.rotation,hit.scale*Vector2(person.get("direction",1.0),1))
-		_draw_person_texture(resident_atlas,Rect2(pose.frame*64,row*64,64,64),Color(1.8,1.15,1.1).lerp(Color.WHITE,1-hit.flash) if hit.active else Color.WHITE)
+		_draw_person_texture(resident_atlas,Rect2(pose.frame*64,row*64,64,64),Color(1.8,1.15,1.1).lerp(Color.WHITE,1-hit.flash) if hit.active else Color(1.8,1.9,1.65) if _context.get("person_index",-2)==index and _context.enabled else Color.WHITE)
 		draw_set_transform(Vector2.ZERO)
 		if protected and person.role!="wanderer": draw_arc(at+Vector2(0,-24),29,PI,TAU,16,Color("81ddda"),1)
 
 	var key: String={"wanderer":"person","citizen":"person","engineer":"hammer","farmer":"hoe","hunter":"bow","guard":"sword"}[person.role]
 	_icon(key,Vector2(person.x,person.get("y",430)-50),17,Color("b4e7df") if person.role!="wanderer" else Color("d4c3a7"))
 
+	if _sim.life.enabled and person.role=="guard":
+		var dir: float=person.get("direction",1.0)
+		var at: Vector2=Vector2(person.x,person.get("y",430)-28)
+		var thrust: float=maxf(0,person.cooldown-0.85)*36
+		draw_line(at+Vector2(dir*5,-5),at+Vector2(dir*(49+thrust),-5),Color("b8aa85"),2)
+		draw_colored_polygon(PackedVector2Array([at+Vector2(dir*(60+thrust),-5),at+Vector2(dir*(47+thrust),-9),at+Vector2(dir*(47+thrust),-1)]),Color("bfebdd"))
+		draw_rect(Rect2(at+Vector2(dir*9-6,-3),Vector2(12,21)),Color("53657a"))
+		draw_line(at+Vector2(dir*9,-1),at+Vector2(dir*9,17),Color("c5b17d"),2)
 	if hit.demoted:_draw_demotion(person,hit)
 	_world_alpha=1.0
 
@@ -266,6 +325,7 @@ func _draw_activity() -> void:
 	# Render rewards after actors so the collection journey stays legible.
 	super._draw_activity()
 	_draw_fallen()
+	preload("res://presentation/module_visual.gd").effects(self,_sim)
 	for pile in _sim.pouch.drops:
 		if not _on_screen(pile.x,CRYSTAL_MARGIN):continue
 		for index in range(mini(3,pile.amount)):
@@ -273,8 +333,27 @@ func _draw_activity() -> void:
 			visible.x+=index*11-(mini(3,pile.amount)-1)*5.5
 			visible.id+=index
 			Ambient.crystal(self,visible,crystal_radius*1.35,_sim.workforce.elapsed)
-		if pile.amount>1: _number(str(pile.amount),Vector2(pile.x+12,pile.y-29))
+		if pile.amount>1 and not _sim.life.enabled: _number(str(pile.amount),Vector2(pile.x+12,pile.y-29))
 	for effect in _sim.effects:
+		if not _on_screen(effect.x,500):continue
+		if effect.kind=="crystal_sink":
+			var progress: float=1-effect.life/0.85
+			_crystal(Vector2(effect.x+sin(progress*PI)*25,effect.y-24+progress*98),true,8)
+			if progress>0.65:draw_arc(Vector2(effect.x+20,484),8+progress*18,0,PI,14,Color(0.5,0.88,0.92,1-progress),2)
+			continue
+		if effect.kind in ["core_hit","camp_ignition"]:
+			var ink: Color=Color(1,0.3,0.12,clampf(effect.life,0,1)*0.4) if effect.kind=="core_hit" else Color(0.5,1,0.8,clampf(effect.life/2.4,0,1)*0.3)
+			if effect.kind=="core_hit":draw_circle(Vector2(effect.x,408),55+sin(effect.life*14)*8,ink)
+			if effect.kind=="camp_ignition":
+				var age: float=2.4-effect.life
+				var burst: float=maxf(0,age-0.82)
+				if burst>0:
+					var fade: float=1.0-smoothstep(0.25,1.25,burst)
+					draw_arc(Vector2(effect.x,425),18+burst*110,PI,TAU,24,Color(0.55,1,0.82,fade*0.6),2)
+					for i in range(12):
+						var spark:=Vector2(effect.x+sin(i*2.7)*burst*55,416-burst*(42+i*7)+burst*burst*35)
+						draw_rect(Rect2(spark.round(),Vector2(2,4)),Color(1,0.7,0.25,fade))
+			continue
 		if effect.kind in ["tower_arrow","tower_laser"]:
 			var origin:=Vector2(effect.x,430-[0,118,134,132][effect.tier])
 			var target:=Vector2(effect.to,403)
@@ -318,9 +397,13 @@ func _crystal(at: Vector2, filled: bool, radius: float = 8.0) -> void:
 func _draw_interaction() -> void:
 	if not interactions_visible:return
 	if _context.id.is_empty(): return
+	if _sim.life.enabled and not _context.enabled:
+		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id):
+			if _context.has("building_id") and _sim.buildings[_context.building_id].level==0:return
+		if _context.has("wall_id") and _sim.world.walls[_context.wall_id].level==0 and not _context.get("prerequisites",[]).is_empty():return
 	var requirements: Dictionary=_context.get("requirements",{})
 	var prerequisites: Array=_context.get("prerequisites",[])
-	var upgrade: Dictionary=_context.get("upgrade",{})
+	var upgrade: Dictionary={} if _sim.life.enabled else _context.get("upgrade",{})
 	var consequences: Array=_context.get("consequences",[])
 	var width:=maxf(96,_context.cost*23+48)
 	width=maxf(width,maxi(requirements.size(),prerequisites.size())*52+28)
@@ -340,17 +423,25 @@ func _draw_interaction() -> void:
 	if _context.id=="tower":y-=90
 	elif _context.has("wall_id"):y-=50
 	# Floating cost sockets stay in the world; no rectangular signboard.
-	var key: String=SITE_ICONS.get(_context.id,"hand")
+	var key: String="sword" if _sim.life.enabled and _context.id=="armory" else SITE_ICONS.get(_context.id,"hand")
+	if _context.id=="spirit":key="spirit"
 	if _context.id=="mark":
 		key={"tree":"tree","crystal":"pickaxe","berries":"food","stone":"stone","herbs":"herbs"}.get(_sim.frontier.nodes[_context.node_index].kind,"hammer")
 	_icon(key,Vector2(x,y),28)
 	if keyboard_hint:_number("E",Vector2(x+28,y+5))
+	if _sim.life.enabled and not _context.enabled and prerequisites.is_empty():
+		var cause: String="check"
+		if _context.cost>0 and _sim.pouch.amount==0:cause="crystal"
+		elif _context.id in ["workshop","hunt_tools","farm_tools","armory"]:cause="person"
+		elif _context.has("wall_id") and _sim.world.walls[_context.wall_id].pending:cause="hammer"
+		elif _context.has("building_id") and _sim.buildings[_context.building_id].pending:cause="hammer"
+		_icon(cause,Vector2(x-42,y),21,Color("ddb98e"))
 	if not _context.enabled and not (_context.id=="rift" and _sim.mission.rifts[_context.rift_index].ordered): _icon("lock",Vector2(x+width*0.5-15,y-3),17,Color("d4a994"))
 	for index in range(_context.cost):
 		var slot:=Vector2(x+(index-(_context.cost-1)*0.5)*23,y+34)
 		if index==_context.paid-1:
 			var age: float=clampf((_sim.workforce.elapsed-_slot_changed)/0.18,0,1)
-			slot.y-=14*(1-age)*(1-age)
+			slot.y+=60*(1-age)*(1-age) if _sim.life.enabled else -14*(1-age)*(1-age)
 		_crystal(slot,index<_context.paid)
 		if index==_context.paid and investment_progress>0:
 			draw_arc(slot,11,-PI*0.5,-PI*0.5+TAU*investment_progress,24,Color("e6f6b4"),2)
@@ -440,6 +531,7 @@ func _raider(enemy: Dictionary) -> void:
 	draw_rect(Rect2(enemy.x-22,380,44,4),Color("482a3a"))
 	draw_rect(Rect2(enemy.x-22,380,44.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,4),Color("df8491"))
 	if enemy.windup>0:_icon("sword",Vector2(enemy.x,368),20,Color("ffd087"))
+	if enemy.get("carried_crystals",0)>0:_icon("crystal",Vector2(enemy.x+enemy.direction*15,395+sin(_sim.workforce.elapsed*9)*2),19,Color("c1ffe4"))
 func _draw_fallen() -> void:
 	var texture: Texture2D=EnemyFrames.get_frame_texture("idle",0)
 	for body in hit_feedback.fallen:
@@ -457,4 +549,12 @@ func _draw_fallen() -> void:
 func _draw() -> void:
 	super._draw()
 	if _sim==null:return
+	if _sim.survival.enabled and _sim.survival.sword_on_ground and _on_screen(_sim.survival.sword_x):
+		var grace: float=_sim.survival.sword_grace
+		var progress: float=1.0-clampf(grace/1.2,0,1)
+		var at: Vector2=Vector2(_sim.survival.sword_x,411-sin(progress*PI)*52)
+		draw_set_transform(at,progress*TAU if grace>0 else -0.35)
+		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
+		draw_set_transform(Vector2.ZERO)
+	preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

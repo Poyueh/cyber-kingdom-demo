@@ -49,7 +49,7 @@ func _physics_process(seconds: float) -> void:
 		if sim.is_running():
 			if command.direction != 0 and sim.hero.dash_remaining <= 0:
 				sim.hero.facing = int(signf(command.direction))
-			if command.attack: sim.hero.start_attack()
+			if command.attack and _can_attack(): sim.hero.start_attack()
 			if command.dash: sim.hero.start_dash()
 			_apply_interaction(command,seconds)
 			knight.advance_motion(_travel_axis(command.direction,seconds),command.jump,seconds)
@@ -68,3 +68,5 @@ func _apply_interaction(command: Dictionary, _seconds: float) -> void:
 func _leave() -> void:
 	controls.release_all()
 	get_tree().change_scene_to_file("res://scenes/training.tscn")
+
+func _can_attack() -> bool:return true

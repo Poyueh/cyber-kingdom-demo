@@ -149,6 +149,10 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		if not drop.taken and absf(drop.x-hero_x)<28 and absf(hero_y-430)<45:
 			drop.taken = true
 			_collect_loot(drop)
+	loot=loot.filter(func(drop):return not drop.taken)
+	world.supplies=world.supplies.filter(func(supply):return not supply.taken)
+
+func _can_claim_tool(_kind: String) -> bool:return true
 
 func _advance_people(seconds: float) -> void:
 	for index in range(world.people.size()):
@@ -174,7 +178,7 @@ func _advance_people(seconds: float) -> void:
 					var nearest := INF
 					for kind in world.tools:
 						var rack: float = world.tool_location(kind)
-						if world.tools[kind]>0 and absf(rack-person.x)<nearest:
+						if _can_claim_tool(kind) and world.tools[kind]>0 and absf(rack-person.x)<nearest:
 							nearest = absf(rack-person.x)
 							target = rack
 							world.claim_tool(index,kind)
@@ -272,7 +276,7 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 			if absf(at-raider.x)<38:
 				match target.kind:
 					"hero":
-						if absf(hero_y-430)<42: hero.take_damage(raider.fighter.stats.damage)
+						if absf(hero_y-430)<42: hit_hero(raider.fighter.stats.damage,hero_x,hero_y)
 					"wall","core": _hit_structure(target,raider.get("wall_damage",20))
 					"person":
 						if absf(world.people[target.index].get("y",430)-430)<42: world.hit_person(target.index)
@@ -330,3 +334,6 @@ func _spawn_raider() -> Dictionary:
 
 func _collect_loot(_drop: Dictionary) -> void:
 	world.scrap += 2
+
+func hit_hero(damage: int, _x: float, _y: float) -> bool:
+	return hero.take_damage(damage)

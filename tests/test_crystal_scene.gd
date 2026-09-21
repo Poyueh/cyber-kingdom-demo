@@ -37,7 +37,7 @@ func click(button: Button) -> void:
 		Input.flush_buffered_events()
 		await frames(2)
 func run_test() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate()
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
 	root.add_child(scene)
 	await frames(5)
 	check(scene.hud.drop_button.text.is_empty() and scene.hud.drop_button.icon!=null,"drop control uses an icon")

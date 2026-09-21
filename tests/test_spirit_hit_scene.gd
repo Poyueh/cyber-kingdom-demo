@@ -1,6 +1,6 @@
 extends "res://tests/test_scene.gd"
 func run_scene() -> void:
- var scene=load("res://scenes/frontier.tscn").instantiate()
+ var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
  root.add_child(scene)
  await frames(8)
  scene.set_physics_process(false);scene.paused=false

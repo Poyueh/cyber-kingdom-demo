@@ -1,0 +1,13 @@
+.godot/
+builds/
+.export/
+export_credentials.cfg
+*.p12
+*.pfx
+*.mobileprovision
+.DS_Store
+test-results/
+
+# Keep Godot import settings and stable resource IDs in version control.
+!*.import
+!*.uid

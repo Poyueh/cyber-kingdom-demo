@@ -8,12 +8,26 @@ const MotionFrames=preload("res://data/knight_motion_frames.tres")
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
 const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
+const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
+var _unarmed: Sprite2D
+var _unarmed_frame: AtlasTexture=AtlasTexture.new()
+var unarmed: bool=false
+var breathing: bool=false
+var ceremony_age: float=-1.0
+var _fatigue_weight: float=0.0
+var _ceremony: Sprite2D=preload("res://presentation/knight_ceremony_view.gd").new()
+var damage_serial: int=0
+var _last_damage_serial: int=0
+var fatigue: Sprite2D=preload("res://presentation/knight_fatigue_view.gd").new()
 var mounted:=false
 var _mount: Sprite2D
 var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
+@export_range(6,16,0.5) var walking_frame_rate: float=10.0
+@export_range(12,24,0.5) var running_frame_rate: float=16.0
+var _gait_rate: float=10.0
 var _moving_attack: Sprite2D
 var _moving_region:=AtlasTexture.new()
 var _combo_attack: Sprite2D
@@ -22,6 +36,11 @@ var _motion_time:=0.0
 var _was_grounded:=true
 var _landing:=0.0
 func _init() -> void:
+	add_child(fatigue)
+	add_child(_ceremony)
+	_unarmed=Sprite2D.new()
+	_unarmed.visible=false
+	add_child(_unarmed)
 	_mount=Sprite2D.new()
 	_mount.name="MountedKnight"
 	_mount.visible=false
@@ -68,32 +87,75 @@ func reset_pose() -> void:
 	super.reset_pose()
 	_gait_time=0
 	self_modulate=Color.WHITE
-	_moving_attack.visible=false
-	_combo_attack.visible=false
+	_hide_alternate_bodies()
+	fatigue.reset()
+	_fatigue_weight=0
+	ceremony_age=-1
+	_ceremony.visible=false
 	_motion_time=0
 	_landing=0
 	_was_grounded=true
 	rotation=0
 	scale=Vector2.ONE
 func present(pose: Dictionary, seconds: float) -> void:
+	_present_body(pose,seconds)
+	var resting: bool=breathing and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
+	var safe_pose: bool=pose.alive and not hurt_active and not pose.get("dashing",false)
+	var target: float=1.0 if resting and safe_pose else 0.0
+	_fatigue_weight=move_toward(_fatigue_weight,target,maxf(0,seconds)/0.38)
+	if not safe_pose:_fatigue_weight=0
+	var ceremony: bool=ceremony_age>=0 and ceremony_age<2.4 and safe_pose and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
+	if ceremony:
+		_fatigue_weight=0
+		var blend: float=smoothstep(0,0.13,ceremony_age)*(1.0-smoothstep(2.12,2.4,ceremony_age))
+		_dim_body(1.0-blend)
+		_ceremony.present(ceremony_age,int(pose.facing))
+		_ceremony.modulate.a=blend
+	elif _fatigue_weight>0:
+		var weight: float=smoothstep(0,1,_fatigue_weight)
+		_dim_body(1.0-weight)
+		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
+		fatigue.modulate.a=weight
+	else:fatigue.reset()
+
+func _dim_body(alpha: float) -> void:
+	self_modulate.a*=alpha
+	for body in [_unarmed,_mount,_moving_attack,_combo_attack]:body.modulate.a=alpha
+
+func _present_body(pose: Dictionary, seconds: float) -> void:
 	var striding: bool=pose.get("moving",false) and pose.get("grounded",true) and not pose.get("dashing",false)
 	if striding and seconds>0 and is_finite(seconds):
-		_gait_time+=seconds*float(pose.get("locomotion_rate",1.0))
+		var speed: float=absf(pose.get("horizontal_speed",190.0*float(pose.get("locomotion_rate",1.0))))
+		var desired: float=lerpf(walking_frame_rate,running_frame_rate,smoothstep(120,312,speed))
+		_gait_rate=lerpf(_gait_rate,desired,1.0-exp(-seconds*12))
+		_gait_time+=seconds*_gait_rate/12.0
 	elif not striding and not pose.get("dashing",false):
-		_gait_time=0
+		_gait_rate=walking_frame_rate
+	if damage_serial>_last_damage_serial:_reaction.trigger(-float(pose.facing))
+	_last_damage_serial=damage_serial
 	super.present(pose,seconds)
 	if equipment_material!=null:equipment_material.set_shader_parameter("facing",-1.0 if flip_h else 1.0)
 	self_modulate=Color.WHITE
-	_moving_attack.visible=false
-	_combo_attack.visible=false
+	_hide_alternate_bodies()
 	_moving_attack.offset=Vector2.ZERO
 	if mounted and pose.alive:
 		_present_mount(pose,seconds)
 		return
 	_mount.visible=false
+	_unarmed.visible=false
+	if unarmed:
+		_motion_time+=maxf(0,seconds)
+		if not hurt_active and pose.alive:
+			rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
+		var drawing: int=int(fposmod(_gait_time*12,8)) if striding and pose.alive and not hurt_active else 8+int(fposmod(_motion_time*3,4))
+		_unarmed_frame.atlas=UnarmedSheet
+		_unarmed_frame.region=Rect2((drawing%4)*128,(drawing/4)*96,128,96)
+		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
+		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
+		return
 	if hurt_active or not pose.alive: return
 	var gait:=int(fposmod(_gait_time*sprite_frames.get_animation_speed(&"run"),sprite_frames.get_frame_count(&"run")))
-	if animation==&"run": frame=gait
+	if animation==&"run": frame=_action_frame(&"run",fposmod(_gait_time*12.0/8.0,1.0))
 	if combo_motion==null and animation==&"attack" and int(pose.get("combo_step",0))==2:
 		# Reverse time, not just the index: respect authored frame weights.
 		frame=_action_frame(&"attack",1.0-clampf(float(pose.attack_progress),0.0,1.0))
@@ -113,7 +175,7 @@ func present(pose: Dictionary, seconds: float) -> void:
 	elif animation==&"idle":
 		offset=Vector2(0,sin(_motion_time*2.8)*0.7)
 	elif animation==&"run":
-		offset=Vector2(0,-absf(sin(_motion_time*TAU*3))*0.7)
+		offset=Vector2(0,-absf(sin(_gait_time*TAU*1.5))*0.5)
 	elif animation==&"attack":
 		offset=Vector2.ZERO
 	if _landing>0 and grounded:
@@ -158,13 +220,18 @@ func set_equipment(weapon: int, armor: int) -> void:
 		material=equipment_material
 		_combo_attack.material=equipment_material
 		_moving_attack.material=equipment_material
+		fatigue.material=equipment_material
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
 func set_mounted(value: bool) -> void:
+	# Equipment is state; only present/reset own which body is drawn.
 	mounted=value
-	_mount.visible=value
-	if not value:self_modulate=Color.WHITE
+
+func _hide_alternate_bodies() -> void:
+	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue, _ceremony]:
+		body.visible=false
+		body.modulate.a=1.0
 
 func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if seconds>0:_motion_time+=seconds

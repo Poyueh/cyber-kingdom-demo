@@ -35,7 +35,7 @@ func test_legacy_save_migrates_with_current_action_costs(t) -> void:
 	var old=codec.capture(sim,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
 	old.session.erase("barracks_level")
 	for field in ["buildings","build_seconds","tower_damage","tower_range"]:old.session.erase(field)
-	old.version=1;old.hero.stats.erase("attack_cost");old.hero.stats.erase("jump_cost")
+	old.erase("modules");old.erase("spirit");old.erase("survival");old.erase("travel");old.version=1;old.hero.stats.erase("attack_cost");old.hero.stats.erase("jump_cost")
 	for key in ["dragon_summoned","dragon_defeated","dragon_day","dragon_rules"]:old.mission.erase(key)
 	var copy=old.duplicate(true)
 	var restored=codec.restore(old)

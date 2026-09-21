@@ -1,7 +1,7 @@
 extends "res://tests/test_crystal_scene.gd"
 ## Reuses the real input helpers; this suite exercises held investment gestures.
 func run_test() -> void:
-	var scene=load("res://scenes/frontier.tscn").instantiate()
+	var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
 	root.add_child(scene)
 	await frames(6)
 	scene.knight.position.x=30
@@ -10,7 +10,7 @@ func run_test() -> void:
 	await frames(8)
 	check(scene.sim.context(30).paid==1,"E immediately fills the first campfire slot")
 	check(scene.view.investment_progress>0 and scene.view.focus_key=="hall","held E displays progress on its locked target")
-	await frames(36)
+	await frames(ceili(scene.tuning.investment_hold_delay*60)+12)
 	check(scene.sim.frontier.city_level==1,"holding E finishes the camp without repeated tapping")
 	await frames(50)
 	check(scene.sim.pouch.amount==10,"keeping E held does not start another project")
@@ -66,6 +66,15 @@ func run_test() -> void:
 	await frames(3)
 	key(KEY_E,false)
 	check(scene.sim.world.wall.pending,"pending wall order stays intact after another press")
+	scene.restart()
+	scene.knight.position.x=30
+	await frames(3)
+	var quick_before: int=scene.sim.pouch.amount
+	key(KEY_E,true);key(KEY_E,false)
+	await frames(3)
+	check(scene.sim.pouch.amount==quick_before-1,"quick E tap is retained until physics even when already released")
+	await frames(3)
+	check(scene.sim.pouch.amount==quick_before-1,"retained short tap is consumed only once")
 	scene.queue_free()
 	await process_frame
 	print("Investment scene assertions: %d; failures: %d" % [assertions,failures])

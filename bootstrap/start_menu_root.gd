@@ -14,6 +14,13 @@ func _ready() -> void:
 	view.new_game_requested.connect(start_new_game)
 	view.records_requested.connect(show_records)
 	view.record_selected.connect(select_record)
+	if not get_tree().has_meta("campaign_prologue_seen"):
+		get_tree().set_meta("campaign_prologue_seen",true)
+		view.hide()
+		var prologue=preload("res://presentation/campaign_prologue.gd").new()
+		prologue.stage=preload("res://bootstrap/prologue_stage.gd").new()
+		add_child(prologue)
+		prologue.completed.connect(func():view.show())
 
 func show_records() -> void:
 	rows.clear()

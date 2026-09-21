@@ -1,6 +1,7 @@
 extends Node2D
 signal offering_started
 signal offering_ended
+signal special_requested
 var state=preload("res://presentation/drag_state.gd").new()
 var enabled:=false
 var safe:=Rect2()
@@ -20,6 +21,8 @@ func _unhandled_input(event: InputEvent) -> void:
    state.finish(event.index)
  elif event is InputEventScreenDrag:
   if state.drag(event.index,event.position):offering_started.emit()
+  if state.consume_special():
+   offering_ended.emit();special_requested.emit()
  queue_redraw()
 func _draw() -> void:
  if not enabled:return

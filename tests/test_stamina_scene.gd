@@ -1,6 +1,6 @@
 extends "res://tests/test_scene.gd"
 func run_scene() -> void:
-	var game=load("res://scenes/frontier.tscn").instantiate()
+	var game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false;game.tuning.initial_crystals=12
 	root.add_child(game);await frames(12)
 	game.sim.hero.stats.stamina_regen=0
 	game.sim.hero.stamina=0

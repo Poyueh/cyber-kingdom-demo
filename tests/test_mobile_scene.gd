@@ -8,7 +8,7 @@ func drag(index: int, at: Vector2):
 func center(button) -> Vector2:
  return button.position+(button.size if button is Control else button.texture_normal.get_size())*0.5
 func run_scene() -> void:
- var scene=load("res://scenes/frontier.tscn").instantiate();root.add_child(scene)
+ var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12;root.add_child(scene)
  await frames(8)
  check(scene.knight.position.x<scene.sim.world.sites.hall-800,"new journey begins in wilderness away from campfire")
  scene.set_physics_process(false);scene.knight.position.x=30;scene.paused=false

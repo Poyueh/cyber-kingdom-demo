@@ -49,6 +49,8 @@ func run_test() -> void:
 	await click(training.hud.get_node("Refuge"))
 	await frames(12)
 	var scene = current_scene
+	scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12
+	scene.restart() # Continue this historical integration fixture with its original rules.
 	check(scene.scene_file_path == "res://scenes/frontier.tscn","training entry opens the new playable frontier")
 	check(scene.knight.is_on_floor(),"frontier has a grounded playable knight")
 	check(not scene.hud.get_node("Top").visible and not scene.hud.get_node("Keys").visible,"text panels leave the playable view clear")

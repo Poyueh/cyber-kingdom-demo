@@ -113,9 +113,10 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if not in_range(data.body.x,left,right) or not in_range(data.body.y,-1000,500):return false
 	if not in_range(data.body.vx,-2000,2000) or not in_range(data.body.vy,-2000,2000):return false
 	var optional={"y":0.0,"moving":false,"direction":0.0,"sheltering":false,"work_state":"","walk_distance":0.0,
-		"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
+		"crystals":0,"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
 	for person in people:
 		if not shape(person,{"x":0.0,"role":"","hurt":0.0,"cooldown":0.0,"region":0},optional):return false
+		if not in_range(person.get("crystals",0),0,12):return false
 		if person.role not in ROLES or person.hurt<0 or person.cooldown<0:return false
 		if not index_valid(person.region,base.frontier.regions.size()):return false
 		if person.has("defense_post") and person.defense_post not in ["wall","wall_left"]:return false
@@ -186,8 +187,13 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		var without_target=enemy.state.duplicate(true)
 		without_target.target={}
 		if not shape(without_target,{"x":0.0,"windup":0.0,"cooldown":0.0,"target":{}},
-			{"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":""}):return false
+			{"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
 		var state: Dictionary=enemy.state
+		if not state.get("carried_crystals",0) is int or not in_range(state.get("carried_crystals",0),0,1):return false
+		if state.get("carried_crystals",0)>0:
+			if state.get("kind","") in ["dragon","warden"] or state.get("side") not in [-1,1]:return false
+			var portal: float=data.mission.rifts[0 if state.side==-1 else 1].x
+			if not number(state.get("retreat_x")) or state.retreat_x!=portal:return false
 		if state.windup<0 or state.cooldown<0 or not state.target is Dictionary:return false
 		if state.target.is_empty():
 			if state.windup>0:return false

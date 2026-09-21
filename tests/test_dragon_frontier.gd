@@ -66,7 +66,7 @@ func test_v3_completed_run_remains_completed_and_active_run_gets_boss(t):
   var packet=codec.capture(sim,{"seed":7},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
   packet.session.erase("barracks_level")
   for field in ["buildings","build_seconds","tower_damage","tower_range"]:packet.session.erase(field)
-  packet.version=3
+  packet.erase("modules");packet.erase("spirit");packet.erase("survival");packet.erase("travel");packet.version=3
   for field in ["dragon_summoned","dragon_defeated","dragon_day","dragon_rules"]:packet.mission.erase(field)
   var original=packet.duplicate(true)
   var restored=codec.restore(packet)

@@ -5,7 +5,7 @@ static func screen_to_canvas(viewport: Rect2, to_screen: Transform2D, safe_pixel
 	var result: Rect2=(to_screen.affine_inverse()*safe_pixels).intersection(viewport)
 	return result if result.has_area() else viewport
 
-static func arrange(safe: Rect2) -> Dictionary:
+static func arrange(safe: Rect2, corner_menu: bool=false) -> Dictionary:
 	var width:=safe.size.x
 	var bottom:=safe.size.y-80
 	var buttons: Dictionary={}
@@ -14,11 +14,11 @@ static func arrange(safe: Rect2) -> Dictionary:
 	for i in range(4):
 		buttons[["attack","jump","dash","interact"][i]]=Rect2(width-80-i*74,bottom,64,64)
 	for i in range(3):
-		buttons[["pause","fullscreen","save"][i]]=Rect2(width-80-i*74,14,64,64)
+		buttons[["pause","fullscreen","save"][i]]=Rect2(16+i*74 if corner_menu else width-80-i*74,14,64,64)
 	var wide:=width>=832
 	var mission_y:=86.0 if wide else 130.0
 	for i in range(4):
-		buttons[["refuge","restart","new_map","audio"][i]]=Rect2(width-80-i*74,mission_y+48,64,64)
+		buttons[["refuge","restart","new_map","audio"][i]]=Rect2(398,90+i*74,64,64) if corner_menu else Rect2(width-80-i*74,mission_y+48,64,64)
 	var panels: Dictionary={"health":Rect2(16,14,212,38),"crystal":Rect2(236,14,78,38)}
 	for i in range(6):
 		panels[["wood","food","stone","herbs","scrap","damage"][i]]=Rect2(16+i*70,86,62 if i<5 else 72,38)

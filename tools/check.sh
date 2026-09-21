@@ -38,10 +38,12 @@ run_check expansion --script res://tests/test_expansion_scene.gd
 run_check fortifications --script res://tests/test_fortification_scene.gd
 run_check stamina --script res://tests/test_stamina_scene.gd
 run_check languages --script res://tests/test_language_scene.gd
+run_check prologue --script res://tests/test_prologue_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check campaign_save --script res://tests/test_campaign_save_scene.gd
 run_check mobile --script res://tests/test_mobile_scene.gd
+run_check modules --script res://tests/test_modules_scene.gd
 run_check mount --script res://tests/test_mount_scene.gd
 run_check feedback --script res://tests/test_feedback_scene.gd
 run_check spirit_hit --script res://tests/test_spirit_hit_scene.gd
@@ -53,5 +55,7 @@ run_check settlement --script res://tests/test_settlement_scene.gd
 run_check frontier --script res://tests/test_frontier_scene.gd
 run_check crystal --script res://tests/test_crystal_scene.gd
 run_check investment --script res://tests/test_investment_scene.gd
+run_check immersive --script res://tests/test_immersive_scene.gd
+run_check crystal_survival --script res://tests/test_crystal_survival_scene.gd
 run_check scene --quit-after 120
 echo 'PASS: architecture, import, behavior, and main scene smoke checks.'

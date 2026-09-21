@@ -1,0 +1,37 @@
+{
+  "version": "v0.0.6",
+  "release": "https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.6",
+  "tag_commit": "a967e0cbd019d4b0bf694a8222c8a6cf98296e3c",
+  "source_tree": "7e7728fe99baf10b371ea649272bbb08c711f045",
+  "release_run": 35313731415,
+  "pages_run": 35313736833,
+  "deployment": "success",
+  "site": "https://poyueh.github.io/cyber-kingdom/",
+  "site_file_sha256": {
+    "FONT-LICENSE.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+    "README.txt": "f771fa10e9856c371fa1a376664ceac1c110099771452685a90e719e37cf4465",
+    "guide-reader.css": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+    "guide-reader.js": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+    "guide.html": "d433836e223a77e2b231d4af1a1872437988c6985c6ceb6cc0e3138db3b60eae",
+    "index.apple-touch-icon.png": "e897c283312c594efcc72737fd3652971a914651b0c1980b61998155d1e16afb",
+    "index.audio.position.worklet.js": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+    "index.audio.worklet.js": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+    "index.html": "54e32badc4d07252f7c39688d7f9943988121ef66eeb9af1ab21d28429db3e81",
+    "index.icon.png": "156c0c98a2f251765922f2835f8c386239914f05f7e57b25f49c77727c292618",
+    "index.js": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+    "index.pck": "d041749ed00be040d564380e92a3c37664b89eb4a55e07f7a75b27cb67e647c2",
+    "index.png": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+    "index.wasm": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+  },
+  "site_matches_local_build": true,
+  "mismatched_files": [],
+  "archive_sha256": "af00543fabee3403176da2ac78504ab20b190a33934db98a3cd59d2d32b772f1",
+  "browser": {
+    "start_menu": "passed",
+    "new_journey": "passed",
+    "camera_scroll_after_culling": "new scenery entered from the screen edge with no popping or gaps",
+    "pause_autosave": "passed",
+    "reload_and_resume": "journey listed and restored with 12/12 crystals",
+    "console_warnings_errors": []
+  }
+}

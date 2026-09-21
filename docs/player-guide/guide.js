@@ -14,13 +14,14 @@
   if (matchMedia('(pointer: coarse)').matches || innerWidth < 760) setMode('mobile');
 
   const projects = {
-    camp: {title:t('建立營地'), cost:2, done:t('營火已成為營地。接著招攬居民、準備器具。')},
-    tools: {title:t('升級兵營'), cost:3, done:t('兵營升級完成，全體弓兵火力提高。')},
+    camp: {title:t('升級聚落'), cost:4, done:t('營火已成為營地。接著招攬居民、準備器具。')},
+    tools: {title:t('弓箭器具'), cost:2, done:t('弓已放上器具架，等待居民領取。')},
     rift: {title:t('委託裂隙封印'), cost:4, done:t('委託完成。接著護送工匠，清除附近的敵人。')}
   };
   const projectButtons = [...document.querySelectorAll('[data-project]')];
   const paid = {camp:0, tools:0, rift:0};
   let active = 'camp', wallet = 12;
+  const refundTimers = {};
   const invest = document.getElementById('invest');
   function renderInvestment() {
     const project = projects[active];
@@ -48,9 +49,16 @@
   }));
   invest.addEventListener('click', () => {
     if (wallet <= 0 || paid[active] >= projects[active].cost) return;
-    wallet--; paid[active]++; renderInvestment();
+    wallet--; paid[active]++;
+    const key = active;
+    clearTimeout(refundTimers[key]);
+    if (paid[key] < projects[key].cost) refundTimers[key] = setTimeout(() => {
+      wallet += paid[key]; paid[key] = 0; renderInvestment();
+    }, 1000);
+    renderInvestment();
   });
   document.getElementById('reset-demo').addEventListener('click', () => {
+    Object.values(refundTimers).forEach(clearTimeout);
     wallet = 12; Object.keys(paid).forEach(key => paid[key] = 0); renderInvestment();
   });
   renderInvestment();
