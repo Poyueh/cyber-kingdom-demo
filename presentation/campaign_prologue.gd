@@ -7,6 +7,9 @@ var _finished: bool=false
 var _viewport: SubViewport
 var _caption: Label
 var _skip: Button
+@export_range(0.3,3.0,0.1) var opening_fade_seconds: float=1.6
+var _fade: ColorRect
+var _stage_started: bool=false
 func _ready() -> void:
  set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  mouse_filter=Control.MOUSE_FILTER_STOP
@@ -18,7 +21,10 @@ func _ready() -> void:
  _viewport.gui_disable_input=true;screen.add_child(_viewport)
  if stage!=null:
   stage.completed.connect(finish);_viewport.add_child(stage)
- _caption=Label.new();add_child(_caption)
+  stage.set_physics_process(false)
+ _fade=ColorRect.new();_fade.color=Color.BLACK;_fade.mouse_filter=Control.MOUSE_FILTER_IGNORE
+ add_child(_fade);_fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+ _caption=Label.new();_caption.modulate.a=0;add_child(_caption)
  _caption.add_theme_font_override("font",preload("res://presentation/localized_font.gd").current())
  _caption.add_theme_font_size_override("font_size",24)
  _caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
@@ -34,6 +40,11 @@ func _process(seconds: float) -> void:
  if _finished:return
  _elapsed+=seconds
  if stage==null and _elapsed>0.1:finish();return
+ if not _stage_started:
+  _fade.color.a=1.0-smoothstep(0.0,opening_fade_seconds,_elapsed)
+  _caption.modulate.a=0.0
+  if _elapsed<opening_fade_seconds:return
+  _stage_started=true;_fade.hide();stage.set_physics_process(true)
  var time: float=stage.elapsed
  var text: String="最後一縷火光。" if time<10 else "守住它。" if time<18 else "直到黎明。"
  _caption.text=tr(text)

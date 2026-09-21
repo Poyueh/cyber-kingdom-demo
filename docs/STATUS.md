@@ -1130,3 +1130,13 @@ Gitflow：功能分支 `feature/immersive-kingdom-loop`，驗證後整合本機 
 ## 2026-09-21：H5 v0.0.7 公開驗收完成
 
 Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.7 已公開，tag 指向 a71eb2953f29c68c133770f80112c3c06fb77f03。main／develop／release/0.0.7 與標籤已推送，Gitflow 發行已回合 develop。兩個下載附件 SHA-256 與 GitHub digest 一致。Pages 觸發 35618373307、部署 35618389006 成功；https://poyueh.github.io/cyber-kingdom/ 的 14 個檔案逐一 HTTP 200 且雜湊與實測發行包相同，WASM MIME 正確。公開瀏覽器標題、新旅程、森林／倒影／騎士與鬼魂提示實際載入，警告與錯誤清單為空。完整證據見 docs/reports/release-0.0.7/verification.json。Windows／macOS 保持 v0.0.1；尚未完成 iPhone 長時真機驗收。原本 Godot 設定內容逐檔保持並納入發行，原修改 patch 與 Git stash 留存備份。
+
+
+## 2026-09-21：兩段拖曳箭頭、跑姿與前導淡入
+
+- 拖曳時在手指上方顯示兩段箭頭，第一段青色，第二段加亮金色；方向隨左右拖曳，力竭時金色箭頭暗下，鬆手／暫停清除。不恢復大型搖桿。
+- 第二段進入門檻 84、離開門檻 72，避免邊界微晃反覆切速；TDD 先重現左右兩個失敗，再通過。移動、支付、雙指部件手勢仍使用原輸入流程；不改體力規則與存檔。
+- 新生成持劍／無劍跑步八格，校正頭部位置與像素切格，步行／快跑分別採 12／18 fps 並平滑切換；待機、攻擊和拔劍保留原圖，騎乘節奏同步步態時鐘。原始生成圖與可重現後製保留，來源資料不進匯入與匯出。
+- 前導先以 1.6 秒淡入靜止場景，不顯示字幕也不推進演出；之後才播放原有內容，總長約 26.6 秒，仍可隨時跳過。淡入時間可調，三語字幕沿用現有文字。
+- 原生實際送出觸控，檢查單／雙箭頭、左向、力竭、邊界微晃與暫停清除；擷取前導黑場／半亮／完全顯現／字幕，以及無劍／持劍跑步序列，未出現 SCRIPT ERROR 或資源釋放警告。完整 tools/check.sh 通過 2,110 項斷言，額外實際觸控檢查 3 項通過。
+- 本機 H5 更新至 builds/immersive-preview/web，http://127.0.0.1:8798/。此單元不發布遠端，線上仍為 v0.0.7；iPhone 真機手感待玩家回饋。教學 docs/lessons/67-drag-tiers-and-opening-fade.md。
