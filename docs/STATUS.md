@@ -1193,4 +1193,13 @@ H5 補充驗收：新版前導結束後正常回到標題，瀏覽器警告／�
 
 ## 2026-09-22：H5 v0.0.8 公開驗收完成
 
-Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，tag 指向 1869c6238cd95acb7b9cc9d92e61ff2d410a02e0。main／develop／release/0.0.8 與標籤已推送，Gitflow 發行已回合 develop。兩個附件 digest 與本機 SHA-256 一致；Pages 部署 35676475925 成功，公開站 14 個檔案 HTTP 200、雜湊與發行包相同，WASM MIME 正確。瀏覽器實際進入新旅程，顯示新版雙按衝刺提示，警告／錯誤清單為空。證據見 docs/reports/release-0.0.8/verification.json。Windows／Mac 包未更新。
+Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，tag 指向 1869c6238cd95acb7b9cc9d92e61ff2d410a02e0。main／develop／release/0.0.8 與標籤已推送，Gitflow 發行已回合 develop。兩個附件 digest 與本機 SHA-256 一致；Pages 部署 35676475925 成功，公開站 14 個檔案 HTTP 200、雜湊與發行包相同，WASM MIME 正確。瀏覽器實際進入新旅程，顯示新版雙按衝刺提示，當時取得的瀏覽器警告／錯誤清單為空；後續確認漏驗場景亮度，不能據此視為視覺驗收通過（修正見下節）。證據見 docs/reports/release-0.0.8/verification.json。Windows／Mac 包未更新。
+
+## 2026-09-22：修復匯出黑畫面與待機／移動腿甲不一致
+
+- 重現 v0.0.8 公開 H5 只剩騎士附近燈光，遠處場景近乎全黑。直接載入同一發布 PCK 的原生診斷顯示 ambience 與 daylight_style 為空值，相關存取報錯；本機專案正常，因此不是單純夜色過暗。兩個 Inspector 屬性原用脚本 `.new()` 建預設 Resource，改為明確 `data/world_ambience.tres`／`data/daylight_style.tres` 匯出依賴，保留原有色彩參數。
+- 新增 `tools/test_exported_ambience.gd`，舊發布包先確認失敗，再以修正包確認通過；`tools/build_web.py` 現在每次從真正的 PCK 檢查場景設定與日夜照明。release 瀏覽器沒有捕捉到錯誤，不等於設定與視覺正確。
+- 待機原用銀色腿甲，移動及空手待機卻用金色來源。現在從既有銀甲待機圖取出大腿甲、脛甲與靴子，離線統一產出持劍／空手待機、跑步、衝刺和慢走。待機站直、保留呼吸與披風；持劍待機沿用場景原有替圖入口、四格切片與可編輯播放速度，避免覆蓋使用者時序設定。
+- 完整 `bash tools/check.sh` 共 2,167 項斷言通過，無 SCRIPT ERROR／ERROR；美術切格、覆寫與原有動畫時序回歸通過。另有正式匯出包光照檢查通過。原生實際渲染清晨／正午／夜晚及持劍／空手停走姿態，H5 新旅程恢復完整天空、森林、地面及水面倒影。
+- 乾淨提交交付包：`builds/lighting-armor-20260922`；本機試玩 `http://localhost:8801/`。這次修正尚未推送或重新發布，線上仍為 v0.0.8。手機真機仍需回饋。
+- 教學：`docs/lessons/72-exported-lighting-and-shared-armor.md`。下一步以最終 H5 停走手感及日夜可讀性回饋決定微調。
