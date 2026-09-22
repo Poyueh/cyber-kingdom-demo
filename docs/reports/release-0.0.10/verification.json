@@ -28,7 +28,11 @@
     }
   },
   "ios": {
-    "status": "not exported or signed",
-    "reason": "requires the owner's Xcode Team ID and device verification"
+    "status": "Xcode project exported; not signed or installed",
+    "bundle_id": "com.jenpoyueh.cyberkingdom.demo",
+    "team_id_used_for_export": "N4VD538532",
+    "xcode_asset": "Cyber-Kingdom-iOS-v0.0.10-Xcode.zip",
+    "xcode_asset_sha256": "2bf73547dbc9961ad3f9e95737ef11d3fe269b035a80864a290e947672b25315",
+    "reason": "Apple has no registered device/provisioning profile yet; connect an iPhone or iPad in Xcode before signing"
   }
 }
