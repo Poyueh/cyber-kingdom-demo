@@ -41,6 +41,9 @@ func run_scene() -> void:
 	game.sim.frontier.drill_level=2;game.sim.growth.capacitor_level=1
 	game._physics_process(0)
 	check(game.knight.visual.weapon_tier==2 and game.knight.visual.armor_tier==1,"equipment visuals follow actual upgrade state")
+	var visual: Node=game.knight.visual
+	check(visual._unarmed.material==visual.equipment_material,"losing the sword keeps the upgraded armour on the unarmed body")
+	check(visual._ceremony.material==visual.equipment_material,"drawing the sword keeps the same upgraded armour as idle and running")
 	game.queue_free();await process_frame
 	game=load("res://scenes/frontier.tscn").instantiate();game.tuning=game.tuning.duplicate();game.tuning.immersive_loop=false;game.tuning.initial_crystals=12
 	game.campaign_save_path=path;game.audio_preferences_path=path+".cfg"

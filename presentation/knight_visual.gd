@@ -152,6 +152,8 @@ func present(pose: Dictionary, seconds: float) -> void:
 	elif _fatigue_weight>0:
 		var weight: float=smoothstep(0,1,_fatigue_weight)
 		_dim_body(1.0-weight)
+		# Cavalry has its own baked top-tier palette; do not recolour its horse.
+		fatigue.material=_mount.material if mounted else equipment_material
 		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
 		fatigue.modulate.a=weight
 	else:fatigue.reset()
@@ -268,6 +270,8 @@ func set_equipment(weapon: int, armor: int) -> void:
 		_combo_attack.material=equipment_material
 		_moving_attack.material=equipment_material
 		fatigue.material=equipment_material
+		_unarmed.material=equipment_material
+		_ceremony.material=equipment_material
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
