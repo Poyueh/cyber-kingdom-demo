@@ -8,7 +8,7 @@
     document.getElementById('control-grid').classList.toggle('mobile', mode === 'mobile');
     document.getElementById('control-note').textContent = mode === 'mobile'
       ? t('左右空白處短拖慢走、長拖快跑、下滑給晶。快滑放手給一顆；靠近目標下滑按住會繼續填格。攻擊使用劍按鍵。')
-      : t('使用鍵盤操作；靠近物件後，看它上方的圖示與龍晶格。');
+      : t('使用鍵盤／滑鼠操作；靠近物件後，看它上方的圖示與龍晶格。');
   }
   modeButtons.forEach(button => button.addEventListener('click', () => setMode(button.dataset.mode)));
   if (matchMedia('(pointer: coarse)').matches || innerWidth < 760) setMode('mobile');

@@ -1178,5 +1178,21 @@
   "向地圖兩側探索，尋找雷弧震盪與穿甲雷槍。帶回騎士升級設施後，按 F 或點齒輪選配；按 K 或雙指向上滑使用。兩種部件共用冷卻，並消耗體力。獨立戰鬥練習模式與騎士補血設施已移除。": {
     "zh_CN": "向地图两侧探索，寻找雷弧震荡与穿甲雷枪。带回骑士升级设施后，按 F 或点齿轮选配；按 K 或双指向上滑使用。两种部件共用冷却，并消耗体力。独立战斗练习模式与骑士补血设施已移除。",
     "en": "Explore both ends of the map for Arc Pulse and Piercing Lance. Return them to the knight upgrade station, then press F or tap the gear to choose a module. Press K or swipe up with two fingers to activate it. Both use stamina and share a cooldown. The standalone combat practice mode and knight healing station have been removed."
+  },
+  "連按 A／D，第二下按住": {
+    "zh_CN": "连按 A／D，第二下按住",
+    "en": "Double-tap A / D and hold"
+  },
+  "手機拉長拖曳可衝刺。耗盡先停下喘息，再逐步恢復慢走、跑步；停下休息後才能再次衝刺。": {
+    "zh_CN": "手机拉长拖曳可冲刺。耗尽先停下喘息，再逐步恢复慢走、跑步；停下休息后才能再次冲刺。",
+    "en": "On touchscreens, drag farther to sprint. Exhaustion first forces a breathing stop, then a slow walk and normal running. Rest before sprinting again."
+  },
+  "使用鍵盤／滑鼠操作；靠近物件後，看它上方的圖示與龍晶格。": {
+    "zh_CN": "使用键盘／鼠标操作；靠近物件后，看它上方的图标与龙晶格。",
+    "en": "Use the keyboard and mouse; approach objects and look for their icons and crystal slots."
+  },
+  "J／滑鼠左鍵": {
+    "zh_CN": "J／鼠标左键",
+    "en": "J / Left click"
   }
 }

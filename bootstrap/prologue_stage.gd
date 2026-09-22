@@ -13,7 +13,7 @@ func _ready() -> void:
  game.campaign_save_path="";game.audio_preferences_path=""
  game.tuning=game.tuning.duplicate();game.tuning.larger_desktop_window=false
  add_child(game)
- game.set_physics_process(false);game.controls.set_process_unhandled_key_input(false)
+ game.set_physics_process(false);game.controls.set_process_unhandled_key_input(false);game.controls.set_process_unhandled_input(false)
  game.hud.hide();game.hud.set_process(false);game.hud.cancel_touch_gestures()
  game.hud.drag_controls.enabled=false
  game.view.interactions_visible=false
