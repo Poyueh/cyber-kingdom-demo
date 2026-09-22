@@ -1,5 +1,12 @@
 {
   "version": "v0.0.10",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.10",
+  "pages_deployment": "https://github.com/Poyueh/cyber-kingdom/actions/runs/35707688913",
+  "public_urls": {
+    "game": "https://poyueh.github.io/cyber-kingdom/",
+    "guide": "https://poyueh.github.io/cyber-kingdom/guide.html",
+    "http_status": 200
+  },
   "source_tree": "eea4e550dda6b66932ae37f359ee80251a2206f9",
   "full_check_assertions": 2206,
   "full_check_failures": 0,
