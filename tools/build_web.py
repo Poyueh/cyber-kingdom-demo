@@ -36,6 +36,10 @@ def export_project(ref: str, output: Path, godot: str) -> Path:
         engine = [godot, '--headless', '--path', str(stage)]
         run_logged(engine + ['--editor', '--import'], output / 'import.log')
         run_logged(engine + ['--export-release', 'Web Demo', str(web / 'index.html')], output / 'export.log')
+        # Validate the shipped resource graph, not the source project's defaults.
+        run_logged([godot, '--headless', '--main-pack', str(web / 'index.pck'),
+                    '--script', str(stage / 'tools/test_exported_ambience.gd')],
+                   output / 'packaged-ambience.log')
         run_logged([sys.executable, str(stage / 'tools/build_player_guide.py'), '--output', str(web / 'guide.html')], output / 'guide.log')
         install_guide_reader(stage, web)
         shutil.copyfile(stage / 'art/fonts/noto-sans-tc/OFL.txt', web / 'FONT-LICENSE.txt')

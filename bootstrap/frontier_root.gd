@@ -20,7 +20,7 @@ var _seed_initialized := false
 var _requested_new_map := false
 var _terrain: Node2D
 var _requested_throw := false
-@export var ambience: Resource=preload("res://data/world_ambience.gd").new()
+@export var ambience: Resource=preload("res://data/world_ambience.tres")
 var _water: Node2D
 var _lantern: Node2D
 var _sunbeams: Node2D
