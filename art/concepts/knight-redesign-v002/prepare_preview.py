@@ -3,6 +3,7 @@ from pathlib import Path
 from collections import deque
 import numpy as np
 from PIL import Image
+from animate_run import build_run
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / 'preview'
@@ -48,7 +49,7 @@ def normalize(tile, scale):
     cell=Image.fromarray(a)
     return cell
 
-for mode in ['run','slash']:
+for mode in ['slash']:
     sheet=clean(Image.open(ROOT/'sources'/f'{mode}.png'))
     first=cut(sheet,0,4,2)
     box=first.getbbox()
@@ -63,3 +64,4 @@ idle=cut(design,0,4,3)
 box=idle.getbbox()
 normalize(idle,60/(box[3]-box[1])).save(OUT/'idle.png')
 design.resize((round(design.width/5),round(design.height/5)),Image.Resampling.NEAREST).save(OUT/'poses.png')
+build_run(ROOT)
