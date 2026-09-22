@@ -1222,3 +1222,10 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - 最終完整 `tools/check.sh` **2,179 項斷言通過**，無 SCRIPT ERROR／ERROR／FAIL。Godot 實際渲染持劍／空手跑步、衝刺、原地劈砍、方向踏斬與騎乘；乾淨 H5 匯出 PCK 光照檢查通過，瀏覽器前導、新旅程確認正常，警告／錯誤清單為空。動作美感與 iPhone 觸控手感仍需玩家試玩回饋。
 - 程式與圖集提交 `607e923`；本機包 `builds/directed-slash-20260922`，試玩 **http://localhost:8803/**。依 Gitflow 合併本機 develop，未推送或發布公開站，未更新 Windows／Mac 包。
 - 教學：`docs/lessons/74-directional-slash.md`；AGENTS.md 與 CONTEXT.md 已更新現行方向踏斬規則，避免後續恢復舊自動前進。
+
+## 2026-09-22：移動時上身前傾
+
+- 玩家認為最新版仍像直立滑行。跑步軀幹錨點改為领先髖部 4 原圖像素，衝刺 8，肩部與披風跟隨；維持軀幹錨點距離，避免旋轉時拉大頭盔或胸甲。疲勞慢走僅輕微調整，待機圖未變。
+- 保留大跨步、低位擺臂、腳底路徑與播放率；沒有修改方向踏斬、移動速度、耐力或存檔。僅重製六張移動圖集及離線產製設定。
+- Godot 實際渲染持劍／徒手待機、跑步、衝刺並排比較；完整 `tools/check.sh` 通過 **2,179 項斷言**，零失敗／腳本錯誤。H5 匯出 PCK 光照檢查、瀏覽器前導與主選單載入正常，警告／錯誤清單為空。動作手感仍待玩家回饋。
+- 乾淨提交 `e335441`；本機包 `builds/forward-posture-20260922`，試玩 **http://localhost:8804/**。依 Gitflow 整合本機 develop，未推送或發布。教學：`docs/lessons/75-forward-running-posture.md`。

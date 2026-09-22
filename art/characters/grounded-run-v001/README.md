@@ -35,3 +35,5 @@ Equipment material follows idle, movement, on-foot recovery, unarmed and ceremon
 ## Broader stride and lowered arms
 
 The next player feedback rejected the close-to-chest hand posture and small stride. Running foot paths now span about 48 source pixels, sprint 60, with counter-swinging hands down near the waist and the armed hand carried farther behind. Plate width remains independent of leg extension; longer strides keep their authored ground contacts instead of clamping the toes upward. Idle, ceremony and recovery continue sharing the same armour parts. Runtime cadence and actual movement speeds are unchanged.
+
+Forward-posture follow-up: the player requested a clearer lean while moving. The upper-body anchor now leads the hip by 4 source pixels in normal running and 8 in sprinting, with shoulder attachment following it. Torso anchor length stays constant as it rotates, preserving head and armour size. Recovery walking has a subtler lean; idle remains unchanged. Foot paths, arm swing, cadence and combat are unchanged.
