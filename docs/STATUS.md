@@ -1301,3 +1301,9 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - v0.0.9：黑鋼騎士正式置入主戰役，統一像素密度與角色各狀態的美術來源。
 
 發布前完整 `bash tools/check.sh` 通過 **2,179 項斷言**，無 SCRIPT ERROR／ERROR／FAIL；H5 將由 Release 事件部署至 Pages，Windows／Mac 下載包不更新。發行條目見 `docs/releases/0.0.9.md`。
+
+## 2026-09-22：H5 v0.0.9 公開驗收完成
+
+Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) 已公開，main 提交 `962cf66e1a0cb739e18df73b5b9e3676a42237b0`，main／develop／release/0.0.9 與標籤已推送。H5 附件 `Cyber-Kingdom-Web-v0.0.9.zip` digest `sha256:4343461b0039f80ad5766f37a91218494db2018801bb9af9a502f49a4438bb84` 與本機一致；Pages 部署 run `35697998465` 成功。
+
+公開站 [poyueh.github.io/cyber-kingdom](https://poyueh.github.io/cyber-kingdom/) 的 `index.html`、`index.js`、`index.wasm`、`index.pck`、`guide.html` 皆為 HTTP 200，並與發布包逐檔 SHA-256 相同；瀏覽器實際看到前導、跳過前導、主選單與新旅程的黑鋼騎士，沒有 console warning／error。首次 Pages 部署因校驗檔包含本機完整路徑而拒絕，已修正為檔名格式後重新部署成功；遊戲內容與包本身未變。驗收證據見 `docs/reports/release-0.0.9/verification.json`。Windows／Mac 下載包維持 v0.0.1。

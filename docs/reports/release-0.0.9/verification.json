@@ -1,0 +1,30 @@
+{
+  "version": "v0.0.9",
+  "release_commit": "962cf66e1a0cb739e18df73b5b9e3676a42237b0",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom/",
+  "deployment": {
+    "conclusion": "success",
+    "status": "completed",
+    "run_id": 35697998465,
+    "url": "https://github.com/Poyueh/cyber-kingdom/actions/runs/35697998465"
+  },
+  "assets": {
+    "Cyber-Kingdom-Web-v0.0.9.zip": {
+      "size": 50253776,
+      "digest": "sha256:4343461b0039f80ad5766f37a91218494db2018801bb9af9a502f49a4438bb84"
+    },
+    "SHA256SUMS.txt": {
+      "size": 95,
+      "digest": "sha256:d3100034bc75b420fd352e35f275b769cf00514e86bf0da2f72a9fd2c4394eef"
+    }
+  },
+  "public_files_match_local": {
+    "index.html": {"status": 200, "bytes": 5542, "sha256": "ddbfe433ce1a6d60ec2f1ca08d14df8e79782cca85317c4c951ef5f287335c0b"},
+    "index.js": {"status": 200, "bytes": 279815, "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"},
+    "index.wasm": {"status": 200, "bytes": 39514754, "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"},
+    "index.pck": {"status": 200, "bytes": 38525476, "sha256": "b6e25184ea242df2eeda397272ccf8a431e7ab5c64dfd91b1dd880a86335dbfc"},
+    "guide.html": {"status": 200, "bytes": 2805451, "sha256": "c758098751b5ef7c48a27d6af6432c3c35caa327fb803404ee970ed1d5074825"}
+  },
+  "desktop_packages": "unchanged from v0.0.1"
+}
