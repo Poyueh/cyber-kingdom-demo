@@ -79,7 +79,8 @@ for mode in ['run','sprint','walk','idle']:
   for i in range(count):
    t=i/count;im=Image.new('RGBA',(512,384))
    bob=.6*math.sin(t*math.tau*2)
-   hip=(64,(47.0 if mode=='sprint' else 45.5)+bob);lean=2 if mode=='sprint' else 0
+   hip=(64,(47.0 if mode=='sprint' else 45.5)+bob)
+   lean={'idle':0,'walk':2,'run':7,'sprint':11}[mode]
    keys=[(24,77),(8,77),(-10,77),(-24,76),(-24,70),(-12,66),(5,69),(21,75)]
    if mode=='sprint':keys=[(30,77),(10,77),(-14,77),(-30,75),(-27,67),(-13,63),(9,68),(27,74)]
    if mode=='walk':keys=[(10,77),(5,77),(0,77),(-6,77),(-10,77),(-6,75),(0,74),(7,75)];hip=(64,44+math.sin(t*math.tau*2)*.4)
@@ -92,8 +93,10 @@ for mode in ['run','sprint','walk','idle']:
     wave=round(math.sin(t*math.tau-x*.025)*(324-x)/85)
     cap.alpha_composite(cape.crop((x,0,x+4,384)),(x,wave))
    body_hip=(274,198);body_top=(296,111)
-   target_top=(61+lean,hip[1]-17.5)
-   if mode=='idle':target_top=(61,hip[1]-17.5)
+   # Rotate the upper body around the hip without lengthening its armour/head.
+   chest_x=61+lean
+   chest_rise=math.sqrt(17.5**2+3**2-(chest_x-hip[0])**2)
+   target_top=(chest_x,hip[1]-chest_rise)
    place(im,cap,body_hip,body_top,hip,target_top)
    leg(im,(hip[0]-2,hip[1]),(57,77) if mode=='idle' else foot(t+.5),False)
    swing=0 if mode=='idle' else math.cos(t*math.tau)
