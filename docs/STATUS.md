@@ -1290,4 +1290,4 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - `blacksteel-v001/run.png` 與已確認的 `preview/run-native.png` 檔案完全相同；八格原生圖集，跑步 12 fps、衝刺共用步態 18 fps、疲勞慢移 7 fps。徒手版移除劍刃，待機、攻擊、拔劍與喘息接入同造型動作稿；騎乘保留舊坐騎，更新騎士頭盔／甲色。支援動作屬首次接入，並非整套重繪完成。
 - `tools/prepare_blacksteel_knight.py` 可重建全部輸出；高解析原稿不進包。新造型僅主戰役採用，舊獨立原型與歷史美術保留。
 - 完整 `tools/check.sh` **2,179 項 Godot 斷言通過**，零 SCRIPT ERROR／ERROR／FAIL。新增原生視覺檢視工具 `tools/preview_blacksteel.gd`，在真實戰役場景捕捉徒手、待機、跑步、衝刺、喘息、拔劍、原地斬、踏斬、騎乘、受擊及死亡 11 種狀態；確認腳底與攻擊子節點偏移對齊，未寫玩家存檔。
-- 教學 `docs/lessons/80-knight-appearance-resource.md`。接著匯出本機 H5 試玩確認載入與操作；尚未推送或發佈線上站。
+- 教學 `docs/lessons/80-knight-appearance-resource.md`。已由乾淨提交 `ec59ee8` 匯出 `builds/blacksteel-20260922`，本機試玩 **http://localhost:8806/**。H5 匯出與封裝光照檢查通過，瀏覽器主選單、新旅程及新徒手角色顯示正常，警告／錯誤清單為空。瀏覽器未驗完整操作循環；動作 11 狀態另以原生實際戰役渲染驗證。尚未推送或發佈線上站。
