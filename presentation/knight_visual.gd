@@ -16,6 +16,8 @@ var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
 var breathing: bool=false
+var breath_stop_remaining: float=0.0
+const BREATH_RISE_SECONDS: float=0.35
 var tired_walk: bool=false
 var exertion: float=0.0
 var _breath_weight: float=0.0
@@ -136,7 +138,10 @@ func present(pose: Dictionary, seconds: float) -> void:
 	var safe_pose: bool=pose.alive and not hurt_active and not pose.get("dashing",false)
 	var target: float=1.0 if resting and safe_pose else 0.0
 	_fatigue_weight=move_toward(_fatigue_weight,target,maxf(0,seconds)/0.75)
-	if not safe_pose:_fatigue_weight=0
+	# Complete the rise while travel is still locked, never drag a resting body.
+	if breath_stop_remaining>0:
+		_fatigue_weight=minf(_fatigue_weight,breath_stop_remaining/BREATH_RISE_SECONDS)
+	if not safe_pose or pose.get("moving",false):_fatigue_weight=0
 	var ceremony: bool=ceremony_age>=0 and ceremony_age<2.4 and safe_pose and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
 	if ceremony:
 		_fatigue_weight=0

@@ -15,11 +15,11 @@ func run_scene() -> void:
 	key(KEY_D,true);await frames(5)
 	var slow: float=game.knight.velocity.x
 	check(game.sim.hero.stamina==50,"first travel tier costs no stamina")
-	key(KEY_SHIFT,true);await frames(10)
-	check(game.knight.velocity.x>slow and game.sim.hero.stamina<50,"Shift selects faster movement and spends real stamina")
+	key(KEY_D,false);await frames(2);key(KEY_D,true);await frames(10)
+	check(game.knight.velocity.x>slow and game.sim.hero.stamina<50,"double D selects faster movement and spends real stamina")
 	game.sim.hero.stamina=0;await frames(3)
 	check(is_equal_approx(game.knight.velocity.x,slow),"exhaustion falls back to slow travel")
-	key(KEY_D,false);key(KEY_SHIFT,false)
+	key(KEY_D,false)
 	check(game.hud.dashboard.values.stamina==0,"HUD reads depleted live stamina")
 	game.queue_free();await process_frame
 	print("Stamina scene assertions: %d; failures: %d" % [assertions,failures])

@@ -33,7 +33,7 @@ def smooth(keys,t):
  p0=keys[(i-1)%n];p1=keys[i];p2=keys[(i+1)%n];p3=keys[(i+2)%n]
  return tuple(.5*((2*p1[k])+(-p0[k]+p2[k])*f+(2*p0[k]-5*p1[k]+4*p2[k]-p3[k])*f*f+(-p0[k]+3*p1[k]-3*p2[k]+p3[k])*f**3) for k in range(2))
 def leg(im,hip,foot,front):
- dx,dy=foot[0]-hip[0],foot[1]-hip[1];dist=math.hypot(dx,dy);L1,L2=16,17
+ dx,dy=foot[0]-hip[0],foot[1]-hip[1];dist=math.hypot(dx,dy);L1,L2=17,18
  if dist>L1+L2-.1:
   k=(L1+L2-.1)/dist;foot=(hip[0]+dx*k,hip[1]+dy*k);dx*=k;dy*=k;dist*=k
  along=(L1*L1-L2*L2+dist*dist)/(2*dist);h=math.sqrt(max(0,L1*L1-along*along));knee=(hip[0]+dx*along/dist+dy*h/dist,hip[1]+dy*along/dist-dx*h/dist)
@@ -54,11 +54,11 @@ for mode in ['run','sprint','walk']:
   frames=[];atlas=Image.new('RGBA',(1024,192))
   for i in range(16):
    t=i/16;im=Image.new('RGBA',(512,384))
-   bob=2*math.sin(t*math.tau*2)
-   hip=(64,50+bob);lean=3 if mode=='sprint' else 0
-   keys=[(16,77),(3,77),(-15,77),(-21,70),(-14,55),(0,59),(13,65),(20,71)]
+   bob=1.0*math.sin(t*math.tau*2)
+   hip=(64,(48.5 if mode=='sprint' else 46.5)+bob);lean=3 if mode=='sprint' else 0
+   keys=[(16,77),(3,77),(-15,77),(-20,72),(-16,64),(0,66),(13,69),(19,74)]
    if mode=='sprint':keys=[(21,76),(4,77),(-19,77),(-25,67),(-16,51),(0,54),(16,61),(24,69)]
-   if mode=='walk':keys=[(10,77),(5,77),(0,77),(-6,77),(-10,77),(-6,72),(0,69),(7,72)];hip=(64,50+math.sin(t*math.tau*2)*.6)
+   if mode=='walk':keys=[(10,77),(5,77),(0,77),(-6,77),(-10,77),(-6,75),(0,74),(7,75)];hip=(64,44+math.sin(t*math.tau*2)*.4)
    def foot(p):
     x,y=smooth(keys,p);return (64+x,y)
    # Cape gets a traveling wave, while its attachment stays fixed at the shoulder.

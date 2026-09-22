@@ -37,6 +37,7 @@ run_check ecology --script res://tests/test_ecology_scene.gd
 run_check expansion --script res://tests/test_expansion_scene.gd
 run_check fortifications --script res://tests/test_fortification_scene.gd
 run_check stamina --script res://tests/test_stamina_scene.gd
+run_check desktop_controls --script res://tests/test_desktop_controls_scene.gd
 run_check running_recovery --script res://tests/test_running_recovery_scene.gd
 run_check languages --script res://tests/test_language_scene.gd
 run_check prologue --script res://tests/test_prologue_scene.gd
