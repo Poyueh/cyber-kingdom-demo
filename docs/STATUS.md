@@ -1307,3 +1307,8 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) 已公開，main 提交 `962cf66e1a0cb739e18df73b5b9e3676a42237b0`，main／develop／release/0.0.9 與標籤已推送。H5 附件 `Cyber-Kingdom-Web-v0.0.9.zip` digest `sha256:4343461b0039f80ad5766f37a91218494db2018801bb9af9a502f49a4438bb84` 與本機一致；Pages 部署 run `35697998465` 成功。
 
 公開站 [poyueh.github.io/cyber-kingdom](https://poyueh.github.io/cyber-kingdom/) 的 `index.html`、`index.js`、`index.wasm`、`index.pck`、`guide.html` 皆為 HTTP 200，並與發布包逐檔 SHA-256 相同；瀏覽器實際看到前導、跳過前導、主選單與新旅程的黑鋼騎士，沒有 console warning／error。首次 Pages 部署因校驗檔包含本機完整路徑而拒絕，已修正為檔名格式後重新部署成功；遊戲內容與包本身未變。驗收證據見 `docs/reports/release-0.0.9/verification.json`。Windows／Mac 下載包維持 v0.0.1。
+
+## 2026-09-22：調整正式平台優先順序
+
+- 使用者確認未來正式發行目標是 macOS／Windows 與 iPhone／iPad；H5 保留為快速試玩、分享與回饋入口。
+- 更新 AGENTS、H5 交付說明與第 81 課：效能、記憶體、輸入手感及畫面品質以原生桌面／iOS 建置量測；不為 WebAssembly 加入會犧牲正式平台的專屬架構或玩法折衷。

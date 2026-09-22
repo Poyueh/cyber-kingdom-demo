@@ -1,5 +1,7 @@
 # 瀏覽器試玩版
 
+H5 是快速試玩與收集回饋的預覽交付，不是正式平台的效能基準。正式效能與記憶體驗收以 macOS／Windows 原生包及 iPhone／iPad App 為準；Web 專用調整不得改變原生遊戲的玩法、輸入或資源架構。
+
 沿用 Godot 遊戲本體，以單執行緒 WebAssembly / WebGL 2 匯出；不另寫一份 HTML 遊戲規則。入口仍是營火戰役，桌面鍵盤與手機觸控共用既有玩法。
 
 `python3 tools/build_web.py --ref HEAD --output builds/web-新版本` 會從指定已提交版本的隔離副本建立 `web/` 與 `Cyber-Kingdom-Web.zip`。輸出目錄必須尚未存在。引擎錯誤、缺檔、空檔及錯誤 WASM 標頭都會阻擋交付。來源樹與壓縮檔 SHA-256 記錄於 manifest。
