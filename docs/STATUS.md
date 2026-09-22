@@ -1283,3 +1283,11 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - 桌面與手機寬度檢查新版第 5／7 格、前版第 16 格與來源圖集；手機畫布 341px 與顯示寬度相等，沒有 CSS 二次縮放。瀏覽器警告／錯誤為空。完整 `tools/check.sh` **2,179 項 Godot 斷言通過**，零 SCRIPT ERROR／ERROR／FAIL；圖格產製也檢查透明輪廓未被画布裁切。
 - 加入共同美術規範 `docs/design/pixel-density.md` 並由 AGENTS.md 引用。盤點到居民／小怪的 `compact_people.gd` 尚有分部位縮放，不能宣稱全場景已统一；本輪只修正騎士提案與預覽，未替換正式角色或既有世界素材。
 - 教學 `docs/lessons/79-native-pixel-density.md`。本機 Gitflow 整合，未推送或發布；接入正式角色前仍需完成其他動作與全場景同鏡頭驗收。
+
+## 2026-09-22：黑鋼騎士接入主戰役
+
+- 使用者要求將最新像素提案置入遊戲。新增 `knight_appearance.gd`／`blacksteel_appearance.tres`，在 frontier 主戰役集中綁定整套造型，避免只替換跑步而在其他狀態露出舊騎士。沒有變更核心移動、耐力、三段攻擊判定或存檔格式。
+- `blacksteel-v001/run.png` 與已確認的 `preview/run-native.png` 檔案完全相同；八格原生圖集，跑步 12 fps、衝刺共用步態 18 fps、疲勞慢移 7 fps。徒手版移除劍刃，待機、攻擊、拔劍與喘息接入同造型動作稿；騎乘保留舊坐騎，更新騎士頭盔／甲色。支援動作屬首次接入，並非整套重繪完成。
+- `tools/prepare_blacksteel_knight.py` 可重建全部輸出；高解析原稿不進包。新造型僅主戰役採用，舊獨立原型與歷史美術保留。
+- 完整 `tools/check.sh` **2,179 項 Godot 斷言通過**，零 SCRIPT ERROR／ERROR／FAIL。新增原生視覺檢視工具 `tools/preview_blacksteel.gd`，在真實戰役場景捕捉徒手、待機、跑步、衝刺、喘息、拔劍、原地斬、踏斬、騎乘、受擊及死亡 11 種狀態；確認腳底與攻擊子節點偏移對齊，未寫玩家存檔。
+- 教學 `docs/lessons/80-knight-appearance-resource.md`。接著匯出本機 H5 試玩確認載入與操作；尚未推送或發佈線上站。
