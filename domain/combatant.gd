@@ -155,15 +155,19 @@ func dash_progress() -> float:
 	return clampf(1.0 - dash_remaining / stats.dash_duration, 0.0, 1.0)
 
 ## Signed horizontal travel produced by combat time, consumed by the physics adapter.
-func consume_attack_travel() -> float:
+func consume_attack_travel(movement_direction: float = 0.0) -> float:
 	var travel := _pending_attack_travel
 	_pending_attack_travel = 0.0
+	# Intent is sampled by the caller each tick. Releasing it discards that tick's
+	# step; pressing later cannot release a backlog or reverse the locked sword.
+	if not is_finite(movement_direction) or is_zero_approx(movement_direction):
+		return 0.0
 	return travel
 
 func _accumulate_attack_travel(seconds: float) -> void:
-	if attack_remaining <= 0.0 or combo_step < 2:
+	if attack_remaining <= 0.0 or combo_step < 1:
 		return
-	var distance := stats.combo_return_step if combo_step == 2 else stats.combo_finisher_step
+	var distance := stats.combo_finisher_step if combo_step == 3 else stats.combo_return_step
 	var before := attack_progress()
 	var after := minf(1.0, before + seconds / _swing_duration)
 	_pending_attack_travel += attack_facing * maxf(0.0, distance) * (_step_fraction(after) - _step_fraction(before))

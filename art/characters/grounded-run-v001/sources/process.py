@@ -51,11 +51,11 @@ def smooth(keys,t):
 def leg(im,hip,foot,front):
  dx,dy=foot[0]-hip[0],foot[1]-hip[1];dist=math.hypot(dx,dy);L1,L2=17,18
  if dist>L1+L2-.1:
-  k=(L1+L2-.1)/dist;foot=(hip[0]+dx*k,hip[1]+dy*k);dx*=k;dy*=k;dist*=k
+  extension=(dist+.1)/(L1+L2);L1*=extension;L2*=extension
  along=(L1*L1-L2*L2+dist*dist)/(2*dist);h=math.sqrt(max(0,L1*L1-along*along));knee=(hip[0]+dx*along/dist+dy*h/dist,hip[1]+dy*along/dist-dx*h/dist)
  shade=1 if front else .65
- place(im,thigh,(72*4,57*4),(73*4,65*4),hip,knee,shade,width=1.0)
- place(im,shin,(73*4,66*4),(72.5*4,75*4),knee,foot,shade,width=1.0)
+ place(im,thigh,(72*4,57*4),(73*4,65*4),hip,knee,shade,width=1.15)
+ place(im,shin,(73*4,66*4),(72.5*4,75*4),knee,foot,shade,width=1.15)
  # Heel follows the shin through the airborne recovery; sole remains flat on contact.
  lift=max(0,76-foot[1]);toe=(foot[0]+6,foot[1]+min(3,lift*.16))
  place(im,boot,(72.5*4,76*4),(79*4,77*4),foot,toe,shade)
@@ -79,9 +79,9 @@ for mode in ['run','sprint','walk','idle']:
   for i in range(count):
    t=i/count;im=Image.new('RGBA',(512,384))
    bob=.6*math.sin(t*math.tau*2)
-   hip=(64,(45.0 if mode=='sprint' else 44.0)+bob);lean=2 if mode=='sprint' else 0
-   keys=[(13,77),(2,77),(-12,77),(-17,74),(-13,70),(-2,70),(9,73),(14,76)]
-   if mode=='sprint':keys=[(17,77),(3,77),(-15,77),(-20,73),(-16,66),(-3,66),(11,71),(18,76)]
+   hip=(64,(47.0 if mode=='sprint' else 45.5)+bob);lean=2 if mode=='sprint' else 0
+   keys=[(24,77),(8,77),(-10,77),(-24,76),(-24,70),(-12,66),(5,69),(21,75)]
+   if mode=='sprint':keys=[(30,77),(10,77),(-14,77),(-30,75),(-27,67),(-13,63),(9,68),(27,74)]
    if mode=='walk':keys=[(10,77),(5,77),(0,77),(-6,77),(-10,77),(-6,75),(0,74),(7,75)];hip=(64,44+math.sin(t*math.tau*2)*.4)
    if mode=='idle':hip=(64,44.0+math.sin(t*math.tau)*.35)
    def foot(p):
@@ -97,13 +97,13 @@ for mode in ['run','sprint','walk','idle']:
    place(im,cap,body_hip,body_top,hip,target_top)
    leg(im,(hip[0]-2,hip[1]),(57,77) if mode=='idle' else foot(t+.5),False)
    swing=0 if mode=='idle' else math.cos(t*math.tau)
-   arm(im,(70+lean,hip[1]-11),(71+lean+8*swing,hip[1]-2),(77+lean+7*swing,hip[1]-9),False)
+   arm(im,(65+lean,hip[1]-14),(64+10*swing,hip[1]-4),(61+14*swing,hip[1]+2),False)
    place(im,body,body_hip,body_top,hip,target_top)
    leg(im,hip,(70,77) if mode=='idle' else foot(t),True)
    # Armed rear hand carries the blade; unarmed runner counter-swings both arms.
    shoulder=(63+lean,hip[1]-13)
-   elbow=(59+(2 if armed else -7*swing),hip[1]-5)
-   hand=(55+(2*math.sin(t*math.tau) if armed else -9*swing),hip[1]+3 if armed else hip[1]-2)
+   elbow=(56 if armed else 64-10*swing,hip[1]-4)
+   hand=(51+2*math.sin(t*math.tau) if armed else 66-14*swing,hip[1]+3)
    if mode=='idle':elbow=(64,hip[1]-5);hand=(68,hip[1]+4)
    if armed:
     d=ImageDraw.Draw(im);x,y=[v*4 for v in hand]

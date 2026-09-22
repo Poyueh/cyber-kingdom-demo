@@ -31,3 +31,7 @@ Active atlas audit:
 | Legacy jump/dash/moving attack/training | Retained for legacy scenes/tests; unavailable in the current flat campaign; originals are not bulk-rewritten |
 
 Equipment material follows idle, movement, on-foot recovery, unarmed and ceremony states. Mounted recovery deliberately follows the mounted material rather than tinting the entire horse with the infantry armour shader.
+
+## Broader stride and lowered arms
+
+The next player feedback rejected the close-to-chest hand posture and small stride. Running foot paths now span about 48 source pixels, sprint 60, with counter-swinging hands down near the waist and the armed hand carried farther behind. Plate width remains independent of leg extension; longer strides keep their authored ground contacts instead of clamping the toes upward. Idle, ceremony and recovery continue sharing the same armour parts. Runtime cadence and actual movement speeds are unchanged.

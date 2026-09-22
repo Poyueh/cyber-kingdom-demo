@@ -235,9 +235,10 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if animation==&"attack" and combo_motion!=null and combo_motion.planted_atlas!=null:
 		var step:=clampi(int(pose.get("combo_step",1)),1,3)
 		var drawing: int=combo_motion.frame_at(step,float(pose.attack_progress))
-		if striding and combo_motion.moving_atlas!=null:
+		if (pose.get("attack_advancing",false) or striding) and combo_motion.moving_atlas!=null:
 			_moving_region.atlas=combo_motion.moving_atlas
-			_moving_region.region=Rect2(drawing*160,((step-1)*8+gait)*128,160,128)
+			var rows: int=combo_motion.moving_gait_rows
+			_moving_region.region=Rect2(drawing*160,((step-1)*rows+gait%rows)*128,160,128)
 			_moving_attack.texture=_moving_region
 			_moving_attack.flip_h=flip_h
 			_moving_attack.offset=Vector2(0,-16)
@@ -308,4 +309,5 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if progress<1 and not hurt_active:
 		var thrust:=sin(clampf((progress-0.2)/0.65,0,1)*PI)
 		var weight:=1.5 if int(pose.get("combo_step",1))==3 else 1.0
-		_mount.position+=Vector2(pose.facing*thrust*3.5*weight,thrust*1.5)
+		var advance: float=thrust*3.5*weight if pose.get("attack_advancing",false) else 0.0
+		_mount.position+=Vector2(pose.facing*advance,thrust*1.5)
