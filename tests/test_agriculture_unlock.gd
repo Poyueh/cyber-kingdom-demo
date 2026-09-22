@@ -1,5 +1,27 @@
 extends RefCounted
 const Campaign=preload("res://application/campaign_session.gd")
+
+func test_farm_facility_only_produces_tools_when_player_fully_pays(t: SceneTree) -> void:
+ var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+ sim.world.people.clear()
+ sim.interact(30,"hall")
+ for i: int in range(5):sim.interact(30,"hall:1")
+ var rack: float=sim.world.sites.farm_tools
+ sim.world.people.append({"x":rack,"role":"citizen","hurt":0.0,"cooldown":0.0,"region":-1})
+ for i: int in range(100):sim.advance(1.0/30,1000)
+ t.equal(sim.world.tools.hoe,0,"standing residents do not manufacture free farm tools")
+ t.equal(sim.world.people[0].role,"citizen","unpaid facility does not assign farmers")
+ sim.world.people.clear()
+ t.equal(sim.context(rack).id,"farm_tools","standing at the facility targets production")
+ sim.interact(rack,"farm_tools")
+ t.equal(sim.world.tools.hoe,0,"one crystal cannot manufacture a two-crystal tool")
+ sim.interact(rack,"farm_tools")
+ t.equal(sim.world.tools.hoe,1,"facility produces a tool without needing a resident")
+ for i: int in range(4):sim.interact(rack,"farm_tools")
+ t.equal(sim.world.tools.hoe,3,"facility rack stores at most three tools")
+ var before: int=sim.pouch.amount
+ t.truth(not sim.interact(rack,"farm_tools"),"full rack cannot be paid again")
+ t.equal(sim.pouch.amount,before,"full rack preserves crystals")
 func test_paid_farm_tools_are_claimed_after_normal_camp_upgrade(t) -> void:
  var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
  sim.world.people.clear()

@@ -405,6 +405,7 @@ func _execute(choice: Dictionary) -> void:
 		"workshop","farm_tools","hunt_tools":
 			world.tools[TOOL_KINDS[choice.id]]+=1
 			built[choice.id]=true
+			effects.append({"kind":"tool_produced","x":choice.x,"life":0.8})
 		"wall","wall_left":
 			var defense: Dictionary=world.walls[choice.get("wall_id",choice.id)]
 			var repair: bool=defense.level>0 and defense.hp<world.wall_max_hp(defense.level)
@@ -828,7 +829,7 @@ func building_context(id: String) -> Dictionary:
 
 func _advance_towers(seconds: float) -> void:
 	for site in buildings.values():
-		if site.kind!="tower" or site.level<=0:continue
+		if site.kind!="tower" or site.level<=0 or site.pending:continue
 		site.cooldown=maxf(0,site.cooldown-seconds)
 		if site.cooldown>0:continue
 		var power=BuildingSites.tower_power(site.level,{"tower_damage":tower_damage,"tower_range":tower_range})

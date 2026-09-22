@@ -1336,3 +1336,12 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - 遠端 `main` 已合併 v0.0.10，`develop` 已同步。macOS 包為 ad-hoc、Windows 包未簽署；iOS／iPadOS 仍待 Xcode Team ID、真機安裝與 App Store 流程。
 - 後續補上 `Cyber-Kingdom-iOS-v0.0.10-Xcode.zip`，使用本機 Xcode 的 Team ID `N4VD538532` 產生 Xcode 專案；`xcodebuild` 已確認因帳號沒有已註冊裝置與 provisioning profile 而拒絕真機簽署。iOS 附件已更新至 Release 與 `SHA256SUMS.txt`，接上 iPhone／iPad 後可在 Xcode 完成 Run、簽署與後續 App Store Connect 上傳。
 - Android 也已加入 `Cyber-Kingdom-Android-v0.0.10-debug.apk`；ARM64 APK 通過 v2/v3 簽章與 16 KiB 對齊，使用本地 debug key，尚未在實體 Android 裝置驗收，也不是 Google Play 正式簽署包。全部附件校驗值已同步到 Release 的 `SHA256SUMS.txt`。
+
+## 2026-09-22：農具工坊、施工停用與一畫面工作範圍
+
+- 農具原本已是玩家付費生產，並沒有居民自主製造；本次補清楚設施呈現：二級營火自動搭起工坊，獨立鋤頭招牌、三格實際庫存架，兩顆龍晶生產一把，居民只領取。無人仍可生產，未付滿／满架不產出、不多扣款；生產短暫亮起招牌。
+- 修正城牆和箭塔升級時仍運作的問題。付滿進入施工後，城牆不阻擋敵人、箭塔不射擊，完工才恢復；修牆同樣停用，已起手的打牆攻擊會放棄失效目標。部分付款尚未開工仍保留功能。棚架、暗色建築及錘頭標示對應停用期間。
+- 新旅程 Work Margin 由 1300 改成 850，約標準鏡頭一個畫面。白天工人、獵人可在牆外近域採集，超出範圍的資源無法委託、也不會扣款；寶箱和部件不受限。既有存檔保留自身設定、夜間沿用附近威脅避難。鬼魂排除無法委託的遠處採集目標。
+- TDD：先重現升級塔射擊、升級牆阻擋、工作越界和引導錯誤，再修正。`bash tools/check.sh` 完整通過 2,239 項斷言及封裝／翻譯／架構檢查；最後補上修牆取消攻擊案例，重跑全部核心行為為 1,758 項、零失敗（合計 2,242）。未出現 SCRIPT ERROR／ERROR。既有鬼魂測試改成挑可達樹木，沒有改變其「第一個實際工單完成指引」期望。
+- 原生 Godot 實際渲染確認空架、三把上架、牆與塔施工畫面；圖片和紀錄留在忽略的 `test-results/facilities-20260922/`，不增加正式遊戲素材包。未作手機真機驗收，尚未重新打包或發佈。
+- 功能分支 `feature/farm-workshop-and-construction-safety` 驗證後以 Gitflow 整合本機 develop。教學：[第 83 課](lessons/83-workshop-and-construction.md)。下一步可在新旅程試二級營火的農具工坊與夜襲前升級防線的取捨，再決定發佈。

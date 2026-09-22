@@ -176,6 +176,12 @@ func _draw_structures() -> void:
 	for site in ["workshop","armory","farm_tools","hunt_tools","forge"]:
 		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
+		if site=="farm_tools" and _sim.built.get(site,false):
+			var flash: float=0.0
+			for effect: Dictionary in _sim.effects:
+				if effect.kind=="tool_produced" and is_equal_approx(effect.x,at.x):flash=effect.life
+			preload("res://presentation/farm_workshop.gd").draw_on(self,at,world.tools.hoe,_context.id==site and _context.enabled,flash)
+			continue
 		var asset: String = {"farm_tools":"workshop","hunt_tools":"armory"}.get(site,site)
 		if _sim.built.get(site,false):
 			_prop(asset,at,0.7 if site in ["farm_tools","hunt_tools"] else 1.0)
@@ -195,17 +201,17 @@ func _draw_structures() -> void:
 	for id in world.walls:
 		if not _sim.defenses.visible(id):continue
 		var wall_x: float=world.sites[id]
+		if not _on_screen(wall_x,320):continue
 		var defense: Dictionary=world.walls[id]
 		if defense.level>0:
-			_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color.WHITE if defense.hp>0 else Color(0.4,0.35,0.38))
+			_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color(0.45,0.5,0.5) if defense.pending else Color.WHITE if defense.hp>0 else Color(0.4,0.35,0.38))
 			if not _sim.life.enabled:
 				draw_rect(Rect2(wall_x-28,316,56,4),Color("263940"))
 				draw_rect(Rect2(wall_x-28,316,56.0*defense.hp/_sim.world.wall_max_hp(defense.level),4),Color("8fdbbe"))
 
 		else: _prop("plot",Vector2(wall_x,430))
 		if defense.pending:
-			_icon("hammer",Vector2(wall_x,307),18)
-			draw_rect(Rect2(wall_x-28,326,56.0*minf(1.0,defense.progress/3.0),3),Color("f4d49d"))
+			preload("res://presentation/construction_scaffold.gd").draw_on(self,Vector2(wall_x,430),112,defense.progress/3.0,1.0)
 	for site in ["farm","drill","heal"]:
 		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
@@ -222,18 +228,16 @@ func _draw_buildings() -> void:
 	for id in _sim.buildings:
 		var site: Dictionary=_sim.buildings[id]
 		if site.kind=="wall" or not _sim.building_visible(id):continue
+		if not _on_screen(site.x,320):continue
 		_world_alpha=1.0 if site.region<0 else _region_reveal(site.region)
 		var at:=Vector2(site.x,430)
 		if site.kind=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.get("building_id","")==id and _context.enabled,_world_alpha)
-		if site.level>0:_prop("tower-%d"%site.level if site.kind=="tower" else "crops",at)
+		if site.level>0:_prop("tower-%d"%site.level if site.kind=="tower" else "crops",at,1.0,Color(0.45,0.5,0.5) if site.pending else Color.WHITE)
 		else:_prop("plot",at)
 		if absf(site.x-_view_player_x)<130 and _context.get("building_id","")!=id:
 			_icon("tower" if site.kind=="tower" else "hoe",at+Vector2(0,-195 if site.level>0 and site.kind=="tower" else -60),24)
 		if site.pending:
-			for side in [-1,1]:draw_line(at+Vector2(side*35,0),at+Vector2(side*35,-72),Color("977e58"),3)
-			draw_line(at+Vector2(-35,-56),at+Vector2(35,-56),Color("977e58"),3)
-			_icon("hammer",at+Vector2(0,-83),20)
-			draw_rect(Rect2(at+Vector2(-28,-68),Vector2(56*site.progress/_sim.build_seconds,4)),Color("94dfc7"))
+			preload("res://presentation/construction_scaffold.gd").draw_on(self,at,168 if site.kind=="tower" else 72,site.progress/_sim.build_seconds,_world_alpha)
 	_world_alpha=1.0
 
 func _draw_recruitment_camps() -> void:
