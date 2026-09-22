@@ -1334,3 +1334,4 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - GitHub Release [v0.0.10](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.10) 已公開，Release 事件與 Pages 部署 run [35707688913](https://github.com/Poyueh/cyber-kingdom/actions/runs/35707688913) 成功。公開站 [poyueh.github.io/cyber-kingdom](https://poyueh.github.io/cyber-kingdom/) 與圖文指南皆回傳 HTTP 200。
 - Release 附件包含 `Cyber-Kingdom-Web-v0.0.10.zip`、`Cyber-Kingdom-macOS-v0.0.10.zip`、`Cyber-Kingdom-Windows-v0.0.10.zip` 與 `SHA256SUMS.txt`；校驗值、原生匯出與簽署狀態見 `docs/reports/release-0.0.10/verification.json`。
 - 遠端 `main` 已合併 v0.0.10，`develop` 已同步。macOS 包為 ad-hoc、Windows 包未簽署；iOS／iPadOS 仍待 Xcode Team ID、真機安裝與 App Store 流程。
+- 後續補上 `Cyber-Kingdom-iOS-v0.0.10-Xcode.zip`，使用本機 Xcode 的 Team ID `N4VD538532` 產生 Xcode 專案；`xcodebuild` 已確認因帳號沒有已註冊裝置與 provisioning profile 而拒絕真機簽署。iOS 附件已更新至 Release 與 `SHA256SUMS.txt`，接上 iPhone／iPad 後可在 Xcode 完成 Run、簽署與後續 App Store Connect 上傳。
