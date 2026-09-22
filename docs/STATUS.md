@@ -1335,3 +1335,4 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - Release 附件包含 `Cyber-Kingdom-Web-v0.0.10.zip`、`Cyber-Kingdom-macOS-v0.0.10.zip`、`Cyber-Kingdom-Windows-v0.0.10.zip` 與 `SHA256SUMS.txt`；校驗值、原生匯出與簽署狀態見 `docs/reports/release-0.0.10/verification.json`。
 - 遠端 `main` 已合併 v0.0.10，`develop` 已同步。macOS 包為 ad-hoc、Windows 包未簽署；iOS／iPadOS 仍待 Xcode Team ID、真機安裝與 App Store 流程。
 - 後續補上 `Cyber-Kingdom-iOS-v0.0.10-Xcode.zip`，使用本機 Xcode 的 Team ID `N4VD538532` 產生 Xcode 專案；`xcodebuild` 已確認因帳號沒有已註冊裝置與 provisioning profile 而拒絕真機簽署。iOS 附件已更新至 Release 與 `SHA256SUMS.txt`，接上 iPhone／iPad 後可在 Xcode 完成 Run、簽署與後續 App Store Connect 上傳。
+- Android 也已加入 `Cyber-Kingdom-Android-v0.0.10-debug.apk`；ARM64 APK 通過 v2/v3 簽章與 16 KiB 對齊，使用本地 debug key，尚未在實體 Android 裝置驗收，也不是 Google Play 正式簽署包。全部附件校驗值已同步到 Release 的 `SHA256SUMS.txt`。

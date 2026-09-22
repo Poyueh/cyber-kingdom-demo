@@ -25,6 +25,13 @@
       "sha256": "91271db6f4fee586b303384b7311834075ce710952484a8690450250a4ec9a14",
       "platform": "Windows",
       "signing": "unsigned"
+    },
+    "Cyber-Kingdom-Android-v0.0.10-debug.apk": {
+      "sha256": "70e843f2ffde1adf650c5ebc38d3cbeeffd221d73ac72e02214fa4768ff410f6",
+      "platform": "Android ARM64",
+      "signing": "local debug certificate; not a Google Play release",
+      "apk_verification": "v2/v3 signature and 16 KiB alignment passed",
+      "runtime_playtest": "not performed on a physical Android device"
     }
   },
   "ios": {
