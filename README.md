@@ -16,7 +16,7 @@
 ## 本機開發
 
 1. 安裝 Godot 4.7.2 Standard。
-2. 匯入 `/Users/jenpoyueh/GitHub/cyber-kingdom/project.godot`。
+2. 匯入專案根目錄的 `project.godot`。
 3. 按 **F6** 執行目前場景，或按 **F5** 從起始頁開始。
 
 專案使用 Godot／GDScript、Clean Architecture、TDD 與 Gitflow。核心規則位於 `domain/`，流程編排位於 `application/`，Godot 畫面位於 `presentation/`，場景組裝位於 `bootstrap/`。
