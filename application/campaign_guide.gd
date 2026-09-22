@@ -13,6 +13,7 @@ static func next(sim, x: float) -> Dictionary:
   var trees: Array=[]
   for i in range(sim.frontier.nodes.size()):
    var node=sim.frontier.nodes[i]
+   if sim.life.enabled and not sim.work_area.contains(node.x):continue
    if node.kind=="tree" and not node.collected and sim.frontier.regions[node.region].discovered and not sim.ecology.clearing_last_tree(node):
     trees.append(_hint("harvest",node.x,"node:%d"%i,"invest",4))
   return _nearest(trees,x) if not trees.is_empty() else _explore(sim,x,4)

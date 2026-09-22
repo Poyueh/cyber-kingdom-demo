@@ -3,6 +3,50 @@ const Campaign=preload("res://application/campaign_session.gd")
 const Codec=preload("res://application/campaign_snapshot.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
 
+func test_guide_never_requests_harvest_beyond_work_area(t: SceneTree) -> void:
+	var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+	sim.interact(30,"hall")
+	sim.world.people[0].role="engineer"
+	for region: Dictionary in sim.frontier.regions:region.discovered=true
+	var far: float=sim.world.sites.wall+1500
+	var hint: Dictionary=preload("res://application/campaign_guide.gd").next(sim,far)
+	t.truth(hint.kind!="harvest" or sim.context_for_key(hint.x,hint.key).enabled,"guide only suggests harvest the knight can actually commission")
+
+func test_default_orders_stop_about_one_screen_beyond_both_walls(t: SceneTree) -> void:
+	var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+	sim.world.people.clear()
+	sim.interact(30,"hall")
+	for region: Dictionary in sim.frontier.regions:region.discovered=true
+	var node: RefCounted=sim.frontier.nodes[0]
+	node.kind="tree"
+	var key: String="node:0"
+	for side: int in [-1,1]:
+		node.marked=false
+		var wall_x: float=sim.world.sites.wall if side>0 else sim.world.sites.wall_left
+		node.x=wall_x+side*800
+		t.truth(sim.context_for_key(node.x,key).enabled,"daytime work can be commissioned near the outside screen edge")
+		node.x=wall_x+side*900
+		var before: int=sim.pouch.amount
+		t.truth(not sim.interact(node.x,key),"beyond one screen cannot be commissioned on either side")
+		t.equal(sim.pouch.amount,before,"out-of-range order does not spend a crystal")
+
+func test_daytime_worker_and_hunter_work_outside_wall_without_chasing_far_prey(t: SceneTree) -> void:
+	var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+	sim.world.people.clear()
+	sim.interact(30,"hall")
+	for region: Dictionary in sim.frontier.regions:region.discovered=true
+	var node: RefCounted=sim.frontier.nodes[0]
+	node.kind="tree";node.x=sim.world.sites.wall+700
+	sim.world.people.append({"role":"engineer","x":node.x-22,"hurt":0.0,"cooldown":0.0,"region":-1})
+	sim.world.people.append({"role":"hunter","x":sim.world.sites.wall+820,"hurt":0.0,"cooldown":0.0,"region":-1})
+	sim.frontier.animals.clear()
+	sim.frontier.animals.append({"x":sim.world.sites.wall+950,"region":0,"alive":true})
+	t.truth(sim.interact(node.x,"node:0"),"knight assigns tree outside the wall during daytime")
+	for tick: int in range(200):sim.advance(1.0/30,30)
+	t.truth(node.delivered,"outside worker completes harvest during daytime")
+	t.truth(sim.frontier.animals[0].alive,"hunter leaves prey beyond the one-screen margin alone")
+	t.truth(sim.world.people[1].x<=sim.world.sites.wall+850,"hunter remains inside the work area")
+
 func fresh() -> RefCounted:
 	var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0,"work_margin":1300.0})
 	sim.world.people.clear()

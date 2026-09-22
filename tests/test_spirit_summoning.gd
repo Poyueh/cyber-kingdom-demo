@@ -54,7 +54,7 @@ func test_opening_finishes_after_first_worker_order_and_can_be_recalled(t) -> vo
  t.truth(not sim.context_for_key(guide.shrine_x(sim.world.sites.hall),"spirit").enabled,"unlit camp has no summoning facility")
  sim.interact(30,"hall")
  sim.world.people[0].role="engineer"
- var node=sim.frontier.nodes.filter(func(n):return n.kind=="tree")[0]
+ var node=sim.frontier.nodes.filter(func(n):return n.kind=="tree" and sim.work_area.contains(n.x))[0]
  sim.frontier.regions[node.region].discovered=true
  sim.interact(node.x,"node:%d"%sim.frontier.nodes.find(node))
  sim.advance(0.016,30)

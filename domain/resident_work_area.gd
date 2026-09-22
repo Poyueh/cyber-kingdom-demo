@@ -1,6 +1,7 @@
 extends RefCounted
 ## Live territorial reach. No cached bounds: a fallen or expanded wall applies immediately.
-const DEFAULT_MARGIN: float=1300.0
+# The authored 960-wide camera at 1.15 zoom sees roughly 835 world units.
+const DEFAULT_MARGIN: float=850.0
 const STATION_OFFSET: float=180.0
 var _world: RefCounted
 var _defenses: RefCounted
