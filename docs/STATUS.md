@@ -1345,3 +1345,9 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - TDD：先重現升級塔射擊、升級牆阻擋、工作越界和引導錯誤，再修正。`bash tools/check.sh` 完整通過 2,239 項斷言及封裝／翻譯／架構檢查；最後補上修牆取消攻擊案例，重跑全部核心行為為 1,758 項、零失敗（合計 2,242）。未出現 SCRIPT ERROR／ERROR。既有鬼魂測試改成挑可達樹木，沒有改變其「第一個實際工單完成指引」期望。
 - 原生 Godot 實際渲染確認空架、三把上架、牆與塔施工畫面；圖片和紀錄留在忽略的 `test-results/facilities-20260922/`，不增加正式遊戲素材包。未作手機真機驗收，尚未重新打包或發佈。
 - 功能分支 `feature/farm-workshop-and-construction-safety` 驗證後以 Gitflow 整合本機 develop。教學：[第 83 課](lessons/83-workshop-and-construction.md)。下一步可在新旅程試二級營火的農具工坊與夜襲前升級防線的取捨，再決定發佈。
+
+## 2026-09-22：v0.0.11 新倉庫發行準備
+
+- 發行目標改為 `Poyueh/cyber-kingdom-demo`；本版本會把 H5、macOS、Windows、Android debug APK 和 iOS Xcode 專案放在該倉庫的 Release。
+- GitHub Pages 會從 Release Web ZIP 部署，不再依賴本機 `builds/` 匯出資料夾。完成遠端驗證後，本機 `builds/` 會移除以避免保留約 3.3 GB 的舊成品。
+- 發行條目見 `docs/releases/0.0.11.md`；版本不宣稱 Windows／macOS 簽署、Android 商店簽署或 iOS 真機安裝完成。
