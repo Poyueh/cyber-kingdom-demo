@@ -294,6 +294,7 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	for effect in sim.effects:
 		if effect.kind=="module_pickup":message=tr("發現特殊部件！帶回騎士升級設施。")
 		elif effect.kind=="module_stored":message=tr("部件已入庫，可以選配安裝。")
+		elif effect.kind=="module_equipped":message=tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配")
 	module_hint.text=message;module_hint.visible=not message.is_empty() and not is_paused
 	module_hint.position=Vector2(_last_safe_rect.get_center().x-200,_last_safe_rect.end.y-126);module_hint.size=Vector2(400,42)
 	if module_menu.visible:

@@ -179,6 +179,9 @@ func _draw_structures() -> void:
 		var asset: String = {"farm_tools":"workshop","hunt_tools":"armory"}.get(site,site)
 		if _sim.built.get(site,false):
 			_prop(asset,at,0.7 if site in ["farm_tools","hunt_tools"] else 1.0)
+			if site=="farm_tools":
+				draw_rect(Rect2(at+Vector2(-14,-73),Vector2(28,25)),Color("2c383b"))
+				_tool(at+Vector2(0,-56),"hoe")
 		else: _prop("plot",at)
 		_text(_sim.NAMES[site],at.x,286 if _sim.built.get(site,false) else 352,Color("cce0cc"),14)
 		if _sim.TOOL_KINDS.has(site):

@@ -50,6 +50,8 @@ var _combo_region:=AtlasTexture.new()
 var _motion_time:=0.0
 var _was_grounded:=true
 var _landing:=0.0
+var equipped_module: String=""
+var _module_attachment: Node2D=preload("res://presentation/knight_module_attachment.gd").new()
 func _init() -> void:
 	add_child(fatigue)
 	add_child(_ceremony)
@@ -71,6 +73,7 @@ func _init() -> void:
 	_combo_attack.visible=false
 	_combo_attack.offset=Vector2(0,-16)
 	add_child(_combo_attack)
+	add_child(_module_attachment)
 	sprite_frames=preload("res://data/knight_animation_frames.tres")
 	_bind_motion()
 	animation=&"idle"
@@ -88,6 +91,8 @@ func _bind_motion() -> void:
 		_ceremony.sheet=appearance.ceremony
 		fatigue.sheet=appearance.rest
 		fatigue.mounted_sheet=appearance.mounted
+		fatigue.mounted_offset=appearance.mounted_offset
+		_mount.offset=appearance.mounted_offset
 		return
 	sprite_frames=sprite_frames.duplicate()
 	for clip in [&"run",&"jump"]:
@@ -170,6 +175,7 @@ func present(pose: Dictionary, seconds: float) -> void:
 		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
 		fatigue.modulate.a=weight
 	else:fatigue.reset()
+	_module_attachment.present(self,equipped_module,seconds)
 
 func _dim_body(alpha: float) -> void:
 	self_modulate.a*=alpha
@@ -195,6 +201,9 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if mounted and pose.alive:
 		_present_mount(pose,seconds)
 		return
+	if appearance!=null and appearance.unarmed_hurt!=null and (hurt_active or not pose.alive):
+		_present_authored_reaction(pose)
+		return
 	_mount.visible=false
 	_unarmed.visible=false
 	if unarmed:
@@ -210,6 +219,8 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		var columns: int=(appearance.stride_columns if running else appearance.idle_columns) if appearance!=null else (8 if running else 2)
 		if appearance!=null:
 			_unarmed_frame.atlas=appearance.unarmed_run if running else appearance.unarmed_idle
+			if slow and appearance.unarmed_tired!=null:_unarmed_frame.atlas=appearance.unarmed_tired
+			elif sprinting and appearance.unarmed_sprint!=null:_unarmed_frame.atlas=appearance.unarmed_sprint
 		else:
 			_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else IdleUnarmed
 		_unarmed_frame.region=Rect2((drawing%columns)*128,(drawing/columns)*96,128,96)
@@ -293,6 +304,18 @@ func set_equipment(weapon: int, armor: int) -> void:
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
+func _present_authored_reaction(pose: Dictionary) -> void:
+	rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO;flip_h=pose.facing<0
+	var clip: StringName=&"hurt" if pose.alive else &"death"
+	var progress: float=float(_reaction.pose().progress) if pose.alive else clampf(_death_age/0.65,0,1)
+	var index: int=0 if progress<0.45 else 1
+	if unarmed:
+		_unarmed_frame.atlas=appearance.unarmed_hurt if pose.alive else appearance.unarmed_death
+		_unarmed_frame.region=Rect2(index*128,0,128,96)
+		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=flip_h;_unarmed.visible=true;self_modulate.a=0
+	else:
+		animation=clip;frame=index
+
 func set_mounted(value: bool) -> void:
 	# Equipment is state; only present/reset own which body is drawn.
 	mounted=value
@@ -312,10 +335,13 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	var index:=0
 	if progress<1:
 		var step: int=pose.get("combo_step",1)
-		index=3 if progress<0.3 else 4 if progress<0.58 else 5
-		if step==2:index=5 if progress<0.3 else 4 if progress<0.58 else 3
+		var start: int=appearance.mounted_attack_start if appearance!=null else 3
+		index=start if progress<0.3 else start+1 if progress<0.58 else start+2
+		if step==2:index=start+2 if progress<0.3 else start+1 if progress<0.58 else start
 	elif not pose.get("grounded",true):index=2
-	elif pose.get("moving",false) or pose.get("dashing",false):index=1+int(_gait_time*24/STRIDE_FRAMES)%2
+	elif pose.get("moving",false) or pose.get("dashing",false):
+		var count: int=appearance.mounted_gait_frames if appearance!=null else 2
+		index=int(_gait_time*12)%count if count>2 else 1+int(_gait_time*24/STRIDE_FRAMES)%2
 	if hurt_active:index=0
 	_mount_frame.atlas=appearance.mounted if appearance!=null else MountedSheet
 	_mount_frame.region=Rect2(index*160,0,160,128)
