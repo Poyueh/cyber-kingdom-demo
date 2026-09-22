@@ -244,7 +244,7 @@ func _blocking_wall(from_x: float, to_x: float, approach_side: int = 0) -> Dicti
 	var nearest:=INF
 	var result: Dictionary={}
 	for id in world.walls:
-		if world.walls[id].hp<=0: continue
+		if not world.wall_operational(id): continue
 		var at: float=world.sites[id]
 		var between: bool=at>=minf(from_x,to_x) and at<=maxf(from_x,to_x)
 		if approach_side!=0: between=(at-from_x)*-approach_side>=-25
@@ -257,6 +257,9 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 	raider.fighter.advance(seconds)
 	if not raider.fighter.is_alive():
 		return
+	# A fully funded upgrade opens the route even during an enemy's windup.
+	if raider.windup > 0 and raider.target.get("kind", "") == "wall" and not world.wall_operational(raider.target.get("wall_id", "wall")):
+		raider.windup = 0.0
 	raider.cooldown = maxf(0,raider.cooldown-seconds)
 	if float(raider.get("stagger",0.0)) > 0.0:
 		raider.stagger = maxf(0.0,raider.stagger-seconds)

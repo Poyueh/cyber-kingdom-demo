@@ -109,9 +109,12 @@ func hit_person(index: int) -> bool:
 	people[index].hurt = 2.0
 	return true
 
+func wall_operational(id: String) -> bool:
+	return walls.has(id) and walls[id].hp > 0 and not walls[id].pending
+
 func hit_wall(amount: int, id: String = "wall") -> bool:
 	var defense: Dictionary=walls[id]
-	if defense.hp <= 0 or amount <= 0:
+	if not wall_operational(id) or amount <= 0:
 		return false
 	defense.hp = maxi(0,defense.hp-amount)
 	return true
