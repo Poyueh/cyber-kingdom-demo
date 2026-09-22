@@ -1,0 +1,40 @@
+{
+  "version": "v0.0.11",
+  "repository": "Poyueh/cyber-kingdom-demo",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.11",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/",
+  "guide_url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html",
+  "pages_deployment": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/35748796517",
+  "pages_http_status": {
+    "game": 200,
+    "guide": 200
+  },
+  "artifact_source_commit": "aa008bc6460faa02ac26d7d8f9657ca771923d6b",
+  "full_check_failures": 0,
+  "packages": {
+    "Cyber-Kingdom-Web-v0.0.11.zip": {
+      "sha256": "ecbc352dee03698af233e4d1772841833164fad74930613a7455e91b95e3eac4",
+      "platform": "H5"
+    },
+    "Cyber-Kingdom-macOS-v0.0.11.zip": {
+      "sha256": "8660f05881a741bcedc716672f5bda3e26cf02adc5fd613afa67f3388b41c2dc",
+      "platform": "macOS",
+      "signing": "ad-hoc; not notarized"
+    },
+    "Cyber-Kingdom-Windows-v0.0.11.zip": {
+      "sha256": "7a69d35ce7a659834a3a8c6fdfc089af94032857ab178a67cf9b08378ceae24c",
+      "platform": "Windows",
+      "signing": "unsigned"
+    },
+    "Cyber-Kingdom-Android-v0.0.11-debug.apk": {
+      "sha256": "807accaa0faf08c4eee9c7c8c40a8c1013595ed9258b1f510d832723b51bb9e9",
+      "platform": "Android ARM64",
+      "signing": "local debug certificate; not a Google Play release"
+    },
+    "Cyber-Kingdom-iOS-v0.0.11-Xcode.zip": {
+      "sha256": "5ecf57613254b3449ec01f7a1f0e47180b2a1aa9115a07dc180c359aa35bf4d1",
+      "platform": "iOS Xcode project",
+      "signing": "pending Xcode signing and device install"
+    }
+  }
+}

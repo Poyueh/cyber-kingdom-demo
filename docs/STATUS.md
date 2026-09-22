@@ -1351,3 +1351,9 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - 發行目標改為 `Poyueh/cyber-kingdom-demo`；本版本會把 H5、macOS、Windows、Android debug APK 和 iOS Xcode 專案放在該倉庫的 Release。
 - GitHub Pages 會從 Release Web ZIP 部署，不再依賴本機 `builds/` 匯出資料夾。完成遠端驗證後，本機 `builds/` 會移除以避免保留約 3.3 GB 的舊成品。
 - 發行條目見 `docs/releases/0.0.11.md`；版本不宣稱 Windows／macOS 簽署、Android 商店簽署或 iOS 真機安裝完成。
+
+## 2026-09-22：v0.0.11 已發佈至 cyber-kingdom-demo
+
+- GitHub Release [v0.0.11](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.11) 已公開，包含 H5、macOS、Windows、Android debug APK、iOS Xcode 專案與 `SHA256SUMS.txt`。
+- GitHub Pages [試玩站](https://poyueh.github.io/cyber-kingdom-demo/) 與[玩家指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html) 部署成功並回傳 HTTP 200；部署 run [35748796517](https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/35748796517)。
+- 所有附件校驗值、來源提交、平台簽署狀態與限制記錄在 `docs/reports/release-0.0.11/verification.json`。本機舊 `builds/` 匯出資料夾已在遠端驗證後移除，未被 Git 追蹤的成品不再佔用專案空間。
