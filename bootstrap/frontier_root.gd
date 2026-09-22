@@ -44,6 +44,7 @@ func _ready() -> void:
 	_sunbeams=preload("res://presentation/sunbeams.gd").new();_sunbeams.strength=ambience.sunbeam_strength;add_child(_sunbeams)
 	view.crystal_radius=tuning.crystal_radius
 	hud.throw_requested.connect(func(): _requested_throw = true)
+	controls.mouse_exclusions=hud.drag_controls.exclusions
 	controls.throw_requested.connect(func(): _requested_throw = true)
 	controls.special_requested.connect(func():_requested_special=true)
 	hud.special_requested.connect(func():_requested_special=true)
@@ -301,7 +302,10 @@ func _sync_knight_equipment() -> void:
 		if effect.kind=="camp_ignition" and absf(knight.position.x-effect.x)<96:
 			knight.visual.ceremony_age=2.4-effect.life
 	var tired_idle: bool=sim.hero.stamina<sim.hero.stats.attack_cost and sim.hero.attack_remaining<=0 and absf(knight.velocity.x)<1
-	knight.visual.breathing=sim.life.enabled and (sim.travel.exhausted or tired_idle)
+	knight.visual.breathing=sim.life.enabled and (sim.travel.breath_ticks>0 or tired_idle)
+	knight.visual.breath_stop_remaining=float(sim.travel.breath_ticks)/preload("res://domain/time/tick_clock.gd").TICKS_PER_SECOND
+	knight.visual.tired_walk=sim.life.enabled and sim.travel.winded
+	knight.visual.exertion=sim.travel.breath_load(sim.hero)
 	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
 
-func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.exhausted)
+func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.winded)

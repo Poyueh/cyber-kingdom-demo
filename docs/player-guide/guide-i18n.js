@@ -15,7 +15,7 @@
  const nodes = [];
  while (walker.nextNode()) if (!['SCRIPT','STYLE'].includes(walker.currentNode.parentElement?.tagName)) nodes.push(walker.currentNode);
  for (const node of nodes) node.nodeValue = t(node.nodeValue);
- for (const element of document.querySelectorAll('[alt],[aria-label],[data-mobile],meta[content]')) {
-  for (const attr of ['alt','aria-label','data-mobile','content']) if(element.hasAttribute(attr)) element.setAttribute(attr,t(element.getAttribute(attr)));
+ for (const element of document.querySelectorAll('[alt],[aria-label],[data-mobile],[data-desktop],meta[content]')) {
+  for (const attr of ['alt','aria-label','data-mobile','data-desktop','content']) if(element.hasAttribute(attr)) element.setAttribute(attr,t(element.getAttribute(attr)));
  }
 })();

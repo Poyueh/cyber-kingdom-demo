@@ -25,6 +25,8 @@ func test_death_facing_and_restart_are_visible(t) -> void:
 
 func test_grounded_motion_plays_run_then_returns_to_idle(t) -> void:
 	var view = KnightVisual.new()
+	# Fix cadence explicitly: this checks playback behavior, not the changing art defaults.
+	view.walking_frame_rate=12;view.running_frame_rate=12
 	var pose := {"alive": true, "facing": 1, "moving": true, "invulnerable": false, "grounded": true}
 	view.present(pose, 0.1)
 	t.equal(view.animation, &"run", "ground movement selects run artwork")
@@ -126,6 +128,7 @@ func test_default_cleave_shows_all_eight_poses_at_thirty_fps(t) -> void:
 
 func test_running_phase_continues_through_attack_and_recovery(t) -> void:
 	var view=KnightVisual.new()
+	view.walking_frame_rate=12;view.running_frame_rate=12
 	var pose={"alive":true,"facing":1,"moving":true,"grounded":true,"invulnerable":false,"attack_progress":1.0}
 	view.present(pose,0.15)
 	pose.attack_progress=0.4

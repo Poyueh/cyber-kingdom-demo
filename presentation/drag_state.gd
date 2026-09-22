@@ -33,7 +33,9 @@ func drag(id: int, at: Vector2) -> bool:
   move_finger=id;finger.movement=true;axis=_tier(delta.x)
  return false
 func _tier(distance: float) -> float:
- return signf(distance)*(1.0 if absf(distance)>=84 else 0.65)
+ # Separate enter/leave thresholds keep tiny finger jitter from flipping speed every frame.
+ var threshold: float=72.0 if absf(axis)>=0.9 else 84.0
+ return signf(distance)*(1.0 if absf(distance)>=threshold else 0.65)
 func finish(id: int) -> void:
  fingers.erase(id)
  if fingers.is_empty():_special_latched=false

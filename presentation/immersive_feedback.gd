@@ -1,5 +1,6 @@
 extends Node2D
 ## Screen-space cues replace the permanent numerical dashboard.
+const Dawn=preload("res://presentation/dawn_banner.gd")
 const Icons=preload("res://presentation/ui_icons.gd")
 var sim: RefCounted
 var hero_screen: Vector2=Vector2.ZERO
@@ -23,7 +24,7 @@ func present(run: RefCounted, at: Vector2, area: Rect2, stopped: bool) -> void:
  purse.present(float(sim.pouch.amount)/sim.pouch.capacity,area,stopped)
  if not is_same(_last_sim,sim):
   _last_sim=sim;_day=0;_core=sim.mission.core_hp;_alarm=0;_dawn_age=0
- if _day!=sim.clock.day:_day=sim.clock.day;_dawn_age=3.5
+ if _day!=sim.clock.day:_day=sim.clock.day;_dawn_age=Dawn.DURATION
  if _core>sim.mission.core_hp:_alarm=3.0
  _core=sim.mission.core_hp
  queue_redraw()
@@ -44,8 +45,7 @@ func _draw() -> void:
   for side in [0,1]:
    draw_rect(Rect2(viewport.position+Vector2(side*(viewport.size.x-12),0),Vector2(12,viewport.size.y)),Color(0.8,0.08,0.1,danger*(0.16+sin(_time*3)*0.08)))
  if _dawn_age>0:
-  var alpha: float=minf(1.0,_dawn_age)*minf(1.0,(3.5-_dawn_age)*3)
-  _caption(tr("第 %d 天")%_day,safe.position.y+95,42,Color(0.93,0.91,0.70,alpha))
+  Dawn.draw(self,_font,safe,_day,_dawn_age,tr("第 %d 天"))
  if _alarm>0:
   var alpha: float=minf(1,_alarm)*(0.85+0.15*sin(_time*9))
   var side: float=signf(sim.world.sites.hall-sim._hero_x)

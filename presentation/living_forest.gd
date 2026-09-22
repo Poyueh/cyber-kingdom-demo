@@ -15,12 +15,16 @@ static func behind(view: Node2D, time: float) -> void:
    var texture: Texture2D=Details.TEXTURES[KINDS[seed%4]]
    var height: float=[170.0,240.0,320.0][layer]+seed%83
    var scale: float=height/texture.get_height()
-   var at: Vector2=Ground.anchor(texture,Vector2(x,422+layer*3),scale)
+   var at: Vector2=Ground.anchor(texture,Vector2(x,432),scale)
    var color: Color=[Color("385563"),Color("304854"),Color("273e49")][layer]
    color.a=[0.44,0.58,0.72][layer]
-   var sway: float=sin(time*0.48+index)*0.009
-   view.draw_set_transform(at,sway,Vector2(-1 if seed%2 else 1,1))
-   view.draw_texture_rect(texture,Rect2(-texture.get_width()*scale*0.5,-height,texture.get_width()*scale,height),false,color)
+   view.draw_set_transform(at,0,Vector2(-1 if seed%2 else 1,1))
+   # Only the canopy bends; the lower trunk and root never lift or rotate.
+   var band_height: float=texture.get_height()/8.0
+   for band: int in range(8):
+    var weight: float=pow(maxf(0,1.0-band/5.0),2)
+    var sway: float=roundf(sin(time*0.48+index+band*0.2)*2.0*weight)
+    view.draw_texture_rect_region(texture,Rect2(-texture.get_width()*scale*0.5+sway,-height+band*band_height*scale,texture.get_width()*scale,band_height*scale),Rect2(0,band*band_height,texture.get_width(),band_height),color)
  view.draw_set_transform(Vector2.ZERO)
 static func foreground(view: Node2D, time: float) -> void:
  for index in range(floori(view._span.x/320)-1,ceili(view._span.y/320)+1):
@@ -30,6 +34,6 @@ static func foreground(view: Node2D, time: float) -> void:
   var height: float=18+posmod(index*31,20)
   var scale: float=height/texture.get_height()
   var at: Vector2=Ground.anchor(texture,Vector2(x,442),scale)
-  view.draw_set_transform(at,sin(time*0.6+index)*0.025)
+  view.draw_set_transform(at)
   view.draw_texture_rect(texture,Rect2(-texture.get_width()*scale*0.5,-height,texture.get_width()*scale,height),false,Color(0.18,0.32,0.32,0.74))
  view.draw_set_transform(Vector2.ZERO)

@@ -63,9 +63,9 @@ func track(hero_screen: Vector2, game_time: float) -> void:
  if is_instance_valid(_guide_label) and not hint.is_empty():
   var goals: Dictionary={"camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"委託工匠採集，帶回龍晶。","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
   var goal: String=tr(goals.get(hint.kind,"擴建避難所，封印雙門並擊敗巨龍。"))
-  var command: String=tr("左右拖曳移動，拉遠加速") if touch_hint else tr("A／D 移動；Shift 快跑")
+  var command: String=tr("左右拖曳移動，拉遠加速") if touch_hint else tr("A／D 移動；同方向連按兩次並按住衝刺")
   if hint.kind in ["defend","fight","clear_enemies","dragon"]:
-   command=tr("點右側劍鈕攻擊，再點可連斬") if touch_hint else tr("按 J 攻擊，再按可連斬")
+   command=tr("點右側劍鈕攻擊，再點可連斬") if touch_hint else tr("按 J 或滑鼠左鍵攻擊，再按可連斬")
   if spirit_pose.get("near",false):
    if hint.action in ["invest","open"]:command=tr("向下拖曳並按住投入／互動") if touch_hint else tr("按住 E 投入／互動")
    if hint.kind=="recruit":command=tr("在附近向下滑動丟出龍晶") if touch_hint else tr("按 E 丟出龍晶")

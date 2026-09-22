@@ -31,13 +31,14 @@ func run_scene() -> void:
  game.sim.hero.stamina=0
  key(KEY_J,true);await frames(2);key(KEY_J,false)
  check(game.sim.hero.attack_remaining==0 and game.knight.visual.fatigue.visible,"empty attack stamina also shows a tired resting pose")
- key(KEY_SHIFT,true);key(KEY_D,true)
+ key(KEY_D,true);await frames(2);key(KEY_D,false);await frames(2);key(KEY_D,true)
+ game.sim.hero.stamina=0 # Double-tap recognition itself allows several regen ticks.
  await frames(3)
- check(game.sim.travel.exhausted and game.knight.velocity.x>0,"fast-run exhaustion falls back to actual walking")
- check(game.knight.visual.breathing and is_equal_approx(game.knight.velocity.x,game.tuning.walking_speed),"exhaustion preserves ordinary walking pace")
- key(KEY_SHIFT,false);key(KEY_D,false);await frames(30)
+ check(game.sim.travel.exhausted and is_zero_approx(game.knight.velocity.x),"fast-run exhaustion stops actual movement")
+ check(game.knight.visual.breathing and is_zero_approx(game.knight.velocity.x),"exhaustion starts the breathing pose")
+ key(KEY_D,false);await frames(52)
  check(game.knight.visual.fatigue.visible and game.knight.visual.self_modulate.a==0,"stationary exhaustion settles into one resting body")
- key(KEY_D,true);await frames(30)
+ key(KEY_D,true);await frames(125)
  check(not game.knight.visual.fatigue.visible and game.knight.velocity.x>0,"ordinary walking blends back from resting pose")
  key(KEY_D,false)
  var purse: Rect2=game.hud.immersive_feedback.purse.bounds
@@ -47,7 +48,7 @@ func run_scene() -> void:
  check(not game.hud.fullscreen_button.visible,"fullscreen stays inside the closed menu")
  game.knight.position.x+=200;await frames(2)
  check(game.hud.immersive_feedback.purse.bounds==purse,"purse stays fixed when knight moves")
- key(KEY_D,false);key(KEY_SHIFT,false)
+ key(KEY_D,false)
  game.sim.workforce.elapsed=155
  game.hud.present_world(game.sim,false,game.knight.position.x,true)
  check(game.hud.guide_view.hint.is_empty(),"ghost retires after early guidance")

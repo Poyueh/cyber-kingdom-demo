@@ -48,11 +48,12 @@ func test_residents_collect_offer_and_recruit(t) -> void:
 func test_fast_run_exhaustion_and_rest(t) -> void:
  var sim=Campaign.new({"immersive_loop":1})
  sim.hero.stamina=0
- t.equal(sim.travel_axis(1,0.1),1.0,"empty fast run falls back to walking")
+ t.equal(sim.travel_axis(1,0.1),0.0,"empty fast run stops for breathing")
  sim.hero.stamina=10
- t.equal(sim.travel_axis(0.5,0.1),1.0,"exhausted knight can walk while recovering")
+ t.equal(sim.travel_axis(0.5,0.1),0.0,"movement cannot bypass compulsory breathing")
  sim.hero.stamina=sim.hero.stats.max_stamina
- sim.travel_axis(0,3.0)
+ sim.advance(2.1,30)
+ sim.travel_axis(0,0.1)
  t.truth(sim.travel_axis(0.5,0.1)>0,"movement resumes after recovery")
 
 func test_repeated_yield_is_bounded_and_conserved(t) -> void:
@@ -74,7 +75,7 @@ func test_new_rules_save_and_resume(t) -> void:
  if restored.is_empty():return
  t.equal(restored.session.world.people[0].crystals,4,"resident wallet survives save")
  t.truth(restored.session.travel.exhausted,"reloading does not bypass exhaustion")
- t.equal(restored.session.travel_axis(0.65,0.1),1.0,"restored exhausted knight can still walk")
+ t.equal(restored.session.travel_axis(0.65,0.1),0.0,"restored exhausted knight must finish breathing")
  var old=Campaign.new({"seed":42})
  var legacy: Dictionary=codec.capture(old,{"seed":42},{"x":30.0,"y":430.0,"vx":0.0,"vy":0.0})
  legacy.version=6;legacy.erase("modules");legacy.erase("spirit");legacy.erase("survival");legacy.erase("travel")
@@ -171,10 +172,10 @@ func test_walking_recovers_without_rearming_sprint_early(t) -> void:
  var can_walk: bool=true
  for i in range(30):
   sim.advance(1.0/60.0,800)
-  can_walk=can_walk and sim.travel_axis(0.5,1.0/60.0)==1.0
- t.truth(can_walk,"walking remains available throughout recovery")
- t.truth(sim.hero.stamina>0 and sim.hero.stamina<10,"walking gradually restores energy")
- t.equal(sim.travel_axis(1,0.1),1.0,"brief walking does not bypass fast-run recovery threshold")
+  can_walk=can_walk and sim.travel_axis(0.5,1.0/60.0)==0.0
+ t.truth(can_walk,"movement stays locked during initial breathing")
+ t.truth(sim.hero.stamina>0 and sim.hero.stamina<10,"breathing gradually restores energy")
+ t.equal(sim.travel_axis(1,0.1),0.0,"brief input does not bypass breathing stop")
  var codec=Codec.new()
  var saved: Dictionary=codec.capture(sim,config,{"x":800.0,"y":430.0,"vx":0.0,"vy":0.0})
  var restored: Dictionary=codec.restore(saved)
@@ -186,7 +187,10 @@ func test_walking_recovers_without_rearming_sprint_early(t) -> void:
   same_motion=same_motion and sim.travel_axis(0.5,1.0/60)==restored.session.travel_axis(0.5,1.0/60)
  t.truth(same_motion,"recovery follows same movement after reload")
  t.equal(sim.hero.stamina,restored.session.hero.stamina,"recovery energy is deterministic across save")
- t.truth(sim.travel_axis(1,0.1)>2.3,"recovered sprint is clearly faster than walking")
+ t.equal(sim.travel_axis(1,0.1),1.0,"recovered running still needs a stationary rest before sprinting")
+ for i in range(300):
+  sim.advance(1.0/60,800);sim.travel_axis(0,1.0/60)
+ t.truth(sim.travel_axis(1,0.1)>2.3,"rested sprint is clearly faster than normal running")
 
 func test_smaller_arrival_pouch_can_start_worker_economy(t) -> void:
  var tuning=load("res://data/campaign.tres")

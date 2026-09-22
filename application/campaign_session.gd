@@ -1,5 +1,6 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
 const Spirit=preload("res://application/spirit_guidance.gd")
@@ -78,6 +79,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 		hero.stats.damage=int(config.get("knight_damage",18))
 		hero.hp=hero.stats.max_hp
 	travel.forced_rest=life.enabled
+	travel.configure(config)
 	world.add_wall("wall_left",left_post)
 	mission=Mission.new(config)
 	growth=Growth.new(config,world.shield_value)
@@ -544,7 +546,7 @@ func _override_resident_target(index: int, seconds: float) -> float:
 	return home
 
 func travel_axis(request: float, seconds: float) -> float:
-	return travel.axis(hero,request,seconds)
+	return travel.axis(hero,request,seconds,int(round(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)))
 
 func archer_damage() -> int:return hunter_damage if life.enabled else hunter_damage+barracks_level*6
 
