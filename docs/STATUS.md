@@ -1190,3 +1190,7 @@ H5 補充驗收：新版前導結束後正常回到標題，瀏覽器警告／�
 ## 2026-09-22：H5 v0.0.8 發行準備
 
 使用者授權發布。納入 v0.0.7 後的步態、手機攻擊鍵與拖曳箭頭、森林落地、怪物動作、換日與前導淡入、分段疲勞恢復及桌面雙按／滑鼠操作；完整檢查 2,167 項已通過。本次從 release/0.0.8 產出乾淨提交的 H5 包，Windows／Mac 不更新。發行條目見 docs/releases/0.0.8.md。
+
+## 2026-09-22：H5 v0.0.8 公開驗收完成
+
+Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，tag 指向 1869c6238cd95acb7b9cc9d92e61ff2d410a02e0。main／develop／release/0.0.8 與標籤已推送，Gitflow 發行已回合 develop。兩個附件 digest 與本機 SHA-256 一致；Pages 部署 35676475925 成功，公開站 14 個檔案 HTTP 200、雜湊與發行包相同，WASM MIME 正確。瀏覽器實際進入新旅程，顯示新版雙按衝刺提示，警告／錯誤清單為空。證據見 docs/reports/release-0.0.8/verification.json。Windows／Mac 包未更新。
