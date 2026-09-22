@@ -6,27 +6,29 @@
 </style></head><body><main>
 <header><div><div class="eyebrow">CYBER KINGDOM / CHARACTER STUDY 02</div><h1>黑鋼騎士</h1><p>重新建立輪廓、材質與出刀的重量。</p></div><span class="badge">造型與動作草稿 · 尚未套用至遊戲</span></header>
 <div class="layout"><section class="panel"><canvas id="stage" class="stage" width="640" height="320" aria-label="新騎士像素動畫預覽"></canvas>
-<div class="toolbar"><button data-mode="original" class="active">生成原圖 · 16 格</button><button data-mode="run">重組實驗 · 24 格</button><button data-mode="idle">造型</button><button data-mode="slash">斬擊草稿</button><button id="play" aria-pressed="false">播放</button><select id="speed" aria-label="播放速度"><option value="1">正常速度</option><option value="0.5">半速檢視</option></select></div>
+<div class="toolbar"><button data-mode="original" class="active">指定動作 · 16 格</button><button data-mode="run">舊重組 · 24 格</button><button data-mode="idle">造型</button><button data-mode="slash">斬擊草稿</button><button id="play" aria-pressed="true">暫停</button><select id="speed" aria-label="播放速度"><option value="1">正常速度</option><option value="0.5">半速檢視</option></select></div>
 <div class="ruler"><span class="small">逐格</span><input id="frame" aria-label="檢視圖格" type="range" min="0" max="7" value="0"><span class="small" id="count">1 / 1</span></div><p class="note small" id="note"></p></section>
-<aside class="panel info"><h2>先分清楚兩個版本</h2><p>「生成原圖」直接裁切剛才展示的整張圖片，只等比例縮放。「重組實驗」則拆出身體與腿甲重新製作，因此姿勢、比例和色彩都會不同。</p><div class="swatches"><i style="background:#242e35" title="黑鋼"></i><i style="background:#aab3ba" title="銀邊"></i><i style="background:#8d243b" title="披風"></i><i style="background:#77eee8" title="龍晶"></i></div><h2>原圖也還不是正式動畫</h2><p>生成的 16 格仍有同側腿重複、位置和動作銜接不穩的問題；按播放會如實顯示，不以重組版替代。</p><h2>這輪先看什麼</h2><p>預設停在原圖第一格，方便比較造型。拖曳滑桿查看其他姿势，或切到「重組實驗」比較差異。兩者都尚未套入遊戲。</p></aside></div>
-<section class="panel study"><div class="eyebrow">GENERATED SOURCE / UNMODIFIED</div><h2>預覽實際使用的生成原圖</h2><p class="small">上方「生成原圖」依照這張圖由左至右、由上至下播放。姿勢與盔甲沒有重組；縮小顯示仍會減少可見細節。</p><img src="../sources/balanced-run.png" alt="生成的十六格騎士全身跑步原圖"><a href="../sources/balanced-run.png">開啟完整原圖</a></section>
+<aside class="panel info"><h2>就是你指定的這一套</h2><p>目前播放的是你重新貼上的 16 格動作圖。前次接到另一張生成稿，現已更正來源。</p><div class="swatches"><i style="background:#242e35" title="黑鋼"></i><i style="background:#aab3ba" title="銀邊"></i><i style="background:#8d243b" title="披風"></i><i style="background:#77eee8" title="龍晶"></i></div><h2>保留完整姿勢</h2><p>依原圖由左至右、由上至下播放，只裁格、等比例縮放與對齊各列地面。保持身體、雙腿、手臂與披風原貌。</p><h2>怎麼看</h2><p>預設播放這套動作，可暫停逐格或切換半速。下方放同一份原圖供核對。「舊重組」僅保留作比較，目前尚未套入遊戲。</p></aside></div>
+<section class="panel study"><div class="eyebrow">YOUR SELECTED SOURCE</div><h2>你指定的 16 格動作圖</h2><p class="small">上方「指定動作」直接播放這份圖片。姿勢與盔甲沒有重組；縮小顯示仍會減少可見細節。</p><img src="../sources/selected-run.png" alt="使用者指定的十六格騎士跑步原圖"><a href="../sources/selected-run.png">開啟這份完整原圖</a></section>
 <section class="panel study"><div class="eyebrow">REASSEMBLED EXPERIMENT</div><h2>重組實驗的步伐</h2><p class="small">這是離線拆件重組後的結果，並非上方原圖裁格。依序為第 1、5、9、13、17、21 格。</p><img src="run-steps.png?v=balanced-body-2" alt="重組實驗的六個關鍵姿勢，並非生成原圖"></section>
 <section class="panel study"><div class="eyebrow">SILHOUETTE / MOTION KEYS</div><h2>造型與關鍵動作</h2><p class="small">站姿、移動、原地斬、踏斬與拔劍的同一套角色設計。以下為降至遊戲像素密度的檢視。</p><img src="poses.png" alt="黑鋼騎士十二個造型與動作關鍵姿勢"><a href="../sources/design.png">查看完整造型原圖</a></section>
 <div class="footer"><p>正式製作還需：跑步與其他狀態銜接、完整三段連斬、拔劍與喘息過渡、騎乘造型。</p><p>保留目前可玩的遊戲版本。</p></div>
 </main><script>
 const canvas=document.querySelector('#stage'),ctx=canvas.getContext('2d'),slider=document.querySelector('#frame'),counter=document.querySelector('#count'),play=document.querySelector('#play');
 const clips={original:{frames:16,columns:4,duration:2/3},idle:{frames:1,columns:1,duration:1},run:{frames:24,columns:6,duration:2/3},slash:{frames:8,columns:4,duration:1.4}};
-const images={},notes={original:'直接裁切生成原圖 · 16 格。只等比例縮放，未拆件、改姿勢或減色。原圖的腳步與銜接問題會原樣顯示。',idle:'主視圖為 3 倍整數放大，右側保留約 60 像素高的原生尺寸。',run:'重組實驗 · 24 格。由原圖部件重製，改過姿勢與色盤；這不是生成圖片的直接播放。',slash:'斬擊草稿：蓄力、轉腰、落刀、收勢。未加殘影，仍需補足高速出刀的中間姿勢。'};
-let mode='original',playing=false,time=0,frame=0,last=performance.now();
-for(const name of Object.keys(clips)){images[name]=new Image();images[name].src=name==='original'?'../sources/balanced-run.png':name+'.png?v=balanced-body-2';}
+const images={},notes={original:'本次指定原圖 · 16 格。完整姿勢直接裁格播放，只等比例縮放及對齊各列地面，未拆件或改色。',idle:'主視圖為 3 倍整數放大，右側保留約 60 像素高的原生尺寸。',run:'舊重組實驗 · 24 格。這不是你指定圖片的直接播放，僅供比較。',slash:'斬擊草稿：蓄力、轉腰、落刀、收勢。未加殘影，仍需補足高速出刀的中間姿勢。'};
+// The selected 1448 x 1086 sheet has uneven row gutters. Equal quarters cut boots.
+const sourceRows=[{top:0,bottom:298,sole:285},{top:298,bottom:574,sole:263},{top:574,bottom:834,sole:245},{top:834,bottom:1086,sole:244}];
+let mode='original',playing=true,time=0,frame=0,last=performance.now();
+for(const name of Object.keys(clips)){images[name]=new Image();images[name].src=name==='original'?'../sources/selected-run.png':name+'.png?v=balanced-body-2';}
 function update(){document.querySelector('#note').textContent=notes[mode];slider.max=clips[mode].frames-1;slider.value=frame;counter.textContent=`${frame+1} / ${clips[mode].frames}`;play.textContent=playing?'暫停':'播放';play.setAttribute('aria-pressed',String(playing));}
 document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>{mode=button.dataset.mode;time=0;frame=0;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b===button));update();});
 play.onclick=()=>{playing=!playing;update();};slider.oninput=()=>{playing=false;frame=Number(slider.value);time=frame*clips[mode].duration/clips[mode].frames;update();};
 function drawSprite(img,clip,baseX,baseY,zoom){
  if(mode==='original'){
-  const column=frame%4,row=Math.floor(frame/4),sx=Math.round(column*img.naturalWidth/4),sy=Math.round(row*img.naturalHeight/4),sw=Math.round((column+1)*img.naturalWidth/4)-sx,sh=Math.round((row+1)*img.naturalHeight/4)-sy;
-  // One fixed uniform scale and anchor for every source frame: no limb transforms.
-  const scale=60/257,x=73-234*scale,y=81-305*scale;
+  const column=frame%4,row=sourceRows[Math.floor(frame/4)],sx=column*362,sy=row.top,sw=362,sh=row.bottom-row.top;
+  // Keep all anatomy intact. Only translate each source row to a common ground.
+  const scale=60/250,x=73-246*scale,y=81-row.sole*scale;
   ctx.drawImage(img,sx,sy,sw,sh,baseX+x*zoom,baseY+y*zoom,sw*scale*zoom,sh*scale*zoom);
  }else{const sx=frame%clip.columns*128,sy=Math.floor(frame/clip.columns)*96;ctx.drawImage(img,sx,sy,128,96,baseX,baseY,128*zoom,96*zoom);}
 }
