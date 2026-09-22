@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=19 format=3]
 [ext_resource type="PackedScene" path="res://scenes/settlement.tscn" id="base"]
 [ext_resource type="Script" path="res://bootstrap/frontier_root.gd" id="root"]
 [ext_resource type="Resource" path="res://data/campaign.tres" id="tuning"]
@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" path="res://art/characters/prosthetic-v001/wanderer-idle.png" id="wanderer"]
 [ext_resource type="Texture2D" path="res://art/characters/fluid-v001/attack.png" id="knight-attack"]
 [ext_resource type="Texture2D" path="res://art/characters/prosthetic-v001/knight-dash.png" id="knight-dash"]
-[ext_resource type="Texture2D" path="res://art/characters/prosthetic-v001/knight-idle.png" id="knight-idle"]
+[ext_resource type="Texture2D" path="res://art/characters/grounded-run-v001/idle-armed.png" id="knight-idle"]
 [ext_resource type="Texture2D" path="res://art/characters/prosthetic-v001/knight-run-old.png" id="knight-run-old"]
 [ext_resource type="Texture2D" path="res://art/characters/fluid-v001/run.png" id="knight-run"]
 [ext_resource type="Texture2D" path="res://art/characters/prosthetic-v001/knight-jump.png" id="knight-jump"]
 [ext_resource type="Texture2D" path="res://art/characters/fluid-v001/moving-attack.png" id="moving-attack"]
 [ext_resource type="Resource" path="res://data/knight_combo_motion.tres" id="combo-motion"]
 [ext_resource type="Script" path="res://presentation/campaign_audio.gd" id="audio"]
+[ext_resource type="Resource" path="res://data/blacksteel_appearance.tres" id="appearance"]
 [node name="Frontier" instance=ExtResource("base")]
 script = ExtResource("root")
 tuning = ExtResource("tuning")
@@ -30,6 +31,7 @@ script = ExtResource("hud")
 [node name="Knight" parent="."]
 procedural_slash = false
 [node name="KnightVisual" parent="Knight"]
+appearance = ExtResource("appearance")
 combo_motion = ExtResource("combo-motion")
 moving_attack_atlas = ExtResource("moving-attack")
 texture_overrides = {

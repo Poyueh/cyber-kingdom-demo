@@ -1,6 +1,8 @@
 extends "res://presentation/fighter_visual.gd"
 ## New locomotion drawings are isolated from the editable combat animation resource.
 const MotionFrames=preload("res://data/knight_motion_frames.tres")
+const Appearance = preload("res://data/knight_appearance.gd")
+@export var appearance: Appearance
 @export var running_atlas: Texture2D=preload("res://art/characters/grounded-run-v001/run-armed.png")
 @export var texture_overrides: Dictionary = {}
 @export var moving_attack_atlas: Texture2D
@@ -11,7 +13,7 @@ const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
 const STRIDE_FRAMES: int=16
 const STRIDE_COLUMNS: int=8
 const UnarmedRun=preload("res://art/characters/grounded-run-v001/run-unarmed.png")
-const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
+const IdleUnarmed=preload("res://art/characters/grounded-run-v001/idle-unarmed.png")
 var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
@@ -77,6 +79,16 @@ func _ready() -> void:
 	_bind_motion() # PackedScene may assign its own frames after _init.
 	_apply_art_overrides()
 func _bind_motion() -> void:
+	if appearance!=null:
+		sprite_frames=appearance.frames.duplicate()
+		combo_motion=appearance.combo
+		walking_frame_rate=appearance.run_fps
+		running_frame_rate=appearance.sprint_fps
+		_gait_rate=walking_frame_rate
+		_ceremony.sheet=appearance.ceremony
+		fatigue.sheet=appearance.rest
+		fatigue.mounted_sheet=appearance.mounted
+		return
 	sprite_frames=sprite_frames.duplicate()
 	for clip in [&"run",&"jump"]:
 		if sprite_frames.has_animation(clip): sprite_frames.remove_animation(clip)
@@ -106,6 +118,7 @@ func _bind_stride(clip: StringName, atlas: Texture2D, count: int, columns: int) 
 		sprite_frames.add_frame(clip,drawing)
 
 func _apply_art_overrides() -> void:
+	if appearance!=null:return
 	# Swap atlas pixels only; preserve user-edited frame duration, region and speed.
 	for clip in sprite_frames.get_animation_names():
 		for index in range(sprite_frames.get_frame_count(clip)):
@@ -152,6 +165,8 @@ func present(pose: Dictionary, seconds: float) -> void:
 	elif _fatigue_weight>0:
 		var weight: float=smoothstep(0,1,_fatigue_weight)
 		_dim_body(1.0-weight)
+		# Cavalry has its own baked top-tier palette; do not recolour its horse.
+		fatigue.material=_mount.material if mounted else equipment_material
 		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
 		fatigue.modulate.a=weight
 	else:fatigue.reset()
@@ -165,7 +180,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if striding and seconds>0 and is_finite(seconds):
 		var speed: float=absf(pose.get("horizontal_speed",190.0*float(pose.get("locomotion_rate",1.0))))
 		var desired: float=lerpf(walking_frame_rate,running_frame_rate,smoothstep(165,322,speed))
-		if tired_walk:desired=20.0
+		if tired_walk:desired=appearance.tired_fps if appearance!=null else 20.0
 		_gait_rate=lerpf(_gait_rate,desired,1.0-exp(-seconds*12))
 		_gait_time+=seconds*_gait_rate/12.0
 	elif not striding and not pose.get("dashing",false):
@@ -189,10 +204,14 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		var running: bool=striding and pose.alive and not hurt_active
 		var slow: bool=running and tired_walk
 		var sprinting: bool=running and absf(pose.get("horizontal_speed",0.0))>240
-		var count: int=16 if slow else STRIDE_FRAMES
-		var drawing: int=int(fposmod(_gait_time*12,count)) if running else 8+int(fposmod(_motion_time*3,4))
-		var columns: int=8 if running else 4
-		_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else UnarmedSheet
+		var count: int=appearance.stride_frames if appearance!=null else STRIDE_FRAMES
+		var idle_count: int=appearance.idle_frames if appearance!=null else 4
+		var drawing: int=int(fposmod(_gait_time*12,count)) if running else int(fposmod(_motion_time*3,idle_count))
+		var columns: int=(appearance.stride_columns if running else appearance.idle_columns) if appearance!=null else (8 if running else 2)
+		if appearance!=null:
+			_unarmed_frame.atlas=appearance.unarmed_run if running else appearance.unarmed_idle
+		else:
+			_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else IdleUnarmed
 		_unarmed_frame.region=Rect2((drawing%columns)*128,(drawing/columns)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
 		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
@@ -233,9 +252,10 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if animation==&"attack" and combo_motion!=null and combo_motion.planted_atlas!=null:
 		var step:=clampi(int(pose.get("combo_step",1)),1,3)
 		var drawing: int=combo_motion.frame_at(step,float(pose.attack_progress))
-		if striding and combo_motion.moving_atlas!=null:
+		if (pose.get("attack_advancing",false) or striding) and combo_motion.moving_atlas!=null:
 			_moving_region.atlas=combo_motion.moving_atlas
-			_moving_region.region=Rect2(drawing*160,((step-1)*8+gait)*128,160,128)
+			var rows: int=combo_motion.moving_gait_rows
+			_moving_region.region=Rect2(drawing*160,((step-1)*rows+gait%rows)*128,160,128)
 			_moving_attack.texture=_moving_region
 			_moving_attack.flip_h=flip_h
 			_moving_attack.offset=Vector2(0,-16)
@@ -268,6 +288,8 @@ func set_equipment(weapon: int, armor: int) -> void:
 		_combo_attack.material=equipment_material
 		_moving_attack.material=equipment_material
 		fatigue.material=equipment_material
+		_unarmed.material=equipment_material
+		_ceremony.material=equipment_material
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
 	equipment_material.set_shader_parameter("armor_tier",float(armor_tier))
 
@@ -295,7 +317,7 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	elif not pose.get("grounded",true):index=2
 	elif pose.get("moving",false) or pose.get("dashing",false):index=1+int(_gait_time*24/STRIDE_FRAMES)%2
 	if hurt_active:index=0
-	_mount_frame.atlas=MountedSheet
+	_mount_frame.atlas=appearance.mounted if appearance!=null else MountedSheet
 	_mount_frame.region=Rect2(index*160,0,160,128)
 	_mount.texture=_mount_frame
 	_mount.position=Vector2(0,-absf(sin(_gait_time*12/STRIDE_FRAMES*TAU*2))*1.0 if index in [1,2] else sin(_motion_time*2)*0.5)
@@ -304,4 +326,5 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if progress<1 and not hurt_active:
 		var thrust:=sin(clampf((progress-0.2)/0.65,0,1)*PI)
 		var weight:=1.5 if int(pose.get("combo_step",1))==3 else 1.0
-		_mount.position+=Vector2(pose.facing*thrust*3.5*weight,thrust*1.5)
+		var advance: float=thrust*3.5*weight if pose.get("attack_advancing",false) else 0.0
+		_mount.position+=Vector2(pose.facing*advance,thrust*1.5)

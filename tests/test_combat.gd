@@ -238,24 +238,31 @@ func test_each_combo_cut_locks_direction_when_it_begins(t) -> void:
 	hero.advance(0.22)
 	t.equal(hero.attack_facing, -1, "new cut takes current movement facing")
 
+func test_stationary_combo_never_displaces_the_knight(t) -> void:
+	var hero = combo_fighter()
+	for step in range(3):
+		hero.start_attack()
+		hero.advance(0.5 if step==2 else 0.34)
+		t.equal(hero.consume_attack_travel(),0.0,"no direction keeps every slash planted")
+
 func test_followup_travel_is_timed_directional_and_consumed_once(t) -> void:
 	var hero = combo_fighter()
 	hero.start_attack()
 	hero.advance(0.34)
-	t.equal(hero.consume_attack_travel(), 0.0, "first slash stays rooted")
+	t.equal(hero.consume_attack_travel(1), 22.0, "held direction advances the opening slash")
 	hero.start_attack()
 	hero.advance(0.04)
-	t.equal(hero.consume_attack_travel(), 0.0, "followup anticipation stays planted")
+	t.equal(hero.consume_attack_travel(1), 0.0, "followup anticipation stays planted")
 	hero.facing = -1
 	hero.advance(0.09)
-	var partial: float = hero.consume_attack_travel()
+	var partial: float = hero.consume_attack_travel(1)
 	t.truth(partial > 0.0 and partial < 22.0, "followup advances during the cut in its locked direction")
-	t.equal(hero.consume_attack_travel(), 0.0, "same movement cannot be applied twice")
+	t.equal(hero.consume_attack_travel(1), 0.0, "same movement cannot be applied twice")
 	hero.advance(0.2)
-	t.truth(is_equal_approx(partial + hero.consume_attack_travel(), 22.0), "second cut travels its full distance")
+	t.truth(is_equal_approx(partial + hero.consume_attack_travel(1), 22.0), "second cut travels its full distance")
 	hero.start_attack()
 	hero.advance(0.5)
-	t.truth(is_equal_approx(hero.consume_attack_travel(), -32.0), "finisher steps farther in its own locked direction")
+	t.truth(is_equal_approx(hero.consume_attack_travel(-1), -32.0), "finisher steps farther in its own locked direction")
 
 func test_step_distance_survives_coarse_handoff_and_custom_timing(t) -> void:
 	for duration in [0.2, 0.6]:
@@ -264,15 +271,15 @@ func test_step_distance_survives_coarse_handoff_and_custom_timing(t) -> void:
 		for hero in [coarse, fine]:
 			hero.stats.attack_duration = duration
 			hero.start_attack()
-			hero.advance(duration * 0.7)
+			hero.advance(duration * 0.8)
 			hero.consume_attack_travel()
 			hero.start_attack()
 		coarse.advance(duration * 1.2)
 		var total := 0.0
 		for tick in range(120):
 			fine.advance(duration / 100.0)
-			total += fine.consume_attack_travel()
-		t.truth(is_equal_approx(coarse.consume_attack_travel(), total) and is_equal_approx(total, 22.0), "frame size and swing duration do not change forward step distance")
+			total += fine.consume_attack_travel(1)
+		t.truth(is_equal_approx(coarse.consume_attack_travel(1), total) and is_equal_approx(total, 22.0), "frame size and swing duration do not change forward step distance")
 
 func test_cancelled_combo_discards_unapplied_step(t) -> void:
 	for cancel in ["dash", "hurt", "death"]:
@@ -283,6 +290,17 @@ func test_cancelled_combo_discards_unapplied_step(t) -> void:
 		hero.advance(0.13)
 		if cancel == "dash": hero.start_dash()
 		else: hero.take_damage(999 if cancel == "death" else 1)
-		t.equal(hero.consume_attack_travel(), 0.0, "cancel discards pending step: " + cancel)
+		t.equal(hero.consume_attack_travel(1), 0.0, "cancel discards pending step: " + cancel)
 		hero.advance(0.3)
-		t.equal(hero.consume_attack_travel(), 0.0, "cancelled sword cannot resume stepping: " + cancel)
+		t.equal(hero.consume_attack_travel(1), 0.0, "cancelled sword cannot resume stepping: " + cancel)
+
+func test_releasing_direction_discards_travel_without_a_backlog(t) -> void:
+	var hero = combo_fighter()
+	hero.start_attack();hero.advance(0.18)
+	t.truth(hero.consume_attack_travel(1)>0,"direction begins an active forward step")
+	hero.advance(0.04)
+	t.equal(hero.consume_attack_travel(0),0.0,"releasing direction cancels current travel")
+	t.equal(hero.consume_attack_travel(1),0.0,"pressing again cannot recover discarded travel")
+	hero.advance(0.2)
+	var rest: float=hero.consume_attack_travel(-1)
+	t.truth(rest>0 and rest<22,"opposite input keeps only remaining travel in locked swing direction")

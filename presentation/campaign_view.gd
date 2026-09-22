@@ -4,7 +4,7 @@ const Shrine=preload("res://presentation/spirit_shrine.gd")
 var hit_feedback:=HitFeedback.new()
 var _raider_motion: RefCounted=preload("res://presentation/raider_motion_view.gd").new()
 const Daylight=preload("res://presentation/daylight_view.gd")
-@export var daylight_style: Resource=preload("res://data/daylight_style.gd").new()
+@export var daylight_style: Resource=preload("res://data/daylight_style.tres")
 var _daylight: Daylight
 var _camp_ignition_age: float=-1.0
 

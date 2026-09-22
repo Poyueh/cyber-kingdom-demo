@@ -1,0 +1,114 @@
+{
+  "version": "v0.0.8",
+  "release_commit": "1869c6238cd95acb7b9cc9d92e61ff2d410a02e0",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom/",
+  "deployment": {
+    "conclusion": "success",
+    "headSha": "1869c6238cd95acb7b9cc9d92e61ff2d410a02e0",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom/actions/runs/35676475925"
+  },
+  "files": {
+    "index.apple-touch-icon.png": {
+      "response": "200 image/png",
+      "bytes": 1322,
+      "sha256": "e897c283312c594efcc72737fd3652971a914651b0c1980b61998155d1e16afb"
+    },
+    "index.wasm": {
+      "response": "200 application/wasm",
+      "bytes": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    "index.icon.png": {
+      "response": "200 image/png",
+      "bytes": 2744,
+      "sha256": "156c0c98a2f251765922f2835f8c386239914f05f7e57b25f49c77727c292618"
+    },
+    "guide-reader.css": {
+      "response": "200 text/css; charset=utf-8",
+      "bytes": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056"
+    },
+    "FONT-LICENSE.txt": {
+      "response": "200 text/plain; charset=utf-8",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    "index.html": {
+      "response": "200 text/html; charset=utf-8",
+      "bytes": 5542,
+      "sha256": "ad02d5817257df9b7b62f78f56fc0fb681a7e01402462abd19fe9e8fdaa1f926"
+    },
+    "guide.html": {
+      "response": "200 text/html; charset=utf-8",
+      "bytes": 2805451,
+      "sha256": "c758098751b5ef7c48a27d6af6432c3c35caa327fb803404ee970ed1d5074825"
+    },
+    "index.png": {
+      "response": "200 image/png",
+      "bytes": 21443,
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e"
+    },
+    "index.audio.worklet.js": {
+      "response": "200 application/javascript; charset=utf-8",
+      "bytes": 7298,
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+    },
+    "index.js": {
+      "response": "200 application/javascript; charset=utf-8",
+      "bytes": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"
+    },
+    "index.audio.position.worklet.js": {
+      "response": "200 application/javascript; charset=utf-8",
+      "bytes": 2973,
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8"
+    },
+    "README.txt": {
+      "response": "200 text/plain; charset=utf-8",
+      "bytes": 936,
+      "sha256": "395e23a12d0833ddd50eb973ae732eb897a4e71a86f47a3046c46bd14a44cd8e"
+    },
+    "index.pck": {
+      "response": "200 application/octet-stream",
+      "bytes": 38260260,
+      "sha256": "b22d65f758478c1ca99d2e5b5fb0db20ee8b2cef367baa97ed1c84b0b292624e"
+    },
+    "guide-reader.js": {
+      "response": "200 application/javascript; charset=utf-8",
+      "bytes": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be"
+    }
+  },
+  "assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/Poyueh/cyber-kingdom/releases/assets/580282148",
+      "contentType": "application/zip",
+      "createdAt": "2026-09-22T01:37:42Z",
+      "digest": "sha256:810ed13e30f2550e2375f0c19889e1bf27460807a0969c05fd945b1a5cb82edf",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR2Li84ilmck",
+      "label": "",
+      "name": "Cyber-Kingdom-Web-v0.0.8.zip",
+      "size": 50017251,
+      "state": "uploaded",
+      "updatedAt": "2026-09-22T01:37:50Z",
+      "url": "https://github.com/Poyueh/cyber-kingdom/releases/download/v0.0.8/Cyber-Kingdom-Web-v0.0.8.zip"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/Poyueh/cyber-kingdom/releases/assets/580282147",
+      "contentType": "text/plain; charset=utf-8",
+      "createdAt": "2026-09-22T01:37:42Z",
+      "digest": "sha256:9da7200d5fc77b3e57c9022554efdff9425ccfe0102438ce5731cca03de4fc79",
+      "downloadCount": 0,
+      "id": "RA_kwDOUR2Li84ilmcj",
+      "label": "",
+      "name": "SHA256SUMS.txt",
+      "size": 95,
+      "state": "uploaded",
+      "updatedAt": "2026-09-22T01:37:42Z",
+      "url": "https://github.com/Poyueh/cyber-kingdom/releases/download/v0.0.8/SHA256SUMS.txt"
+    }
+  ]
+}

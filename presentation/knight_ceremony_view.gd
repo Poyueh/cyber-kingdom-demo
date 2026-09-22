@@ -1,6 +1,7 @@
 extends Sprite2D
 ## One short, interruptible celebration using authored extraction poses.
 const SHEET=preload("res://art/characters/camp-ceremony-v001/draw_sword.png")
+@export var sheet: Texture2D = SHEET
 const ENDS: Array[float]=[0.20,0.47,0.70,0.85,1.22,1.62,1.96,2.4]
 var _atlas: AtlasTexture=AtlasTexture.new()
 var _age: float=0.0
@@ -10,6 +11,7 @@ func _init() -> void:
  _atlas.atlas=SHEET;texture=_atlas
  visible=false
 func present(age: float, facing: int) -> void:
+ _atlas.atlas=sheet
  _age=age;_facing=facing;flip_h=facing<0
  var index: int=0
  while index<ENDS.size()-1 and age>ENDS[index]:index+=1

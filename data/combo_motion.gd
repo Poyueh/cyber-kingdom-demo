@@ -2,6 +2,7 @@ extends Resource
 ## Art and frame timing only; damage and combo state remain in domain.
 @export var planted_atlas: Texture2D
 @export var moving_atlas: Texture2D
+@export_range(1,8,1) var moving_gait_rows: int = 8
 @export var slash_weights := PackedFloat32Array([0.12,0.12,0.08,0.08,0.16,0.18,0.14,0.12])
 @export var rising_weights := PackedFloat32Array([0.10,0.10,0.05,0.15,0.12,0.13,0.15,0.20])
 @export var heavy_weights := PackedFloat32Array([0.12,0.12,0.10,0.06,0.16,0.18,0.14,0.12])
