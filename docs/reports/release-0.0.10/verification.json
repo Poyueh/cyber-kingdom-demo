@@ -1,21 +1,21 @@
 {
   "version": "v0.0.10",
-  "source_tree": "4d1c064f7629a318246caa582977f50a590ea571",
+  "source_tree": "eea4e550dda6b66932ae37f359ee80251a2206f9",
   "full_check_assertions": 2206,
   "full_check_failures": 0,
   "packages": {
     "Cyber-Kingdom-Web-v0.0.10.zip": {
-      "sha256": "ca46caf043cf3602f4656288d391c78a058ce2fd1663844d81266b2cb069b086",
+      "sha256": "0df52dc5b01fecfde0c4deddd40b43bee52c4bc528853face2a471a4712bac9c",
       "platform": "H5",
       "export_validation": "WebAssembly header, PCK ambience/daylight resource and player guide passed"
     },
     "Cyber-Kingdom-macOS-v0.0.10.zip": {
-      "sha256": "f0ff2f898e9ee31c80820fa7ec2b2004208418476b3f2af865bcb4d9d1a47be6",
+      "sha256": "490ee5bca7301ef6b64bfa374c39c1146b8f08667676f92fc889952d91a2d235",
       "platform": "macOS",
       "signing": "ad-hoc; not notarized"
     },
     "Cyber-Kingdom-Windows-v0.0.10.zip": {
-      "sha256": "35e18e2eb8a0480e6314cf9f8fa4e86fc9384eb9fddf2b6bd16e8ac2162d19f2",
+      "sha256": "91271db6f4fee586b303384b7311834075ce710952484a8690450250a4ec9a14",
       "platform": "Windows",
       "signing": "unsigned"
     }

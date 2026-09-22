@@ -1327,3 +1327,4 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 
 - 以 `release/0.0.10` 整理本輪變更，發行內容包含 H5、macOS、Windows 測試包；不宣稱 iOS 已簽署。更新條目見 `docs/releases/0.0.10.md`。
 - 發行前完整 `bash tools/check.sh` 通過 **2,206 項斷言**，零 SCRIPT ERROR／ERROR／FAIL。H5 匯出、桌面匯出與封裝資源檢查均需在發行包產生後再次完成。
+- 最終包已從固定遊戲來源樹 `eea4e550dda6b66932ae37f359ee80251a2206f9` 重建；H5、macOS、Windows 的 SHA-256 與簽署狀態記錄在 `docs/reports/release-0.0.10/verification.json`。準備建立 GitHub Release 與 Pages 部署。
