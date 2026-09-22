@@ -11,7 +11,7 @@ const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
 const STRIDE_FRAMES: int=16
 const STRIDE_COLUMNS: int=8
 const UnarmedRun=preload("res://art/characters/grounded-run-v001/run-unarmed.png")
-const UnarmedSheet=preload("res://art/characters/unarmed-v002/motion.png")
+const IdleUnarmed=preload("res://art/characters/grounded-run-v001/idle-unarmed.png")
 var _unarmed: Sprite2D
 var _unarmed_frame: AtlasTexture=AtlasTexture.new()
 var unarmed: bool=false
@@ -190,9 +190,9 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		var slow: bool=running and tired_walk
 		var sprinting: bool=running and absf(pose.get("horizontal_speed",0.0))>240
 		var count: int=16 if slow else STRIDE_FRAMES
-		var drawing: int=int(fposmod(_gait_time*12,count)) if running else 8+int(fposmod(_motion_time*3,4))
-		var columns: int=8 if running else 4
-		_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else UnarmedSheet
+		var drawing: int=int(fposmod(_gait_time*12,count)) if running else int(fposmod(_motion_time*3,4))
+		var columns: int=8 if running else 2
+		_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else IdleUnarmed
 		_unarmed_frame.region=Rect2((drawing%columns)*128,(drawing/columns)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
 		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
