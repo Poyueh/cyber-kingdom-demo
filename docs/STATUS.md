@@ -1322,3 +1322,8 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - 存檔版本升至 13，遷移舊改造所位置；保留未知版本及損壞資料拒絕規則。新增規則先確認失敗再實作，包含城牆拓展、原地收穫、滿袋溢出、獵人限制與採集中讀檔後繼續。
 - 完整 `bash tools/check.sh` **2,206 項斷言通過**，零 SCRIPT ERROR／ERROR／FAIL。原生戰役渲染檢查全套狀態、八格實際播放、三語部件選單及二級農具場；證據在 `docs/reports/knight-v002/`。死亡測試同步改為驗證新倒地圖格與暫停停止播放，不再要求舊版旋轉倒下。
 - 教學第 82 課示範 Appearance 的 Run Fps 與 Campaign 的 Work Margin；尚未收到學習回饋。依 Gitflow 整合本機 develop，未推送、未發布、未重新輸出 H5。下一步是玩家實玩確認動作美感與採集距離，再以 iPhone 真機驗證觸控和長時間遊玩。
+
+## 2026-09-22：v0.0.10 發行準備
+
+- 以 `release/0.0.10` 整理本輪變更，發行內容包含 H5、macOS、Windows 測試包；不宣稱 iOS 已簽署。更新條目見 `docs/releases/0.0.10.md`。
+- 發行前完整 `bash tools/check.sh` 通過 **2,206 項斷言**，零 SCRIPT ERROR／ERROR／FAIL。H5 匯出、桌面匯出與封裝資源檢查均需在發行包產生後再次完成。
