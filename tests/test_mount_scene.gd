@@ -16,6 +16,13 @@ func run_scene() -> void:
  check(scene.knight.velocity.x==0,"mounted first slash still roots movement")
  scene.knight.refresh_visual(0.05)
  check(scene.knight.visual.get_node("MountedKnight").visible,"mounted attack retains horse and rider")
+ var visual: Node=scene.knight.visual
+ visual.breathing=true
+ var rest_pose: Dictionary={"alive":true,"hp":100,"shield":0,"facing":1,"moving":false,"grounded":true,"invulnerable":false,"attack_progress":1.0}
+ visual.present(rest_pose,1.0)
+ check(visual.fatigue.texture.atlas==visual.get_node("MountedKnight").texture.atlas,"resting on horseback retains the same rider and horse artwork")
+ check(visual.fatigue.material==visual.get_node("MountedKnight").material,"mounted rest preserves the rider and horse palette")
+ visual.breathing=false
  var config: Dictionary=scene._campaign_config
  var packet=load("res://application/campaign_snapshot.gd").new().capture(scene.sim,config,{"x":scene.knight.position.x,"y":scene.knight.position.y,"vx":scene.knight.velocity.x,"vy":scene.knight.velocity.y})
  var restored=load("res://application/campaign_snapshot.gd").new().restore(packet)
