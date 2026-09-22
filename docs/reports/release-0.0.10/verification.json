@@ -1,0 +1,27 @@
+{
+  "version": "v0.0.10",
+  "source_tree": "4d1c064f7629a318246caa582977f50a590ea571",
+  "full_check_assertions": 2206,
+  "full_check_failures": 0,
+  "packages": {
+    "Cyber-Kingdom-Web-v0.0.10.zip": {
+      "sha256": "ca46caf043cf3602f4656288d391c78a058ce2fd1663844d81266b2cb069b086",
+      "platform": "H5",
+      "export_validation": "WebAssembly header, PCK ambience/daylight resource and player guide passed"
+    },
+    "Cyber-Kingdom-macOS-v0.0.10.zip": {
+      "sha256": "f0ff2f898e9ee31c80820fa7ec2b2004208418476b3f2af865bcb4d9d1a47be6",
+      "platform": "macOS",
+      "signing": "ad-hoc; not notarized"
+    },
+    "Cyber-Kingdom-Windows-v0.0.10.zip": {
+      "sha256": "35e18e2eb8a0480e6314cf9f8fa4e86fc9384eb9fddf2b6bd16e8ac2162d19f2",
+      "platform": "Windows",
+      "signing": "unsigned"
+    }
+  },
+  "ios": {
+    "status": "not exported or signed",
+    "reason": "requires the owner's Xcode Team ID and device verification"
+  }
+}
