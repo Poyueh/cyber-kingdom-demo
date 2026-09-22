@@ -21,6 +21,7 @@ func set_mounted(value: bool) -> void:
 	if visual!=null and visual.has_method("set_mounted"):visual.set_mounted(value)
 var _dash_trail: Array[Dictionary] = []
 var _trail_interval: float = 0.0
+var _attack_advancing: bool = false
 @onready var visual: AnimatedSprite2D = get_node_or_null("SentinelVisual" if is_enemy else "KnightVisual")
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func configure(fighter: Fighter, parameters: Resource) -> void:
 	velocity = Vector2.ZERO
 	_dash_trail.clear()
 	_trail_interval = 0.0
+	_attack_advancing = false
 	if visual != null:
 		visual.reset_pose()
 	queue_redraw()
@@ -39,7 +41,8 @@ func configure(fighter: Fighter, parameters: Resource) -> void:
 func advance_motion(direction: float, jump_requested: bool, seconds: float) -> void:
 	if model == null or seconds <= 0.0 or not is_finite(seconds):
 		return
-	var attack_travel := model.consume_attack_travel()
+	var attack_travel := model.consume_attack_travel(direction)
+	_attack_advancing = not is_zero_approx(direction) and model.attack_remaining > 0.0
 	if model.is_alive():
 		velocity.x = direction * tuning.move_speed * (1.25 if mounted else 1.0)
 		if (model.stats.attack_movement_locked and model.attack_remaining > 0.0) or not is_zero_approx(attack_travel):
@@ -67,7 +70,7 @@ func refresh_visual(seconds: float) -> void:
 	if visual != null:
 		visual.present({"alive": model.is_alive(), "facing": action_facing(),
 			"moving": absf(velocity.x) > 0.1 and not (model.stats.attack_movement_locked and model.attack_remaining > 0.0), "horizontal_speed":absf(velocity.x), "locomotion_rate": velocity.x*action_facing()/maxf(1,tuning.move_speed), "grounded": is_on_floor(), "vertical_speed":velocity.y,
-			"telegraph": telegraph, "dashing": model.dash_remaining > 0.0, "dash_progress": model.dash_progress(), "attack_progress": model.attack_progress(), "combo_step": model.combo_step,
+			"telegraph": telegraph, "dashing": model.dash_remaining > 0.0, "dash_progress": model.dash_progress(), "attack_progress": model.attack_progress(), "combo_step": model.combo_step, "attack_advancing": _attack_advancing,
 			"hp":model.hp,"shield":model.shield,"invulnerable": model.invulnerability_remaining > 0.0}, seconds)
 		if model.dash_remaining > 0.0 and model.is_alive() and not mounted:
 			if _trail_interval <= 0.0:
@@ -126,10 +129,11 @@ func _draw_slash(reach: float, facing: int) -> void:
 		points.append((origin + Vector2(cos(angle) * facing, sin(angle) * (-0.55 if rising else 0.55)) * reach).round())
 	for index in range(8, -1, -1):
 		var angle := leading_angle - 1.5 + index * 1.5 / 8.0
-		var radius := reach - 1.0 - sin(index * PI / 8.0) * (9.0 if heavy else 5.0)
+		var thickness: float=(3.0 if heavy else 1.5) if mounted else (9.0 if heavy else 5.0)
+		var radius := reach - 1.0 - sin(index * PI / 8.0) * thickness
 		points.append((origin + Vector2(cos(angle) * facing, sin(angle) * (-0.55 if rising else 0.55)) * radius).round())
 	var tint := Color("ffbd68") if is_enemy else (Color("d2fff0") if heavy else Color("8ce9e1"))
-	draw_colored_polygon(points, Color(tint, 0.85 if heavy else 0.65))
+	draw_colored_polygon(points, Color(tint, 0.28 if mounted else 0.85 if heavy else 0.65))
 	var tip := origin + Vector2(cos(leading_angle) * facing, sin(leading_angle) * (-0.55 if rising else 0.55)) * reach
 	draw_line((tip - Vector2(3 * facing, 5)).round(), tip.round(), Color("fff2cd"), 2.0)
 

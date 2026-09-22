@@ -9,5 +9,6 @@ extends Resource
 @export_range(1.0, 3.0, 0.1) var finisher_damage_scale: float = 1.6
 
 @export_group("Forward Step")
+## Direction-held opening and return cuts share this controlled step distance.
 @export_range(0.0, 64.0, 1.0) var return_step_distance: float = 22.0
 @export_range(0.0, 64.0, 1.0) var finisher_step_distance: float = 32.0

@@ -5,7 +5,7 @@ func run_scene() -> void:
 	root.add_child(scene)
 	await frames(8)
 	scene.set_physics_process(false)
-	# A held direction cannot slide the first slash; later cuts supply their own step.
+	# A held direction selects a controlled advancing cut, not normal running.
 	for direction in [KEY_D,KEY_A]:
 		scene.restart()
 		var sign_x := 1.0 if direction == KEY_D else -1.0
@@ -25,12 +25,12 @@ func run_scene() -> void:
 				var step: int = scene.sim.hero.combo_step
 				seen[step] = true
 				travel[step] += (scene.knight.position.x-before)*sign_x
-				if scene.knight.get_node("KnightVisual/ComboAttack").visible and not scene.knight.get_node("KnightVisual/MovingAttack").visible:
+				if scene.knight.get_node("KnightVisual/MovingAttack").visible and not scene.knight.get_node("KnightVisual/ComboAttack").visible:
 					planted[step] = true
 		key(direction,false)
 		check(seen.size()==3,"keyboard presses reach all three cuts in each direction")
-		check(planted.size()==3,"every cut uses planted sword choreography even with direction held")
-		check(absf(travel[1])<0.01,"first slash ignores held movement")
+		check(planted.size()==3,"direction selects distinct advancing choreography for every cut")
+		check(travel[1]>10 and travel[1]<40,"first slash advances only a controlled step")
 		check(travel[2]>10 and travel[2]<40,"second cut advances a short controlled step")
 		check(travel[3]>travel[2] and travel[3]<50,"finisher advances farther without running")
 		var before_walk: float = scene.knight.position.x
@@ -108,7 +108,18 @@ func verify_step_motion(scene) -> void:
 		if tick in [0,8,23]: key(KEY_J,true)
 		scene._physics_process(1.0/60)
 		key(KEY_J,false)
-	check(absf(scene.knight.position.x-origin-39.0)<0.1,"neutral input combo follows Inspector step distances")
+	check(absf(scene.knight.position.x-origin)<0.1,"neutral input keeps the complete combo stationary")
+	scene.restart();await frames(2);origin=scene.knight.position.x
+	key(KEY_D,true)
+	for tick in range(65):
+		await physics_frame
+		scene.paused=false
+		# This assertion measures Resource wiring; keyboard timing is covered above.
+		if tick in [0,8,23]:scene.sim.hero.start_attack()
+		scene._physics_process(1.0/60)
+		if scene.sim.hero.combo_step==3 and scene.sim.hero.attack_progress()>=0.8:break
+	key(KEY_D,false)
+	check(absf(scene.knight.position.x-origin-54.0)<0.1,"held direction uses Inspector light and finishing step distances: %f"%(scene.knight.position.x-origin))
 	scene.combo_tuning = original
 	scene.restart()
 	# Turn intent changes the NEXT sword cut; it cannot drag this cut backwards.
@@ -138,6 +149,7 @@ func verify_step_motion(scene) -> void:
 	scene.add_child(wall)
 	await physics_frame
 	origin = scene.knight.position.x
+	key(KEY_D,true)
 	for tick in range(65):
 		await physics_frame
 		scene.paused = false
@@ -145,6 +157,7 @@ func verify_step_motion(scene) -> void:
 		scene._physics_process(1.0/60)
 		key(KEY_J,false)
 	check(scene.knight.position.x>origin and scene.knight.position.x<wall.position.x-4,"combo advances up to actual wall collision without tunneling")
+	key(KEY_D,false)
 	wall.queue_free()
 	await physics_frame
 	origin = scene.knight.position.x
@@ -158,6 +171,7 @@ func verify_step_motion(scene) -> void:
 	scene.sim.hero.advance(0.34)
 	scene.sim.hero.start_attack()
 	origin = scene.knight.position.x
+	key(KEY_D,true)
 	for tick in range(7):
 		await physics_frame
 		scene.paused = false
@@ -168,10 +182,13 @@ func verify_step_motion(scene) -> void:
 		await physics_frame
 		scene._physics_process(1.0/60)
 	check(paused_x>origin and scene.knight.position.x==paused_x,"pause freezes an in-progress forward step")
+	key(KEY_D,true)
 	for tick in range(20):
 		await physics_frame
 		scene.paused = false
 		scene._physics_process(1.0/60)
+		if scene.sim.hero.attack_progress()>=0.75:break
+	key(KEY_D,false)
 	check(absf(scene.knight.position.x-origin-22.0)<0.1,"resuming completes step without extra distance")
 	# Dash cancels the rooted swing and takes control immediately.
 	scene.restart()
