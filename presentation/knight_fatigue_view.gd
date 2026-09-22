@@ -2,6 +2,8 @@ extends Sprite2D
 ## Authored hunched poses with a bounded breathing loop; feet remain planted.
 const SHEET=preload("res://art/characters/exhaustion-v001/rest.png")
 const MOUNTED_SHEET=preload("res://art/characters/mounted-v001/mounted.png")
+@export var sheet: Texture2D = SHEET
+@export var mounted_sheet: Texture2D = MOUNTED_SHEET
 const LOOP: Array[int]=[0,1,2,3,2,1]
 var _atlas: AtlasTexture=AtlasTexture.new()
 var _age: float=0.0
@@ -16,7 +18,7 @@ func reset() -> void:
 func present(unarmed: bool, mounted: bool, facing: int, seconds: float) -> void:
  _age+=maxf(0,seconds);_facing=facing;_mounted=mounted
  var frame: int=LOOP[int(_age/0.17)%LOOP.size()]
- _atlas.atlas=MOUNTED_SHEET if mounted else SHEET
+ _atlas.atlas=mounted_sheet if mounted else sheet
  if mounted:
   _atlas.region=Rect2(0,0,160,128)
   offset=Vector2(0,-26)

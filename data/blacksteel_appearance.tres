@@ -1,0 +1,20 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]
+[ext_resource type="SpriteFrames" path="res://data/blacksteel_frames.tres" id="frames"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v001/run-unarmed.png" id="run"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v001/idle-unarmed.png" id="idle"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v001/rest.png" id="rest"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v001/ceremony.png" id="ceremony"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v001/mounted.png" id="mounted"]
+[ext_resource type="Resource" path="res://data/blacksteel_combo.tres" id="combo"]
+
+[resource]
+script = ExtResource("script")
+frames = ExtResource("frames")
+unarmed_run = ExtResource("run")
+unarmed_idle = ExtResource("idle")
+rest = ExtResource("rest")
+ceremony = ExtResource("ceremony")
+mounted = ExtResource("mounted")
+combo = ExtResource("combo")
