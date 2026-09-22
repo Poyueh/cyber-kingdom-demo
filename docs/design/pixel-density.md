@@ -14,8 +14,10 @@
 ## 目前完成與剩餘落差
 
 - 黑鋼騎士獨立預覽：新八格與前版十六格都先製成原生圖集，與既有待機／斬擊的 128 × 96 圖格一致。大小動畫及下方圖格板共用相同像素，原始高解析稿明確分開標示。
-- 遊戲 `knight_visual.gd` 的跑步圖格也是 128 × 96，使用最近鄰取樣。黑鋼騎士已透過 `blacksteel_appearance.tres` 接入主戰役；跑步與預覽為相同圖集，其他狀態同時接入同角色動作稿，仍待動作品質精修。
+- 遊戲 `knight_visual.gd` 的跑步圖格也是 128 × 96，使用最近鄰取樣。目前主戰役透過 `blacksteel_v002_appearance.tres` 接入重新生成的全套動作，八格跑步、徒手、斬擊與騎乘保持共同人物比例；實際遊戲擷取預覽在 `docs/reports/knight-v002/native-run.gif`。前版資源保留，動作品質仍須玩家實玩回饋。
 - `compact_people.gd` 目前分別把居民／小怪頭與身體做不同倍率縮放；`frontier_details.gd` 部分物件也按高度縮放。最近鄰不會自動把這些差異消除。後續替換對應素材時，應直接畫成目標比例、以同一原生網格輸出，再移除局部拉伸。
 - 已在實際戰役鏡頭檢視黑鋼騎士；全場景統一仍需逐批對齊居民、怪物、牆與樹，不批量覆寫既有世界素材。
 
 重建新／前版原生圖集：在有 Pillow 的 Python 環境執行 `art/concepts/knight-redesign-v002/prepare_pixel_atlases.py`。沒有執行期影像加工。
+
+目前主戰役 v002 整套動作由 `tools/prepare_knight_actions_v002.py` 重建，需要 Pillow 與 NumPy；生成原稿及提示詞在 `art/concepts/knight-actions-v004/`，原稿不進入遊戲匯出包。

@@ -11,15 +11,15 @@ func run_scene() -> void:
  check(scene.hud.dashboard.dead and not scene.hud.dashboard.victory,"hero death selects the failure overlay")
  check(scene.knight.visual.visible,"fatal hit keeps the knight visible")
  var world_clock=scene.sim.workforce.elapsed
- var angle=scene.knight.visual.rotation
+ var drawing: int=scene.knight.visual.frame
  scene._physics_process(0.4)
- check(absf(scene.knight.visual.rotation)>absf(angle),"death keeps animating after campaign stops")
+ check(scene.knight.visual.animation==&"death" and scene.knight.visual.frame>drawing,"authored death keeps animating after campaign stops")
  check(scene.sim.workforce.elapsed==world_clock,"no time or economy advances during death animation")
  check(scene.view.hit_feedback.fallen.size()==1,"enemy death remains visible after terminal hit")
- scene.paused=true;angle=scene.knight.visual.rotation
+ scene.paused=true;drawing=scene.knight.visual.frame
  var body_age=scene.view.hit_feedback.fallen[0].age
  scene._physics_process(0.5)
- check(scene.knight.visual.rotation==angle and scene.view.hit_feedback.fallen[0].age==body_age,"manual pause freezes all terminal animation")
+ check(scene.knight.visual.frame==drawing and scene.view.hit_feedback.fallen[0].age==body_age,"manual pause freezes all terminal animation")
  scene.paused=false;scene._physics_process(1.3)
  check(scene.view.hit_feedback.fallen.is_empty() and scene.knight.visual.visible,"enemy dissolves while hero corpse remains")
  scene.restart();scene._physics_process(0.01)

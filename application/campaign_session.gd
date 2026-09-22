@@ -7,6 +7,8 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 var spirit: Spirit
 const Modules=preload("res://application/knight_modules.gd")
 var modules: Modules
+const WorkArea=preload("res://domain/resident_work_area.gd")
+var work_area: WorkArea
 const Survival=preload("res://domain/crystal_survival.gd")
 var survival: Survival=Survival.new()
 const Forager=preload("res://application/crystal_forager.gd")
@@ -135,6 +137,10 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 
 	ecology=Ecology.new(frontier,config)
 	defenses=Defenses.new(world,frontier,config)
+	work_area=WorkArea.new(world,defenses,float(config.get("work_margin",WorkArea.DEFAULT_MARGIN)))
+	if life.enabled:
+		workforce.work_area=work_area
+		world.sites.drill=world.sites.hall+WorkArea.STATION_OFFSET
 	if config.get("fortifications",1):
 		buildings=BuildingSites.generate(frontier,map_seed,world.sites.beacon)
 		_register_building_walls()
@@ -159,7 +165,9 @@ func _can_claim_tool(kind: String) -> bool:
 	return kind!="hoe" or agriculture_available()
 
 func equip_module(id: String, x: float) -> bool:
-	return is_running() and life.enabled and frontier.city_level>0 and absf(x-world.sites.drill)<73 and modules.equip(id)
+	if not is_running() or not life.enabled or frontier.city_level<=0 or absf(x-world.sites.drill)>=73 or not modules.equip(id):return false
+	effects.append({"kind":"module_equipped","x":x,"life":4.0})
+	return true
 
 func activate_module(x: float) -> bool:
 	if not is_running() or not life.enabled or not can_wield_sword() or travel.exhausted:return false
@@ -219,6 +227,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		if node.kind=="cache":
 			choice = _choice("chest",node.x,"開啟寶箱 · %d 龍晶" % node.crystals)
 		else:
+			if life.enabled and not work_area.contains(node.x):continue
 			var label: String = {"tree":"伐木","crystal":"採晶","berries":"採果","stone":"採石","herbs":"採藥"}[node.kind]
 			choice = _choice("mark",node.x,"委託工匠"+label,prices.mark,not node.marked,"已下令 · 等待工匠採集搬運")
 		choice["node_index"] = index
@@ -418,6 +427,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	mission.resolve(hero.is_alive(),raiders.is_empty())
 	if not is_running():return
 	_hero_x=hero_x
+	if life.enabled and agriculture_available():built.farm_tools=true
 	if survival.advance(seconds,hero,hero_x,hero_y):effects.append({"kind":"sword_recovered","x":hero_x,"y":hero_y,"life":0.7})
 	mission.reveal(hero_x)
 	for animal in frontier.animals:
@@ -501,7 +511,8 @@ func _override_resident_target(index: int, seconds: float) -> float:
 			person["sheltering"]=true;person["work_state"]="walk"
 			return defenses.shelter(person.x,world.sites.hall+(index%5-2)*22)
 		var crystal_x: float=life.crystal_target(person,pouch,_hero_x)
-		if is_finite(crystal_x) and not life.threatened(person,raiders):return crystal_x
+		if is_finite(crystal_x) and not life.threatened(person,raiders):
+			if person.role not in ["engineer","hunter"] or work_area.contains(crystal_x):return crystal_x
 	var expedition_target:=expedition.target(index,seconds)
 	if is_finite(expedition_target):return expedition_target
 	if not life.enabled and person.role=="engineer" and (clock.is_night or clock.remaining<=return_margin):
@@ -756,6 +767,7 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 	var prey: Dictionary={};var nearest:=INF
 	for animal in frontier.animals:
 		if not animal.alive or not frontier.regions[animal.region].discovered:continue
+		if life.enabled and not work_area.contains(animal.x):continue
 		var travel: float=(absf(person.x-animal.x)+absf(animal.x-world.sites.hall))/_person_speed
 		if not life.enabled and (clock.is_night or travel+return_margin+3>clock.remaining):continue
 		var distance: float=absf(animal.x-person.x)
@@ -770,7 +782,9 @@ func _idle_hunter_target(person: Dictionary, seconds: float) -> float:
 		var region: Dictionary=forests[index%forests.size()]
 		var scout: float=region.x+region.width*0.5
 		if (absf(person.x-scout)+absf(scout-world.sites.hall))/_person_speed+return_margin<clock.remaining:center=scout
-	return Roaming.destination(person,index,center,110,seconds,frontier.left_boundary,frontier.right_boundary)
+	var span: Vector2=work_area.bounds() if life.enabled else Vector2(frontier.left_boundary,frontier.right_boundary)
+	center=clampf(center,span.x+110,span.y-110)
+	return Roaming.destination(person,index,center,110,seconds,span.x,span.y)
 
 func _farm_target(person: Dictionary) -> float:
 	if not agriculture_available():return world.sites.hall

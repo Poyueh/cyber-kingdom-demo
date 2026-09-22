@@ -1301,3 +1301,30 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - v0.0.9：黑鋼騎士正式置入主戰役，統一像素密度與角色各狀態的美術來源。
 
 發布前完整 `bash tools/check.sh` 通過 **2,179 項斷言**，無 SCRIPT ERROR／ERROR／FAIL；H5 將由 Release 事件部署至 Pages，Windows／Mac 下載包不更新。發行條目見 `docs/releases/0.0.9.md`。
+
+## 2026-09-22：H5 v0.0.9 公開驗收完成
+
+Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) 已公開，main 提交 `962cf66e1a0cb739e18df73b5b9e3676a42237b0`，main／develop／release/0.0.9 與標籤已推送。H5 附件 `Cyber-Kingdom-Web-v0.0.9.zip` digest `sha256:4343461b0039f80ad5766f37a91218494db2018801bb9af9a502f49a4438bb84` 與本機一致；Pages 部署 run `35697998465` 成功。
+
+公開站 [poyueh.github.io/cyber-kingdom](https://poyueh.github.io/cyber-kingdom/) 的 `index.html`、`index.js`、`index.wasm`、`index.pck`、`guide.html` 皆為 HTTP 200，並與發布包逐檔 SHA-256 相同；瀏覽器實際看到前導、跳過前導、主選單與新旅程的黑鋼騎士，沒有 console warning／error。首次 Pages 部署因校驗檔包含本機完整路徑而拒絕，已修正為檔名格式後重新部署成功；遊戲內容與包本身未變。驗收證據見 `docs/reports/release-0.0.9/verification.json`。Windows／Mac 下載包維持 v0.0.1。
+
+## 2026-09-22：調整正式平台優先順序
+
+- 使用者確認未來正式發行目標是 macOS／Windows 與 iPhone／iPad；H5 保留為快速試玩、分享與回饋入口。
+- 更新 AGENTS、H5 交付說明與第 81 課：效能、記憶體、輸入手感及畫面品質以原生桌面／iOS 建置量測；不為 WebAssembly 加入會犧牲正式平台的專屬架構或玩法折衷。
+
+## 2026-09-22：全套騎士動作、部件掛點與居民近域採集
+
+- 部件選單的中文字型原本只覆寫在根節點，子標籤未繼承；改成共用 Theme 預設字型，繁中、簡中、英文皆以原生畫面驗證。K 使用部件、F 在改造所選配，手機保留雙指向上滑；裝上部件後短暫顯示操作提示。改造所移至營火右側 180 世界單位，裝備以逐格背甲掛點呈現小型機械件，跟隨徒手、跑步、斬擊、騎乘、受擊和倒地姿勢。
+- 全套黑鋼騎士 v002 動作接入主戰役：八格跑步、徒手跑步、衝刺、慢移、待機、喘息、三段斬、拔劍、受擊、死亡與騎乘。以全身生成稿統一裁格和原生像素尺度，衝刺使用全身一致前傾，沒有拆腿拼接或疊影插格；不把生成關鍵格等同手繪精修。跑步 12 fps、衝刺 16 fps。原稿、提示詞、重建工具與舊版素材均保留。
+- 新旅程既有營火二級生產農具流程可重現成功，未確認原回報的存檔現場；補強二級農具處自動顯示、屋頂鋤頭識別，並驗證現場兩次投晶製造及居民自行取用。
+- 工匠採完資源直接放在個人晶袋，騎士靠近才交出；滿袋暫停新採集，溢出落在工匠腳邊。工作範圍隨兩側城牆即時計算，預設外延 1300 世界單位，保留第一段開墾的可達性。工匠採集、獵人覓食及兩者追晶不越界；遠方採集資源不可付款，寶箱和部件仍可探索。舊獨立原型保留運回交貨。
+- 存檔版本升至 13，遷移舊改造所位置；保留未知版本及損壞資料拒絕規則。新增規則先確認失敗再實作，包含城牆拓展、原地收穫、滿袋溢出、獵人限制與採集中讀檔後繼續。
+- 完整 `bash tools/check.sh` **2,206 項斷言通過**，零 SCRIPT ERROR／ERROR／FAIL。原生戰役渲染檢查全套狀態、八格實際播放、三語部件選單及二級農具場；證據在 `docs/reports/knight-v002/`。死亡測試同步改為驗證新倒地圖格與暫停停止播放，不再要求舊版旋轉倒下。
+- 教學第 82 課示範 Appearance 的 Run Fps 與 Campaign 的 Work Margin；尚未收到學習回饋。依 Gitflow 整合本機 develop，未推送、未發布、未重新輸出 H5。下一步是玩家實玩確認動作美感與採集距離，再以 iPhone 真機驗證觸控和長時間遊玩。
+
+## 2026-09-22：v0.0.10 發行準備
+
+- 以 `release/0.0.10` 整理本輪變更，發行內容包含 H5、macOS、Windows 測試包；不宣稱 iOS 已簽署。更新條目見 `docs/releases/0.0.10.md`。
+- 發行前完整 `bash tools/check.sh` 通過 **2,206 項斷言**，零 SCRIPT ERROR／ERROR／FAIL。H5 匯出、桌面匯出與封裝資源檢查均需在發行包產生後再次完成。
+- 最終包已從固定遊戲來源樹 `eea4e550dda6b66932ae37f359ee80251a2206f9` 重建；H5、macOS、Windows 的 SHA-256 與簽署狀態記錄在 `docs/reports/release-0.0.10/verification.json`。準備建立 GitHub Release 與 Pages 部署。

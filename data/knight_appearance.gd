@@ -3,6 +3,14 @@ extends Resource
 @export var frames: SpriteFrames
 @export var unarmed_run: Texture2D
 @export var unarmed_idle: Texture2D
+@export var unarmed_sprint: Texture2D
+@export var unarmed_tired: Texture2D
+@export var unarmed_hurt: Texture2D
+@export var unarmed_death: Texture2D
+@export var module_sockets: Dictionary
+@export var mounted_offset: Vector2=Vector2(0,-26)
+@export var mounted_gait_frames: int=2
+@export var mounted_attack_start: int=3
 @export var rest: Texture2D
 @export var ceremony: Texture2D
 @export var mounted: Texture2D

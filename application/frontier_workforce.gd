@@ -3,6 +3,7 @@ extends RefCounted
 ## Godot physics/rendering stays outside; vertical access follows the visible ladders.
 var world
 var frontier
+var work_area: RefCounted
 var elapsed := 0.0
 var deliveries: Array[Dictionary] = []
 func _init(settlement, map) -> void:
@@ -44,7 +45,12 @@ func advance_engineer(index: int, seconds: float) -> float:
 	var job
 	for node in frontier.nodes:
 		if node.worker==index: job=node; break
+	if job!=null and work_area!=null and not job.carried and not work_area.contains(job.x):
+		job.worker=-1;job=null
 	if job!=null and job.carried:
+		if work_area!=null:
+			_keep_harvest(person,job)
+			return person.x
 		person.work_state = "haul"
 		if not _grounded(person,seconds): return person.x
 		var destination := delivery_point(person.x)
@@ -82,9 +88,11 @@ func advance_engineer(index: int, seconds: float) -> float:
 			else: frontier.work_outpost(construction,seconds)
 		return target
 	if job==null:
+		if work_area!=null and int(person.get("crystals",0))>=preload("res://application/kingdom_life.gd").CARRY_LIMIT:return person.x
 		nearest = INF
 		for node in frontier.nodes:
 			var target: float = node.pickup_x if node.collected else node.x
+			if work_area!=null and not work_area.contains(target):continue
 			if node.marked and not node.delivered and node.worker<0 and absf(target-person.x)<nearest:
 				nearest=absf(target-person.x)
 				job=node
@@ -111,5 +119,20 @@ func advance_engineer(index: int, seconds: float) -> float:
 	job.carried = true
 	job.pickup_x = person.x
 	job.pickup_y = person.get("y",430.0)
+	if work_area!=null:
+		_keep_harvest(person,job)
+		return person.x
 	person.work_state = "haul"
 	return person.x
+
+func _keep_harvest(person: Dictionary, job: RefCounted) -> void:
+	var reward: Dictionary=frontier.deposit(job)
+	if reward.is_empty():return
+	var held: int=int(person.get("crystals",0))
+	var taken: int=mini(reward.crystals,preload("res://application/kingdom_life.gd").CARRY_LIMIT-held)
+	person["crystals"]=held+taken
+	var overflow: int=reward.crystals-taken
+	if overflow>0:
+		world.crystals+=overflow
+		deliveries.append({"x":person.x,"crystals":overflow})
+	person.work_state="idle"
