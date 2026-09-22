@@ -1291,3 +1291,13 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - `tools/prepare_blacksteel_knight.py` 可重建全部輸出；高解析原稿不進包。新造型僅主戰役採用，舊獨立原型與歷史美術保留。
 - 完整 `tools/check.sh` **2,179 項 Godot 斷言通過**，零 SCRIPT ERROR／ERROR／FAIL。新增原生視覺檢視工具 `tools/preview_blacksteel.gd`，在真實戰役場景捕捉徒手、待機、跑步、衝刺、喘息、拔劍、原地斬、踏斬、騎乘、受擊及死亡 11 種狀態；確認腳底與攻擊子節點偏移對齊，未寫玩家存檔。
 - 教學 `docs/lessons/80-knight-appearance-resource.md`。已由乾淨提交 `ec59ee8` 匯出 `builds/blacksteel-20260922`，本機試玩 **http://localhost:8806/**。H5 匯出與封裝光照檢查通過，瀏覽器主選單、新旅程及新徒手角色顯示正常，警告／錯誤清單為空。瀏覽器未驗完整操作循環；動作 11 狀態另以原生實際戰役渲染驗證。尚未推送或發佈線上站。
+
+## 2026-09-22：H5 v0.0.9 發行準備
+
+使用者授權發布。v0.0.9 收錄 v0.0.8 之後的黑鋼騎士固定像素圖集、主戰役整套角色外觀接入、徒手／持劍切換、跑步／衝刺／喘息／攻擊／拔劍／受擊／死亡／騎乘狀態銜接，以及可重建的外觀 Resource。v0.0.6 之後的累積更新整理如下：
+
+- v0.0.7：龍晶生存、晶袋與投晶回饋、荒地起步、農業解鎖、特殊部件、付費鬼魂引導、日夜／水面／森林／營火演出與戰鬥前導。
+- v0.0.8：A／D 雙按衝刺、滑鼠左鍵攻擊、分段疲勞恢復、手機攻擊鍵放大、拖曳箭頭、場景落地、怪物動作、換日徽記與前導淡入。
+- v0.0.9：黑鋼騎士正式置入主戰役，統一像素密度與角色各狀態的美術來源。
+
+發布前完整 `bash tools/check.sh` 通過 **2,179 項斷言**，無 SCRIPT ERROR／ERROR／FAIL；H5 將由 Release 事件部署至 Pages，Windows／Mac 下載包不更新。發行條目見 `docs/releases/0.0.9.md`。
