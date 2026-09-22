@@ -1274,3 +1274,12 @@ Release https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.8 已公開，
 - http://localhost:8805/preview/ 預設播放「新跑姿 · 8 關鍵格」，12 fps，保留前版 16 格作比較。動畫與下方完整圖直接使用同一 URL，只整體縮放與按列對齊地面，避免前次圖片／預覽來源混淆。舊 24 格拆件模式退出主要預覽按鈕，檔案保留。
 - 瀏覽器檢查新版第 1／5 格、逐格、半速播放與來源連結，警告／錯誤清單為空。光影處理確認未改變 opaque 輪廓；完整 `tools/check.sh` **2,179 項斷言通過**，無 SCRIPT ERROR／ERROR／FAIL。動作美感、節奏接點與實際移動步速仍待玩家回饋，尚未接入 Godot 主角。
 - 教學 `docs/lessons/78-whole-body-run-keys.md`；依 Gitflow 整合本機 develop，未推送、未發布或更新遊戲包。
+
+## 2026-09-22：固定新騎士提案的原生像素密度
+
+- 使用者要求美術像素密度一致。發現預覽直接把高解析原稿畫到大／小畫面，放大版因而保留更多細節；CSS 的 pixelated 並不能修正這種來源取樣差異。
+- 新增 `prepare_pixel_atlases.py`，整格等比例縮成 128 × 96 畫布、人物約 60 像素高的新八格與舊十六格圖集。每段共用尺度，保留原來姿勢、列錨點及原稿；不拆件、不插格、不另減色。圖格板由同一批像素重新排列。
+- 預覽 http://localhost:8805/preview/ 改讀原生圖集，使用整數倍率和整數落點；畫布實際尺寸與 CSS 尺寸一致。桌面使用 3×，390px 手機寬度使用 2×；高解析稿明確列為設計參考。
+- 桌面與手機寬度檢查新版第 5／7 格、前版第 16 格與來源圖集；手機畫布 341px 與顯示寬度相等，沒有 CSS 二次縮放。瀏覽器警告／錯誤為空。完整 `tools/check.sh` **2,179 項 Godot 斷言通過**，零 SCRIPT ERROR／ERROR／FAIL；圖格產製也檢查透明輪廓未被画布裁切。
+- 加入共同美術規範 `docs/design/pixel-density.md` 並由 AGENTS.md 引用。盤點到居民／小怪的 `compact_people.gd` 尚有分部位縮放，不能宣稱全場景已统一；本輪只修正騎士提案與預覽，未替換正式角色或既有世界素材。
+- 教學 `docs/lessons/79-native-pixel-density.md`。本機 Gitflow 整合，未推送或發布；接入正式角色前仍需完成其他動作與全場景同鏡頭驗收。
