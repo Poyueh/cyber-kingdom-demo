@@ -1,5 +1,21 @@
 extends RefCounted
 const Campaign=preload("res://application/campaign_session.gd")
+func test_paid_farm_tools_are_claimed_after_normal_camp_upgrade(t) -> void:
+ var sim: RefCounted=Campaign.new({"seed":42,"immersive_loop":1,"day_seconds":1000.0})
+ sim.world.people.clear()
+ sim.interact(30,"hall")
+ for i: int in range(5):sim.interact(30,"hall:1")
+ var rack: float=sim.world.sites.farm_tools
+ var hold: RefCounted=preload("res://application/investment_hold.gd").new()
+ hold.step(0.016,true,true,sim,rack)
+ hold.step(0.016,false,true,sim,rack)
+ hold.step(0.3,true,true,sim,rack)
+ t.equal(sim.world.tools.hoe,1,"two real taps manufacture one hoe at unlocked rack")
+ sim.world.people.append({"x":rack,"role":"citizen","hurt":0.0,"cooldown":0.0,"region":-1})
+ sim.advance(0.1,1000)
+ t.equal(sim.world.people[0].role,"farmer","new resident takes produced hoe automatically")
+ t.equal(sim.world.tools.hoe,0,"claimed hoe leaves the rack")
+
 func test_farms_and_hoes_wait_for_second_refuge_tier(t) -> void:
  var sim=Campaign.new({"seed":42,"immersive_loop":1})
  sim.interact(30,"hall")

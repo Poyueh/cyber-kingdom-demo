@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=12
+const VERSION:=13
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -61,7 +61,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"session":_fields(sim,SESSION_SKIP),"world":_fields(sim.world,["wall"]),
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
-		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries"]),
+		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area"]),
 		"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
@@ -113,10 +113,10 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12]:keys.append("modules")
+	if data.get("version",0) in [7,8,9,10,11,12,13]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13]:keys.append("modules")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -140,6 +140,8 @@ func restore(raw) -> Dictionary:
 		if not data.get("travel") is Dictionary:return _invalid()
 		if not data.travel.has("breath_ticks"):data.travel.breath_ticks=0
 		data.version=12
+	if data.version==12:
+		if not _upgrade_v12(data):return _invalid()
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -151,7 +153,7 @@ func restore(raw) -> Dictionary:
 		[sim,data.session,SESSION_SKIP],[sim.world,data.world,["wall"]],
 		[sim.frontier,data.frontier,["nodes"]],[sim.clock,data.clock,[]],[sim.mission,data.mission,[]],
 		[sim.growth,data.growth,[]],[sim.ecology,data.ecology,[]],[sim.pouch,data.pouch,["pickups"]],
-		[sim.workforce,data.workforce,["deliveries"]]]:
+		[sim.workforce,data.workforce,["deliveries","work_area"]]]:
 		if not _copy_fields(part[0],part[1],part[2]):return _invalid()
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
@@ -196,6 +198,19 @@ func restore(raw) -> Dictionary:
 	sim.world.wall=sim.world.walls.wall
 	if legacy_economy:sim.convert_legacy_resources()
 	return {"session":sim,"config":data.config,"body":data.body}
+
+func _upgrade_v12(data: Dictionary) -> bool:
+	if not data.config is Dictionary or not Rules.config_valid(data.config):return false
+	if not data.world is Dictionary or not data.world.get("sites") is Dictionary:return false
+	if data.config.get("immersive_loop",0)==1:
+		var sites: Dictionary=data.world.sites
+		if not sites.has("hall") or not Rules.number(sites.hall):return false
+		var relocated: float=sites.hall+preload("res://domain/resident_work_area.gd").STATION_OFFSET
+		if not Rules.number(sites.get("drill")):return false
+		if not is_equal_approx(float(sites.drill),1230.0) and not is_equal_approx(float(sites.drill),relocated):return false
+		sites.drill=relocated
+	data.version=13
+	return true
 
 ## The admission baseline is a pure function of the run configuration, so one
 ## session reuses it instead of snapshotting a fresh world on every checkpoint.

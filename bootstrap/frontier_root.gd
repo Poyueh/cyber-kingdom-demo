@@ -294,6 +294,7 @@ func _build_terrain() -> void:
 	add_child(_terrain)
 
 func _sync_knight_equipment() -> void:
+	knight.visual.equipped_module=sim.modules.equipped
 	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
 	knight.visual.unarmed=not sim.can_wield_sword()
 	knight.visual.damage_serial=sim.survival.hits

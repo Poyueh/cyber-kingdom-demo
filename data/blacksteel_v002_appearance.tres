@@ -1,0 +1,54 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]
+[ext_resource type="SpriteFrames" path="res://data/blacksteel_v002_frames.tres" id="frames"]
+[ext_resource type="Resource" path="res://data/blacksteel_v002_combo.tres" id="combo"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/run-unarmed.png" id="unarmed_run"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/idle-unarmed.png" id="unarmed_idle"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/sprint-unarmed.png" id="unarmed_sprint"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/walk-unarmed.png" id="unarmed_tired"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/hurt-unarmed.png" id="unarmed_hurt"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/death-unarmed.png" id="unarmed_death"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/rest.png" id="rest"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/ceremony.png" id="ceremony"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v002/mounted.png" id="mounted"]
+
+[resource]
+script = ExtResource("script")
+frames = ExtResource("frames")
+combo = ExtResource("combo")
+unarmed_run = ExtResource("unarmed_run")
+unarmed_idle = ExtResource("unarmed_idle")
+unarmed_sprint = ExtResource("unarmed_sprint")
+unarmed_tired = ExtResource("unarmed_tired")
+unarmed_hurt = ExtResource("unarmed_hurt")
+unarmed_death = ExtResource("unarmed_death")
+rest = ExtResource("rest")
+ceremony = ExtResource("ceremony")
+mounted = ExtResource("mounted")
+idle_frames = 4
+idle_columns = 4
+sprint_fps = 16.0
+tired_fps = 6.0
+mounted_offset = Vector2(0, 0)
+mounted_gait_frames = 4
+mounted_attack_start = 4
+module_sockets = {
+"run.png": [Vector2(63, 39), Vector2(63, 39), Vector2(64, 39), Vector2(62, 37), Vector2(61, 44), Vector2(62, 43), Vector2(62, 42), Vector2(62, 41)],
+"run-unarmed.png": [Vector2(64, 39), Vector2(64, 39), Vector2(64, 38), Vector2(64, 38), Vector2(62, 43), Vector2(61, 43), Vector2(62, 42), Vector2(61, 40)],
+"sprint.png": [Vector2(66, 39), Vector2(67, 39), Vector2(67, 38), Vector2(67, 37), Vector2(65, 44), Vector2(66, 43), Vector2(66, 42), Vector2(66, 41)],
+"sprint-unarmed.png": [Vector2(67, 38), Vector2(66, 39), Vector2(67, 37), Vector2(67, 37), Vector2(65, 43), Vector2(65, 43), Vector2(66, 42), Vector2(65, 40)],
+"idle.png": [Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(63, 38)],
+"walk.png": [Vector2(63, 39), Vector2(63, 39), Vector2(64, 39), Vector2(62, 37), Vector2(61, 44), Vector2(62, 43), Vector2(62, 42), Vector2(62, 41)],
+"hurt.png": [Vector2(64, 53), Vector2(65, 55)],
+"death.png": [Vector2(65, 72), Vector2(82, 75)],
+"idle-unarmed.png": [Vector2(64, 38), Vector2(63, 38), Vector2(63, 38), Vector2(63, 38)],
+"walk-unarmed.png": [Vector2(64, 39), Vector2(64, 39), Vector2(64, 38), Vector2(64, 38), Vector2(62, 43), Vector2(61, 43), Vector2(62, 42), Vector2(61, 40)],
+"hurt-unarmed.png": [Vector2(65, 54), Vector2(63, 55)],
+"death-unarmed.png": [Vector2(71, 72), Vector2(81, 74)],
+"rest.png": [Vector2(80, 69), Vector2(80, 71), Vector2(80, 69), Vector2(81, 72), Vector2(81, 70), Vector2(81, 72), Vector2(81, 70), Vector2(81, 73)],
+"ceremony.png": [Vector2(79, 61), Vector2(82, 54), Vector2(80, 61), Vector2(81, 56), Vector2(81, 53), Vector2(88, 57), Vector2(79, 58), Vector2(80, 60)],
+"mounted.png": [Vector2(85, 31), Vector2(88, 29), Vector2(89, 36), Vector2(85, 31), Vector2(73, 27), Vector2(82, 31), Vector2(78, 32), Vector2(79, 29)],
+"planted.png": [Vector2(84, 69), Vector2(84, 70), Vector2(86, 70), Vector2(85, 70), Vector2(84, 70), Vector2(79, 73), Vector2(81, 71), Vector2(85, 71), Vector2(83, 71), Vector2(82, 73), Vector2(81, 71), Vector2(83, 68), Vector2(78, 65), Vector2(81, 69), Vector2(82, 72), Vector2(78, 74), Vector2(84, 70), Vector2(82, 70), Vector2(82, 71), Vector2(83, 74), Vector2(83, 76), Vector2(82, 70), Vector2(84, 69), Vector2(85, 68)],
+"advancing.png": [Vector2(79, 67), Vector2(83, 73), Vector2(89, 70), Vector2(84, 74), Vector2(83, 72), Vector2(82, 73), Vector2(84, 71), Vector2(80, 72), Vector2(82, 71), Vector2(82, 73), Vector2(83, 71), Vector2(80, 72), Vector2(78, 69), Vector2(84, 69), Vector2(80, 71), Vector2(81, 74), Vector2(81, 74), Vector2(85, 70), Vector2(84, 71), Vector2(78, 73), Vector2(86, 76), Vector2(82, 70), Vector2(86, 68), Vector2(78, 67)],
+}

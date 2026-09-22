@@ -9,7 +9,8 @@ var _hint: Label
 var _buttons: Array[Button]=[]
 var _close: Button
 func _ready() -> void:
- add_theme_font_override("font",preload("res://presentation/localized_font.gd").current())
+ theme=Theme.new()
+ theme.default_font=preload("res://presentation/localized_font.gd").current()
  var skin: StyleBoxFlat=StyleBoxFlat.new()
  skin.bg_color=Color("0d1f2bef");skin.border_color=Color("559f9e");skin.set_border_width_all(2);skin.set_content_margin_all(14)
  add_theme_stylebox_override("panel",skin)
@@ -17,7 +18,8 @@ func _ready() -> void:
  _title=Label.new();_title.add_theme_font_size_override("font_size",22);box.add_child(_title)
  for index in range(2):
   var button: Button=Button.new();button.alignment=HORIZONTAL_ALIGNMENT_LEFT
-  button.custom_minimum_size=Vector2(0,66);button.add_theme_font_size_override("font_size",16)
+  button.custom_minimum_size=Vector2(0,88);button.add_theme_font_size_override("font_size",16)
+  button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
   button.icon=preload("res://presentation/ui_icons.gd").get_icon("gear" if index==0 else "sword")
   button.add_theme_constant_override("icon_max_width",26);button.expand_icon=true
   button.pressed.connect(func():module_selected.emit(IDS[index]))
@@ -26,6 +28,7 @@ func _ready() -> void:
  _close=Button.new();_close.pressed.connect(func():closed.emit());box.add_child(_close)
  hide()
 func present(modules: RefCounted, touch: bool) -> void:
+ theme.default_font=preload("res://presentation/localized_font.gd").current()
  _title.text=tr("特殊部件選配")
  for i in range(2):
   var owned: bool=modules.stored.has(IDS[i])

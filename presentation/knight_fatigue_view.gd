@@ -4,6 +4,7 @@ const SHEET=preload("res://art/characters/exhaustion-v001/rest.png")
 const MOUNTED_SHEET=preload("res://art/characters/mounted-v001/mounted.png")
 @export var sheet: Texture2D = SHEET
 @export var mounted_sheet: Texture2D = MOUNTED_SHEET
+@export var mounted_offset: Vector2=Vector2(0,-26)
 const LOOP: Array[int]=[0,1,2,3,2,1]
 var _atlas: AtlasTexture=AtlasTexture.new()
 var _age: float=0.0
@@ -21,7 +22,7 @@ func present(unarmed: bool, mounted: bool, facing: int, seconds: float) -> void:
  _atlas.atlas=mounted_sheet if mounted else sheet
  if mounted:
   _atlas.region=Rect2(0,0,160,128)
-  offset=Vector2(0,-26)
+  offset=mounted_offset
  else:
   var row: int=0 if unarmed else 1
   _atlas.region=Rect2(frame*160,row*128,160,128)
