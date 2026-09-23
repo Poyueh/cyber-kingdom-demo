@@ -81,11 +81,11 @@ func _ready() -> void:
 	if allow_preferences:
 		preferences=AudioPreferences.new(audio_preferences_path)
 		var levels: Dictionary=preferences.read()
-		audio.music_volume=levels.music;audio.effects_volume=levels.effects
-	hud.options_menu.set_levels(audio.music_volume,audio.effects_volume)
-	hud.options_menu.volume_changed.connect(func(music: float,effects: float):
-		audio.music_volume=music;audio.effects_volume=effects
-		if preferences!=null:preferences.write(music,effects))
+		audio.music_volume=levels.music;audio.effects_volume=levels.effects;audio.ambience_volume=levels.ambience
+	hud.options_menu.set_levels(audio.music_volume,audio.effects_volume,audio.ambience_volume)
+	hud.options_menu.volume_changed.connect(func(music: float,effects: float,bed: float):
+		audio.music_volume=music;audio.effects_volume=effects;audio.ambience_volume=bed
+		if preferences!=null:preferences.write(music,effects,bed))
 	hud.options_menu.save_checkpoint_requested.connect(save_manual_campaign)
 	hud.options_menu.load_checkpoint_requested.connect(load_manual_campaign)
 	hud.options_menu.title_requested.connect(return_to_title)
