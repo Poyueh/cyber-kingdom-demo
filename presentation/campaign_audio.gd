@@ -2,6 +2,7 @@ extends Node
 const Cues=preload("res://presentation/campaign_audio_cues.gd")
 const Music=preload("res://presentation/campaign_music.gd")
 const Ambience=preload("res://presentation/campaign_ambience.gd")
+const Interface=preload("res://presentation/campaign_ui_cues.gd")
 const SOUNDS={
  "arrow_hit":[preload("res://art/audio/campaign-v002/arrow_hit.wav")],
  "bow_shot":[preload("res://art/audio/campaign-v002/bow_shot.wav")],
@@ -100,6 +101,7 @@ var suspended:=false:
 var music: Node
 var ambience: Node
 var cues=Cues.new()
+var interface_cues=Interface.new()
 var voices: Array[AudioStreamPlayer]=[]
 var _cooldowns: Dictionary={}
 var _last_variant: Dictionary={}
@@ -125,9 +127,12 @@ func observe(seconds: float,sim,x: float,paused: bool) -> void:
  if is_instance_valid(music):music.observe(seconds,sim,x,paused)
  if is_instance_valid(ambience):ambience.observe(seconds,sim,x,paused)
  for key in _cooldowns:_cooldowns[key]=maxf(0,_cooldowns[key]-seconds)
+ var click: String=interface_cues.sample(paused,enabled and not suspended)
+ if not click.is_empty():_play(click)
  var pending: Array[String]=cues.sample(sim,x,paused or not enabled or suspended)
  if paused or not enabled or suspended:
-  for voice in voices:voice.stop()
+  for voice in voices:
+   if voice.bus!="UI":voice.stop()
   return
  if not is_same(_ignition_run,sim):_ignition_run=sim;_ignition_released=false
  if not _ignition_released:
@@ -171,3 +176,4 @@ func _exit_tree() -> void:
  stop()
  for voice in voices:voice.stream=null
  cues=null
+ interface_cues=null

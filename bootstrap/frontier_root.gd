@@ -37,7 +37,8 @@ func _ready() -> void:
 	super._ready()
 	hud.audio_toggled.connect(func():
 		audio.enabled=not audio.enabled
-		hud.set_audio_enabled(audio.enabled))
+		hud.set_audio_enabled(audio.enabled)
+		_remember_volumes())
 	hud.set_audio_enabled(audio.enabled)
 	_water=preload("res://presentation/water_reflection.gd").new();_water.style=ambience;add_child(_water)
 	_lantern=preload("res://presentation/knight_lantern.gd").new();_lantern.style=ambience;add_child(_lantern)
@@ -82,10 +83,12 @@ func _ready() -> void:
 		preferences=AudioPreferences.new(audio_preferences_path)
 		var levels: Dictionary=preferences.read()
 		audio.music_volume=levels.music;audio.effects_volume=levels.effects;audio.ambience_volume=levels.ambience
+		audio.enabled=not levels.muted
+		hud.set_audio_enabled(audio.enabled)
 	hud.options_menu.set_levels(audio.music_volume,audio.effects_volume,audio.ambience_volume)
 	hud.options_menu.volume_changed.connect(func(music: float,effects: float,bed: float):
 		audio.music_volume=music;audio.effects_volume=effects;audio.ambience_volume=bed
-		if preferences!=null:preferences.write(music,effects,bed))
+		_remember_volumes())
 	hud.options_menu.save_checkpoint_requested.connect(save_manual_campaign)
 	hud.options_menu.load_checkpoint_requested.connect(load_manual_campaign)
 	hud.options_menu.title_requested.connect(return_to_title)
@@ -94,6 +97,10 @@ func _ready() -> void:
 	_present_save()
 	_sync_knight_equipment()
 	audio.observe(0,sim,knight.position.x,true)
+
+func _remember_volumes() -> void:
+	if preferences==null:return
+	preferences.write(audio.music_volume,audio.effects_volume,audio.ambience_volume,not audio.enabled)
 
 func restart() -> void:
 	if progress!=null:
