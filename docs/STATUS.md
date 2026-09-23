@@ -1,10 +1,11 @@
 # 製作進度
 
-## 2026-09-23：v0.0.12 發行準備
+## 2026-09-23：v0.0.12 已發佈
 
-- 已建立 Gitflow 發行分支 `release/0.0.12`，包含部件工坊與即時裝配，以及 v0.0.11 的農具生產、施工防線停用、城牆外工作範圍。
-- 本次目標套件：H5、macOS、Windows、Android ARM64 debug APK、iOS Xcode 專案。正式簽章／notarization 與 IPA 不在已驗證範圍。
-- 完成匯出後將附上 SHA-256 清單及各平台狀態；GitHub 推送和 Pages 部署另行記錄於 verification.json。
+- GitHub Release [v0.0.12](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.12) 已公開，包含 H5、macOS、Windows、Android ARM64 debug APK、iOS Xcode 專案與 `SHA256SUMS.txt`。
+- GitHub Pages [試玩站](https://poyueh.github.io/cyber-kingdom-demo/) 與[玩家指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html) 回傳 HTTP 200；部署 run [35816775024](https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/35816775024) 成功，首頁 Last-Modified 為 2026-09-23 04:03:44 UTC。
+- 所有附件 SHA-256 與大小、來源提交及平台簽署限制見 [`docs/reports/release-0.0.12/verification.json`](reports/release-0.0.12/verification.json)。macOS ad-hoc 未 notarize，Windows 未簽署，Android 為 debug APK，iOS 專案尚待 Xcode 建置與裝置安裝。
+- 發佈前 `bash tools/check.sh` 通過；H5 發行 ZIP 由 Pages 工作流程驗證完整遊戲執行檔與指南。沒有完成 Windows、macOS、Android 或 iPhone 真機遊玩驗收。
 
 ## 2026-09-23：部件工坊與拾取即裝配（本機待發佈）
 
