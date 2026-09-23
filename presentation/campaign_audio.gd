@@ -1,6 +1,7 @@
 extends Node
 const Cues=preload("res://presentation/campaign_audio_cues.gd")
 const Music=preload("res://presentation/campaign_music.gd")
+const Ambience=preload("res://presentation/campaign_ambience.gd")
 const SOUNDS={
  "arrow_hit":[preload("res://art/audio/campaign-v002/arrow_hit.wav")],
  "bow_shot":[preload("res://art/audio/campaign-v002/bow_shot.wav")],
@@ -81,6 +82,7 @@ signal cue_requested(kind: String)
   enabled=value
   if not enabled:stop()
   if music!=null:music.enabled=value
+  if ambience!=null:ambience.enabled=value
 var music_volume:=0.4:
  set(value):
   music_volume=value
@@ -89,13 +91,14 @@ var effects_volume:=0.8
 var ambience_volume:=0.6:
  set(value):
   ambience_volume=value
-  var bus:=AudioServer.get_bus_index("Ambience")
-  if bus>=0:AudioServer.set_bus_volume_db(bus,linear_to_db(maxf(0.0001,value)))
+  if ambience!=null:ambience.volume=value
 var suspended:=false:
  set(value):
   suspended=value
   if music!=null:music.suspended=value
+  if ambience!=null:ambience.suspended=value
 var music: Node
+var ambience: Node
 var cues=Cues.new()
 var voices: Array[AudioStreamPlayer]=[]
 var _cooldowns: Dictionary={}
@@ -108,6 +111,11 @@ func _ready() -> void:
  music.volume=music_volume
  music.enabled=enabled
  add_child(music)
+ ambience=Ambience.new()
+ ambience.name="Ambience"
+ ambience.volume=ambience_volume
+ ambience.enabled=enabled
+ add_child(ambience)
  for i in range(6):
   var voice=AudioStreamPlayer.new()
   voice.bus="SFX"
@@ -115,6 +123,7 @@ func _ready() -> void:
   voices.append(voice)
 func observe(seconds: float,sim,x: float,paused: bool) -> void:
  if is_instance_valid(music):music.observe(seconds,sim,x,paused)
+ if is_instance_valid(ambience):ambience.observe(seconds,sim,x,paused)
  for key in _cooldowns:_cooldowns[key]=maxf(0,_cooldowns[key]-seconds)
  var pending: Array[String]=cues.sample(sim,x,paused or not enabled or suspended)
  if paused or not enabled or suspended:
@@ -155,6 +164,7 @@ func _variant(kind: String) -> AudioStream:
  return choices[index]
 func stop() -> void:
  if is_instance_valid(music):music.stop()
+ if is_instance_valid(ambience):ambience.stop()
  for voice in voices:voice.stop()
 
 func _exit_tree() -> void:
