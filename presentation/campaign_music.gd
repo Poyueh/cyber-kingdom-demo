@@ -39,7 +39,9 @@ func _stream(name: String) -> AudioStream:
 	if name.is_empty(): return null
 	if not _cache.has(name):
 		var folder := "res://art/audio/music-v002/%s.ogg" % name
-		if not ResourceLoader.exists(folder): return null
+		if not ResourceLoader.exists(folder):
+			push_error("missing music track: %s" % folder)
+			return null
 		var stream: AudioStream = load(folder)
 		if stream is AudioStreamOggVorbis:
 			stream = stream.duplicate()

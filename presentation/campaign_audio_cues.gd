@@ -7,6 +7,7 @@ const EFFECTS={
  "dragon_arrival":"dragon_arrival","dragon_fire":"dragon_fire",
  "module_pickup":"module_pickup","module_equipped":"module_equip","module_stored":"module_store",
  "sword_recovered":"sword_recover"}
+const COMBO=["slash1","slash2","slash3"]
 const FAR_ENOUGH:=800.0
 ## Heard wherever the knight is: they warn about the run itself, not about a place.
 const UNMISSABLE=["core_hit","dragon_arrival","dragon_fire"]
@@ -68,7 +69,7 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 	var disarmed: bool=sim.survival.enabled and sim.survival.sword_on_ground
 	var alive: bool=sim.hero.hp>0
 	if _session==sim and not paused:
-		if active and (not _active or _combo!=sim.hero.combo_step):result.append("slash%d"%maxi(1,sim.hero.combo_step))
+		if active and (not _active or _combo!=sim.hero.combo_step):result.append(COMBO[clampi(sim.hero.combo_step-1,0,COMBO.size()-1)])
 		if sim.hero.dash_remaining>_dash:result.append("dash")
 		for effect in sim.effects:
 			if _seen.any(func(old):return is_same(old,effect)):continue

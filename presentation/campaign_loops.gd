@@ -16,7 +16,9 @@ var _players: Dictionary = {}
 func _ready() -> void:
 	for loop in Cues.LOOPS:
 		var path := "res://art/audio/campaign-v002/%s.wav" % loop
-		if not ResourceLoader.exists(path): continue
+		if not ResourceLoader.exists(path):
+			push_error("missing effect loop: %s" % path)
+			continue
 		var stream: AudioStream = load(path)
 		if stream is AudioStreamWAV:
 			stream = stream.duplicate()

@@ -33,8 +33,6 @@ func _wired() -> Array:
 	var found: Array = []
 	for kind in Rack.SOUNDS:
 		if sources.contains('"%s"' % kind): found.append(kind)
-	for step in ["slash1","slash2","slash3"]:
-		if sources.contains("slash%d") and not found.has(step): found.append(step)
 	return found
 
 func test_the_asset_table_can_be_told_apart_from_playback(t):

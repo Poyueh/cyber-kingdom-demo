@@ -1371,3 +1371,10 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - 原生錄音重驗：5.93 秒全程有訊號、峰值 -12.76 dBFS、零削波，移動時連續播出四次腳步，證明節奏驅動真的在跑。證據更新於 `docs/reports/campaign-audio-v002/`。
 - 分支 `feature/hill-audio-v002-remaining`，已提交未推送。
 - 下一步：PO 試聽後回報要改的音色，改 `tools/audio_v002_manifest.py` 的 prompt 重跑管線即可；另外工作敲擊與腳步的節奏手感需要實機遊玩確認。
+
+## 2026-09-23：音訊接線的獨立驗收與收尾
+
+- 派 fresh-context agent 對接線成果做九項獨立查證（素材數、素材表對得到檔、每種音都有觸發點、待接清單為空、分層乾淨、bus 設定、偏好保護、v001 無引用、文件一致），九項全過；agent 另外自己重算了 100 個素材與 72 種觸發點，沒有落單的音。
+- 依驗收意見修掉五點：連斬音改用明確陣列而非組字串，段數超出範圍會夾回最後一刀，不會組出不存在的 `slash4`；環境音、效果循環與音樂三處缺檔案原本靜默略過，改為 `push_error`，缺檔會讓 `tools/check.sh` 紅燈；`campaign-audio-v002.md` 的觸發清單補上原本漏列的揮劍、重擊、衝刺與點火；涵蓋率測試移除脆弱的格式字串比對。
+- v001 正式退役：17 個合成佔位音與兩支產生它們的 Python 腳本已從 repo 刪除，避免死資源被打包進每個版本。歷史規格留在 `campaign-audio.md`，驗收證據留在 `docs/reports/campaign-audio-v001/`，需要回溯可從 git 歷史取回。
+- 完整 `bash tools/check.sh` 通過 **2,384 項斷言**，零 SCRIPT ERROR、零 FAIL。
