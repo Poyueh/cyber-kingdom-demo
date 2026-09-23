@@ -1,5 +1,11 @@
 # 製作進度
 
+## 2026-09-23：v0.0.13 發行準備（v002 音效試聽）
+
+- 將 `Poyueh/cyber-kingdom` 最新 `develop` 提交 `f23a68b` 的 v002 音效整合至 `cyber-kingdom-demo`，保留 v0.0.12 的部件工坊與近期玩法。
+- 完整 `bash tools/check.sh` 已通過；目前由 `release/0.0.13` 打包 H5、macOS、Windows、Android debug APK、iOS Xcode 專案。
+- H5 Pages 發布仍待 Release 上傳與部署驗證；部署完成後會更新本段及 verification.json。
+
 ## 2026-09-23：v0.0.12 已發佈
 
 - GitHub Release [v0.0.12](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.12) 已公開，包含 H5、macOS、Windows、Android ARM64 debug APK、iOS Xcode 專案與 `SHA256SUMS.txt`。
