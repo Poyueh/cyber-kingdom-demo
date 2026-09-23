@@ -28,6 +28,21 @@ var _raiders:=0
 var _dragon:=-1
 var _walls: Dictionary={}
 var _health:=0
+var _winding: Dictionary={}
+var _carrying: Dictionary={}
+var _wardens:=0
+var _roles: Dictionary={}
+var _hurting: Dictionary={}
+var _mounted:=false
+var _kingdom:=false
+var _investments: Dictionary={}
+var _flying:=0
+var _settled:=0
+var _held:=0
+var _warned:=0
+var _guided:=false
+var _enemy_health:=0
+var _pouch:=0
 var _disarmed:=false
 var _alive:=true
 func sample(sim,x: float,paused: bool) -> Array[String]:
@@ -39,6 +54,17 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 	var raiders: int=_small_raiders(sim)
 	var dragon: int=_dragon_health(sim)
 	var walls: Dictionary=_wall_health(sim)
+	var winding: Dictionary=_raider_flags(sim,"windup")
+	var carrying: Dictionary=_raider_flags(sim,"carried_crystals")
+	var wardens: int=_wardens_seen(sim)
+	var roles: Dictionary=_person_flags(sim,"role")
+	var hurting: Dictionary=_person_flags(sim,"hurt")
+	var mounted: bool=sim.mounted() if sim.has_method("mounted") else false
+	var kingdom: bool=sim.kingdom_established()
+	var flying: int=_flying_crystals(sim)
+	var settled: int=_settled_crystals(sim)
+	var held: int=_carried_by_people(sim)
+	var enemy_health: int=_living_enemy_health(sim)
 	var disarmed: bool=sim.survival.enabled and sim.survival.sword_on_ground
 	var alive: bool=sim.hero.hp>0
 	if _session==sim and not paused:
@@ -69,6 +95,30 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 			elif walls[id]<before:result.append("wall_hit")
 			else:result.append("wall_repair")
 		if disarmed and not _disarmed:result.append("sword_drop")
+		for id in winding:
+			if winding[id]>0 and _winding.get(id,0.0)<=0:_near_enough(result,"enemy_telegraph",sim,id,x)
+			elif winding[id]<=0 and _winding.get(id,-1.0)>0:_near_enough(result,"enemy_attack",sim,id,x)
+		for id in carrying:
+			if carrying[id]>0 and _carrying.get(id,0)<=0:_near_enough(result,"enemy_grab",sim,id,x)
+		if wardens>_wardens:result.append("gatekeeper_appear")
+		# An arrow lands the instant it is loosed, so the thock rides with the twang.
+		if enemy_health<_enemy_health and not active and _bolt_flew(sim,x):result.append("arrow_hit")
+		if settled>_settled:result.append("crystal_land")
+		if held<_held and sim.pouch.amount>_pouch:result.append("handoff")
+		if not sim.clock.is_night and sim.clock.remaining<=30.0 and _warned!=sim.clock.day:
+			_warned=sim.clock.day
+			result.append("raid_warning")
+		if sim.spirit!=null and sim.spirit.opening_finished and not _guided:result.append("farewell")
+		for id in roles:
+			var was=_roles.get(id,null)
+			if was!=null and was=="wanderer" and roles[id]!="wanderer":result.append("tool_pickup")
+		for id in hurting:
+			if hurting[id]>0 and _hurting.get(id,0.0)<=0:result.append("resident_hit")
+		if mounted and not _mounted:result.append("mount")
+		if kingdom and not _kingdom:result.append("kingdom")
+		for key in _investments:
+			if sim.investments.has(key):continue
+			result.append("slot_refund" if flying>_flying else "slot_complete")
 		if sim.frontier.city_level>_city:result.append("upgrade" if _city>0 else "build")
 		if sim.clock.is_night and not _night:result.append("night")
 		if sim.clock.survived>_survived:result.append("dawn")
@@ -82,7 +132,67 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 	_survived=sim.clock.survived;_outcome=sim.mission.outcome
 	_resting=resting;_disarmed=disarmed;_alive=alive
 	_offered=offered;_raiders=raiders;_dragon=dragon;_walls=walls;_health=sim.hero.hp
+	_winding=winding;_carrying=carrying;_wardens=wardens;_roles=roles;_hurting=hurting
+	_mounted=mounted;_kingdom=kingdom;_investments=sim.investments.duplicate();_flying=flying
+	_settled=settled;_held=held;_enemy_health=enemy_health;_pouch=sim.pouch.amount
+	if sim.spirit!=null:_guided=sim.spirit.opening_finished
 	return result
+
+## Village and battle noise stays local; only run-wide warnings carry.
+func _near_enough(result: Array[String], kind: String, sim, id: int, x: float) -> void:
+	for raider in sim.raiders:
+		if raider.get("id",-1)==id and absf(raider.x-x)<=FAR_ENOUGH and not result.has(kind):
+			result.append(kind)
+			return
+
+func _raider_flags(sim, field: String) -> Dictionary:
+	var flags: Dictionary={}
+	for index in range(sim.raiders.size()):
+		var raider: Dictionary=sim.raiders[index]
+		if not raider.has("id"):raider["id"]=index+1000*int(raider.get("side",0)+2)
+		flags[raider.id]=raider.get(field,0)
+	return flags
+
+func _person_flags(sim, field: String) -> Dictionary:
+	var flags: Dictionary={}
+	for index in range(sim.world.people.size()):
+		flags[index]=sim.world.people[index].get(field,null)
+	return flags
+
+func _wardens_seen(sim) -> int:
+	var total:=0
+	for rift in sim.mission.rifts:
+		if rift.get("wardens_spawned",false):total+=1
+	return total
+
+func _settled_crystals(sim) -> int:
+	var total:=0
+	for gem in sim.pouch.drops:
+		if gem.vx==0 and gem.vy==0 and gem.grace<=0 and not gem.offering:total+=int(gem.amount)
+	return total
+
+func _carried_by_people(sim) -> int:
+	var total:=0
+	for person in sim.world.people:
+		total+=int(person.get("crystals",0))
+	return total
+
+func _living_enemy_health(sim) -> int:
+	var total:=0
+	for raider in sim.raiders:
+		if raider.fighter.is_alive():total+=int(raider.fighter.hp)
+	return total
+
+func _bolt_flew(sim,x: float) -> bool:
+	for effect in sim.effects:
+		if effect.kind=="bolt" and absf(effect.x-x)<=FAR_ENOUGH:return true
+	return false
+
+func _flying_crystals(sim) -> int:
+	var total:=0
+	for gem in sim.pouch.drops:
+		if gem.vx!=0 or gem.vy!=0 or gem.grace>0:total+=int(gem.amount)
+	return total
 
 func _offered_crystals(sim) -> int:
 	var total:=0

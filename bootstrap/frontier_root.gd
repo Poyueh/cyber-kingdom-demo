@@ -50,8 +50,10 @@ func _ready() -> void:
 	controls.special_requested.connect(func():_requested_special=true)
 	hud.special_requested.connect(func():_requested_special=true)
 	controls.loadout_requested.connect(_open_loadout)
-	hud.loadout_requested.connect(_open_loadout)
-	hud.loadout_closed.connect(_close_loadout)
+	hud.loadout_requested.connect(func():
+		_click("ui_select");_open_loadout())
+	hud.loadout_closed.connect(func():
+		_click("ui_select");_close_loadout())
 	hud.module_selected.connect(func(id: String):
 		if sim.equip_module(id,knight.position.x):hud.module_menu.present(sim.modules,hud.uses_touch_controls()))
 	$Knight/Camera2D.zoom=Vector2.ONE*tuning.camera_zoom
@@ -63,7 +65,8 @@ func _ready() -> void:
 		window.position=usable.position+(usable.size-window.size)/2
 	hud.new_map_requested.connect(func(): _requested_new_map = true)
 	controls.new_map_requested.connect(func(): _requested_new_map = true)
-	hud.save_requested.connect(save_campaign)
+	hud.save_requested.connect(func():
+		_click("ui_save");save_campaign())
 	if not campaign_save_path.is_empty() and ProjectSettings.get_setting("campaign/persistence_enabled",true) and (campaign_save_path!="user://campaign_v1.json" or "--no-campaign-save" not in OS.get_cmdline_user_args()):
 		progress=CampaignProgress.new(CampaignStore.new(campaign_save_path))
 		var restored: Dictionary=progress.open()
@@ -89,14 +92,23 @@ func _ready() -> void:
 	hud.options_menu.volume_changed.connect(func(music: float,effects: float,bed: float):
 		audio.music_volume=music;audio.effects_volume=effects;audio.ambience_volume=bed
 		_remember_volumes())
-	hud.options_menu.save_checkpoint_requested.connect(save_manual_campaign)
-	hud.options_menu.load_checkpoint_requested.connect(load_manual_campaign)
-	hud.options_menu.title_requested.connect(return_to_title)
+	hud.options_menu.save_checkpoint_requested.connect(func():
+		_click("ui_save");save_manual_campaign())
+	hud.options_menu.load_checkpoint_requested.connect(func():
+		_click("ui_confirm");load_manual_campaign())
+	hud.options_menu.title_requested.connect(func():
+		_click("ui_select");return_to_title())
 	view.interactions_visible=not paused and sim.is_running()
 	view.keyboard_hint=not hud.uses_touch_controls()
 	_present_save()
 	_sync_knight_equipment()
 	audio.observe(0,sim,knight.position.x,true)
+
+func _click(kind: String) -> void:
+	if is_instance_valid(audio):audio.request(kind)
+
+func _action_refused() -> void:
+	if is_instance_valid(audio):audio.request("charge_empty")
 
 func _remember_volumes() -> void:
 	if preferences==null:return
@@ -314,6 +326,6 @@ func _sync_knight_equipment() -> void:
 	knight.visual.breath_stop_remaining=float(sim.travel.breath_ticks)/preload("res://domain/time/tick_clock.gd").TICKS_PER_SECOND
 	knight.visual.tired_walk=sim.life.enabled and sim.travel.winded
 	knight.visual.exertion=sim.travel.breath_load(sim.hero)
-	knight.set_mounted(sim.frontier.drill_level>=3 if sim.life.enabled else sim.growth.can_ride(sim.frontier.drill_level,sim.frontier.training_limit))
+	knight.set_mounted(sim.mounted())
 
 func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.winded)
