@@ -79,6 +79,11 @@ const SOUNDS={
  "work_harvest":[preload("res://art/audio/campaign-v002/work_harvest_1.wav"),preload("res://art/audio/campaign-v002/work_harvest_2.wav"),preload("res://art/audio/campaign-v002/work_harvest_3.wav")],
  "work_mine":[preload("res://art/audio/campaign-v002/work_mine_1.wav"),preload("res://art/audio/campaign-v002/work_mine_2.wav"),preload("res://art/audio/campaign-v002/work_mine_3.wav")]}
 
+## Footsteps, work strikes and small pickups are constant; losing one is better
+## than losing a blow, a warning or a victory.
+const QUIET_ENOUGH_TO_DROP=["pickup","pay","footstep","footstep_slow",
+ "work_chop","work_mine","work_hammer","work_harvest","crystal_land","ui_select"]
+
 ## Emitted when feedback is accepted; headless validates commands without starting a mixer.
 signal cue_requested(kind: String)
 @export_range(-40.0,0.0,1.0) var volume_db: float=-10.0
@@ -182,8 +187,8 @@ func _play(kind: String) -> void:
  if _cooldowns.get(kind,0.0)>0:return
  var available=voices.filter(func(v):return not v.playing)
  if available.is_empty():
-  # Small pickups cannot cut off a sword hit, danger cue, or result.
-  if kind in ["pickup","pay"]:return
+  # Texture never cuts off a sword hit, a danger cue or a result.
+  if kind in QUIET_ENOUGH_TO_DROP:return
   available=[voices[0]]
  var voice: AudioStreamPlayer=available[0]
  voice.stop()

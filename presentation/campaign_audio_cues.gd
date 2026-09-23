@@ -23,9 +23,10 @@ var _night:=false
 var _sealed:=0
 var _survived:=0
 var _outcome:="running"
-var _resting:=0
+var _hits:=0
 var _offered:=0
 var _raiders:=0
+var _escaped:=0
 var _dragon:=-1
 var _walls: Dictionary={}
 var _health:=0
@@ -50,9 +51,9 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 	var result: Array[String]=[]
 	var active: bool=sim.hero.is_attack_active()
 	var sealed: int=sim.mission.rifts.filter(func(r):return r.sealed).size()
-	var resting: int=_resting_crystals(sim)
 	var offered: int=_offered_crystals(sim)
 	var raiders: int=_small_raiders(sim)
+	var escaped: int=_escapees(sim)
 	var dragon: int=_dragon_health(sim)
 	var walls: Dictionary=_wall_health(sim)
 	var winding: Dictionary=_raider_flags(sim,"windup")
@@ -82,9 +83,9 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 		if sim.hero.shield_absorbed>_absorbed:result.append("shield")
 		elif sim.hero.hp<_hp:result.append("hurt")
 		if not alive and _alive:result.append("death")
-		if resting>_resting:result.append("crystal_drop")
+		if sim.survival.hits>_hits and sim.pouch.amount<_pouch:result.append("crystal_drop")
 		if offered>_offered:result.append("throw")
-		if raiders<_raiders:result.append("enemy_death")
+		if (_raiders-raiders)-(escaped-_escaped)>0:result.append("enemy_death")
 		if _dragon>0:
 			if dragon<=0:result.append("dragon_death")
 			elif dragon<_dragon:result.append("dragon_hurt")
@@ -131,8 +132,8 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 	_hp=sim.hero.hp;_absorbed=sim.hero.shield_absorbed
 	_city=sim.frontier.city_level;_night=sim.clock.is_night;_sealed=sealed
 	_survived=sim.clock.survived;_outcome=sim.mission.outcome
-	_resting=resting;_disarmed=disarmed;_alive=alive
-	_offered=offered;_raiders=raiders;_dragon=dragon;_walls=walls;_health=sim.hero.hp
+	_disarmed=disarmed;_alive=alive;_hits=sim.survival.hits
+	_offered=offered;_raiders=raiders;_escaped=escaped;_dragon=dragon;_walls=walls;_health=sim.hero.hp
 	_winding=winding;_carrying=carrying;_wardens=wardens;_roles=roles;_hurting=hurting
 	_mounted=mounted;_kingdom=kingdom;_investments=sim.investments.duplicate();_flying=flying
 	_settled=settled;_held=held;_enemy_health=enemy_health;_pouch=sim.pouch.amount
@@ -201,6 +202,12 @@ func _offered_crystals(sim) -> int:
 		if gem.offering:total+=int(gem.amount)
 	return total
 
+func _escapees(sim) -> int:
+	var total:=0
+	for raider in sim.raiders:
+		if raider.get("escaped",false):total+=1
+	return total
+
 func _small_raiders(sim) -> int:
 	var total:=0
 	for raider in sim.raiders:
@@ -220,8 +227,3 @@ func _wall_health(sim) -> Dictionary:
 		if wall.level>0:health[id]=int(wall.hp)
 	return health
 
-func _resting_crystals(sim) -> int:
-	var total:=0
-	for gem in sim.pouch.drops:
-		if not gem.offering:total+=int(gem.amount)
-	return total

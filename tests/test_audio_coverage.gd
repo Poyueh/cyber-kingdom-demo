@@ -63,3 +63,15 @@ func test_the_pending_list_stays_honest(t):
 		if wired.has(kind): contradictions.append(kind)
 	t.equal(contradictions, [], "a wired sound is not still listed as pending")
 	t.equal(PENDING, [] as Array[String], "nothing generated is deliberately silent")
+
+func test_constant_texture_never_cuts_off_a_decisive_sound(t):
+	var protected := ["footstep","footstep_slow","work_chop","work_mine","work_hammer",
+		"work_harvest","pickup","pay","crystal_land"]
+	for kind in protected:
+		t.truth(Rack.QUIET_ENOUGH_TO_DROP.has(kind),
+			"%s gives up its voice instead of stealing one" % kind)
+	var decisive := ["hit","heavy","hurt","death","victory","defeat","core_hit",
+		"dragon_arrival","enemy_telegraph","raid_warning","seal"]
+	for kind in decisive:
+		t.truth(not Rack.QUIET_ENOUGH_TO_DROP.has(kind),
+			"%s is never dropped to make room" % kind)
