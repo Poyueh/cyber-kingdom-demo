@@ -1,13 +1,14 @@
 extends PanelContainer
 ## Pause menu has large touch targets and shares the same controls on desktop.
 const Icons=preload("res://presentation/ui_icons.gd")
-signal volume_changed(music: float,effects: float)
+signal volume_changed(music: float,effects: float,ambience: float)
 signal save_checkpoint_requested
 signal load_checkpoint_requested
 signal title_requested
 const LanguageSelector=preload("res://presentation/language_selector.gd")
 var music: HSlider
 var effects: HSlider
+var ambience: HSlider
 var save_button: Button
 var load_button: Button
 var _tooltips: Dictionary={}
@@ -24,6 +25,7 @@ func _ready() -> void:
 	var selector=LanguageSelector.new();box.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
 	music=_volume_row(box,"music")
 	effects=_volume_row(box,"sound")
+	ambience=_volume_row(box,"tree")
 	var row:=HBoxContainer.new();row.alignment=BoxContainer.ALIGNMENT_CENTER;row.add_theme_constant_override("separation",10);box.add_child(row)
 	save_button=_button(row,"save");load_button=_button(row,"restore")
 	save_button.pressed.connect(func():save_checkpoint_requested.emit())
@@ -37,7 +39,8 @@ func _ready() -> void:
 		guide_button.pressed.connect(preload("res://presentation/web_player_guide.gd").open)
 	music.value_changed.connect(_volume_changed)
 	effects.value_changed.connect(_volume_changed)
-	set_levels(0.4,0.8)
+	ambience.value_changed.connect(_volume_changed)
+	set_levels(0.4,0.8,0.6)
 	get_node("/root/GameLanguage").changed.connect(_refresh_language)
 	_refresh_language()
 func _volume_row(box: VBoxContainer, key: String) -> HSlider:
@@ -50,11 +53,16 @@ func _button(row: HBoxContainer,key: String) -> Button:
 	var button:=Button.new();button.icon=Icons.get_icon(key);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",28);button.custom_minimum_size=Vector2(64,52);button.focus_mode=Control.FOCUS_NONE;row.add_child(button)
 	return button
 func _volume_changed(_value: float) -> void:
-	_numbers[0].text=str(int(music.value));_numbers[1].text=str(int(effects.value))
-	volume_changed.emit(music.value/100,effects.value/100)
-func set_levels(music_level: float,effects_level: float) -> void:
-	music.set_value_no_signal(music_level*100);effects.set_value_no_signal(effects_level*100)
-	_numbers[0].text=str(int(music.value));_numbers[1].text=str(int(effects.value))
+	_show_levels()
+	volume_changed.emit(music.value/100,effects.value/100,ambience.value/100)
+func set_levels(music_level: float,effects_level: float,ambience_level: float) -> void:
+	music.set_value_no_signal(music_level*100)
+	effects.set_value_no_signal(effects_level*100)
+	ambience.set_value_no_signal(ambience_level*100)
+	_show_levels()
+func _show_levels() -> void:
+	for index in range(_numbers.size()):
+		_numbers[index].text=str(int([music,effects,ambience][index].value))
 func record_status(available: bool,saved: bool,failed: bool=false) -> void:
 	load_button.disabled=not available
 	save_button.icon=Icons.get_icon("save_retry" if failed else "check" if saved else "save")

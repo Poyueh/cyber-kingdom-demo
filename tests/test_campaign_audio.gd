@@ -43,7 +43,7 @@ func test_sounds_follow_active_cuts_hits_distance_and_end_states(t):
  sim.hero.invulnerability_remaining=0
  sim.hero.shield=20
  sim.hero.take_damage(10)
- t.truth("hurt" in cues.sample(sim,30,false),"shield absorption is audible even with unchanged health")
+ t.truth("shield" in cues.sample(sim,30,false),"shield absorption has its own deflection sound")
  sim.clock.is_night=true
  t.equal(cues.sample(sim,30,false),["night"],"real night transition gives one warning")
  sim.mission.rifts[0].sealed=true

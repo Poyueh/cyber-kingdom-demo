@@ -49,8 +49,10 @@ func _physics_process(seconds: float) -> void:
 		if sim.is_running():
 			if command.direction != 0 and sim.hero.dash_remaining <= 0:
 				sim.hero.facing = int(signf(command.direction))
-			if command.attack and _can_attack(): sim.hero.start_attack()
-			if command.dash: sim.hero.start_dash()
+			if command.attack and _can_attack():
+				if not sim.hero.start_attack() and sim.hero.stamina<sim.hero.stats.attack_cost:_action_refused()
+			if command.dash:
+				if not sim.hero.start_dash() and sim.hero.stamina<sim.hero.stats.dash_cost:_action_refused()
 			_apply_interaction(command,seconds)
 			knight.advance_motion(_travel_axis(command.direction,seconds),command.jump,seconds)
 			sim.strike_from(knight.position.x,knight.position.y)
@@ -70,3 +72,6 @@ func _leave() -> void:
 	get_tree().change_scene_to_file("res://scenes/training.tscn")
 
 func _can_attack() -> bool:return true
+
+## Overridden where a mixer exists; the plain loop stays silent.
+func _action_refused() -> void:pass

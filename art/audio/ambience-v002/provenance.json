@@ -1,0 +1,203 @@
+{
+ "files": {
+  "amb_campfire": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_campfire.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 174911,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.19,
+    "lufs": -30.9,
+    "peak_db": -8.86,
+    "rate": 44100,
+    "rms_db": -29.89,
+    "seconds": 16.5
+   },
+   "prompt": "Campfire burning close up, continuous steady flame roar and hiss with dense constant wood crackling and popping throughout, never silent, a subtle warm crystal reactor hum underneath, cozy. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 18.0,
+   "sha256": "f08d5b83b3fc4acfe7c5a4d688f2cf7f5662c3d36bca70b16548780b96d35dbd",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "營火近景",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[fire crackling]"
+   }
+  },
+  "amb_city": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_city.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 130575,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.44,
+    "lufs": -30.0,
+    "peak_db": -10.24,
+    "rate": 44100,
+    "rms_db": -26.12,
+    "seconds": 20.5
+   },
+   "prompt": "Small refuge settlement, continuous low crystal reactor hum with soft energy conduit flow, occasional wooden creak and distant tool tap, lived-in, never silent. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 22.0,
+   "sha256": "6bbd0e27650a635e2b3a89da79f56e6b5bec70f05425bf5f222974a76cbd85fb",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "二級以上營地反應爐",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "amb_crystal": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_crystal.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 132467,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.07,
+    "lufs": -30.0,
+    "peak_db": -12.6,
+    "rate": 44100,
+    "rms_db": -30.21,
+    "seconds": 16.5
+   },
+   "prompt": "Exposed crystal vein, continuous glassy resonant drone with slow shimmering overtones and tiny crystalline ticks, otherworldly, never silent. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 18.0,
+   "sha256": "6e454c2fc979859f27fa4062759bab020f9ed75d6428b9fc20baa2ae0aef257e",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "晶脈",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "amb_day": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_day.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 188655,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.08,
+    "lufs": -30.1,
+    "peak_db": -15.41,
+    "rate": 44100,
+    "rms_db": -34.1,
+    "seconds": 20.5
+   },
+   "prompt": "Open frontier wilderness by day, continuous steady wind through dry grass, scattered distant birds throughout, a faint far-off crystal hum, calm and lonely, never silent. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 22.0,
+   "sha256": "6a519200f8cd5bc707b769751d9e722110e926f6db64f0913b64f8591ea2d0e5",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "白天荒地",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[rustling]"
+   }
+  },
+  "amb_forest": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_forest.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 190668,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.12,
+    "lufs": -30.2,
+    "peak_db": -11.77,
+    "rate": 44100,
+    "rms_db": -33.46,
+    "seconds": 20.5
+   },
+   "prompt": "Dense frontier forest, continuous steady wind through thick foliage with constant leaf rustle, layered birdsong and a steady insect chorus throughout, never silent, creaking branches. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 22.0,
+   "sha256": "6fcd17b19e32c902e19ec911e41ee51ce405b0dabd34b3a2d7913519fff5ebf3",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "森林",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[birds chirping]"
+   }
+  },
+  "amb_night": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_night.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 147095,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.84,
+    "lufs": -30.1,
+    "peak_db": -19.35,
+    "rate": 44100,
+    "rms_db": -33.37,
+    "seconds": 20.5
+   },
+   "prompt": "Haunted frontier at night, continuous low cold wind running throughout, steady cricket chorus, distant owl calls and a faint uneasy drone, always present and never silent, tense. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 22.0,
+   "sha256": "90db98f24677b658f591a25dc90eaa24f9bd3559600f7eefe25eeefb8483dc9c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "夜晚",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "amb_ruins": {
+   "category": "ambience",
+   "file": "art/audio/ambience-v002/amb_ruins.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 125727,
+    "category": "ambience",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.64,
+    "lufs": -30.0,
+    "peak_db": -12.67,
+    "rate": 44100,
+    "rms_db": -27.94,
+    "seconds": 20.5
+   },
+   "prompt": "Ancient stone ruins with a dormant magical portal, continuous hollow wind through stone, steady low energy throb, uneasy, never silent. Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech.",
+   "request_seconds": 22.0,
+   "sha256": "8bc45c3e60d98860713e3a70179c363b8e144f97c3c812ceda9e091f235b8c40",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "遺跡與地獄之門",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  }
+ },
+ "note": "Generated from prompts; no recordings, samples or third-party audio.",
+ "set": "cyber-kingdom audio v002",
+ "written": "2026-09-23"
+}

@@ -1,0 +1,608 @@
+{
+ "sfx": [
+  {
+   "name": "slash1_1",
+   "start_seconds": 0.0,
+   "seconds": 0.35
+  },
+  {
+   "name": "slash1_2",
+   "start_seconds": 0.95,
+   "seconds": 0.35
+  },
+  {
+   "name": "slash1_3",
+   "start_seconds": 1.9,
+   "seconds": 0.35
+  },
+  {
+   "name": "slash2_1",
+   "start_seconds": 2.85,
+   "seconds": 0.26
+  },
+  {
+   "name": "slash2_2",
+   "start_seconds": 3.71,
+   "seconds": 0.15
+  },
+  {
+   "name": "slash2_3",
+   "start_seconds": 4.46,
+   "seconds": 0.3
+  },
+  {
+   "name": "slash3_1",
+   "start_seconds": 5.36,
+   "seconds": 0.36
+  },
+  {
+   "name": "slash3_2",
+   "start_seconds": 6.32,
+   "seconds": 0.4
+  },
+  {
+   "name": "slash3_3",
+   "start_seconds": 7.33,
+   "seconds": 0.26
+  },
+  {
+   "name": "hit_1",
+   "start_seconds": 8.19,
+   "seconds": 0.3
+  },
+  {
+   "name": "hit_2",
+   "start_seconds": 9.09,
+   "seconds": 0.3
+  },
+  {
+   "name": "hit_3",
+   "start_seconds": 9.99,
+   "seconds": 0.3
+  },
+  {
+   "name": "heavy",
+   "start_seconds": 10.89,
+   "seconds": 0.38
+  },
+  {
+   "name": "hurt",
+   "start_seconds": 11.87,
+   "seconds": 0.41
+  },
+  {
+   "name": "shield",
+   "start_seconds": 12.88,
+   "seconds": 0.35
+  },
+  {
+   "name": "dash",
+   "start_seconds": 13.83,
+   "seconds": 0.36
+  },
+  {
+   "name": "charge_empty",
+   "start_seconds": 14.78,
+   "seconds": 0.25
+  },
+  {
+   "name": "crystal_drop",
+   "start_seconds": 15.63,
+   "seconds": 0.6
+  },
+  {
+   "name": "sword_drop",
+   "start_seconds": 16.83,
+   "seconds": 0.7
+  },
+  {
+   "name": "sword_recover",
+   "start_seconds": 18.13,
+   "seconds": 0.35
+  },
+  {
+   "name": "death",
+   "start_seconds": 19.08,
+   "seconds": 0.9
+  },
+  {
+   "name": "footstep_1",
+   "start_seconds": 20.59,
+   "seconds": 0.18
+  },
+  {
+   "name": "footstep_2",
+   "start_seconds": 21.37,
+   "seconds": 0.18
+  },
+  {
+   "name": "footstep_3",
+   "start_seconds": 22.15,
+   "seconds": 0.18
+  },
+  {
+   "name": "footstep_slow_1",
+   "start_seconds": 22.93,
+   "seconds": 0.24
+  },
+  {
+   "name": "footstep_slow_2",
+   "start_seconds": 23.77,
+   "seconds": 0.24
+  },
+  {
+   "name": "footstep_slow_3",
+   "start_seconds": 24.61,
+   "seconds": 0.24
+  },
+  {
+   "name": "jump",
+   "start_seconds": 25.45,
+   "seconds": 0.2
+  },
+  {
+   "name": "land_1",
+   "start_seconds": 26.25,
+   "seconds": 0.28
+  },
+  {
+   "name": "land_2",
+   "start_seconds": 27.13,
+   "seconds": 0.42
+  },
+  {
+   "name": "horse_gallop",
+   "start_seconds": 28.14,
+   "seconds": 2.0
+  },
+  {
+   "name": "mount",
+   "start_seconds": 30.74,
+   "seconds": 0.62
+  },
+  {
+   "name": "pickup_1",
+   "start_seconds": 31.96,
+   "seconds": 0.22
+  },
+  {
+   "name": "pickup_2",
+   "start_seconds": 32.78,
+   "seconds": 0.22
+  },
+  {
+   "name": "pickup_3",
+   "start_seconds": 33.6,
+   "seconds": 0.22
+  },
+  {
+   "name": "pay",
+   "start_seconds": 34.42,
+   "seconds": 0.18
+  },
+  {
+   "name": "slot_complete",
+   "start_seconds": 35.2,
+   "seconds": 0.55
+  },
+  {
+   "name": "slot_refund",
+   "start_seconds": 36.35,
+   "seconds": 0.45
+  },
+  {
+   "name": "throw",
+   "start_seconds": 37.4,
+   "seconds": 0.32
+  },
+  {
+   "name": "crystal_land_1",
+   "start_seconds": 38.32,
+   "seconds": 0.21
+  },
+  {
+   "name": "crystal_land_2",
+   "start_seconds": 39.13,
+   "seconds": 0.27
+  },
+  {
+   "name": "crystal_land_3",
+   "start_seconds": 40.0,
+   "seconds": 0.3
+  },
+  {
+   "name": "chest",
+   "start_seconds": 40.9,
+   "seconds": 0.55
+  },
+  {
+   "name": "heal",
+   "start_seconds": 42.05,
+   "seconds": 0.65
+  },
+  {
+   "name": "module_pickup",
+   "start_seconds": 43.3,
+   "seconds": 0.32
+  },
+  {
+   "name": "module_equip",
+   "start_seconds": 44.22,
+   "seconds": 0.71
+  },
+  {
+   "name": "module_store",
+   "start_seconds": 45.53,
+   "seconds": 0.27
+  },
+  {
+   "name": "handoff",
+   "start_seconds": 46.41,
+   "seconds": 0.45
+  },
+  {
+   "name": "recruit",
+   "start_seconds": 47.46,
+   "seconds": 0.49
+  },
+  {
+   "name": "build",
+   "start_seconds": 48.55,
+   "seconds": 0.66
+  },
+  {
+   "name": "upgrade",
+   "start_seconds": 49.81,
+   "seconds": 0.94
+  },
+  {
+   "name": "ignition",
+   "start_seconds": 51.35,
+   "seconds": 0.91
+  },
+  {
+   "name": "tool_pickup",
+   "start_seconds": 52.86,
+   "seconds": 0.23
+  },
+  {
+   "name": "work_chop_1",
+   "start_seconds": 53.69,
+   "seconds": 0.32
+  },
+  {
+   "name": "work_chop_2",
+   "start_seconds": 54.61,
+   "seconds": 0.2
+  },
+  {
+   "name": "work_chop_3",
+   "start_seconds": 55.42,
+   "seconds": 0.14
+  },
+  {
+   "name": "work_mine_1",
+   "start_seconds": 56.16,
+   "seconds": 0.32
+  },
+  {
+   "name": "work_mine_2",
+   "start_seconds": 57.08,
+   "seconds": 0.32
+  },
+  {
+   "name": "work_mine_3",
+   "start_seconds": 58.0,
+   "seconds": 0.32
+  },
+  {
+   "name": "work_hammer_1",
+   "start_seconds": 58.92,
+   "seconds": 0.05
+  },
+  {
+   "name": "work_hammer_2",
+   "start_seconds": 59.57,
+   "seconds": 0.28
+  },
+  {
+   "name": "work_hammer_3",
+   "start_seconds": 60.45,
+   "seconds": 0.24
+  },
+  {
+   "name": "work_harvest_1",
+   "start_seconds": 61.28,
+   "seconds": 0.32
+  },
+  {
+   "name": "work_harvest_2",
+   "start_seconds": 62.2,
+   "seconds": 0.29
+  },
+  {
+   "name": "work_harvest_3",
+   "start_seconds": 63.09,
+   "seconds": 0.32
+  },
+  {
+   "name": "bow_shot",
+   "start_seconds": 64.01,
+   "seconds": 0.17
+  },
+  {
+   "name": "arrow_hit",
+   "start_seconds": 64.78,
+   "seconds": 0.07
+  },
+  {
+   "name": "tower_laser",
+   "start_seconds": 65.45,
+   "seconds": 0.12
+  },
+  {
+   "name": "wall_hit_1",
+   "start_seconds": 66.17,
+   "seconds": 0.38
+  },
+  {
+   "name": "wall_hit_2",
+   "start_seconds": 67.15,
+   "seconds": 0.38
+  },
+  {
+   "name": "wall_hit_3",
+   "start_seconds": 68.13,
+   "seconds": 0.3
+  },
+  {
+   "name": "wall_break",
+   "start_seconds": 69.02,
+   "seconds": 0.83
+  },
+  {
+   "name": "wall_repair",
+   "start_seconds": 70.46,
+   "seconds": 0.41
+  },
+  {
+   "name": "core_hit",
+   "start_seconds": 71.46,
+   "seconds": 0.65
+  },
+  {
+   "name": "resident_hit",
+   "start_seconds": 72.71,
+   "seconds": 0.08
+  },
+  {
+   "name": "farewell",
+   "start_seconds": 73.4,
+   "seconds": 0.65
+  },
+  {
+   "name": "portal_spawn",
+   "start_seconds": 74.65,
+   "seconds": 0.57
+  },
+  {
+   "name": "enemy_telegraph",
+   "start_seconds": 75.81,
+   "seconds": 0.45
+  },
+  {
+   "name": "enemy_attack_1",
+   "start_seconds": 76.86,
+   "seconds": 0.32
+  },
+  {
+   "name": "enemy_attack_2",
+   "start_seconds": 77.78,
+   "seconds": 0.32
+  },
+  {
+   "name": "enemy_attack_3",
+   "start_seconds": 78.7,
+   "seconds": 0.32
+  },
+  {
+   "name": "enemy_death",
+   "start_seconds": 79.62,
+   "seconds": 0.55
+  },
+  {
+   "name": "enemy_grab",
+   "start_seconds": 80.77,
+   "seconds": 0.45
+  },
+  {
+   "name": "gatekeeper_appear",
+   "start_seconds": 81.82,
+   "seconds": 0.4
+  },
+  {
+   "name": "dragon_arrival",
+   "start_seconds": 82.82,
+   "seconds": 2.35
+  },
+  {
+   "name": "dragon_wing",
+   "start_seconds": 85.77,
+   "seconds": 2.0
+  },
+  {
+   "name": "dragon_fire",
+   "start_seconds": 88.37,
+   "seconds": 0.98
+  },
+  {
+   "name": "dragon_hurt",
+   "start_seconds": 89.95,
+   "seconds": 0.43
+  },
+  {
+   "name": "dragon_death",
+   "start_seconds": 90.98,
+   "seconds": 2.16
+  },
+  {
+   "name": "night",
+   "start_seconds": 93.73,
+   "seconds": 0.72
+  },
+  {
+   "name": "dawn",
+   "start_seconds": 95.06,
+   "seconds": 1.31
+  },
+  {
+   "name": "raid_warning",
+   "start_seconds": 96.96,
+   "seconds": 0.85
+  },
+  {
+   "name": "seal_progress",
+   "start_seconds": 98.41,
+   "seconds": 2.36
+  },
+  {
+   "name": "seal",
+   "start_seconds": 101.37,
+   "seconds": 1.06
+  },
+  {
+   "name": "kingdom",
+   "start_seconds": 103.03,
+   "seconds": 1.07
+  },
+  {
+   "name": "victory",
+   "start_seconds": 104.7,
+   "seconds": 1.37
+  },
+  {
+   "name": "defeat",
+   "start_seconds": 106.66,
+   "seconds": 2.05
+  },
+  {
+   "name": "ui_pause",
+   "start_seconds": 109.32,
+   "seconds": 0.2
+  },
+  {
+   "name": "ui_resume",
+   "start_seconds": 110.12,
+   "seconds": 0.28
+  },
+  {
+   "name": "ui_select",
+   "start_seconds": 111.0,
+   "seconds": 0.12
+  },
+  {
+   "name": "ui_confirm",
+   "start_seconds": 111.72,
+   "seconds": 0.01
+  },
+  {
+   "name": "ui_save",
+   "start_seconds": 112.32,
+   "seconds": 0.4
+  },
+  {
+   "name": "ui_mute",
+   "start_seconds": 113.33,
+   "seconds": 0.21
+  }
+ ],
+ "ambience": [
+  {
+   "name": "amb_day",
+   "start_seconds": 0.0,
+   "seconds": 20.5
+  },
+  {
+   "name": "amb_night",
+   "start_seconds": 21.5,
+   "seconds": 20.5
+  },
+  {
+   "name": "amb_campfire",
+   "start_seconds": 43.0,
+   "seconds": 16.5
+  },
+  {
+   "name": "amb_city",
+   "start_seconds": 60.5,
+   "seconds": 20.5
+  },
+  {
+   "name": "amb_forest",
+   "start_seconds": 82.0,
+   "seconds": 20.5
+  },
+  {
+   "name": "amb_crystal",
+   "start_seconds": 103.5,
+   "seconds": 16.5
+  },
+  {
+   "name": "amb_ruins",
+   "start_seconds": 121.0,
+   "seconds": 20.5
+  }
+ ],
+ "music_first_25s": [
+  {
+   "name": "title",
+   "start_seconds": 0.0,
+   "seconds": 25.02
+  },
+  {
+   "name": "day_explore",
+   "start_seconds": 26.22,
+   "seconds": 25.01
+  },
+  {
+   "name": "day_refuge",
+   "start_seconds": 52.43,
+   "seconds": 25.0
+  },
+  {
+   "name": "night_watch",
+   "start_seconds": 78.64,
+   "seconds": 25.02
+  },
+  {
+   "name": "night_raid",
+   "start_seconds": 104.86,
+   "seconds": 25.02
+  },
+  {
+   "name": "dragon_boss",
+   "start_seconds": 131.08,
+   "seconds": 25.0
+  },
+  {
+   "name": "founding_theme",
+   "start_seconds": 157.28,
+   "seconds": 11.34
+  },
+  {
+   "name": "victory_theme",
+   "start_seconds": 169.82,
+   "seconds": 17.27
+  },
+  {
+   "name": "defeat_theme",
+   "start_seconds": 188.29,
+   "seconds": 13.11
+  },
+  {
+   "name": "dawn_sting",
+   "start_seconds": 202.6,
+   "seconds": 7.8
+  }
+ ]
+}
