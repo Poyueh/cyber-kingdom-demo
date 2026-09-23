@@ -1,0 +1,9 @@
+{
+ "purpose": "Validates the voice screen: a clip generated with deliberate sung lyrics must transcribe, proving a silent result on the shipped set is meaningful.",
+ "control_prompt": "Folk song with a clear female lead singer singing full English lyrics throughout, prominent vocals front and centre, acoustic guitar backing",
+ "control_result": {
+  "text": "The autumn wind begins to blow, and whispers words we used to know. Carry me home, carry me far, under the light of the morning star",
+  "word_count": 26
+ },
+ "shipped_set_result": "0 transcribed words across all 116 files (see voice-screen.json)"
+}

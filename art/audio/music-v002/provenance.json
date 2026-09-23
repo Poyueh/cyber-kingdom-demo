@@ -1,0 +1,283 @@
+{
+ "files": {
+  "dawn_sting": {
+   "category": "music",
+   "file": "art/audio/music-v002/dawn_sting.ogg",
+   "loop": false,
+   "measured": {
+    "bytes": 133491,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": false,
+    "lufs": -16.1,
+    "peak_db": -5.89,
+    "rate": 44100,
+    "rms_db": -20.0,
+    "seconds": 7.802
+   },
+   "prompt": "Dawn stinger, a single warm rising bell phrase with soft pad swell and faint birdsong, relief after a long night, short. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 10.0,
+   "sha256": "8ab0e49add8382994988fb79b2f5f9356b162781089d3b2e84ab520fbb178b65",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "日出短樂句",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "day_explore": {
+   "category": "music",
+   "file": "art/audio/music-v002/day_explore.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 2061363,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.0,
+    "lufs": -16.2,
+    "peak_db": -5.75,
+    "rate": 44100,
+    "rms_db": -20.17,
+    "seconds": 117.012
+   },
+   "prompt": "Daytime exploration theme, gentle wandering feel, light plucked strings and a wooden flute over warm pads, sparse soft hand drum, curious and calm, modal minor, 85 BPM. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 120.0,
+   "sha256": "487599beb8c607a431075ca8fc31e068430dfbee3ab16c0612cd54bceec25346",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "白天探索荒地與森林",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "day_refuge": {
+   "category": "music",
+   "file": "art/audio/music-v002/day_refuge.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 2210313,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.0,
+    "lufs": -16.0,
+    "peak_db": -5.81,
+    "rate": 44100,
+    "rms_db": -19.46,
+    "seconds": 118.507
+   },
+   "prompt": "Refuge by day, warm and industrious, plucked strings with a simple bell motif, soft rhythmic pulse like distant hammering, gentle synth undercurrent, community and quiet hope, 90 BPM. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 120.0,
+   "sha256": "7b4fad7c9d59bc37b2f1e1d1fb358266ae0c0cd19776faa4b5c4ce42865c527b",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "白天營地建設",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[on-hold music]"
+   }
+  },
+  "defeat_theme": {
+   "category": "music",
+   "file": "art/audio/music-v002/defeat_theme.ogg",
+   "loop": false,
+   "measured": {
+    "bytes": 188693,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": false,
+    "lufs": -15.9,
+    "peak_db": -6.24,
+    "rate": 44100,
+    "rms_db": -20.71,
+    "seconds": 13.11
+   },
+   "prompt": "Defeat piece, slow descending bell phrase over a cold fading pad and a dying mechanical hum, mournful, ends in near silence. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 15.0,
+   "sha256": "51057b8b6ac7d277fb7525740c5d92469948bbe730f55ee9cdbede4954f15d86",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "敗北",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "dragon_boss": {
+   "category": "music",
+   "file": "art/audio/music-v002/dragon_boss.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 2316211,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.0,
+    "lufs": -16.1,
+    "peak_db": -5.42,
+    "rate": 44100,
+    "rms_db": -18.7,
+    "seconds": 118.422
+   },
+   "prompt": "Final dragon battle, heavy but restrained, deep tribal drums, distorted low synth bass, soaring minor bell melody, dissonant crystal shimmer, relentless and desperate, 95 BPM. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 120.0,
+   "sha256": "2d2a1f9af2ee65c695801143a95c72749f3887883bcbac4e6b6ba5df1daec33a",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "最終巨龍決戰",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[on-hold music]"
+   }
+  },
+  "founding_theme": {
+   "category": "music",
+   "file": "art/audio/music-v002/founding_theme.ogg",
+   "loop": false,
+   "measured": {
+    "bytes": 171903,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": false,
+    "lufs": -16.1,
+    "peak_db": -5.8,
+    "rate": 44100,
+    "rms_db": -22.34,
+    "seconds": 11.337
+   },
+   "prompt": "Founding stinger, a low resonant swell rising into a warm bell motif with plucked strings, the moment a refuge is born, hopeful and ceremonial, ends on a sustained chord. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 14.0,
+   "sha256": "124f3a5b08939adb2cbfd86405cdc4cce6a53e60a825c977ed0c36d78d116907",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "建國點火儀式",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "night_raid": {
+   "category": "music",
+   "file": "art/audio/music-v002/night_raid.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 1802969,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.0,
+    "lufs": -16.8,
+    "peak_db": -5.52,
+    "rate": 44100,
+    "rms_db": -16.87,
+    "seconds": 117.849
+   },
+   "prompt": "Night raid combat layer, driving low percussion, pulsing bass synth, urgent string ostinato, crystalline stabs, controlled intensity rather than epic, 70 BPM, designed to layer over a quieter night theme in the same key. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 120.0,
+   "sha256": "240b610c50989ad1369d9c2e874f9b72a819e7034f177b1a4a3c51b4ab6ada20",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "夜襲交戰疊層",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "night_watch": {
+   "category": "music",
+   "file": "art/audio/music-v002/night_watch.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 2090601,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.01,
+    "lufs": -16.2,
+    "peak_db": -5.4,
+    "rate": 44100,
+    "rms_db": -18.63,
+    "seconds": 118.008
+   },
+   "prompt": "Night watch on the walls, tense and sparse, low sustained synth drone, slow cold bell tolls, distant tremolo strings, minimal percussion heartbeat, dread building slowly, 70 BPM. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 120.0,
+   "sha256": "bf1bcf99eb645611f4e5c7c66302e1c7b7f471a3dbf35826323a5444513fbe75",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "夜晚守備，敵人未到",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "title": {
+   "category": "music",
+   "file": "art/audio/music-v002/title.ogg",
+   "loop": true,
+   "measured": {
+    "bytes": 1495707,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.0,
+    "lufs": -16.0,
+    "peak_db": -5.78,
+    "rate": 44100,
+    "rms_db": -19.71,
+    "seconds": 85.056
+   },
+   "prompt": "Title theme for a lonely last refuge in a dragon-ruled world, slow minor-key bell melody over a soft synth pad, distant plucked lute, faint crystal shimmer, hopeful sadness, unhurried, 70 BPM. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 90.0,
+   "sha256": "4002bd8027a4ea265def9ff33d4fac6405f43c4a55d0b422abed2f6ff93e754b",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "起始頁",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[on-hold music]"
+   }
+  },
+  "victory_theme": {
+   "category": "music",
+   "file": "art/audio/music-v002/victory_theme.ogg",
+   "loop": false,
+   "measured": {
+    "bytes": 249107,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": false,
+    "lufs": -16.0,
+    "peak_db": -5.81,
+    "rate": 44100,
+    "rms_db": -21.15,
+    "seconds": 17.27
+   },
+   "prompt": "Victory piece, bright bell melody rising over a warm pad, gentle triumphant resolution, humble and earned, ends with a soft sustained chord. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 20.0,
+   "sha256": "69d423b565cb744567d8ef241dcdfd856b02c8249e6c71be082e29ec7149d16c",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "勝利",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  }
+ },
+ "note": "Generated from prompts; no recordings, samples or third-party audio.",
+ "set": "cyber-kingdom audio v002",
+ "written": "2026-09-23"
+}

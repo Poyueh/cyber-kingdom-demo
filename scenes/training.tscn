@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scenes/sentinel_visual.tscn" id="sentinel_visual"]
 [ext_resource type="Script" path="res://presentation/impact_view.gd" id="impacts"]
 [ext_resource type="PackedScene" path="res://scenes/platform.tscn" id="ledge"]
+[ext_resource type="Script" path="res://presentation/campaign_audio.gd" id="arena_audio"]
 [sub_resource type="RectangleShape2D" id="floor"]
 size = Vector2(1800, 110)
 [sub_resource type="RectangleShape2D" id="wall"]
@@ -59,3 +60,6 @@ script = ExtResource("impacts")
 [node name="InputAdapter" type="Node" parent="."]
 script = ExtResource("4")
 [node name="HUD" parent="." instance=ExtResource("5")]
+
+[node name="ArenaAudio" type="Node" parent="."]
+script = ExtResource("arena_audio")

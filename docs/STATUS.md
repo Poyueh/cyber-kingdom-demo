@@ -7,15 +7,22 @@
 - 所有附件 SHA-256 與大小、來源提交及平台簽署限制見 [`docs/reports/release-0.0.12/verification.json`](reports/release-0.0.12/verification.json)。macOS ad-hoc 未 notarize，Windows 未簽署，Android 為 debug APK，iOS 專案尚待 Xcode 建置與裝置安裝。
 - 發佈前 `bash tools/check.sh` 通過；H5 發行 ZIP 由 Pages 工作流程驗證完整遊戲執行檔與指南。沒有完成 Windows、macOS、Android 或 iPhone 真機遊玩驗收。
 
-## 2026-09-23：部件工坊與拾取即裝配（本機待發佈）
+## 2026-09-23：部件工坊與拾取即裝配（已包含於 v0.0.12）
 
 - 保留並回歸驗證 v0.0.11 的農具工坊付晶製造、牆塔施工停用、城牆外約一畫面工作範圍。夜間沿用附近敵人避難規則，沒有新增強制停工。
 - 感受式旅程取消騎士升級購買，營火旁設施改為部件工坊；沒有部件不能開啟且不顯示齒輪，有部件靠近時整座亮起。舊旅程既有騎士等級保留。
 - 新部件拾取即免費裝上並替換舊件，已發現部件保留。工坊換另一件需 8 顆龍晶；不足、遠離或重選当前部件皆不扣款。費用由 Resource 的 crystal_prices.module_swap 設定。電腦 F／手機齒輪選配，K／雙指上滑使用。
 - 換裝不重置共用冷卻；冷卻完成發出一次跟隨騎士的短暫光環、齒輪及火花。新增文字與玩家指南同步繁中、簡中、英文。
 - TDD 先重現 12 項行為失敗，再實作；完整 tools/check.sh 通過，核心行為 1,784 項斷言零失敗，包含保存後冷卻結果一致。無 SCRIPT ERROR／ERROR。指南後續修改另通過翻譯檢查。
-- 原生 Godot 渲染確認工坊未解鎖、亮起、冷卻效果與繁中換裝價格排版，截圖留於 /tmp/module-empty.png、/tmp/module-ready.png、/tmp/module-menu.png；未進行手機真機驗收。未打包或發佈。
-- 功能分支 feature/automatic-modules-paid-workshop 依 Gitflow 整合 develop。教學見 [第 84 課](lessons/84-paid-module-workshop.md)。下一步試玩 8 顆的換裝成本與兩種部件平衡，再決定發行。
+- 原生 Godot 渲染確認工坊未解鎖、亮起、冷卻效果與繁中換裝價格排版；未進行手機真機驗收。已打包並發佈於 v0.0.12。
+- 功能分支 feature/automatic-modules-paid-workshop 依 Gitflow 整合 develop。教學見 [第 84 課](lessons/84-paid-module-workshop.md)。
+
+## 2026-09-23：原倉庫 v002 音效更新整合（完整檢查通過，待發佈）
+
+- 從原始倉庫 `Poyueh/cyber-kingdom` 的 `develop` 分支 `f23a68b` 整合 v002 音效與觸發修正；保留 cyber-kingdom-demo 在 v0.0.12 加入的部件工坊與最新玩法。
+- 更新戰役音樂、環境音與事件音效，並加入主選單與訓練場音效；三語操作與既有存檔規則保持可驗證。
+- `bash tools/check.sh` 完整通過，無 SCRIPT ERROR／ERROR；核心行為 2,027 項斷言零失敗，另含場景、音訊事件、語系及平台匯出檢查。未進行 iPhone 真機試聽。
+- 已整理為 v0.0.13 試聽發行候選，待 H5／桌面／手機套件打包與遠端發布驗證。
 
 最新本機版：`builds/immersive-preview/web/index.html`，用 HTTP 預覽並選「新遊戲」。本輪規格見 `docs/design/immersive-kingdom-loop.md`；既有旅程保留原玩法。
 
