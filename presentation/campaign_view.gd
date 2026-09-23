@@ -166,6 +166,7 @@ func _draw_structures() -> void:
 		if _on_screen(shrine_x,100):
 			Shrine.draw_on(self,Vector2(shrine_x,430),_sim.workforce.elapsed,_context.id=="spirit",not _sim.spirit.active(int(_sim.workforce.elapsed*_sim.spirit.TICKS_PER_SECOND)))
 	for site in world.sites:
+		if site=="drill" and _sim.life.enabled:continue
 		var x: float=world.sites[site]
 		if not _sim.defenses.visible(site):continue
 		if not _sim.site_visible(site):continue
@@ -215,6 +216,11 @@ func _draw_structures() -> void:
 	for site in ["farm","drill","heal"]:
 		if not _sim.site_visible(site):continue
 		var at := Vector2(world.sites[site],430)
+		if site=="drill" and _sim.life.enabled:
+			var usable: bool=_sim.can_use_module_station(_view_player_x)
+			_prop("drill",at,1.0,Color(1.5,1.65,1.6) if usable else Color.WHITE if not _sim.modules.found.is_empty() else Color("697581"))
+			if usable and interactions_visible:_icon("gear",at+Vector2(0,-104),30,Color("7cffdb"))
+			continue
 		if site=="farm":preload("res://presentation/farm_plot.gd").draw_on(self,at,_context.id=="farm" and _context.enabled,1.0)
 		_prop("crops" if site=="farm" and map.farm_active else ("herbs" if site=="heal" else "drill" if site=="drill" and _sim.life.enabled else "plot"),at)
 		_text(_sim.NAMES[site],at.x,345,Color("d0d9b8"),13)

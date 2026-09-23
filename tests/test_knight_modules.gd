@@ -5,18 +5,21 @@ func test_module_balance_and_switching_share_cooldown(t) -> void:
  var sim=Campaign.new({"seed":42,"immersive_loop":1,"module_arc_cost":7.0,"module_arc_damage":9})
  sim.interact(30,"hall")
  sim.modules.found.assign(["arc","lance"]);sim.modules.stored.assign(["arc","lance"])
- sim.equip_module("arc",sim.world.sites.drill)
+ sim.pouch.amount=12
+ t.truth(sim.equip_module("arc",sim.world.sites.drill),"first paid installation succeeds")
  var enemy: Dictionary=sim._spawn_raider();enemy.x=550;sim.raiders.append(enemy)
  var before: int=enemy.fighter.hp
  sim.hero.stamina=20
  t.truth(sim.activate_module(500),"custom balanced module activates")
  t.equal(sim.hero.stamina,13.0,"module stamina cost comes from run configuration")
  t.equal(enemy.fighter.hp,before-9,"module damage comes from run configuration")
- sim.equip_module("lance",sim.world.sites.drill);sim.hero.stamina=100
+ sim.pouch.amount=12
+ t.truth(sim.equip_module("lance",sim.world.sites.drill),"paid switch during cooldown succeeds")
+ sim.hero.stamina=100
  t.truth(not sim.activate_module(500),"switching modules cannot bypass shared cooldown")
  sim.modules.ready_tick=0;sim.hero.stamina=0
  t.truth(not sim.activate_module(500),"empty stamina rejects the special action")
-func test_relics_must_be_explored_returned_and_equipped(t) -> void:
+func test_relics_auto_equip_and_preserve_saved_cooldown(t) -> void:
  var config: Dictionary={"seed":42,"immersive_loop":1}
  var sim=Campaign.new(config)
  if not sim.has_method("equip_module"):
@@ -28,8 +31,9 @@ func test_relics_must_be_explored_returned_and_equipped(t) -> void:
  t.truth(sim.modules.found.has(relic.id),"exploring the relic physically collects it")
  t.truth(not sim.equip_module(relic.id,relic.x),"carried module cannot be installed in the wild")
  sim.advance(0.1,sim.world.sites.drill)
- t.truth(sim.modules.stored.has(relic.id),"returning to upgrade facility deposits the module")
- t.truth(sim.equip_module(relic.id,sim.world.sites.drill),"stored module can be selected at the facility")
+ t.truth(sim.modules.stored.has(relic.id),"collected module remains available at the workshop")
+ t.equal(sim.modules.equipped,relic.id,"pickup automatically equips the discovered module")
+ t.truth(not sim.equip_module(relic.id,sim.world.sites.drill),"already equipped module cannot be charged again")
  var enemy: Dictionary=sim._spawn_raider();enemy.x=sim.world.sites.drill+50
  sim.raiders.append(enemy)
  var hp: int=enemy.fighter.hp

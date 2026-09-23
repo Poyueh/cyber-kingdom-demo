@@ -2,6 +2,8 @@ extends RefCounted
 ## Exploration inventory and special actions; no rendering/input or wall clock.
 const TickClock=preload("res://domain/time/tick_clock.gd")
 const IDS: Array[String]=["arc","lance"]
+const DEFAULT_SWAP_COST: int=8
+var swap_cost: int=DEFAULT_SWAP_COST
 class Spec extends RefCounted:
  var id: String
  var damage: int
@@ -20,6 +22,7 @@ var equipped: String=""
 var ready_tick: int=0
 
 func _init(frontier: RefCounted, config: Dictionary={}) -> void:
+ swap_cost=clampi(config.get("prices",{}).get("module_swap",DEFAULT_SWAP_COST),1,30)
  for id in IDS:
   var spec: Spec=Spec.new();spec.id=id
   var prefix: String="module_"+id+"_"
@@ -39,10 +42,16 @@ func _init(frontier: RefCounted, config: Dictionary={}) -> void:
   relics.append(relic)
 
 func observe(sim: RefCounted, x: float, y: float) -> void:
+ var now: int=roundi(sim.workforce.elapsed*TickClock.TICKS_PER_SECOND)
+ if ready_tick>0 and now>=ready_tick:
+  ready_tick=0
+  if not equipped.is_empty():sim.effects.append({"kind":"module_ready","module":equipped,"x":x,"life":0.9})
  if absf(y-430)>35:return
  for relic in relics:
   if found.has(relic.id) or not sim.frontier.regions[relic.region].discovered or absf(x-relic.x)>38:continue
   found.append(relic.id)
+  stored.append(relic.id)
+  equipped=relic.id
   sim.effects.append({"kind":"module_pickup","module":relic.id,"x":x,"life":3.0})
  if sim.frontier.city_level<=0 or absf(x-sim.world.sites.drill)>=73:return
  for id in found:
@@ -51,7 +60,7 @@ func observe(sim: RefCounted, x: float, y: float) -> void:
   sim.effects.append({"kind":"module_stored","module":id,"x":x,"life":3.0})
 
 func equip(id: String) -> bool:
- if not stored.has(id):return false
+ if not stored.has(id) or equipped==id:return false
  equipped=id
  return true
 

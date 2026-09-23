@@ -27,13 +27,14 @@ func _ready() -> void:
  _hint=Label.new();_hint.custom_minimum_size=Vector2(280,40);_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_hint.add_theme_font_size_override("font_size",14);box.add_child(_hint)
  _close=Button.new();_close.pressed.connect(func():closed.emit());box.add_child(_close)
  hide()
-func present(modules: RefCounted, touch: bool) -> void:
+func present(modules: RefCounted, touch: bool, crystals: int=0) -> void:
  theme.default_font=preload("res://presentation/localized_font.gd").current()
  _title.text=tr("特殊部件選配")
  for i in range(2):
   var owned: bool=modules.stored.has(IDS[i])
-  _buttons[i].disabled=not owned
-  _buttons[i].text=("✓ " if modules.equipped==IDS[i] else "")+tr(TITLES[i])+"
-"+(tr(DETAILS[i]) % roundi(float(modules.specs[i].cooldown)/30.0) if owned else tr("探索取得，帶回此處安裝"))
+  _buttons[i].disabled=not owned or modules.equipped==IDS[i] or crystals<modules.swap_cost
+  _buttons[i].text=("✓ " if modules.equipped==IDS[i] else "")+tr(TITLES[i])+"\n"+(tr(DETAILS[i]) % roundi(float(modules.specs[i].cooldown)/30.0) if owned else tr("探索取得後立即裝配"))
+  if owned and modules.equipped!=IDS[i]:_buttons[i].text+="\n"+tr("更換消耗 %d 顆龍晶")%modules.swap_cost
  _hint.text=tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配")
+ if crystals<modules.swap_cost:_hint.text+="\n"+tr("龍晶不足，無法更換部件。")
  _close.text=tr("返回旅程")

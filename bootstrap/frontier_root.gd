@@ -52,7 +52,9 @@ func _ready() -> void:
 	hud.loadout_requested.connect(_open_loadout)
 	hud.loadout_closed.connect(_close_loadout)
 	hud.module_selected.connect(func(id: String):
-		if sim.equip_module(id,knight.position.x):hud.module_menu.present(sim.modules,hud.uses_touch_controls()))
+		if sim.equip_module(id,knight.position.x):
+			_sync_knight_equipment()
+			hud.module_menu.present(sim.modules,hud.uses_touch_controls(),sim.pouch.amount))
 	$Knight/Camera2D.zoom=Vector2.ONE*tuning.camera_zoom
 	# Browser canvas dimensions and pointer coordinates must remain browser-owned.
 	if tuning.larger_desktop_window and DisplayServer.get_name()!= "headless" and not OS.has_feature("mobile") and not OS.has_feature("web"):
@@ -255,9 +257,9 @@ func _exit_tree() -> void:
 	if progress!=null and is_instance_valid(knight):save_campaign()
 
 func _open_loadout() -> void:
-	if paused or not sim.is_running() or sim.frontier.city_level<=0 or absf(knight.position.x-sim.world.sites.drill)>=73:return
+	if paused or not sim.can_use_module_station(knight.position.x):return
 	paused=true;controls.release_all();hud.cancel_touch_gestures()
-	hud.module_menu.show();hud.module_menu.present(sim.modules,hud.uses_touch_controls())
+	hud.module_menu.show();hud.module_menu.present(sim.modules,hud.uses_touch_controls(),sim.pouch.amount)
 	hud.present_world(sim,true,knight.position.x,knight.is_on_floor())
 
 func _close_loadout() -> void:

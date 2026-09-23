@@ -1,6 +1,11 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["部件工坊","部件工坊","部件工坊","Module workshop"],
+ ["探索取得後立即裝配","探索取得後立即裝配","探索取得后立即装配","Equips immediately when discovered"],
+ ["更換消耗 %d 顆龍晶","更換消耗 %d 顆龍晶","更换消耗 %d 颗龙晶","Switch for %d dragon crystals"],
+ ["龍晶不足，無法更換部件。","龍晶不足，無法更換部件。","龙晶不足，无法更换部件。","Not enough crystals to switch modules."],
+ ["新部件已裝配；舊部件可在工坊付費換回。","新部件已裝配；舊部件可在工坊付費換回。","新部件已装配；旧部件可在工坊付费换回。","New module equipped. Pay at the workshop to switch back."],
  ["按 E 丟出龍晶","按 E 丟出龍晶","按 E 丢出龙晶","Press E to drop a crystal."],
  ["召喚引路之魂","召喚引路之魂","召唤引路之魂","Summon the guiding spirit"],
  ["引路之魂正在指引你","引路之魂正在指引你","引路之魂正在指引你","The spirit is already guiding you."],

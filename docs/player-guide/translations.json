@@ -1194,5 +1194,25 @@
   "J／滑鼠左鍵": {
     "zh_CN": "J／鼠标左键",
     "en": "J / Left click"
+  },
+  "探索部件，改裝騎士。": {
+    "zh_CN": "探索部件，改装骑士。",
+    "en": "Explore for modules and modify your knight."
+  },
+  "騎士不再購買等級升級。探索取得新部件時會立即裝上，並替換原本的部件；已取得的舊部件仍可換回。": {
+    "zh_CN": "骑士不再购买等级升级。探索取得新部件时会立即装上，并替换原本的部件；已取得的旧部件仍可换回。",
+    "en": "Knight level upgrades are no longer sold. A newly discovered module equips immediately, replacing the current one. Previously discovered modules remain available."
+  },
+  "營火旁的部件工坊在取得部件後才可互動。按 F 或點齒輪選配；每次換成另一個已取得部件消耗 8 顆龍晶。": {
+    "zh_CN": "营火旁的部件工坊在取得部件后才可互动。按 F 或点齿轮选配；每次换成另一个已取得部件消耗 8 颗龙晶。",
+    "en": "The module workshop beside the campfire becomes usable after your first discovery. Press F or tap the gear to choose another discovered module for 8 crystals."
+  },
+  "按 K 或雙指向上滑使用部件。部件消耗體力且共用冷卻，換裝不會重置冷卻；光環亮起表示冷卻完成。": {
+    "zh_CN": "按 K 或双指向上滑使用部件。部件消耗体力且共用冷却，换装不会重置冷却；光环亮起表示冷却完成。",
+    "en": "Press K or swipe up with two fingers to activate a module. Modules use stamina and share a cooldown, which switching does not reset. A brief glowing ring signals that the cooldown has ended."
+  },
+  "沒有劍時不能攻擊，拔劍點火是你的第一步。": {
+    "zh_CN": "没有剑时不能攻击，拔剑点火是你的第一步。",
+    "en": "You cannot attack without a sword. Draw it to ignite the campfire first."
   }
 }
