@@ -59,7 +59,38 @@ func run_scene() -> void:
  check(current_scene==menu,"record changed after listing is revalidated before launching")
  check(FileAccess.get_file_as_string(first)=="damaged after listing","failed selection preserves original bytes")
  menu.queue_free();await process_frame
+ await _check_title_audio(folder)
  for name in DirAccess.get_files_at(folder):DirAccess.remove_absolute(folder.path_join(name))
  DirAccess.remove_absolute(folder)
  print("Start menu assertions: %d; failures: %d"%[assertions,failures])
  quit(0 if failures==0 else 1)
+
+## The title theme is a whole generated track; a silent start page wastes it.
+func _check_title_audio(folder: String) -> void:
+ var settings=folder.path_join("audio.cfg")
+ var file=FileAccess.open(settings,FileAccess.WRITE)
+ file.store_string("[audio]\nmusic=0.5\neffects=0.8\nambience=0.6\nmuted=false\n");file.close()
+ var menu=load("res://scenes/start_menu.tscn").instantiate()
+ menu.campaigns_directory=folder;menu.legacy_path="";menu.audio_preferences_path=settings
+ root.add_child(menu);current_scene=menu
+ await scene_frames(8)
+ check(menu.has_node("TitleAudio"),"the start page carries its own audio")
+ if not menu.has_node("TitleAudio"):menu.queue_free();return
+ var title=menu.get_node("TitleAudio")
+ check(title.music.current=="title","the start page runs the title theme")
+ check(is_equal_approx(title.music.volume,0.5),"the saved music level is honoured on the title screen")
+ var heard: Array[String]=[]
+ title.cue_requested.connect(func(kind):heard.append(kind))
+ title.click("ui_confirm")
+ check(heard==["ui_confirm"],"a menu press is heard once")
+ menu.queue_free();await process_frame
+ var muted=FileAccess.open(settings,FileAccess.WRITE)
+ muted.store_string("[audio]\nmusic=0.5\neffects=0.8\nambience=0.6\nmuted=true\n");muted.close()
+ var quiet=load("res://scenes/start_menu.tscn").instantiate()
+ quiet.campaigns_directory=folder;quiet.legacy_path="";quiet.audio_preferences_path=settings
+ root.add_child(quiet);current_scene=quiet
+ await scene_frames(8)
+ var silent=quiet.get_node("TitleAudio")
+ check(not silent.enabled,"a muted player is not greeted with music")
+ check(silent.music.current.is_empty(),"a muted title screen runs no track")
+ quiet.queue_free();await process_frame

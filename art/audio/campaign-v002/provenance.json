@@ -1,0 +1,2894 @@
+{
+ "files": {
+  "arrow_hit": {
+   "category": "sfx",
+   "design_seconds": 0.22,
+   "file": "art/audio/campaign-v002/arrow_hit.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 6014,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.84,
+    "seconds": 0.068
+   },
+   "prompt": "Arrow striking a magical creature, quick thock with a small crystal crack, small impact. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "a74f0ee59b9b2e85300d10fe5956ff5a6c2fd203a7e8854ba91561efad7032e8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "箭矢命中",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "bow_shot": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/bow_shot.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 14760,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.57,
+    "seconds": 0.167
+   },
+   "prompt": "Wooden longbow releasing an arrow, string twang and a fast feathered whistle, short. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "ceb9b2f7267ed494194540ed2bba9a7f10ba15575c5d158c2498be43e3fc09ff",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "獵人與弓兵放箭",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "build": {
+   "category": "sfx",
+   "design_seconds": 0.75,
+   "file": "art/audio/campaign-v002/build.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 58058,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.69,
+    "seconds": 0.658
+   },
+   "prompt": "Wooden and steel structure finishing construction, final hammer strike on a beam, timber settling, and a brief teal energy conduit powering on. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.0,
+   "sha256": "c14e98b8227e3b63ea0a8bc730cbddb1a5a9c4771bf1028f7c1578d995aeac99",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "施工完成",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "charge_empty": {
+   "category": "sfx",
+   "design_seconds": 0.25,
+   "file": "art/audio/campaign-v002/charge_empty.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 22094,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -29.84,
+    "seconds": 0.25
+   },
+   "prompt": "Depleted capacitor click, dry electric tick followed by a tiny failing fizzle, small and unsatisfying, indicates no power. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "b0ff1cca71ebdc09a3db1fe3c8c182df6b61fd468f2d6251f842b15c1f902afe",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "充能不足，動作未發動",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[click]"
+   }
+  },
+  "chest": {
+   "category": "sfx",
+   "design_seconds": 0.9,
+   "file": "art/audio/campaign-v002/chest.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 48718,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.75,
+    "seconds": 0.552
+   },
+   "prompt": "Old iron-banded wooden chest bursting open, wood creak and metal latch snap, then a shower of glowing crystals spraying outward with bright glassy sparkle. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.2,
+   "sha256": "3ff2bfcf184329ef0f5b24b2af629f05a715354a7d9a55891f5493a98f2dc8e2",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "寶箱開啟噴出龍晶",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound effect]"
+   }
+  },
+  "core_hit": {
+   "category": "sfx",
+   "design_seconds": 0.65,
+   "file": "art/audio/campaign-v002/core_hit.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 57374,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -14.82,
+    "seconds": 0.65
+   },
+   "prompt": "The heart of a refuge taking damage, deep crystal reactor impact with a low pulsing alarm throb and flames flaring, urgent. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "6858024fd1ad2fd4d1a051e0f56b19397c21be8bc3c35af5988136873b7e378b",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "營火核心受擊警示",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "crystal_drop": {
+   "category": "sfx",
+   "design_seconds": 0.6,
+   "file": "art/audio/campaign-v002/crystal_drop.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 52964,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -26.07,
+    "seconds": 0.6
+   },
+   "prompt": "Several small glowing crystals spilling out of a leather pouch and scattering on dirt, glassy tinkling with a soft pouch flap, loss and scatter. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "345c6ed7416cadfd9a1a1f24457912dd482983d9b7a7eef8b3c9eb12038a3d19",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "受擊掉出龍晶（出袋）",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound effect]"
+   }
+  },
+  "crystal_land_1": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/crystal_land_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 18538,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.57,
+    "seconds": 0.21
+   },
+   "prompt": "Small hard crystal landing on dirt and bouncing once, short glassy tick and a muted thud, tiny. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "01c50352900b855371fa69fe504021023455513bbfade939396f07be6e3445d3",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶落地彈跳",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "crystal_land_2": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/crystal_land_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 23660,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -27.11,
+    "seconds": 0.268
+   },
+   "prompt": "Small hard crystal landing on dirt and bouncing once, short glassy tick and a muted thud, tiny. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "2d14b550a07bde51d2e6b3b34339ec96012761a9f492b67c29de8d4787449024",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶落地彈跳",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "crystal_land_3": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/crystal_land_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26504,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.76,
+    "seconds": 0.3
+   },
+   "prompt": "Small hard crystal landing on dirt and bouncing once, short glassy tick and a muted thud, tiny. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "5d78ac2c06952d3eaa5e6df35c197ae2a2b3d03b06d6496666f6a3c1edf816df",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶落地彈跳",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "dash": {
+   "category": "sfx",
+   "design_seconds": 0.4,
+   "file": "art/audio/campaign-v002/dash.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 31456,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.8,
+    "seconds": 0.356
+   },
+   "prompt": "Mechanical prosthetic leg burst dash, quick hydraulic hiss then a short electric capacitor discharge zap, forward-moving air rush. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "778879d23d81928e74cec3d8d06fe8a1550328c3c36d154742f29bdff837ac8f",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "義肢充能衝刺",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[snapping]"
+   }
+  },
+  "dawn": {
+   "category": "sfx",
+   "design_seconds": 1.5,
+   "file": "art/audio/campaign-v002/dawn.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 115340,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.02,
+    "seconds": 1.307
+   },
+   "prompt": "Dawn breaking after a survived night, warm rising pad with a soft bright bell and a few distant birds, relief, short. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.8,
+   "sha256": "17ebceb278aa089560fb1c35f5bb8880a8e544bc15ce28d51aa5721b0b223670",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "日出，顯示天數",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "death": {
+   "category": "sfx",
+   "design_seconds": 1.1,
+   "file": "art/audio/campaign-v002/death.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 79758,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.74,
+    "seconds": 0.904
+   },
+   "prompt": "Armored knight collapsing to the ground, heavy plate armor thud, prosthetic servos powering down with a descending whine, crystal core light fading with a soft resonant decay. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.4,
+   "sha256": "1859b61168fb698604c8d2afe99dec8684869a1a1c1536f6f7989311baff57bf",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士倒地死亡",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "defeat": {
+   "category": "sfx",
+   "design_seconds": 3.0,
+   "file": "art/audio/campaign-v002/defeat.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 181130,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.39,
+    "seconds": 2.053
+   },
+   "prompt": "Short defeat motif, slow descending bell phrase over a fading cold pad with a dying mechanical hum, mournful, ends cleanly, instrumental. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 3.4,
+   "sha256": "28f59599215a01b9c99af7072af40ffaa6e9510700e7b8a1bed8251efd028186",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "敗北短句",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "dragon_arrival": {
+   "category": "sfx",
+   "design_seconds": 2.6,
+   "file": "art/audio/campaign-v002/dragon_arrival.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 207326,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -16.12,
+    "seconds": 2.35
+   },
+   "prompt": "Colossal dragon descending from the sky, massive slow wingbeats pushing air, ground-shaking landing thud, and a deep layered roar with crystalline magical resonance. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 3.0,
+   "sha256": "848c07597966901e368e4a973ba9f7d445f2de707647731dcf09b5f5e69343e8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "最終巨龍降臨",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[laughs]"
+   }
+  },
+  "dragon_death": {
+   "category": "sfx",
+   "design_seconds": 3.0,
+   "file": "art/audio/campaign-v002/dragon_death.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 190136,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.21,
+    "seconds": 2.155
+   },
+   "prompt": "Colossal dragon collapsing, long groaning roar falling in pitch, massive body impact on the ground, then a slow crystal resonance dissolving into silence. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 3.5,
+   "sha256": "d2994f46b163b6a2ccd87cf282ba4ac7276415b793fda31d29f72dcc54e83852",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "巨龍倒下",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[growling]"
+   }
+  },
+  "dragon_fire": {
+   "category": "sfx",
+   "design_seconds": 1.5,
+   "file": "art/audio/campaign-v002/dragon_fire.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 86242,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.68,
+    "seconds": 0.977
+   },
+   "prompt": "Dragon breathing a torrent of magical fire, sharp ignition burst then a roaring sustained flame jet with a crackling crystal-charged undertone, decaying at the end. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.8,
+   "sha256": "fb157c11a8dfe112888461994e84dc7980fb1b59b7ac92f5ebbb08b0b534d8eb",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "巨龍吐火",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "dragon_hurt": {
+   "category": "sfx",
+   "design_seconds": 0.65,
+   "file": "art/audio/campaign-v002/dragon_hurt.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 37712,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.6,
+    "seconds": 0.427
+   },
+   "prompt": "Dragon taking a sword hit, deep pained roar with a cracking scale impact, heavy, animal not human. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "4727e27e8c7a78e8cc8c3d78b9f4c4ac54b640eca4d712cecfe47cb973c7f663",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "巨龍受擊",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "dragon_wing": {
+   "category": "sfx",
+   "design_seconds": 2.0,
+   "file": "art/audio/campaign-v002/dragon_wing.wav",
+   "loop": true,
+   "measured": {
+    "bytes": 176444,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.02,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.21,
+    "seconds": 2.0
+   },
+   "prompt": "Giant leathery dragon wings beating slowly, deep air whoomp per beat, seamless two-beat loop. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 2.0,
+   "sha256": "1ea44e9966594b23cfa50b40cb6350db110f57a1eed86b0587fd664d99c736b8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "巨龍振翅循環",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[heartbeat]"
+   }
+  },
+  "enemy_attack_1": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/enemy_attack_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.92,
+    "seconds": 0.32
+   },
+   "prompt": "Clawed creature swiping, fast heavy whoosh with a scraping edge, aggressive. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "3b578192b391b84111412c95ff67c910910c40a454fdfa1a4479375a8efe71c0",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "敵人揮擊",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "enemy_attack_2": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/enemy_attack_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.15,
+    "seconds": 0.32
+   },
+   "prompt": "Clawed creature swiping, fast heavy whoosh with a scraping edge, aggressive. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "561c1ffd3f9e8ab2ebaf0c8c031f925eef0c7ba2e50b080bc83f6547f694e2d5",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "敵人揮擊",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "enemy_attack_3": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/enemy_attack_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.72,
+    "seconds": 0.32
+   },
+   "prompt": "Clawed creature swiping, fast heavy whoosh with a scraping edge, aggressive. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "c7b573727c871354a65e114d306aff615a8dabc93f9c74e16d9abb1d124203bb",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "敵人揮擊",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "enemy_death": {
+   "category": "sfx",
+   "design_seconds": 0.75,
+   "file": "art/audio/campaign-v002/enemy_death.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 48312,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.86,
+    "seconds": 0.547
+   },
+   "prompt": "Magical creature collapsing and dissolving into crystal dust, brief body thud then a fizzing glassy disintegration fading upward. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.0,
+   "sha256": "829b412505d870de5cbff92b793623eb57b3448d93bf6b582d39cbb473daf406",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "小怪倒下消散",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "enemy_grab": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/enemy_grab.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 39734,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.48,
+    "seconds": 0.45
+   },
+   "prompt": "Creature snatching a glowing crystal and fleeing, quick grab rustle, a muffled glassy chime, and scurrying steps moving away. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "3339f2b60a4126dc0d874d6c9dd7ebf0e5eb7cfc0ca1a15f488f7c7c66ccc9d9",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "小怪抱走龍晶撤退",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound effect]"
+   }
+  },
+  "enemy_telegraph": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/enemy_telegraph.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 39734,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.17,
+    "seconds": 0.45
+   },
+   "prompt": "Creature winding up an attack, rising crystalline growl with a short swell, clear warning cue, no words. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "cb8ff1ef4a9f33251d403c4c5543afec22e8eb0e3cc046e7f413bce311b02774",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "敵人攻擊預警",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "farewell": {
+   "category": "sfx",
+   "design_seconds": 0.65,
+   "file": "art/audio/campaign-v002/farewell.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 57374,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.48,
+    "seconds": 0.65
+   },
+   "prompt": "A faint presence leaving, soft descending crystal shimmer fading into wind, gentle and melancholic. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "34c832618a804b87d782d83ca4b1ce1914c5d1acdfaaa866a1538978fb4b065c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶殘影告別離場",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_1": {
+   "category": "sfx",
+   "design_seconds": 0.18,
+   "file": "art/audio/campaign-v002/footstep_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 15920,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.55,
+    "seconds": 0.18
+   },
+   "prompt": "Single footstep of a metal prosthetic boot on packed dirt and grass, short and crisp, faint servo click, no reverb. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "54d2b1b9ab2efc08fa7e807c39734546daf1b0fce3819e63cdb8b27af7f9b836",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "跑步腳步，金屬義肢踩土",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_2": {
+   "category": "sfx",
+   "design_seconds": 0.18,
+   "file": "art/audio/campaign-v002/footstep_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 15920,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.2,
+    "seconds": 0.18
+   },
+   "prompt": "Single footstep of a metal prosthetic boot on packed dirt and grass, short and crisp, faint servo click, no reverb. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "4330f3227aacf41472971a83b5079e151a8c259b54e9956cf50466a6ff10457a",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "跑步腳步，金屬義肢踩土",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_3": {
+   "category": "sfx",
+   "design_seconds": 0.18,
+   "file": "art/audio/campaign-v002/footstep_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 15920,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.72,
+    "seconds": 0.18
+   },
+   "prompt": "Single footstep of a metal prosthetic boot on packed dirt and grass, short and crisp, faint servo click, no reverb. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "bbe755614e54ee3085bda6efc730e0610eaf10f9b1f3dbb0998a09512ed51a3f",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "跑步腳步，金屬義肢踩土",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_slow_1": {
+   "category": "sfx",
+   "design_seconds": 0.24,
+   "file": "art/audio/campaign-v002/footstep_slow_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 21212,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.06,
+    "seconds": 0.24
+   },
+   "prompt": "Single careful footstep of a heavy armored boot on dirt, softer and slower than a run, slight leather creak. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "5f00b7eebe6592ec9b9a2a7d59b45acd9acbf06b0492545c4216c26ee53ed213",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "慢移腳步",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_slow_2": {
+   "category": "sfx",
+   "design_seconds": 0.24,
+   "file": "art/audio/campaign-v002/footstep_slow_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 21212,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.89,
+    "seconds": 0.24
+   },
+   "prompt": "Single careful footstep of a heavy armored boot on dirt, softer and slower than a run, slight leather creak. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "861a4c5885d8278d4f3f4edc875f966360d606449b288c61ca87a032d2cfd829",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "慢移腳步",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "footstep_slow_3": {
+   "category": "sfx",
+   "design_seconds": 0.24,
+   "file": "art/audio/campaign-v002/footstep_slow_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 21212,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.2,
+    "seconds": 0.24
+   },
+   "prompt": "Single careful footstep of a heavy armored boot on dirt, softer and slower than a run, slight leather creak. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "3b4e49b49f9d8347a5802231f4bda6f758de6d979d32743a6ab4c76c319c5245",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "慢移腳步",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "gatekeeper_appear": {
+   "category": "sfx",
+   "design_seconds": 1.3,
+   "file": "art/audio/campaign-v002/gatekeeper_appear.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 35416,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.12,
+    "seconds": 0.401
+   },
+   "prompt": "A large armored guardian creature emerging, heavy stone-grinding steps and a deep resonant crystal roar, imposing, no words. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.6,
+   "sha256": "9123cf466545eaab54bdbc679e3e4076a4e6dca63ec63a52115bc5aa741ed9cc",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "守門者出現",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "handoff": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/handoff.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 39734,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.32,
+    "seconds": 0.45
+   },
+   "prompt": "A handful of crystals passed from one leather pouch into another, gentle glassy cascade with two soft pouch taps, friendly exchange. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "43eff05d8e8d31b123f723f03dc70bdc187263b10d3319590ae27b493d559510",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠把採集龍晶交給騎士",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound effect]"
+   }
+  },
+  "heal": {
+   "category": "sfx",
+   "design_seconds": 0.65,
+   "file": "art/audio/campaign-v002/heal.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 57374,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -23.39,
+    "seconds": 0.65
+   },
+   "prompt": "Healing energy flowing from a crystal into an armored body, warm ascending resonant hum with soft servo re-engaging sounds, restoration. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "88fba07c9e98fefafb66b9517df659829d03530412fc29592ddfd3720a1d50c7",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "付晶治療",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "heavy": {
+   "category": "sfx",
+   "design_seconds": 0.4,
+   "file": "art/audio/campaign-v002/heavy.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 33314,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.5,
+    "seconds": 0.377
+   },
+   "prompt": "Heavy sword impact with deep low thud and a splintering crystal shatter layer, strong transient, brief sub-bass punch. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "13c5f59491b57a4e016dfb3f95389f74e47d3d71881fef35772899431e7c87d8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "重擊命中",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "hit_1": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/hit_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26504,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.51,
+    "seconds": 0.3
+   },
+   "prompt": "Sword blade striking a magical creature, crunchy mid-frequency impact with a short crystalline crack, satisfying and punchy, no gore. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "a57513430e636e5f3fc1216b831a09e84648c70c36a28b3d56f3804027dc92fa",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "一般命中敵人",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "hit_2": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/hit_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26504,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.92,
+    "seconds": 0.3
+   },
+   "prompt": "Sword blade striking a magical creature, crunchy mid-frequency impact with a short crystalline crack, satisfying and punchy, no gore. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "65a5f116a2928b7bdcbeefbb414d3df1d43edd94f3e28236e1087e3df8e985cd",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "一般命中敵人",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "hit_3": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/hit_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26504,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.6,
+    "seconds": 0.3
+   },
+   "prompt": "Sword blade striking a magical creature, crunchy mid-frequency impact with a short crystalline crack, satisfying and punchy, no gore. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "b3167a82004ad35666b7736b1ed4c9ec3f46b13ae15c08afd2019cc65e9aa42f",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "一般命中敵人",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "horse_gallop": {
+   "category": "sfx",
+   "design_seconds": 2.0,
+   "file": "art/audio/campaign-v002/horse_gallop.wav",
+   "loop": true,
+   "measured": {
+    "bytes": 176444,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.13,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.93,
+    "seconds": 2.0
+   },
+   "prompt": "Mechanical crystal-powered warhorse galloping loop, rhythmic metal hooves on dirt with a low crystalline engine hum, steady four-beat cycle, seamless loop. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 2.0,
+   "sha256": "7b4be6e7024bebc8d08a4c4242e7f9864b8e551864a48dc06dfbf7998a6254f1",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶戰馬奔馳循環",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound of gears turning]"
+   }
+  },
+  "hurt": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/hurt.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 36448,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.89,
+    "seconds": 0.413
+   },
+   "prompt": "Armored knight taking a hit, metal plate clang mixed with a short glassy crystal crack and a small servo stutter, impact only. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "56c130b5f818aabe7ac7fca7fb29ed19a03fdc8209d7c807bf5b53a21a77ae37",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士受傷，生命或龍晶損失",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[camera shutter]"
+   }
+  },
+  "ignition": {
+   "category": "sfx",
+   "design_seconds": 1.6,
+   "file": "art/audio/campaign-v002/ignition.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 80506,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.88,
+    "seconds": 0.912
+   },
+   "prompt": "Sword raised and plunged into a campfire, sharp steel ring, sparks crackling, flames roaring up, then a deep resonant crystal hum awakening. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 2.0,
+   "sha256": "eaabf8e482eb5162ab3cbcecf5c6adec87abb2bb22c7dd847bf15e80b413a748",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "拔劍點火建國",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "jump": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/jump.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 17506,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.72,
+    "seconds": 0.198
+   },
+   "prompt": "Armored knight jumping off the ground, quick hydraulic push from a prosthetic leg with a short cloth and armor rustle, upward and light. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "0d89b5d09374eea2071db7ea59580b7e094ffe2bb6165c5d6fae9e37979f5297",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士起跳",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "kingdom": {
+   "category": "sfx",
+   "design_seconds": 2.0,
+   "file": "art/audio/campaign-v002/kingdom.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 94476,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.93,
+    "seconds": 1.071
+   },
+   "prompt": "Kingdom founded milestone, three ascending bell tones with a warm resonant crystal chord blooming, ceremonial and grounded. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 2.4,
+   "sha256": "93fecb9cd4c25997a367fac019f9b8d809c10a931aab9205f66e40ffc39a3c37",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "王國建立里程碑",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "land_1": {
+   "category": "sfx",
+   "design_seconds": 0.42,
+   "file": "art/audio/campaign-v002/land_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 24900,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.24,
+    "seconds": 0.282
+   },
+   "prompt": "Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "026a278f6e4698f101f5b80667160c931b6e683137087416883dbf9ed852f40d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士落地",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "land_2": {
+   "category": "sfx",
+   "design_seconds": 0.42,
+   "file": "art/audio/campaign-v002/land_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 36778,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.59,
+    "seconds": 0.416
+   },
+   "prompt": "Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "c6b1e58077045337173ddcea92e093dd201d55685bf34508417288e67245ae8e",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士落地",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "module_equip": {
+   "category": "sfx",
+   "design_seconds": 0.75,
+   "file": "art/audio/campaign-v002/module_equip.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 62858,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -30.94,
+    "seconds": 0.712
+   },
+   "prompt": "Attaching a mechanical module to armored prosthetic back mounts, two metal latches clicking in sequence then a hydraulic seal hiss and a brief power-up hum. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.0,
+   "sha256": "6c91dd22f7f54e29e2343c76d15f814505cf29c111e42830cab27e1f4308e720",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "改造所裝備部件",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[gun cocking]"
+   }
+  },
+  "module_pickup": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/module_pickup.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.61,
+    "seconds": 0.32
+   },
+   "prompt": "Picking up a small mechanical component, metallic clink and a short servo chirp, compact gadget. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "6a603d6b6f215db9ed21ebb177cc43d0d2c972a2ff6492f124b2b813fd0130b1",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "拾取機械部件",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "module_store": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/module_store.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 23930,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -31.36,
+    "seconds": 0.271
+   },
+   "prompt": "Placing a mechanical part into a padded storage rack, soft metal clunk and a fabric rustle, quiet and tidy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "930623ff0418e97a8c9b0becb412440f1c73e38e3e0612aec3c137b211bbe601",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "部件收納",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clapping]"
+   }
+  },
+  "mount": {
+   "category": "sfx",
+   "design_seconds": 0.65,
+   "file": "art/audio/campaign-v002/mount.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 54470,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.48,
+    "seconds": 0.617
+   },
+   "prompt": "Knight mounting a mechanical warhorse, armor shifting, saddle clunk, and a rising crystal engine hum settling into idle. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "26af1f5a0f5fe76fe45c6d0ef539a8d343416319019f719a335831ff22da6e8d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "上馬",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[click]"
+   }
+  },
+  "night": {
+   "category": "sfx",
+   "design_seconds": 1.2,
+   "file": "art/audio/campaign-v002/night.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 63946,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.7,
+    "seconds": 0.725
+   },
+   "prompt": "Nightfall in a haunted frontier, low wind swell with a distant unsettling crystal drone and a single deep bell, foreboding. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.6,
+   "sha256": "d0f4ba41fd6643b42b518952a5fcd30fbbcfadbc50d0fb2acd70099cfaca2c98",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "入夜",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "pay": {
+   "category": "sfx",
+   "design_seconds": 0.3,
+   "file": "art/audio/campaign-v002/pay.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 16188,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -28.81,
+    "seconds": 0.183
+   },
+   "prompt": "Placing a glowing crystal into a metal socket, short glass-on-steel click followed by a brief teal energy hum engaging, deliberate and precise. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "151a7ae56723c6659641030d6f718bf7f03db7fea09be5fa57087a58c52ce9e6",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "投入一顆龍晶到格子",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  },
+  "pickup_1": {
+   "category": "sfx",
+   "design_seconds": 0.22,
+   "file": "art/audio/campaign-v002/pickup_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 19448,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.95,
+    "seconds": 0.22
+   },
+   "prompt": "Small glowing crystal shard flying into a leather pouch, quick ascending glassy chime with a soft leather tap at the end, light and rewarding. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "a6add857a77603c5ceb7d520f991ad234973d735ca3986e58dd19538c78c45cf",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶飛入背包",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "pickup_2": {
+   "category": "sfx",
+   "design_seconds": 0.22,
+   "file": "art/audio/campaign-v002/pickup_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 19448,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.54,
+    "seconds": 0.22
+   },
+   "prompt": "Small glowing crystal shard flying into a leather pouch, quick ascending glassy chime with a soft leather tap at the end, light and rewarding. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "47ee2ddef503454770ee7f20ea1c505d7f6256137d65ef1b5c42627f368432a0",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶飛入背包",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "pickup_3": {
+   "category": "sfx",
+   "design_seconds": 0.22,
+   "file": "art/audio/campaign-v002/pickup_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 19448,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.24,
+    "seconds": 0.22
+   },
+   "prompt": "Small glowing crystal shard flying into a leather pouch, quick ascending glassy chime with a soft leather tap at the end, light and rewarding. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "915b8b9ee87d8993386f04f607f8b5a0e0c272d665a580f5e4520fcd9382ecf4",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "龍晶飛入背包",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "portal_spawn": {
+   "category": "sfx",
+   "design_seconds": 0.85,
+   "file": "art/audio/campaign-v002/portal_spawn.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 50116,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.36,
+    "seconds": 0.568
+   },
+   "prompt": "A magical portal spitting out a creature, low magenta energy surge with a wet tearing rip and a short rising distortion, unsettling. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.1,
+   "sha256": "d1a98538d11a54d8298005bd62a39118259deb439209cc755e254caa7dba9843",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "地獄之門湧出敵人",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "raid_warning": {
+   "category": "sfx",
+   "design_seconds": 0.85,
+   "file": "art/audio/campaign-v002/raid_warning.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 75014,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -18.73,
+    "seconds": 0.85
+   },
+   "prompt": "Warning horn from a wooden watchtower, short low horn blast with a slight crystal shimmer, alert but not panicked. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.1,
+   "sha256": "10e7e315aac371ee16870fb58a864d5cbf60d5a8739b02436d05a68fe4edde59",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "日落前夜襲方向預告",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "recruit": {
+   "category": "sfx",
+   "design_seconds": 0.75,
+   "file": "art/audio/campaign-v002/recruit.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 43574,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.89,
+    "seconds": 0.494
+   },
+   "prompt": "A wanderer joining the refuge, warm short two-note bell motif with a faint crystal shimmer, hopeful and humble. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.0,
+   "sha256": "13ba1d32e7b543b6d01c52ff0be537aed8a03ba258030b28b65070c86a28ded5",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "流浪者加入",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "resident_hit": {
+   "category": "sfx",
+   "design_seconds": 0.5,
+   "file": "art/audio/campaign-v002/resident_hit.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 7300,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.68,
+    "seconds": 0.082
+   },
+   "prompt": "A villager struck and dropping their tool, wooden tool clattering to the ground, short and small, no voice. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "aa6abc3d0491fde7ba9d77d1575ecd37344ce82fa5e9adaee6371926587da10d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "居民受擊退回流浪者",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "seal": {
+   "category": "sfx",
+   "design_seconds": 1.5,
+   "file": "art/audio/campaign-v002/seal.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 93180,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.14,
+    "seconds": 1.056
+   },
+   "prompt": "Ancient portal sealing shut, heavy stone grinding closed, a deep magical lock thud, then a bright crystalline resolve chord, final. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.8,
+   "sha256": "3c59460fb542bc6830a4adf6f569185ac973a773cdf8675fb624daf8aae1583d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "封印完成",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "seal_progress": {
+   "category": "sfx",
+   "design_seconds": 2.5,
+   "file": "art/audio/campaign-v002/seal_progress.wav",
+   "loop": true,
+   "measured": {
+    "bytes": 208196,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": true,
+    "loop_seam_ratio": 0.11,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -23.55,
+    "seconds": 2.36
+   },
+   "prompt": "Magical seal charging loop, slow pulsing crystal hum rising in intensity with soft rune-like glassy ticks, seamless loop, building anticipation. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 2.5,
+   "sha256": "1587a6903b509996a5e378029cd5cb7ade00ef6fce8bc11f6a1791388e0dada1",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "封印累積循環",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "shield": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/shield.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 30914,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.67,
+    "seconds": 0.35
+   },
+   "prompt": "Teal energy shield deflecting a blow, quick electric shimmer with a soft resonant hum, glassy and cool, deflection rather than damage. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "080595b9c9ad6dd8c0c308f8e39850a46b35e4db2028fbd0899febbed2240e0e",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "護盾吸收，生命未降",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash1_1": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash1_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 30914,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.82,
+    "seconds": 0.35
+   },
+   "prompt": "Quick steel sword draw-cut slicing diagonally through air, sharp bright whoosh with a thin metallic ring at the start, tight and fast, medieval longsword. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "b37f07cc798a29b9162e904e2fb529d87ff0d734bee0c648be1c18d353a0ed23",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第一刀斜向拔切，站定出刀",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash1_2": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash1_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 30914,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.4,
+    "seconds": 0.35
+   },
+   "prompt": "Quick steel sword draw-cut slicing diagonally through air, sharp bright whoosh with a thin metallic ring at the start, tight and fast, medieval longsword. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "cbc25f2abb4bc753eb6abae87f341970bd184880d605b9ef29b3aaed340ae1de",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第一刀斜向拔切，站定出刀",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash1_3": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash1_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 30914,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.23,
+    "seconds": 0.35
+   },
+   "prompt": "Quick steel sword draw-cut slicing diagonally through air, sharp bright whoosh with a thin metallic ring at the start, tight and fast, medieval longsword. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "5c5e73f4d19092ecf15a04ce498df63954bb68549e30c013428c2019eb25233a",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第一刀斜向拔切，站定出刀",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash2_1": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash2_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 22946,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.56,
+    "seconds": 0.26
+   },
+   "prompt": "Backhand sword sweep whoosh, slightly lower pitch than a draw cut, wider arc, brief leather-and-armor rustle underneath, fast recovery. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "68b1fdf06cfb07917c735fda945e045d814d1309f7d83672778cfad62ad415fc",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第二刀反手回斬，踏進",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash2_2": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash2_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 13448,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.3,
+    "seconds": 0.152
+   },
+   "prompt": "Backhand sword sweep whoosh, slightly lower pitch than a draw cut, wider arc, brief leather-and-armor rustle underneath, fast recovery. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "f917e10b61191a7549f63c4dbfa3475ab3068824f3e3fec3adb242045a446be6",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第二刀反手回斬，踏進",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash2_3": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/slash2_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26372,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.29,
+    "seconds": 0.299
+   },
+   "prompt": "Backhand sword sweep whoosh, slightly lower pitch than a draw cut, wider arc, brief leather-and-armor rustle underneath, fast recovery. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "3acd6fc9b678261538111ec915fb0a1cfb95f0726eb82f156b00efd1f9c28e3b",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第二刀反手回斬，踏進",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash3_1": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/slash3_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 32214,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.19,
+    "seconds": 0.365
+   },
+   "prompt": "Lunging sword thrust, focused narrow air-cut whoosh ending in a short steel shimmer, heavier footfall of a metal prosthetic leg planting on dirt. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "c9457491d624ddc88b23c182212595f6ca0ea7eedee762ca7568e0b72c331dd8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第三刀跨步穿刺，收招",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sword clashing]"
+   }
+  },
+  "slash3_2": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/slash3_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 35564,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.07,
+    "seconds": 0.403
+   },
+   "prompt": "Lunging sword thrust, focused narrow air-cut whoosh ending in a short steel shimmer, heavier footfall of a metal prosthetic leg planting on dirt. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "7e4dbf2574512d2b1330454879048dab4957057ca033b636c11db8930055828a",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第三刀跨步穿刺，收招",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slash3_3": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/slash3_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 22996,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.24,
+    "seconds": 0.26
+   },
+   "prompt": "Lunging sword thrust, focused narrow air-cut whoosh ending in a short steel shimmer, heavier footfall of a metal prosthetic leg planting on dirt. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "97701e0ebb81ddd412f06965fb26631eb32734c3903a6e31ef9e85f669fca667",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "第三刀跨步穿刺，收招",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "slot_complete": {
+   "category": "sfx",
+   "design_seconds": 0.55,
+   "file": "art/audio/campaign-v002/slot_complete.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 48554,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -17.19,
+    "seconds": 0.55
+   },
+   "prompt": "A row of crystal sockets completing, quick rising three-note glassy arpeggio resolving into a warm resonant confirmation, magical machinery locking in. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.9,
+   "sha256": "7eef7b010da1fefefb32ca5e2350805d80ea2759b083379dede7bd98355c0d8d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "投滿格，互動執行",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[jingle]"
+   }
+  },
+  "slot_refund": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/slot_refund.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 39734,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -26.66,
+    "seconds": 0.45
+   },
+   "prompt": "Crystals being released from sockets and dropping back to the ground, descending glassy tinkle with a soft mechanical unlatch, gentle disappointment. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "9ad5d8abc244f0fede8ed63e48d90c345db377c9e7f70cb20f781ac7fb354932",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "未填滿逾時退回",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "sword_drop": {
+   "category": "sfx",
+   "design_seconds": 0.7,
+   "file": "art/audio/campaign-v002/sword_drop.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 61784,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.95,
+    "seconds": 0.7
+   },
+   "prompt": "Steel longsword knocked from a hand, clattering and bouncing once on stone ground then settling, heavy metallic ring, ominous. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.0,
+   "sha256": "9e3f6da66873e705bda5e693e1ae2cf37628ecc957ca4c4b5d04900e7ee8b690",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "空袋受擊掉劍",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "sword_recover": {
+   "category": "sfx",
+   "design_seconds": 0.45,
+   "file": "art/audio/campaign-v002/sword_recover.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 30924,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.27,
+    "seconds": 0.35
+   },
+   "prompt": "Picking a sword up from the ground and gripping it, short steel scrape and a confident metallic ring as the blade rises, restored. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "4665f2d1d27631340858f6179b8faf67be2482ac30d1eab32e53d4361e3836b4",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "撿回劍",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "throw": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/throw.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28140,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.55,
+    "seconds": 0.319
+   },
+   "prompt": "Tossing a small crystal through the air, quick swish with a faint shimmering trail, light and airy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "1efdd7c78ca67409aa19f8d2647d6d6d2ef13f0de7cc599a064f98c4ec67c211",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "拋晶",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "tool_pickup": {
+   "category": "sfx",
+   "design_seconds": 0.42,
+   "file": "art/audio/campaign-v002/tool_pickup.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 20596,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -27.82,
+    "seconds": 0.233
+   },
+   "prompt": "Resident grabbing a work tool from a wooden rack, wooden handle knock and a short leather strap tightening, purposeful. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "1e34fd478adf0238ca496b66046f63b07341676fc215bf4d214e9e6edb77b24b",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "居民取器具就職",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  },
+  "tower_laser": {
+   "category": "sfx",
+   "design_seconds": 0.55,
+   "file": "art/audio/campaign-v002/tower_laser.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 10586,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.22,
+    "seconds": 0.12
+   },
+   "prompt": "Crystal-powered defense tower firing a teal energy beam, sharp charged zap with a brief resonant sustain, futuristic but grounded in a stone tower. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "c4aaef5762950e14554bbe0046a148453d6bae92e5f6588dc8614a2f66122dfd",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "護民塔龍晶射線",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "ui_confirm": {
+   "category": "sfx",
+   "design_seconds": 0.38,
+   "file": "art/audio/campaign-v002/ui_confirm.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 654,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -13.47,
+    "seconds": 0.007
+   },
+   "prompt": "Menu confirm, short two-tone glassy chime with a light metal tap, positive. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "a6e891af2365cd7b6b30c80a3dc81c467a583759cdf6e352966c3a1e399c97ac",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "確認、新旅程、載入",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[pause]"
+   }
+  },
+  "ui_mute": {
+   "category": "sfx",
+   "design_seconds": 0.22,
+   "file": "art/audio/campaign-v002/ui_mute.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 18864,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.27,
+    "seconds": 0.213
+   },
+   "prompt": "Audio toggle on, soft ascending glassy blip, minimal. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "86434779f4b6107788f98e04806ad418cb92e3781f80dc544c815602473af2c5",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "切換靜音恢復",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "ui_pause": {
+   "category": "sfx",
+   "design_seconds": 0.28,
+   "file": "art/audio/campaign-v002/ui_pause.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 17574,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -30.18,
+    "seconds": 0.199
+   },
+   "prompt": "Soft mechanical user interface open, gentle metal latch click with a short teal shimmer, clean. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "cc1ce63e46edf6999d71473bb3d813c42dfe556715ed448f96aae364d53824d2",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "開啟暫停",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  },
+  "ui_resume": {
+   "category": "sfx",
+   "design_seconds": 0.28,
+   "file": "art/audio/campaign-v002/ui_resume.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 24740,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.96,
+    "seconds": 0.28
+   },
+   "prompt": "Soft mechanical user interface close, reverse latch click, quick and clean. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "aa5b75a361156b8eb2e8a749ad630d2e3bc12e05547de9cd3a978dc7f37c546c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "關閉暫停繼續遊戲",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "ui_save": {
+   "category": "sfx",
+   "design_seconds": 0.55,
+   "file": "art/audio/campaign-v002/ui_save.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 35602,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -23.66,
+    "seconds": 0.403
+   },
+   "prompt": "Saving progress, a crystal set into a stone slot with a satisfying lock click and a brief warm hum, secure. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "1ddecd3bd4b0389876277cbea6ba6e6c900fb90e66db1826388cd67ce84f506a",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "手動存檔完成",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[mouse clicking]"
+   }
+  },
+  "ui_select": {
+   "category": "sfx",
+   "design_seconds": 0.12,
+   "file": "art/audio/campaign-v002/ui_select.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 10628,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -17.8,
+    "seconds": 0.12
+   },
+   "prompt": "Tiny crystal tick for menu navigation, very short bright glassy click. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "aeda3afd59f6aeaa2e9a976bcb14f250e402ac47d00fa62a2e89a9fa618de23a",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "選單移動與滑桿刻度",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "upgrade": {
+   "category": "sfx",
+   "design_seconds": 1.2,
+   "file": "art/audio/campaign-v002/upgrade.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 83200,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -16.0,
+    "seconds": 0.943
+   },
+   "prompt": "A settlement growing to a new tier, deep stone shift and rising mechanical machinery, then a resonant crystal reactor tone blooming outward, ceremonial and grounded. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.5,
+   "sha256": "70ba40ef557d64b4232a787857c71e9dfb039f90f9cd039b7adb29d0301c6dda",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "聚落升級",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "victory": {
+   "category": "sfx",
+   "design_seconds": 3.0,
+   "file": "art/audio/campaign-v002/victory.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 120456,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.4,
+    "seconds": 1.365
+   },
+   "prompt": "Short victory fanfare for a small pixel-art kingdom, bright bell and warm crystal motif over a soft pad, triumphant yet humble, ends cleanly, instrumental. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 3.4,
+   "sha256": "6574d3af28b9734c0d1d120e89bdab9dc0765c03ba146e8e6d08d586d1b0b8dd",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "通關勝利短句",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "wall_break": {
+   "category": "sfx",
+   "design_seconds": 1.1,
+   "file": "art/audio/campaign-v002/wall_break.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 73536,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -31.99,
+    "seconds": 0.833
+   },
+   "prompt": "Wooden and stone barricade collapsing, cracking beams, tumbling stones, and a dying crystal conduit fizzle, alarming. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 1.4,
+   "sha256": "c4246e9b0eae758d7095394451a2e5cffdacd585cb0c547a209945ca87507279",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "城牆倒塌",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[crack]"
+   }
+  },
+  "wall_hit_1": {
+   "category": "sfx",
+   "design_seconds": 0.38,
+   "file": "art/audio/campaign-v002/wall_hit_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 33560,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -25.98,
+    "seconds": 0.38
+   },
+   "prompt": "Wooden palisade wall being struck by a creature, heavy timber thud and creak, planks rattling. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "e65eb91f911f9593a64b6fd7209b1f3c56c7458892d11458872b8da8e466e805",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "城牆受擊",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "wall_hit_2": {
+   "category": "sfx",
+   "design_seconds": 0.38,
+   "file": "art/audio/campaign-v002/wall_hit_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 33560,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -14.68,
+    "seconds": 0.38
+   },
+   "prompt": "Wooden palisade wall being struck by a creature, heavy timber thud and creak, planks rattling. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "d7bb59697670e9c315d809c1829ef70147821163f1724787b426cdc00f82a535",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "城牆受擊",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "wall_hit_3": {
+   "category": "sfx",
+   "design_seconds": 0.38,
+   "file": "art/audio/campaign-v002/wall_hit_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 26084,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -23.44,
+    "seconds": 0.295
+   },
+   "prompt": "Wooden palisade wall being struck by a creature, heavy timber thud and creak, planks rattling. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "906eec2c697c2a652695204dc91da179010ef09f51330ae33b88778e95734465",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "城牆受擊",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[sound effect]"
+   }
+  },
+  "wall_repair": {
+   "category": "sfx",
+   "design_seconds": 0.55,
+   "file": "art/audio/campaign-v002/wall_repair.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 35978,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.0,
+    "seconds": 0.407
+   },
+   "prompt": "Wall being repaired, quick hammer taps and a beam sliding into place with a wooden clunk, reassuring. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.8,
+   "sha256": "35454f917fe118d5639df4f48818a67e2e7ef3123aae117a0aff83fc2ac9417b",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "城牆修復完成",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_chop_1": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_chop_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -24.63,
+    "seconds": 0.32
+   },
+   "prompt": "Single axe chop into a living tree trunk, dry woody thock with a little bark splinter, close and clear. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "f71a7f68d0cd49d702aa1f50d8766c3770551db8e769152f2201d9fc239dee53",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠伐木",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_chop_2": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_chop_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 18034,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.47,
+    "seconds": 0.204
+   },
+   "prompt": "Single axe chop into a living tree trunk, dry woody thock with a little bark splinter, close and clear. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "36c216d34046027fea961d6949eb43be0cee04d55da1cb30a0d7bbea38b50402",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠伐木",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_chop_3": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_chop_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 12590,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.53,
+    "seconds": 0.142
+   },
+   "prompt": "Single axe chop into a living tree trunk, dry woody thock with a little bark splinter, close and clear. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "3ea8082a20d7fec55fa87207a94d2a5139b4971e342d117e8f511c0a16cdef84",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠伐木",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_hammer_1": {
+   "category": "sfx",
+   "design_seconds": 0.28,
+   "file": "art/audio/campaign-v002/work_hammer_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 4310,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -8.63,
+    "seconds": 0.048
+   },
+   "prompt": "Hammer striking a wooden beam with an iron nail, single sharp knock, construction. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "27db438b842ab9d22f7be996a331f303d994ef7d8c1dfc59a71929af9e754926",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "施工敲擊",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[pause]"
+   }
+  },
+  "work_hammer_2": {
+   "category": "sfx",
+   "design_seconds": 0.28,
+   "file": "art/audio/campaign-v002/work_hammer_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 24740,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.88,
+    "seconds": 0.28
+   },
+   "prompt": "Hammer striking a wooden beam with an iron nail, single sharp knock, construction. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "fd52e5fc29c860fcd2045206fa5d01a91aacf66a1218d381eddb3f5d0c849ed9",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "施工敲擊",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_hammer_3": {
+   "category": "sfx",
+   "design_seconds": 0.28,
+   "file": "art/audio/campaign-v002/work_hammer_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 21128,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -19.51,
+    "seconds": 0.239
+   },
+   "prompt": "Hammer striking a wooden beam with an iron nail, single sharp knock, construction. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.5,
+   "sha256": "8481b63673ffc95e5b91fc394aaad45ab7d255e8b950f5620239814ae375bca8",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "施工敲擊",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_harvest_1": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_harvest_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -23.26,
+    "seconds": 0.32
+   },
+   "prompt": "Sickle cutting through crop stalks and leaves, soft swish and rustle, single stroke. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "d6ab1bfc1df7cb5969ca6848a9d3c369b28ea68001e44aec2e191d72180296db",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "農夫收割採果採藥",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_harvest_2": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_harvest_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 25488,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -20.58,
+    "seconds": 0.288
+   },
+   "prompt": "Sickle cutting through crop stalks and leaves, soft swish and rustle, single stroke. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "112f1a018fb9477331fb3261c0d505e594a95a5ae48912c28fdfa54b4126851c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "農夫收割採果採藥",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_harvest_3": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_harvest_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.29,
+    "seconds": 0.32
+   },
+   "prompt": "Sickle cutting through crop stalks and leaves, soft swish and rustle, single stroke. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "9e30074d8cefd3925951a3b0805391c3c02bd3a7690d413203b8f15462018fbf",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "農夫收割採果採藥",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "work_mine_1": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_mine_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -30.63,
+    "seconds": 0.32
+   },
+   "prompt": "Pickaxe striking crystal-bearing rock, stone crack with a bright glassy overtone, single strike. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "b991ed5135668daab95b0377dea1f8a16aabfef8577228b18a46030b58c6c144",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠採礦",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  },
+  "work_mine_2": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_mine_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 28268,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -27.22,
+    "seconds": 0.32
+   },
+   "prompt": "Pickaxe striking crystal-bearing rock, stone crack with a bright glassy overtone, single strike. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "cd019840f31570c0f91676c2b07535d775ba8ee0036616ca821a8ef1be1ee26c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠採礦",
+   "variant": 2,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  },
+  "work_mine_3": {
+   "category": "sfx",
+   "design_seconds": 0.32,
+   "file": "art/audio/campaign-v002/work_mine_3.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 27950,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -29.5,
+    "seconds": 0.316
+   },
+   "prompt": "Pickaxe striking crystal-bearing rock, stone crack with a bright glassy overtone, single strike. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "9603425ae14b25d9201e5bc8317b964beda91141326ef6062d0261fb68a3128c",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "工匠採礦",
+   "variant": 3,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[clicking]"
+   }
+  }
+ },
+ "note": "Generated from prompts; no recordings, samples or third-party audio.",
+ "set": "cyber-kingdom audio v002",
+ "written": "2026-09-23"
+}

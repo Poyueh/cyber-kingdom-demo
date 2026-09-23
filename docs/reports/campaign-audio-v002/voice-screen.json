@@ -1,0 +1,727 @@
+{
+ "errors": [],
+ "files": {
+  "amb_campfire": {
+   "category": "ambience",
+   "text": "[fire crackling]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_city": {
+   "category": "ambience",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_crystal": {
+   "category": "ambience",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_day": {
+   "category": "ambience",
+   "text": "[rustling]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_forest": {
+   "category": "ambience",
+   "text": "[birds chirping]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_night": {
+   "category": "ambience",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "amb_ruins": {
+   "category": "ambience",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "arrow_hit": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "bow_shot": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "build": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "charge_empty": {
+   "category": "sfx",
+   "text": "[click]",
+   "word_count": 0,
+   "words": []
+  },
+  "chest": {
+   "category": "sfx",
+   "text": "[sound effect]",
+   "word_count": 0,
+   "words": []
+  },
+  "core_hit": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "crystal_drop": {
+   "category": "sfx",
+   "text": "[sound effect]",
+   "word_count": 0,
+   "words": []
+  },
+  "crystal_land_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "crystal_land_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "crystal_land_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "dash": {
+   "category": "sfx",
+   "text": "[snapping]",
+   "word_count": 0,
+   "words": []
+  },
+  "dawn": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "dawn_sting": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "day_explore": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "day_refuge": {
+   "category": "music",
+   "text": "[on-hold music]",
+   "word_count": 0,
+   "words": []
+  },
+  "death": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "defeat": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "defeat_theme": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_arrival": {
+   "category": "sfx",
+   "text": "[laughs]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_boss": {
+   "category": "music",
+   "text": "[on-hold music]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_death": {
+   "category": "sfx",
+   "text": "[growling]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_fire": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_hurt": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "dragon_wing": {
+   "category": "sfx",
+   "text": "[heartbeat]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_attack_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_attack_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_attack_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_death": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_grab": {
+   "category": "sfx",
+   "text": "[sound effect]",
+   "word_count": 0,
+   "words": []
+  },
+  "enemy_telegraph": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "farewell": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_slow_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_slow_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "footstep_slow_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "founding_theme": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "gatekeeper_appear": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "handoff": {
+   "category": "sfx",
+   "text": "[sound effect]",
+   "word_count": 0,
+   "words": []
+  },
+  "heal": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "heavy": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "hit_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "hit_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "hit_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "horse_gallop": {
+   "category": "sfx",
+   "text": "[sound of gears turning]",
+   "word_count": 0,
+   "words": []
+  },
+  "hurt": {
+   "category": "sfx",
+   "text": "[camera shutter]",
+   "word_count": 0,
+   "words": []
+  },
+  "ignition": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "jump": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "kingdom": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "land_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "land_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "module_equip": {
+   "category": "sfx",
+   "text": "[gun cocking]",
+   "word_count": 0,
+   "words": []
+  },
+  "module_pickup": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "module_store": {
+   "category": "sfx",
+   "text": "[clapping]",
+   "word_count": 0,
+   "words": []
+  },
+  "mount": {
+   "category": "sfx",
+   "text": "[click]",
+   "word_count": 0,
+   "words": []
+  },
+  "night": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "night_raid": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "night_watch": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "pay": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "pickup_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "pickup_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "pickup_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "portal_spawn": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "raid_warning": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "recruit": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "resident_hit": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "seal": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "seal_progress": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "shield": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash1_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash1_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash1_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash2_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash2_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash2_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash3_1": {
+   "category": "sfx",
+   "text": "[sword clashing]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash3_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slash3_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slot_complete": {
+   "category": "sfx",
+   "text": "[jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "slot_refund": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "sword_drop": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "sword_recover": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "throw": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "title": {
+   "category": "music",
+   "text": "[on-hold music]",
+   "word_count": 0,
+   "words": []
+  },
+  "tool_pickup": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "tower_laser": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_confirm": {
+   "category": "sfx",
+   "text": "[pause]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_mute": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_pause": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_resume": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_save": {
+   "category": "sfx",
+   "text": "[mouse clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "ui_select": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "upgrade": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "victory": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "victory_theme": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "wall_break": {
+   "category": "sfx",
+   "text": "[crack]",
+   "word_count": 0,
+   "words": []
+  },
+  "wall_hit_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "wall_hit_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "wall_hit_3": {
+   "category": "sfx",
+   "text": "[sound effect]",
+   "word_count": 0,
+   "words": []
+  },
+  "wall_repair": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_chop_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_chop_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_chop_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_hammer_1": {
+   "category": "sfx",
+   "text": "[pause]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_hammer_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_hammer_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_harvest_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_harvest_2": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_harvest_3": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_mine_1": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_mine_2": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  },
+  "work_mine_3": {
+   "category": "sfx",
+   "text": "[clicking]",
+   "word_count": 0,
+   "words": []
+  }
+ },
+ "model": "scribe_v1",
+ "suspects": []
+}
