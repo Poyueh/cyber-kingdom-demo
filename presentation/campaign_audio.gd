@@ -75,7 +75,9 @@ const SOUNDS={
  "work_chop":[preload("res://art/audio/campaign-v002/work_chop_1.wav"),preload("res://art/audio/campaign-v002/work_chop_2.wav"),preload("res://art/audio/campaign-v002/work_chop_3.wav")],
  "work_hammer":[preload("res://art/audio/campaign-v002/work_hammer_1.wav"),preload("res://art/audio/campaign-v002/work_hammer_2.wav"),preload("res://art/audio/campaign-v002/work_hammer_3.wav")],
  "work_harvest":[preload("res://art/audio/campaign-v002/work_harvest_1.wav"),preload("res://art/audio/campaign-v002/work_harvest_2.wav"),preload("res://art/audio/campaign-v002/work_harvest_3.wav")],
- "work_mine":[preload("res://art/audio/campaign-v002/work_mine_1.wav"),preload("res://art/audio/campaign-v002/work_mine_2.wav"),preload("res://art/audio/campaign-v002/work_mine_3.wav")]}## Emitted when feedback is accepted; headless validates commands without starting a mixer.
+ "work_mine":[preload("res://art/audio/campaign-v002/work_mine_1.wav"),preload("res://art/audio/campaign-v002/work_mine_2.wav"),preload("res://art/audio/campaign-v002/work_mine_3.wav")]}
+
+## Emitted when feedback is accepted; headless validates commands without starting a mixer.
 signal cue_requested(kind: String)
 @export_range(-40.0,0.0,1.0) var volume_db: float=-10.0
 @export var enabled:=true:
