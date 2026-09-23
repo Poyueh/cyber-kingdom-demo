@@ -1336,3 +1336,13 @@ Release [v0.0.9](https://github.com/Poyueh/cyber-kingdom/releases/tag/v0.0.9) �
 - 遠端 `main` 已合併 v0.0.10，`develop` 已同步。macOS 包為 ad-hoc、Windows 包未簽署；iOS／iPadOS 仍待 Xcode Team ID、真機安裝與 App Store 流程。
 - 後續補上 `Cyber-Kingdom-iOS-v0.0.10-Xcode.zip`，使用本機 Xcode 的 Team ID `N4VD538532` 產生 Xcode 專案；`xcodebuild` 已確認因帳號沒有已註冊裝置與 provisioning profile 而拒絕真機簽署。iOS 附件已更新至 Release 與 `SHA256SUMS.txt`，接上 iPhone／iPad 後可在 Xcode 完成 Run、簽署與後續 App Store Connect 上傳。
 - Android 也已加入 `Cyber-Kingdom-Android-v0.0.10-debug.apk`；ARM64 APK 通過 v2/v3 簽章與 16 KiB 對齊，使用本地 debug key，尚未在實體 Android 裝置驗收，也不是 Google Play 正式簽署包。全部附件校驗值已同步到 Release 的 `SHA256SUMS.txt`。
+
+## 2026-09-23：音效與音樂 v002 全套重生（尚未接線）
+
+- 依 `docs/design/campaign-audio-v002-plan.md` 完成 P0：以 ElevenLabs 重新生成全部聲音，取代 v001 的 17 個數學合成佔位音。產出 100 個音效（72 條設計項目，其中 14 條高頻重播的聲音各 3 個變體）、7 段環境音循環與 9 首純器樂音樂，共 116 檔約 18.6 MB。**尚未接進遊戲**，執行時仍播 v001；接線是 P1／P2，依計畫要等音色認可才動。
+- 補齊 v001 沒有聲音的事件：掉晶、掉劍與撿劍、營火核心受擊、巨龍降臨／吐火／受擊／死亡、傳送門湧怪、部件拾取與裝備、投滿格與退回、日出、夜襲預告、封印累積、城牆受擊與倒塌、居民受擊與工作、UI 與環境音。音樂從單曲循環改為起始頁、白天探索、白天營地、夜晚守備、夜襲疊層、巨龍決戰六個狀態加三段短樂句。
+- 音量實測全部通過：音效 100 檔峰值一致 -6.00 dBFS，環境音 -30.9 至 -30.0 LUFS，音樂 -16.8 至 -15.9 LUFS；零削波、無近乎無聲檔、循環接點無跳變。環境音與音樂改用感知響度對齊，因為峰值對齊會讓營火這類稀疏素材只有 -44 LUFS。
+- 人聲檢查用兩個方法且附對照驗證：116 檔逐一語音辨識，辨識字詞數全部為 0；另生一段「女聲主唱含完整歌詞」對照樣本，同一辨識器抓出 26 個字，證明檢查有鑑別力。再以頻譜圖與該對照圖目視比對，沒有人聲特有的音節分段諧波。限制是無詞哼唱可能漏掉，最終仍以實際試聽為準。中途寫過的訊號啟發式評分經對照驗證無鑑別力，已刪除。
+- 完整 `bash tools/check.sh` 通過，零 SCRIPT ERROR、零 FAIL。素材與工具已提交本地分支，未推送。
+- 每個檔的完整 prompt、請求參數、SHA-256 與量測值記在各素材目錄 `provenance.json`；對照表見 `docs/design/campaign-audio-v002-catalogue.md`，驗收證據與試聽檔見 `docs/reports/campaign-audio-v002/`。
+- 下一步：使用者與 PO 用 `docs/reports/campaign-audio-v002/` 的三個 audition 檔試聽並逐條回報要改的音色，改 `tools/audio_v002_manifest.py` 的 prompt 後重跑管線；定案才進 P1 接線。
