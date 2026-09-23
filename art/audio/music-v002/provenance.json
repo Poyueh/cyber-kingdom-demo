@@ -52,7 +52,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[on-hold music]"
+    "transcript": "[outro jingle]"
    }
   },
   "day_refuge": {
@@ -80,7 +80,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[outro jingle]"
+    "transcript": "[on-hold music]"
    }
   },
   "defeat_theme": {
@@ -136,6 +136,33 @@
     "model": "scribe_v1",
     "transcribed_words": 0,
     "transcript": "[on-hold music]"
+   }
+  },
+  "founding_theme": {
+   "category": "music",
+   "file": "art/audio/music-v002/founding_theme.ogg",
+   "loop": false,
+   "measured": {
+    "bytes": 171903,
+    "category": "music",
+    "channels": 2,
+    "clipped_samples": 0,
+    "loop": false,
+    "lufs": -16.1,
+    "peak_db": -5.8,
+    "rate": 44100,
+    "rms_db": -22.34,
+    "seconds": 11.337
+   },
+   "prompt": "Founding stinger, a low resonant swell rising into a warm bell motif with plucked strings, the moment a refuge is born, hopeful and ceremonial, ends on a sustained chord. Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word.",
+   "request_seconds": 14.0,
+   "sha256": "124f3a5b08939adb2cbfd86405cdc4cce6a53e60a825c977ed0c36d78d116907",
+   "source": "ElevenLabs Music (eleven_music_v1)",
+   "use": "建國點火儀式",
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
    }
   },
   "night_raid": {
@@ -219,7 +246,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[outro jingle]"
+    "transcript": "[on-hold music]"
    }
   },
   "victory_theme": {

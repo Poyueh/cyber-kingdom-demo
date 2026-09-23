@@ -4,6 +4,7 @@ const Music=preload("res://presentation/campaign_music.gd")
 const Ambience=preload("res://presentation/campaign_ambience.gd")
 const Interface=preload("res://presentation/campaign_ui_cues.gd")
 const Pulse=preload("res://presentation/campaign_pulse_cues.gd")
+const Footing=preload("res://presentation/campaign_footing_cues.gd")
 const Loops=preload("res://presentation/campaign_loops.gd")
 const SOUNDS={
  "arrow_hit":[preload("res://art/audio/campaign-v002/arrow_hit.wav")],
@@ -114,6 +115,7 @@ var ambience: Node
 var cues=Cues.new()
 var interface_cues=Interface.new()
 var pulse_cues=Pulse.new()
+var footing_cues=Footing.new()
 var loops: Node
 var _pulse_timers: Dictionary={}
 var voices: Array[AudioStreamPlayer]=[]
@@ -162,6 +164,11 @@ func observe(seconds: float,sim,x: float,paused: bool) -> void:
     _play("ignition")
  for kind in pending:_play(kind)
  _advance_pulses(seconds,sim,x,paused)
+## The rack cannot see the knight's body, so the game loop reports its footing.
+func report_footing(grounded: bool,paused: bool) -> void:
+ var cue: String=footing_cues.sample(grounded,paused or not enabled or suspended)
+ if not cue.is_empty():_play(cue)
+
 ## Sounds the game loop asks for directly, such as a refused action or a menu press.
 func request(kind: String) -> void:
  if not enabled or suspended:return
@@ -220,3 +227,4 @@ func _exit_tree() -> void:
  cues=null
  interface_cues=null
  pulse_cues=null
+ footing_cues=null

@@ -11,7 +11,11 @@ const DECIDERS=[
 	"res://presentation/campaign_ui_cues.gd",
 	"res://presentation/campaign_pulse_cues.gd",
 	"res://presentation/campaign_loop_cues.gd",
+	"res://presentation/campaign_footing_cues.gd",
+	"res://presentation/arena_audio_cues.gd",
+	"res://presentation/title_audio.gd",
 	"res://bootstrap/frontier_root.gd",
+	"res://bootstrap/start_menu_root.gd",
 ]
 
 ## Generated but deliberately not triggered by anything. Emptying this list was
@@ -75,3 +79,29 @@ func test_constant_texture_never_cuts_off_a_decisive_sound(t):
 	for kind in decisive:
 		t.truth(not Rack.QUIET_ENOUGH_TO_DROP.has(kind),
 			"%s is never dropped to make room" % kind)
+
+func test_every_generated_track_and_bed_is_reachable(t):
+	var music := FileAccess.get_file_as_string("res://presentation/campaign_music_cues.gd")
+	var player := FileAccess.get_file_as_string("res://presentation/campaign_music.gd")
+	var loops: Array = load("res://presentation/campaign_music.gd").LOOPS
+	var stings: Array = load("res://presentation/campaign_music.gd").STINGS
+	var unreachable: Array = []
+	for name in DirAccess.get_files_at("res://art/audio/music-v002"):
+		var track := str(name).trim_suffix(".remap").trim_suffix(".import")
+		if not track.ends_with(".ogg"): continue
+		track = track.trim_suffix(".ogg")
+		if loops.has(track) or stings.has(track): continue
+		if music.contains('"%s"' % track) or player.contains('"%s"' % track): continue
+		unreachable.append(track)
+	unreachable.sort()
+	t.equal(unreachable, [], "every generated music track can be chosen")
+
+	var beds: Array = load("res://presentation/campaign_ambience_cues.gd").BEDS
+	var orphan: Array = []
+	for name in DirAccess.get_files_at("res://art/audio/ambience-v002"):
+		var bed := str(name).trim_suffix(".remap").trim_suffix(".import")
+		if not bed.ends_with(".ogg"): continue
+		bed = bed.trim_suffix(".ogg")
+		if not beds.has(bed): orphan.append(bed)
+	orphan.sort()
+	t.equal(orphan, [], "every generated ambience bed is part of the mix")

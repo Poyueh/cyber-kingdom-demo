@@ -7,6 +7,9 @@ const STINGS := ["victory_theme", "defeat_theme", "dawn_sting"]
 const CROSSFADE := 2.0
 const LAYER_FADE := 1.0
 const PAUSE_DUCK_DB := -12.0
+## Enough for the two crossfading loops, the raid layer and a sting; a phone does
+## not need every piece resident once it has been heard.
+const CACHE_LIMIT := 4
 
 signal track_changed(name: String)
 
@@ -47,7 +50,21 @@ func _stream(name: String) -> AudioStream:
 			stream = stream.duplicate()
 			stream.loop = name in LOOPS
 		_cache[name] = stream
+	_forget_unused()
 	return _cache[name]
+
+## Only what is on a player right now must stay loaded.
+func _forget_unused() -> void:
+	if _cache.size() <= CACHE_LIMIT: return
+	var live: Array = [current, layer]
+	for name in _cache.keys():
+		if _cache.size() <= CACHE_LIMIT: return
+		if live.has(name): continue
+		if _sting_player != null and _cache[name] == _sting_player.stream: continue
+		for player in _players:
+			if player.stream == _cache[name]: live.append(name)
+		if live.has(name): continue
+		_cache.erase(name)
 
 func observe(seconds: float, sim, x: float, paused: bool) -> void:
 	var silent: bool = not enabled or suspended or volume <= 0

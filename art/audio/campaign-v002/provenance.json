@@ -53,7 +53,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[clicking]"
+    "transcript": "[outro jingle]"
    }
   },
   "build": {
@@ -249,7 +249,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[sound effect]"
+    "transcript": "[outro jingle]"
    }
   },
   "crystal_land_3": {
@@ -305,7 +305,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[snare drum]"
+    "transcript": "[snapping]"
    }
   },
   "dawn": {
@@ -530,7 +530,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[heartbeat sound]"
+    "transcript": "[heartbeat]"
    }
   },
   "enemy_attack_1": {
@@ -1178,6 +1178,34 @@
     "transcript": "[outro jingle]"
    }
   },
+  "jump": {
+   "category": "sfx",
+   "design_seconds": 0.35,
+   "file": "art/audio/campaign-v002/jump.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 17506,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -21.72,
+    "seconds": 0.198
+   },
+   "prompt": "Armored knight jumping off the ground, quick hydraulic push from a prosthetic leg with a short cloth and armor rustle, upward and light. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.6,
+   "sha256": "0d89b5d09374eea2071db7ea59580b7e094ffe2bb6165c5d6fae9e37979f5297",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士起跳",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
   "kingdom": {
    "category": "sfx",
    "design_seconds": 2.0,
@@ -1200,6 +1228,62 @@
    "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
    "use": "王國建立里程碑",
    "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "land_1": {
+   "category": "sfx",
+   "design_seconds": 0.42,
+   "file": "art/audio/campaign-v002/land_1.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 24900,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.24,
+    "seconds": 0.282
+   },
+   "prompt": "Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "026a278f6e4698f101f5b80667160c931b6e683137087416883dbf9ed852f40d",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士落地",
+   "variant": 1,
+   "voice_screen": {
+    "model": "scribe_v1",
+    "transcribed_words": 0,
+    "transcript": "[outro jingle]"
+   }
+  },
+  "land_2": {
+   "category": "sfx",
+   "design_seconds": 0.42,
+   "file": "art/audio/campaign-v002/land_2.wav",
+   "loop": false,
+   "measured": {
+    "bytes": 36778,
+    "category": "sfx",
+    "channels": 1,
+    "clipped_samples": 0,
+    "loop": false,
+    "peak_db": -6.0,
+    "rate": 44100,
+    "rms_db": -22.59,
+    "seconds": 0.416
+   },
+   "prompt": "Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy. Stylized retro pixel-art action game sound effect, clean and punchy, dry with minimal reverb, no music, no voice, no speech, mono-compatible. No chiptune, no 8-bit bleeps, no orchestral swell, no vocals, no lyrics, no long reverb tail, no cinematic trailer hit.",
+   "request_seconds": 0.7,
+   "sha256": "c6b1e58077045337173ddcea92e093dd201d55685bf34508417288e67245ae8e",
+   "source": "ElevenLabs Text to Sound Effects (eleven_text_to_sound_v2)",
+   "use": "騎士落地",
+   "variant": 2,
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
@@ -1259,7 +1343,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[gun cocking]"
+    "transcript": "[outro jingle]"
    }
   },
   "module_store": {
@@ -1287,7 +1371,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[clicking]"
+    "transcript": "[clapping]"
    }
   },
   "mount": {
@@ -1315,7 +1399,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[door closing]"
+    "transcript": "[click]"
    }
   },
   "night": {
@@ -1960,7 +2044,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[clicking]"
+    "transcript": "[outro jingle]"
    }
   },
   "sword_drop": {
@@ -2072,7 +2156,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[sound effect]"
+    "transcript": "[clicking]"
    }
   },
   "tower_laser": {
@@ -2156,7 +2240,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[click]"
+    "transcript": "[outro jingle]"
    }
   },
   "ui_pause": {
@@ -2184,7 +2268,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[mouse click]"
+    "transcript": "[clicking]"
    }
   },
   "ui_resume": {
@@ -2240,7 +2324,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[clicking]"
+    "transcript": "[mouse clicking]"
    }
   },
   "ui_select": {
@@ -2352,7 +2436,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[cracking]"
+    "transcript": "[crack]"
    }
   },
   "wall_hit_1": {
@@ -2436,7 +2520,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[outro jingle]"
+    "transcript": "[sound effect]"
    }
   },
   "wall_repair": {
@@ -2632,7 +2716,7 @@
    "voice_screen": {
     "model": "scribe_v1",
     "transcribed_words": 0,
-    "transcript": "[打铁声]"
+    "transcript": "[outro jingle]"
    }
   },
   "work_harvest_1": {

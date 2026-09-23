@@ -79,3 +79,33 @@ func test_pause_and_restart_do_not_replay_history(t):
 	var fresh=_cues()
 	fresh.sample(replacement,hall,false)
 	t.equal(fresh.sample(replacement,hall,false).sting,"","a restored run does not restate its result")
+
+func test_founding_the_refuge_gets_its_own_moment(t):
+	var cues=_cues()
+	var sim=Session.new()
+	var hall: float=sim.world.sites.hall
+	cues.sample(sim,hall,false)
+	sim.interact(hall)
+	sim.interact(hall)
+	t.truth(sim.frontier.city_level>0,"the camp is founded")
+	var founded: Dictionary=cues.sample(sim,hall,false)
+	t.equal(founded.sting,"founding_theme","founding the refuge plays its ceremony")
+	t.equal(cues.sample(sim,hall,false).sting,"","the ceremony does not repeat")
+	sim.frontier.city_level=2
+	t.equal(cues.sample(sim,hall,false).sting,"","later growth is not another founding")
+
+func test_a_restored_camp_is_not_founded_again(t):
+	var cues=_cues()
+	var sim=Session.new()
+	sim.frontier.city_level=2
+	t.equal(cues.sample(sim,sim.world.sites.hall,false).sting,"","loading a built refuge holds no ceremony")
+	t.equal(cues.sample(sim,sim.world.sites.hall,false).sting,"","and none on the frame after")
+
+func test_the_score_does_not_hoard_every_track_it_has_played(t):
+	var script=load("res://presentation/campaign_music.gd")
+	var player=script.new()
+	for name in script.LOOPS:
+		t.truth(player._stream(name)!=null,"%s loads" % name)
+	t.truth(player._cache.size()<=script.CACHE_LIMIT,
+		"playing through the score keeps at most %d tracks resident" % script.CACHE_LIMIT)
+	player.free()

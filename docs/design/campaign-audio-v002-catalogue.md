@@ -16,7 +16,7 @@
 | 環境音共同後綴 | Seamless looping game ambience bed, natural and continuous, no music, no voice, no speech. |
 | 音樂共同後綴 | Instrumental only. Pixel-art indie game soundtrack, sparse and atmospheric, melancholic, medieval fantasy meets subtle synth, bells and plucked strings over soft analog pads, lo-fi warmth. No vocals, no singing, no choir, no spoken word. |
 
-## 音效（100 個檔）
+## 音效（103 個檔）
 
 | 檔名 | 用途 | 長度 | 音量 | prompt（未含共用後綴） |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,10 @@
 | `horse_gallop` | 龍晶戰馬奔馳循環 · 循環 | 2.00 s | 峰值 -6.0 dBFS | Mechanical crystal-powered warhorse galloping loop, rhythmic metal hooves on dirt with a low crystalline engine hum, steady four-beat cycle, seamless loop |
 | `hurt` | 騎士受傷，生命或龍晶損失 | 0.41 s | 峰值 -6.0 dBFS | Armored knight taking a hit, metal plate clang mixed with a short glassy crystal crack and a small servo stutter, impact only |
 | `ignition` | 拔劍點火建國 | 0.91 s | 峰值 -6.0 dBFS | Sword raised and plunged into a campfire, sharp steel ring, sparks crackling, flames roaring up, then a deep resonant crystal hum awakening |
+| `jump` | 騎士起跳 | 0.20 s | 峰值 -6.0 dBFS | Armored knight jumping off the ground, quick hydraulic push from a prosthetic leg with a short cloth and armor rustle, upward and light |
 | `kingdom` | 王國建立里程碑 | 1.07 s | 峰值 -6.0 dBFS | Kingdom founded milestone, three ascending bell tones with a warm resonant crystal chord blooming, ceremonial and grounded |
+| `land_1` | 騎士落地 | 0.28 s | 峰值 -6.0 dBFS | Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy |
+| `land_2` | 騎士落地 | 0.42 s | 峰值 -6.0 dBFS | Armored knight landing on packed dirt, solid double thud of boots with a metallic armor settle and a small servo absorb, weighty but not heavy |
 | `module_equip` | 改造所裝備部件 | 0.71 s | 峰值 -6.0 dBFS | Attaching a mechanical module to armored prosthetic back mounts, two metal latches clicking in sequence then a hydraulic seal hiss and a brief power-up hum |
 | `module_pickup` | 拾取機械部件 | 0.32 s | 峰值 -6.0 dBFS | Picking up a small mechanical component, metallic clink and a short servo chirp, compact gadget |
 | `module_store` | 部件收納 | 0.27 s | 峰值 -6.0 dBFS | Placing a mechanical part into a padded storage rack, soft metal clunk and a fabric rustle, quiet and tidy |
@@ -133,7 +136,7 @@
 | `amb_night` | 夜晚 · 循環 | 20.50 s | -30.1 LUFS | Haunted frontier at night, continuous low cold wind running throughout, steady cricket chorus, distant owl calls and a faint uneasy drone, always present and never silent, tense |
 | `amb_ruins` | 遺跡與地獄之門 · 循環 | 20.50 s | -30.0 LUFS | Ancient stone ruins with a dormant magical portal, continuous hollow wind through stone, steady low energy throb, uneasy, never silent |
 
-## 音樂（9 個檔）
+## 音樂（10 個檔）
 
 | 檔名 | 用途 | 長度 | 音量 | prompt（未含共用後綴） |
 | --- | --- | --- | --- | --- |
@@ -142,6 +145,7 @@
 | `day_refuge` | 白天營地建設 · 循環 | 118.51 s | -16.0 LUFS | Refuge by day, warm and industrious, plucked strings with a simple bell motif, soft rhythmic pulse like distant hammering, gentle synth undercurrent, community and quiet hope, 90 BPM |
 | `defeat_theme` | 敗北 | 13.11 s | -15.9 LUFS | Defeat piece, slow descending bell phrase over a cold fading pad and a dying mechanical hum, mournful, ends in near silence |
 | `dragon_boss` | 最終巨龍決戰 · 循環 | 118.42 s | -16.1 LUFS | Final dragon battle, heavy but restrained, deep tribal drums, distorted low synth bass, soaring minor bell melody, dissonant crystal shimmer, relentless and desperate, 95 BPM |
+| `founding_theme` | 建國點火儀式 | 11.34 s | -16.1 LUFS | Founding stinger, a low resonant swell rising into a warm bell motif with plucked strings, the moment a refuge is born, hopeful and ceremonial, ends on a sustained chord |
 | `night_raid` | 夜襲交戰疊層 · 循環 | 117.85 s | -16.8 LUFS | Night raid combat layer, driving low percussion, pulsing bass synth, urgent string ostinato, crystalline stabs, controlled intensity rather than epic, 70 BPM, designed to layer over a quieter night theme in the same key |
 | `night_watch` | 夜晚守備，敵人未到 · 循環 | 118.01 s | -16.2 LUFS | Night watch on the walls, tense and sparse, low sustained synth drone, slow cold bell tolls, distant tremolo strings, minimal percussion heartbeat, dread building slowly, 70 BPM |
 | `title` | 起始頁 · 循環 | 85.06 s | -16.0 LUFS | Title theme for a lonely last refuge in a dragon-ruled world, slow minor-key bell melody over a soft synth pad, distant plucked lute, faint crystal shimmer, hopeful sadness, unhurried, 70 BPM |

@@ -184,6 +184,7 @@ func _physics_process(seconds: float) -> void:
 	if is_instance_valid(_water):_water.present(sim)
 	if is_instance_valid(_lantern):_lantern.present(sim,knight)
 	audio.observe(seconds,sim,knight.position.x,paused)
+	audio.report_footing(knight.is_on_floor(),paused)
 
 func _travel_axis(direction: float, seconds: float) -> float:
 	var pace: float=tuning.walking_speed/maxf(1,knight_tuning.move_speed) if sim.life.enabled else 1.0

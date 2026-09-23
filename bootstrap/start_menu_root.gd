@@ -3,14 +3,23 @@ const Catalog=preload("res://infrastructure/campaign_catalog.gd")
 const Store=preload("res://infrastructure/json_campaign_store.gd")
 const Record=preload("res://application/campaign_record.gd")
 const Progress=preload("res://application/campaign_progress.gd")
+const AudioPreferences=preload("res://infrastructure/audio_preferences.gd")
+const TitleAudio=preload("res://presentation/title_audio.gd")
 @export var campaigns_directory: String="user://campaigns"
 @export var legacy_path: String="user://campaign_v1.json"
+@export var audio_preferences_path: String="user://audio.cfg"
 var catalog: RefCounted
 var rows: Array[Dictionary]=[]
 var _launching:=false
+var audio: Node
 @onready var view=$Menu
 func _ready() -> void:
 	catalog=Catalog.new(campaigns_directory,legacy_path)
+	audio=TitleAudio.new()
+	audio.name="TitleAudio"
+	add_child(audio)
+	if not audio_preferences_path.is_empty():
+		audio.apply(AudioPreferences.new(audio_preferences_path).read())
 	view.new_game_requested.connect(start_new_game)
 	view.records_requested.connect(show_records)
 	view.record_selected.connect(select_record)
@@ -23,6 +32,7 @@ func _ready() -> void:
 		prologue.completed.connect(func():view.show())
 
 func show_records() -> void:
+	audio.click("ui_select")
 	rows.clear()
 	for entry in catalog.entries():
 		var row: Dictionary=entry.duplicate()
@@ -33,12 +43,14 @@ func show_records() -> void:
 
 func start_new_game() -> void:
 	if _launching:return
+	audio.click("ui_confirm")
 	var path: String=catalog.allocate()
 	if path.is_empty():view.show_error(catalog.last_error);return
 	_launch(path,int(randi()%1000000000))
 
 func select_record(index: int) -> void:
 	if _launching or index<0 or index>=rows.size():return
+	audio.click("ui_confirm")
 	var row: Dictionary=rows[index]
 	# Re-read on selection; listing never grants permission to overwrite damaged saves.
 	var progress=Progress.new(Store.new(row.path))
