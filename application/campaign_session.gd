@@ -164,8 +164,12 @@ func site_visible(site: String) -> bool:
 func _can_claim_tool(kind: String) -> bool:
 	return kind!="hoe" or agriculture_available()
 
+func can_use_module_station(x: float) -> bool:
+	return is_running() and life.enabled and frontier.city_level>0 and not modules.found.is_empty() and absf(x-world.sites.drill)<73
+
 func equip_module(id: String, x: float) -> bool:
-	if not is_running() or not life.enabled or frontier.city_level<=0 or absf(x-world.sites.drill)>=73 or not modules.equip(id):return false
+	if not can_use_module_station(x) or pouch.amount<modules.swap_cost or not modules.equip(id):return false
+	for crystal: int in range(modules.swap_cost):pouch.spend()
 	effects.append({"kind":"module_equipped","x":x,"life":4.0})
 	return true
 
@@ -214,6 +218,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		candidates.append(choice)
 	if absf(_player_y-430)<=42:
 		for site in world.sites:
+			if life.enabled and site=="drill":continue # F / gear opens the paid module chooser.
 			if not site_visible(site):continue
 			if site=="trade":continue # Retained in legacy snapshots only.
 			if not defenses.visible(site):continue
@@ -340,6 +345,7 @@ func _campaign_site(site: String) -> Dictionary:
 		choice.enabled = not frontier.farm_active
 		choice.reason = "已播種 · 農夫持續培育龍晶"
 	elif site=="drill":
+		if life.enabled:return _choice("module_station",at,"部件工坊",0,false)
 		var limit:=mini(3,frontier.training_limit)
 		choice.key="drill:%d" % frontier.drill_level
 		choice.cost=growth.crystal_cost(prices.drill,frontier.drill_level)
@@ -419,6 +425,7 @@ func _execute(choice: Dictionary) -> void:
 			hero.shield=growth.recharge(hero.shield)
 		"beacon": world.barrier+=1; built.beacon=true
 		"drill":
+			if life.enabled:return
 			frontier.drill_level+=1
 			hero.stats.damage+=frontier.training_damage
 		"heal": hero.hp=mini(hero.stats.max_hp,hero.hp+30)
