@@ -3,6 +3,9 @@ const Cues=preload("res://presentation/campaign_audio_cues.gd")
 const Music=preload("res://presentation/campaign_music.gd")
 const Ambience=preload("res://presentation/campaign_ambience.gd")
 const Interface=preload("res://presentation/campaign_ui_cues.gd")
+const Pulse=preload("res://presentation/campaign_pulse_cues.gd")
+const Footing=preload("res://presentation/campaign_footing_cues.gd")
+const Loops=preload("res://presentation/campaign_loops.gd")
 const SOUNDS={
  "arrow_hit":[preload("res://art/audio/campaign-v002/arrow_hit.wav")],
  "bow_shot":[preload("res://art/audio/campaign-v002/bow_shot.wav")],
@@ -77,6 +80,11 @@ const SOUNDS={
  "work_harvest":[preload("res://art/audio/campaign-v002/work_harvest_1.wav"),preload("res://art/audio/campaign-v002/work_harvest_2.wav"),preload("res://art/audio/campaign-v002/work_harvest_3.wav")],
  "work_mine":[preload("res://art/audio/campaign-v002/work_mine_1.wav"),preload("res://art/audio/campaign-v002/work_mine_2.wav"),preload("res://art/audio/campaign-v002/work_mine_3.wav")]}
 
+## Footsteps, work strikes and small pickups are constant; losing one is better
+## than losing a blow, a warning or a victory.
+const QUIET_ENOUGH_TO_DROP=["pickup","pay","footstep","footstep_slow",
+ "work_chop","work_mine","work_hammer","work_harvest","crystal_land","ui_select"]
+
 ## Emitted when feedback is accepted; headless validates commands without starting a mixer.
 signal cue_requested(kind: String)
 @export_range(-40.0,0.0,1.0) var volume_db: float=-10.0
@@ -86,6 +94,7 @@ signal cue_requested(kind: String)
   if not enabled:stop()
   if music!=null:music.enabled=value
   if ambience!=null:ambience.enabled=value
+  if loops!=null:loops.enabled=value
 var music_volume:=0.4:
  set(value):
   music_volume=value
@@ -100,10 +109,15 @@ var suspended:=false:
   suspended=value
   if music!=null:music.suspended=value
   if ambience!=null:ambience.suspended=value
+  if loops!=null:loops.suspended=value
 var music: Node
 var ambience: Node
 var cues=Cues.new()
 var interface_cues=Interface.new()
+var pulse_cues=Pulse.new()
+var footing_cues=Footing.new()
+var loops: Node
+var _pulse_timers: Dictionary={}
 var voices: Array[AudioStreamPlayer]=[]
 var _cooldowns: Dictionary={}
 var _last_variant: Dictionary={}
@@ -120,6 +134,11 @@ func _ready() -> void:
  ambience.volume=ambience_volume
  ambience.enabled=enabled
  add_child(ambience)
+ loops=Loops.new()
+ loops.name="Loops"
+ loops.volume=effects_volume
+ loops.enabled=enabled
+ add_child(loops)
  for i in range(6):
   var voice=AudioStreamPlayer.new()
   voice.bus="SFX"
@@ -128,6 +147,7 @@ func _ready() -> void:
 func observe(seconds: float,sim,x: float,paused: bool) -> void:
  if is_instance_valid(music):music.observe(seconds,sim,x,paused)
  if is_instance_valid(ambience):ambience.observe(seconds,sim,x,paused)
+ if is_instance_valid(loops):loops.volume=effects_volume;loops.observe(seconds,sim,x,paused)
  for key in _cooldowns:_cooldowns[key]=maxf(0,_cooldowns[key]-seconds)
  var click: String=interface_cues.sample(paused,enabled,suspended)
  if not click.is_empty():_play(click)
@@ -143,14 +163,39 @@ func observe(seconds: float,sim,x: float,paused: bool) -> void:
     _ignition_released=true
     _play("ignition")
  for kind in pending:_play(kind)
+ _advance_pulses(seconds,sim,x,paused)
+## The rack cannot see the knight's body, so the game loop reports its footing.
+func report_footing(grounded: bool,paused: bool) -> void:
+ var cue: String=footing_cues.sample(grounded,paused or not enabled or suspended)
+ if not cue.is_empty():_play(cue)
+
+## Sounds the game loop asks for directly, such as a refused action or a menu press.
+func request(kind: String) -> void:
+ if not enabled or suspended:return
+ _play(kind)
+
+## Repeating work and footsteps keep their own clock so they do not machine-gun.
+func _advance_pulses(seconds: float,sim,x: float,paused: bool) -> void:
+ var wanted: Dictionary=pulse_cues.sample(sim,x,seconds,paused)
+ for kind in wanted:
+  var gap: float=wanted[kind]
+  if gap<=0:
+   _pulse_timers.erase(kind)
+   continue
+  var remaining: float=_pulse_timers.get(kind,0.0)-seconds
+  if remaining<=0:
+   _play(kind)
+   remaining=gap*randf_range(0.85,1.15)
+  _pulse_timers[kind]=remaining
+
 func _play(kind: String) -> void:
  if effects_volume<=0:return
  if not SOUNDS.has(kind):return
  if _cooldowns.get(kind,0.0)>0:return
  var available=voices.filter(func(v):return not v.playing)
  if available.is_empty():
-  # Small pickups cannot cut off a sword hit, danger cue, or result.
-  if kind in ["pickup","pay"]:return
+  # Texture never cuts off a sword hit, a danger cue or a result.
+  if kind in QUIET_ENOUGH_TO_DROP:return
   available=[voices[0]]
  var voice: AudioStreamPlayer=available[0]
  voice.stop()
@@ -172,6 +217,8 @@ func _variant(kind: String) -> AudioStream:
 func stop() -> void:
  if is_instance_valid(music):music.stop()
  if is_instance_valid(ambience):ambience.stop()
+ if is_instance_valid(loops):loops.stop()
+ _pulse_timers.clear()
  for voice in voices:voice.stop()
 
 func _exit_tree() -> void:
@@ -179,3 +226,5 @@ func _exit_tree() -> void:
  for voice in voices:voice.stream=null
  cues=null
  interface_cues=null
+ pulse_cues=null
+ footing_cues=null

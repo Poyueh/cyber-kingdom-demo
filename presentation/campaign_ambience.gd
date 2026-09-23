@@ -16,7 +16,9 @@ var _players: Dictionary = {}
 func _ready() -> void:
 	for bed in Cues.BEDS:
 		var path := "res://art/audio/ambience-v002/%s.ogg" % bed
-		if not ResourceLoader.exists(path): continue
+		if not ResourceLoader.exists(path):
+			push_error("missing ambience bed: %s" % path)
+			continue
 		var stream: AudioStream = load(path)
 		if stream is AudioStreamOggVorbis:
 			stream = stream.duplicate()

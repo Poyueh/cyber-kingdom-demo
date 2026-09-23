@@ -685,6 +685,10 @@ func _advance_expeditions(seconds: float, hero_x: float, hero_y: float) -> void:
 func _collect_loot(drop: Dictionary) -> void:
 	pouch.receive(1,drop.x)
 
+## The riding rule lives here so the view and the audio cannot drift apart.
+func mounted() -> bool:
+	return frontier.drill_level>=3 if life.enabled else growth.can_ride(frontier.drill_level,frontier.training_limit)
+
 func kingdom_established() -> bool:
 	var citizens := 0
 	for person in world.people:

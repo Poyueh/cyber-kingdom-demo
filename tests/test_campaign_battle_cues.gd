@@ -65,3 +65,48 @@ func test_a_restored_battle_states_none_of_its_history(t):
 	sim.hero.hp=sim.hero.stats.max_hp
 	var cues=Cues.new()
 	t.equal(cues.sample(sim,sim.world.sites.hall,false),[],"a loaded ruin does not collapse again on open")
+
+func test_opening_a_chest_is_not_mistaken_for_losing_crystals(t):
+	var sim=Session.new()
+	var at: float=sim.world.sites.hall
+	sim.survival.enabled=true
+	var cues=_primed(sim)
+	sim.pouch.burst(5,at)
+	var opened: Array=cues.sample(sim,at,false)
+	t.truth(not ("crystal_drop" in opened),"crystals spilling from a chest are not a wound")
+	sim.pouch.amount=10
+	cues.sample(sim,at,false)
+	sim.survival.hits+=1
+	sim.pouch.amount-=3
+	sim.pouch.burst(3,at)
+	t.truth("crystal_drop" in cues.sample(sim,at,false),"a real hit still spills the pouch audibly")
+
+func test_a_refund_is_not_also_a_wound(t):
+	var sim=Session.new()
+	sim.life.enabled=true
+	sim.survival.enabled=true
+	var at: float=sim.world.sites.hall
+	sim.investments["hall"]=2
+	var cues=_primed(sim)
+	sim.cancel_investment("hall",at)
+	var refunded: Array=cues.sample(sim,at,false)
+	t.truth("slot_refund" in refunded,"the refund itself is heard")
+	t.truth(not ("crystal_drop" in refunded),"handing crystals back is not the wound sound")
+
+func test_a_thief_getting_away_is_not_a_kill(t):
+	var sim=Session.new()
+	var at: float=sim.world.sites.hall
+	var thief=sim._spawn_raider()
+	thief.x=at
+	sim.raiders.append(thief)
+	var cues=_primed(sim)
+	thief.fighter.hp=0
+	thief["escaped"]=true
+	var fled: Array=cues.sample(sim,at,false)
+	t.truth(not ("enemy_death" in fled),"a raider escaping with its loot has not been killed")
+	var slain=sim._spawn_raider()
+	slain.x=at
+	sim.raiders.append(slain)
+	cues.sample(sim,at,false)
+	slain.fighter.hp=0
+	t.truth("enemy_death" in cues.sample(sim,at,false),"a raider actually killed still falls audibly")

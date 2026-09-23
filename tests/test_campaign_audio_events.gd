@@ -51,9 +51,13 @@ func test_losing_crystals_sword_and_life_are_audible(t):
 	var at: float=sim.world.sites.hall
 	sim.survival.enabled=true
 	sim.survival.armed=true
-	sim.pouch.drop(3,at)
-	t.truth("crystal_drop" in cues.sample(sim,at,false),"crystals knocked loose are heard leaving the pouch")
-	t.equal(cues.sample(sim,at,false).count("crystal_drop"),0,"resting crystals do not keep sounding")
+	sim.pouch.amount=9
+	cues.sample(sim,at,false)
+	sim.survival.hits+=1
+	sim.pouch.amount-=3
+	sim.pouch.burst(3,at)
+	t.truth("crystal_drop" in cues.sample(sim,at,false),"a hit is heard knocking crystals out of the pouch")
+	t.equal(cues.sample(sim,at,false).count("crystal_drop"),0,"the spilled crystals do not keep sounding")
 	sim.survival.armed=false
 	sim.survival.sword_on_ground=true
 	t.truth("sword_drop" in cues.sample(sim,at,false),"losing the sword rings out once")

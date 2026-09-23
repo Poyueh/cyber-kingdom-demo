@@ -1,6 +1,8 @@
 extends Node2D
 ## Composition root: the only place that chooses concrete adapters and wires layers.
 const Session = preload("res://application/training_session.gd")
+const ArenaCues = preload("res://presentation/arena_audio_cues.gd")
+const AudioPreferences = preload("res://infrastructure/audio_preferences.gd")
 const FileStore = preload("res://infrastructure/json_progress_store.gd")
 const Mapper = preload("res://bootstrap/tuning_mapper.gd")
 @export var combo_tuning: Resource = preload("res://data/knight_combo.tres")
@@ -20,6 +22,9 @@ var _buffered_actions: Dictionary = {}
 @onready var camera: Camera2D = $Knight/Camera2D
 @onready var controls = $InputAdapter
 @onready var hud = $HUD
+@onready var audio = $ArenaAudio
+var arena_cues = ArenaCues.new()
+@export var audio_preferences_path: String = "user://audio.cfg"
 var session: Session
 var progress_path: String = "user://progress_v1.json"
 var store: FileStore
@@ -33,6 +38,11 @@ func _ready() -> void:
 	hud.refuge_requested.connect(_visit_refuge)
 	hud.configure_expedition(expedition_mode)
 	session.hit_stop_seconds = hit_stop_seconds
+	if not audio_preferences_path.is_empty():
+		var levels: Dictionary = AudioPreferences.new(audio_preferences_path).read()
+		audio.music_volume = 0.0
+		audio.effects_volume = levels.effects
+		audio.enabled = not levels.muted
 	_reset_bodies()
 
 func _reset_bodies() -> void:
@@ -106,6 +116,13 @@ func _tick_encounter(seconds: float, command: Dictionary) -> void:
 	camera.offset = impacts.camera_offset(impact_shake_pixels)
 	knight.refresh_visual(seconds)
 	sentinel.refresh_visual(seconds)
+	_sound_the_duel(paused)
+
+## The arena has two fighters and no world, so it reports its own combat.
+func _sound_the_duel(is_paused: bool) -> void:
+	if not is_instance_valid(audio): return
+	for kind in arena_cues.sample(session.hero, session.enemy, session.enemy_windup_remaining, is_paused):
+		audio.request(kind)
 
 func _visit_refuge() -> void:
 	controls.release_all()

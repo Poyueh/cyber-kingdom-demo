@@ -6,6 +6,7 @@ const REFUGE_RANGE := 900.0
 var _survived := -1
 var _outcome := ""
 var _session: RefCounted
+var _city := -1
 
 func sample(sim, x: float, paused: bool) -> Dictionary:
 	if sim == null:
@@ -15,11 +16,14 @@ func sample(sim, x: float, paused: bool) -> Dictionary:
 	if not fresh and not paused:
 		if sim.mission.outcome != _outcome and sim.mission.outcome in ["victory", "defeat"]:
 			result.sting = sim.mission.outcome + "_theme"
+		elif _city == 0 and sim.frontier.city_level > 0:
+			result.sting = "founding_theme"
 		elif sim.clock.survived > _survived:
 			result.sting = "dawn_sting"
 	_session = sim
 	_outcome = sim.mission.outcome
 	_survived = sim.clock.survived
+	_city = sim.frontier.city_level
 	return result
 
 func _loop(sim, x: float) -> String:

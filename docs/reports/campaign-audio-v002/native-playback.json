@@ -1,16 +1,16 @@
 {
  "purpose": "Recorded off the real Master bus with native audio, because the headless suites deliberately skip playback.",
  "tool": "tools/capture_audio_v002.gd",
- "seconds": 5.26,
- "peak_dbfs": -14.26,
- "rms_dbfs": -32.43,
+ "seconds": 5.97,
+ "peak_dbfs": -10.67,
+ "rms_dbfs": -28.03,
  "clipped_samples": 0,
  "per_second_rms_dbfs": [
-  -38.2,
-  -43.3,
-  -32.8,
-  -29.2,
-  -30.9
+  -37.8,
+  -30.8,
+  -28.2,
+  -26.0,
+  -24.7
  ],
  "seconds_with_signal": 5,
  "observed": {
@@ -19,8 +19,13 @@
    "amb_night": 1.0
   },
   "effects": [
+   "footstep",
+   "footstep",
+   "footstep",
+   "footstep",
    "night"
-  ]
+  ],
+  "note": "Four footsteps show the repeating pulse driver running on a real clock, not a single event."
  },
- "note": "An automated window has no focus, which both pauses and suspends the game; the capture clears both, and that is the only thing it overrides."
+ "harness_note": "An automated window has no focus, which both pauses and suspends the game; the capture clears only those two."
 }

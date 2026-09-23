@@ -39,7 +39,17 @@ func capture() -> void:
 	var slot:=AudioServer.get_bus_effect_count(0)
 	AudioServer.add_bus_effect(0,recorder)
 	recorder.set_recording_active(true)
-	await step(200)
+	await step(90)
+	# Walking proves the footstep pulse; a worker proves the work strikes.
+	for i in range(60):
+		scene.knight.position.x+=3.0
+		await step(1)
+	if not scene.sim.frontier.nodes.is_empty():
+		var node=scene.sim.frontier.nodes[0]
+		node.x=scene.knight.position.x
+		scene.sim.world.people.append({"x":node.x,"role":"engineer","hurt":0.0,"cooldown":0.0,"work_state":"work"})
+		node.worker=scene.sim.world.people.size()-1
+	await step(90)
 	scene.sim.clock.is_night=true
 	await step(120)
 	recorder.set_recording_active(false)
@@ -48,6 +58,7 @@ func capture() -> void:
 	print("MUSIC %s LAYER %s" % [scene.audio.music.current,scene.audio.music.layer])
 	print("AMBIENCE %s" % [scene.audio.ambience.levels])
 	print("EFFECTS %s" % [heard])
+	print("LOOPS %s" % [scene.audio.loops.levels])
 	if sound==null or sound.data.size()<1000:
 		printerr("no audio was recorded")
 		quit(1);return

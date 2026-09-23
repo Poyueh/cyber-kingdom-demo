@@ -507,6 +507,18 @@
    "rms_db": -20.2,
    "seconds": 0.24
   },
+  "founding_theme": {
+   "bytes": 171903,
+   "category": "music",
+   "channels": 2,
+   "clipped_samples": 0,
+   "loop": false,
+   "lufs": -16.1,
+   "peak_db": -5.8,
+   "rate": 44100,
+   "rms_db": -22.34,
+   "seconds": 11.337
+  },
   "gatekeeper_appear": {
    "bytes": 35416,
    "category": "sfx",
@@ -618,6 +630,17 @@
    "rms_db": -20.88,
    "seconds": 0.912
   },
+  "jump": {
+   "bytes": 17506,
+   "category": "sfx",
+   "channels": 1,
+   "clipped_samples": 0,
+   "loop": false,
+   "peak_db": -6.0,
+   "rate": 44100,
+   "rms_db": -21.72,
+   "seconds": 0.198
+  },
   "kingdom": {
    "bytes": 94476,
    "category": "sfx",
@@ -628,6 +651,28 @@
    "rate": 44100,
    "rms_db": -19.93,
    "seconds": 1.071
+  },
+  "land_1": {
+   "bytes": 24900,
+   "category": "sfx",
+   "channels": 1,
+   "clipped_samples": 0,
+   "loop": false,
+   "peak_db": -6.0,
+   "rate": 44100,
+   "rms_db": -22.24,
+   "seconds": 0.282
+  },
+  "land_2": {
+   "bytes": 36778,
+   "category": "sfx",
+   "channels": 1,
+   "clipped_samples": 0,
+   "loop": false,
+   "peak_db": -6.0,
+   "rate": 44100,
+   "rms_db": -22.59,
+   "seconds": 0.416
   },
   "module_equip": {
    "bytes": 62858,

@@ -3,7 +3,7 @@
  "files": {
   "amb_campfire": {
    "category": "ambience",
-   "text": "[sound of fire]",
+   "text": "[fire crackling]",
    "word_count": 0,
    "words": []
   },
@@ -51,7 +51,7 @@
   },
   "bow_shot": {
    "category": "sfx",
-   "text": "[clicking]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
@@ -93,7 +93,7 @@
   },
   "crystal_land_2": {
    "category": "sfx",
-   "text": "[sound effect]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
@@ -105,7 +105,7 @@
   },
   "dash": {
    "category": "sfx",
-   "text": "[snare drum]",
+   "text": "[snapping]",
    "word_count": 0,
    "words": []
   },
@@ -123,13 +123,13 @@
   },
   "day_explore": {
    "category": "music",
-   "text": "[on-hold music]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
   "day_refuge": {
    "category": "music",
-   "text": "[outro jingle]",
+   "text": "[on-hold music]",
    "word_count": 0,
    "words": []
   },
@@ -183,7 +183,7 @@
   },
   "dragon_wing": {
    "category": "sfx",
-   "text": "[heartbeat sound]",
+   "text": "[heartbeat]",
    "word_count": 0,
    "words": []
   },
@@ -265,6 +265,12 @@
    "word_count": 0,
    "words": []
   },
+  "founding_theme": {
+   "category": "music",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
   "gatekeeper_appear": {
    "category": "sfx",
    "text": "[outro jingle]",
@@ -325,7 +331,25 @@
    "word_count": 0,
    "words": []
   },
+  "jump": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
   "kingdom": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "land_1": {
+   "category": "sfx",
+   "text": "[outro jingle]",
+   "word_count": 0,
+   "words": []
+  },
+  "land_2": {
    "category": "sfx",
    "text": "[outro jingle]",
    "word_count": 0,
@@ -339,19 +363,19 @@
   },
   "module_pickup": {
    "category": "sfx",
-   "text": "[gun cocking]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
   "module_store": {
    "category": "sfx",
-   "text": "[clicking]",
+   "text": "[clapping]",
    "word_count": 0,
    "words": []
   },
   "mount": {
    "category": "sfx",
-   "text": "[door closing]",
+   "text": "[click]",
    "word_count": 0,
    "words": []
   },
@@ -501,7 +525,7 @@
   },
   "slot_refund": {
    "category": "sfx",
-   "text": "[clicking]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
@@ -525,13 +549,13 @@
   },
   "title": {
    "category": "music",
-   "text": "[outro jingle]",
+   "text": "[on-hold music]",
    "word_count": 0,
    "words": []
   },
   "tool_pickup": {
    "category": "sfx",
-   "text": "[sound effect]",
+   "text": "[clicking]",
    "word_count": 0,
    "words": []
   },
@@ -549,13 +573,13 @@
   },
   "ui_mute": {
    "category": "sfx",
-   "text": "[click]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
   "ui_pause": {
    "category": "sfx",
-   "text": "[mouse click]",
+   "text": "[clicking]",
    "word_count": 0,
    "words": []
   },
@@ -567,7 +591,7 @@
   },
   "ui_save": {
    "category": "sfx",
-   "text": "[clicking]",
+   "text": "[mouse clicking]",
    "word_count": 0,
    "words": []
   },
@@ -597,7 +621,7 @@
   },
   "wall_break": {
    "category": "sfx",
-   "text": "[cracking]",
+   "text": "[crack]",
    "word_count": 0,
    "words": []
   },
@@ -615,7 +639,7 @@
   },
   "wall_hit_3": {
    "category": "sfx",
-   "text": "[outro jingle]",
+   "text": "[sound effect]",
    "word_count": 0,
    "words": []
   },
@@ -657,7 +681,7 @@
   },
   "work_hammer_3": {
    "category": "sfx",
-   "text": "[打铁声]",
+   "text": "[outro jingle]",
    "word_count": 0,
    "words": []
   },
