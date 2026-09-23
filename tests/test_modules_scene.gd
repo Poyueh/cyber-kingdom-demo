@@ -4,8 +4,8 @@ func run_scene() -> void:
  await frames(8)
  scene.set_physics_process(false)
  scene.sim.interact(30,"hall")
- var relic=scene.sim.modules.relics[0]
- scene.sim.advance(0.1,relic.x)
+ for relic in scene.sim.modules.relics:scene.sim.advance(0.1,relic.x)
+ scene.sim.pouch.amount=12
  scene.knight.position=Vector2(scene.sim.world.sites.drill,430)
  scene.sim.advance(0.1,scene.knight.position.x)
  scene._physics_process(1.0/30)
@@ -13,7 +13,7 @@ func run_scene() -> void:
  check(scene.paused and scene.hud.module_menu.visible,"F opens module selection at the upgrade station")
  check(not scene.hud.options_menu.visible and not scene.hud.get_node("Refuge").visible,"selection does not overlap settings or offer combat practice")
  scene.hud.module_menu._buttons[0].pressed.emit()
- check(scene.sim.modules.equipped=="arc","choosing the returned module installs it")
+ check(scene.sim.modules.equipped=="arc" and scene.sim.pouch.amount==4,"choosing a previous module charges eight crystals")
  scene.hud.module_menu._close.pressed.emit();scene._physics_process(1.0/30)
  key(KEY_K,true);key(KEY_K,false);scene._physics_process(1.0/30)
  check(scene.sim.effects.any(func(e):return e.kind=="module_arc"),"quick K press activates the equipped ability")

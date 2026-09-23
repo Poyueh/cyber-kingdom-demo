@@ -13,6 +13,17 @@ static func relics(view: Node2D, sim: RefCounted) -> void:
   for i in range(3):view.draw_rect(Rect2(at+Vector2(-14+i*12,-18-fposmod(sim.workforce.elapsed*10+i*9,30)),Vector2(2,2)),Color(color,alpha*0.6))
 static func effects(view: Node2D, sim: RefCounted) -> void:
  for effect in sim.effects:
+  if effect.kind=="module_ready":
+   var progress: float=clampf(1.0-effect.life/0.9,0.0,1.0)
+   var center: Vector2=Vector2(view._view_player_x,386)
+   var tint: Color=Color("7cffdb") if effect.module=="arc" else Color("e2aaff")
+   tint.a=sin(progress*PI)
+   view.draw_arc(center,18+progress*24,0,TAU,16,tint,2)
+   view._icon("gear",center+Vector2(0,-42-progress*12),22,tint)
+   for i in range(4):
+    var spark: Vector2=center+Vector2.RIGHT.rotated(i*TAU/4+progress)*(24+progress*28)
+    view.draw_rect(Rect2(spark,Vector2(3,3)),tint)
+   continue
   if not view._on_screen(effect.x,340):continue
   var at: Vector2=Vector2(effect.x,392)
   if effect.kind=="module_arc":
