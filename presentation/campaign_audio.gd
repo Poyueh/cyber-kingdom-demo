@@ -129,7 +129,7 @@ func observe(seconds: float,sim,x: float,paused: bool) -> void:
  if is_instance_valid(music):music.observe(seconds,sim,x,paused)
  if is_instance_valid(ambience):ambience.observe(seconds,sim,x,paused)
  for key in _cooldowns:_cooldowns[key]=maxf(0,_cooldowns[key]-seconds)
- var click: String=interface_cues.sample(paused,enabled and not suspended)
+ var click: String=interface_cues.sample(paused,enabled,suspended)
  if not click.is_empty():_play(click)
  var pending: Array[String]=cues.sample(sim,x,paused or not enabled or suspended)
  if paused or not enabled or suspended:
