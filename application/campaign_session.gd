@@ -1,6 +1,8 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
+const NightPressure = preload("res://domain/night_pressure.gd")
+var night_pressure: NightPressure
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
 const Spirit=preload("res://application/spirit_guidance.gd")
@@ -56,6 +58,7 @@ const TOOL_KINDS := {"workshop":"hammer","farm_tools":"hoe","hunt_tools":"bow"}
 const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","farm_tools":"農具","hunt_tools":"獵弓","forge":"義肢爐","beacon":"守護塔","wall":"右防線","wall_left":"左防線","farm":"農田","drill":"劍術訓練","heal":"龍晶治療"}
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
+	night_pressure = NightPressure.new(config)
 	spirit=Spirit.new(config)
 	life.enabled=int(config.get("immersive_loop",0))==1
 	survival.enabled=life.enabled and int(config.get("crystal_survival",0))==1
@@ -597,7 +600,7 @@ func raid_pressure() -> Dictionary:
 	for enemy in raiders:
 		if enemy.fighter.is_alive(): pressure["right" if enemy.get("side",1)>0 else "left"]+=1
 	var start: int=_night_spawn_index if clock.is_night else 0
-	var pending: int=_spawn_remaining if clock.is_night else (mini(12,2+clock.day) if clock.remaining<=30 else 0)
+	var pending: int=_spawn_remaining if clock.is_night else (night_pressure.count_for(clock.day) if clock.remaining<=30 else 0)
 	for i in range(start,start+pending):
 		if mission.side_open(1 if i%2==0 else -1):pressure["right" if i%2==0 else "left"]+=1
 	return pressure
@@ -624,12 +627,13 @@ func _advance_invasion(seconds: float) -> void:
 		for arrival in ecology.renew(clock.day,world.people):_add_person(arrival.x,arrival.region)
 	if transition=="night":
 		wave=clock.day
-		_spawn_remaining=mini(12,2+clock.day)
+		_spawn_remaining=night_pressure.count_for(clock.day)
 		_spawn_timer=0.0
 		_night_spawn_index=0
 	if _spawn_remaining>0:
-		_spawn_timer-=seconds
-		while _spawn_timer<=0 and _spawn_remaining>0:
+		_spawn_timer=maxf(0.0,_spawn_timer-seconds)
+		# JSON round trips can put an expired legacy seconds timer just above zero.
+		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and raiders.size()<night_pressure.concurrent_limit:
 			var side:=1 if _night_spawn_index%2==0 else -1
 			_night_spawn_index+=1
 			_spawn_remaining-=1

@@ -15,6 +15,13 @@ static func config_valid(config: Dictionary) -> bool:
 			for value in config[key].values():
 				if not number(value):return false
 		elif not number(config[key]):return false
+	var pressure_keys: Array[String] = ["night_first","night_growth","night_limit","night_concurrent"]
+	if pressure_keys.any(func(key: String) -> bool: return config.has(key)):
+		for key in pressure_keys:
+			if not config.has(key) or not number(config[key]):return false
+			var value: float = float(config[key])
+			if not is_finite(value) or value != floorf(value) or value < 1 or value > 120:return false
+		if config.night_first > config.night_limit or config.night_concurrent > 24:return false
 	return true
 
 ## Numeric templates accept JSON's integral floats after normalization.

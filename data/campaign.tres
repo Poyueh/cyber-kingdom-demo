@@ -5,3 +5,9 @@
 [resource]
 script = ExtResource("1")
 investment_hold_delay = 1.0
+tree_crystals = 2
+mineral_crystals = 4
+chest_crystals = 4
+plant_crystals = 2
+farm_cycle = 24.0
+farm_yield = 1
