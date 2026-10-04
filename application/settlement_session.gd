@@ -217,6 +217,11 @@ func _engineer_target(index: int, seconds: float) -> float:
 	return world.people[index].x
 
 func _target(raider: Dictionary, hero_x: float, hero_y: float) -> Dictionary:
+	# A carrier only clears its exit route; it does not resume hunting residents.
+	if int(raider.get("carried_crystals",0)) > 0:
+		var exit_x: float = raider.retreat_x
+		var obstacle: Dictionary = _blocking_wall(raider.x,exit_x)
+		return {"kind":"leave","x":exit_x} if obstacle.is_empty() else obstacle
 	var result: Dictionary={"kind":"leave","x":raider.get("exit_x",1650.0)}
 	if absf(hero_x-raider.x)<65 and absf(hero_y-430)<42:
 		result={"kind":"hero","x":hero_x}
@@ -252,6 +257,16 @@ func _blocking_wall(from_x: float, to_x: float, approach_side: int = 0) -> Dicti
 			nearest=absf(at-from_x)
 			result={"kind":"wall","x":at,"wall_id":id}
 	return result
+
+## All enemy displacement, including knockback, must respect the same defenses.
+func move_raider(raider: Dictionary, destination: float) -> void:
+	var obstacle: Dictionary = _blocking_wall(raider.x,destination)
+	if obstacle.is_empty():
+		raider.x = destination
+		return
+	var separation: float = raider.x - float(obstacle.x)
+	# Never push an already close enemy backwards or onto the opposite side.
+	raider.x = float(obstacle.x) + signf(separation) * minf(26.0,absf(separation))
 
 func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
 	raider.fighter.advance(seconds)
@@ -289,13 +304,13 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 	if absf(target.x-raider.x)>0.1: raider["direction"]=signf(target.x-raider.x)
 	if target.kind == "leave":
 		# Leaving has no melee stopping distance or attack windup.
-		raider.x = move_toward(raider.x,target.x,70*seconds)
+		move_raider(raider,move_toward(raider.x,target.x,70*seconds))
 		if absf(raider.x-target.x)<=10:
 			raider.fighter.hp = 0
 			raider["escaped"] = true
 		return
 	if absf(target.x-raider.x)>26:
-		raider.x = move_toward(raider.x,target.x,70*seconds)
+		move_raider(raider,move_toward(raider.x,target.x,70*seconds))
 	elif raider.cooldown <= 0:
 		raider.target = target
 		raider.windup = 0.6
@@ -312,7 +327,7 @@ func strike_from(x: float, y: float) -> void:
 			var heavy := hero.combo_step == 3
 			effects.append({"kind":"hit","x":raider.x,"to":raider.x,"life":0.28 if heavy else 0.2,"heavy":heavy,"facing":hero.attack_facing})
 			if heavy:
-				raider.x += hero.attack_facing * 22.0
+				move_raider(raider,raider.x + hero.attack_facing * 22.0)
 				raider.windup = 0.0
 				raider["stagger"] = 0.24
 

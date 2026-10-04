@@ -1,0 +1,32 @@
+extends SceneTree
+func _initialize() -> void:
+	ProjectSettings.set_setting("campaign/persistence_enabled",false)
+	call_deferred("run")
+func run() -> void:
+	root.size=Vector2i(960,540)
+	var game=load("res://scenes/frontier.tscn").instantiate()
+	root.add_child(game)
+	for i in range(8):await physics_frame
+	game.set_physics_process(false)
+	game.sim.interact(30,"hall")
+	game.sim.world.people.clear()
+	var at: float=game.sim.world.sites.wall
+	game.sim.world.wall.merge({"level":3,"hp":game.sim.world.wall_max_hp(3)},true)
+	var attacker=game.sim._spawn_raider();attacker.x=at+85;attacker.side=1;attacker.wall_damage=1
+	var carrier=game.sim._spawn_raider();carrier.x=at-75;carrier.side=1;carrier.wall_damage=1
+	game.sim.raiders.assign([attacker,carrier])
+	game.sim.pouch.drop(1,carrier.x);game.sim.pouch.drops[-1].age=1.0
+	game.knight.position=Vector2(at-210,430)
+	for i in range(180):
+		game._physics_process(1.0/60)
+		await process_frame
+	assert(attacker.x>at and carrier.x<at,"both raiders must remain on their wall side")
+	assert(carrier.carried_crystals==1,"carrier retains its bribe")
+	assert(game.sim.world.wall.hp<game.sim.world.wall_max_hp(3),"raiders attack the obstruction")
+	game.paused=false
+	game._physics_process(0)
+	for i in range(5):await process_frame
+	await RenderingServer.frame_post_draw
+	root.get_texture().get_image().save_png("/tmp/wall-native-smoke.png")
+	print("PASS: native wall blocks attacker and crystal carrier on opposite sides")
+	game.queue_free();await process_frame;quit()

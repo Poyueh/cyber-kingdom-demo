@@ -24,6 +24,6 @@ static func advance(sim, dragon: Dictionary, seconds: float, hero_x: float, hero
  var target: Dictionary=sim._target(dragon,hero_x,hero_y)
  dragon.direction=signf(target.x-dragon.x) if absf(target.x-dragon.x)>1 else dragon.direction
  if absf(target.x-dragon.x)>110:
-  dragon.x=move_toward(dragon.x,target.x,135*seconds)
+  sim.move_raider(dragon,move_toward(dragon.x,target.x,135*seconds))
  elif dragon.cooldown<=0:
   dragon.target=target.duplicate();dragon.windup=1.6;dragon.cooldown=4.4
