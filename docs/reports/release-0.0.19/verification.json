@@ -1,0 +1,16 @@
+{
+  "version": "0.0.19",
+  "source_commit": "dbb319617be0bf6757a0d4fb5b7e962e8249e35a",
+  "source_tree": "abfac70e334fcc04c9160fb42ca16169e872581d",
+  "checks": "tools/check.sh PASS; core 2485, combo scene 26, sword feedback 18; no SCRIPT ERROR/ERROR.",
+  "native_playback": "macOS real J/A/D input; 3 cuts across contact/advancing/left/empty, no stationary X drift. Module sockets and whole-body weight transfer inspected. Actual exported PCK validates v004 atlas/appearance, trail, rooted hit stop, camera response and buffered next cut.",
+  "exports": {
+    "h5": "export and zip pass",
+    "Windows": "export and zip pass; not device tested",
+    "macOS": "export, ad-hoc signature, zip and actual PCK smoke pass",
+    "Android": "debug APK export, version and archive pass; not device tested",
+    "iOS": "Xcode export and zip pass; unsigned, not installed"
+  },
+  "published": false,
+  "pages_verified": false
+}
