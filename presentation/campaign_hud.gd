@@ -2,6 +2,7 @@ extends "res://presentation/frontier_hud.gd"
 const Options=preload("res://presentation/campaign_options.gd")
 @export_enum("Automatic","Touch","Desktop") var control_mode:int=0
 var options_menu: PanelContainer
+var exploration_map: PanelContainer
 const Guide=preload("res://application/campaign_guide.gd")
 const ExpeditionGuide=preload("res://application/expedition_guide.gd")
 @export var expedition_guidance:=true
@@ -118,6 +119,8 @@ func _ready() -> void:
 	_tap_fill.visibility_mode=TouchScreenButton.VISIBILITY_ALWAYS
 	_tap_fill.pressed.connect(func():interact_requested.emit())
 	add_child(_tap_fill)
+	exploration_map=preload("res://presentation/exploration_map.gd").new();add_child(exploration_map)
+	exploration_map.closed.connect(func():exploration_map.hide())
 	guide_view=GuideView.new()
 	add_child(guide_view)
 
@@ -235,7 +238,9 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
 	fullscreen_button.visible=is_paused and not touch
-	options_menu.visible=is_paused and not module_menu.visible
+	if not is_paused:exploration_map.hide()
+	if exploration_map.visible:exploration_map.fit(_last_safe_rect)
+	options_menu.visible=is_paused and not module_menu.visible and not exploration_map.visible
 	$restart.visible=is_paused or (not sim.is_running() and (not sim.life.enabled or dashboard.outcome_age>2.8))
 	new_map_button.visible=$restart.visible
 	$Refuge.visible=false # Standalone combat arena is no longer a player mode.

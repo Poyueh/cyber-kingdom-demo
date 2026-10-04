@@ -24,6 +24,8 @@ var _reveal=preload("res://presentation/exploration_reveal.gd").new()
 var _mist=preload("res://presentation/exploration_mist.gd").new()
 const Details=preload("res://presentation/frontier_details.gd")
 var _details: Array[Dictionary]=[]
+const Landmarks=preload("res://presentation/exploration_landmarks.gd")
+var _landmarks: Array[Dictionary]=[]
 const RiftVisual=preload("res://presentation/rift_visual.gd")
 const ResidentMotion=preload("res://presentation/resident_motion.gd")
 @export var resident_atlas: Texture2D=preload("res://art/characters/resident-motion-v002/residents.png")
@@ -51,7 +53,9 @@ func present(sim, player_x: float) -> void:
 		_resident_motion.clear()
 		_reveal=preload("res://presentation/exploration_reveal.gd").new()
 		_mist=preload("res://presentation/exploration_mist.gd").new()
+		_landmarks=Landmarks.layout(sim)
 		_details=Details.layout(sim.map_seed,sim.frontier.regions)
+		_details=_details.filter(func(d):return d.layer==2 or not _landmarks.any(func(site):return absf(d.x-site.x)<145))
 	_sim=sim
 	_camp_ignition_age=-1.0
 	for effect in sim.effects:
@@ -112,6 +116,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 func _draw_atmosphere(_left: float) -> void:
 	preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
 	Details.draw_background(self,_details,_sim.frontier.regions)
+	Landmarks.draw_on(self,_landmarks,_sim)
 	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
 
