@@ -11,6 +11,10 @@
     "Android": "debug APK export, version and archive pass; not device tested",
     "iOS": "Xcode export and zip pass; unsigned, not installed"
   },
-  "published": false,
-  "pages_verified": false
+  "published": true,
+  "pages_verified": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.19",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.19",
+  "pages_run": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37213507356",
+  "remote_integrity": "All 7 remote attachment sizes and SHA-256 match; live index.html, guide.html and index.pck match the export package"
 }

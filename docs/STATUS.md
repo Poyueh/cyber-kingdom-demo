@@ -1,11 +1,12 @@
 # 製作進度
 
-## 2026-10-04：v0.0.19 全身發力連斬（驗證完成，待發佈）
+## 2026-10-04：v0.0.19 全身發力連斬（已發佈）
 
 - 根因為舊圖格固定骨盆／雙腳，肩腰缺少轉動；重畫三段原地與踏斬共 48 張完整姿勢，加入承重、轉肩、沉腰、蹬地與收招回穩。固定像素比例、靴底對齊，校正部件掛點，調整圖格時間權重。
 - 不改核心攻擊、移動或存檔規則。macOS 正式關卡使用 J／A／D 驗證原地、踏進、左右與揮空；三種原地錄影世界 X 位移皆 0，完整三刀皆播放。指南使用同源實錄，三語同步。
 - 完整 tools/check.sh 通過，核心 2,485 斷言零失敗、連斬場景 26 項及命中回饋 18 項通過，無 SCRIPT ERROR／ERROR。手機與 Windows 未真機驗收。
-- [素材與提示词](../art/concepts/knight-combo-v004/README.md)、[原生實錄與驗證](reports/whole-body-combo/README.md)、[第 96 課](lessons/96-whole-body-combo.md)。
+- [素材與提示詞](../art/concepts/knight-combo-v004/README.md)、[原生實錄與驗證](reports/whole-body-combo/README.md)、[第 96 課](lessons/96-whole-body-combo.md)。
+- [v0.0.19 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.19) 已公開，七個附件大小與 SHA-256 相符；[Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.19) 部署成功，首頁／指南／PCK 均與套件一致。打包 Mac 遊戲已確認載入 v004 全身斬擊與原地接招；iOS 仍為待簽署 Xcode 專案。[發行驗證](reports/release-0.0.19/verification.json)。
 
 ## 2026-10-04：v0.0.18 刀光與斬擊力道（已發佈）
 
