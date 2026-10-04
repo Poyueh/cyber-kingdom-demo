@@ -1,0 +1,30 @@
+{
+  "source_commit": "bc8a01e2e4461bcc2052b1f462917640629756ca",
+  "source_tree": "90601413bc3c42770845b252d9bc68da7fd4b795",
+  "packages": {
+    "Cyber-Kingdom-Android-v0.0.17-debug.apk": {
+      "size_bytes": 83088097,
+      "sha256": "c2b598cc0bb8f8a39eb3918b85d260fbfe02d050ef236b9d017c5cabc4894a60"
+    },
+    "Cyber-Kingdom-Guide-v0.0.17.html": {
+      "size_bytes": 2974070,
+      "sha256": "cd6b5ced0a429f13509d3aea2baf1bcfa14dd833fa2d1e7edf44e0cc4703fc72"
+    },
+    "Cyber-Kingdom-Web-v0.0.17.zip": {
+      "size_bytes": 66389383,
+      "sha256": "2c9fca5d7d7ff705ee008275803746e251861b716f179e361cfdfc82b7383e9d"
+    },
+    "Cyber-Kingdom-Windows-v0.0.17.zip": {
+      "size_bytes": 92057028,
+      "sha256": "cb6b03c03e352d4e8bc3c4d4bb8643aa1f16e04623aa3f36cd430f8b64f38edd"
+    },
+    "Cyber-Kingdom-iOS-v0.0.17-Xcode.zip": {
+      "size_bytes": 166818421,
+      "sha256": "7761549ad365f7daa3348a7e86d50cf4af707e23130cee90ffa989fbd250e478"
+    },
+    "Cyber-Kingdom-macOS-v0.0.17.zip": {
+      "size_bytes": 114479071,
+      "sha256": "ed64f0ed9832c5756e737e1e1a81f2cb993c75484860bd8d3e6cac34177a0e87"
+    }
+  }
+}

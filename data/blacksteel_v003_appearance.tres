@@ -1,0 +1,57 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]
+[ext_resource type="SpriteFrames" path="res://data/blacksteel_v003_frames.tres" id="frames"]
+[ext_resource type="Resource" path="res://data/blacksteel_v003_combo.tres" id="combo"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/run-unarmed.png" id="unarmed_run"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/idle-unarmed.png" id="unarmed_idle"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/sprint-unarmed.png" id="unarmed_sprint"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/walk-unarmed.png" id="unarmed_tired"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/hurt-unarmed.png" id="unarmed_hurt"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/death-unarmed.png" id="unarmed_death"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/rest.png" id="rest"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/ceremony.png" id="ceremony"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-v003/mounted.png" id="mounted"]
+
+[resource]
+script = ExtResource("script")
+frames = ExtResource("frames")
+combo = ExtResource("combo")
+unarmed_run = ExtResource("unarmed_run")
+unarmed_idle = ExtResource("unarmed_idle")
+unarmed_sprint = ExtResource("unarmed_sprint")
+unarmed_tired = ExtResource("unarmed_tired")
+unarmed_hurt = ExtResource("unarmed_hurt")
+unarmed_death = ExtResource("unarmed_death")
+rest = ExtResource("rest")
+ceremony = ExtResource("ceremony")
+mounted = ExtResource("mounted")
+idle_frames = 4
+idle_columns = 4
+stride_frames = 12
+stride_columns = 4
+run_fps = 18.0
+sprint_fps = 24.0
+tired_fps = 10.0
+mounted_offset = Vector2(0, 0)
+mounted_gait_frames = 4
+mounted_attack_start = 4
+module_sockets = {
+"run.png": [Vector2(63, 40), Vector2(62, 40), Vector2(62, 39), Vector2(62, 37), Vector2(62, 38), Vector2(63, 40), Vector2(63, 39), Vector2(63, 40), Vector2(63, 39), Vector2(63, 38), Vector2(66, 37), Vector2(66, 38)],
+"run-unarmed.png": [Vector2(62, 40), Vector2(63, 40), Vector2(63, 38), Vector2(64, 38), Vector2(63, 39), Vector2(62, 39), Vector2(64, 40), Vector2(62, 40), Vector2(63, 39), Vector2(63, 37), Vector2(62, 38), Vector2(64, 39)],
+"sprint.png": [Vector2(63, 42), Vector2(67, 40), Vector2(63, 40), Vector2(62, 40), Vector2(65, 37), Vector2(61, 42), Vector2(66, 42), Vector2(65, 39), Vector2(67, 42), Vector2(61, 43), Vector2(62, 39), Vector2(66, 38)],
+"sprint-unarmed.png": [Vector2(63, 42), Vector2(62, 41), Vector2(63, 40), Vector2(61, 39), Vector2(63, 40), Vector2(61, 41), Vector2(62, 43), Vector2(62, 41), Vector2(63, 42), Vector2(67, 41), Vector2(62, 39), Vector2(62, 41)],
+"walk.png": [Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(63, 38), Vector2(64, 39), Vector2(64, 38), Vector2(63, 38), Vector2(63, 38)],
+"walk-unarmed.png": [Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 37), Vector2(64, 37), Vector2(64, 37), Vector2(64, 38), Vector2(64, 38), Vector2(63, 39), Vector2(63, 38), Vector2(64, 39)],
+"idle.png": [Vector2(64, 38), Vector2(64, 38), Vector2(64, 38), Vector2(64, 38)],
+"hurt.png": [Vector2(55, 39), Vector2(69, 52)],
+"death.png": [Vector2(69, 63), Vector2(67, 75)],
+"idle-unarmed.png": [Vector2(64, 38), Vector2(64, 37), Vector2(64, 38), Vector2(64, 38)],
+"hurt-unarmed.png": [Vector2(53, 39), Vector2(63, 49)],
+"death-unarmed.png": [Vector2(69, 63), Vector2(69, 75)],
+"rest.png": [Vector2(80, 59), Vector2(83, 64), Vector2(80, 72), Vector2(82, 62), Vector2(81, 60), Vector2(83, 64), Vector2(79, 72), Vector2(82, 61)],
+"ceremony.png": [Vector2(79, 53), Vector2(84, 63), Vector2(82, 54), Vector2(82, 54), Vector2(77, 59), Vector2(77, 51), Vector2(76, 63), Vector2(78, 59)],
+"mounted.png": [Vector2(85, 31), Vector2(84, 31), Vector2(81, 34), Vector2(84, 32), Vector2(81, 34), Vector2(89, 38), Vector2(92, 43), Vector2(85, 36)],
+"planted.png": [Vector2(75, 69), Vector2(77, 69), Vector2(69, 68), Vector2(77, 70), Vector2(80, 73), Vector2(78, 72), Vector2(77, 69), Vector2(76, 71), Vector2(74, 70), Vector2(75, 70), Vector2(72, 70), Vector2(82, 70), Vector2(81, 71), Vector2(83, 70), Vector2(77, 70), Vector2(74, 72), Vector2(76, 69), Vector2(79, 68), Vector2(70, 68), Vector2(92, 78), Vector2(88, 76), Vector2(78, 76), Vector2(75, 70), Vector2(76, 68)],
+"advancing.png": [Vector2(77, 68), Vector2(87, 67), Vector2(85, 68), Vector2(91, 71), Vector2(98, 73), Vector2(80, 71), Vector2(78, 72), Vector2(78, 71), Vector2(75, 69), Vector2(96, 73), Vector2(87, 70), Vector2(81, 69), Vector2(82, 69), Vector2(84, 69), Vector2(82, 70), Vector2(73, 70), Vector2(77, 70), Vector2(83, 70), Vector2(81, 70), Vector2(96, 77), Vector2(97, 74), Vector2(76, 73), Vector2(81, 70), Vector2(76, 70)],
+}

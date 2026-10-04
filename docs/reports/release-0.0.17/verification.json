@@ -1,0 +1,16 @@
+{
+  "version": "0.0.17",
+  "source_commit": "bc8a01e2e4461bcc2052b1f462917640629756ca",
+  "source_tree": "90601413bc3c42770845b252d9bc68da7fd4b795",
+  "checks": "tools/check.sh: PASS; core 2485 assertions, zero failures; no SCRIPT ERROR or ERROR",
+  "native_playback": "macOS Compatibility real campaign InputMap captures: 12-frame armed/unarmed run and sprint, stationary/advancing combos, sword ceremony and fatigue; exported PCK loads v003 and rooted cut verified",
+  "exports": {
+    "h5": "pass",
+    "Windows": "export and zip integrity pass; not device tested",
+    "macOS": "export, ad-hoc signature, zip integrity and PCK native scene pass",
+    "Android": "debug APK export, version and zip integrity pass; not device tested",
+    "iOS": "Xcode export and zip integrity pass; unsigned, not installed"
+  },
+  "published": false,
+  "pages_verified": false
+}
