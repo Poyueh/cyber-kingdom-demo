@@ -1,0 +1,20 @@
+{
+  "index.html": {
+    "status": 200,
+    "size_bytes": 5542,
+    "sha256": "c9eee1715dde9833901beaacf206beb4d03540e6db4bff9e4a0f102bbb051c6b",
+    "matches_package": true
+  },
+  "guide.html": {
+    "status": 200,
+    "size_bytes": 2298721,
+    "sha256": "2e66c7ab190a7330c7eab2f04801c07499823c60076b4cfb275c2dafd9c74b1b",
+    "matches_package": true
+  },
+  "index.pck": {
+    "status": 200,
+    "size_bytes": 55244132,
+    "sha256": "c5cc2de5fbd773777bef1faff76077f1a22d33b48c01769bad6d34ad981f6688",
+    "matches_package": true
+  }
+}

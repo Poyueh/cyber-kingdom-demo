@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-04：v0.0.18 刀光與斬擊力道（驗證通過，準備發佈）
+## 2026-10-04：v0.0.18 刀光與斬擊力道（已發佈）
 
 - 主戰役新增像素刀光、接觸火花、命中停頓與小幅鏡頭推力。三刀分別斜切／回挑／重劈，調整蓄力與收招權重；未改傷害、範圍、消耗或存檔格式。
 - 實際關卡回歸先重現 3 項失敗，修正後 18 項通過；完整 tools/check.sh 通過，核心 2,485 斷言零失敗、無 SCRIPT ERROR／ERROR。macOS 原生錄影驗證三段刀光、左右與方向踏斬；手機／Windows 未真機驗收。
-- 三語 Help 與實錄更新，[驗證](reports/sword-impact/README.md)、[第 95 課](lessons/95-sword-impact.md)。接續 Gitflow 打包與公開 Release／Pages 驗證。
+- 三語 Help 與實錄更新，[驗證](reports/sword-impact/README.md)、[第 95 課](lessons/95-sword-impact.md)。[v0.0.18 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.18) 已公開，七個附件雜湊和大小相符；[Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.18) 部署成功，首頁／指南／PCK 與本次套件一致。打包後 macOS 實際確認刀光、原地停頓與接招；iOS 仍為待簽署專案。[發行紀錄](reports/release-0.0.18/verification.json)。
 
 ## 2026-10-04：v0.0.17 騎士全套動作重繪（已發佈）
 
