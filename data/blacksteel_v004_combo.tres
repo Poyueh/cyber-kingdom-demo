@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/combo_motion.gd" id="script"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-combo-v004/planted.png" id="planted"]
+[ext_resource type="Texture2D" path="res://art/characters/blacksteel-combo-v004/advancing.png" id="advancing"]
+
+[resource]
+script = ExtResource("script")
+planted_atlas = ExtResource("planted")
+moving_atlas = ExtResource("advancing")
+moving_gait_rows = 1
+slash_weights = PackedFloat32Array(0.09, 0.13, 0.18, 0.1, 0.15, 0.13, 0.12, 0.1)
+rising_weights = PackedFloat32Array(0.08, 0.08, 0.09, 0.15, 0.15, 0.1, 0.13, 0.22)
+heavy_weights = PackedFloat32Array(0.065, 0.095, 0.24, 0.105, 0.175, 0.11, 0.11, 0.1)

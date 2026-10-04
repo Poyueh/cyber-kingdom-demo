@@ -3,6 +3,7 @@ extends SceneTree
 var game: Node
 var output: String = "/tmp/sword-feedback-render"
 var evidence: Dictionary = {}
+var body_only: bool = false
 func _initialize() -> void:
 	ProjectSettings.set_setting("campaign/persistence_enabled",false)
 	ProjectSettings.set_setting("campaign/control_preview",1)
@@ -18,6 +19,7 @@ func tick() -> void:
 	await physics_frame
 	game.paused = false
 	game._physics_process(1.0/60)
+	if body_only: game.knight.get_node("SwordTrail").hide()
 func capture(clip: String, index: int) -> void:
 	var camera: Camera2D = game.knight.get_node("Camera2D")
 	camera.reset_smoothing()
@@ -34,6 +36,10 @@ func combo(clip: String, advancing: bool, facing: int, hits: bool) -> void:
 	game.sim.interact(30,"hall")
 	for unused: int in range(150): await tick()
 	if clip == "mounted": game.sim.frontier.drill_level = 3
+	if "--module" in OS.get_cmdline_user_args():
+		game.sim.modules.found.assign(["arc"])
+		game.sim.modules.stored.assign(["arc"])
+		game.sim.modules.equip("arc")
 	game.sim.world.people.clear()
 	game.sim.clock.remaining = 10000
 	game.knight.position = Vector2(800,430)
@@ -60,6 +66,9 @@ func combo(clip: String, advancing: bool, facing: int, hits: bool) -> void:
 	key(KEY_D,false)
 	key(KEY_A,false)
 func run() -> void:
+	body_only = "--body-only" in OS.get_cmdline_user_args()
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--output="): output = argument.trim_prefix("--output=")
 	DirAccess.make_dir_recursive_absolute(output)
 	root.size = Vector2i(960,540)
 	game = load("res://scenes/frontier.tscn").instantiate()
@@ -71,6 +80,8 @@ func run() -> void:
 		output = "/tmp/sword-mounted-render"
 		DirAccess.make_dir_recursive_absolute(output)
 		await combo("mounted",false,1,true)
+	elif body_only:
+		await combo("body",false,1,false)
 	else:
 		await combo("contact",false,1,true)
 		await combo("advancing",true,1,true)

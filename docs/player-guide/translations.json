@@ -1442,5 +1442,17 @@
   "適用 v0.0.18：新增三段像素刀光、命中火花、短暫停頓與鏡頭回饋，重劈蓄力與收招節奏更鮮明。沿用全套重繪動作，跑步與衝刺各 12 張；既有紀錄也能使用。新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。較早圖片保留舊版示意標示。這是指南，不是遊戲本體。": {
     "en": "For v0.0.18: three distinct pixel blade trails, contact sparks, brief hit stop and camera feedback, with clearer anticipation and recovery on the heavy cut. Includes the redrawn action set with 12-frame runs and sprints; existing saves work. New journeys also have the merchant, scarce chests, exploration map and two module ruins. Older illustrations remain labelled. This guide is not the game.",
     "zh_CN": "适用 v0.0.18：新增三段像素刀光、命中火花、短暂停顿与镜头反馈，重劈蓄力与收招节奏更鲜明。沿用全套重绘动作，跑步与冲刺各 12 张；既有记录也能使用。新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。较早图片保留旧版示意标示。这是指南，不是游戏本体。"
+  },
+  "v0.0.19 原生遊戲實錄 · 轉肩、沉腰與蹬地帶動三段連斬。": {
+    "en": "v0.0.19 native gameplay · Shoulder turns, shifting weight and leg drive power all three cuts.",
+    "zh_CN": "v0.0.19 原生游戏实录 · 转肩、沉腰与蹬地带动三段连斩。"
+  },
+  "連續點按接斜切、回挑、重劈。騎士先轉肩蓄力，蹬地轉腰揮劍，收招時穩住重心；每刀都有完整的全身姿勢。青白刀光、命中火花與短暫停頓配合劍路，揮空不會停頓。不按方向就原地出刀，按住方向才踏斬，放開就停止推進。": {
+    "en": "Tap to chain a diagonal cut, rising cut and heavy finisher. The knight winds up through the shoulders, drives the blade with the legs and hips, then settles into recovery. Cyan-white blade trails, contact sparks and brief hit stop follow each strike; misses do not pause. Stay planted without a direction, or hold a direction to advance. Releasing stops the advance.",
+    "zh_CN": "连续点按接斜切、回挑、重劈。骑士先转肩蓄力，蹬地转腰挥剑，收招时稳住重心；每刀都有完整的全身姿势。青白刀光、命中火花与短暂停顿配合剑路，挥空不会停顿。不按方向就原地出刀，按住方向才踏斩，放开就停止推进。"
+  },
+  "適用 v0.0.19：重畫三段原地與踏斬共 48 張全身姿勢，肩、腰與腿一起發力，並校正部件掛點及出刀節奏。保留像素刀光、命中停頓與 12 張跑步／衝刺；既有紀錄可續玩。新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。較早圖片保留舊版示意標示。這是指南，不是遊戲本體。": {
+    "en": "For v0.0.19: 48 redrawn full-body poses across planted and advancing three-hit combos, coordinating the shoulders, hips and legs, with adjusted module sockets and timing. Pixel blade trails, hit stop and 12-frame runs and sprints remain. Existing saves work. New journeys also feature the merchant, scarce chests, exploration map and two module ruins. Older illustrations remain labelled. This guide is not the game.",
+    "zh_CN": "适用 v0.0.19：重画三段原地与踏斩共 48 张全身姿势，肩、腰与腿一起发力，并校正部件挂点及出刀节奏。保留像素刀光、命中停顿与 12 张跑步／冲刺；既有记录可续玩。新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。较早图片保留旧版示意标示。这是指南，不是游戏本体。"
   }
 }
