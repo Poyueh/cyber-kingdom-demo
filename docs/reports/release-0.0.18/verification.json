@@ -1,0 +1,16 @@
+{
+  "version": "0.0.18",
+  "source_commit": "c1c5599c397e46c34e97ca3f861eb4d60b572ffb",
+  "source_tree": "a9f3866590894544e31fdc3dfb4278e990de8653",
+  "checks": "tools/check.sh PASS; core 2485, sword scene 18 assertions; no SCRIPT ERROR/ERROR; final mounted placement rechecked with native capture and 18 scene assertions",
+  "native_playback": "macOS Compatibility real InputMap: 3 cuts, contact/advancing/left/empty; mounted height inspected. Exported PCK confirms blade trail, hit stop, planted position, camera response and buffered next attack.",
+  "exports": {
+    "h5": "export and zip pass",
+    "Windows": "export and zip pass; not device tested",
+    "macOS": "export, ad-hoc signature, zip and actual PCK smoke pass",
+    "Android": "debug APK export, version and archive pass; not device tested",
+    "iOS": "Xcode export and zip pass; unsigned, not installed"
+  },
+  "published": false,
+  "pages_verified": false
+}
