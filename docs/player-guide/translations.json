@@ -1426,5 +1426,9 @@
   "夜間不會全面停工：工匠與農夫附近有魔物才避難，獵人會射箭反擊，槍盾兵守住兩側。居民也會保管地面龍晶，騎士靠近時交出。": {
     "zh_CN": "夜间不会全面停工：工匠与农夫附近有魔物才避难，猎人会射箭反击，枪盾兵守住两侧。居民也会保管地面龙晶，骑士靠近时交出。",
     "en": "Work does not stop automatically at night. Engineers and farmers shelter when monsters approach, hunters fight with arrows, and spear-and-shield guards hold both sides. Residents also collect loose crystals and hand them over when the knight approaches."
+  },
+  "暫停後點地圖圖示開啟邊境探索圖，金色箭頭標示你的位置；只記錄已探索地區與尚未領取的寶箱、部件。林地、晶谷與遺跡有不同地標，獎勵旁的青色地面符光在領取後熄滅。": {
+    "zh_CN": "暂停后点地图图标开启边境探索图，金色箭头标示你的位置；只记录已探索地区与尚未领取的宝箱、部件。林地、晶谷与遗迹有不同地标，奖励旁的青色地面符光在领取后熄灭。",
+    "en": "Pause and select the map icon to open the frontier map. The gold arrow marks your position; only explored regions and unclaimed chests and modules are recorded. Groves, crystal valleys and ruins have distinct landmarks. Cyan ground runes beside rewards go dark after collection."
   }
 }

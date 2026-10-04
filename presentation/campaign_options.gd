@@ -5,6 +5,7 @@ signal volume_changed(music: float,effects: float,ambience: float)
 signal save_checkpoint_requested
 signal load_checkpoint_requested
 signal title_requested
+signal exploration_requested
 const LanguageSelector=preload("res://presentation/language_selector.gd")
 var music: HSlider
 var effects: HSlider
@@ -32,6 +33,8 @@ func _ready() -> void:
 	load_button.pressed.connect(func():load_checkpoint_requested.emit())
 	var home=_button(row,"camp");_tooltips[home]="保存並回起始頁"
 	home.pressed.connect(func():title_requested.emit())
+	var map_button:=_button(row,"map");map_button.name="ExplorationMap";_tooltips[map_button]="邊境探索圖"
+	map_button.pressed.connect(func():exploration_requested.emit())
 	if OS.has_feature("web"):
 		var guide_button:=_button(row,"book")
 		guide_button.name="PlayerGuide"
@@ -50,7 +53,7 @@ func _volume_row(box: VBoxContainer, key: String) -> HSlider:
 	var number:=Label.new();number.custom_minimum_size=Vector2(42,48);number.vertical_alignment=VERTICAL_ALIGNMENT_CENTER;row.add_child(number);_numbers.append(number)
 	return slider
 func _button(row: HBoxContainer,key: String) -> Button:
-	var button:=Button.new();button.icon=Icons.get_icon(key);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",28);button.custom_minimum_size=Vector2(64,52);button.focus_mode=Control.FOCUS_NONE;row.add_child(button)
+	var button:=Button.new();button.icon=Icons.get_icon(key);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",28);button.custom_minimum_size=Vector2(52,52);button.focus_mode=Control.FOCUS_NONE;row.add_child(button)
 	return button
 func _volume_changed(_value: float) -> void:
 	_show_levels()

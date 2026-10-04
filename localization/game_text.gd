@@ -1,6 +1,22 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["營火", "營火", "营火", "Campfire"],
+ ["寶箱", "寶箱", "宝箱", "Treasure chest"],
+
+ ["旅人林地", "旅人林地", "旅人林地", "Wayfarer Grove"],
+ ["龍脊晶谷", "龍脊晶谷", "龙脊晶谷", "Dragonspine Vale"],
+ ["斷環聖所", "斷環聖所", "断环圣所", "Broken Ring Sanctuary"],
+ ["未探索", "未探索", "未探索", "Unexplored"],
+ ["特殊部件", "特殊部件", "特殊部件", "Module"],
+ ["已封印", "已封印", "已封印", "Sealed"],
+ ["地獄之門", "地獄之門", "地狱之门", "Hell gate"],
+ ["營火腹地", "營火腹地", "营火腹地", "Campfire heartland"],
+ ["邊境探索圖", "邊境探索圖", "边境探索图", "Frontier map"],
+ ["金色箭頭是你的位置。點選地區或圖示查看；斜線區域仍未探索。", "金色箭頭是你的位置。點選地區或圖示查看；斜線區域仍未探索。", "金色箭头是你的位置。点选地区或图标查看；斜线区域仍未探索。", "The gold arrow marks your position. Select a region or icon to inspect it; hatched areas are unexplored."],
+ ["地面青色符光指向尚未取得的寶箱或部件，領取後會熄滅。", "地面青色符光指向尚未取得的寶箱或部件，領取後會熄滅。", "地面青色符光指向尚未取得的宝箱或部件，领取后会熄灭。", "Cyan ground runes lead to unclaimed chests or modules. Their light fades after collection."],
+ ["返回選單", "返回選單", "返回菜单", "Back to menu"],
+
  ["委託龍晶商人出遊", "委託龍晶商人出遊", "委托龙晶商人出游", "Fund the crystal merchant’s trip"],
  ["靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人领取龙晶；付一颗委托，隔天再补给。", "Approach the merchant for crystals. Fund a trip with one crystal; collect again tomorrow."],
 
