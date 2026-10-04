@@ -8,6 +8,8 @@ const Mapper = preload("res://bootstrap/tuning_mapper.gd")
 @onready var view = $WorldView
 @onready var controls = $InputAdapter
 @onready var hud = $HUD
+const SwordFeedback = preload("res://presentation/knight_combat_feedback.gd")
+var sword_feedback: SwordFeedback
 var sim: Session
 var paused := false
 var _requested_interaction := false
@@ -45,6 +47,7 @@ func _physics_process(seconds: float) -> void:
 		_requested_interaction = false
 		controls.release_all()
 	if not paused:
+		if sword_feedback != null: seconds = sword_feedback.advance(seconds)
 		sim.advance(seconds,knight.position.x,knight.position.y)
 		if sim.is_running():
 			if command.direction != 0 and sim.hero.dash_remaining <= 0:
@@ -56,6 +59,7 @@ func _physics_process(seconds: float) -> void:
 			_apply_interaction(command,seconds)
 			knight.advance_motion(_travel_axis(command.direction,seconds),command.jump,seconds)
 			sim.strike_from(knight.position.x,knight.position.y)
+			if sword_feedback != null: sword_feedback.observe(sim.effects,knight.global_position)
 		knight.refresh_visual(seconds)
 	_requested_interaction = false
 	view.present(sim,knight.position.x)

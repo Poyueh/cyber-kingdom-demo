@@ -167,9 +167,9 @@ scale=82/horse[0].height
 pack([native(f,scale,(160,128),97,hop=3 if i==2 else 0,anchor='feet') for i,f in enumerate(horse)],8,'mounted.png',mounted=True)
 
 WEIGHTS = [
-    [.14,.13,.13,.10,.15,.13,.12,.10],
-    [.08,.09,.08,.15,.15,.10,.15,.20],
-    [.14,.14,.12,.12,.18,.10,.10,.10],
+    [.08,.08,.24,.07,.15,.13,.13,.12],
+    [.06,.06,.13,.07,.19,.14,.13,.22],
+    [.055,.065,.28,.07,.21,.07,.12,.13],
 ]
 for suffix,atlas in [('', 'planted.png'),('-advance','advancing.png')]:
     frames=[]
