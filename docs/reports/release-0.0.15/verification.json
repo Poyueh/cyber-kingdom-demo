@@ -14,7 +14,7 @@
   "Windows": "unsigned; not device tested",
   "Android": "ARM64 debug signing; versionName 0.0.15 and versionCode 15 verified; not device tested",
   "iOS": "Xcode project only; signing/build/install/device test pending",
-  "H5": "export and packaged ambience passed; Pages publication pending",
+  "H5": "export and packaged ambience passed; Pages deployed; served HTML, guide and PCK hashes match release; online prologue and start menu visually checked; full browser gameplay and Help button interaction not verified",
   "packages": {
     "Cyber-Kingdom-Android-v0.0.15-debug.apk": {
       "sha256": "7bdc2cd26221d10c58402181fe751714a4cf393aeb9692463ef8fd21dfe9243d",
@@ -41,7 +41,75 @@
       "size_bytes": 113638246
     }
   },
-  "release_published": false,
+  "release_published": true,
   "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.15",
-  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/"
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/",
+  "remote_asset_verification": {
+    "id": 403034540,
+    "tag": "v0.0.15",
+    "draft": false,
+    "files": [
+      {
+        "name": "Cyber-Kingdom-Android-v0.0.15-debug.apk",
+        "size": 82223355,
+        "digest": "sha256:7bdc2cd26221d10c58402181fe751714a4cf393aeb9692463ef8fd21dfe9243d"
+      },
+      {
+        "name": "Cyber-Kingdom-Guide-v0.0.15.html",
+        "size": 2800836,
+        "digest": "sha256:56bea524f469984d233c2cca38221ec5b261c2d8a7cf202864e0c563849c7f01"
+      },
+      {
+        "name": "Cyber-Kingdom-iOS-v0.0.15-Xcode.zip",
+        "size": 165976896,
+        "digest": "sha256:72ad2dd0f3c4afe1ff7a8c269cfccc9dde4edbcad8633bf75cd5850d2476c44d"
+      },
+      {
+        "name": "Cyber-Kingdom-macOS-v0.0.15.zip",
+        "size": 113638246,
+        "digest": "sha256:55a71086b1cc83cff94a82197a2617aa1a28b4a62e394a7cfb2e231b1b60880c"
+      },
+      {
+        "name": "Cyber-Kingdom-Web-v0.0.15.zip",
+        "size": 65438496,
+        "digest": "sha256:091944347eba91ca083ac1a3a5d26c2ae5c61eda176b814843303ba678a1547a"
+      },
+      {
+        "name": "Cyber-Kingdom-Windows-v0.0.15.zip",
+        "size": 91216197,
+        "digest": "sha256:44846546e78032e0b895ed1dfe72f95d8e3ddb5d60638db326e7482ebd47960c"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "size": 601,
+        "digest": "sha256:b5d54a8ac1ea91439cd6565474b8c9355898be81bebcc725758c2f5e2658e742"
+      }
+    ]
+  },
+  "pages_deployment": {
+    "run_id": 37205993264,
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37205993264",
+    "head_sha": "f537b6fe01a626ff16c87c03564cb7609cb56a7a",
+    "conclusion": "success"
+  },
+  "pages_verified_files": {
+    "index.html": {
+      "status": 200,
+      "size_bytes": 5542,
+      "sha256": "133b296f0df5015a1aa758a33b8643330624dbb51cb908328fbd9d732f8870a2",
+      "matches_package": true
+    },
+    "guide.html": {
+      "status": 200,
+      "size_bytes": 2800836,
+      "sha256": "56bea524f469984d233c2cca38221ec5b261c2d8a7cf202864e0c563849c7f01",
+      "matches_package": true
+    },
+    "index.pck": {
+      "status": 200,
+      "size_bytes": 54363044,
+      "sha256": "8bc4b79d37990a6f667910237dad99571abce19f10480fe60316c9638c4a6867",
+      "matches_package": true
+    }
+  }
 }
