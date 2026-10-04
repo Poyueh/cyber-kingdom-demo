@@ -77,7 +77,7 @@ func activate(sim: RefCounted, x: float) -> bool:
   if absf(distance)>spec.reach:continue
   if equipped=="lance" and distance*sim.hero.facing<0:continue
   if enemy.fighter.take_damage(spec.damage):
-   enemy.x=clampf(enemy.x+signf(distance)*24,sim.frontier.left_boundary,sim.frontier.right_boundary)
+   sim.move_raider(enemy,clampf(enemy.x+signf(distance)*24,sim.frontier.left_boundary,sim.frontier.right_boundary))
  sim.effects.append({"kind":"module_"+equipped,"x":x,"direction":sim.hero.facing,"life":0.5})
  return true
 

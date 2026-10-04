@@ -1,0 +1,41 @@
+{
+  "source_commit": "515929db5d7b31ea739dd2ab1973661f9beeb771",
+  "source_tree": "5c1ca5d53168238e51152490814f01e4ee7408c2",
+  "packages": {
+    "Cyber-Kingdom-Android-v0.0.16-debug.apk": {
+      "size_bytes": 82223355,
+      "sha256": "c5d0d00d098405f3d4640d9e356b3bc82953d703753972132b282af87cdbcfb0"
+    },
+    "Cyber-Kingdom-Guide-v0.0.16.html": {
+      "size_bytes": 2801277,
+      "sha256": "f8037bcab1e05ed664ccb96e089fe4f2cd69e605b22caee90556f9f93f962009"
+    },
+    "Cyber-Kingdom-Web-v0.0.16.zip": {
+      "size_bytes": 65438910,
+      "sha256": "e007c3f6e822e65031b7400c49878357b9d41f5bc2b3fac1df461c48c94ddeaf"
+    },
+    "Cyber-Kingdom-Windows-v0.0.16.zip": {
+      "size_bytes": 91216375,
+      "sha256": "269624449f292ed16870def0fb45c3002b765ee2326f0461dea0ae9e86b42127"
+    },
+    "Cyber-Kingdom-iOS-v0.0.16-Xcode.zip": {
+      "size_bytes": 165977099,
+      "sha256": "e240c6cce10e5fb6bacdd8654661ba2f18e145713fbb2f0ded7a2b27a986cbce"
+    },
+    "Cyber-Kingdom-macOS-v0.0.16.zip": {
+      "size_bytes": 113638418,
+      "sha256": "5ef33784804a6c67dc66853451048db68271341614d7de4b6a3854cf96848eb8"
+    }
+  },
+  "version": "v0.0.16",
+  "full_check": "passed; no SCRIPT ERROR or ERROR",
+  "core_assertions": 2485,
+  "core_failures": 0,
+  "native_test": "source and packaged PCK scene: attacker and crystal carrier remain on opposite sides of an intact wall; wall damaged",
+  "archive_check": "ZIP and APK CRC passed",
+  "macOS": "ad-hoc signature verified; not notarized",
+  "Windows": "unsigned; no device playtest",
+  "Android": "ARM64 debug APK; versionName 0.0.16 / versionCode 16 verified; no device playtest",
+  "iOS": "Xcode project only; no signing/build/install/device test",
+  "release_published": false
+}

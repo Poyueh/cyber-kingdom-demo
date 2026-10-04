@@ -23,19 +23,21 @@ static func advance(sim: RefCounted, enemy: Dictionary, seconds: float) -> bool:
   if float(enemy.get("stagger",0))>0:
    enemy.stagger=maxf(0,enemy.stagger-seconds);return true
   enemy.direction=signf(gem.x-enemy.x) if distance>1 else enemy.get("direction",-1.0)
-  enemy.x=move_toward(enemy.x,gem.x,70*seconds)
+  sim.move_raider(enemy,move_toward(enemy.x,gem.x,70*seconds))
   if absf(gem.x-enemy.x)<=PICKUP_RADIUS:
    gem.amount-=1;enemy["carried_crystals"]=1
    enemy["retreat_x"]=sim.mission.entry_x(int(enemy.get("side",1)))
    sim.pouch.drops=sim.pouch.drops.filter(func(item):return item.amount>0)
   return true
+ # Let the normal attack state machine break a wall obstructing the return trip.
+ if not sim._blocking_wall(enemy.x,enemy.retreat_x).is_empty():return false
  enemy.fighter.advance(seconds)
  enemy.windup=0.0;enemy.target={}
  if float(enemy.get("stagger",0))>0:
   enemy.stagger=maxf(0,enemy.stagger-seconds);return true
  var destination: float=enemy.retreat_x
  enemy.direction=signf(destination-enemy.x)
- enemy.x=move_toward(enemy.x,destination,RETREAT_SPEED*seconds)
+ sim.move_raider(enemy,move_toward(enemy.x,destination,RETREAT_SPEED*seconds))
  if absf(enemy.x-destination)<10:
   enemy.fighter.hp=0;enemy["escaped"]=true;enemy.carried_crystals=0
   sim.effects.append({"kind":"portal_spawn","x":destination,"y":430.0,"life":0.6})
