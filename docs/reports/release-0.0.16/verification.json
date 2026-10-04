@@ -37,5 +37,72 @@
   "Windows": "unsigned; no device playtest",
   "Android": "ARM64 debug APK; versionName 0.0.16 / versionCode 16 verified; no device playtest",
   "iOS": "Xcode project only; no signing/build/install/device test",
-  "release_published": false
+  "release_published": true,
+  "remote_release": {
+    "databaseId": 403039576,
+    "isDraft": false,
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.16",
+    "assets_verified": [
+      {
+        "name": "Cyber-Kingdom-Android-v0.0.16-debug.apk",
+        "size": 82223355,
+        "digest": "sha256:c5d0d00d098405f3d4640d9e356b3bc82953d703753972132b282af87cdbcfb0"
+      },
+      {
+        "name": "Cyber-Kingdom-Guide-v0.0.16.html",
+        "size": 2801277,
+        "digest": "sha256:f8037bcab1e05ed664ccb96e089fe4f2cd69e605b22caee90556f9f93f962009"
+      },
+      {
+        "name": "Cyber-Kingdom-iOS-v0.0.16-Xcode.zip",
+        "size": 165977099,
+        "digest": "sha256:e240c6cce10e5fb6bacdd8654661ba2f18e145713fbb2f0ded7a2b27a986cbce"
+      },
+      {
+        "name": "Cyber-Kingdom-macOS-v0.0.16.zip",
+        "size": 113638418,
+        "digest": "sha256:5ef33784804a6c67dc66853451048db68271341614d7de4b6a3854cf96848eb8"
+      },
+      {
+        "name": "Cyber-Kingdom-Web-v0.0.16.zip",
+        "size": 65438910,
+        "digest": "sha256:e007c3f6e822e65031b7400c49878357b9d41f5bc2b3fac1df461c48c94ddeaf"
+      },
+      {
+        "name": "Cyber-Kingdom-Windows-v0.0.16.zip",
+        "size": 91216375,
+        "digest": "sha256:269624449f292ed16870def0fb45c3002b765ee2326f0461dea0ae9e86b42127"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "size": 601,
+        "digest": "sha256:4ea53b4c4fda3da25c349ac0150c471f15e1d110e46680dbf5d2341d56167586"
+      }
+    ]
+  },
+  "pages_deployment": {
+    "run_id": 37206770805,
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37206770805",
+    "conclusion": "success"
+  },
+  "pages_verified_files": {
+    "index.html": {
+      "status": 200,
+      "size_bytes": 5542,
+      "sha256": "1ce6bea75a46833661b1fbd3c2c16ac28680270a0bf77ef1f918c271899e0249",
+      "matches_package": true
+    },
+    "guide.html": {
+      "status": 200,
+      "size_bytes": 2801277,
+      "sha256": "f8037bcab1e05ed664ccb96e089fe4f2cd69e605b22caee90556f9f93f962009",
+      "matches_package": true
+    },
+    "index.pck": {
+      "status": 200,
+      "size_bytes": 54363508,
+      "sha256": "feae2fbd3aec307dabf5fda372173d8f41812fb62d706cd07ce887ad53275240",
+      "matches_package": true
+    }
+  }
 }
