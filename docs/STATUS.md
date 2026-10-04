@@ -1,12 +1,12 @@
 # 製作進度
 
-## 2026-10-04：v0.0.15 發行準備
+## 2026-10-04：v0.0.15 已發佈
 
 - 使用者要求每次新功能同步三語遊戲說明並發布試玩，已寫入 AGENTS.md 與 Gitflow；預設目的地仍為 cyber-kingdom-demo 的 Release／Pages。
 - v0.0.15 整合商人、稀缺寶箱、存檔 CPU 優化、探索地標／探索圖、兩座部件遺跡與新版 UI；指南同步三語，附獨立離線 HTML。
 - 完整 tools/check.sh 通過，核心 2,443 斷言零失敗，探索圖 14 項與遺跡場景 9 項通過，無 SCRIPT ERROR／ERROR。
 - H5、Mac、Windows、Android APK 與 iOS Xcode 專案匯出及 ZIP／APK 完整性檢查通過；Mac 原生主選單目視、打包 PCK 遺跡解鎖驗證通過。手機與 Windows 未真機驗證，iOS 未簽署安裝。
-- 遠端公開與 Pages 核對進行中，完成後更新本段與 [發行驗證](reports/release-0.0.15/verification.json)。
+- [v0.0.15 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.15) 已公開，7 個附件大小／SHA-256 全數核對；[Pages 試玩](https://poyueh.github.io/cyber-kingdom-demo/) 部署成功，線上 HTML／指南／PCK 與套件一致。瀏覽器前導與主選單目視通過，完整瀏覽器遊玩／Help 按鈕互動尚未驗證。詳見 [發行驗證](reports/release-0.0.15/verification.json)。下列本機完成紀錄均為當時狀態，本版已納入；兩座遺跡挑戰需建立新旅程。
 
 ## 2026-10-04：場景內遺跡挑戰與探索 UI（本機完成，未發佈）
 
