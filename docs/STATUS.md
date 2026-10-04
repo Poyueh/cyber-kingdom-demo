@@ -1,11 +1,11 @@
 # 製作進度
 
-## 2026-10-04：騎士 v003 全套動作重繪（驗證完成，準備 v0.0.17）
+## 2026-10-04：v0.0.17 騎士全套動作重繪（已發佈）
 
 - 16 張原稿、160 個姿勢，跑步／衝刺與徒手各 12 格；三段原地與踏斬各 8 格。同步待機、慢走、喘息、受擊、死亡、拔劍、舊檔騎乘。固定像素密度與完整身形，不切腿重組或仿射代替新圖。
 - 主戰役與前導接上 v003 Appearance Resource，玩法與存檔不變。新版指南三語同步，連斬示範換為原生實錄。
 - 全套 tools/check.sh 通過（核心 2,485 斷言零失敗、無 SCRIPT ERROR／ERROR）；macOS 原生錄製驗證 12 格跑步與衝刺、原地不滑動、方向踏斬及喘息恢復。手機／Windows 尚未真機驗收。
-- [驗證](reports/knight-v003/README.md)、[第 94 課](lessons/94-knight-animation-set.md)。依既有授權準備五平台版本與試玩站更新。
+- [驗證](reports/knight-v003/README.md)、[第 94 課](lessons/94-knight-animation-set.md)。[v0.0.17 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.17) 已公開，七個附件 SHA-256／大小皆相符；[Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.17) 部署成功，首頁／指南／PCK 均與匯出包相同。Mac 打包 PCK 已確認載入新版 12 格動作及原地斬擊。iOS 仍為待簽署專案；[發行紀錄](reports/release-0.0.17/verification.json)。
 
 ## 2026-10-04：v0.0.16 城牆穿越熱修（已發佈）
 
