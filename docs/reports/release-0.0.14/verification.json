@@ -8,11 +8,11 @@
   "core_assertions": 2066,
   "core_failures": 0,
   "archive_checks": "all ZIP/APK members passed CRC checks",
-  "macOS": "ad-hoc signature verified; not notarized; native export launched and prologue visually checked",
+  "macOS": "ad-hoc signature verified; not notarized; native release launched, prologue and interactive start menu visually checked; sustained playtest not performed",
   "Windows": "unsigned; not device tested",
   "Android": "ARM64 debug signing; versionName 0.0.14, versionCode 14 verified; not device tested",
   "iOS": "Xcode project only; signing/build/install/device test pending",
-  "H5": "packaged ambient resource check passed; online deployment pending",
+  "H5": "Pages deployment succeeded; online index.html, guide.html and index.pck SHA-256 match packaged build",
   "packages": {
     "Cyber-Kingdom-Android-v0.0.14-debug.apk": {
       "sha256": "5ac0aa96812f9c80a833d7c4c0980e5f0ad884000902c3b22c54735225caac0f",
@@ -33,6 +33,36 @@
     "Cyber-Kingdom-macOS-v0.0.14.zip": {
       "sha256": "b2366f8973d1051613f25571a7be384461c1bf9084f649c7b7aed58e485570f2",
       "size_bytes": 113600304
+    }
+  },
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.14",
+  "release_published": true,
+  "remote_asset_verification": "All six asset sizes and GitHub SHA-256 digests match local files",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/",
+  "pages_deployment": {
+    "conclusion": "success",
+    "headSha": "32799143fd91f5b2bf719daa85456653c667eb8b",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37195854854"
+  },
+  "pages_verified_files": {
+    "index.html": {
+      "status": 200,
+      "sha256": "c53063a5741e90435c4fe8aca944cad4d7ed6b7af3d891c4f7b6d85a7c3d6fc7",
+      "bytes": 5542,
+      "last_modified": "Sun, 04 Oct 2026 10:35:48 GMT"
+    },
+    "guide.html": {
+      "status": 200,
+      "sha256": "a9e47a0f2bbfd1a5d9c91bc24fbe0e558f402882690adbefceb687a68c59ea1b",
+      "bytes": 2771144,
+      "last_modified": "Sun, 04 Oct 2026 10:35:48 GMT"
+    },
+    "index.pck": {
+      "status": 200,
+      "sha256": "b8117f0580b968e712eceaf962484c90971ce102b537136b2ea0b47728b95781",
+      "bytes": 54322664,
+      "last_modified": "Sun, 04 Oct 2026 10:35:48 GMT"
     }
   }
 }
