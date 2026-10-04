@@ -1,0 +1,42 @@
+{
+  "databaseId": 403068693,
+  "isDraft": false,
+  "url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.18",
+  "assets_verified": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.18-debug.apk",
+      "size": 83097050,
+      "digest": "sha256:09c1f5ec100d3630a3c6630a5136309604c3d126ba535a9f1953d11c3c0504a8"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.18.html",
+      "size": 2298721,
+      "digest": "sha256:2e66c7ab190a7330c7eab2f04801c07499823c60076b4cfb275c2dafd9c74b1b"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.18-Xcode.zip",
+      "size": 166826405,
+      "digest": "sha256:79d8bdaadc0dd71944bb3fbdc159f347506c14ac16592a022fe559c88691e047"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.18.zip",
+      "size": 114486978,
+      "digest": "sha256:53f449c905d5c6bd8821064f4ccfd15564c67997c906b18c29f871310afb285f"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.18.zip",
+      "size": 65929565,
+      "digest": "sha256:131ada812591677c4b044f3ca74f529c2faef73bb9bd1c3ece87c51d6f01c680"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.18.zip",
+      "size": 92064933,
+      "digest": "sha256:823bae2ff7b5dca8f77d0fcd4f49f66b50df2ec49d29009b3f0cd9cb602ea920"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "digest": "sha256:827651c04756e4b758e5a54b980de61f591b98ac3e7c79e56b574be696851e46"
+    }
+  ]
+}
