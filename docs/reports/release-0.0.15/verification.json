@@ -1,0 +1,47 @@
+{
+  "version": "v0.0.15",
+  "repository": "Poyueh/cyber-kingdom-demo",
+  "artifact_source_commit": "3d8b1796414a99251af321e1027febda75898e2b",
+  "source_tree": "bf673b64ccddeeeb2e2a8d4b07b6429be026917d",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "full_check": "passed; no SCRIPT ERROR, ERROR or FAIL",
+  "core_assertions": 2443,
+  "core_failures": 0,
+  "exploration_scene_assertions": 14,
+  "ruin_scene_assertions": 9,
+  "archive_checks": "all ZIP/APK members passed CRC checks",
+  "macOS": "ad-hoc signature verified; not notarized; actual release app start menu visually checked; packaged PCK start menu and ruin unlock also exercised with native Godot; sustained playtest not performed",
+  "Windows": "unsigned; not device tested",
+  "Android": "ARM64 debug signing; versionName 0.0.15 and versionCode 15 verified; not device tested",
+  "iOS": "Xcode project only; signing/build/install/device test pending",
+  "H5": "export and packaged ambience passed; Pages publication pending",
+  "packages": {
+    "Cyber-Kingdom-Android-v0.0.15-debug.apk": {
+      "sha256": "7bdc2cd26221d10c58402181fe751714a4cf393aeb9692463ef8fd21dfe9243d",
+      "size_bytes": 82223355
+    },
+    "Cyber-Kingdom-Guide-v0.0.15.html": {
+      "sha256": "56bea524f469984d233c2cca38221ec5b261c2d8a7cf202864e0c563849c7f01",
+      "size_bytes": 2800836
+    },
+    "Cyber-Kingdom-Web-v0.0.15.zip": {
+      "sha256": "091944347eba91ca083ac1a3a5d26c2ae5c61eda176b814843303ba678a1547a",
+      "size_bytes": 65438496
+    },
+    "Cyber-Kingdom-Windows-v0.0.15.zip": {
+      "sha256": "44846546e78032e0b895ed1dfe72f95d8e3ddb5d60638db326e7482ebd47960c",
+      "size_bytes": 91216197
+    },
+    "Cyber-Kingdom-iOS-v0.0.15-Xcode.zip": {
+      "sha256": "72ad2dd0f3c4afe1ff7a8c269cfccc9dde4edbcad8633bf75cd5850d2476c44d",
+      "size_bytes": 165976896
+    },
+    "Cyber-Kingdom-macOS-v0.0.15.zip": {
+      "sha256": "55a71086b1cc83cff94a82197a2617aa1a28b4a62e394a7cfb2e231b1b60880c",
+      "size_bytes": 113638246
+    }
+  },
+  "release_published": false,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.15",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/"
+}

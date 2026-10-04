@@ -1387,10 +1387,6 @@
     "zh_CN": "未持剑或体力不足时不能出刀。冲刺耗尽先强制喘息，再逐步恢复走路与跑步；之后还要停下休息，才能再次冲刺。电脑快跑用同方向连按两次并按住第二下，不用 Shift。",
     "en": "You cannot attack without a sword or enough stamina. Exhaustion forces a breathing stop, then walking and running gradually return; stand still to recover sprinting. On desktop, double-tap the same direction and hold the second press to sprint. Shift is not needed."
   },
-  "適用目前開發版的新旅程。商人與稀缺寶箱已在本機實作，需隨新版發佈才會出現在線上試玩；舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
-    "zh_CN": "适用目前开发版的新旅程。商人与稀缺宝箱已在本机实现，需随新版发布才会出现在线上试玩；旧记录保留原规则。数值以当局设置为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。",
-    "en": "This guide covers new journeys in the current development build. The merchant and rare chests are implemented locally and will reach the online demo with a new release. Older saves retain their rules. Your journey settings take precedence; concept art and historical images are labeled. This is a guide, not the game."
-  },
   "目前能玩到七顆星球嗎？": {
     "zh_CN": "目前能玩到七颗星球吗？",
     "en": "Can I explore seven planets yet?"
@@ -1430,5 +1426,9 @@
   "暫停後點地圖圖示開啟邊境探索圖，金色箭頭標示位置；只顯示已探索地形、未領取獎勵與封印遺跡。新旅程的遠方部件需先解開遺跡：古龍符序要讀取封印上由左至右的符號，再沿來路找到三座符石，靠近按 E／手機下滑依序啟動；疾光中繼則從最靠近營火的一座開始，向封印接通三座中繼器，需在 12 秒內完成。錯序或超時可免費重試，暫停不計時；解開後回封印處領取部件。既有旅程保留原本直接拾取規則。": {
     "en": "Open the Frontier map from the pause menu. Gold marks your position; only discovered terrain, unclaimed rewards and sealed ruins appear. In new journeys, distant modules are sealed. Dragon Sigils: read the symbols on the seal from left to right, find the three runes along your approach, then activate them in order with E or a downward swipe. Light Relay: start with the station nearest camp and link all three toward the seal within 12 seconds. Wrong order or timeout allows a free retry; pausing freezes the timer. Return to the opened seal to collect the module. Existing journeys retain direct pickup.",
     "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。新旅程的远方部件需先解开遗迹：古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，向封印接通三座中继器，需在 12 秒内完成。错序或超时可免费重试，暂停不计时；解开后回封印处领取部件。既有旅程保留原本直接拾取规则。"
+  },
+  "適用 v0.0.15 新旅程：包含商人、稀缺寶箱、探索圖及兩座部件遺跡挑戰。請建立新遊戲體驗，舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
+    "en": "For new journeys in v0.0.15, including the merchant, scarce chests, Frontier map and two module ruin trials. Start a new game to experience them; existing saves retain their original rules. Values follow the current journey settings. Concept art and older illustrations are labeled. This is a guide, not the game.",
+    "zh_CN": "适用 v0.0.15 新旅程：包含商人、稀缺宝箱、探索图及两座部件遗迹挑战。请建立新游戏体验，旧纪录保留原规则。数值以当局设定为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。"
   }
 }
