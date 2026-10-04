@@ -7,11 +7,11 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.13 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.13)
+- [v0.0.14 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.14)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
-請從新倉庫下載最新版本；本倉庫保留早期開發歷史，不再作為玩家下載入口。
+此 demo 倉庫是目前的玩家下載入口；原 cyber-kingdom 倉庫保留早期開發歷史。
 
 ## 本機開發
 
@@ -27,11 +27,13 @@
 bash tools/check.sh
 ```
 
+v0.0.14 調整新旅程難度：夜襲 3 隻起、每晚增加 2 隻、單晚最多 60 隻且同時最多 12 隻；降低採集與農作收益。請建立新遊戲體驗新數值，舊紀錄保留原規則。七星球、集結隊伍及解謎部件仍在設計階段，尚未接入。
+
 目前新旅程包含農具工坊、居民近域採集、施工中的防線停用、日夜循環、龍晶背包和戰鬥原型。詳情請看 [開發進度](docs/STATUS.md)、[架構說明](docs/ARCHITECTURE.md) 與 [Gitflow 流程](docs/GITFLOW.md)。
 
 ## 平台狀態
 
-v0.0.13 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.14 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 

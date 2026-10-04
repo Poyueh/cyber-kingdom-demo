@@ -1,0 +1,38 @@
+{
+  "version": "v0.0.14",
+  "repository": "Poyueh/cyber-kingdom-demo",
+  "artifact_source_commit": "521b1f1f4329300179dafd9190125c89e836b8e0",
+  "source_tree": "3892588c63be2b134a4239c467c668ef3cfb6fc8",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "full_check": "passed; no SCRIPT ERROR, ERROR or FAIL",
+  "core_assertions": 2066,
+  "core_failures": 0,
+  "archive_checks": "all ZIP/APK members passed CRC checks",
+  "macOS": "ad-hoc signature verified; not notarized; native export launched and prologue visually checked",
+  "Windows": "unsigned; not device tested",
+  "Android": "ARM64 debug signing; versionName 0.0.14, versionCode 14 verified; not device tested",
+  "iOS": "Xcode project only; signing/build/install/device test pending",
+  "H5": "packaged ambient resource check passed; online deployment pending",
+  "packages": {
+    "Cyber-Kingdom-Android-v0.0.14-debug.apk": {
+      "sha256": "5ac0aa96812f9c80a833d7c4c0980e5f0ad884000902c3b22c54735225caac0f",
+      "size_bytes": 82179883
+    },
+    "Cyber-Kingdom-Web-v0.0.14.zip": {
+      "sha256": "3ebf406f67fdd4e3e7f8d24f3295e031035faa65b85c49f9be4783edf7215453",
+      "size_bytes": 65389508
+    },
+    "Cyber-Kingdom-Windows-v0.0.14.zip": {
+      "sha256": "a69fca05b498e2be8e0b1ca46b915ee2f6edac294bc570d6db53cbe1554e47db",
+      "size_bytes": 91178267
+    },
+    "Cyber-Kingdom-iOS-v0.0.14-Xcode.zip": {
+      "sha256": "8de8886121e5d48eba449654f99521fc3051e36e31fbd9e691e64a331ae8e896",
+      "size_bytes": 165908813
+    },
+    "Cyber-Kingdom-macOS-v0.0.14.zip": {
+      "sha256": "b2366f8973d1051613f25571a7be384461c1bf9084f649c7b7aed58e485570f2",
+      "size_bytes": 113600304
+    }
+  }
+}
