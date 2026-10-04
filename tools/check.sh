@@ -35,6 +35,7 @@ run_check mission --script res://tests/test_mission_scene.gd
 run_check growth --script res://tests/test_growth_scene.gd
 run_check ecology --script res://tests/test_ecology_scene.gd
 run_check exploration --script res://tests/test_exploration_scene.gd
+run_check ruins --script res://tests/test_ruins_scene.gd
 run_check expansion --script res://tests/test_expansion_scene.gd
 run_check fortifications --script res://tests/test_fortification_scene.gd
 run_check stamina --script res://tests/test_stamina_scene.gd

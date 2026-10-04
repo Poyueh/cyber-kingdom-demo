@@ -13,6 +13,9 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 var spirit: Spirit
 const Modules=preload("res://application/knight_modules.gd")
 var modules: Modules
+const Trials=preload("res://domain/ruin_trials.gd")
+const RuinInteractions=preload("res://application/ruin_interactions.gd")
+var trials: Trials
 const WorkArea=preload("res://domain/resident_work_area.gd")
 var work_area: WorkArea
 const Survival=preload("res://domain/crystal_survival.gd")
@@ -156,6 +159,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	tower_damage=clampi(config.get("tower_damage",12),1,100)
 	tower_range=clampf(config.get("tower_range",460.0),200,800)
 	modules=Modules.new(frontier,config)
+	trials=Trials.new(modules.relics,config,RandomStreams.new(map_seed).of(RandomStreams.Stream.EVENT))
 	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
 	time_to_raid = clock.remaining
 
@@ -215,6 +219,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
 	if merchant.can_dispatch() and absf(x-merchant.x)<73 and absf(_player_y-430)<42:
 		candidates.append(_choice("merchant",merchant.x,"委託龍晶商人出遊",int(merchant.rules.merchant_cost)))
 	var shrine: float=spirit.shrine_x(world.sites.hall)
@@ -394,6 +399,7 @@ func interact(x: float, target_key: String = "") -> bool:
 
 func _execute(choice: Dictionary) -> void:
 	match choice.id:
+		"trial": RuinInteractions.execute(self,choice)
 		"merchant": merchant.dispatch(clock.day)
 		"spirit": spirit.summon(int(workforce.elapsed*Spirit.TICKS_PER_SECOND))
 		"tower","field": buildings[choice.building_id].pending=true
@@ -455,6 +461,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		animal["home_x"]=animal.get("home_x",animal.x)
 		animal.x=animal.home_x+sin(workforce.elapsed*0.36+animal.region*1.7)*28
 	super.advance(seconds,hero_x,hero_y)
+	trials.advance(roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 	mission.resolve(hero.is_alive(),raiders.is_empty())
 	if not is_running(): return
 	_advance_expeditions(seconds,hero_x,hero_y)

@@ -1,6 +1,18 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["金色箭頭是你的位置。點選地形或節點查看；虛線仍未探索。", "金色箭頭是你的位置。點選地形或節點查看；虛線仍未探索。", "金色箭头是你的位置。点选地形或节点查看；虚线仍未探索。", "Gold marks your position. Select terrain or a node; dotted routes remain unexplored."],
+ ["深入荒野，讀取遺跡線索，解開封印取得部件。", "深入荒野，讀取遺跡線索，解開封印取得部件。", "深入荒野，读取遗迹线索，解开封印取得部件。", "Explore the wilds, read the ruins and break their seals to claim modules."],
+
+ ["接通符石", "接通符石", "接通符石", "Activate rune"],
+ ["依石碑符序接通", "依石碑符序接通", "依石碑符序接通", "Follow the seal’s rune order"],
+ ["由外向內接通，能量耗盡會重置", "由外向內接通，能量耗盡會重置", "由外向内接通，能量耗尽会重置", "Link inward before the energy fades"],
+ ["疾光中繼", "疾光中繼", "疾光中继", "Light Relay"],
+ ["古龍符序", "古龍符序", "古龙符序", "Dragon Sigils"],
+ ["封印已解開", "封印已解開", "封印已解开", "Seal broken"],
+ ["沿來路尋找符石", "沿來路尋找符石", "沿来路寻找符石", "Find the runes along your approach"],
+ ["封印遺跡", "封印遺跡", "封印遗迹", "Sealed ruin"],
+
  ["營火", "營火", "营火", "Campfire"],
  ["寶箱", "寶箱", "宝箱", "Treasure chest"],
 
@@ -20,17 +32,17 @@ const ROWS=[
  ["委託龍晶商人出遊", "委託龍晶商人出遊", "委托龙晶商人出游", "Fund the crystal merchant’s trip"],
  ["靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人领取龙晶；付一颗委托，隔天再补给。", "Approach the merchant for crystals. Fund a trip with one crystal; collect again tomorrow."],
 
- ["部件工坊","部件工坊","部件工坊","Module workshop"],
- ["探索取得後立即裝配","探索取得後立即裝配","探索取得后立即装配","Equips immediately when discovered"],
- ["更換消耗 %d 顆龍晶","更換消耗 %d 顆龍晶","更换消耗 %d 颗龙晶","Switch for %d dragon crystals"],
- ["龍晶不足，無法更換部件。","龍晶不足，無法更換部件。","龙晶不足，无法更换部件。","Not enough crystals to switch modules."],
- ["新部件已裝配；舊部件可在工坊付費換回。","新部件已裝配；舊部件可在工坊付費換回。","新部件已装配；旧部件可在工坊付费换回。","New module equipped. Pay at the workshop to switch back."],
- ["按 E 丟出龍晶","按 E 丟出龍晶","按 E 丢出龙晶","Press E to drop a crystal."],
- ["召喚引路之魂","召喚引路之魂","召唤引路之魂","Summon the guiding spirit"],
- ["引路之魂正在指引你","引路之魂正在指引你","引路之魂正在指引你","The spirit is already guiding you."],
- ["你已學會建立家園。需要指引時，回營火旁的引魂壇找我。","你已學會建立家園。需要指引時，回營火旁的引魂壇找我。","你已学会建立家园。需要指引时，回营火旁的引魂坛找我。","Your refuge has begun. Find my shrine by the campfire when you need guidance."],
- ["點右側劍鈕攻擊，再點可連斬","點右側劍鈕攻擊，再點可連斬","点右侧剑钮攻击，再点可连斩","Tap the sword button. Tap again to combo."],
- ["按 J 或滑鼠左鍵攻擊，再按可連斬","按 J 或滑鼠左鍵攻擊，再按可連斬","按 J 或鼠标左键攻击，再按可连斩","Press J or left click to attack. Repeat to combo."],
+ ["部件工坊", "部件工坊", "部件工坊", "Module workshop"],
+ ["探索取得後立即裝配", "探索取得後立即裝配", "探索取得后立即装配", "Equips immediately when discovered"],
+ ["更換消耗 %d 顆龍晶", "更換消耗 %d 顆龍晶", "更换消耗 %d 颗龙晶", "Switch for %d dragon crystals"],
+ ["龍晶不足，無法更換部件。", "龍晶不足，無法更換部件。", "龙晶不足，无法更换部件。", "Not enough crystals to switch modules."],
+ ["新部件已裝配；舊部件可在工坊付費換回。", "新部件已裝配；舊部件可在工坊付費換回。", "新部件已装配；旧部件可在工坊付费换回。", "New module equipped. Pay at the workshop to switch back."],
+ ["按 E 丟出龍晶", "按 E 丟出龍晶", "按 E 丢出龙晶", "Press E to drop a crystal."],
+ ["召喚引路之魂", "召喚引路之魂", "召唤引路之魂", "Summon the guiding spirit"],
+ ["引路之魂正在指引你", "引路之魂正在指引你", "引路之魂正在指引你", "The spirit is already guiding you."],
+ ["你已學會建立家園。需要指引時，回營火旁的引魂壇找我。", "你已學會建立家園。需要指引時，回營火旁的引魂壇找我。", "你已学会建立家园。需要指引时，回营火旁的引魂坛找我。", "Your refuge has begun. Find my shrine by the campfire when you need guidance."],
+ ["點右側劍鈕攻擊，再點可連斬", "點右側劍鈕攻擊，再點可連斬", "点右侧剑钮攻击，再点可连斩", "Tap the sword button. Tap again to combo."],
+ ["按 J 或滑鼠左鍵攻擊，再按可連斬", "按 J 或滑鼠左鍵攻擊，再按可連斬", "按 J 或鼠标左键攻击，再按可连斩", "Press J or left click to attack. Repeat to combo."],
  ["第 %d 天", "第 %d 天", "第 %d 天", "Day %d"],
  ["營火正在受襲！", "營火正在受襲！", "营火正在受袭！", "The campfire is under attack!"],
  ["拔出劍，點亮最後的營火。", "拔出劍，點亮最後的營火。", "拔出剑，点亮最后的营火。", "Draw the sword. Kindle the last campfire."],

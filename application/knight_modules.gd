@@ -49,6 +49,7 @@ func observe(sim: RefCounted, x: float, y: float) -> void:
  if absf(y-430)>35:return
  for relic in relics:
   if found.has(relic.id) or not sim.frontier.regions[relic.region].discovered or absf(x-relic.x)>38:continue
+  if not sim.trials.unlocked(relic.id):continue
   found.append(relic.id)
   stored.append(relic.id)
   equipped=relic.id

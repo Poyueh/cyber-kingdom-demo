@@ -8,6 +8,7 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/ruin_trials.gd").valid_config(config):return false
 	if not config.get("seed") is int:return false
 	if not preload("res://domain/crystal_merchant.gd").valid_config(config):return false
 	for key in config:
