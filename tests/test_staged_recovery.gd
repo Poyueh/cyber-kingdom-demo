@@ -51,7 +51,7 @@ func test_v10_checkpoint_retains_exhaustion_during_upgrade(t: Object) -> void:
  sim.hero.stamina=0;step(sim,1,1)
  var codec: RefCounted=Codec.new()
  var old: Dictionary=codec.capture(sim,CONFIG,BODY)
- old.version=10;old.erase("merchant")
+ old.version=10;old.erase("merchant");old.erase("trials")
  for key: String in ["winded","rest_ticks","last_tick","breath_ticks"]:old.travel.erase(key)
  var before: Dictionary=old.duplicate(true)
  var restored: Dictionary=codec.restore(old)

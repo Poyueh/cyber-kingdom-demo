@@ -24,6 +24,7 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export_range(60,600,10) var module_lance_range: float=300.0
 @export_range(1,30,0.5) var module_lance_cooldown: float=8.0
 @export_group("Exploration")
+@export var ruin_trials: Resource=preload("res://data/ruin_trials.tres")
 @export_range(0,8,1) var outer_regions_per_side: int = 7
 @export_range(300,1250,50) var arrival_walk_distance: float=1050.0
 @export_group("Final dragon")
@@ -103,7 +104,9 @@ func campaign_rules() -> Dictionary:
 	var rules: Dictionary = {"work_margin":work_margin,"module_arc_damage":module_arc_damage,"module_arc_cost":module_arc_cost,"module_arc_range":module_arc_range,"module_arc_cooldown":module_arc_cooldown,"module_lance_damage":module_lance_damage,"module_lance_cost":module_lance_cost,"module_lance_range":module_lance_range,"module_lance_cooldown":module_lance_cooldown,"spirit_opening_seconds":spirit_opening_seconds,"spirit_visit_seconds":spirit_visit_seconds,"crystal_survival":int(crystal_survival),"hit_crystal_loss":hit_crystal_loss,"immersive_loop":int(immersive_loop),"rest_regen":rest_regen,"knight_health":knight_health,"knight_damage":knight_damage,"building_seconds":building_seconds,"tower_damage":tower_damage,"tower_range":tower_range,"breath_stop_seconds":travel_recovery.breath_stop_seconds,"tired_speed_multiplier":travel_recovery.tired_speed_multiplier,"run_recovery_ratio":travel_recovery.run_recovery_ratio,"sprint_recovery_ratio":travel_recovery.sprint_recovery_ratio,"sprint_rest_seconds":travel_recovery.sprint_rest_seconds,"fast_run_multiplier":fast_run_multiplier,"fast_run_drain":fast_run_drain,"dragon_baseline_day":dragon_baseline_day,"dragon_health":dragon_health,"dragon_damage":dragon_damage,"dragon_daily_health":dragon_daily_health,"dragon_daily_damage":dragon_daily_damage,"tree_crystals":tree_crystals,"mineral_crystals":mineral_crystals,"chest_crystals":chest_crystals,"plant_crystals":plant_crystals,"attack_stamina":attack_stamina,"jump_stamina":jump_stamina,"dash_stamina":dash_stamina,"wall_clearance":wall_clearance,"tree_timber":tree_timber,"population_limit":population_limit,"camp_waiting_limit":camp_waiting_limit,"capacitor_limit":capacitor_limit,"growth_crystal_step":growth_crystal_step,"growth_scrap_step":growth_scrap_step,"shield_charge_cost":shield_charge_cost,"shield_charge_scrap":shield_charge_scrap,"warden_health":warden_health,"warden_damage":warden_damage,"rift_seal_seconds":rift_seal_seconds,"core_max_hp":core_max_hp,"core_recharge":core_recharge,"left_defense_x":left_defense_x,"return_margin":return_margin,"hunter_damage":hunter_damage,"hunter_range":hunter_range,"hunter_interval":hunter_interval,"stroll_speed":stroll_speed,"magnet_radius":magnet_radius,"magnet_speed":magnet_speed,"throw_grace":throw_grace,"capacity":backpack_capacity,"starting_crystals":initial_crystals,"day_seconds":day_seconds,"night_seconds":night_seconds,"enemy_health_growth":enemy_health_growth,"enemy_damage_growth":enemy_damage_growth,"prices":crystal_prices}
 
 	rules.merge(night_pressure.rules(),true)
-	if immersive_loop:rules.merge(crystal_merchant.rules(),true)
+	if immersive_loop:
+		rules.merge(crystal_merchant.rules(),true)
+		rules.merge(ruin_trials.rules(),true)
 	return rules
 
 func economy_rules() -> Dictionary:

@@ -50,7 +50,7 @@ func test_relics_auto_equip_and_preserve_saved_cooldown(t) -> void:
  for i in range(30):
   sim.advance(1.0/30,body.x);copy.session.advance(1.0/30,body.x)
  t.truth(preload("res://application/campaign_checkpoint_rules.gd").same(codec.capture(sim,config,body),codec.capture(copy.session,config,body)),"module run continues identically after loading")
- var old: Dictionary=saved.duplicate(true);old.version=9;old.erase("merchant");old.erase("modules")
+ var old: Dictionary=saved.duplicate(true);old.version=9;old.erase("merchant");old.erase("trials");old.erase("modules")
  t.truth(not codec.restore(old).is_empty(),"version nine upgrades with unexplored modules")
  saved.modules.equipped="unknown"
  t.truth(codec.restore(saved).is_empty(),"unknown equipped module is rejected")

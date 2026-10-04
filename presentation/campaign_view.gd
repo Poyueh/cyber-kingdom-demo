@@ -164,6 +164,7 @@ func _draw_structures() -> void:
 	_draw_mission()
 	_draw_recruitment_camps()
 	preload("res://presentation/module_visual.gd").relics(self,_sim)
+	preload("res://presentation/ruin_visual.gd").draw_on(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
 	if _sim.life.enabled:
@@ -416,7 +417,7 @@ func _crystal(at: Vector2, filled: bool, radius: float = 8.0) -> void:
 
 func _draw_interaction() -> void:
 	if not interactions_visible:return
-	if _context.id.is_empty(): return
+	if _context.id.is_empty() or _context.id=="trial": return
 	if _sim.life.enabled and not _context.enabled:
 		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id):
 			if _context.has("building_id") and _sim.buildings[_context.building_id].level==0:return
