@@ -4,7 +4,8 @@
 
 - 從 develop 建立 release/0.0.14，發行逐夜增援與龍晶收益調整。新遊戲套用，舊紀錄保留原數值。
 - 七星球、集結、十四部件與謎題只有設計文件，不列為已實裝。
-- 更新各平台內建版本為 0.0.14／build 14；套件、檢查及部署結果見本次發行驗證紀錄。
+- 更新各平台內建版本為 0.0.14／build 14；完整檢查通過（核心 2,066 項斷言零失敗，無 SCRIPT ERROR／ERROR）。H5、Mac、Windows、Android 與 iOS Xcode 專案匯出完成，ZIP／APK 完整性檢查通過，Mac 原生前導已目視確認。
+- 線上部署待執行；詳見 [發行驗證](reports/release-0.0.14/verification.json) 與 [更新項目](reports/release-0.0.14/release-notes.md)。手機與 Windows 尚未真機遊玩，iOS 尚未簽署安裝。
 
 ## 2026-10-04：七星球與解謎部件設計第二版（設計完成，玩法未接入）
 
