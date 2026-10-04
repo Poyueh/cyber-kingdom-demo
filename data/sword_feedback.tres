@@ -1,0 +1,4 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/sword_feedback_tuning.gd" id="style"]
+[resource]
+script = ExtResource("style")

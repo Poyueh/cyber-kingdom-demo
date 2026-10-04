@@ -1430,5 +1430,17 @@
   "適用 v0.0.17：騎士整套動作重繪，跑步與衝刺各 12 張，原地與踏進連斬分開演出。既有紀錄也會換上新動作；新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。數值以當局設定為準，較早圖片仍標示舊版示意。這是指南，不是遊戲本體。": {
     "en": "For v0.0.17: the knight has a fully redrawn action set, 12-frame runs and sprints, and separate planted and advancing combos. Existing saves receive the new animations. New journeys also feature the merchant, scarce chests, exploration map and two module ruins. Your journey settings govern values; older illustrations remain labelled. This guide is not the game.",
     "zh_CN": "适用 v0.0.17：骑士整套动作重绘，跑步与冲刺各 12 张，原地与踏进连斩分开演出。既有记录也会换上新动作；新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。数值以当局设定为准，较早图片仍标示旧版示意。这是指南，不是游戏本体。"
+  },
+  "v0.0.18 原生遊戲實錄 · 像素刀光與命中停頓；按住方向才踏斬。": {
+    "en": "v0.0.18 native gameplay · Pixel blade trails and hit stop; hold a direction to advance.",
+    "zh_CN": "v0.0.18 原生游戏实录 · 像素刀光与命中停顿；按住方向才踏斩。"
+  },
+  "連續點按接斜切、回挑、重劈。青白刀光標示劍路，命中會迸出火花並短暫停頓，第三刀更有份量；揮空不會停頓，命中瞬間也能點按接下一刀。不按方向就原地出刀，按住方向才踏斬，放開就停止推進。": {
+    "en": "Tap to chain a diagonal cut, rising cut and heavy finisher. Cyan-white arcs show the blade path. Hits spark and briefly pause, with a stronger third cut; misses stay fluid. You can buffer the next attack during contact. Stay planted without a direction, or hold a direction to advance; release to stop advancing.",
+    "zh_CN": "连续点按接斜切、回挑、重劈。青白刀光标示剑路，命中会迸出火花并短暂停顿，第三刀更有分量；挥空不会停顿，命中瞬间也能点按接下一刀。不按方向就原地出刀，按住方向才踏斩，放开就停止推进。"
+  },
+  "適用 v0.0.18：新增三段像素刀光、命中火花、短暫停頓與鏡頭回饋，重劈蓄力與收招節奏更鮮明。沿用全套重繪動作，跑步與衝刺各 12 張；既有紀錄也能使用。新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。較早圖片保留舊版示意標示。這是指南，不是遊戲本體。": {
+    "en": "For v0.0.18: three distinct pixel blade trails, contact sparks, brief hit stop and camera feedback, with clearer anticipation and recovery on the heavy cut. Includes the redrawn action set with 12-frame runs and sprints; existing saves work. New journeys also have the merchant, scarce chests, exploration map and two module ruins. Older illustrations remain labelled. This guide is not the game.",
+    "zh_CN": "适用 v0.0.18：新增三段像素刀光、命中火花、短暂停顿与镜头反馈，重劈蓄力与收招节奏更鲜明。沿用全套重绘动作，跑步与冲刺各 12 张；既有记录也能使用。新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。较早图片保留旧版示意标示。这是指南，不是游戏本体。"
   }
 }
