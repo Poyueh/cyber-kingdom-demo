@@ -118,3 +118,32 @@ func test_pending_enemy_windup_survives_and_invalid_target_is_refused(t):
 	t.truth(codec.restore(packet).is_empty(),"invalid enemy resident index cannot crash next frame")
 	packet.raiders[0].state.erase("target")
 	t.truth(codec.restore(packet).is_empty(),"missing enemy target is refused safely")
+
+func test_reused_codec_keeps_snapshots_and_restored_journeys_independent(t):
+	var codec=load("res://application/campaign_snapshot.gd").new()
+	var config: Dictionary={"seed":17}
+	var sim=Campaign.new(config)
+	var body: Dictionary={"x":30.0,"y":430.0,"vx":0.0,"vy":0.0}
+	var first: Dictionary=codec.capture(sim,config,body)
+	var frozen: Dictionary=first.duplicate(true)
+	sim.world.people[0].x+=24
+	sim.pouch.toss(30,430,1)
+	var second: Dictionary=codec.capture(sim,config,body)
+	t.truth(equivalent(first,frozen),"later live changes and captures cannot mutate a previous snapshot")
+	t.truth(not equivalent(first,second),"reused codec reads current values rather than cached values")
+	var restored: Dictionary=codec.restore(second)
+	t.truth(not restored.is_empty(),"reused codec restores a changed journey")
+	if restored.is_empty():return
+	var frozen_second: Dictionary=second.duplicate(true)
+	restored.session.world.people[0].x+=19
+	restored.session.pouch.drops.clear()
+	t.truth(equivalent(second,frozen_second),"restored collections do not alias the saved packet")
+	t.truth(sim.world.people[0].x!=restored.session.world.people[0].x,"restored residents do not alias the source journey")
+	var other_config: Dictionary={"seed":29,"economy":{"outer_regions_per_side":4}}
+	var other=Campaign.new(other_config)
+	var other_packet: Dictionary=codec.capture(other,other_config,body)
+	t.truth(not codec.restore(other_packet).is_empty(),"one codec supports a different map configuration")
+	var corrupt: Dictionary=other_packet.duplicate(true)
+	corrupt.world.people[0]["x"]="invalid"
+	t.truth(codec.restore(corrupt).is_empty(),"warm metadata cannot bypass invalid nested field rejection")
+	t.truth(not codec.restore(first).is_empty(),"original journey remains loadable after another map and rejected save")

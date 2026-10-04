@@ -9,6 +9,9 @@ const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_tra
 var last_error:=""
 var _baseline: Dictionary={}
 var _baseline_config: Dictionary={}
+## Only script metadata is retained, never live objects or their mutable values.
+## The closed checkpoint graph has a fixed set of script types per codec.
+var _field_names: Dictionary[Script, Array]={}
 
 func _plain(value, depth: int=0) -> bool:
 	if depth>20:return false
@@ -28,15 +31,25 @@ func _plain(value, depth: int=0) -> bool:
 			return true
 	return false
 
-func _fields(object, skip: Array=[]) -> Dictionary:
+func _names(object: RefCounted) -> Array[StringName]:
+	var script: Script=object.get_script()
+	if not _field_names.has(script):
+		var names: Array[StringName]=[]
+		for property in object.get_property_list():
+			if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
+				names.append(StringName(property.name))
+		_field_names[script]=names
+	return _field_names[script]
+
+func _fields(object: RefCounted, skip: Array=[], copy_containers: bool=true) -> Dictionary:
 	var result: Dictionary={}
-	for property in object.get_property_list():
-		var key: String=property.name
-		if not (property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) or key in skip:continue
-		var value=object.get(key)
+	for name in _names(object):
+		var key: String=str(name)
+		if key in skip:continue
+		var value=object.get(name)
 		if typeof(value)==TYPE_OBJECT:continue
-		# Every remaining script field must have an explicitly supported plain shape.
-		result[key]=value.duplicate(true) if value is Array or value is Dictionary else value
+		# Capture owns its values; restore's temporary shape check only reads them.
+		result[key]=value.duplicate(true) if copy_containers and (value is Array or value is Dictionary) else value
 	return result
 
 func _fighter(actor) -> Dictionary:
@@ -79,7 +92,7 @@ func _normalize(value):
 
 func _copy_fields(object, saved, skip: Array=[]) -> bool:
 	if not saved is Dictionary:return false
-	var template:=_fields(object,skip)
+	var template:=_fields(object,skip,false)
 	if saved.size()!=template.size():return false
 	for key in template:
 		if not saved.has(key):return false
