@@ -1343,17 +1343,9 @@
     "zh_CN": "工匠采集获得 2 龙晶并随身保管。完成采收的植株在次日日出再生，需重新委托。",
     "en": "Engineers harvest and carry 2 crystals. Harvested plants regrow at the next dawn and must be commissioned again."
   },
-  "舊版動作示意 · 劍路與造型曾改版；目前是否踏進由方向輸入決定，以遊戲內動作為準。": {
-    "zh_CN": "旧版动作示意 · 剑路与造型曾改版；目前是否踏进由方向输入决定，以游戏内动作为准。",
-    "en": "Historical animation example. Poses and sword arcs have changed; advancing now depends on directional input. Refer to the current game for the final motion."
-  },
   "原地連斬，或向前踏斬。": {
     "zh_CN": "原地连斩，或向前踏斩。",
     "en": "Combo in place, or strike forward."
-  },
-  "連續點按可接三段連斬。不按方向，三刀都站定；按住方向才使用踏斬，在揮擊時向前推進。放開方向就停下，每刀途中不會突然轉身。": {
-    "zh_CN": "连续点按可接三段连斩。不按方向，三刀都站定；按住方向才使用踏斩，在挥击时向前推进。放开方向就停下，每刀途中不会突然转身。",
-    "en": "Tap repeatedly to chain three slashes. Without directional input, all three stay in place. Hold a direction to advance during the swing; release it to stop. The knight keeps the same facing throughout each strike."
   },
   "攻擊與衝刺消耗體力。衝刺到力竭會強制停下喘息約兩秒，按方向也無法移動；之後先慢走，再恢復跑步。體力足夠且停下休息約兩秒，才能再次衝刺。受擊有閃光與後仰；營火受擊有方向警示與音效。": {
     "zh_CN": "攻击与冲刺消耗体力。冲刺到力竭会强制停下喘息约两秒，按方向也无法移动；之后先慢走，再恢复跑步。体力足够且停下休息约两秒，才能再次冲刺。受击有闪光与后仰；营火受击有方向警示与音效。",
@@ -1423,12 +1415,20 @@
     "en": "Open the Frontier map from the pause menu. Gold marks your position; only discovered terrain, unclaimed rewards and sealed ruins appear. In new journeys, distant modules are sealed. Dragon Sigils: read the symbols on the seal from left to right, find the three runes along your approach, then activate them in order with E or a downward swipe. Light Relay: start with the station nearest camp and link all three toward the seal within 12 seconds. Wrong order or timeout allows a free retry; pausing freezes the timer. Return to the opened seal to collect the module. Existing journeys retain direct pickup.",
     "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。新旅程的远方部件需先解开遗迹：古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，向封印接通三座中继器，需在 12 秒内完成。错序或超时可免费重试，暂停不计时；解开后回封印处领取部件。既有旅程保留原本直接拾取规则。"
   },
-  "適用 v0.0.16 新旅程：包含商人、稀缺寶箱、探索圖及兩座部件遺跡挑戰。請建立新遊戲體驗，舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
-    "en": "For new journeys in v0.0.16, including the merchant, scarce chests, Frontier map and two module ruin trials. Start a new game to experience them; existing saves retain their original rules. Values follow the current journey settings. Concept art and older illustrations are labeled. This is a guide, not the game.",
-    "zh_CN": "适用 v0.0.16 新旅程：包含商人、稀缺宝箱、探索图及两座部件遗迹挑战。请建立新游戏体验，旧纪录保留原规则。数值以当局设定为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。"
-  },
   "建造與升階花費 3／4／7 龍晶，耐久逐級提高；受損先花 2 晶修復，堡壘需要三級聚落。完整城牆會阻擋怪物及擊退位移；抱晶怪若退路被牆擋住，會先破牆再回門。付滿進入施工後或城牆被打壞時，敵人才能通過。": {
     "en": "Building and upgrades cost 3/4/7 crystals, with more durability each tier. Repairs cost 2 crystals; a fortress requires refuge level 3. Intact walls block enemies and knockback. Crystal carriers break an obstructing wall before returning to their portal. Enemies can pass while fully funded construction is underway or after a wall is destroyed.",
     "zh_CN": "建造与升阶花费 3／4／7 龙晶，耐久逐级提高；受损先花 2 晶修复，堡垒需要三级聚落。完整城墙会阻挡怪物及击退位移；抱晶怪若退路被墙挡住，会先破墙再回门。付满进入施工后或城墙被打坏时，敌人才能通过。"
+  },
+  "連續點按接斜切、回挑、重劈。每刀都有蓄力、揮擊與收招；不按方向就原地出刀，按住方向才跨步踏斬。放開方向就停下，每刀途中不會突然轉身。": {
+    "en": "Tap to chain a diagonal slash, rising cut and heavy finisher. Each cut has anticipation, impact and recovery. Without a direction you stay planted; hold a direction to step forward during the strike. Releasing stops the advance, and each cut keeps its facing.",
+    "zh_CN": "连续点按接斜切、回挑、重劈。每刀都有蓄力、挥击与收招；不按方向就原地出刀，按住方向才跨步踏斩。放开方向就停下，每刀途中不会突然转身。"
+  },
+  "v0.0.17 原生遊戲實錄 · 三段連斬；按住方向才向前踏斬。": {
+    "en": "v0.0.17 native gameplay capture · Three chained cuts; hold a direction to advance.",
+    "zh_CN": "v0.0.17 原生游戏实录 · 三段连斩；按住方向才向前踏斩。"
+  },
+  "適用 v0.0.17：騎士整套動作重繪，跑步與衝刺各 12 張，原地與踏進連斬分開演出。既有紀錄也會換上新動作；新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。數值以當局設定為準，較早圖片仍標示舊版示意。這是指南，不是遊戲本體。": {
+    "en": "For v0.0.17: the knight has a fully redrawn action set, 12-frame runs and sprints, and separate planted and advancing combos. Existing saves receive the new animations. New journeys also feature the merchant, scarce chests, exploration map and two module ruins. Your journey settings govern values; older illustrations remain labelled. This guide is not the game.",
+    "zh_CN": "适用 v0.0.17：骑士整套动作重绘，跑步与冲刺各 12 张，原地与踏进连斩分开演出。既有记录也会换上新动作；新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。数值以当局设定为准，较早图片仍标示旧版示意。这是指南，不是游戏本体。"
   }
 }

@@ -1,0 +1,101 @@
+{
+  "advancing": {
+    "captured_frames": 48,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/advancing.png",
+      "res://art/characters/blacksteel-v003/run.png"
+    ],
+    "distinct_drawings": 32,
+    "combo_steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "net_travel": 177.74981689453193
+  },
+  "ceremony": {
+    "captured_frames": 78,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/ceremony.png",
+      "res://art/characters/blacksteel-v003/idle.png"
+    ],
+    "distinct_drawings": 11,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 0.0
+  },
+  "fatigue": {
+    "captured_frames": 45,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/idle.png",
+      "res://art/characters/blacksteel-v003/rest.png",
+      "res://art/characters/blacksteel-v003/walk.png"
+    ],
+    "distinct_drawings": 18,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 65.83319091796898
+  },
+  "planted": {
+    "captured_frames": 48,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/idle.png",
+      "res://art/characters/blacksteel-v003/planted.png"
+    ],
+    "distinct_drawings": 23,
+    "combo_steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "net_travel": 0.0
+  },
+  "run": {
+    "captured_frames": 30,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/run.png"
+    ],
+    "distinct_drawings": 12,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 159.49983215332
+  },
+  "sprint": {
+    "captured_frames": 30,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/sprint.png"
+    ],
+    "distinct_drawings": 12,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 311.025741577148
+  },
+  "unarmed-run": {
+    "captured_frames": 30,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/run-unarmed.png"
+    ],
+    "distinct_drawings": 12,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 159.49983215332
+  },
+  "unarmed-sprint": {
+    "captured_frames": 30,
+    "source_atlases": [
+      "res://art/characters/blacksteel-v003/sprint-unarmed.png"
+    ],
+    "distinct_drawings": 12,
+    "combo_steps": [
+      0
+    ],
+    "net_travel": 311.025741577148
+  }
+}
