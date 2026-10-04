@@ -25,8 +25,22 @@ var _water: Node2D
 var _lantern: Node2D
 var _sunbeams: Node2D
 var _requested_special: bool=false
+const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
+@export var sword_style: Resource = preload("res://data/sword_feedback.tres")
+var _sword_trail: SwordTrail
 
 func _ready() -> void:
+	sword_feedback = SwordFeedback.new()
+	sword_feedback.style = sword_style
+	sword_feedback.camera = $Knight/Camera2D
+	sword_feedback.z_index = 20
+	add_child(sword_feedback)
+	_sword_trail = SwordTrail.new()
+	_sword_trail.name = "SwordTrail"
+	_sword_trail.style = sword_style
+	_sword_trail.z_index = 5
+	knight.add_child(_sword_trail)
+	knight.external_sword_feedback = true
 	if get_tree().has_meta("campaign_launch"):
 		var launch: Dictionary=get_tree().get_meta("campaign_launch")
 		get_tree().remove_meta("campaign_launch")
@@ -138,6 +152,7 @@ func restart() -> void:
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
 	knight.configure(sim.hero,knight_tuning)
+	if sword_feedback != null: sword_feedback.reset(sim.effects)
 	knight.position = Vector2(sim.world.sites.hall-tuning.arrival_walk_distance,430)
 	investment=InvestmentHold.new(tuning.investment_hold_delay,tuning.investment_interval,tuning.investment_refund_delay)
 	investment.cancel()
@@ -240,6 +255,7 @@ func _apply_restored(restored: Dictionary) -> void:
 	_campaign_config=restored.config
 	_map_seed=sim.map_seed
 	knight.configure(sim.hero,knight_tuning)
+	if sword_feedback != null: sword_feedback.reset(sim.effects)
 	knight.position=Vector2(restored.body.x,restored.body.y)
 	knight.velocity=Vector2(restored.body.vx,restored.body.vy)
 	_sync_knight_equipment()
@@ -336,5 +352,6 @@ func _sync_knight_equipment() -> void:
 	knight.visual.tired_walk=sim.life.enabled and sim.travel.winded
 	knight.visual.exertion=sim.travel.breath_load(sim.hero)
 	knight.set_mounted(sim.mounted())
+	if _sword_trail != null: _sword_trail.present(sim.hero,sim.can_wield_sword(),sim.mounted())
 
 func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.winded)

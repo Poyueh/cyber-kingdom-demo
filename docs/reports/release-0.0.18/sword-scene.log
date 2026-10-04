@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: standing slash stays planted
+PASS: confirmed sword hit gives camera impact
+PASS: confirmed hit briefly holds sword and world together
+PASS: frozen hit cannot deal repeated damage
+PASS: attack pressed during contact stop buffers the second slash
+PASS: restart clears contact camera offset
+PASS: an empty swing does not stop the simulation
+PASS: empty swing does not fake a contact shake
+PASS: rejected damage does not produce false contact feedback
+PASS: menu pause holds both combat and contact effect
+PASS: menu pause does not consume remaining contact stop
+PASS: camera returns exactly to rest after contact
+PASS: one sword can hit two enemies
+PASS: a group hit never multiplies the contact stop
+PASS: buffered third cut connects in the real campaign
+PASS: heavy finisher has a longer contact hold than the light cut
+PASS: archer impact does not freeze the knight
+PASS: focus loss discards buffered follow-up attacks
+Sword feedback scene assertions: 18; failures: 0

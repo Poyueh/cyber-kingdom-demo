@@ -1,0 +1,46 @@
+{
+  "advancing": {
+    "steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "travel": 128.25,
+    "blade_frames": 28,
+    "contact_frames": 22
+  },
+  "contact": {
+    "steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "travel": 0.0,
+    "blade_frames": 33,
+    "contact_frames": 33
+  },
+  "empty": {
+    "steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "travel": 0.0,
+    "blade_frames": 22,
+    "contact_frames": 0
+  },
+  "left": {
+    "steps": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "travel": 0.0,
+    "blade_frames": 33,
+    "contact_frames": 33
+  }
+}

@@ -11,6 +11,7 @@ const PALETTE := {"s": Color("101523"), "H": Color("829eab"), "h": Color("d5e3dd
 	"d": Color("171e2c"), "g": Color("88e4df"), "r": Color("78445a"), "G": Color("c49b66")}
 @export var is_enemy: bool = false
 @export var procedural_slash: bool = true
+var external_sword_feedback: bool = false
 var model: Fighter
 var tuning: Resource
 var telegraph: bool = false
@@ -107,7 +108,7 @@ func _draw() -> void:
 				var x := column if facing > 0 else 15 - column
 				draw_rect(Rect2(x * 2 - 16, row * 2 - 38, 2, 2), shade)
 		draw_line(Vector2(facing * 12, -20), Vector2(facing * reach, -26), Color("d8d6b1"), 3.0)
-	if model.is_attack_active() and (procedural_slash or mounted):
+	if model.is_attack_active() and not external_sword_feedback and (procedural_slash or mounted):
 		_draw_slash(reach, facing)
 	if telegraph:
 		draw_rect(Rect2(-3, -62, 6, 13), Color("f4b26b"))
