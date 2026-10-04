@@ -98,6 +98,11 @@ func _ready() -> void:
 		_click("ui_save");save_manual_campaign())
 	hud.options_menu.load_checkpoint_requested.connect(func():
 		_click("ui_confirm");load_manual_campaign())
+	hud.options_menu.exploration_requested.connect(func():
+		if not paused:return
+		controls.release_all();hud.cancel_touch_gestures()
+		hud.exploration_map.present(sim,knight.position.x)
+		hud.present_world(sim,true,knight.position.x,knight.is_on_floor()))
 	hud.options_menu.title_requested.connect(func():
 		_click("ui_select");return_to_title())
 	view.interactions_visible=not paused and sim.is_running()
@@ -144,6 +149,7 @@ func restart() -> void:
 	controls.release_all()
 	_requested_special=false
 	if is_instance_valid(hud.module_menu):hud.module_menu.hide()
+	if is_instance_valid(hud.exploration_map):hud.exploration_map.hide()
 	hud.cancel_touch_gestures()
 	_build_terrain()
 	if progress!=null:save_campaign()

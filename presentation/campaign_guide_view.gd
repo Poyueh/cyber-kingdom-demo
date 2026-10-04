@@ -1,6 +1,6 @@
 extends Node2D
 const Icons=preload("res://presentation/ui_icons.gd")
-const SYMBOLS={"dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
+const SYMBOLS={"merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
 @export_range(28.0,60.0,2.0) var guidance_icon_size:=42.0
 var _guide_label: Label
 var hint: Dictionary={}
@@ -61,7 +61,7 @@ func track(hero_screen: Vector2, game_time: float) -> void:
  spirit_pose=_motion.sample(hint,hero_screen,player_x,safe,game_time)
  pulse=fposmod(game_time,2)
  if is_instance_valid(_guide_label) and not hint.is_empty():
-  var goals: Dictionary={"camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"委託工匠採集，帶回龍晶。","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
+  var goals: Dictionary={"merchant":"靠近商人領取龍晶；付一顆委託，隔天再補給。","camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"委託工匠採集，帶回龍晶。","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
   var goal: String=tr(goals.get(hint.kind,"擴建避難所，封印雙門並擊敗巨龍。"))
   var command: String=tr("左右拖曳移動，拉遠加速") if touch_hint else tr("A／D 移動；同方向連按兩次並按住衝刺")
   if hint.kind in ["defend","fight","clear_enemies","dragon"]:

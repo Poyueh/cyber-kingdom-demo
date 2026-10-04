@@ -408,8 +408,8 @@
     "zh_CN": "工匠"
   },
   "工程器具": {
-    "en": "Engineering tools",
-    "zh_CN": "工程器具"
+    "zh_CN": "工程器具",
+    "en": "Engineering tools"
   },
   "處理你標記的樹木、礦脈與採集點；搬運、建設、維修，也負責裂隙封印。": {
     "en": "Handles marked trees, veins and gathering sites. Hauls, builds, repairs and seals rifts.",
@@ -1214,5 +1214,221 @@
   "沒有劍時不能攻擊，拔劍點火是你的第一步。": {
     "zh_CN": "没有剑时不能攻击，拔剑点火是你的第一步。",
     "en": "You cannot attack without a sword. Draw it to ignite the campfire first."
+  },
+  "寶箱是遠方的稀缺獎勵。": {
+    "zh_CN": "宝箱是远方的稀缺奖励。",
+    "en": "Treasure is a rare reward for exploration."
+  },
+  " 新旅程整張地圖最多三個，離營火與其他寶箱都有足夠距離；直接開啟後，龍晶會湧出並吸收入袋。": {
+    "zh_CN": " 新旅程整张地图最多三个，离营火与其他宝箱都有足够距离；直接开启后，龙晶会涌出并吸收入袋。",
+    "en": " New journeys have at most three chests, far from camp and from one another. Open them directly; crystals spill out and are drawn into your pouch."
+  },
+  "龍晶商人每日補給。": {
+    "zh_CN": "龙晶商人每日补给。",
+    "en": "Daily supplies from the crystal merchant."
+  },
+  " 首次缺晶時，他會走近並贈送六顆。之後靠近商人按 E／手機向下滑，付一顆讓他出遊；隔天回營火附近，靠近再領六顆。未付費不出發，未靠近不交貨。": {
+    "zh_CN": " 首次缺晶时，他会走近并赠送六颗。之后靠近商人按 E／手机向下滑，付一颗让他出游；隔天回营火附近，靠近再领六颗。未付费不出发，未靠近不交货。",
+    "en": " When you first run out of crystals, he approaches and gives you six. Then press E or swipe down near him to fund a trip with one crystal. He returns near the campfire the next day with six more. He waits for payment before leaving and for your approach before delivery."
+  },
+  "Cyber Kingdom 玩家圖文指南：點燃營火、招募居民、經營龍晶、改裝部件，封印雙門並擊敗巨龍。": {
+    "zh_CN": "Cyber Kingdom 玩家图文指南：点燃营火、招募居民、经营龙晶、改装部件，封印双门并击败巨龙。",
+    "en": "Cyber Kingdom player guide: light the campfire, recruit residents, manage crystals, equip modules, seal both gates and defeat the dragon."
+  },
+  "依目前開發版的新旅程更新，包含龍晶商人。遊戲以晶袋、天色、日出天數與動作提示取代常駐數值；舊紀錄保留原設定，舊版圖例不代表現行介面。": {
+    "zh_CN": "依目前开发版的新旅程更新，包含龙晶商人。游戏以晶袋、天色、日出天数与动作提示取代常驻数值；旧记录保留原设置，旧版图例不代表现行界面。",
+    "en": "Updated for new journeys in the current development build, including the crystal merchant. Pouch visuals, daylight, dawn announcements and animations replace permanent stats. Older saves retain their settings; historical images do not show the current interface."
+  },
+  "生存。你是一名改造騎士；龍晶既是受擊時的生存餘裕，也是招募居民、建造防線與更換部件的代價。": {
+    "zh_CN": "生存。你是一名改造骑士；龙晶既是受击时的生存余裕，也是招募居民、建造防线与更换部件的代价。",
+    "en": " to survive. As an augmented knight, you spend crystals to recruit residents, build defenses and swap modules—but those same crystals protect you when you are hit."
+  },
+  "啟動先有可跳過的前導演出，再進入主選單。選新遊戲建立獨立旅程，或選擇紀錄繼續。以下為新旅程的預設玩法；舊紀錄可能保留不同的收益、難度與商人設定。": {
+    "zh_CN": "启动先有可跳过的前导演出，再进入主菜单。选新游戏建立独立旅程，或选择记录继续。以下为新旅程的默认玩法；旧记录可能保留不同的收益、难度与商人设置。",
+    "en": "A skippable prologue leads to the main menu. Start a separate new journey or select a save to continue. This guide describes new-journey defaults; older saves may retain different rewards, difficulty and merchant settings."
+  },
+  "開局帶六顆龍晶、沒有劍。走到營火互動，免費拔劍點火；工程與弓箭設施自動搭起。此後守住這團火。": {
+    "zh_CN": "开局带六颗龙晶、没有剑。走到营火互动，免费拔剑点火；工程与弓箭设施自动搭起。此后守住这团火。",
+    "en": "You start with six crystals and no sword. Walk to the campfire and interact to draw the sword and light it for free. Engineering and archery stalls appear automatically. Protect this fire."
+  },
+  "在工程設施付兩晶製造錘子，居民領取後成為工匠。弓需要三晶，讓另一位居民成為獵人／弓兵。": {
+    "zh_CN": "在工程设施付两晶制造锤子，居民领取后成为工匠。弓需要三晶，让另一位居民成为猎人／弓兵。",
+    "en": "Spend two crystals at the engineering stall to make a hammer; a resident takes it and becomes an engineer. A bow costs three crystals and turns another resident into a hunter/archer."
+  },
+  "舊版營火畫面：騎士與流浪者的位置示意，介面與龍晶數量已改版。": {
+    "zh_CN": "旧版营火画面：骑士与流浪者的位置示意，界面与龙晶数量已改版。",
+    "en": "Historical campfire screenshot showing the knight and wanderers; its interface and crystal count are outdated."
+  },
+  " 舊版畫面僅供辨識營火。現在開局六晶；先招募工匠建立收入，首次空袋時商人會來補給。": {
+    "zh_CN": " 旧版画面仅供辨识营火。现在开局六晶；先招募工匠建立收入，首次空袋时商人会来补给。",
+    "en": " Historical image for identifying the campfire. You now start with six crystals. Recruit an engineer to establish income; the merchant approaches the first time your pouch is empty."
+  },
+  "填入建築龍晶、委託採集、開寶箱或付費讓商人出遊。": {
+    "zh_CN": "填入建筑龙晶、委托采集、开宝箱或付费让商人出游。",
+    "en": "Invest in buildings, commission gathering, open chests or pay the merchant to travel."
+  },
+  "調整音樂、音效、語言，或保存／讀取檢查點。": {
+    "zh_CN": "调整音乐、音效、语言，或保存／读取检查点。",
+    "en": "Adjust music, sound and language, or save/load a checkpoint."
+  },
+  " 手機一指移動、另一指點劍。未按方向時三刀都原地揮砍；按住方向才向前踏斬，放開方向立即停止推進。": {
+    "zh_CN": " 手机一指移动、另一指点剑。未按方向时三刀都原地挥砍；按住方向才向前踏斩，放开方向立即停止推进。",
+    "en": " On mobile, move with one finger and tap the sword with another. All three slashes stay in place without directional input. Hold a direction for advancing strikes; release it to stop advancing."
+  },
+  "使用部件": {
+    "zh_CN": "使用部件",
+    "en": "Use module"
+  },
+  "先探索取得部件；需要持劍、體力足夠且冷卻完成。": {
+    "zh_CN": "先探索取得部件；需要持剑、体力足够且冷却完成。",
+    "en": "Find a module first. You need your sword, enough stamina and a completed cooldown."
+  },
+  "雙指向上滑": {
+    "zh_CN": "双指向上滑",
+    "en": "Swipe up with two fingers"
+  },
+  "部件選配": {
+    "zh_CN": "部件选配",
+    "en": "Swap module"
+  },
+  "靠近營火旁的部件工坊，花八晶換成另一個已取得的部件。": {
+    "zh_CN": "靠近营火旁的部件工坊，花八晶换成另一个已取得的部件。",
+    "en": "At the module workshop beside the campfire, spend eight crystals to swap to another discovered module."
+  },
+  "工坊旁點齒輪": {
+    "zh_CN": "工坊旁点齿轮",
+    "en": "Tap the gear by the workshop"
+  },
+  "示意從六晶開始，可連點填格；未填滿停一秒便重置並退回示意袋。真正遊戲會掉回地面，需要重新收取。裂隙另有解鎖條件；示意不影響存檔。": {
+    "zh_CN": "示意从六晶开始，可连点填格；未填满停一秒便重置并退回示意袋。真正游戏会掉回地面，需要重新收取。裂隙另有解锁条件；示意不影响存档。",
+    "en": "This example starts with six crystals. Keep clicking to fill the slots; an incomplete payment resets after one second and returns to the demo pouch. In the game, refunds fall to the ground and must be collected. Rifts have additional unlock requirements. This example does not affect saves."
+  },
+  "處理你委託的採集、建設、維修與裂隙封印。採集所得留在工匠身上，騎士靠近才交出，不必搬回營火。": {
+    "zh_CN": "处理你委托的采集、建设、维修与裂隙封印。采集所得留在工匠身上，骑士靠近才交出，不必搬回营火。",
+    "en": "Carry out commissioned gathering, construction, repairs and rift sealing. Engineers keep gathered crystals and hand them over when the knight approaches, without returning to the campfire."
+  },
+  "營火二級自動搭起農具製造所。你需投入兩晶製造鋤頭，居民只負責領取；再花三晶開墾農地，讓農夫開始生產。": {
+    "zh_CN": "营火二级自动搭起农具制造所。你需投入两晶制造锄头，居民只负责领取；再花三晶开垦农地，让农夫开始生产。",
+    "en": "A level-two campfire automatically adds the farming-tool workshop. You must spend two crystals to make a hoe; residents only collect tools. Spend three more to prepare farmland so farmers can produce crystals."
+  },
+  "防線決定工作範圍": {
+    "zh_CN": "防线决定工作范围",
+    "en": "Defenses define your work area"
+  },
+  "工匠與獵人的採集範圍約到城牆外一個畫面。太遠的資源不能委託，先擴張防線；遠方寶箱仍可開啟，部件仍可拾取。": {
+    "zh_CN": "工匠与猎人的采集范围约到城墙外一个画面。太远的资源不能委托，先扩张防线；远方宝箱仍可开启，部件仍可拾取。",
+    "en": "Engineers and hunters work up to roughly one screen beyond the walls. Expand your defenses before commissioning more distant resources. Distant chests and modules can still be collected by the knight."
+  },
+  "只有龍晶需要管理，用於招募、建造、製造器具與更換部件。沒有獨立木材、食物、石材或治療資源；以下為新旅程預設收益。": {
+    "zh_CN": "只有龙晶需要管理，用于招募、建造、制造器具与更换部件。没有独立木材、食物、石材或治疗资源；以下为新旅程默认收益。",
+    "en": "Crystals are the only resource to manage, funding recruitment, construction, tools and module swaps. There are no separate wood, food, stone or healing stocks. These are the default rewards for new journeys."
+  },
+  "每棵產出 2 龍晶，由工匠隨身保管。保留森林也能維持招募與獵物。": {
+    "zh_CN": "每棵产出 2 龙晶，由工匠随身保管。保留森林也能维持招募与猎物。",
+    "en": "Each tree yields 2 crystals, carried by the engineer. Keep some forest to sustain recruitment and wildlife."
+  },
+  "委託工匠開採，每處產出 4 龍晶；礦藏有限，清理後可能出現建造用地。": {
+    "zh_CN": "委托工匠开采，每处产出 4 龙晶；矿藏有限，清理后可能出现建造用地。",
+    "en": "Commission an engineer to mine a deposit for 4 crystals. Deposits are finite; clearing them may reveal building sites."
+  },
+  "免費開啟，一次湧出 4 龍晶。全圖最多三箱，遠離營火且彼此分散，不是日常收入來源。": {
+    "zh_CN": "免费开启，一次涌出 4 龙晶。全图最多三箱，远离营火且彼此分散，不是日常收入来源。",
+    "en": "Open for free to release 4 crystals. At most three chests appear across the map, far from the campfire and one another. They are rare rewards, not a daily income source."
+  },
+  "營火二級解鎖；找有犁溝與灌溉水道的土地，花 3 晶開墾。每名在田間工作的農夫累計耕作 24 秒，產出 1 晶。": {
+    "zh_CN": "营火二级解锁；找有犁沟与灌溉水道的土地，花 3 晶开垦。每名在田间工作的农夫累计耕作 24 秒，产出 1 晶。",
+    "en": "Unlocked at campfire level two. Find furrowed, irrigated ground and spend 3 crystals to prepare it. Each farmer working in the field contributes 1 crystal per 24 seconds of labor."
+  },
+  "工匠採集獲得 2 龍晶並隨身保管。完成採收的植株在次日日出再生，需重新委託。": {
+    "zh_CN": "工匠采集获得 2 龙晶并随身保管。完成采收的植株在次日日出再生，需重新委托。",
+    "en": "Engineers harvest and carry 2 crystals. Harvested plants regrow at the next dawn and must be commissioned again."
+  },
+  "舊版動作示意 · 劍路與造型曾改版；目前是否踏進由方向輸入決定，以遊戲內動作為準。": {
+    "zh_CN": "旧版动作示意 · 剑路与造型曾改版；目前是否踏进由方向输入决定，以游戏内动作为准。",
+    "en": "Historical animation example. Poses and sword arcs have changed; advancing now depends on directional input. Refer to the current game for the final motion."
+  },
+  "原地連斬，或向前踏斬。": {
+    "zh_CN": "原地连斩，或向前踏斩。",
+    "en": "Combo in place, or strike forward."
+  },
+  "連續點按可接三段連斬。不按方向，三刀都站定；按住方向才使用踏斬，在揮擊時向前推進。放開方向就停下，每刀途中不會突然轉身。": {
+    "zh_CN": "连续点按可接三段连斩。不按方向，三刀都站定；按住方向才使用踏斩，在挥击时向前推进。放开方向就停下，每刀途中不会突然转身。",
+    "en": "Tap repeatedly to chain three slashes. Without directional input, all three stay in place. Hold a direction to advance during the swing; release it to stop. The knight keeps the same facing throughout each strike."
+  },
+  "攻擊與衝刺消耗體力。衝刺到力竭會強制停下喘息約兩秒，按方向也無法移動；之後先慢走，再恢復跑步。體力足夠且停下休息約兩秒，才能再次衝刺。受擊有閃光與後仰；營火受擊有方向警示與音效。": {
+    "zh_CN": "攻击与冲刺消耗体力。冲刺到力竭会强制停下喘息约两秒，按方向也无法移动；之后先慢走，再恢复跑步。体力足够且停下休息约两秒，才能再次冲刺。受击有闪光与后仰；营火受击有方向警示与音效。",
+    "en": "Attacks and sprinting consume stamina. Sprinting to exhaustion forces a roughly two-second breathing stop, even with movement input. Slow walking returns first, then running. To sprint again, recover enough stamina and stand still for roughly two seconds. Hits cause flashes and recoil; campfire attacks trigger directional warnings and sound."
+  },
+  "一般小怪會撿附近的一顆龍晶，抱回原側地獄之門離開。危急時可丟晶換取逃跑時間，擊敗抱晶怪能取回龍晶；守門者與巨龍不接受賄賂。": {
+    "zh_CN": "一般小怪会捡附近的一颗龙晶，抱回原侧地狱之门离开。危急时可丢晶换取逃跑时间，击败抱晶怪能取回龙晶；守门者与巨龙不接受贿赂。",
+    "en": "Ordinary monsters take one nearby crystal and retreat through their original gate. Throw a crystal to buy escape time; defeat a carrying monster to recover it. Wardens and the dragon cannot be bribed."
+  },
+  "工匠與農夫夜間也會採集、耕作與施工；附近有魔物才避難。獵人夜間回防，槍盾兵守住兩側。居民也會保管地面龍晶，騎士靠近時交出。": {
+    "zh_CN": "工匠与农夫夜间也会采集、耕作与施工；附近有魔物才避难。猎人夜间回防，枪盾兵守住两侧。居民也会保管地面龙晶，骑士靠近时交出。",
+    "en": "Engineers and farmers also gather, farm and build at night, sheltering when monsters approach. Hunters return to defend at night, and spear-and-shield guards hold both sides. Residents also collect loose crystals and hand them over when the knight approaches."
+  },
+  "建造與升階花費 3／4／7 龍晶，耐久逐級提高；受損先花 2 晶修復，堡壘需要三級聚落。付滿進入施工後，城牆暫時無法阻擋敵人。": {
+    "zh_CN": "建造与升阶花费 3／4／7 龙晶，耐久逐级提高；受损先花 2 晶修复，堡垒需要三级聚落。付满进入施工后，城墙暂时无法阻挡敌人。",
+    "en": "Construction and upgrades cost 3/4/7 crystals and increase durability. Repair damage first for 2 crystals; a fortress requires a level-three settlement. Once fully paid and under construction, the wall temporarily stops blocking enemies."
+  },
+  "每階花費 3／5／8 龍晶，需相應聚落等級。箭塔自動射箭，連弩塔射得更快，雷射塔傷害更高。付滿後由工匠施工；建造或升級期間不會攻擊。": {
+    "zh_CN": "每阶花费 3／5／8 龙晶，需相应聚落等级。箭塔自动射箭，连弩塔射得更快，雷射塔伤害更高。付满后由工匠施工；建造或升级期间不会攻击。",
+    "en": "Each tier costs 3/5/8 crystals and requires the matching settlement level. Arrow towers fire automatically, repeater towers shoot faster, and laser towers deal more damage. Engineers build after full payment; towers cannot fire during construction or upgrades."
+  },
+  "第一晚有 3 隻夜襲怪，每晚再加 2 隻，單晚最多 60 隻；同時在場最多 12 隻，其餘陸續增援。敵人生命與傷害也逐日成長。封印一側會取消該側後續增援。": {
+    "zh_CN": "第一晚有 3 只夜袭怪，每晚再加 2 只，单晚最多 60 只；同时在场最多 12 只，其余陆续增援。敌人生命与伤害也逐日成长。封印一侧会取消该侧后续增援。",
+    "en": "Night raids start with 3 enemies and add 2 each night, up to 60 per night. At most 12 raid enemies are active together; the rest arrive as reinforcements. Health and damage also grow each day. Sealing a gate cancels future reinforcements from that side."
+  },
+  "居民要先領取你付費製造的錘子成為工匠，再到工作範圍內的資源點付一晶委託。太遠、尚未探索或附近有敵人，都可能讓工作無法開始；騎士揮劍不能代替採集。": {
+    "zh_CN": "居民要先领取你付费制造的锤子成为工匠，再到工作范围内的资源点付一晶委托。太远、尚未探索或附近有敌人，都可能让工作无法开始；骑士挥剑不能代替采集。",
+    "en": "Residents must collect a hammer you paid to make. Then commission a resource within the work area for one crystal. Distance, unexplored ground or nearby enemies can prevent work from starting. The knight cannot gather by swinging a sword."
+  },
+  "未持劍或體力不足時不能出刀。衝刺耗盡先強制喘息，再逐步恢復走路與跑步；之後還要停下休息，才能再次衝刺。電腦快跑用同方向連按兩次並按住第二下，不用 Shift。": {
+    "zh_CN": "未持剑或体力不足时不能出刀。冲刺耗尽先强制喘息，再逐步恢复走路与跑步；之后还要停下休息，才能再次冲刺。电脑快跑用同方向连按两次并按住第二下，不用 Shift。",
+    "en": "You cannot attack without a sword or enough stamina. Exhaustion forces a breathing stop, then walking and running gradually return; stand still to recover sprinting. On desktop, double-tap the same direction and hold the second press to sprint. Shift is not needed."
+  },
+  "目前能玩到七顆星球嗎？": {
+    "zh_CN": "目前能玩到七颗星球吗？",
+    "en": "Can I explore seven planets yet?"
+  },
+  "目前可玩的是一張世界地圖、兩側封門與最終巨龍，以及兩種探索部件。集結旗幟、七星球、龍核、火箭與星圖仍在規劃，尚未加入遊戲。": {
+    "zh_CN": "目前可玩的是一张世界地图、两侧封门与最终巨龙，以及两种探索部件。集结旗帜、七星球、龙核、火箭与星图仍在规划，尚未加入游戏。",
+    "en": "The playable campaign currently has one world map, two gates, a final dragon and two discoverable modules. Rally flags, seven planets, dragon cores, rockets and the star map are planned and are not yet playable."
+  },
+  "玩家指南 · 營火戰役開發版 · 2026.10 ｜ 圖像與素材來自本專案": {
+    "zh_CN": "玩家指南 · 营火战役开发版 · 2026.10 ｜ 图像与素材来自本项目",
+    "en": "Player guide · Campfire campaign development build · 2026.10 | Images and assets from this project"
+  },
+  "錘子已放上器具架，等待居民領取。": {
+    "zh_CN": "锤子已放上器具架，等待居民领取。",
+    "en": "A hammer is on the rack, ready for a resident to collect."
+  },
+  "營火升到二級花 5 晶，三級再花 7 晶。二級自動搭起農具製造所；三級開放槍盾器具。設施出現不等於有器具，仍要付費製造，讓無職居民領取。": {
+    "zh_CN": "营火升到二级花 5 晶，三级再花 7 晶。二级自动搭起农具制造所；三级开放枪盾器具。设施出现不等于有器具，仍要付费制造，让无职居民领取。",
+    "en": "Upgrade the campfire to level two for 5 crystals, then level three for 7 more. Level two adds the farming-tool workshop; level three unlocks spear-and-shield equipment. A new facility does not include tools: pay to make them, then unemployed residents collect them."
+  },
+  "不用找血條或耐力條：受擊掉晶代表危險，喘息代表疲勞；天色與太陽顯示日夜，日出短暫顯示第幾天。物件整體亮起表示可互動，上方龍晶格表示當次成本。": {
+    "zh_CN": "不用找血条或耐力条：受击掉晶代表危险，喘息代表疲劳；天色与太阳显示日夜，日出短暂显示第几天。物件整体亮起表示可互动，上方龙晶格表示当次成本。",
+    "en": "Read the world instead of health or stamina bars: dropped crystals signal danger, breathing signals fatigue, and the sky and sun show the time of day. The day number appears briefly at dawn. Interactive objects light up, and crystal slots show their current cost."
+  },
+  "狩獵與遠程防守": {
+    "zh_CN": "狩猎与远程防守",
+    "en": "Hunting and ranged defense"
+  },
+  "獵人每次狩獵留下 2 龍晶。沒有威脅時，夜間也可在工作範圍內狩獵；遇敵會射箭反擊。": {
+    "zh_CN": "猎人每次狩猎留下 2 龙晶。没有威胁时，夜间也可在工作范围内狩猎；遇敌会射箭反击。",
+    "en": "Each successful hunt leaves 2 crystals. Without nearby threats, hunters can also hunt at night within the work area. They shoot arrows at approaching enemies."
+  },
+  "夜間不會全面停工：工匠與農夫附近有魔物才避難，獵人會射箭反擊，槍盾兵守住兩側。居民也會保管地面龍晶，騎士靠近時交出。": {
+    "zh_CN": "夜间不会全面停工：工匠与农夫附近有魔物才避难，猎人会射箭反击，枪盾兵守住两侧。居民也会保管地面龙晶，骑士靠近时交出。",
+    "en": "Work does not stop automatically at night. Engineers and farmers shelter when monsters approach, hunters fight with arrows, and spear-and-shield guards hold both sides. Residents also collect loose crystals and hand them over when the knight approaches."
+  },
+  "暫停後點地圖圖示開啟邊境探索圖，金色箭頭標示位置；只顯示已探索地形、未領取獎勵與封印遺跡。新旅程的遠方部件需先解開遺跡：古龍符序要讀取封印上由左至右的符號，再沿來路找到三座符石，靠近按 E／手機下滑依序啟動；疾光中繼則從最靠近營火的一座開始，向封印接通三座中繼器，需在 12 秒內完成。錯序或超時可免費重試，暫停不計時；解開後回封印處領取部件。既有旅程保留原本直接拾取規則。": {
+    "en": "Open the Frontier map from the pause menu. Gold marks your position; only discovered terrain, unclaimed rewards and sealed ruins appear. In new journeys, distant modules are sealed. Dragon Sigils: read the symbols on the seal from left to right, find the three runes along your approach, then activate them in order with E or a downward swipe. Light Relay: start with the station nearest camp and link all three toward the seal within 12 seconds. Wrong order or timeout allows a free retry; pausing freezes the timer. Return to the opened seal to collect the module. Existing journeys retain direct pickup.",
+    "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。新旅程的远方部件需先解开遗迹：古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，向封印接通三座中继器，需在 12 秒内完成。错序或超时可免费重试，暂停不计时；解开后回封印处领取部件。既有旅程保留原本直接拾取规则。"
+  },
+  "適用 v0.0.15 新旅程：包含商人、稀缺寶箱、探索圖及兩座部件遺跡挑戰。請建立新遊戲體驗，舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
+    "en": "For new journeys in v0.0.15, including the merchant, scarce chests, Frontier map and two module ruin trials. Start a new game to experience them; existing saves retain their original rules. Values follow the current journey settings. Concept art and older illustrations are labeled. This is a guide, not the game.",
+    "zh_CN": "适用 v0.0.15 新旅程：包含商人、稀缺宝箱、探索图及两座部件遗迹挑战。请建立新游戏体验，旧纪录保留原规则。数值以当局设定为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。"
   }
 }

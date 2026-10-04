@@ -42,6 +42,7 @@ static func job_hint(sim,x: float,tool: String,site: String,stage: int) -> Dicti
  return hint
 
 static func funding_hint(sim,x: float) -> Dictionary:
+ if sim.merchant.carrying_reward() and sim.merchant.visible():return _hint("merchant",sim.merchant.x,"","move",0)
  var options: Array=[]
  for drop in sim.pouch.drops:
   if drop.amount>0 and not drop.offering and drop.age>=drop.grace:options.append(_hint("collect",drop.x,"","move",0))

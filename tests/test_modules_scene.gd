@@ -4,7 +4,11 @@ func run_scene() -> void:
  await frames(8)
  scene.set_physics_process(false)
  scene.sim.interact(30,"hall")
- for relic in scene.sim.modules.relics:scene.sim.advance(0.1,relic.x)
+ for site in scene.sim.trials.sites:
+  for station in site.order:
+   scene.sim.advance(0.1,site.positions[station])
+   scene.sim.interact(site.positions[station],"trial:%s:%d"%[site.id,station])
+  scene.sim.advance(0.1,site.x)
  scene.sim.pouch.amount=12
  scene.knight.position=Vector2(scene.sim.world.sites.drill,430)
  scene.sim.advance(0.1,scene.knight.position.x)

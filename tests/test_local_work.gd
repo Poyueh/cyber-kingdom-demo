@@ -112,7 +112,7 @@ func test_local_work_save_resume_and_legacy_station_migration(t) -> void:
 	var codec: RefCounted=Codec.new()
 	var body: Dictionary={"x":30.0,"y":430.0,"vx":0.0,"vy":0.0}
 	var packet: Dictionary=codec.capture(sim,config,body)
-	packet.version=12;packet.world.sites.drill=1230.0
+	packet.version=12;packet.erase("merchant");packet.erase("trials");packet.world.sites.drill=1230.0
 	var old: Dictionary=codec.restore(packet)
 	t.truth(not old.is_empty(),"v12 checkpoint upgrades without losing player data")
 	if old.is_empty():return

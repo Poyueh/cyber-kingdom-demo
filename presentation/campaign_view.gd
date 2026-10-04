@@ -24,6 +24,8 @@ var _reveal=preload("res://presentation/exploration_reveal.gd").new()
 var _mist=preload("res://presentation/exploration_mist.gd").new()
 const Details=preload("res://presentation/frontier_details.gd")
 var _details: Array[Dictionary]=[]
+const Landmarks=preload("res://presentation/exploration_landmarks.gd")
+var _landmarks: Array[Dictionary]=[]
 const RiftVisual=preload("res://presentation/rift_visual.gd")
 const ResidentMotion=preload("res://presentation/resident_motion.gd")
 @export var resident_atlas: Texture2D=preload("res://art/characters/resident-motion-v002/residents.png")
@@ -43,7 +45,7 @@ var focus_key := ""
 var _view_player_x := 0.0
 var investment_progress := 0.0
 const Icons=preload("res://presentation/ui_icons.gd")
-const SITE_ICONS={"shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
+const SITE_ICONS={"merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
 const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"drill":preload("res://art/structures/immersive-v001/drill.png"),"wall-1":preload("res://art/structures/immersive-v001/wall-1.png"),"wall-2":preload("res://art/structures/immersive-v001/wall-2.png"),"wall-3":preload("res://art/structures/immersive-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
 
 func present(sim, player_x: float) -> void:
@@ -51,7 +53,9 @@ func present(sim, player_x: float) -> void:
 		_resident_motion.clear()
 		_reveal=preload("res://presentation/exploration_reveal.gd").new()
 		_mist=preload("res://presentation/exploration_mist.gd").new()
+		_landmarks=Landmarks.layout(sim)
 		_details=Details.layout(sim.map_seed,sim.frontier.regions)
+		_details=_details.filter(func(d):return d.layer==2 or not _landmarks.any(func(site):return absf(d.x-site.x)<145))
 	_sim=sim
 	_camp_ignition_age=-1.0
 	for effect in sim.effects:
@@ -112,6 +116,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 func _draw_atmosphere(_left: float) -> void:
 	preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
 	Details.draw_background(self,_details,_sim.frontier.regions)
+	Landmarks.draw_on(self,_landmarks,_sim)
 	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
 
@@ -159,6 +164,7 @@ func _draw_structures() -> void:
 	_draw_mission()
 	_draw_recruitment_camps()
 	preload("res://presentation/module_visual.gd").relics(self,_sim)
+	preload("res://presentation/ruin_visual.gd").draw_on(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
 	if _sim.life.enabled:
@@ -411,7 +417,7 @@ func _crystal(at: Vector2, filled: bool, radius: float = 8.0) -> void:
 
 func _draw_interaction() -> void:
 	if not interactions_visible:return
-	if _context.id.is_empty(): return
+	if _context.id.is_empty() or _context.id=="trial": return
 	if _sim.life.enabled and not _context.enabled:
 		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id):
 			if _context.has("building_id") and _sim.buildings[_context.building_id].level==0:return
@@ -565,5 +571,6 @@ func _draw() -> void:
 		draw_set_transform(at,progress*TAU if grace>0 else -0.35)
 		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
 		draw_set_transform(Vector2.ZERO)
+	preload("res://presentation/crystal_merchant_view.gd").draw_on(self,_sim.merchant,_sim.workforce.elapsed,_view_player_x,_context.id=="merchant" and _context.enabled)
 	preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

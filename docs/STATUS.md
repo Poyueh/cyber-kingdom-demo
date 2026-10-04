@@ -1,11 +1,60 @@
 # 製作進度
 
-## 2026-10-04：v0.0.14 發行準備
+## 2026-10-04：v0.0.15 發行準備
+
+- 使用者要求每次新功能同步三語遊戲說明並發布試玩，已寫入 AGENTS.md 與 Gitflow；預設目的地仍為 cyber-kingdom-demo 的 Release／Pages。
+- v0.0.15 整合商人、稀缺寶箱、存檔 CPU 優化、探索地標／探索圖、兩座部件遺跡與新版 UI；指南同步三語，附獨立離線 HTML。
+- 完整 tools/check.sh 通過，核心 2,443 斷言零失敗，探索圖 14 項與遺跡場景 9 項通過，無 SCRIPT ERROR／ERROR。
+- H5、Mac、Windows、Android APK 與 iOS Xcode 專案匯出及 ZIP／APK 完整性檢查通過；Mac 原生主選單目視、打包 PCK 遺跡解鎖驗證通過。手機與 Windows 未真機驗證，iOS 未簽署安裝。
+- 遠端公開與 Pages 核對進行中，完成後更新本段與 [發行驗證](reports/release-0.0.15/verification.json)。
+
+## 2026-10-04：場景內遺跡挑戰與探索 UI（本機完成，未發佈）
+
+- 回應「要增加關卡內探索」：新旅程的兩個遠方部件加入古龍符序與疾光中繼。玩家需讀取封印線索、沿來路尋找三座符石並依序互動；中繼預設 12 秒。錯序／超時免費重試，解開後回到封印取得原有部件，不增加寶箱或經濟收益。
+- E／手機下滑沿用現場互動，符石有啟動光環、限時能源、失敗波紋與解鎖音效；探索圖改為地形剪影、圓形節點、金色邊角與選取回饋。三語文字和 Help 同步。
+- 存檔 v15 保存進度／期限；舊紀錄保留直接拾取，新玩法需建立新旅程。修正同一更新倒數到期與死亡造成紀錄失效的邊界。
+- 最終完整 tools/check.sh 通過，核心 2,443 項斷言零失敗、遺跡實際輸入場景 9 項、探索圖場景 14 項通過，無 SCRIPT ERROR／ERROR。既有部件選配／手勢／冷卻與舊版存檔升級回歸通過。
+- macOS 原生 960×540 目視檢查封印、符石、限時光環、三語探索圖；尚未 Windows／手機真機或長局平衡驗收。依 Gitflow 合併本機 develop，未推送／發佈。
+- [設計](design/ruin-trials.md)、[驗證](reports/ruin-trials/README.md)、[Godot 第 91 課](lessons/91-ruin-trial-tuning.md)。這是兩處關卡探索挑戰，不代表七星球／十四謎題完成。
+
+## 2026-10-04：探索地標與邊境探索圖（本機完成，未發佈）
+
+- 林地、晶谷、遺跡加入不同輪廓的落地地標，使用現有原尺寸像素素材；附近一般裝飾讓出空間，沿用薄霧淡入。地標若對應未領取寶箱／部件，地面有青色符光，領取後熄滅。
+- 暫停選單新增探索圖；金色箭頭標示位置，斜線隱藏未知地區，已探索區才顯示未領取獎勵，門依實際發現狀態。可點選查看名稱，支援繁中／簡中／英文。
+- 沿用原地圖／存檔 v14，舊旅程也能使用；未增加寶箱或龍晶收入，居民工作範圍不變。不是七星球、火箭或解謎玩法接入。
+- 完整 tools/check.sh 通過；核心 2,415 項斷言零失敗，探索場景 14 項檢查通過，無 SCRIPT ERROR／ERROR。測試涵蓋資訊隱藏、領取狀態、存讀等價、暫停、觸控與三語排版，並修正首次開圖文字換行造成面板過高。
+- 960×540 macOS 原生畫面已檢查，三語 Help 已重建；尚未手機／Windows 真機驗收。依 Gitflow 整合本機 develop，未推送／發佈。
+- [設計](design/exploration-landmarks.md)、[驗證](reports/exploration-landmarks/README.md)、[Godot 第 90 課](lessons/90-exploration-map.md)。下一輪可先試玩地標辨識，再增加有代價的探索事件。
+
+## 2026-10-04：存檔 CPU 優化（本機完成，未發佈）
+
+- 針對目前 20 區／72 節點地圖量測後，快取固定腳本欄位名稱，並移除還原驗證時不必要的容器深拷貝。真正存檔與還原仍保有獨立副本，完整驗證保留，存檔 v14／玩法／畫面不變。
+- 三輪本機 headless 微量測中位數：擷取 2,053 → 558 µs、驗證還原 9,932 → 8,155 µs，兩項合計約減少 27.3%。不含檔案 I/O、JSON、繪圖，不能解讀為整體 FPS 改善。
+- 副本隔離、跨設定重用與損壞資料保護回歸通過；完整 tools/check.sh 通過，核心 2,405 項斷言零失敗，無 SCRIPT ERROR／ERROR。
+- 現行大地圖加速模擬 30 分鐘，七次存讀成功；暖機後 static memory 約 43.9–44.1 MB、物件數維持 1,754。未驗證手機／Windows 真機或 GPU 記憶體。
+- 依 Gitflow 合併本機 develop，未推送／發佈。量測工具 `tools/bench_checkpoint.gd`；見 [前後證據與限制](reports/checkpoint-performance/README.md)、[Godot 第 89 課](lessons/89-checkpoint-performance.md)。下一輪以原生 Profiler 量測完整幀與真機長時間遊玩。
+
+## 2026-10-04：Help 依目前玩法更新（本機完成，未發佈）
+
+- 更新玩家指南繁中／簡中／英文：六晶開局、商人與稀缺寶箱、最新收益、器具製造、工匠交晶、工作範圍、夜間作業、施工期間防線失效、部件操作、疲勞恢復、逐夜增援及巨龍通關。
+- 修正舊連斬踏進與獵人夜間說明，補上動態提示代替常駐數值；填晶示例改為六晶起始、錘子 2／弓 3／裂隙 4。舊圖示意與未實作的七星球／集結清楚標明。
+- 完整 tools/check.sh 通過，核心 2,397 項斷言零失敗且無 SCRIPT ERROR／ERROR；三語覆蓋、HTML 結構、嵌入資源與 JavaScript 語法檢查通過。瀏覽器安全政策拒絕 file://，未完成目視／手機驗收。
+- 已重建本機單檔指南，按 Gitflow 整合 develop；沒有修改或發佈線上 v0.0.14 套件。下次發佈時帶入新指南並驗證實際 Help 入口。見 [驗證](reports/help-current-gameplay/README.md)、[第 88 課](lessons/88-help-and-game-rules.md)。
+
+## 2026-10-04：稀缺寶箱與龍晶商人（本機完成，未發佈）
+
+- 新旅程最多三個寶箱，距營火至少 2,400、箱間至少 2,600 世界單位；左右兩側優先保留遠方探索獎勵。初始仍帶六晶。
+- 第一次空袋商人走近噴出六晶；之後 E／手機下滑付一晶出遊，隔天回營火附近，靠近才再交六晶。行走／待機使用既有八格居民圖集，配貨袋與交易圖示。
+- 存檔 v14 保存商人贈禮／出遊／回程與交貨狀態；舊紀錄保持原地圖與規則，不重抽或補發資金。
+- TDD 驗證 40 種地圖、實體噴晶、付款、隔日近身交貨、不重複領取、暫停／死亡、存讀等價與非法狀態拒絕；最終核心 2,397 項斷言零失敗，完整 tools/check.sh 通過，無 SCRIPT ERROR／ERROR。三語玩家指南同步。
+- 原生目視確認交晶／單格付款／離營；尚未手機真機或長局經濟驗收。功能依 Gitflow 合併本機 develop，未推送或更新線上 v0.0.14。詳見 [設計](design/crystal-merchant.md)、[驗證](reports/crystal-merchant/README.md) 與 [第 87 課](lessons/87-crystal-merchant.md)。
+
+## 2026-10-04：v0.0.14 已發佈
 
 - 從 develop 建立 release/0.0.14，發行逐夜增援與龍晶收益調整。新遊戲套用，舊紀錄保留原數值。
 - 七星球、集結、十四部件與謎題只有設計文件，不列為已實裝。
 - 更新各平台內建版本為 0.0.14／build 14；完整檢查通過（核心 2,066 項斷言零失敗，無 SCRIPT ERROR／ERROR）。H5、Mac、Windows、Android 與 iOS Xcode 專案匯出完成，ZIP／APK 完整性檢查通過，Mac 原生前導已目視確認。
-- 線上部署待執行；詳見 [發行驗證](reports/release-0.0.14/verification.json) 與 [更新項目](reports/release-0.0.14/release-notes.md)。手機與 Windows 尚未真機遊玩，iOS 尚未簽署安裝。
+- [v0.0.14 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.14) 已公開，五平台附件與校驗檔上傳完整且 SHA-256 相符；[Pages 部署](https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37195854854) 成功，線上首頁、指南與 PCK 雜湊全部吻合本次建置。Mac 發行包已啟動並確認主選單。詳見 [發行驗證](reports/release-0.0.14/verification.json) 與 [更新項目](reports/release-0.0.14/release-notes.md)。手機與 Windows 尚未真機遊玩，iOS 尚未簽署安裝。
 
 ## 2026-10-04：七星球與解謎部件設計第二版（設計完成，玩法未接入）
 

@@ -3,12 +3,15 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=13
+const VERSION:=15
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
 var _baseline: Dictionary={}
 var _baseline_config: Dictionary={}
+## Only script metadata is retained, never live objects or their mutable values.
+## The closed checkpoint graph has a fixed set of script types per codec.
+var _field_names: Dictionary[Script, Array]={}
 
 func _plain(value, depth: int=0) -> bool:
 	if depth>20:return false
@@ -28,15 +31,25 @@ func _plain(value, depth: int=0) -> bool:
 			return true
 	return false
 
-func _fields(object, skip: Array=[]) -> Dictionary:
+func _names(object: RefCounted) -> Array[StringName]:
+	var script: Script=object.get_script()
+	if not _field_names.has(script):
+		var names: Array[StringName]=[]
+		for property in object.get_property_list():
+			if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
+				names.append(StringName(property.name))
+		_field_names[script]=names
+	return _field_names[script]
+
+func _fields(object: RefCounted, skip: Array=[], copy_containers: bool=true) -> Dictionary:
 	var result: Dictionary={}
-	for property in object.get_property_list():
-		var key: String=property.name
-		if not (property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE) or key in skip:continue
-		var value=object.get(key)
+	for name in _names(object):
+		var key: String=str(name)
+		if key in skip:continue
+		var value=object.get(name)
 		if typeof(value)==TYPE_OBJECT:continue
-		# Every remaining script field must have an explicitly supported plain shape.
-		result[key]=value.duplicate(true) if value is Array or value is Dictionary else value
+		# Capture owns its values; restore's temporary shape check only reads them.
+		result[key]=value.duplicate(true) if copy_containers and (value is Array or value is Dictionary) else value
 	return result
 
 func _fighter(actor) -> Dictionary:
@@ -62,7 +75,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area"]),
-		"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -79,7 +92,7 @@ func _normalize(value):
 
 func _copy_fields(object, saved, skip: Array=[]) -> bool:
 	if not saved is Dictionary:return false
-	var template:=_fields(object,skip)
+	var template:=_fields(object,skip,false)
 	if saved.size()!=template.size():return false
 	for key in template:
 		if not saved.has(key):return false
@@ -113,10 +126,12 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13]:keys.append("modules")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15]:keys.append("modules")
+	if data.get("version",0) in [14,15]:keys.append("merchant")
+	if data.get("version",0)==15:keys.append("trials")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -142,6 +157,14 @@ func restore(raw) -> Dictionary:
 		data.version=12
 	if data.version==12:
 		if not _upgrade_v12(data):return _invalid()
+	if data.version==13:
+		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
+		data["merchant"]=Campaign.new(data.config).merchant.capture()
+		data.version=14
+	if data.version==14:
+		if not data.config is Dictionary or data.config.has("ruin_enabled"):return _invalid()
+		data["trials"]=[]
+		data.version=15
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -159,6 +182,10 @@ func restore(raw) -> Dictionary:
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
 	if not _restore_spirit(sim,data):return _invalid()
 	if not sim.modules.restore(data.modules,sim.workforce.elapsed):return _invalid()
+	if not sim.trials.restore(data.trials,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)):return _invalid()
+	for id: String in sim.modules.found:
+		if not sim.trials.unlocked(id):return _invalid()
+	if not sim.merchant.restore(data.merchant,int(round(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)),sim.clock.day):return _invalid()
 	var survival=sim.survival
 	if survival.enabled!=(sim.life.enabled and int(data.config.get("crystal_survival",0))==1):return _invalid()
 	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()
