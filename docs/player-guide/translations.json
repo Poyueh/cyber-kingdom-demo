@@ -1367,10 +1367,6 @@
     "zh_CN": "工匠与农夫夜间也会采集、耕作与施工；附近有魔物才避难。猎人夜间回防，枪盾兵守住两侧。居民也会保管地面龙晶，骑士靠近时交出。",
     "en": "Engineers and farmers also gather, farm and build at night, sheltering when monsters approach. Hunters return to defend at night, and spear-and-shield guards hold both sides. Residents also collect loose crystals and hand them over when the knight approaches."
   },
-  "建造與升階花費 3／4／7 龍晶，耐久逐級提高；受損先花 2 晶修復，堡壘需要三級聚落。付滿進入施工後，城牆暫時無法阻擋敵人。": {
-    "zh_CN": "建造与升阶花费 3／4／7 龙晶，耐久逐级提高；受损先花 2 晶修复，堡垒需要三级聚落。付满进入施工后，城墙暂时无法阻挡敌人。",
-    "en": "Construction and upgrades cost 3/4/7 crystals and increase durability. Repair damage first for 2 crystals; a fortress requires a level-three settlement. Once fully paid and under construction, the wall temporarily stops blocking enemies."
-  },
   "每階花費 3／5／8 龍晶，需相應聚落等級。箭塔自動射箭，連弩塔射得更快，雷射塔傷害更高。付滿後由工匠施工；建造或升級期間不會攻擊。": {
     "zh_CN": "每阶花费 3／5／8 龙晶，需相应聚落等级。箭塔自动射箭，连弩塔射得更快，雷射塔伤害更高。付满后由工匠施工；建造或升级期间不会攻击。",
     "en": "Each tier costs 3/5/8 crystals and requires the matching settlement level. Arrow towers fire automatically, repeater towers shoot faster, and laser towers deal more damage. Engineers build after full payment; towers cannot fire during construction or upgrades."
@@ -1427,8 +1423,12 @@
     "en": "Open the Frontier map from the pause menu. Gold marks your position; only discovered terrain, unclaimed rewards and sealed ruins appear. In new journeys, distant modules are sealed. Dragon Sigils: read the symbols on the seal from left to right, find the three runes along your approach, then activate them in order with E or a downward swipe. Light Relay: start with the station nearest camp and link all three toward the seal within 12 seconds. Wrong order or timeout allows a free retry; pausing freezes the timer. Return to the opened seal to collect the module. Existing journeys retain direct pickup.",
     "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。新旅程的远方部件需先解开遗迹：古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，向封印接通三座中继器，需在 12 秒内完成。错序或超时可免费重试，暂停不计时；解开后回封印处领取部件。既有旅程保留原本直接拾取规则。"
   },
-  "適用 v0.0.15 新旅程：包含商人、稀缺寶箱、探索圖及兩座部件遺跡挑戰。請建立新遊戲體驗，舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
-    "en": "For new journeys in v0.0.15, including the merchant, scarce chests, Frontier map and two module ruin trials. Start a new game to experience them; existing saves retain their original rules. Values follow the current journey settings. Concept art and older illustrations are labeled. This is a guide, not the game.",
-    "zh_CN": "适用 v0.0.15 新旅程：包含商人、稀缺宝箱、探索图及两座部件遗迹挑战。请建立新游戏体验，旧纪录保留原规则。数值以当局设定为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。"
+  "適用 v0.0.16 新旅程：包含商人、稀缺寶箱、探索圖及兩座部件遺跡挑戰。請建立新遊戲體驗，舊紀錄保留原規則。數值以當局設定為準，圖片標有概念圖或舊版示意。這是指南，不是遊戲本體。": {
+    "en": "For new journeys in v0.0.16, including the merchant, scarce chests, Frontier map and two module ruin trials. Start a new game to experience them; existing saves retain their original rules. Values follow the current journey settings. Concept art and older illustrations are labeled. This is a guide, not the game.",
+    "zh_CN": "适用 v0.0.16 新旅程：包含商人、稀缺宝箱、探索图及两座部件遗迹挑战。请建立新游戏体验，旧纪录保留原规则。数值以当局设定为准，图片标有概念图或旧版示意。这是指南，不是游戏本体。"
+  },
+  "建造與升階花費 3／4／7 龍晶，耐久逐級提高；受損先花 2 晶修復，堡壘需要三級聚落。完整城牆會阻擋怪物及擊退位移；抱晶怪若退路被牆擋住，會先破牆再回門。付滿進入施工後或城牆被打壞時，敵人才能通過。": {
+    "en": "Building and upgrades cost 3/4/7 crystals, with more durability each tier. Repairs cost 2 crystals; a fortress requires refuge level 3. Intact walls block enemies and knockback. Crystal carriers break an obstructing wall before returning to their portal. Enemies can pass while fully funded construction is underway or after a wall is destroyed.",
+    "zh_CN": "建造与升阶花费 3／4／7 龙晶，耐久逐级提高；受损先花 2 晶修复，堡垒需要三级聚落。完整城墙会阻挡怪物及击退位移；抱晶怪若退路被墙挡住，会先破墙再回门。付满进入施工后或城墙被打坏时，敌人才能通过。"
   }
 }
