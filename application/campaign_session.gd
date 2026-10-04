@@ -1,5 +1,9 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const Merchant = preload("res://domain/crystal_merchant.gd")
+const ScarceTreasure = preload("res://domain/scarce_treasure.gd")
+const RandomStreams = preload("res://domain/rng/rng_streams.gd")
+var merchant: Merchant
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const NightPressure = preload("res://domain/night_pressure.gd")
 var night_pressure: NightPressure
@@ -70,6 +74,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	economy["flat_ground"]=int(config.get("flat_frontier",1))
 	resolved["economy"]=economy
 	super(resolved,hero_stats)
+	ScarceTreasure.apply(frontier,world.sites.hall,config,RandomStreams.new(map_seed).of(RandomStreams.Stream.LOOT))
 	if config.get("flat_frontier",1):
 		world.tool_roles.blade="hunter";world.tool_sites.blade="hunt_tools"
 	travel.fast_multiplier=clampf(config.get("fast_run_multiplier",1.65),1.1,3.0)
@@ -151,6 +156,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	tower_damage=clampi(config.get("tower_damage",12),1,100)
 	tower_range=clampf(config.get("tower_range",460.0),200,800)
 	modules=Modules.new(frontier,config)
+	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:
@@ -209,6 +215,8 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	if merchant.can_dispatch() and absf(x-merchant.x)<73 and absf(_player_y-430)<42:
+		candidates.append(_choice("merchant",merchant.x,"委託龍晶商人出遊",int(merchant.rules.merchant_cost)))
 	var shrine: float=spirit.shrine_x(world.sites.hall)
 	if life.enabled and frontier.city_level>0 and absf(x-shrine)<65 and absf(_player_y-430)<=42:
 		candidates.append(_choice("spirit",shrine,"召喚引路之魂",int(prices.get("spirit",1)),not spirit.active(int(workforce.elapsed*Spirit.TICKS_PER_SECOND)),"引路之魂正在指引你"))
@@ -386,6 +394,7 @@ func interact(x: float, target_key: String = "") -> bool:
 
 func _execute(choice: Dictionary) -> void:
 	match choice.id:
+		"merchant": merchant.dispatch(clock.day)
 		"spirit": spirit.summon(int(workforce.elapsed*Spirit.TICKS_PER_SECOND))
 		"tower","field": buildings[choice.building_id].pending=true
 		"rift": mission.order(choice.rift_index)
@@ -464,6 +473,10 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 			investments.erase(key)
 			person.role="citizen"
 			effects.append({"kind":"recruited","x":person.x,"y":person.get("y",430),"life":0.7})
+	var merchant_reward: int=merchant.advance(int(round(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)),clock.day,hero_x,hero_y,pouch.amount==0)
+	if merchant_reward>0:
+		pouch.burst(merchant_reward,merchant.x)
+		effects.append({"kind":"merchant_delivery","x":merchant.x,"life":0.8})
 	pouch.advance(seconds,hero_x,hero_y)
 	if life.enabled and pouch.amount>=pouch.capacity:
 		for gem in pouch.drops:

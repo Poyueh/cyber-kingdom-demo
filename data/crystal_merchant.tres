@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/crystal_merchant_tuning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+delivery_crystals = 6
+trip_cost = 1
+walking_speed = 90.0
+gift_radius = 32.0
+approach_distance = 550.0
+trip_distance = 700.0
+camp_offset = 300.0
+treasure_limit = 3
+treasure_camp_distance = 2400.0
+treasure_spacing = 2600.0

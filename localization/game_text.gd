@@ -1,6 +1,9 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["委託龍晶商人出遊", "委託龍晶商人出遊", "委托龙晶商人出游", "Fund the crystal merchant’s trip"],
+ ["靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人領取龍晶；付一顆委託，隔天再補給。", "靠近商人领取龙晶；付一颗委托，隔天再补给。", "Approach the merchant for crystals. Fund a trip with one crystal; collect again tomorrow."],
+
  ["部件工坊","部件工坊","部件工坊","Module workshop"],
  ["探索取得後立即裝配","探索取得後立即裝配","探索取得后立即装配","Equips immediately when discovered"],
  ["更換消耗 %d 顆龍晶","更換消耗 %d 顆龍晶","更换消耗 %d 颗龙晶","Switch for %d dragon crystals"],

@@ -1214,5 +1214,21 @@
   "沒有劍時不能攻擊，拔劍點火是你的第一步。": {
     "zh_CN": "没有剑时不能攻击，拔剑点火是你的第一步。",
     "en": "You cannot attack without a sword. Draw it to ignite the campfire first."
+  },
+  "寶箱是遠方的稀缺獎勵。": {
+    "zh_CN": "宝箱是远方的稀缺奖励。",
+    "en": "Treasure is a rare reward for exploration."
+  },
+  " 新旅程整張地圖最多三個，離營火與其他寶箱都有足夠距離；直接開啟後，龍晶會湧出並吸收入袋。": {
+    "zh_CN": " 新旅程整张地图最多三个，离营火与其他宝箱都有足够距离；直接开启后，龙晶会涌出并吸收入袋。",
+    "en": " New journeys have at most three chests, far from camp and from one another. Open them directly; crystals spill out and are drawn into your pouch."
+  },
+  "龍晶商人每日補給。": {
+    "zh_CN": "龙晶商人每日补给。",
+    "en": "Daily supplies from the crystal merchant."
+  },
+  " 首次缺晶時，他會走近並贈送六顆。之後靠近商人按 E／手機向下滑，付一顆讓他出遊；隔天回營火附近，靠近再領六顆。未付費不出發，未靠近不交貨。": {
+    "zh_CN": " 首次缺晶时，他会走近并赠送六颗。之后靠近商人按 E／手机向下滑，付一颗让他出游；隔天回营火附近，靠近再领六颗。未付费不出发，未靠近不交货。",
+    "en": " When you first run out of crystals, he approaches and gives you six. Then press E or swipe down near him to fund a trip with one crystal. He returns near the campfire the next day with six more. He waits for payment before leaving and for your approach before delivery."
   }
 }

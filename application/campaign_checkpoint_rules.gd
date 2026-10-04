@@ -9,6 +9,7 @@ static func number(value) -> bool:
 
 static func config_valid(config: Dictionary) -> bool:
 	if not config.get("seed") is int:return false
+	if not preload("res://domain/crystal_merchant.gd").valid_config(config):return false
 	for key in config:
 		if key in ["economy","prices"]:
 			if not config[key] is Dictionary:return false
