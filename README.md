@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.19 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.19)
+- [v0.0.20 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.20)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -27,15 +27,15 @@
 bash tools/check.sh
 ```
 
-v0.0.19 重畫三段原地與踏斬共 48 張全身姿勢，讓轉肩、沉腰與腿部承重一起帶動揮劍；校正部件掛點和出刀節奏。保留像素刀光、命中火花、短暫停頓與鏡頭回饋。沿用全套重繪騎士動作：跑步與衝刺各 12 張、三段原地與踏斬各 24 張，並更新待機、喘息、受擊、倒地與拔劍。新舊紀錄都會換上新外觀，延續完工城牆阻擋修正。近期版本加入稀缺寶箱、龍晶商人、探索地標、探索圖及兩座部件遺跡挑戰。新旅程需依符序啟動符石或完成 12 秒中繼，解開封印後取得部件；錯序／超時可免費重試。舊紀錄保留原本直接拾取與經濟規則。請選「新遊戲」體驗新內容。
+v0.0.20 加入三張可玩地圖：原有微光林地、銹沙盆地、鏡霜海岸。每張封印雙門、擊敗各自巨龍並領取龍核；首次 20 龍晶與工匠建造火箭，從星圖探索或回訪，落地殘骸花 12 晶重建。城鎮、居民、採集與日數分開保存；騎士攜帶現有龍晶、劍與部件，集齊三顆龍核通關。舊感受式紀錄可續玩。保留 12 格跑步／衝刺、48 格全身連斬、商人、稀缺寶箱與兩座部件遺跡。
 
-說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新說明、測試並發佈試玩版。七星球、集結隊伍、火箭與完整十四謎題仍未接入。
+說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新說明、測試並發佈試玩版。七星球、集結隊伍與完整十四謎題仍未完整接入；目前為三地遠征。
 
 目前新旅程包含農具工坊、居民近域採集、施工中的防線停用、日夜循環、龍晶背包和戰鬥原型。詳情請看 [開發進度](docs/STATUS.md)、[架構說明](docs/ARCHITECTURE.md) 與 [Gitflow 流程](docs/GITFLOW.md)。
 
 ## 平台狀態
 
-v0.0.19 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.20 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 

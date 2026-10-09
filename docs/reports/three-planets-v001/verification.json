@@ -1,0 +1,10 @@
+{
+  "version": "0.0.20",
+  "native_scene": "Godot 4.7.2 macOS OpenGL; actual frontier scene, controlled fixtures for all 3 worlds, chart buttons, arrivals and final victory",
+  "native_scene_assertions": 7,
+  "checks": "tools/check.sh PASS, 2548 behavior assertions, all scene checks, no SCRIPT ERROR/ERROR; extra native voyage scene 7 assertions after presentation changes",
+  "platform_limits": "Windows and phone device playtests not performed",
+  "art": "built-in imagegen, 6 sources; common native grid and connected component extraction",
+  "screenshots": "Actual native game renders from tests/test_star_voyage_scene.gd, not mockups",
+  "audio_teardown": "Native verbose identified two Ogg playbacks still draining at immediate test process exit; fixture now stops audio and lets the real audio callback drain before teardown. No change to gameplay audio architecture."
+}

@@ -1,5 +1,6 @@
 extends RefCounted
 const Store=preload("res://application/ports/campaign_store.gd")
+const Voyage=preload("res://application/star_voyage.gd")
 const Codec=preload("res://application/campaign_snapshot.gd")
 var store: Store
 var codec:=Codec.new()
@@ -14,18 +15,19 @@ func open() -> Dictionary:
 		status="new"
 		return {}
 	if result.status=="ready":
-		var restored:=codec.restore(result.data)
+		var restored: Dictionary=Voyage.restore(result.data) if result.data is Dictionary and result.data.has("format") else codec.restore(result.data)
 		if not restored.is_empty():
 			status="saved"
 			last_error=""
 			return restored
 	status="protected"
-	last_error=store.last_error if result.status!="ready" else codec.last_error
+	last_error=store.last_error if result.status!="ready" else (codec.last_error if not codec.last_error.is_empty() else "Invalid or unsupported three-world checkpoint; original retained.")
 	return {}
-func save(sim, config: Dictionary, body: Dictionary) -> bool:
+func save(sim, config: Dictionary, body: Dictionary, journey: RefCounted=null) -> bool:
 	if status=="protected":return false
-	var packet:=codec.capture(sim,config,body)
-	if codec.restore(packet).is_empty():
+	var packet: Dictionary=codec.capture(sim,config,body) if journey==null else journey.capture(sim,body)
+	var verified: Dictionary=codec.restore(packet) if journey==null else Voyage.restore(packet)
+	if verified.is_empty():
 		status="error"
 		last_error=codec.last_error
 		return false

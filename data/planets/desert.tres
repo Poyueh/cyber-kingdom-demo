@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/planet_tuning.gd" id="1"]
+[resource]
+script = ExtResource("1")
+planet_id = 1
+day_seconds = 165.0
+night_seconds = 70.0
+night_first = 5
