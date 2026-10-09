@@ -1,6 +1,6 @@
 # 製作進度
 
-## 2026-10-10：三星球遠征（v0.0.20 發行準備）
+## 2026-10-10：v0.0.20 三星球遠征（已發佈）
 
 - 保留微光林地，新增銹沙盆地、鏡霜海岸與沙龍地裂／冰龍雙段吐息；三張有獨立種子、地貌與資源分布。
 - 龍核領取 → 20 晶火箭／工匠施工 → 星圖選星球 → 降落殘骸／12 晶重建 → 回訪；三核通關。
@@ -8,6 +8,8 @@
 - 完整 `tools/check.sh` 通過，2548 個核心斷言；新增三星球原生場景 7 項，三語 Help、分層、存檔及舊玩法回歸通過。額外原生画面覆核及音效測試收尾驗證；Windows／手機未真機驗收。
 - 更新 [三地設計](design/three-planets.md)、[第 97 課](lessons/97-three-planet-resources.md)、[原生驗證](reports/three-planets-v001/verification.json)。新生成原稿不進遊戲匯出包。
 
+
+- [v0.0.20 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.20) 已公開；[線上試玩](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.20) 部署完成，首頁／指南／PCK 與套件一致。[發行驗證](reports/release-0.0.20/verification.json)。
 
 ## 2026-10-04：v0.0.19 全身發力連斬（已發佈）
 
