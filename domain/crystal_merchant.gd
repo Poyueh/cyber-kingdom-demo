@@ -95,7 +95,7 @@ func restore(data: Variant, now_tick: int, day: int) -> bool:
 	if data.phase<Phase.DORMANT or data.phase>Phase.READY or data.facing not in [-1,1]:return false
 	if data.x<left_x or data.x>right_x or data.walk_distance<0:return false
 	if data.last_tick<0 or data.last_tick>now_tick+1 or data.return_day<0 or data.return_day>day+1:return false
-	if data.phase in [Phase.OUTBOUND,Phase.AWAY,Phase.RETURNING,Phase.READY] and data.return_day<2:return false
+	if data.phase in [Phase.OUTBOUND,Phase.AWAY,Phase.RETURNING,Phase.READY] and data.return_day<1:return false
 	if data.phase in [Phase.DORMANT,Phase.APPROACHING] and data.return_day!=0:return false
 	if data.phase in [Phase.RETURNING,Phase.READY,Phase.WAITING_PAYMENT] and data.return_day>day:return false
 	if data.phase==Phase.READY and not is_equal_approx(float(data.x),home_x):return false

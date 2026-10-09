@@ -4,6 +4,9 @@ const Merchant = preload("res://domain/crystal_merchant.gd")
 const ScarceTreasure = preload("res://domain/scarce_treasure.gd")
 const RandomStreams = preload("res://domain/rng/rng_streams.gd")
 var merchant: Merchant
+const Planet=preload("res://domain/planet_state.gd")
+const PlanetOps=preload("res://application/planet_operations.gd")
+var planet: Planet
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const NightPressure = preload("res://domain/night_pressure.gd")
 var night_pressure: NightPressure
@@ -65,6 +68,7 @@ const TOOL_KINDS := {"workshop":"hammer","farm_tools":"hoe","hunt_tools":"bow"}
 const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","farm_tools":"農具","hunt_tools":"獵弓","forge":"義肢爐","beacon":"守護塔","wall":"右防線","wall_left":"左防線","farm":"農田","drill":"劍術訓練","heal":"龍晶治療"}
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
+	planet=Planet.new(config)
 	night_pressure = NightPressure.new(config)
 	spirit=Spirit.new(config)
 	life.enabled=int(config.get("immersive_loop",0))==1
@@ -219,6 +223,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	candidates.append_array(PlanetOps.candidates(self,x,_player_y))
 	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
 	if merchant.can_dispatch() and absf(x-merchant.x)<73 and absf(_player_y-430)<42:
 		candidates.append(_choice("merchant",merchant.x,"委託龍晶商人出遊",int(merchant.rules.merchant_cost)))
@@ -399,6 +404,7 @@ func interact(x: float, target_key: String = "") -> bool:
 
 func _execute(choice: Dictionary) -> void:
 	match choice.id:
+		"dragon_core","rocket","star_map": PlanetOps.execute(self,choice.id)
 		"trial": RuinInteractions.execute(self,choice)
 		"merchant": merchant.dispatch(clock.day)
 		"spirit": spirit.summon(int(workforce.elapsed*Spirit.TICKS_PER_SECOND))
@@ -450,7 +456,7 @@ func _execute(choice: Dictionary) -> void:
 
 func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if seconds<=0 or not is_finite(seconds):return
-	mission.resolve(hero.is_alive(),raiders.is_empty())
+	PlanetOps.resolve(self)
 	if not is_running():return
 	_hero_x=hero_x
 	if life.enabled and agriculture_available():built.farm_tools=true
@@ -462,11 +468,11 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		animal.x=animal.home_x+sin(workforce.elapsed*0.36+animal.region*1.7)*28
 	super.advance(seconds,hero_x,hero_y)
 	trials.advance(roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
-	mission.resolve(hero.is_alive(),raiders.is_empty())
+	PlanetOps.resolve(self)
 	if not is_running(): return
 	_advance_expeditions(seconds,hero_x,hero_y)
 	_summon_dragon(hero_x)
-	mission.resolve(hero.is_alive(),raiders.is_empty())
+	PlanetOps.resolve(self)
 	if not is_running():return
 	if life.enabled:
 		hero.shield=0;world.barrier=0
@@ -777,7 +783,8 @@ func _summon_dragon(hero_x: float) -> void:
 func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
 	if survival.enabled and Forager.advance(self,enemy,seconds):return
 	if enemy.get("kind","")=="dragon":
-		preload("res://application/dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
+		if planet.enabled and planet.id>0:preload("res://application/biome_dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
+		else:preload("res://application/dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
 	else:super._advance_raider(enemy,seconds,hero_x,hero_y)
 
 func strike_from(x: float, y: float) -> void:
@@ -791,6 +798,8 @@ func strike_from(x: float, y: float) -> void:
 		entry[0].x=entry[1];entry[0].windup=entry[2];entry[0].stagger=0.0
 
 func _engineer_target(index: int, seconds: float) -> float:
+	var rocket: float=PlanetOps.engineer(self,index,seconds)
+	if is_finite(rocket):return rocket
 	var construction:=Construction.target(self,index,seconds,false)
 	if is_finite(construction):return construction
 	var target:=super._engineer_target(index,seconds)

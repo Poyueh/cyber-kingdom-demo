@@ -10,6 +10,11 @@ static func number(value) -> bool:
 static func config_valid(config: Dictionary) -> bool:
 	if not preload("res://domain/ruin_trials.gd").valid_config(config):return false
 	if not config.get("seed") is int:return false
+	if config.has("planet_id") and config.planet_id not in [0,1,2]:return false
+	if config.has("voyage_enabled") and config.voyage_enabled not in [0,1]:return false
+	for key in ["rocket_cost","rocket_repair"]:
+		if config.has(key) and (not in_range(config[key],1,30) or floorf(config[key])!=config[key]):return false
+	if config.has("rocket_work") and not in_range(config.rocket_work,1,120):return false
 	if not preload("res://domain/crystal_merchant.gd").valid_config(config):return false
 	for key in config:
 		if key in ["economy","prices"]:
@@ -182,8 +187,10 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if data.session.map_seed!=data.config.seed or data.session._spawn_remaining<0 or data.session.wave<0:return false
 	for drop in data.session.loot:
 		if not shape(drop,{"x":0.0,"taken":false}):return false
-	for value in data.session.investments.values():
-		if not value is int or value<1 or value>12:return false
+	for key in data.session.investments:
+		var value=data.session.investments[key]
+		var limit: int=30 if key=="rocket" and data.config.get("voyage_enabled",0)==1 else 12
+		if not value is int or value<1 or value>limit:return false
 	for value in data.session.built.values():
 		if not value is bool:return false
 	if not shape(data.session.prices,base.session.prices):return false

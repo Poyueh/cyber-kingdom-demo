@@ -28,6 +28,15 @@ var _requested_special: bool=false
 const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
 @export var sword_style: Resource = preload("res://data/sword_feedback.tres")
 var _sword_trail: SwordTrail
+const Voyage=preload("res://application/star_voyage.gd")
+const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://data/planets/desert.tres"),preload("res://data/planets/frost.tres")]
+var journey: Voyage
+var _star_travel: Node
+var _arrival_banner: CanvasLayer
+func _planet_profiles() -> Array[Dictionary]:
+	var result: Array[Dictionary]=[]
+	for profile: Resource in PLANET_PROFILES:result.append(profile.rules())
+	return result
 
 func _ready() -> void:
 	sword_feedback = SwordFeedback.new()
@@ -49,6 +58,8 @@ func _ready() -> void:
 			tuning=tuning.duplicate()
 			tuning.map_seed=launch.seed
 	super._ready()
+	_star_travel=preload("res://bootstrap/planet_travel_controller.gd").new();_star_travel.root=self;add_child(_star_travel)
+	_arrival_banner=preload("res://presentation/planet_arrival.gd").new();add_child(_arrival_banner)
 	hud.audio_toggled.connect(func():
 		audio.enabled=not audio.enabled
 		hud.set_audio_enabled(audio.enabled)
@@ -149,6 +160,10 @@ func restart() -> void:
 		"first_raid":tuning.first_raid_seconds,"raid_gap":tuning.raid_gap_seconds,
 		"person_speed":tuning.resident_speed,"shield_value":tuning.shield_per_crystal}
 	config.merge(tuning.campaign_rules(),true)
+	journey=null
+	if int(config.get("immersive_loop",0))==1:
+		journey=Voyage.new(config,_planet_profiles())
+		config=journey.configs[0]
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
 	knight.configure(sim.hero,knight_tuning)
@@ -172,6 +187,7 @@ func restart() -> void:
 	if is_instance_valid(audio):audio.observe(0,sim,knight.position.x,true)
 
 func _physics_process(seconds: float) -> void:
+	if is_instance_valid(_star_travel) and _star_travel.active():return
 	if _requested_new_map:
 		_requested_new_map = false
 		_map_seed += 1
@@ -180,6 +196,7 @@ func _physics_process(seconds: float) -> void:
 	var was_paused:=paused
 	var was_running:=sim.is_running()
 	super._physics_process(seconds)
+	if is_instance_valid(_star_travel):_star_travel.observe()
 	if paused and not was_paused:hud.cancel_touch_gestures()
 	if _requested_throw and not paused:
 		sim.throw_crystal(knight.position.x,knight.position.y,sim.hero.facing)
@@ -246,13 +263,22 @@ func _notification(what: int) -> void:
 func save_campaign() -> bool:
 	if progress==null:return true
 	_save_elapsed=0.0
-	var result: bool=progress.save(sim,_campaign_config,{"x":knight.position.x,"y":knight.position.y,"vx":knight.velocity.x,"vy":knight.velocity.y})
+	var result: bool=progress.save(sim,_campaign_config,{"x":knight.position.x,"y":knight.position.y,"vx":knight.velocity.x,"vy":knight.velocity.y},journey)
 	_present_save()
 	return result
 
 func _apply_restored(restored: Dictionary) -> void:
 	sim=restored.session
-	_campaign_config=restored.config
+	journey=restored.get("journey")
+	if journey==null and sim.life.enabled:
+		journey=Voyage.new(restored.config,_planet_profiles())
+		# Keep the exact old forest configuration/layout while enabling the envelope.
+		journey.configs[0]=restored.config.duplicate(true)
+		journey.configs[0].planet_id=0;journey.configs[0].voyage_enabled=1
+		sim.planet=preload("res://domain/planet_state.gd").new(journey.configs[0])
+		sim.planet.cleared=sim.mission.dragon_defeated
+		if sim.mission.outcome=="victory":sim.mission.outcome="active"
+	_campaign_config=journey.configs[journey.current] if journey!=null else restored.config
 	_map_seed=sim.map_seed
 	knight.configure(sim.hero,knight_tuning)
 	if sword_feedback != null: sword_feedback.reset(sim.effects)
@@ -275,7 +301,7 @@ func _apply_restored(restored: Dictionary) -> void:
 
 func save_manual_campaign() -> bool:
 	if manual_progress==null:return false
-	var saved: bool=manual_progress.save(sim,_campaign_config,{"x":knight.position.x,"y":knight.position.y,"vx":knight.velocity.x,"vy":knight.velocity.y})
+	var saved: bool=manual_progress.save(sim,_campaign_config,{"x":knight.position.x,"y":knight.position.y,"vx":knight.velocity.x,"vy":knight.velocity.y},journey)
 	if saved:_manual_available=true
 	_present_save()
 	return saved

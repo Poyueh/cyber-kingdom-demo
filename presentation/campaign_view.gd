@@ -7,6 +7,8 @@ const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.tres")
 var _daylight: Daylight
 var _camp_ignition_age: float=-1.0
+const PlanetScenery=preload("res://presentation/planet_scenery.gd")
+var _original_art: Resource
 
 func _ready() -> void:
 	super._ready()
@@ -45,11 +47,17 @@ var focus_key := ""
 var _view_player_x := 0.0
 var investment_progress := 0.0
 const Icons=preload("res://presentation/ui_icons.gd")
-const SITE_ICONS={"merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
+const SITE_ICONS={"rocket":"hammer","star_map":"map","dragon_core":"crystal","merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
 const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"drill":preload("res://art/structures/immersive-v001/drill.png"),"wall-1":preload("res://art/structures/immersive-v001/wall-1.png"),"wall-2":preload("res://art/structures/immersive-v001/wall-2.png"),"wall-3":preload("res://art/structures/immersive-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
 
 func present(sim, player_x: float) -> void:
 	if not is_same(_sim,sim):
+		if _original_art==null:_original_art=art
+		art=_original_art.duplicate()
+		if sim.planet.enabled and sim.planet.id>0:
+			art.woodland=PlanetScenery.DESERT if sim.planet.id==1 else PlanetScenery.FROST
+			art.ground=PlanetScenery.GROUND[sim.planet.id-1]
+			art.forest_layer=null
 		_resident_motion.clear()
 		_reveal=preload("res://presentation/exploration_reveal.gd").new()
 		_mist=preload("res://presentation/exploration_mist.gd").new()
@@ -98,7 +106,9 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b")*tint)
 				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72")*tint)
 		return
-	var texture: Texture2D=Details.harvest_texture(name,at.x,_sim.map_seed)
+	var texture: Texture2D=PlanetScenery.texture(_sim.planet.id if _sim.planet.enabled else 0,name)
+	if texture==null:texture=Details.harvest_texture(name,at.x,_sim.map_seed)
+	else:scale=1.0
 	if texture==null:texture=EXTRA_ART.get(name,art.props.get(name))
 	if _sim.life.enabled and name in ["workshop","armory"]:
 		for effect in _sim.effects:
@@ -114,9 +124,11 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 		draw_texture_rect(emission,Rect2(preload("res://presentation/grounded_art.gd").anchor(texture,at,scale)-Vector2(size.x*0.5,size.y),size),false,Color(1,1,1,pulse*tint.a))
 
 func _draw_atmosphere(_left: float) -> void:
-	preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
-	Details.draw_background(self,_details,_sim.frontier.regions)
-	Landmarks.draw_on(self,_landmarks,_sim)
+	if _sim.planet.enabled and _sim.planet.id>0:PlanetScenery.draw_on(self,_sim)
+	else:
+		preload("res://presentation/living_forest.gd").behind(self,_sim.workforce.elapsed)
+		Details.draw_background(self,_details,_sim.frontier.regions)
+		Landmarks.draw_on(self,_landmarks,_sim)
 	# Water is rendered after world actors by WaterReflection.
 	if art.show_power_grid: _draw_power_grid()
 
@@ -143,6 +155,7 @@ func _draw_power_grid() -> void:
 		draw_line(Vector2(x,430),Vector2(x,445),Color("306b78"),2)
 
 func _draw_structures() -> void:
+	preload("res://presentation/planet_rocket_view.gd").draw_on(self,_sim)
 	var world = _sim.world
 	var map = _sim.frontier
 	var hall: float = world.sites.hall
@@ -426,7 +439,7 @@ func _draw_interaction() -> void:
 	var prerequisites: Array=_context.get("prerequisites",[])
 	var upgrade: Dictionary={} if _sim.life.enabled else _context.get("upgrade",{})
 	var consequences: Array=_context.get("consequences",[])
-	var width:=maxf(96,_context.cost*23+48)
+	var width:=maxf(96,mini(_context.cost,10)*23+48)
 	width=maxf(width,maxi(requirements.size(),prerequisites.size())*52+28)
 	if not upgrade.is_empty():width=maxf(width,136)
 	var inverse:=get_viewport().get_canvas_transform().affine_inverse()
@@ -440,8 +453,9 @@ func _draw_interaction() -> void:
 	for side in [-1,1]:
 		draw_line(Vector2(_context.x+side*15,ground-3),Vector2(_context.x+side*15,ground+3),marker_color,2)
 	var height:=62.0+(20 if not requirements.is_empty() else 0)+(20 if not prerequisites.is_empty() else 0)+(40 if not upgrade.is_empty() else 0)+(22 if not consequences.is_empty() else 0)
-	var y:=ground-(184 if _context.id=="rift" else 141)-(height-62)
+	var y:=ground-(24 if _context.cost>10 else 0)-(184 if _context.id=="rift" else 141)-(height-62)
 	if _context.id=="tower":y-=90
+	elif _context.id in ["rocket","star_map"]:y-=80
 	elif _context.has("wall_id"):y-=50
 	# Floating cost sockets stay in the world; no rectangular signboard.
 	var key: String="sword" if _sim.life.enabled and _context.id=="armory" else SITE_ICONS.get(_context.id,"hand")
@@ -459,7 +473,7 @@ func _draw_interaction() -> void:
 		_icon(cause,Vector2(x-42,y),21,Color("ddb98e"))
 	if not _context.enabled and not (_context.id=="rift" and _sim.mission.rifts[_context.rift_index].ordered): _icon("lock",Vector2(x+width*0.5-15,y-3),17,Color("d4a994"))
 	for index in range(_context.cost):
-		var slot:=Vector2(x+(index-(_context.cost-1)*0.5)*23,y+34)
+		var slot:=Vector2(x+(index%10-(mini(_context.cost,10)-1)*0.5)*23,y+34+(index/10)*24)
 		if index==_context.paid-1:
 			var age: float=clampf((_sim.workforce.elapsed-_slot_changed)/0.18,0,1)
 			slot.y+=60*(1-age)*(1-age) if _sim.life.enabled else -14*(1-age)*(1-age)
@@ -572,5 +586,6 @@ func _draw() -> void:
 		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
 		draw_set_transform(Vector2.ZERO)
 	preload("res://presentation/crystal_merchant_view.gd").draw_on(self,_sim.merchant,_sim.workforce.elapsed,_view_player_x,_context.id=="merchant" and _context.enabled)
-	preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
+	if not _sim.planet.enabled or _sim.planet.id==0:preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
+	preload("res://presentation/planet_rocket_view.gd").draw_details(self,_sim)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

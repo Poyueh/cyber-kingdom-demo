@@ -48,8 +48,10 @@ func advice(sim: RefCounted, x: float, opening: bool=true, expedition: bool=true
  if not sim.is_running() or not active(tick):return {}
  if opening_finished and not summoned:
   return {"kind":"farewell","x":shrine_x(sim.world.sites.hall),"y":430.0,"key":"spirit","action":"move","stage":0}
- var hint: Dictionary=Opening.next(sim,x) if opening else {}
+ var hint: Dictionary=preload("res://application/planet_operations.gd").guidance(sim)
+ if hint.is_empty():hint=Opening.next(sim,x) if opening else {}
  if hint.is_empty() and expedition:hint=Expedition.next(sim,x,sim._player_y)
  if hint.is_empty() and summoned:
   hint={"kind":"defend","x":sim.world.sites.hall,"y":430.0,"key":"","action":"move","stage":0}
+ if hint.get("kind")=="camp" and sim.can_wield_sword():hint["goal"]="planet.relight"
  return hint

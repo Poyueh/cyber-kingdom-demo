@@ -1454,5 +1454,65 @@
   "適用 v0.0.19：重畫三段原地與踏斬共 48 張全身姿勢，肩、腰與腿一起發力，並校正部件掛點及出刀節奏。保留像素刀光、命中停頓與 12 張跑步／衝刺；既有紀錄可續玩。新旅程另有商人、稀缺寶箱、探索圖與兩座部件遺跡。較早圖片保留舊版示意標示。這是指南，不是遊戲本體。": {
     "en": "For v0.0.19: 48 redrawn full-body poses across planted and advancing three-hit combos, coordinating the shoulders, hips and legs, with adjusted module sockets and timing. Pixel blade trails, hit stop and 12-frame runs and sprints remain. Existing saves work. New journeys also feature the merchant, scarce chests, exploration map and two module ruins. Older illustrations remain labelled. This guide is not the game.",
     "zh_CN": "适用 v0.0.19：重画三段原地与踏斩共 48 张全身姿势，肩、腰与腿一起发力，并校正部件挂点及出刀节奏。保留像素刀光、命中停顿与 12 张跑步／冲刺；既有记录可续玩。新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。较早图片保留旧版示意标示。这是指南，不是游戏本体。"
+  },
+  "目前可玩三張：微光林地、銹沙盆地、鏡霜海岸。各有雙門與巨龍；龍核、火箭、星圖及回訪已加入。七星球與集結旗幟尚未完整實作。": {
+    "zh_CN": "目前可玩三张：微光林地、锈沙盆地、镜霜海岸。各有双门与巨龙；龙核、火箭、星图及回访已加入。七星球与集结旗帜尚未完整实现。",
+    "en": "Three playable worlds: Glimmerwood, Rustsand Basin and Mirrorfrost Coast, each with two gates and a dragon. Dragon cores, rockets, the star chart and return travel are playable. Seven worlds and rally flags are not fully implemented."
+  },
+  "每顆星球封印雙門、擊敗巨龍並清除殘敵後，營火西側會出現龍核。三顆龍核全部領取，才完成這次遠征。": {
+    "zh_CN": "每颗星球封印双门、击败巨龙并清除残敌后，营火西侧会出现龙核。三颗龙核全部领取，才完成此次远征。",
+    "en": "Seal both gates, defeat the dragon and clear remaining enemies on each world. Claim the core west of camp. Collect all three dragon cores to complete the expedition."
+  },
+  "適用 v0.0.20：加入三張可玩地圖、兩隻新巨龍、龍核火箭與回訪星圖。保留全身連斬、商人、部件遺跡與聚落經營。舊感受式旅程可續玩並進入三世界遠征；較早圖片保留示意標示。": {
+    "zh_CN": "适用 v0.0.20：加入三张可玩地图、两只新巨龙、龙核火箭与回访星图。保留全身连斩、商人、部件遗迹与聚落经营。旧旅程可续玩并进入三世界远征；较早图片保留示意标记。",
+    "en": "For v0.0.20: three playable worlds, two new dragons, dragoncore rockets and return travel. Existing combat, merchant, ruin modules and colony management remain. Existing immersive campaigns can continue into the three-world expedition. Older illustrations remain labeled."
+  },
+  "森林第一晚有 3 隻、沙地 5 隻、冰岸 6 隻；每晚再加 2 隻，單晚最多 60 隻，同時在場最多 12 隻。新星球日數重新開始，離開的星球暫停。封印一側會取消該側後續增援。": {
+    "zh_CN": "森林第一晚有 3 只、沙地 5 只、冰岸 6 只；每晚再加 2 只，单晚最多 60 只，同时在场最多 12 只。新星球日数重新开始，离开的星球暂停。封印一侧会取消该侧后续增援。",
+    "en": "The first night brings 3 enemies in the forest, 5 in the desert and 6 on the ice coast; 2 more each night, capped at 60 with 12 active. Each new world starts at day one; inactive worlds pause. Sealing a gate cancels its reinforcements."
+  },
+  "讓希望之火，越過星海。": {
+    "zh_CN": "让希望之火，越过星海。",
+    "en": "Carry the fire across the stars."
+  },
+  "微光林地": {
+    "zh_CN": "微光林地",
+    "en": "Glimmerwood"
+  },
+  "保留目前森林地圖，從營火建立第一座避難所，封門挑戰焰龍。": {
+    "zh_CN": "保留目前森林地图，从营火建立第一座避难所，封门挑战焰龙。",
+    "en": "The existing forest world. Found your refuge and seal its gates to face the flame dragon."
+  },
+  "銹沙盆地": {
+    "zh_CN": "锈沙盆地",
+    "en": "Rustsand Basin"
+  },
+  "乾枯樹木、密集晶脈與古代艦骸。沙龍會預告地裂，離開琥珀色危險區再反擊。": {
+    "zh_CN": "干枯树木、密集晶脉与古代舰骸。沙龙会预告地裂，离开琥珀色危险区再反击。",
+    "en": "Dead trees, rich ore and ancient wrecks. The sand dragon telegraphs ground ruptures; leave the amber zone before counterattacking."
+  },
+  "鏡霜海岸": {
+    "zh_CN": "镜霜海岸",
+    "en": "Mirrorfrost Coast"
+  },
+  "霜林、冰晶與失落觀測所。雙首冰龍有兩段吐息，避開第一段後仍要留意第二處預警。": {
+    "zh_CN": "霜林、冰晶与失落观测所。双首冰龙有两段吐息，避开第一段后仍要留意第二处预警。",
+    "en": "Frost pines, ice crystals and lost observatories. The two-headed dragon breathes twice: watch the second warning after dodging the first."
+  },
+  "遊戲內的龍核航圖": {
+    "zh_CN": "游戏内的龙核航图",
+    "en": "The in-game dragoncore star chart"
+  },
+  "首次擊敗龍後，先在營火西側領取龍核，再向更西邊的火箭殘骸投入 20 顆龍晶。最多兩名工匠施工，累計 30 工秒後完成；工匠不是自動贈送，仍要招募居民並製造錘子。": {
+    "zh_CN": "首次击败龙后，先在营火西侧领取龙核，再向更西边的火箭残骸投入 20 颗龙晶。最多两名工匠施工，累计 30 工秒后完成；工匠仍要招募并提供锤子。",
+    "en": "After your first dragon, claim the core west of camp, then invest 20 crystals at the rocket farther west. Up to two workers need 30 combined seconds of construction. Recruit residents and provide hammers first."
+  },
+  "完成後按 E 或手機向下拖曳開啟星圖，自選沙地或冰岸。場上有敵人或劍尚未撿回時不能啟航。每次落地火箭都損毀，花 12 晶請工匠重建，可前往尚未完成的星球，也可回訪舊城鎮。": {
+    "zh_CN": "完成后按 E 或手机向下拖曳打开星图，自选沙地或冰岸。场上有敌人或剑尚未捡回时不能启航。每次落地火箭都损毁，花 12 晶请工匠重建，可前往新星球或回访旧城镇。",
+    "en": "Once complete, press E or swipe down on mobile to open the chart and choose the desert or ice coast. Clear enemies and recover your sword before departure. Every landing wrecks the rocket; rebuild for 12 crystals and worker labor to explore or revisit."
+  },
+  "居民、建築、已採集資源和日數留在各自星球。騎士攜帶現有龍晶、劍、部件及剩餘冷卻，不會補滿背包，也不會重新領取商人的免費贈晶。新星球需要重新點火、招募與建設；出發前留一些龍晶。": {
+    "zh_CN": "居民、建筑、已采集资源和日数留在各自星球。骑士携带现有龙晶、剑、部件及剩余冷却，不会补满背包或重领商人赠晶。新星球需要重新点火、招募与建设；出发前留一些龙晶。",
+    "en": "Residents, buildings, harvested resources and the calendar remain on each world. Your crystals, sword, modules and remaining cooldown travel with you. No wallet refill or repeat merchant gift. Reserve crystals to light the new camp and recruit workers."
   }
 }
