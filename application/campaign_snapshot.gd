@@ -191,7 +191,7 @@ func restore(raw) -> Dictionary:
 	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()
 	if survival.enabled and not Rules.in_range(survival.hit_loss,1,10):return _invalid()
 	if not Rules.in_range(survival.sword_grace,0,1.2) or survival.hits<0:return _invalid()
-	if survival.armed and (survival.sword_on_ground or sim.frontier.city_level==0):return _invalid()
+	if survival.armed and (survival.sword_on_ground or (sim.frontier.city_level==0 and int(data.config.get("voyage_enabled",0))!=1)):return _invalid()
 	if survival.sword_on_ground and not Rules.in_range(survival.sword_x,sim.frontier.left_boundary,sim.frontier.right_boundary):return _invalid()
 	if sim.travel.rest_ticks<0 or sim.travel.rest_ticks>RecoveryClock.ticks_for(sim.travel.rules.sprint_rest_seconds) or sim.travel.last_tick<0:return _invalid()
 	if sim.travel.breath_ticks<0 or sim.travel.breath_ticks>sim.travel.rules.breath_tick_limit:return _invalid()

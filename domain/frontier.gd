@@ -35,6 +35,10 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = map_seed
 	var types := ["forest","forest","quarry","quarry","ruins","ruins"]
+	var biome: int=int(rules.get("planet_id",0))
+	if biome>0:rng=preload("res://domain/rng/rng_streams.gd").new(map_seed).of(preload("res://domain/rng/rng_streams.gd").Stream.WORLD)
+	if biome==1:types=["forest","quarry","quarry","quarry","ruins","ruins"]
+	if biome==2:types=["forest","forest","quarry","ruins","ruins","ruins"]
 	for index in range(types.size()-1,0,-1):
 		var swap := rng.randi_range(0,index)
 		var kind: String = types[index]
