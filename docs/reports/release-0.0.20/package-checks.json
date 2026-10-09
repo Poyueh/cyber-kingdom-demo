@@ -1,0 +1,32 @@
+{
+  "source_commit": "90622aee0b08acf294955c056291bf513863665d",
+  "source_tree": "7c0718af0a55d54386fe91052d40b2bdddc94ee6",
+  "packages": {
+    "Cyber-Kingdom-Android-v0.0.20-debug.apk": {
+      "size_bytes": 84721635,
+      "sha256": "a70f7afa8e6257bb4e791ea11bfcbe7969e0b79fba9c50de562c8a341e3c0140"
+    },
+    "Cyber-Kingdom-Guide-v0.0.20.html": {
+      "size_bytes": 3060776,
+      "sha256": "799f33b3dc23efbd487f6588d16edac2964dcafba68d3a6d95d932858de68791"
+    },
+    "Cyber-Kingdom-Web-v0.0.20.zip": {
+      "size_bytes": 68101301,
+      "sha256": "e5ae64463869aebf16982aad5efc4dcb689937edbe76e9169f66d67f50dc4979"
+    },
+    "Cyber-Kingdom-Windows-v0.0.20.zip": {
+      "size_bytes": 93662604,
+      "sha256": "d67164b938f32d597634dffad7dd9f9ea8c06d78aa72a5b7c4805fc0e9fc1226"
+    },
+    "Cyber-Kingdom-iOS-v0.0.20-Xcode.zip": {
+      "size_bytes": 168391704,
+      "sha256": "a855974e15676d225c31754f2870181fd975c4335816f4009b245955be97827f"
+    },
+    "Cyber-Kingdom-macOS-v0.0.20.zip": {
+      "size_bytes": 116084648,
+      "sha256": "378d2e62cbcc4824f9df0c7b021516cfad274aa8eb904a14dd90a85824c2d7e4"
+    }
+  },
+  "validation": "All archive CRCs, macOS ad-hoc signature/version, Android version and same committed source tree verified",
+  "device_limits": "Windows and phones not device tested; iOS is unsigned Xcode project"
+}
