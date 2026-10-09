@@ -12,8 +12,10 @@
     "iOS": "Xcode export and zip pass; not signed or installed"
   },
   "build_recovery": "Concurrent import exposed an editor notification error on iOS and hung Android device enumeration subprocesses in web/desktop imports. Only task-owned hung adb children stopped; iOS re-exported serially from identical source. Accepted export logs contain no Godot errors.",
-  "published": false,
-  "pages_verified": false,
+  "published": true,
+  "pages_verified": true,
   "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.20",
-  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.20"
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.20",
+  "pages_run": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/37962217511",
+  "remote_integrity": "All seven release attachment sizes and SHA-256 match; live index.html, guide.html and index.pck match the same export package."
 }

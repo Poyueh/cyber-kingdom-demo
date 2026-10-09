@@ -1,0 +1,20 @@
+{
+  "index.html": {
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.20&verify=1791564834",
+    "sha256": "2ff9cc3734ddcf7e22e8ccc11561169c18e671d82340f5bf6def440439b83c09",
+    "size_bytes": 5542,
+    "matches_export": true
+  },
+  "guide.html": {
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.20&verify=1791564834",
+    "sha256": "799f33b3dc23efbd487f6588d16edac2964dcafba68d3a6d95d932858de68791",
+    "size_bytes": 3060776,
+    "matches_export": true
+  },
+  "index.pck": {
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.20&verify=1791564836",
+    "sha256": "1e7c4786fdc925ab4c638edc7b7612a754b1f5aadf0b2fdba501e24f54fb623f",
+    "size_bytes": 56855440,
+    "matches_export": true
+  }
+}
