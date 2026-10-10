@@ -18,18 +18,25 @@ func _ready() -> void:
 	audio=TitleAudio.new()
 	audio.name="TitleAudio"
 	add_child(audio)
+	var levels: Dictionary=AudioPreferences.LEVELS.duplicate()
+	levels.muted=false
 	if not audio_preferences_path.is_empty():
-		audio.apply(AudioPreferences.new(audio_preferences_path).read())
+		levels=AudioPreferences.new(audio_preferences_path).read()
+	audio.apply(levels)
 	view.new_game_requested.connect(start_new_game)
 	view.records_requested.connect(show_records)
 	view.record_selected.connect(select_record)
 	if not get_tree().has_meta("campaign_prologue_seen"):
 		get_tree().set_meta("campaign_prologue_seen",true)
 		view.hide()
+		audio.suspended=true
 		var prologue=preload("res://presentation/campaign_prologue.gd").new()
 		prologue.stage=preload("res://bootstrap/prologue_stage.gd").new()
+		prologue.stage.sound_levels=levels
 		add_child(prologue)
-		prologue.completed.connect(func():view.show())
+		prologue.completed.connect(func():
+			audio.suspended=false
+			view.show())
 
 func show_records() -> void:
 	audio.click("ui_select")

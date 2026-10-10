@@ -1,0 +1,29 @@
+{
+  "before_version": "0.0.25",
+  "overlap_before": {
+    "music_voices": 2,
+    "title_music_voices": 1
+  },
+  "native_after_assertions": 16,
+  "native_after_failures": 0,
+  "scene_cycles_before": 9,
+  "warm_cycle_resource_range": [
+    685.0,
+    685.0
+  ],
+  "warm_cycle_node_range": [
+    2.0,
+    2.0
+  ],
+  "warm_cycle_static_growth_bytes": 5660,
+  "sampling_retains_one_dictionary_per_sample": true,
+  "full_check": true,
+  "save_schema_unchanged": 18,
+  "limits": [
+    "Short native scene-cycle sample, not mobile or long-session acceptance",
+    "Automatic direct-quit audio resource warning remains",
+    "Human comprehension, retention and commercial results unverified"
+  ],
+  "core_assertions": 3619,
+  "headless_scene_assertions": 14
+}
