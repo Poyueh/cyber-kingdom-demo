@@ -1,0 +1,20 @@
+{
+  "version": "0.0.21",
+  "source_commit": "7b6dd540dfbc6480c521df7fc963a3e6a477116b",
+  "source_tree": "16ada880d5ba04e83c77a6dc2e403f11d9a23edd",
+  "checks": "tools/check.sh PASS; 2611 core assertions; 37 native scene assertions; all regression scenes; no SCRIPT ERROR/ERROR in accepted checks.",
+  "native_playback": "Actual Mac frontier rendering, real pointer picking of chart buttons, seven worlds and new dragon art. Exported PCK run from empty isolated directory validated forest -> desert -> swamp -> frost -> volcanic -> storm -> void -> seven-core victory. High resolution sources excluded.",
+  "exports": {
+    "h5": "export, runtime resource checks, embedded guide and archive pass",
+    "Windows": "export and zip pass; not device tested",
+    "macOS": "export, ad-hoc signature/version, archive and isolated actual PCK scene pass",
+    "Android": "debug APK integrity and version 0.0.21/code 21 pass; not device tested",
+    "iOS": "Xcode export and archive pass; not signed or installed"
+  },
+  "limitations": [
+    "Seven-world unassisted campaign balance not yet playtested.",
+    "Windows and phone device gameplay not tested."
+  ],
+  "published": false,
+  "pages_verified": false
+}
