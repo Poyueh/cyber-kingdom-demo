@@ -15,6 +15,11 @@
     "Seven-world unassisted campaign balance not yet playtested.",
     "Windows and phone device gameplay not tested."
   ],
-  "published": false,
-  "pages_verified": false
+  "published": true,
+  "pages_verified": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.21",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.21",
+  "pages_run": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38032593483",
+  "remote_integrity": "All seven release attachment sizes and SHA-256 match; live index.html, guide.html and index.pck match the same export package.",
+  "browser_check": "Published H5 prologue and start menu render; no captured browser errors/warnings. Full browser campaign not playtested."
 }
