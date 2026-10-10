@@ -58,6 +58,7 @@ run_check mount --script res://tests/test_mount_scene.gd
 run_check feedback --script res://tests/test_feedback_scene.gd
 run_check spirit_hit --script res://tests/test_spirit_hit_scene.gd
 run_check guide --script res://tests/test_guide_scene.gd
+run_check supply_guidance --script res://tests/test_supply_guidance_scene.gd
 run_check audio --script res://tests/test_audio_scene.gd
 run_check traversal --script res://tests/test_traversal.gd
 run_check refuge --script res://tests/test_refuge_scene.gd

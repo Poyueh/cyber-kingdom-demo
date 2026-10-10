@@ -1758,5 +1758,25 @@
   "適用 v0.0.24：七星球遠征、八件部件與收藏里程碑、森林戰馬、預警襲擊，以及六地的三類新機關。請開新旅程體驗新機關；舊紀錄保留原配置與解謎進度。更多坐騎、武器與探索事件仍待後續開發。": {
     "zh_CN": "适用 v0.0.24：七星球远征、八件部件与收藏里程碑、森林战马、预警袭击，以及六地的三类新机关。请开新旅程体验新机关；旧记录保留原配置与解谜进度。更多坐骑、武器与探索事件仍待后续开发。",
     "en": "For v0.0.24: seven worlds, eight collectible modules, the forest steed, a telegraphed assault and three new mechanism families across six destinations. Start a new journey for the new puzzles; existing saves retain their configuration and progress. More mounts, weapons and exploration events remain future work."
+  },
+  "錢不夠時，先找已賺到的收入。": {
+    "zh_CN": "钱不够时，先找已赚到的收入。",
+    "en": "Short on crystals? Collect what you have already earned."
+  },
+  "鬼魂會先指向持有龍晶且安全的居民，或已知的晶體、寶箱與可交貨商人。靠近居民即可收貨，不必再付款；龍晶正在飛出時，留在附近等它入袋。": {
+    "zh_CN": "鬼魂会先指向持有龙晶且安全的居民，或已知的晶体、宝箱与可交货商人。靠近居民即可收货，不必再付款；龙晶正在飞出时，留在附近等它入袋。",
+    "en": "The spirit points to a safe resident carrying crystals, known loose crystals, a discovered chest or a merchant ready to deliver. Approach residents to collect without paying. Stay nearby while the crystals fly into your pouch."
+  },
+  "如果下一筆工程的剩餘費用超過袋中龍晶，引導會先找補給。工匠採集中、商旅回程和隔日到貨會有不同提示；已付過的委託不用重買，可以先探索或準備防線。": {
+    "zh_CN": "如果下一笔工程的剩余费用超过袋中龙晶，引导会先找补给。工匠采集中、商旅回程和隔日到货会有不同提示；已付过的委托不用重买，可以先探索或准备防线。",
+    "en": "If you cannot cover the remaining cost, the spirit suggests a source of income first. Harvesting, a returning caravan and a next-day delivery have distinct hints. Already funded work needs no further payment; explore or prepare your defenses while it finishes."
+  },
+  "實際遊戲介面：鬼魂指向保管採集收入的居民。": {
+    "zh_CN": "实际游戏界面：鬼魂指向保管采集收入的居民。",
+    "en": "In-game interface: the spirit points toward a resident carrying harvest income."
+  },
+  "適用 v0.0.25：加入居民收貨、剩餘付款與商旅交貨的情境指引。七星球、八件部件、森林戰馬、預警襲擊與六地機關沿用；新機關需新旅程，這次提示改善也適用既有紀錄。更多坐騎、武器與探索事件仍待後續開發。": {
+    "zh_CN": "适用 v0.0.25：加入居民收货、剩余付款与商旅交货的情境指引。七星球、八件部件、森林战马、预警袭击与六地机关沿用；新机关需新旅程，这次提示改善也适用既有纪录。更多坐骑、武器与探索事件仍待后续开发。",
+    "en": "For v0.0.25: contextual guidance for collecting resident income, remaining costs and caravan deliveries. Includes seven worlds, eight modules, the forest mount, warned raids and six-world mechanisms. Mechanisms require a new journey; these guidance fixes also work in existing saves. More mounts, weapons and exploration events remain in development."
   }
 }

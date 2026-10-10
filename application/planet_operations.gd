@@ -38,6 +38,8 @@ static func guidance(sim: RefCounted) -> Dictionary:
  var hint: Dictionary={"kind":"chest","x":core_x(sim),"y":430.0,"key":"dragon_core","action":"open","stage":8,"goal":"planet.claim_info"}
  if not sim.planet.core_claimed:return hint
  hint.merge({"kind":"tool","x":rocket_x(sim),"key":"rocket","action":"invest","goal":"planet.rocket_info"},true)
- if sim.planet.rocket_pending:hint.merge({"action":"wait","goal":"planet.worker_info"},true)
+ if sim.planet.rocket_pending:
+  var has_worker: bool=sim.world.people.any(func(person: Dictionary)->bool:return person.role=="engineer")
+  hint.merge({"action":"wait","goal":"guide.rocket_building" if has_worker else "planet.worker_info"},true)
  if sim.planet.rocket_ready:hint.merge({"kind":"explore","key":"star_map","action":"open","goal":"planet.launch_info"},true)
  return hint

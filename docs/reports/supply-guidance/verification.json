@@ -1,0 +1,32 @@
+{
+  "previous_goal_turn": "progress: v0.0.24 published and live verified",
+  "tdd_resident_income_red": {
+    "assertions": 3593,
+    "failures": 2
+  },
+  "tdd_budget_and_return_red": {
+    "assertions": 3605,
+    "failures": 9
+  },
+  "tdd_gift_animation_red": {
+    "assertions": 3614,
+    "failures": 1
+  },
+  "native_scene_assertions": 24,
+  "native_scene_failures": 0,
+  "native_images": "test-results/supply-guidance",
+  "world_and_economy_unchanged": true,
+  "save_schema_unchanged": 18,
+  "limitations": [
+    "Automated input and controlled native scenarios, not a human comprehension or retention study",
+    "Windows and mobile devices not physically tested"
+  ],
+  "tdd_rocket_red": {
+    "assertions": 34,
+    "failures": 2
+  },
+  "core_assertions": 3619,
+  "full_check": true,
+  "check_sha256": "45583f62ae5368a51fa18ade60fa46eaea95b44ef4304bd685485d0de9ecb3b0",
+  "actual_v24_save_continuation": true
+}

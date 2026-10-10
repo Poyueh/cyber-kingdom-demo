@@ -1,8 +1,9 @@
 extends Node2D
 const Icons=preload("res://presentation/ui_icons.gd")
-const SYMBOLS={"merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
+const SYMBOLS={"resident_income":"crystal","work_income":"hammer","merchant_return":"trade","merchant_wait":"trade","merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
 @export_range(28.0,60.0,2.0) var guidance_icon_size:=42.0
 var _guide_label: Label
+var reserved_caption: Rect2=Rect2()
 var hint: Dictionary={}
 var safe:=Rect2()
 var player_x:=0.0
@@ -61,7 +62,7 @@ func track(hero_screen: Vector2, game_time: float) -> void:
  spirit_pose=_motion.sample(hint,hero_screen,player_x,safe,game_time)
  pulse=fposmod(game_time,2)
  if is_instance_valid(_guide_label) and not hint.is_empty():
-  var goals: Dictionary={"merchant":"靠近商人領取龍晶；付一顆委託，隔天再補給。","camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"委託工匠採集，帶回龍晶。","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
+  var goals: Dictionary={"resident_income":"guide.income","work_income":"guide.work_income","merchant_return":"guide.merchant_return","merchant_wait":"guide.merchant_wait","merchant":"靠近商人領取龍晶；付一顆委託，隔天再補給。","camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"guide.harvest_local","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
   var goal: String=tr(goals.get(hint.kind,"擴建避難所，封印雙門並擊敗巨龍。"))
   if hint.has("goal"):goal=tr(hint.goal)
   var command: String=tr("左右拖曳移動，拉遠加速") if touch_hint else tr("A／D 移動；同方向連按兩次並按住衝刺")
@@ -71,14 +72,41 @@ func track(hero_screen: Vector2, game_time: float) -> void:
    if hint.action in ["invest","open"]:command=tr("向下拖曳並按住投入／互動") if touch_hint else tr("按住 E 投入／互動")
    if hint.kind=="recruit":command=tr("在附近向下滑動丟出龍晶") if touch_hint else tr("按 E 丟出龍晶")
    if hint.action=="wait":command=tr("等待居民自行領取器具")
+   if hint.key=="rocket" and hint.action=="wait":command=tr("guide.command.rocket_wait")
+   if hint.kind in ["resident_income","collect"]:command=tr("guide.command.collect")
+   if hint.kind=="work_income":command=tr("guide.command.work_wait")
+   if hint.kind in ["merchant_return","merchant_wait"]:command=tr("guide.command.trade_wait")
+   if hint.kind=="defend" and hint.action=="wait":command=tr("guide.command.defend_wait")
+   if hint.kind=="delivery":command=tr("guide.command.delivery")
+   if hint.kind in ["escort","join"]:command=tr("guide.command.escort")
+   if hint.kind=="seal":command=tr("guide.command.seal")
   if hint.kind=="farewell":
    goal=tr("你已學會建立家園。需要指引時，回營火旁的引魂壇找我。")
    command=""
   _guide_label.text=goal+"\n"+command
-  _guide_label.size=Vector2(minf(310,safe.size.x-24),64)
-  var target: Vector2=spirit_pose.get("position",hero_screen)+Vector2(-_guide_label.size.x/2,-155)
-  _guide_label.position=Vector2(clampf(target.x,safe.position.x+12,safe.end.x-_guide_label.size.x-12),clampf(target.y,safe.position.y+12,safe.end.y-90))
+  _guide_label.size=Vector2(minf(310,safe.size.x-24),0)
+  _guide_label.size.y=_guide_label.get_minimum_size().y
+  var target: Vector2=spirit_pose.get("position",hero_screen)+Vector2(-_guide_label.size.x/2,-100-_guide_label.size.y)
+  _guide_label.position=Vector2(clampf(target.x,safe.position.x+12,safe.end.x-_guide_label.size.x-12),clampf(target.y,safe.position.y+12,safe.end.y-_guide_label.size.y-12))
+  _avoid_day_caption()
  queue_redraw()
+func _avoid_day_caption() -> void:
+ if not reserved_caption.has_area() or not reserved_caption.intersects(_guide_label.get_rect()):return
+ var left: float=reserved_caption.position.x-_guide_label.size.x-8
+ var right: float=reserved_caption.end.x+8
+ var left_fits: bool=left>=safe.position.x+12
+ var right_fits: bool=right+_guide_label.size.x<=safe.end.x-12
+ if left_fits and (not right_fits or absf(left-_guide_label.position.x)<=absf(right-_guide_label.position.x)):
+  _guide_label.position.x=left
+ elif right_fits:_guide_label.position.x=right
+ else:
+  var left_space: float=reserved_caption.position.x-safe.position.x-20
+  var right_space: float=safe.end.x-reserved_caption.end.x-20
+  _guide_label.size.x=maxf(1,maxf(left_space,right_space))
+  _guide_label.size.y=_guide_label.get_minimum_size().y
+  _guide_label.position.x=safe.position.x+12 if left_space>=right_space else reserved_caption.end.x+8
+  _guide_label.position.y=clampf(_guide_label.position.y,safe.position.y+12,safe.end.y-_guide_label.size.y-12)
+
 func _icon(key: String,at: Vector2,size: float=24,tint:=Color("dce9dc")) -> void:
  draw_texture_rect(Icons.get_icon(key),Rect2(at-Vector2.ONE*size/2,Vector2.ONE*size),false,tint)
 func _draw() -> void:

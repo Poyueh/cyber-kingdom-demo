@@ -1,11 +1,14 @@
 extends RefCounted
 ## Stateless first-day advice. Reads the current run; never spends or reveals anything.
-static func next(sim, x: float) -> Dictionary:
+static func next(sim: RefCounted, x: float) -> Dictionary:
+ return funded_hint(sim,x,_next(sim,x))
+
+static func _next(sim: RefCounted, x: float) -> Dictionary:
  if not sim.is_running() or sim.clock.survived>0 or sim.frontier.city_level>=2:return {}
+ if sim.frontier.city_level==0:return _hint("camp",sim.world.sites.hall,"hall","invest",1)
  if sim.clock.is_night or sim.clock.remaining<=30:
   return _hint("defend",sim.world.sites.hall,"","move",7)
  if sim.pouch.amount==0:return funding_hint(sim,x)
- if sim.frontier.city_level==0:return _hint("camp",sim.world.sites.hall,"hall","invest",1)
  var engineers=sim.world.people.filter(func(p):return p.role=="engineer")
  if engineers.is_empty():return job_hint(sim,x,"hammer","workshop",2)
  var harvesting: bool=sim.frontier.nodes.any(func(n):return n.kind=="tree" and (n.marked or n.collected))
@@ -41,11 +44,24 @@ static func job_hint(sim,x: float,tool: String,site: String,stage: int) -> Dicti
  if sim.world.tools[tool]>0:hint.action="wait"
  return hint
 
-static func funding_hint(sim,x: float) -> Dictionary:
- if sim.merchant.carrying_reward() and sim.merchant.visible():return _hint("merchant",sim.merchant.x,"","move",0)
- var options: Array=[]
+static func funded_hint(sim: RefCounted, x: float, hint: Dictionary) -> Dictionary:
+ if hint.get("action","")!="invest" or str(hint.get("key","")).is_empty():return hint
+ var choice: Dictionary=sim.context_for_key(float(hint.x),str(hint.key))
+ if choice.id.is_empty():return hint
+ var remaining: int=maxi(0,int(choice.cost)-int(choice.paid))
+ return funding_hint(sim,x) if remaining>sim.pouch.amount else hint
+
+static func funding_hint(sim: RefCounted, x: float) -> Dictionary:
+ var options: Array[Dictionary]=[]
+ if sim.life.enabled:
+  for person: Dictionary in sim.world.people:
+   if person.role=="wanderer" or int(person.get("crystals",0))<=0:continue
+   if person.hurt>0 or not sim.person_visible(person) or sim.life.threatened(person,sim.raiders):continue
+   options.append(_hint("resident_income",person.x,"","move",0))
+ if sim.merchant.enabled and sim.merchant.phase in [sim.merchant.Phase.APPROACHING,sim.merchant.Phase.READY]:
+  options.append(_hint("merchant",sim.merchant.x,"","move",0))
  for drop in sim.pouch.drops:
-  if drop.amount>0 and not drop.offering and drop.age>=drop.grace:options.append(_hint("collect",drop.x,"","move",0))
+  if drop.amount>0 and not drop.offering:options.append(_hint("collect",drop.x,"","move",0))
  for i in range(sim.frontier.nodes.size()):
   var node=sim.frontier.nodes[i]
   if node.kind=="cache" and not node.collected and sim.frontier.regions[node.region].discovered:
@@ -53,7 +69,25 @@ static func funding_hint(sim,x: float) -> Dictionary:
    hint["y"]=node.y
    options.append(hint)
 
- return _nearest(options,x) if not options.is_empty() else _explore(sim,x,0)
+ if not options.is_empty():return _nearest(options,x)
+ var pending: Dictionary=_pending_income(sim,x)
+ return pending if not pending.is_empty() else _explore(sim,x,0)
+
+static func _pending_income(sim: RefCounted, x: float) -> Dictionary:
+ var options: Array[Dictionary]=[]
+ if sim.life.enabled:
+  for node: RefCounted in sim.frontier.nodes:
+   if not node.marked or node.delivered or node.worker<0:continue
+   if not sim.frontier.regions[node.region].discovered:continue
+   var worker: Dictionary=sim.world.people[node.worker]
+   if worker.role!="engineer" or worker.hurt>0 or sim.life.threatened(worker,sim.raiders):continue
+   options.append(_hint("work_income",node.x,"","wait",0))
+ if sim.merchant.enabled:
+  if sim.merchant.phase==sim.merchant.Phase.RETURNING:
+   options.append(_hint("merchant_return",sim.merchant.home_x,"","wait",0))
+  elif sim.merchant.phase in [sim.merchant.Phase.OUTBOUND,sim.merchant.Phase.AWAY]:
+   options.append(_hint("merchant_wait",sim.merchant.home_x,"","wait",0))
+ return _nearest(options,x) if not options.is_empty() else {}
 
 static func _explore(sim,x: float,stage: int) -> Dictionary:
  var regions: Array=[]
