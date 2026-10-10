@@ -1,7 +1,10 @@
 extends RefCounted
 ## Read-only advice for the campaign's real expedition conditions.
 const Opening=preload("res://application/campaign_guide.gd")
-static func next(sim,x: float,y: float=430.0) -> Dictionary:
+static func next(sim: RefCounted,x: float,y: float=430.0) -> Dictionary:
+ return Opening.funded_hint(sim,x,_next(sim,x,y))
+
+static func _next(sim: RefCounted,x: float,y: float) -> Dictionary:
  if not sim.is_running():return {}
  var pending: Array=[]
  for i in range(sim.mission.rifts.size()):
@@ -21,6 +24,7 @@ static func next(sim,x: float,y: float=430.0) -> Dictionary:
   live.sort_custom(func(a,b):return absf(a.x-x)<absf(b.x-x))
   return _hint("clear_enemies",live[0].x,"","fight","sword")
  if sim.clock.survived==0 and sim.frontier.city_level<2:return {}
+ if sim.frontier.city_level==0:return _hint("camp",sim.world.sites.hall,"hall","invest","crystal")
  if sim.clock.is_night or sim.clock.remaining<=30:return _hint("defend",sim.world.sites.hall,"","move","moon")
  if sim.pouch.amount==0:return Opening.funding_hint(sim,x)
  for requirement in sim.rift_requirements():
