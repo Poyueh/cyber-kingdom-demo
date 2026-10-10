@@ -92,7 +92,7 @@ func test_v13_journeys_keep_original_treasure_and_gain_no_duplicate_gift(t: Scen
 	var sim: RefCounted = Campaign.new(config)
 	var codec: RefCounted = Codec.new()
 	var saved: Dictionary = codec.capture(sim,config,BODY)
-	saved.version=13;saved.erase("merchant");saved.erase("trials")
+	saved.version=13;preload("res://tests/legacy_checkpoint.gd").before_mount(saved);saved.erase("merchant");saved.erase("trials")
 	var restored: Dictionary = codec.restore(saved)
 	t.truth(not restored.is_empty(),"previous save version upgrades without rerolling geography")
 	if restored.is_empty():return

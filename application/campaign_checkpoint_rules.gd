@@ -8,6 +8,8 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/mount_expedition.gd").valid_config(config):return false
+	if config.has("dragon_growth_days") and (not in_range(config.dragon_growth_days,2,20) or floorf(config.dragon_growth_days)!=config.dragon_growth_days):return false
 	if not preload("res://domain/ruin_trials.gd").valid_config(config):return false
 	if not config.get("seed") is int:return false
 	if config.has("planet_id") and config.planet_id not in [0,1,2,3,4,5,6]:return false

@@ -2,6 +2,8 @@ extends RefCounted
 const Clock=preload("res://domain/time/tick_clock.gd")
 ## Only the knight and merchant travel. Local people, resources and time stay home.
 static func carry(source: RefCounted, destination: RefCounted) -> void:
+ destination.mount_quest.unlocked=source.mount_quest.unlocked
+ destination.mount_quest.riding=source.mount_quest.riding
  destination.pouch.amount=source.pouch.amount
  destination.survival.armed=source.survival.armed
  destination.survival.sword_on_ground=false
