@@ -1,0 +1,74 @@
+[
+  {
+    "cycle": 0,
+    "nodes": 2.0,
+    "objects": 2225.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 139072107
+  },
+  {
+    "cycle": 1,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142496895
+  },
+  {
+    "cycle": 2,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142497683
+  },
+  {
+    "cycle": 3,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142498495
+  },
+  {
+    "cycle": 4,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142499331
+  },
+  {
+    "cycle": 5,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142500119
+  },
+  {
+    "cycle": 6,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142500979
+  },
+  {
+    "cycle": 7,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142501767
+  },
+  {
+    "cycle": 8,
+    "nodes": 2.0,
+    "objects": 2235.0,
+    "orphans": 0.0,
+    "resources": 685.0,
+    "static_bytes": 142502555
+  }
+]
