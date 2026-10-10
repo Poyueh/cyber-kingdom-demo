@@ -268,6 +268,8 @@ func move_raider(raider: Dictionary, destination: float) -> void:
 	# Never push an already close enemy backwards or onto the opposite side.
 	raider.x = float(obstacle.x) + signf(separation) * minf(26.0,absf(separation))
 
+func raider_speed(_raider: Dictionary, base: float=70.0) -> float:return base
+
 func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
 	raider.fighter.advance(seconds)
 	if not raider.fighter.is_alive():
@@ -304,13 +306,13 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 	if absf(target.x-raider.x)>0.1: raider["direction"]=signf(target.x-raider.x)
 	if target.kind == "leave":
 		# Leaving has no melee stopping distance or attack windup.
-		move_raider(raider,move_toward(raider.x,target.x,70*seconds))
+		move_raider(raider,move_toward(raider.x,target.x,raider_speed(raider)*seconds))
 		if absf(raider.x-target.x)<=10:
 			raider.fighter.hp = 0
 			raider["escaped"] = true
 		return
 	if absf(target.x-raider.x)>26:
-		move_raider(raider,move_toward(raider.x,target.x,70*seconds))
+		move_raider(raider,move_toward(raider.x,target.x,raider_speed(raider)*seconds))
 	elif raider.cooldown <= 0:
 		raider.target = target
 		raider.windup = 0.6

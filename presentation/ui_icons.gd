@@ -1,6 +1,15 @@
 extends RefCounted
 ## Original SVG symbols shared by HUD, world affordances and controls.
 const TEXTURES := {
+	"module_arc":preload("res://art/ui/v001/module_arc.svg"),
+	"module_lance":preload("res://art/ui/v001/module_lance.svg"),
+	"module_magnet":preload("res://art/ui/v001/module_magnet.svg"),
+	"module_frost":preload("res://art/ui/v001/module_frost.svg"),
+	"module_gravity":preload("res://art/ui/v001/module_gravity.svg"),
+	"module_workshop":preload("res://art/ui/v001/module_workshop.svg"),
+	"module_command":preload("res://art/ui/v001/module_command.svg"),
+	"module_capacitor":preload("res://art/ui/v001/module_capacitor.svg"),
+
 	"mount":preload("res://art/ui/v001/mount.svg"),
 	"spirit":preload("res://art/ui/v001/spirit.svg"),
 	"menu":preload("res://art/ui/v001/menu.svg"),

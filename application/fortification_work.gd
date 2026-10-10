@@ -24,11 +24,12 @@ static func target(sim,index: int,seconds: float,night: bool) -> float:
  person["sheltering"]=false;person["work_state"]="walk"
  if nearest<=8:
   person.work_state="work"
-  if choice.kind=="wall":sim.world.work_wall(index,seconds,choice.id)
-  elif choice.kind=="outpost":sim.frontier.work_outpost(choice.index,seconds)
+  var work: float=sim.modules.construction_seconds(person,seconds,roundi(sim.workforce.elapsed*30))
+  if choice.kind=="wall":sim.world.work_wall(index,work,choice.id)
+  elif choice.kind=="outpost":sim.frontier.work_outpost(choice.index,work)
   else:
    var site: Dictionary=sim.buildings[choice.id]
-   site.progress+=seconds
+   site.progress+=work
    if site.progress>=sim.build_seconds:
     site.pending=false;site.progress=0.0;site.level+=1
     sim.effects.append({"kind":"construction_done","x":site.x,"life":0.5})

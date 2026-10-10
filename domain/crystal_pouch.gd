@@ -62,6 +62,27 @@ func toss(x: float, y: float, facing: int) -> bool:
 	drops.append(gem)
 	return true
 
+## Select real crystals, splitting stacks without exceeding capacity or stealing offerings.
+func pull_existing(limit: int, x: float, y: float, reach: float) -> int:
+	var wanted: int=mini(limit,capacity-amount)
+	if wanted<=0:return 0
+	var candidates: Array[Dictionary]=[]
+	for gem: Dictionary in drops:
+		if gem.grace>0 or gem.offering or gem.get("pull_until_age",0.0)>gem.age:continue
+		if absf(gem.y-y)>48 or Vector2(gem.x-x,gem.y-y).length_squared()>reach*reach:continue
+		candidates.append(gem)
+	candidates.sort_custom(func(a: Dictionary,b: Dictionary)->bool:return absf(a.x-x)<absf(b.x-x))
+	var count: int=0
+	for gem: Dictionary in candidates:
+		var take: int=mini(wanted-count,gem.amount)
+		if take<=0:break
+		var selected: Dictionary=gem
+		if take<gem.amount:
+			gem.amount-=take;selected=_new_drop(take,gem.x,gem.y);drops.append(selected)
+		selected["pull_until_age"]=selected.age+2.0
+		count+=take
+	return count
+
 func advance(seconds: float, hero_x: float, hero_y: float) -> void:
 	if seconds<=0 or not is_finite(seconds): return
 	# Substeps keep landing and attraction stable at different frame rates.
@@ -88,7 +109,9 @@ func _advance_drop(gem: Dictionary, seconds: float, target: Vector2, reach: floa
 	gem.grace=maxf(0,gem.grace-seconds)
 	var at := Vector2(gem.x,gem.y)
 	# Squared reach keeps a square root out of the per-pile loop.
-	gem.attracted=amount<capacity and gem.grace<=0 and at.distance_squared_to(target)<=reach and absf(at.y-target.y)<48
+	if gem.has("pull_until_age") and gem.pull_until_age<=gem.age:gem.erase("pull_until_age")
+	var pulled: bool=gem.has("pull_until_age")
+	gem.attracted=amount<capacity and gem.grace<=0 and (pulled or at.distance_squared_to(target)<=reach) and absf(at.y-target.y)<48
 	if gem.attracted:
 		var direction := at.direction_to(target)
 		gem["trail_x"]=direction.x

@@ -1,0 +1,21 @@
+{
+  "version": "0.0.23",
+  "published": false,
+  "tdd_red_assertions": 61,
+  "tdd_red_failures": 26,
+  "native_scene_assertions": 8,
+  "native_capture": "test-results/planet-modules",
+  "actual_previous_release_save_migration": true,
+  "previous_save_version": 16,
+  "current_save_version": 17,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "No human playtest or sales outcome is implied by automated verification"
+  ],
+  "full_check": true,
+  "core_assertions": 3510,
+  "check_log_sha256": "d2360b34d5ade1e57eb161feccdd379be35b8878c9f153e038d445551c56bd94",
+  "seeded_planet_cases": 224
+}

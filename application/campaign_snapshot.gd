@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=16
+const VERSION:=17
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -126,13 +126,13 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16]:keys.append("modules")
-	if data.get("version",0) in [14,15,16]:keys.append("merchant")
-	if data.get("version",0) in [15,16]:keys.append("trials")
-	if data.get("version",0)==16:keys.append("mount")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17]:keys.append("trials")
+	if data.get("version",0) in [16,17]:keys.append("mount")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -170,6 +170,12 @@ func restore(raw) -> Dictionary:
 		if not data.config is Dictionary or not Rules.config_valid(data.config) or data.config.has("mount_enabled"):return _invalid()
 		data["mount"]=Campaign.new(data.config).mount_quest.capture()
 		data.version=16
+	if data.version==16:
+		if not data.config is Dictionary or data.config.has("module_catalog_version"):return _invalid()
+		if not data.get("modules") is Dictionary or data.modules.size()!=4:return _invalid()
+		if not ["found","stored","equipped","ready_tick"].all(func(key: String)->bool:return data.modules.has(key)):return _invalid()
+		data.modules.charge_ticks=0;data.modules.charge_last_tick=0
+		data.version=17
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:

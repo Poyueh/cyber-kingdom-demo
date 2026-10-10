@@ -1,5 +1,6 @@
 extends Node2D
 ## Small armour-mounted hardware. The atlas supplies a shoulder socket per pose.
+const Style=preload("res://presentation/module_style.gd")
 var module_id: String=""
 var _pulse: float=0.0
 func present(knight: AnimatedSprite2D, id: String, seconds: float) -> void:
@@ -28,12 +29,26 @@ func _draw() -> void:
 	draw_polygon(PackedVector2Array([Vector2(-7,-7),Vector2(0,-7),Vector2(3,-3),Vector2(2,7),Vector2(-6,7),Vector2(-8,3)]),PackedColorArray([Color("111d29")]))
 	draw_rect(Rect2(-6,-5,5,10),Color("465a67"))
 	draw_rect(Rect2(-5,-4,3,8),Color("1c2c36"))
-	var energy: Color=Color("70edcb") if module_id=="arc" else Color("c6a0ff")
+	var energy: Color=Style.tint(module_id)
 	energy=energy.lerp(Color.WHITE,(sin(_pulse*2)+1)*0.12)
-	if module_id=="arc":
-		for y: int in [-3,0,3]:draw_rect(Rect2(-6,y,6,2),energy)
-	else:
-		draw_rect(Rect2(-4,-10,4,15),Color("657784"))
-		draw_rect(Rect2(-3,-9,2,12),energy)
-		draw_rect(Rect2(-5,-11,6,2),Color("263641"))
+	match module_id:
+		"arc":
+			for y: int in [-3,0,3]:draw_rect(Rect2(-6,y,6,2),energy)
+		"lance","frost":
+			draw_rect(Rect2(-4,-10,4,15),Color("657784"))
+			draw_rect(Rect2(-3,-9,2,12),energy)
+			draw_rect(Rect2(-5,-11,6,2),Color("263641"))
+			if module_id=="frost":draw_line(Vector2(-2,-11),Vector2(-2,-15),energy,1)
+		"magnet":
+			draw_polyline(PackedVector2Array([Vector2(-7,-4),Vector2(-7,3),Vector2(-2,5),Vector2(2,3),Vector2(2,-4)]),energy,2)
+		"gravity":
+			draw_arc(Vector2(-2,0),5,0,TAU,8,energy,2)
+			draw_rect(Rect2(-3,-1,2,2),Color.WHITE)
+		"workshop":
+			draw_rect(Rect2(-6,-3,6,3),energy);draw_rect(Rect2(-4,0,2,7),Color("a8bec3"))
+		"command":
+			draw_polygon(PackedVector2Array([Vector2(-6,4),Vector2(-2,-6),Vector2(2,4),Vector2(-2,1)]),PackedColorArray([energy]))
+		"capacitor":
+			for x: int in [-6,-1]:
+				draw_rect(Rect2(x,-5,3,11),Color("91a1b7"));draw_rect(Rect2(x,-3,3,6),energy)
 	for y: int in [-5,5]:draw_rect(Rect2(0,y,2,1),Color("c1c8c7"))

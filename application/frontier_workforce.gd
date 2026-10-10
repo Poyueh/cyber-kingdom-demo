@@ -4,6 +4,7 @@ extends RefCounted
 var world
 var frontier
 var work_area: RefCounted
+var module_support: RefCounted
 var elapsed := 0.0
 var deliveries: Array[Dictionary] = []
 func _init(settlement, map) -> void:
@@ -84,8 +85,8 @@ func advance_engineer(index: int, seconds: float) -> float:
 		if absf(target-person.x)<8:
 			person.work_state = "work"
 			person["direction"] = side
-			if not wall_id.is_empty(): world.work_wall(index,seconds,wall_id)
-			else: frontier.work_outpost(construction,seconds)
+			if not wall_id.is_empty(): world.work_wall(index,_construction_seconds(person,seconds),wall_id)
+			else: frontier.work_outpost(construction,_construction_seconds(person,seconds))
 		return target
 	if job==null:
 		if work_area!=null and int(person.get("crystals",0))>=preload("res://application/kingdom_life.gd").CARRY_LIMIT:return person.x
@@ -136,3 +137,6 @@ func _keep_harvest(person: Dictionary, job: RefCounted) -> void:
 		world.crystals+=overflow
 		deliveries.append({"x":person.x,"crystals":overflow})
 	person.work_state="idle"
+
+func _construction_seconds(person: Dictionary, seconds: float) -> float:
+	return seconds if module_support==null else module_support.construction_seconds(person,seconds,roundi(elapsed*30))
