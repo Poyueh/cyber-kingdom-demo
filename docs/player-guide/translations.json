@@ -1627,9 +1627,9 @@
     "zh_CN": "新旅程的巨龙以第 6 天为基准，第 7 天起增加强度，到第 14 天封顶，召唤时锁定；之后可安心探索，不会无限追涨。旧记录保留原设定。七龙都有不同预警与反击空档，完成的城墙可拦住攻势。",
     "en": "In new journeys, dragons use day 6 as their baseline, grow from day 7, and cap at day 14. Strength locks on summoning. Explore without endless dragon escalation; older saves keep their rules. Each dragon has distinct warnings and recovery openings, and completed walls can intercept attacks."
   },
-  "適用 v0.0.22：新增森林戰馬遺跡、導流機關、馬廄切換與預警襲擊，七星球遠征仍可遊玩。新探索事件與巨龍成長上限請開新旅程體驗；舊紀錄可繼續。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
-    "zh_CN": "适用 v0.0.22：新增森林战马遗迹、导流机关、马厩切换与预警袭击，七星球远征仍可游玩。新探索事件与巨龙成长上限请开新旅程体验；旧记录可继续。更多坐骑、武器与各地专属谜题仍待后续开发。",
-    "en": "For v0.0.22: forest steed ruins, conduit puzzle, stable switching and a telegraphed assault join the seven-world journey. Start a new journey for the quest and dragon growth cap; existing saves remain playable. More mounts, weapons and world-specific puzzles are future work."
+  "適用 v0.0.23：七星球遠征新增八件用途各異的部件、收藏里程碑與來源線索，並保留森林戰馬與預警襲擊。新增星球部件請開新旅程體驗；舊紀錄保留原兩件配置，可繼續遊玩。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
+    "zh_CN": "适用 v0.0.23：七星球远征新增八件用途各异的部件、收藏里程碑与来源线索，并保留森林战马与预警袭击。新增星球部件请开新旅程体验；旧记录保留原两件配置，可继续游玩。更多坐骑、武器与各地专属谜题仍待后续开发。",
+    "en": "For v0.0.23: the seven-world journey now has eight modules with distinct uses, collection milestones and planet clues, alongside the forest steed and telegraphed assault. Start a new journey for the new planet modules; existing saves keep their original two-module layout and remain playable. More mounts, weapons and world-specific puzzles are future work."
   },
   "每顆星球，帶回不同的作戰方式。": {
     "zh_CN": "每颗星球，带回不同的作战方式。",
