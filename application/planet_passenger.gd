@@ -13,7 +13,9 @@ static func carry(source: RefCounted, destination: RefCounted) -> void:
  destination.travel.last_tick=roundi(destination.workforce.elapsed*Clock.TICKS_PER_SECOND)
  var modules: Dictionary=source.modules.capture()
  modules.ready_tick=roundi(destination.workforce.elapsed*Clock.TICKS_PER_SECOND)+maxi(0,modules.ready_tick-roundi(source.workforce.elapsed*Clock.TICKS_PER_SECOND))
- destination.modules.restore(modules,destination.workforce.elapsed)
+ if modules.charge_ticks>0:modules.charge_last_tick=roundi(destination.workforce.elapsed*Clock.TICKS_PER_SECOND)
+ var restored: bool=destination.modules.restore(modules,destination.workforce.elapsed)
+ assert(restored,"Passenger module state must remain valid")
  for site: RefCounted in destination.trials.sites:
   if modules.found.has(site.id):site.progress=3;site.deadline=0
  var merchant: Dictionary=source.merchant.capture()

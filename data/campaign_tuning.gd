@@ -15,6 +15,7 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export_range(20,100,5) var knight_health: int=70
 @export_range(5,30,1) var knight_damage: int=18
 @export_group("Special modules")
+@export var module_catalog: Resource=preload("res://data/module_catalog.tres")
 @export_range(1,100,1) var module_arc_damage: int=32
 @export_range(1,60,1) var module_arc_cost: float=20.0
 @export_range(60,400,10) var module_arc_range: float=150.0
@@ -109,6 +110,7 @@ func campaign_rules() -> Dictionary:
 		rules.merge(crystal_merchant.rules(),true)
 		rules.merge(ruin_trials.rules(),true)
 		rules.merge(mount_expedition.rules(),true)
+		rules.merge(module_catalog.rules(),true)
 	return rules
 
 func economy_rules() -> Dictionary:

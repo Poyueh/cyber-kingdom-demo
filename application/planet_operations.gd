@@ -29,8 +29,8 @@ static func engineer(sim: RefCounted, index: int, seconds: float) -> float:
  var person: Dictionary=sim.world.people[index]
  if workers.find(person)>=2:return NAN
  var at: float=rocket_x(sim)
- person.work_state="build"
- if absf(person.x-at)<28:sim.planet.work_on(seconds)
+ person.work_state="work" if absf(person.x-at)<28 else "walk"
+ if absf(person.x-at)<28:sim.planet.work_on(sim.modules.construction_seconds(person,seconds,roundi(sim.workforce.elapsed*30)))
  return at
 
 static func guidance(sim: RefCounted) -> Dictionary:

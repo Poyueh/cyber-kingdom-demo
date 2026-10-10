@@ -166,6 +166,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	tower_damage=clampi(config.get("tower_damage",12),1,100)
 	tower_range=clampf(config.get("tower_range",460.0),200,800)
 	modules=Modules.new(frontier,config)
+	workforce.module_support=modules
 	trials=Trials.new(modules.relics,config,RandomStreams.new(map_seed).of(RandomStreams.Stream.EVENT))
 	mount_quest=MountQuest.new(config,world.sites.hall)
 	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
@@ -473,6 +474,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		animal["home_x"]=animal.get("home_x",animal.x)
 		animal.x=animal.home_x+sin(workforce.elapsed*0.36+animal.region*1.7)*28
 	super.advance(seconds,hero_x,hero_y)
+	modules.advance_effects(self)
 	trials.advance(roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 	if life.enabled and not can_wield_sword():mount_quest.riding=false
 	PlanetOps.resolve(self)
@@ -788,6 +790,17 @@ func _summon_dragon(hero_x: float) -> void:
 	dragon.cooldown=5.0
 	raiders.append(dragon)
 	effects.append({"kind":"dragon_arrival","x":dragon.x,"to":hero_x,"life":5.0})
+
+func raider_speed(enemy: Dictionary, base: float=70.0) -> float:
+	return modules.movement_speed(enemy,base,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+
+func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float) -> bool:
+	var adjusted: int=modules.arrow_damage(person,damage,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+	var fired: bool=super._shoot_nearest_raider(person,reach,adjusted,interval)
+	if fired and person.has("module_command_until"):
+		person.erase("module_command_until")
+		if adjusted>damage:effects.append({"kind":"module_arrow","x":person.x,"to":effects.back().to,"life":0.4})
+	return fired
 
 func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
 	if survival.enabled and Forager.advance(self,enemy,seconds):return

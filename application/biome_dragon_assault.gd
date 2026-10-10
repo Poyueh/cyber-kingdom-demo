@@ -23,7 +23,7 @@ static func advance(sim: RefCounted, dragon: Dictionary, seconds: float, hero_x:
  var target: Dictionary=sim._target(dragon,hero_x,hero_y)
  if absf(target.x-dragon.x)>1:dragon.direction=signf(target.x-dragon.x)
  if absf(target.x-dragon.x)>profile.reach:
-  sim.move_raider(dragon,move_toward(dragon.x,target.x,profile.speed*seconds))
+  sim.move_raider(dragon,move_toward(dragon.x,target.x,sim.raider_speed(dragon,profile.speed)*seconds))
  else:
   sim.planet.volley=0;dragon.target=target.duplicate();dragon.windup=profile.warning
 static func impact(sim: RefCounted, dragon: Dictionary, hero_x: float, hero_y: float) -> void:
