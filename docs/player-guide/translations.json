@@ -1514,5 +1514,93 @@
   "居民、建築、已採集資源和日數留在各自星球。騎士攜帶現有龍晶、劍、部件及剩餘冷卻，不會補滿背包，也不會重新領取商人的免費贈晶。新星球需要重新點火、招募與建設；出發前留一些龍晶。": {
     "zh_CN": "居民、建筑、已采集资源和日数留在各自星球。骑士携带现有龙晶、剑、部件及剩余冷却，不会补满背包或重领商人赠晶。新星球需要重新点火、招募与建设；出发前留一些龙晶。",
     "en": "Residents, buildings, harvested resources and the calendar remain on each world. Your crystals, sword, modules and remaining cooldown travel with you. No wallet refill or repeat merchant gift. Reserve crystals to light the new camp and recruit workers."
+  },
+  "每顆星球封印雙門、擊敗巨龍並清除殘敵後，營火西側會出現龍核。七顆龍核全部領取，才完成這次遠征。": {
+    "zh_CN": "每颗星球封印双门、击败巨龙并清除残敌后，营火西侧会出现龙核。集齐七颗龙核，才完成此次远征。",
+    "en": "Seal both gates, defeat the dragon and clear remaining enemies on each world. Claim the core west of camp. All seven cores are required to complete the expedition."
+  },
+  "可以。七顆星球都有可探索地圖、雙門、巨龍和龍核。航線依前置龍核解鎖，舊三地紀錄可繼續探索新增四地。": {
+    "zh_CN": "可以。七颗星球都有可探索地图、双门、巨龙和龙核。航线依前置龙核解锁，旧三地记录可继续探索新增四地。",
+    "en": "Yes. All seven worlds have explorable maps, two gates, a dragon and a core. Routes unlock with prerequisite cores. Existing three-world saves can continue into the four new worlds."
+  },
+  "適用 v0.0.21：七張地圖、七龍、分支星宇航線和七核通關。保留全身連斬、商人、部件遺跡與聚落經營。十四種部件謎題與完整集結隊伍仍待後續開發。": {
+    "zh_CN": "适用 v0.0.21：七张地图、七龙、分支星宇航线和七核通关。保留全身连斩、商人、部件遗迹与聚落经营。十四种部件谜题与完整集结队伍仍待后续开发。",
+    "en": "For v0.0.21: seven maps, seven dragons, branching star routes and a seven-core finale. Existing combat, merchant, ruin modules and colony systems remain. Fourteen module trials and the complete rally squad remain future work."
+  },
+  "七地首晚魔物依序為 3／5／6／7／8／9／10 隻，每晚再加 2 隻，單晚最多 60 隻，同時在場最多 12 隻。新星日數從第一天開始，離開的星球暫停；封門取消該側後續增援。": {
+    "zh_CN": "七地首晚魔物依次为 3／5／6／7／8／9／10 只，每晚再加 2 只，单晚最多 60 只，同时在场最多 12 只。新星日数从第一天开始，离开的星球暂停；封门取消该侧后续增援。",
+    "en": "The seven worlds begin with 3/5/6/7/8/9/10 enemies on night one. Each night adds two, capped at 60 with 12 active at once. New worlds start on day one; inactive colonies pause. Sealing a gate cancels its later reinforcements."
+  },
+  "巨龍以第 6 天為基準，第 7 天起每延後一天增加 240 生命和 4 傷害，召喚時鎖定。七龍的預警節奏不同；離開地面弧線與亮點標記，等最後一段結束再反擊。完成的城牆可擋住越牆攻勢。": {
+    "zh_CN": "巨龙以第 6 天为基准，第 7 天起每延后一天增加 240 生命和 4 伤害，召唤时锁定。七龙的预警节奏不同；离开地面弧线与亮点标记，等最后一段结束再反击。完工城墙可挡住越墙攻势。",
+    "en": "Dragon strength has a day-six floor, then gains 240 health and 4 damage per later day, locked on summon. Each dragon has a different rhythm. Leave the marked arcs and wait for the final beat before counterattacking. Completed walls intercept attacks crossing them."
+  },
+  "七顆星球，七道希望之火。": {
+    "zh_CN": "七颗星球，七道希望之火。",
+    "en": "Seven worlds. Seven fires of hope."
+  },
+  "森林與晶谷。焰龍鎖定前方噴息，離開預警後靠近反擊。": {
+    "zh_CN": "森林与晶谷。焰龙锁定前方喷息，离开预警后靠近反击。",
+    "en": "Forests and crystal valleys. The flame dragon locks its breath ahead; evade, then approach."
+  },
+  "礦脈與古艦殘骸。沙龍標記地裂，離開落點再進攻。": {
+    "zh_CN": "矿脉与古舰残骸。沙龙标记地裂，离开落点再进攻。",
+    "en": "Ore veins and ancient wrecks. Leave the sand dragon’s marked ground rupture before attacking."
+  },
+  "冰岸與失落觀測所。雙首冰龍依序吐息兩次，別只閃第一段。": {
+    "zh_CN": "冰岸与失落观测所。双首冰龙依次吐息两次，别只躲第一段。",
+    "en": "Ice shores and observatories. The twin-headed dragon breathes twice; evade both beats."
+  },
+  "孢潮沼澤": {
+    "zh_CN": "孢潮沼泽",
+    "en": "Sporetide Marsh"
+  },
+  "菌林、盤根水廠與孢子。孢翼龍三段落點前後交錯，走位後別急著折返。": {
+    "zh_CN": "菌林、盘根水厂与孢子。孢翼龙三段落点前后交错，走位后别急着折返。",
+    "en": "Mushroom woods, rooted pipes and drifting spores. Three spore bursts alternate sides; do not rush back."
+  },
+  "熔脊裂谷": {
+    "zh_CN": "熔脊裂谷",
+    "en": "Moltenridge Rift"
+  },
+  "玄武岩、冷卻塔與密集晶礦。爐甲龍炮擊兩次再近身重踏，排熱期間適合反擊。": {
+    "zh_CN": "玄武岩、冷却塔与密集晶矿。炉甲龙炮击两次再近身重踏，排热期间适合反击。",
+    "en": "Basalt, cooling towers and rich ores. Furnaceback fires twice then stomps nearby. Counterattack while it cools."
+  },
+  "雷纜廢都": {
+    "zh_CN": "雷缆废都",
+    "en": "Thundercable Ruins"
+  },
+  "電塔、斷橋與垂落纜線。雷龍三道狹窄雷圈逐次前移，留意空隙。": {
+    "zh_CN": "电塔、断桥与垂落缆线。雷龙三道狭窄雷圈逐次前移，留意空隙。",
+    "en": "Electric spires, ruined bridges and hanging cables. Three narrow lightning circles advance in sequence."
+  },
+  "黯潮墓環": {
+    "zh_CN": "黯潮墓环",
+    "en": "Darktide Grave Ring"
+  },
+  "龍骨拱與破碎星環。空相龍移位後在原標記重播斬波，別跟著衝進舊落點。": {
+    "zh_CN": "龙骨拱与破碎星环。空相龙移位后在原标记重播斩波，别跟着冲进旧落点。",
+    "en": "Bone arches and a broken orbital ring. The hollow dragon moves away but repeats its slash at the original mark."
+  },
+  "七星航線實際遊戲畫面": {
+    "zh_CN": "七星航线实际游戏画面",
+    "en": "The seven-world route map in the game"
+  },
+  "航線從微光林地分成兩支：銹沙盆地 → 孢潮沼澤；鏡霜海岸 → 熔脊裂谷。取得沼澤與熔谷龍核後開啟雷纜廢都，再通往黯潮墓環。每條箭頭表示必須先取得來源星球的龍核。": {
+    "zh_CN": "航线从微光林地分成两支：锈沙盆地 → 孢潮沼泽；镜霜海岸 → 熔脊裂谷。取得沼泽与熔谷龙核后开启雷缆废都，再通往黯潮墓环。箭头表示必须先取得来源星球的龙核。",
+    "en": "Glimmerwood opens two branches: Rustsand → Sporetide and Mirrorfrost → Moltenridge. Claim both branch-end cores to open Thundercable, then Darktide. Each arrow requires its source world’s core."
+  },
+  "暫停選單點龍圖示可隨時查看星宇航線。點選星球先看地貌、龍與解鎖原因；金色箭頭是目前位置，菱形表示已解放。": {
+    "zh_CN": "暂停菜单点龙图示可随时查看星宇航线。点选星球查看地貌、龙与解锁原因；金色箭头是当前位置，菱形表示已解放。",
+    "en": "Open the dragon icon in the pause menu to inspect Star Routes anytime. Select a world to read its biome, dragon and unlock requirement. Gold marks your location; diamonds mark liberated worlds."
+  },
+  "首次在營火西側領取龍核，再投入 20 龍晶建造火箭；最多兩名工匠完成 30 工秒施工。靠近完工火箭按 E／手機下滑，選星球後再按啟航。場上有敵人或沒有劍時不能出發。": {
+    "zh_CN": "首次在营火西侧领取龙核，再投入 20 龙晶建造火箭；最多两名工匠完成 30 工秒施工。靠近完工火箭按 E／手机下滑，选星球后再按启航。场上有敌人或没有剑时不能出发。",
+    "en": "Claim a core west of camp and invest 20 crystals in a rocket. Up to two workers complete 30 worker-seconds of construction. Press E or swipe down beside the finished rocket, select a world, then confirm launch. Enemies or a missing sword prevent departure."
+  },
+  "每次落地留下火箭殘骸，需 12 龍晶與工匠重建。未擊敗當地龍也可返回已到訪星球，但不能越過鎖住的航線。居民、建築、日數與採集留在各星；晶袋、劍、部件與剩餘冷卻跟著騎士，不重領商人贈禮。": {
+    "zh_CN": "每次落地留下火箭残骸，需 12 龙晶与工匠重建。未击败当地龙也可返回已到访星球，但不能越过锁住的航线。居民、建筑、日数与采集留在各星；晶袋、剑、部件与剩余冷却跟随骑士，不重领商人赠礼。",
+    "en": "Every landing leaves a wreck: rebuild with 12 crystals and workers. You may return to visited colonies before defeating the local dragon, but locked routes stay locked. Colonies and calendars stay local; the pouch, sword, modules and remaining cooldown travel with you. Merchant gifts never reset."
   }
 }

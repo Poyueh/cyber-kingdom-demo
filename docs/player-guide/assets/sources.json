@@ -7,7 +7,15 @@
     "cleared.webp": "docs/reports/kingdom-cycle-v001/cleared.png",
     "equipment.webp": "docs/reports/kingdom-cycle-v001/equipment-tiers.png",
     "gate.webp": "docs/reports/kingdom-cycle-v001/gate-spawn.png",
-    "menu.webp": "docs/reports/android-cycle-v001/manual-restored.png"
+    "menu.webp": "docs/reports/android-cycle-v001/manual-restored.png",
+    "planet-forest.webp": "test-results/seven-planets/forest.png; real native game, 960x540 thumbnail",
+    "planet-desert.webp": "test-results/seven-planets/desert.png; real native game, 960x540 thumbnail",
+    "planet-frost.webp": "test-results/seven-planets/frost.png; real native game, 960x540 thumbnail",
+    "planet-swamp.webp": "test-results/seven-planets/swamp.png; real native game, 960x540 thumbnail",
+    "planet-volcanic.webp": "test-results/seven-planets/volcanic.png; real native game, 960x540 thumbnail",
+    "planet-storm.webp": "test-results/seven-planets/storm.png; real native game, 960x540 thumbnail",
+    "planet-void.webp": "test-results/seven-planets/void.png; real native game, 960x540 thumbnail",
+    "star-chart.webp": "test-results/seven-planets/chart-desert.png; real native route interface"
   },
   "animation": "docs/previews/combo-v004-closeup.gif",
   "characters": "art/characters/resident-motion-v002/residents.png; idle frame 0, row = role * 2 + 1, 64 x 64",

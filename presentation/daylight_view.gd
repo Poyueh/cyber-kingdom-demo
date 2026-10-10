@@ -17,7 +17,7 @@ func _ready() -> void:
  _light=CanvasModulate.new()
  add_child(_light)
 
-func present(clock: RefCounted, texture: Texture2D, bounds: Rect2) -> void:
+func present(clock: RefCounted, texture: Texture2D, bounds: Rect2, layered_biome: bool=false) -> void:
  if _sky==null:return
  var phase: float=clampf(1.0-clock.remaining/(clock.night_seconds if clock.is_night else clock.day_seconds),0,1)
  var day: float=0.0 if clock.is_night else smoothstep(0,0.17,phase)*(1.0-smoothstep(0.65,0.93,phase))
@@ -27,6 +27,7 @@ func present(clock: RefCounted, texture: Texture2D, bounds: Rect2) -> void:
  _light.color=twilight_light.lerp(style.daylight,day)
  var top: Color=style.night_sky.lerp(style.sunset_sky,maxf(dusk,dawn)*0.8).lerp(style.day_sky,day)
  var horizon: Color=style.night_horizon.lerp(style.sunset_horizon,maxf(dusk,dawn)).lerp(style.day_horizon,day)
+ _material.set_shader_parameter("layered_biome",layered_biome)
  _sky.texture=texture
  _sky.position=bounds.position
  _sky.scale=bounds.size/texture.get_size()

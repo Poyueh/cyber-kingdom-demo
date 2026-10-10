@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/planet_tuning.gd" id="1"]
+[resource]
+script = ExtResource("1")
+planet_id = 5
+day_seconds = 145.0
+night_seconds = 85.0
+night_first = 9
+route_requires = 24
+dragon_reach = 320.0
+dragon_speed = 150.0
+dragon_warning = 2.0
+dragon_followup = 1.4
+dragon_recovery = 11.0
+dragon_radius = 62.0
+dragon_beats = 3
+dragon_spacing = 190.0
+dragon_pattern = 0
+dragon_health = 1600

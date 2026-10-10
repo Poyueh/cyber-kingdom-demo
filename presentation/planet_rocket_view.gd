@@ -22,8 +22,24 @@ static func draw_details(view: Node2D, sim: RefCounted) -> void:
   view.draw_arc(Vector2(core,389),29,time, time+4.2,20,Color("66bcb0"),2)
  for effect: Dictionary in sim.effects:
   if effect.kind!="planet_strike":continue
-  var tint: Color=Color("e0a856") if sim.planet.id==1 else Color("98e9ff")
+  if not view._on_screen(effect.x,250):continue
+  var id: int=sim.planet.id
+  var tint: Color=preload("res://presentation/planet_scenery.gd").TINTS[maxi(0,id-1)].lightened(0.4)
   tint.a=effect.life/0.85
-  for i: int in range(11):
-   var at: Vector2=Vector2(effect.x-95+i*19,428)
-   view.draw_colored_polygon(PackedVector2Array([at+Vector2(-8,0),at+Vector2(0,-25-(i%3)*15),at+Vector2(9,0)]),tint)
+  var radius: float=sim.planet.attack.radius
+  if id==5:
+   var points: PackedVector2Array=PackedVector2Array()
+   for part: int in range(8):points.append(Vector2(effect.x+sin(part*7.2)*18,200+part*32))
+   view.draw_polyline(points,tint,5)
+   view.draw_line(Vector2(effect.x-radius,428),Vector2(effect.x+radius,428),Color.WHITE*tint.a,3)
+  elif id==6:
+   view.draw_arc(Vector2(effect.x,400),radius,PI+0.3,TAU+0.3,18,tint,5)
+   view.draw_line(Vector2(effect.x-radius,426),Vector2(effect.x+radius,350),tint,3)
+  elif id==3:
+   for i: int in range(8):
+    var at: Vector2=Vector2(effect.x+cos(i*2.4)*radius,412-sin(i*1.7)*26-(0.85-effect.life)*55)
+    view.draw_circle(at,5+effect.life*5,tint)
+  else:
+   for i: int in range(11):
+    var at: Vector2=Vector2(effect.x-radius+i*radius/5,428)
+    view.draw_colored_polygon(PackedVector2Array([at+Vector2(-8,0),at+Vector2(0,-25-(i%3)*15),at+Vector2(9,0)]),tint)

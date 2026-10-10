@@ -8,6 +8,7 @@ uniform float warmth;
 uniform float phase;
 uniform bool night;
 uniform float sun_radius;
+uniform bool layered_biome = false;
 void fragment() {
  vec4 original=texture(TEXTURE,UV);
  // The authored skyline uses magenta/violet for open sky, blue for silhouettes.
@@ -30,5 +31,9 @@ void fragment() {
  vec2 cell=floor(pixel/vec2(39.0,29.0));
  float seed=fract(sin(dot(cell,vec2(12.9898,78.233)))*43758.5453);
  if (night && seed>0.72 && mod(pixel.x,39.0)<2.0 && mod(pixel.y,29.0)<2.0) sky=mix(sky,vec3(0.74,0.84,0.9),(1.0-warmth)*0.7);
- COLOR=vec4(open_sky ? sky : terrain,original.a);
+ float sky_weight=open_sky ? 1.0 : 0.0;
+ if (layered_biome) {
+  sky_weight=(1.0-smoothstep(0.14,0.42,UV.y))*smoothstep(0.14,0.30,original.r)*smoothstep(0.88,1.08,original.r/max(original.g,0.01));
+ }
+ COLOR=vec4(mix(terrain,sky,sky_weight),original.a);
 }
