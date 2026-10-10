@@ -3,6 +3,10 @@ extends Node
 signal completed
 const GAME=preload("res://scenes/frontier.tscn")
 const DURATION: float=25.0
+# Preserve the cinematic mix while following the player's preference levels.
+const MUSIC_MIX: float=0.55
+const EFFECTS_MIX: float=0.5
+var sound_levels: Dictionary={} # Validated preferences supplied by the title; never written here.
 var elapsed: float=0.0
 var game: Node2D
 var _shot: int=-1
@@ -25,11 +29,20 @@ func _ready() -> void:
  game.sim.hero.stats.max_stamina=200;game.sim.hero.stamina=200
  game.sim.pouch.amount=0
  game.sim.clock.remaining=game.sim.clock.day_seconds*0.55
- game.audio.music_volume=0.22;game.audio.effects_volume=0.4
+ _configure_sound()
  game.get_node("Knight/Camera2D").force_update_scroll()
  game.knight.refresh_visual(0);game._sync_knight_equipment()
  game.view.present(game.sim,game.knight.position.x)
  game._water.present(game.sim);game._lantern.present(game.sim,game.knight);game._sunbeams.present(game.sim)
+func _configure_sound() -> void:
+ if not sound_levels.is_empty():
+  game.audio.music_volume=float(sound_levels.music)
+  game.audio.effects_volume=float(sound_levels.effects)
+  game.audio.ambience_volume=float(sound_levels.ambience)
+  game.audio.enabled=not bool(sound_levels.muted)
+ game.audio.music_volume*=MUSIC_MIX
+ game.audio.effects_volume*=EFFECTS_MIX
+
 func _physics_process(seconds: float) -> void:
  if _finished or game==null:return
  elapsed+=seconds

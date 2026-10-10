@@ -15,6 +15,7 @@ var enabled := true:
 		enabled = value
 		if music != null: music.enabled = value
 		if not enabled and is_instance_valid(_voice): _voice.stop()
+var suspended: bool = false
 var effects_volume := 0.8
 var music: Node
 var _voice: AudioStreamPlayer
@@ -34,10 +35,12 @@ func apply(levels: Dictionary) -> void:
 	enabled = not bool(levels.get("muted", false))
 
 func _process(seconds: float) -> void:
-	if is_instance_valid(music): music.observe(seconds, null, 0.0, false)
+	if is_instance_valid(music):
+		music.suspended = suspended
+		music.observe(seconds, null, 0.0, false)
 
 func click(kind: String) -> void:
-	if not enabled or effects_volume <= 0 or not CLICKS.has(kind): return
+	if not enabled or suspended or effects_volume <= 0 or not CLICKS.has(kind): return
 	_voice.stream = CLICKS[kind]
 	_voice.volume_db = volume_db + linear_to_db(maxf(0.0001, effects_volume))
 	if DisplayServer.get_name() != "headless": _voice.play()

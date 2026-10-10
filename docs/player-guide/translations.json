@@ -1243,10 +1243,6 @@
     "zh_CN": "生存。你是一名改造骑士；龙晶既是受击时的生存余裕，也是招募居民、建造防线与更换部件的代价。",
     "en": " to survive. As an augmented knight, you spend crystals to recruit residents, build defenses and swap modules—but those same crystals protect you when you are hit."
   },
-  "啟動先有可跳過的前導演出，再進入主選單。選新遊戲建立獨立旅程，或選擇紀錄繼續。以下為新旅程的預設玩法；舊紀錄可能保留不同的收益、難度與商人設定。": {
-    "zh_CN": "启动先有可跳过的前导演出，再进入主菜单。选新游戏建立独立旅程，或选择记录继续。以下为新旅程的默认玩法；旧记录可能保留不同的收益、难度与商人设置。",
-    "en": "A skippable prologue leads to the main menu. Start a separate new journey or select a save to continue. This guide describes new-journey defaults; older saves may retain different rewards, difficulty and merchant settings."
-  },
   "開局帶六顆龍晶、沒有劍。走到營火互動，免費拔劍點火；工程與弓箭設施自動搭起。此後守住這團火。": {
     "zh_CN": "开局带六颗龙晶、没有剑。走到营火互动，免费拔剑点火；工程与弓箭设施自动搭起。此后守住这团火。",
     "en": "You start with six crystals and no sword. Walk to the campfire and interact to draw the sword and light it for free. Engineering and archery stalls appear automatically. Protect this fire."
@@ -1707,10 +1703,6 @@
     "zh_CN": "实际游戏中的部件收藏界面，示例已取得四件。",
     "en": "In-game module collection, shown with four discoveries."
   },
-  "新增星球部件與收藏配置從新旅程開始。舊紀錄保留原本兩件配置與已完成的探索，不會重新鎖住遺跡。符石謎題仍是現有的符序與限時中繼，更多謎題類型將另行設計。": {
-    "zh_CN": "新增星球部件与收藏配置从新旅程开始。旧记录保留原本两件配置与已完成的探索，不会重新锁住遗迹。符石谜题仍是现有的符序与限时中继，更多谜题类型将另行设计。",
-    "en": "Start a new journey for the expanded world rewards. Existing saves keep their two-module setup and completed discoveries. Ruins currently use the existing sequence and timed relay puzzles; further puzzle types are planned separately."
-  },
   "按 K 或雙指向上滑使用部件。依種類消耗體力，所有部件共用冷卻，換裝不會重置；光環亮起表示冷卻完成。": {
     "zh_CN": "按 K 或双指向上滑使用部件。依种类消耗体力，所有部件共用冷却，换装不会重置；光环亮起表示冷却完成。",
     "en": "Press K or swipe up with two fingers to use your module. Stamina costs vary by module. All share a cooldown that switching cannot reset; a glow signals readiness."
@@ -1775,8 +1767,16 @@
     "zh_CN": "实际游戏界面：鬼魂指向保管采集收入的居民。",
     "en": "In-game interface: the spirit points toward a resident carrying harvest income."
   },
-  "適用 v0.0.25：加入居民收貨、剩餘付款與商旅交貨的情境指引。七星球、八件部件、森林戰馬、預警襲擊與六地機關沿用；新機關需新旅程，這次提示改善也適用既有紀錄。更多坐騎、武器與探索事件仍待後續開發。": {
-    "zh_CN": "适用 v0.0.25：加入居民收货、剩余付款与商旅交货的情境指引。七星球、八件部件、森林战马、预警袭击与六地机关沿用；新机关需新旅程，这次提示改善也适用既有纪录。更多坐骑、武器与探索事件仍待后续开发。",
-    "en": "For v0.0.25: contextual guidance for collecting resident income, remaining costs and caravan deliveries. Includes seven worlds, eight modules, the forest mount, warned raids and six-world mechanisms. Mechanisms require a new journey; these guidance fixes also work in existing saves. More mounts, weapons and exploration events remain in development."
+  "啟動先有可跳過的前導演出，再進入主選單。前導與主選單配樂依序播放，沿用你的音量與靜音設定。選新遊戲建立獨立旅程，或選擇紀錄繼續；舊紀錄可能保留不同的收益、難度與商人設定。": {
+    "zh_CN": "启动先有可跳过的前导演出，再进入主菜单。前导与主菜单配乐依序播放，沿用你的音量与静音设置。选新游戏建立独立旅程，或选择记录继续；旧记录可能保留不同的收益、难度与商人设置。",
+    "en": "A skippable prologue leads into the main menu. Its score hands over to the title music, following your volume and mute preferences. Start a separate new journey or continue a saved one; older saves may retain different income, difficulty and merchant settings."
+  },
+  "新增星球部件與收藏配置從新旅程開始。舊紀錄保留各自的部件配置與解謎進度，不會重新鎖住遺跡。森林使用符序與限時中繼；後續六地使用連動燈、冷熱平衡與脈衝亮窗，詳見前方的機關說明。": {
+    "zh_CN": "新增星球部件与收藏配置从新旅程开始。旧记录保留各自的部件配置与解谜进度，不会重新锁住遗迹。森林使用符序与限时中继；后续六地使用连动灯、冷热平衡与脉冲亮窗，详见前方的机关说明。",
+    "en": "Start a new journey for expanded world rewards. Existing saves retain their own module setup and puzzle progress without relocking ruins. Forest seals use rune sequences and timed relays; the six later worlds use linked lamps, thermal balance and pulse windows, as described in the mechanisms section."
+  },
+  "適用 v0.0.26：前導配樂與主選單正確交接，前導沿用音量與靜音偏好，機關說明校正。七星球、八件部件、森林戰馬、預警襲擊與補給指引沿用；本次改善適用既有紀錄，新增機關與收藏配置仍需新旅程。": {
+    "zh_CN": "适用 v0.0.26：前导配乐与主菜单正确交接，前导沿用音量与静音偏好，机关说明校正。七星球、八件部件、森林战马、预警袭击与补给指引沿用；本次改善适用既有记录，新增机关与收藏配置仍需新旅程。",
+    "en": "For v0.0.26: prologue-to-title music handoff, opening volume and mute preferences, and corrected mechanism guidance. Seven worlds, eight modules, the forest mount, warned raids and supply guidance remain. These fixes work with existing saves; expanded mechanisms and collections still require a new journey."
   }
 }
