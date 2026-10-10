@@ -15,7 +15,9 @@ var repair_cost: int=12
 var launch_requested: bool=false
 var completed: bool=false
 var volley: int=0
+var attack: RefCounted
 func _init(config: Dictionary={}) -> void:
+ attack=preload("res://domain/dragon_pattern.gd").new(config)
  enabled=int(config.get("voyage_enabled",0))==1
  id=int(config.get("planet_id",0))
  work_required=float(config.get("rocket_work",30.0))
@@ -36,7 +38,7 @@ func restore(data: Variant) -> bool:
  for key: String in ["cleared","core_claimed","reactor","wrecked","rocket_pending","rocket_ready","completed"]:
   if not data.get(key) is bool:return false
  if not (data.get("work") is int or data.get("work") is float) or not is_finite(float(data.work)) or data.work<0 or data.work>work_required:return false
- if data.get("volley") not in [0,1]:return false
+ if not data.get("volley") is int or data.volley<0 or data.volley>=attack.beats:return false
  if data.core_claimed and not data.cleared:return false
  if data.rocket_pending and data.rocket_ready:return false
  if (data.rocket_pending or data.rocket_ready or data.core_claimed) and not data.reactor:return false

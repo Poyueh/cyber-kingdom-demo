@@ -1,0 +1,20 @@
+{
+  "version": "0.0.21",
+  "core_assertions": 2611,
+  "native_scene_assertions": 37,
+  "native_input": "Real InputEventMouseButton picking of planet nodes and confirmation; seven-world route traversal; three-language bounds.",
+  "save_bytes": 304206,
+  "coverage": [
+    "seven-core victory",
+    "locked branch cannot be bypassed by returning home",
+    "legacy three-core victory continues",
+    "four new dragon patterns",
+    "mid-volley save and 150-tick replay produce equal state",
+    "seven native scenes and dragon art"
+  ],
+  "limitations": [
+    "Long-run human balance and complete unassisted seven-world campaign not yet played.",
+    "Windows and phone device gameplay not tested.",
+    "Screenshots use controlled progression to show worlds, not a recorded player victory."
+  ]
+}

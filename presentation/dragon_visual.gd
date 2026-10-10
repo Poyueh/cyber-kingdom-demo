@@ -1,7 +1,7 @@
 extends RefCounted
 ## Four aligned generated pixel poses; animation uses simulation time, so pause freezes it.
 const SHEET=preload("res://art/characters/dragon-v001/dragon.png")
-const BIOMES=[preload("res://art/planets/v001/sand-dragon.png"),preload("res://art/planets/v001/frost-dragon.png")]
+const BIOMES=[preload("res://art/planets/v001/sand-dragon.png"),preload("res://art/planets/v001/frost-dragon.png"),preload("res://art/planets/v002/swamp-dragon.png"),preload("res://art/planets/v002/volcanic-dragon.png"),preload("res://art/planets/v002/storm-dragon.png"),preload("res://art/planets/v002/void-dragon.png")]
 static func draw(view: Node2D, enemy: Dictionary, time: float) -> void:
  if not enemy.fighter.is_alive():return
  if view._sim.planet.enabled and view._sim.planet.id>0:
@@ -39,8 +39,13 @@ static func draw_biome(view: Node2D, enemy: Dictionary, time: float) -> void:
  view.draw_set_transform(Vector2.ZERO)
  if enemy.windup>0:
   var aim: float=enemy.target.x
-  var radius: float=105 if id==0 else 85
-  var tint: Color=Color("efa754") if id==0 else Color("98e9ff")
+  var radius: float=view._sim.planet.attack.radius
+  var tint: Color=preload("res://presentation/planet_scenery.gd").TINTS[id].lightened(0.4)
   tint.a=0.6+sin(time*14)*0.25
   view.draw_line(Vector2(aim-radius,428),Vector2(aim+radius,428),tint,4)
   for i: int in range(7):view.draw_rect(Rect2(aim-radius+i*radius/3,420,3,7),tint)
+
+  # Shape and beat markers remain legible without relying only on element colour.
+  view.draw_arc(Vector2(aim,418),radius,PI,TAU,24,Color(tint,0.7),2)
+  for beat: int in range(view._sim.planet.attack.beats):
+   view.draw_circle(Vector2(aim+(beat-(view._sim.planet.attack.beats-1)*0.5)*13,398),3,Color.WHITE if beat==view._sim.planet.volley else Color(tint,0.4))

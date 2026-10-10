@@ -38,6 +38,10 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 	var biome: int=int(rules.get("planet_id",0))
 	if biome>0:rng=preload("res://domain/rng/rng_streams.gd").new(map_seed).of(preload("res://domain/rng/rng_streams.gd").Stream.WORLD)
 	if biome==1:types=["forest","quarry","quarry","quarry","ruins","ruins"]
+	if biome==3:types=["forest","forest","forest","quarry","ruins","ruins"]
+	if biome==4:types=["forest","quarry","quarry","quarry","quarry","ruins"]
+	if biome==5:types=["forest","quarry","ruins","ruins","ruins","ruins"]
+	if biome==6:types=["forest","forest","quarry","quarry","ruins","ruins"]
 	if biome==2:types=["forest","forest","quarry","ruins","ruins","ruins"]
 	for index in range(types.size()-1,0,-1):
 		var swap := rng.randi_range(0,index)

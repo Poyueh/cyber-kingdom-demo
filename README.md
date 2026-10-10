@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.20 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.20)
+- [v0.0.21 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.21)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -27,15 +27,17 @@
 bash tools/check.sh
 ```
 
-v0.0.20 加入三張可玩地圖：原有微光林地、銹沙盆地、鏡霜海岸。每張封印雙門、擊敗各自巨龍並領取龍核；首次 20 龍晶與工匠建造火箭，從星圖探索或回訪，落地殘骸花 12 晶重建。城鎮、居民、採集與日數分開保存；騎士攜帶現有龍晶、劍與部件，集齊三顆龍核通關。舊感受式紀錄可續玩。保留 12 格跑步／衝刺、48 格全身連斬、商人、稀缺寶箱與兩座部件遺跡。
+v0.0.21 提供七張可玩地圖與七隻巨龍：微光林地、銹沙盆地、鏡霜海岸、孢潮沼澤、熔脊裂谷、雷纜廢都、黯潮墓環。星宇航線分支解鎖，暫停選單可查看目前位置、龍核與解鎖條件；在火箭旁互動後選星球並確認啟航。每地封雙門、打龍、領核，集齊七核通關。
 
-說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新說明、測試並發佈試玩版。七星球、集結隊伍與完整十四謎題仍未完整接入；目前為三地遠征。
+首次火箭 20 龍晶、落地殘骸重建 12 晶，均需工匠施工；城鎮、居民、採集與日數分開保存，騎士攜帶龍晶、劍與部件。舊三地存檔（包含三核已勝利）可以接著探索新四地。
+
+說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新說明、測試並發佈試玩版。十四種部件謎題、完整集結隊伍與更深入的龍戰機關仍待後續開發；本版實作範圍見 [七地遠征](docs/design/seven-playable-worlds.md)。
 
 目前新旅程包含農具工坊、居民近域採集、施工中的防線停用、日夜循環、龍晶背包和戰鬥原型。詳情請看 [開發進度](docs/STATUS.md)、[架構說明](docs/ARCHITECTURE.md) 與 [Gitflow 流程](docs/GITFLOW.md)。
 
 ## 平台狀態
 
-v0.0.20 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.21 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 

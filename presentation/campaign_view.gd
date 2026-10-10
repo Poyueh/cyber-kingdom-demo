@@ -20,7 +20,7 @@ func _draw_sky(bounds: Rect2) -> void:
 	if _daylight==null:
 		super._draw_sky(bounds)
 		return
-	_daylight.present(_sim.clock,art.woodland,bounds)
+	_daylight.present(_sim.clock,art.woodland,bounds,_sim.planet.enabled and _sim.planet.id>0)
 
 var _reveal=preload("res://presentation/exploration_reveal.gd").new()
 var _mist=preload("res://presentation/exploration_mist.gd").new()
@@ -55,7 +55,7 @@ func present(sim, player_x: float) -> void:
 		if _original_art==null:_original_art=art
 		art=_original_art.duplicate()
 		if sim.planet.enabled and sim.planet.id>0:
-			art.woodland=PlanetScenery.DESERT if sim.planet.id==1 else PlanetScenery.FROST
+			art.woodland=PlanetScenery.SKIES[sim.planet.id-1]
 			art.ground=PlanetScenery.GROUND[sim.planet.id-1]
 			art.forest_layer=null
 		_resident_motion.clear()
