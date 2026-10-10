@@ -1,0 +1,64 @@
+{
+  "version": "0.0.25",
+  "published": false,
+  "source_commit": "5ebdaaf8390638991225e499e9d34977a227ab7e",
+  "source_tree": "045fbd74ef5cb4e27933ed50be799d989b4a4d93",
+  "full_check": true,
+  "core_assertions": 3619,
+  "native_scene_assertions": 24,
+  "actual_previous_release_save_continuation": true,
+  "save_schema_unchanged": 18,
+  "archive_integrity_verified": true,
+  "mac_adhoc_signature_verified": true,
+  "android_version_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.25.zip",
+      "size": 118522600,
+      "sha256": "1420fb77874b61d676097696d7756b7ee8699e4b612fa95e9f01d95649f7544b"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.25.zip",
+      "size": 96100557,
+      "sha256": "031766a8259d60b1f8cdf686763293f0b2380017b2d8c6768642619cc8d9686f"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.25.zip",
+      "size": 71685499,
+      "sha256": "092ba11630b42b2acc550d5c618d265c193df9cec4fa7d6b265f7dc5b2d89fce"
+    },
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.25-debug.apk",
+      "size": 87216613,
+      "sha256": "99854cdf98e0b42b134ff411ca091e33118d18836d3cb44755c1562058fbf11e"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.25-Xcode.zip",
+      "size": 170897830,
+      "sha256": "95376f4363facee9180a7b416ae2f4057068d4b60feed7e26d9d18a407d1a824"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.25.html",
+      "size": 4588939,
+      "sha256": "f3420a556d66c9d8e753559e36c8df2e9ed5c51093163936b1bbe855c20f5983"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Human comprehension, retention and commercial outcomes unverified",
+    "Automatic exit during the prologue leaves audio playback resources at process shutdown; also reproduced in v0.0.24. Not fixed in this release; normal window-close and long-session memory behavior require separate investigation."
+  ],
+  "check_log_sha256": "45583f62ae5368a51fa18ade60fa46eaea95b44ef4304bd685485d0de9ecb3b0",
+  "packaged_native_smoke": true,
+  "packaged_assertions": 12,
+  "mac_binary_launch": true,
+  "mac_clean_automatic_exit": false,
+  "automatic_exit_audio_warning_reproduced_in_previous_release": true,
+  "evidence_logs": {
+    "packaged-smoke": "360bca4b0829979d42e337d01e07a449fee203d63a6dc3a97b7f0546d105e562",
+    "mac-quit-after-1200": "d59b2773267679ca4eae407102f4c4273bf9024f5f518572503c86e665a46bdc",
+    "previous-mac-quit-after-1200": "9b0205cbdfa0437e05db8683fa68778d456f5c473ecb19ad48e4539b081e463a"
+  }
+}
