@@ -1,6 +1,16 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["ruin.sand", "折光連鎖", "折光连锁", "Prism circuit"],
+ ["ruin.frost", "冰脈調溫", "冰脉调温", "Thermal balance"],
+ ["ruin.swamp", "根脈連鎖", "根脉连锁", "Root circuit"],
+ ["ruin.volcano", "爐心卸壓", "炉心卸压", "Furnace pressure"],
+ ["ruin.storm", "雷纜充能", "雷缆充能", "Storm capacitor"],
+ ["ruin.void", "回聲鎖環", "回声锁环", "Echo lock"],
+ ["ruin.circuit.hint", "沿線觀察，讓三盞燈都亮起", "沿线观察，让三盏灯都亮起", "Follow the links; light all three lamps"],
+ ["ruin.balance.hint", "用加減調到綠框，再按菱形鎖定", "用加减调到绿框，再按菱形锁定", "Balance to the marked band; lock at the diamond"],
+ ["ruin.pulse.hint", "亮窗時接通；已充能的符石會保留", "亮窗时接通；已充能的符石会保留", "Activate in the bright window; charged nodes stay lit"],
+
  ["轉動導流器", "轉動導流器", "转动导流器", "Turn conduit"],
  ["喚醒機械戰馬", "喚醒機械戰馬", "唤醒机械战马", "Awaken the mechanical steed"],
  ["下馬", "下馬", "下马", "Dismount"],

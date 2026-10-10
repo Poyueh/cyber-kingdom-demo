@@ -26,6 +26,7 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export_range(1,30,0.5) var module_lance_cooldown: float=8.0
 @export_group("Exploration")
 @export var mount_expedition: Resource=preload("res://data/mount_expedition.tres")
+@export var ruin_mechanisms: Resource=preload("res://data/ruin_mechanisms.tres")
 @export var ruin_trials: Resource=preload("res://data/ruin_trials.tres")
 @export_range(0,8,1) var outer_regions_per_side: int = 7
 @export_range(300,1250,50) var arrival_walk_distance: float=1050.0
@@ -111,6 +112,8 @@ func campaign_rules() -> Dictionary:
 		rules.merge(ruin_trials.rules(),true)
 		rules.merge(mount_expedition.rules(),true)
 		rules.merge(module_catalog.rules(),true)
+		rules.merge(ruin_mechanisms.rules(),true)
+		assert(preload("res://domain/ruin_mechanism.gd").valid_config(rules),"Invalid ruin mechanism catalogue")
 	return rules
 
 func economy_rules() -> Dictionary:

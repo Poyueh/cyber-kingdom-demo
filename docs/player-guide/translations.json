@@ -1411,10 +1411,6 @@
     "zh_CN": "夜间不会全面停工：工匠与农夫附近有魔物才避难，猎人会射箭反击，枪盾兵守住两侧。居民也会保管地面龙晶，骑士靠近时交出。",
     "en": "Work does not stop automatically at night. Engineers and farmers shelter when monsters approach, hunters fight with arrows, and spear-and-shield guards hold both sides. Residents also collect loose crystals and hand them over when the knight approaches."
   },
-  "暫停後點地圖圖示開啟邊境探索圖，金色箭頭標示位置；只顯示已探索地形、未領取獎勵與封印遺跡。新旅程的遠方部件需先解開遺跡：古龍符序要讀取封印上由左至右的符號，再沿來路找到三座符石，靠近按 E／手機下滑依序啟動；疾光中繼則從最靠近營火的一座開始，向封印接通三座中繼器，需在 12 秒內完成。錯序或超時可免費重試，暫停不計時；解開後回封印處領取部件。既有旅程保留原本直接拾取規則。": {
-    "en": "Open the Frontier map from the pause menu. Gold marks your position; only discovered terrain, unclaimed rewards and sealed ruins appear. In new journeys, distant modules are sealed. Dragon Sigils: read the symbols on the seal from left to right, find the three runes along your approach, then activate them in order with E or a downward swipe. Light Relay: start with the station nearest camp and link all three toward the seal within 12 seconds. Wrong order or timeout allows a free retry; pausing freezes the timer. Return to the opened seal to collect the module. Existing journeys retain direct pickup.",
-    "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。新旅程的远方部件需先解开遗迹：古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，向封印接通三座中继器，需在 12 秒内完成。错序或超时可免费重试，暂停不计时；解开后回封印处领取部件。既有旅程保留原本直接拾取规则。"
-  },
   "建造與升階花費 3／4／7 龍晶，耐久逐級提高；受損先花 2 晶修復，堡壘需要三級聚落。完整城牆會阻擋怪物及擊退位移；抱晶怪若退路被牆擋住，會先破牆再回門。付滿進入施工後或城牆被打壞時，敵人才能通過。": {
     "en": "Building and upgrades cost 3/4/7 crystals, with more durability each tier. Repairs cost 2 crystals; a fortress requires refuge level 3. Intact walls block enemies and knockback. Crystal carriers break an obstructing wall before returning to their portal. Enemies can pass while fully funded construction is underway or after a wall is destroyed.",
     "zh_CN": "建造与升阶花费 3／4／7 龙晶，耐久逐级提高；受损先花 2 晶修复，堡垒需要三级聚落。完整城墙会阻挡怪物及击退位移；抱晶怪若退路被墙挡住，会先破墙再回门。付满进入施工后或城墙被打坏时，敌人才能通过。"
@@ -1627,10 +1623,6 @@
     "zh_CN": "新旅程的巨龙以第 6 天为基准，第 7 天起增加强度，到第 14 天封顶，召唤时锁定；之后可安心探索，不会无限追涨。旧记录保留原设定。七龙都有不同预警与反击空档，完成的城墙可拦住攻势。",
     "en": "In new journeys, dragons use day 6 as their baseline, grow from day 7, and cap at day 14. Strength locks on summoning. Explore without endless dragon escalation; older saves keep their rules. Each dragon has distinct warnings and recovery openings, and completed walls can intercept attacks."
   },
-  "適用 v0.0.23：七星球遠征新增八件用途各異的部件、收藏里程碑與來源線索，並保留森林戰馬與預警襲擊。新增星球部件請開新旅程體驗；舊紀錄保留原兩件配置，可繼續遊玩。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
-    "zh_CN": "适用 v0.0.23：七星球远征新增八件用途各异的部件、收藏里程碑与来源线索，并保留森林战马与预警袭击。新增星球部件请开新旅程体验；旧记录保留原两件配置，可继续游玩。更多坐骑、武器与各地专属谜题仍待后续开发。",
-    "en": "For v0.0.23: the seven-world journey now has eight modules with distinct uses, collection milestones and planet clues, alongside the forest steed and telegraphed assault. Start a new journey for the new planet modules; existing saves keep their original two-module layout and remain playable. More mounts, weapons and world-specific puzzles are future work."
-  },
   "每顆星球，帶回不同的作戰方式。": {
     "zh_CN": "每颗星球，带回不同的作战方式。",
     "en": "Bring a different playstyle home from each world."
@@ -1722,5 +1714,49 @@
   "按 K 或雙指向上滑使用部件。依種類消耗體力，所有部件共用冷卻，換裝不會重置；光環亮起表示冷卻完成。": {
     "zh_CN": "按 K 或双指向上滑使用部件。依种类消耗体力，所有部件共用冷却，换装不会重置；光环亮起表示冷却完成。",
     "en": "Press K or swipe up with two fingers to use your module. Stamina costs vary by module. All share a cooldown that switching cannot reset; a glow signals readiness."
+  },
+  "暫停後點地圖圖示開啟邊境探索圖，金色箭頭標示位置；只顯示已探索地形、未領取獎勵與封印遺跡。森林的古龍符序要讀取封印上由左至右的符號，再沿來路找到三座符石，靠近按 E／手機下滑依序啟動；疾光中繼則從最靠近營火的一座開始，在 12 秒內接通三座。其餘六地另有連動燈、冷熱平衡和脈衝機關。解開後回封印處領取部件；既有旅程保留原來的遺跡規則。": {
+    "zh_CN": "暂停后点地图图示开启边境探索图，金色箭头标示位置；只显示已探索地形、未领取奖励与封印遗迹。森林的古龙符序要读取封印上由左至右的符号，再沿来路找到三座符石，靠近按 E／手机下滑依序启动；疾光中继则从最靠近营火的一座开始，在 12 秒内接通三座。其余六地另有连动灯、冷热平衡和脉冲机关。解开后回封印处领取部件；既有旅程保留原来的遗迹规则。",
+    "en": "Open the frontier chart from the pause menu. The gold arrow marks you; only explored terrain and unclaimed discoveries appear. In the forest, read the seal left to right and activate its three rune stones with E or a downward swipe; the relay instead connects three stations in 12 seconds, starting nearest camp. The other six worlds use linked lamps, thermal balance or pulse mechanisms. Return to the seal for the module. Existing journeys retain their original ruin rules."
+  },
+  "觀察機關，再決定下一步。": {
+    "zh_CN": "观察机关，再决定下一步。",
+    "en": "Read the mechanism. Choose your next move."
+  },
+  "沙地／沼澤：連動燈": {
+    "zh_CN": "沙地／沼泽：连动灯",
+    "en": "Desert / Swamp: linked lamps"
+  },
+  "每座開關會切換相連的燈。靠近時先看發亮的連線，再用 E／下滑切換，讓三盞燈都亮起。兩地連線與初態不同。": {
+    "zh_CN": "每座开关会切换相连的灯。靠近时先看发亮的连线，再用 E／下滑切换，让三盏灯都亮起。两地连线与初态不同。",
+    "en": "Each switch toggles connected lamps. Approach to highlight its links, then use E or swipe down. Light all three lamps; the two worlds have different connections and starting states."
+  },
+  "冰岸／熔谷：冷熱平衡": {
+    "zh_CN": "冰岸／熔谷：冷热平衡",
+    "en": "Frost / Volcano: thermal balance"
+  },
+  "加熱與冷卻裝置會移動同一支指針。把它調到框選刻度，再到菱形裝置鎖定；到邊界或尚未平衡時，錯按不扣龍晶。": {
+    "zh_CN": "加热与冷却装置会移动同一支指针。把它调到框选刻度，再到菱形装置锁定；到边界或尚未平衡时，错按不扣龙晶。",
+    "en": "Heating and cooling move one shared needle. Reach the framed tick, then lock it at the diamond station. An out-of-range adjustment or premature lock costs no crystals."
+  },
+  "雷城／墓環：脈衝亮窗": {
+    "zh_CN": "雷城／墓环：脉冲亮窗",
+    "en": "Storm / Void: pulse windows"
+  },
+  "看指針走進亮窗，再按 E／下滑接通。每座完成就會保留，不必同時啟動；錯過可等下一圈，暫停時指針也會停。": {
+    "zh_CN": "看指针走进亮窗，再按 E／下滑接通。每座完成就会保留，不必同时启动；错过可等下一圈，暂停时指针也会停。",
+    "en": "Activate with E or swipe down while the needle is in the bright window. Each charged station stays lit; they need not be simultaneous. Missed windows return next cycle, and pausing stops the needle."
+  },
+  "不用趕著一次解完。部分機關進度會保存，夜裡先回防，改天再來也可以。新機關需要開新旅程；舊紀錄保留原解法。": {
+    "zh_CN": "不用赶着一次解完。部分机关进度会保存，夜里先回防，改天再来也可以。新机关需要开新旅程；旧记录保留原解法。",
+    "en": "You can return to defend camp and finish later: partial mechanism progress is saved. Start a new journey for these mechanisms; existing saves keep their original puzzles."
+  },
+  "實際遊戲：觀察刻度、用加減調整，再鎖定封印。": {
+    "zh_CN": "实际游戏：观察刻度、用加减调整，再锁定封印。",
+    "en": "In-game: read the gauge, adjust with plus and minus, then lock the seal."
+  },
+  "適用 v0.0.24：七星球遠征、八件部件與收藏里程碑、森林戰馬、預警襲擊，以及六地的三類新機關。請開新旅程體驗新機關；舊紀錄保留原配置與解謎進度。更多坐騎、武器與探索事件仍待後續開發。": {
+    "zh_CN": "适用 v0.0.24：七星球远征、八件部件与收藏里程碑、森林战马、预警袭击，以及六地的三类新机关。请开新旅程体验新机关；旧记录保留原配置与解谜进度。更多坐骑、武器与探索事件仍待后续开发。",
+    "en": "For v0.0.24: seven worlds, eight collectible modules, the forest steed, a telegraphed assault and three new mechanism families across six destinations. Start a new journey for the new puzzles; existing saves retain their configuration and progress. More mounts, weapons and exploration events remain future work."
   }
 }

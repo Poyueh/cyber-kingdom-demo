@@ -1,0 +1,59 @@
+{
+  "version": "0.0.24",
+  "published": false,
+  "tdd_red_assertions": 3515,
+  "tdd_red_failures": 5,
+  "native_scene_assertions": 28,
+  "native_capture": "test-results/planet-ruins",
+  "actual_previous_release_save_migration": true,
+  "previous_save_version": 17,
+  "current_save_version": 18,
+  "core_assertions": 3585,
+  "seeded_planet_cases": 224,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Human puzzle comprehension and commercial results remain unverified"
+  ],
+  "full_check": true,
+  "check_log_sha256": "9432d217b8e5afde65a6dd71e68eed8d4817f830dc40b19eca56133ffc0c4998",
+  "source_commit": "91a1e07c0ac1ba3c625967dddfa95da095e823e2",
+  "source_tree": "88149bc5ac4daa52472f3b1161da00c2f1623256",
+  "packaged_native_smoke": true,
+  "mac_adhoc_signature_verified": true,
+  "android_version_verified": true,
+  "archive_integrity_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.24-debug.apk",
+      "size": 87212517,
+      "sha256": "ded7d194b65c5b3758c2571f06d519d5aea37dc52254beb0c2f07269d5905421"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.24.html",
+      "size": 4380897,
+      "sha256": "7392c3e5cff62b674b4e29f316a5665885c18ea3c5ca02a8889a0aba2037dfd6"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.24.zip",
+      "size": 71524763,
+      "sha256": "be71ebe5625f301a25fe1211662a29a852dfe102f72147395ccf5cb1ed5e2c3f"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.24.zip",
+      "size": 96096219,
+      "sha256": "4d198e201ab439519397f4a541cf21ae74d3c429bc6e1f9a07f0ac1be5c3bd97"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.24-Xcode.zip",
+      "size": 170887212,
+      "sha256": "7bfe707fa0a603f70acee2d67cca1b04ca30f95ca7f4d5e1efee7b36a470fa16"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.24.zip",
+      "size": 118518261,
+      "sha256": "832c9b287b0d5447f0085717b243175538e8fe434eda0ba3b13cc3f3d6df7e69"
+    }
+  ]
+}

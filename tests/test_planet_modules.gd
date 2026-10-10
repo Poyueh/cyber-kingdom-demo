@@ -216,9 +216,11 @@ func test_catalogue_rewards_remain_accessible_across_seeds(t: SceneTree) -> void
     var trial: RefCounted=sim.trials.get_site(relic.id)
     t.truth(trial!=null,"reward has a playable free mechanism")
     if trial==null:continue
-    for station: int in trial.order:sim.trials.activate(trial.id,station,0)
+    if trial.mechanism==null:
+     for station: int in trial.order:sim.trials.activate(trial.id,station,0)
+    else:preload("res://tests/ruin_solution.gd").solve(sim,planet)
     sim.frontier.regions[relic.region].discovered=true;sim.modules.observe(sim,relic.x,430)
-    t.equal(sim.modules.equipped,relic.id,"ordinary sequence can unlock and auto-equip this seed's reward")
+    t.equal(sim.modules.equipped,relic.id,"configured mechanism can unlock and auto-equip this seed's reward")
 
 func test_rocket_construction_can_save_while_support_is_active(t: SceneTree) -> void:
  var rules: Dictionary=config();rules.voyage_enabled=1
