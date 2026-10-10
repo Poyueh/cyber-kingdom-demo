@@ -1,6 +1,6 @@
 {
   "version": "0.0.25",
-  "published": false,
+  "published": true,
   "source_commit": "5ebdaaf8390638991225e499e9d34977a227ab7e",
   "source_tree": "045fbd74ef5cb4e27933ed50be799d989b4a4d93",
   "full_check": true,
@@ -59,6 +59,16 @@
   "evidence_logs": {
     "packaged-smoke": "360bca4b0829979d42e337d01e07a449fee203d63a6dc3a97b7f0546d105e562",
     "mac-quit-after-1200": "d59b2773267679ca4eae407102f4c4273bf9024f5f518572503c86e665a46bdc",
-    "previous-mac-quit-after-1200": "9b0205cbdfa0437e05db8683fa68778d456f5c473ecb19ad48e4539b081e463a"
-  }
+    "previous-mac-quit-after-1200": "9b0205cbdfa0437e05db8683fa68778d456f5c473ecb19ad48e4539b081e463a",
+    "live-release-check": "bf6311f0d507c825382349ee3bf70e7bcf2b1c5e75498ec59b328facdbeca739"
+  },
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.25",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.25",
+  "pages_run": 38095451283,
+  "all_seven_asset_digests_match": true,
+  "live_index_guide_pck_match": true,
+  "browser_prologue_and_main_menu": true,
+  "browser_guide_iframe_new_content": true,
+  "browser_guide_version_faq": true,
+  "browser_console_errors": []
 }
