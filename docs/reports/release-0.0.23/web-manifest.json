@@ -1,0 +1,26 @@
+{
+  "source_tree": "b7f1685ddb4cd2376f225a39f49c252113556eeb",
+  "entry": "index.html",
+  "threads": false,
+  "persistence": "browser IndexedDB; separate per origin/profile",
+  "sha256": "03a365660db0cda7a16b70f37d288f05b9163a466862d3acb12ec38c75e37cea",
+  "files": {
+    "index.apple-touch-icon.png": 1322,
+    "index.wasm": 39514754,
+    "index.icon.png": 2744,
+    "guide-reader.css": 1750,
+    "FONT-LICENSE.txt": 4301,
+    "index.html": 5542,
+    "guide.html": 3964971,
+    "index.png": 21443,
+    "index.audio.worklet.js": 7298,
+    "index.js": 279815,
+    "index.audio.position.worklet.js": 2973,
+    "README.txt": 936,
+    "index.pck": 59299648,
+    "guide-reader.js": 2969
+  },
+  "browser_playtest": "record separately; successful export is not a playtest",
+  "guide_source_commit": "59cfd9cb75baf770d72feabee85bb15b5397b7af",
+  "guide_note": "Only the guide FAQ changed after runtime export; all runtime files remain byte-identical."
+}
