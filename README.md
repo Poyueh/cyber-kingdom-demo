@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.23 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.23)
+- [v0.0.24 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.24)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -27,7 +27,7 @@
 bash tools/check.sh
 ```
 
-v0.0.23 新旅程新增七星專屬部件：八種能力涵蓋戰鬥、控場、回收、施工與弓兵支援；改造所有收藏里程碑與星球線索。每次只裝一件、共用冷卻、八晶換裝。既有紀錄保留兩件配置；開新旅程可探索完整收藏。詳見 [更新條目](docs/releases/0.0.23.md)。
+v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮窗三類機關，各地有不同連線、初態與時窗。靠近 E／手機下滑免費操作，部分進度可保存；解封後取得原有八件部件收藏。森林入門與舊紀錄的機關不變，開新旅程可體驗新解法。詳見 [更新條目](docs/releases/0.0.24.md)。
 
 目前提供七張可玩地圖與七隻巨龍：微光林地、銹沙盆地、鏡霜海岸、孢潮沼澤、熔脊裂谷、雷纜廢都、黯潮墓環。星宇航線分支解鎖，暫停選單可查看目前位置、龍核與解鎖條件；在火箭旁互動後選星球並確認啟航。每地封雙門、打龍、領核，集齊七核通關。
 
@@ -39,7 +39,7 @@ v0.0.23 新旅程新增七星專屬部件：八種能力涵蓋戰鬥、控場、
 
 ## 平台狀態
 
-v0.0.23 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.24 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 
