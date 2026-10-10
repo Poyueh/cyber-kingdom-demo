@@ -1,6 +1,6 @@
 {
   "version": "0.0.26",
-  "published": false,
+  "published": true,
   "source_commit": "59928fcf0bf272681137cd19b95a93090c426d4f",
   "source_tree": "f15d20ad676725bdf92b794fce657c63488c2f00",
   "full_check": true,
@@ -56,5 +56,35 @@
   "native_scene_cycle_before_after_verified": true,
   "one_prologue_music_owner_verified": true,
   "audio_preferences_preserved": true,
-  "packaged_log_sha256": "54e9c57c967edbcca844f49f677e383368ee6021395976d83320b6924ca686a5"
+  "packaged_log_sha256": "54e9c57c967edbcca844f49f677e383368ee6021395976d83320b6924ca686a5",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.26",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.26",
+  "pages_run": 38096510265,
+  "all_seven_asset_digests_match": true,
+  "live_index_guide_pck_match": true,
+  "live_files": {
+    "index.html": {
+      "size": 5542,
+      "sha256": "2c2b935ac7ee9e906422cedb9e73fd686bdeb1a89d4c735f48073257beba8b87"
+    },
+    "guide.html": {
+      "size": 4589182,
+      "sha256": "e826fd2775aed055d0b4c02f2871bf4a0d70ec6c6ebdc721c77af57b7e5ce8b0"
+    },
+    "index.pck": {
+      "size": 59323188,
+      "sha256": "3f028c2f3fbb6bb5788ccbbefa0762dd290347e719678e44923e38c046cc923c"
+    }
+  },
+  "checksum_asset": {
+    "name": "SHA256SUMS.txt",
+    "size": 601,
+    "sha256": "9a86016ce1d39c39f1ffbec7de786edca28bce47a4e419dab56b38f6f2911508"
+  },
+  "live_verification_log_sha256": "0ea5d8dd8f76d6d89ff8d0f1854f9307e7687718d623ebdaa1cef697aca3bf1b",
+  "browser_prologue_and_main_menu": true,
+  "browser_skip_prologue": true,
+  "browser_guide_iframe_new_content": true,
+  "browser_guide_version_faq": true,
+  "browser_console_errors": []
 }
