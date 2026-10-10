@@ -24,6 +24,7 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export_range(60,600,10) var module_lance_range: float=300.0
 @export_range(1,30,0.5) var module_lance_cooldown: float=8.0
 @export_group("Exploration")
+@export var mount_expedition: Resource=preload("res://data/mount_expedition.tres")
 @export var ruin_trials: Resource=preload("res://data/ruin_trials.tres")
 @export_range(0,8,1) var outer_regions_per_side: int = 7
 @export_range(300,1250,50) var arrival_walk_distance: float=1050.0
@@ -107,6 +108,7 @@ func campaign_rules() -> Dictionary:
 	if immersive_loop:
 		rules.merge(crystal_merchant.rules(),true)
 		rules.merge(ruin_trials.rules(),true)
+		rules.merge(mount_expedition.rules(),true)
 	return rules
 
 func economy_rules() -> Dictionary:

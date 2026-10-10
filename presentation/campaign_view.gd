@@ -178,6 +178,7 @@ func _draw_structures() -> void:
 	_draw_recruitment_camps()
 	preload("res://presentation/module_visual.gd").relics(self,_sim)
 	preload("res://presentation/ruin_visual.gd").draw_on(self,_sim)
+	preload("res://presentation/mount_expedition_view.gd").draw_on(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
 	if _sim.life.enabled:
@@ -430,7 +431,7 @@ func _crystal(at: Vector2, filled: bool, radius: float = 8.0) -> void:
 
 func _draw_interaction() -> void:
 	if not interactions_visible:return
-	if _context.id.is_empty() or _context.id=="trial": return
+	if _context.id.is_empty() or _context.id in ["trial","mount_lever"]: return
 	if _sim.life.enabled and not _context.enabled:
 		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id):
 			if _context.has("building_id") and _sim.buildings[_context.building_id].level==0:return
@@ -456,10 +457,12 @@ func _draw_interaction() -> void:
 	var y:=ground-(24 if _context.cost>10 else 0)-(184 if _context.id=="rift" else 141)-(height-62)
 	if _context.id=="tower":y-=90
 	elif _context.id in ["rocket","star_map"]:y-=80
+	elif _context.id in ["mount_stable","mount_switch","mount_recover"]:y-=40
 	elif _context.has("wall_id"):y-=50
 	# Floating cost sockets stay in the world; no rectangular signboard.
 	var key: String="sword" if _sim.life.enabled and _context.id=="armory" else SITE_ICONS.get(_context.id,"hand")
 	if _context.id=="spirit":key="spirit"
+	if _context.id in ["mount_stable","mount_switch","mount_recover"]:key="mount"
 	if _context.id=="mark":
 		key={"tree":"tree","crystal":"pickaxe","berries":"food","stone":"stone","herbs":"herbs"}.get(_sim.frontier.nodes[_context.node_index].kind,"hammer")
 	_icon(key,Vector2(x,y),28)

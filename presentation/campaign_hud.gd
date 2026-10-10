@@ -298,6 +298,10 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	if _near_modules and not is_paused:message=tr("點齒輪選配特殊部件") if touch else tr("按 F 選配特殊部件")
 	for effect in sim.effects:
 		if effect.kind=="module_pickup":message=tr("新部件已裝配；舊部件可在工坊付費換回。")
+		elif effect.kind=="mount_recovered":message=tr("戰馬核心已回收，回營地西側修復馬廄。")
+		elif effect.kind=="mount_warning":message=tr("遺跡甦醒驚動了雙門。準備城防，襲擊將在夜裡到來。")
+		elif effect.kind=="mount_assault":message=tr("雙門湧動！騎上戰馬支援兩側防線。")
+		elif effect.kind=="mount_recovery":message=tr("攻勢暫緩。修復城牆，再深入荒野。")
 		elif effect.kind=="module_stored":message=tr("部件已入庫，可以選配安裝。")
 		elif effect.kind=="module_equipped":message=tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配")
 	module_hint.text=message;module_hint.visible=not message.is_empty() and not is_paused

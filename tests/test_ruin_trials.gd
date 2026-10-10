@@ -39,7 +39,7 @@ func test_ruins_require_exploration_and_keep_checkpoint_progress(t):
  corrupt.trials[0].progress=4
  t.truth(codec.restore(corrupt).is_empty(),"impossible puzzle progress is rejected")
  var old: Dictionary=saved.duplicate(true)
- old.version=14;old.erase("trials")
+ old.version=14;preload("res://tests/legacy_checkpoint.gd").before_mount(old);old.erase("trials")
  for key in old.config.keys():
   if str(key).begins_with("ruin_"):old.config.erase(key)
  var legacy: Dictionary=codec.restore(old)

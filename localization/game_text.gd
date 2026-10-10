@@ -1,6 +1,20 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["轉動導流器", "轉動導流器", "转动导流器", "Turn conduit"],
+ ["喚醒機械戰馬", "喚醒機械戰馬", "唤醒机械战马", "Awaken the mechanical steed"],
+ ["下馬", "下馬", "下马", "Dismount"],
+ ["騎乘機械戰馬", "騎乘機械戰馬", "骑乘机械战马", "Ride the mechanical steed"],
+ ["修復馬廄", "修復馬廄", "修复马厩", "Restore the stable"],
+ ["沿纜線對準兩座導流器", "沿纜線對準兩座導流器", "沿缆线对准两座导流器", "Follow the cables; align both conduits"],
+ ["把指針轉向發光接點", "把指針轉向發光接點", "把指针转向发光接点", "Turn the handle to the glowing socket"],
+ ["機械戰馬遺跡", "機械戰馬遺跡", "机械战马遗迹", "Mechanical steed ruins"],
+ ["馬廄", "馬廄", "马厩", "Stable"],
+ ["戰馬核心已回收，回營地西側修復馬廄。", "戰馬核心已回收，回營地西側修復馬廄。", "战马核心已回收，回营地西侧修复马厩。", "Steed core recovered. Restore the stable west of camp."],
+ ["遺跡甦醒驚動了雙門。準備城防，襲擊將在夜裡到來。", "遺跡甦醒驚動了雙門。準備城防，襲擊將在夜裡到來。", "遗迹苏醒惊动了双门。准备城防，袭击将在夜里到来。", "The ruins stir both gates. Prepare your walls for a coming night assault."],
+ ["雙門湧動！騎上戰馬支援兩側防線。", "雙門湧動！騎上戰馬支援兩側防線。", "双门涌动！骑上战马支援两侧防线。", "Both gates surge! Ride to support your defenses."],
+ ["攻勢暫緩。修復城牆，再深入荒野。", "攻勢暫緩。修復城牆，再深入荒野。", "攻势暂缓。修复城墙，再深入荒野。", "The assault eases. Repair the walls, then explore again."],
+
  ["planet.dragon_down", "巨龍倒下，星海的道路已開。", "巨龙倒下，星海的道路已开。", "The dragon falls. The stars await."],
  ["planet.relight", "點亮新星球的營火，建立新的避難所。", "点亮新星球的营火，建立新的避难所。", "Light this world’s campfire and establish a new refuge."],
  ["planet.claim_info", "龍核已在營火西側顯現，靠近領取。", "龙核已在营火西侧显现，靠近领取。", "A dragon core awaits west of the campfire. Approach and claim it."],
