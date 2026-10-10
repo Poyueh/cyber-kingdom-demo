@@ -21,7 +21,7 @@ func open() -> Dictionary:
 			last_error=""
 			return restored
 	status="protected"
-	last_error=store.last_error if result.status!="ready" else (codec.last_error if not codec.last_error.is_empty() else "Invalid or unsupported three-world checkpoint; original retained.")
+	last_error=store.last_error if result.status!="ready" else (codec.last_error if not codec.last_error.is_empty() else "Invalid or unsupported expedition checkpoint; original retained.")
 	return {}
 func save(sim, config: Dictionary, body: Dictionary, journey: RefCounted=null) -> bool:
 	if status=="protected":return false

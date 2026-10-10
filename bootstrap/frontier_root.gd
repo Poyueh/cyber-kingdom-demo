@@ -29,7 +29,7 @@ const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
 @export var sword_style: Resource = preload("res://data/sword_feedback.tres")
 var _sword_trail: SwordTrail
 const Voyage=preload("res://application/star_voyage.gd")
-const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://data/planets/desert.tres"),preload("res://data/planets/frost.tres")]
+const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://data/planets/desert.tres"),preload("res://data/planets/frost.tres"),preload("res://data/planets/swamp.tres"),preload("res://data/planets/volcanic.tres"),preload("res://data/planets/storm.tres"),preload("res://data/planets/void.tres")]
 var journey: Voyage
 var _star_travel: Node
 var _arrival_banner: CanvasLayer
@@ -58,6 +58,7 @@ func _ready() -> void:
 			tuning=tuning.duplicate()
 			tuning.map_seed=launch.seed
 	super._ready()
+	$Arena.hide() # Inherited training backdrop must never bleed through a campaign world.
 	_star_travel=preload("res://bootstrap/planet_travel_controller.gd").new();_star_travel.root=self;add_child(_star_travel)
 	_arrival_banner=preload("res://presentation/planet_arrival.gd").new();add_child(_arrival_banner)
 	hud.audio_toggled.connect(func():
@@ -128,6 +129,7 @@ func _ready() -> void:
 		controls.release_all();hud.cancel_touch_gestures()
 		hud.exploration_map.present(sim,knight.position.x)
 		hud.present_world(sim,true,knight.position.x,knight.is_on_floor()))
+	hud.options_menu.star_chart_requested.connect(func():_star_travel.open_chart(true))
 	hud.options_menu.title_requested.connect(func():
 		_click("ui_select");return_to_title())
 	view.interactions_visible=not paused and sim.is_running()
@@ -278,6 +280,7 @@ func _apply_restored(restored: Dictionary) -> void:
 		sim.planet=preload("res://domain/planet_state.gd").new(journey.configs[0])
 		sim.planet.cleared=sim.mission.dragon_defeated
 		if sim.mission.outcome=="victory":sim.mission.outcome="active"
+	if journey!=null:journey.expand(_planet_profiles(),sim)
 	_campaign_config=journey.configs[journey.current] if journey!=null else restored.config
 	_map_seed=sim.map_seed
 	knight.configure(sim.hero,knight_tuning)
@@ -356,6 +359,7 @@ func _build_terrain() -> void:
 	$Knight/Camera2D.position.y=ambience.camera_offset_y
 	$Knight/Camera2D.limit_bottom=740
 	$Knight/Camera2D.reset_smoothing()
+	$Knight/Camera2D.force_update_scroll()
 	if is_instance_valid(_terrain):
 		remove_child(_terrain)
 		_terrain.queue_free()

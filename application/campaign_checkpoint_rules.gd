@@ -10,7 +10,9 @@ static func number(value) -> bool:
 static func config_valid(config: Dictionary) -> bool:
 	if not preload("res://domain/ruin_trials.gd").valid_config(config):return false
 	if not config.get("seed") is int:return false
-	if config.has("planet_id") and config.planet_id not in [0,1,2]:return false
+	if config.has("planet_id") and config.planet_id not in [0,1,2,3,4,5,6]:return false
+	if config.has("route_requires") and (not config.route_requires is int or config.route_requires<0 or config.route_requires>127):return false
+	if not preload("res://domain/dragon_pattern.gd").valid_config(config):return false
 	if config.has("voyage_enabled") and config.voyage_enabled not in [0,1]:return false
 	for key in ["rocket_cost","rocket_repair"]:
 		if config.has(key) and (not in_range(config[key],1,30) or floorf(config[key])!=config[key]):return false

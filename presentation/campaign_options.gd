@@ -6,6 +6,7 @@ signal save_checkpoint_requested
 signal load_checkpoint_requested
 signal title_requested
 signal exploration_requested
+signal star_chart_requested
 const LanguageSelector=preload("res://presentation/language_selector.gd")
 var music: HSlider
 var effects: HSlider
@@ -35,6 +36,8 @@ func _ready() -> void:
 	home.pressed.connect(func():title_requested.emit())
 	var map_button:=_button(row,"map");map_button.name="ExplorationMap";_tooltips[map_button]="邊境探索圖"
 	map_button.pressed.connect(func():exploration_requested.emit())
+	var star_button:=_button(row,"dragon");star_button.name="StarChart";_tooltips[star_button]="planet.atlas"
+	star_button.pressed.connect(func():star_chart_requested.emit())
 	if OS.has_feature("web"):
 		var guide_button:=_button(row,"book")
 		guide_button.name="PlayerGuide"
