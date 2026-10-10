@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.25 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.25)
+- [v0.0.26 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.26)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -27,6 +27,8 @@
 bash tools/check.sh
 ```
 
+v0.0.26 修正前導與主選單配樂重疊，前導沿用玩家音量與靜音設定，三語指南同步校正六地機關說明。既有紀錄可續玩，詳見 [本版更新](docs/releases/0.0.26.md)。
+
 v0.0.25 改善情境引導：鬼魂會先帶你收取居民保管的採集收入，龍晶不足完成下一筆建設時先找補給；採集中、商人回程與火箭施工各有對應提示。既有紀錄可直接使用，三語指南同步。詳見 [本版更新](docs/releases/0.0.25.md)。
 
 v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮窗三類機關，各地有不同連線、初態與時窗。靠近 E／手機下滑免費操作，部分進度可保存；解封後取得原有八件部件收藏。森林入門與舊紀錄的機關不變，開新旅程可體驗新解法。詳見 [更新條目](docs/releases/0.0.24.md)。
@@ -41,7 +43,7 @@ v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮
 
 ## 平台狀態
 
-v0.0.25 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.26 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 
