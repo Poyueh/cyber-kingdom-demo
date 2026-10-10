@@ -1,10 +1,11 @@
 # 製作進度
 
-## 2026-10-11：v0.0.23 七星部件收藏（準備發行）
+## 2026-10-11：v0.0.23 七星部件收藏（已發佈）
 
 - 八件獨立用途部件、七地不重複獎勵、收藏與星球線索、原生像素掛件及短效反饋。舊旅程保留兩件配置。
-- 先寫失敗測試重現七地重複掉落，再實作與驗證晶體守恆、城牆阻擋、支援費用與共用 CD。完整 tools/check.sh 通過：3,510 核心斷言、8 項新場景驗證與全部既有回歸，無 SCRIPT ERROR／ERROR；三語原生介面與觸控手勢已驗證。32 種子 × 七地保留可取得獎勵，真正 v0.0.22 套件的 v16 紀錄可載入、續玩與保存為 v17。實際匯出 PCK 已驗證八件收集、跨星冷卻保留與七核通關；五平台匯出及附件完整性檢查完成，正發佈 Release／Pages。
+- 先寫失敗測試重現七地重複掉落，再實作與驗證晶體守恆、城牆阻擋、支援費用與共用 CD。完整 tools/check.sh 通過：3,510 核心斷言、8 項新場景驗證與全部既有回歸，無 SCRIPT ERROR／ERROR；三語原生介面與觸控手勢已驗證。32 種子 × 七地保留可取得獎勵，真正 v0.0.22 套件的 v16 紀錄可載入、續玩與保存為 v17。實際匯出 PCK 已驗證八件收集、跨星冷卻保留與七核通關；五平台匯出及附件完整性檢查完成。
 - 同步 [Help](player-guide/index.html)、[第 100 課](lessons/100-module-catalog.md) 與 [設計](design/planet-module-discoveries.md)。
+- [v0.0.23 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.23) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.23) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。實際瀏覽器確認前導、主選單和內嵌指南新部件內容／版本說明，無 console errors。Windows／手機未真機驗收；iOS 為待簽署專案。[發行驗證](reports/release-0.0.23/verification.json)。
 
 
 ## 2026-10-10：v0.0.22 探索戰馬與雙門警訊（已發佈）
