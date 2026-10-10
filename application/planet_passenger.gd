@@ -17,7 +17,7 @@ static func carry(source: RefCounted, destination: RefCounted) -> void:
  var restored: bool=destination.modules.restore(modules,destination.workforce.elapsed)
  assert(restored,"Passenger module state must remain valid")
  for site: RefCounted in destination.trials.sites:
-  if modules.found.has(site.id):site.progress=3;site.deadline=0
+  if modules.found.has(site.id):destination.trials.unlock(site.id)
  var merchant: Dictionary=source.merchant.capture()
  merchant.x=destination.merchant.home_x;merchant.last_tick=roundi(destination.workforce.elapsed*Clock.TICKS_PER_SECOND);merchant.moving=false
  var remaining: int=maxi(0,source.merchant.return_day-source.clock.day)

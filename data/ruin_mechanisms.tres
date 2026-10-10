@@ -1,0 +1,98 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://data/ruin_mechanism_catalog.gd" id="1"]
+[ext_resource type="Script" path="res://data/ruin_mechanism_definition.gd" id="2"]
+
+[sub_resource type="Resource" id="world_1"]
+script = ExtResource("2")
+planet = 1
+kind = 1
+initial = 0
+target = 7
+minimum = 0
+maximum = 7
+warm = 1
+cool = -1
+masks = Array[int]([3, 6, 4])
+period_seconds = 6.0
+window_seconds = 2.0
+offsets_seconds = Array[float]([0.0, 2.0, 4.0])
+
+[sub_resource type="Resource" id="world_2"]
+script = ExtResource("2")
+planet = 2
+kind = 2
+initial = -3
+target = 0
+minimum = -4
+maximum = 4
+warm = 2
+cool = -1
+masks = Array[int]([1, 2, 4])
+period_seconds = 6.0
+window_seconds = 2.0
+offsets_seconds = Array[float]([0.0, 2.0, 4.0])
+
+[sub_resource type="Resource" id="world_3"]
+script = ExtResource("2")
+planet = 3
+kind = 1
+initial = 2
+target = 7
+minimum = 0
+maximum = 7
+warm = 1
+cool = -1
+masks = Array[int]([1, 3, 6])
+period_seconds = 6.0
+window_seconds = 2.0
+offsets_seconds = Array[float]([0.0, 2.0, 4.0])
+
+[sub_resource type="Resource" id="world_4"]
+script = ExtResource("2")
+planet = 4
+kind = 2
+initial = 4
+target = 1
+minimum = -4
+maximum = 4
+warm = 1
+cool = -2
+masks = Array[int]([1, 2, 4])
+period_seconds = 6.0
+window_seconds = 2.0
+offsets_seconds = Array[float]([0.0, 2.0, 4.0])
+
+[sub_resource type="Resource" id="world_5"]
+script = ExtResource("2")
+planet = 5
+kind = 3
+initial = 0
+target = 7
+minimum = 0
+maximum = 7
+warm = 1
+cool = -1
+masks = Array[int]([1, 2, 4])
+period_seconds = 6.0
+window_seconds = 2.0
+offsets_seconds = Array[float]([0.0, 2.0, 4.0])
+
+[sub_resource type="Resource" id="world_6"]
+script = ExtResource("2")
+planet = 6
+kind = 3
+initial = 0
+target = 7
+minimum = 0
+maximum = 7
+warm = 1
+cool = -1
+masks = Array[int]([1, 2, 4])
+period_seconds = 8.0
+window_seconds = 2.4
+offsets_seconds = Array[float]([4.0, 2.0, 0.0])
+
+[resource]
+script = ExtResource("1")
+definitions = Array[ExtResource("2")]([SubResource("world_1"), SubResource("world_2"), SubResource("world_3"), SubResource("world_4"), SubResource("world_5"), SubResource("world_6")])

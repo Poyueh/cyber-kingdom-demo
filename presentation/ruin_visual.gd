@@ -1,4 +1,5 @@
 extends RefCounted
+const MechanismView=preload("res://presentation/ruin_mechanism_view.gd")
 const Rules=preload("res://application/ruin_interactions.gd")
 const Clock=preload("res://domain/time/tick_clock.gd")
 const FontSource=preload("res://presentation/localized_font.gd")
@@ -6,6 +7,7 @@ const STONE=preload("res://presentation/frontier_details.gd")
 const Ground=preload("res://presentation/grounded_art.gd")
 static func draw_on(view: Node2D, sim: RefCounted) -> void:
  for site: RefCounted in sim.trials.sites:
+  if site.mechanism!=null:MechanismView.links(view,sim,site)
   for index: int in range(3):
    var x: float=site.positions[index]
    if not view._on_screen(x,180) or not Rules.known(sim,x):continue
@@ -17,6 +19,9 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
    var texture: Texture2D=STONE.TEXTURES["gear"]
    var origin: Vector2=Ground.anchor(texture,at)
    view.draw_texture(texture,(origin-Vector2(texture.get_width()*0.5,texture.get_height())).round(),Color(0.55,0.66,0.7,alpha))
+   if site.mechanism!=null:
+    MechanismView.station(view,sim,site,index,alpha)
+    continue
    var center: Vector2=at+Vector2(0,-61)
    view.draw_circle(center,16,Color(0.04,0.11,0.15,alpha*0.85))
    view.draw_arc(center,17,0,TAU,12,Color(tint,alpha*0.6),2)
@@ -51,6 +56,9 @@ static func _vault(view: Node2D, sim: RefCounted, site: RefCounted) -> void:
   for line: int in range(3):
    var y: float=-62+fposmod(sim.workforce.elapsed*12+line*19,52)
    view.draw_line(at+Vector2(-26,y),at+Vector2(26,y),Color(tint,alpha*0.12),1)
+ if site.mechanism!=null:
+  MechanismView.vault(view,site,alpha)
+  return
  for index: int in range(3):
   var lit: Color=tint if index<site.progress else Color(0.55,0.57,0.6,alpha)
   glyph(view,at+Vector2(-28+28*index,-92),site.order[index],lit,7)

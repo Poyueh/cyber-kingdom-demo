@@ -1,0 +1,21 @@
+{
+  "version": "0.0.24",
+  "published": false,
+  "tdd_red_assertions": 3515,
+  "tdd_red_failures": 5,
+  "native_scene_assertions": 28,
+  "native_capture": "test-results/planet-ruins",
+  "actual_previous_release_save_migration": true,
+  "previous_save_version": 17,
+  "current_save_version": 18,
+  "core_assertions": 3585,
+  "seeded_planet_cases": 224,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Human puzzle comprehension and commercial results remain unverified"
+  ],
+  "full_check": true,
+  "check_log_sha256": "9432d217b8e5afde65a6dd71e68eed8d4817f830dc40b19eca56133ffc0c4998"
+}
