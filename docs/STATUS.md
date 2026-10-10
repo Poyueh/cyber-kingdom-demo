@@ -1,10 +1,12 @@
 # 製作進度
 
-## 2026-10-11：v0.0.26 前導音訊交接（準備發行）
+## 2026-10-11：v0.0.26 前導音訊交接（已發佈）
 
 - 修正前導與主選單配樂重疊、前導忽略三軌音量與靜音偏好；三語指南校正六地機關及舊紀錄說法。既有玩法與快照格式不變。
-- TDD 已在原生場景重現兩輪共七項失敗，修正後 16 項原生檢查通過。九次關卡切換的節點及資源數穩定；強制退出音效警告仍是限制，不能據此宣稱手機或長時間記憶體問題已修好。完整 tools/check.sh 通過：3,619 核心斷言、14 項新 headless 場景及全部既有回歸，無 SCRIPT ERROR／ERROR；原生 16 項已通過。五平台匯出、附件完整性、Mac 簽章與 Android 版本已核對；實際 PCK 17 項驗證及前後各九次場景切換量測完成。接著發布 Release／Pages。
+- TDD 已在原生場景重現兩輪共七項失敗，修正後 16 項原生檢查通過。九次關卡切換的節點及資源數穩定；強制退出音效警告仍是限制，不能據此宣稱手機或長時間記憶體問題已修好。完整 tools/check.sh 通過：3,619 核心斷言、14 項新 headless 場景及全部既有回歸，無 SCRIPT ERROR／ERROR；原生 16 項已通過。五平台匯出、附件完整性、Mac 簽章與 Android 版本已核對；實際 PCK 17 項驗證及前後各九次場景切換量測完成。Release／Pages 已更新。
 - [設計](design/prologue-audio-handoff.md) · [第 103 課](lessons/103-prologue-audio.md) · [量測](reports/prologue-audio-handoff/verification.json)。
+- [v0.0.26 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.26) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.26) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。瀏覽器已確認前導、跳過後主選單、內嵌三語指南的繁中修訂與版本說明，無 console errors。Windows／手機未真機驗收；iOS 為待簽署專案。[發行驗證](reports/release-0.0.26/verification.json)。
+- 後續優先收集實際玩家的探索選擇、卡關位置與守城感受，再決定平衡調整；手機長時間穩定性、真人理解度、留存與商業成果尚未驗證，不能視為整體目標完成。
 
 ## 2026-10-11：v0.0.25 情境補給指引（已發佈）
 
