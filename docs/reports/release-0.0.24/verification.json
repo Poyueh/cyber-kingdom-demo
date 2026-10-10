@@ -1,6 +1,6 @@
 {
   "version": "0.0.24",
-  "published": false,
+  "published": true,
   "tdd_red_assertions": 3515,
   "tdd_red_failures": 5,
   "native_scene_assertions": 28,
@@ -55,5 +55,14 @@
       "size": 118518261,
       "sha256": "832c9b287b0d5447f0085717b243175538e8fe434eda0ba3b13cc3f3d6df7e69"
     }
-  ]
+  ],
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.24",
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.24",
+  "pages_run": 38068912477,
+  "all_seven_asset_digests_match": true,
+  "live_index_guide_pck_match": true,
+  "browser_prologue_and_main_menu": true,
+  "browser_guide_iframe_new_content": true,
+  "browser_guide_version_faq": true,
+  "browser_console_errors": []
 }

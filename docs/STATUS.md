@@ -1,10 +1,11 @@
 # 製作進度
 
-## 2026-10-11：v0.0.24 六地遺跡機關（準備發行）
+## 2026-10-11：v0.0.24 六地遺跡機關（已發佈）
 
 - 三類機關、六地初態／連線／時窗差異；場景提示與三語說明同步。森林與舊紀錄保留原玩法。
-- TDD 紅燈重現五項缺少機關的行為；已實作連動燈、調溫鎖定與脈衝保留進度。原生六地航線、E／下滑、領獎與暫停驗證 28 項通過。完整 tools/check.sh 通過：3,585 核心斷言、28 項新場景與所有既有場景回歸，無 SCRIPT ERROR／ERROR。實際 v0.0.23 套件建立的 v17 冰岸半完成紀錄可接續、領部件並保存 v18。五平台匯出與壓縮檔完整性已驗證；實際匯出 PCK 可解六地機關、收八件部件並達成七核通關。接著更新 Release／Pages。
+- TDD 紅燈重現五項缺少機關的行為；已實作連動燈、調溫鎖定與脈衝保留進度。原生六地航線、E／下滑、領獎與暫停驗證 28 項通過。完整 tools/check.sh 通過：3,585 核心斷言、28 項新場景與所有既有場景回歸，無 SCRIPT ERROR／ERROR。實際 v0.0.23 套件建立的 v17 冰岸半完成紀錄可接續、領部件並保存 v18。五平台匯出與壓縮檔完整性已驗證；實際匯出 PCK 可解六地機關、收八件部件並達成七核通關。Release／Pages 已更新。
 - [設計](design/planet-ruin-mechanisms.md) · [第 101 課](lessons/101-ruin-mechanism-resources.md)。
+- [v0.0.24 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.24) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.24) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。實際瀏覽器確認前導、主選單與內嵌指南的新機關／版本說明，無 console errors。Windows／手機未真機驗收；iOS 為待簽署專案，機關理解度與商業成果仍待真人驗證。[發行驗證](reports/release-0.0.24/verification.json)。
 
 ## 2026-10-11：v0.0.23 七星部件收藏（已發佈）
 
