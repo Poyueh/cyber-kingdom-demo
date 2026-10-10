@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: empty pouch is still guided to free sword and fire
+PASS: free camp lights with E
+PASS: empty pouch is still guided to free sword and fire
+PASS: free camp lights with down swipe
+PASS: last crystal summons the guide through the actual E interaction
+PASS: recalled ghost points to resident income
+PASS: income text is translated in zh_TW
+PASS: caption fits the viewport in zh_TW
+PASS: translated hint avoids the temporary day caption in zh_TW
+PASS: income text is translated in zh_CN
+PASS: caption fits the viewport in zh_CN
+PASS: translated hint avoids the temporary day caption in zh_CN
+PASS: income text is translated in en
+PASS: caption fits the viewport in en
+PASS: translated hint avoids the temporary day caption in en
+PASS: English hint fits touch safe insets
+PASS: touch hint avoids sunrise caption with safe insets
+PASS: walking to the carrier receives the visible crystal burst without payment
+PASS: returning trader points to camp
+PASS: waiting for a merchant is not mislabeled as taking tools
+PASS: rocket construction has a specific progress caption
+PASS: paid rocket never asks for another purchase
+PASS: pause hides the guidance
+PASS: visit expiry still removes the guide
+Supply guidance scene assertions: 24; failures: 0

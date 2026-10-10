@@ -28,6 +28,11 @@ func present(run: RefCounted, at: Vector2, area: Rect2, stopped: bool) -> void:
  if _core>sim.mission.core_hp:_alarm=3.0
  _core=sim.mission.core_hp
  queue_redraw()
+func day_caption_bounds() -> Rect2:
+ if sim==null or not sim.life.enabled or paused or _dawn_age<=0:return Rect2()
+ var width: float=maxf(220,_font.get_string_size(tr("第 %d 天")%_day,HORIZONTAL_ALIGNMENT_LEFT,-1,20).x+16)
+ return Rect2(Vector2(safe.get_center().x-width/2,safe.position.y+26),Vector2(width,82))
+
 func _process(seconds: float) -> void:
  if paused:return
  _time=fposmod(_time+seconds,100.0)

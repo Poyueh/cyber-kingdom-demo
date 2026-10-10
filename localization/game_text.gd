@@ -1,6 +1,22 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["guide.rocket_building", "工匠正在建造火箭，完成後就能啟航。", "工匠正在建造火箭，完成后就能启航。", "Engineers are building your rocket for departure."],
+ ["guide.command.rocket_wait", "工程已付款；讓工匠完成施工。", "工程已付款；让工匠完成施工。", "Already paid. Let your engineers finish building."],
+
+ ["guide.income", "靠近居民，收取他保管的龍晶。", "靠近居民，收取他保管的龙晶。", "Collect the crystals your resident is carrying."],
+ ["guide.work_income", "工匠正在採集，完成後向他收貨。", "工匠正在采集，完成后向他收货。", "Harvest is underway. Collect it from the worker."],
+ ["guide.merchant_return", "商人正在回程，會在營火旁交貨。", "商人正在回程，会在营火旁交货。", "The merchant is returning to the camp."],
+ ["guide.merchant_wait", "商旅已出發，下一個清晨帶回龍晶。", "商旅已出发，下一个清晨带回龙晶。", "The funded caravan brings crystals next dawn."],
+ ["guide.harvest_local", "委託採集，再靠近工匠收取龍晶。", "委托采集，再靠近工匠收取龙晶。", "Order a harvest; collect crystals from the worker."],
+ ["guide.command.collect", "靠近即可，不必付款。", "靠近即可，不必付款。", "Just approach; no payment needed."],
+ ["guide.command.work_wait", "已付過委託費，可以先做其他事。", "已付过委托费，可以先做其他事。", "Already paid. You can do other work meanwhile."],
+ ["guide.command.trade_wait", "不用再付款；交貨時靠近商人。", "不用再付款；交货时靠近商人。", "No further payment. Approach when he returns."],
+ ["guide.command.defend_wait", "守住這一晚，清晨再出發。", "守住这一晚，清晨再出发。", "Hold through the night; set out at dawn."],
+ ["guide.command.delivery", "工匠正在搬運，交貨後就能出發。", "工匠正在搬运，交货后就能出发。", "The worker can leave after delivering this load."],
+ ["guide.command.escort", "跟著工匠前進，保護他抵達裂隙。", "跟着工匠前进，保护他抵达裂隙。", "Escort the worker safely to the rift."],
+ ["guide.command.seal", "留在裂隙附近，掩護工匠封印。", "留在裂隙附近，掩护工匠封印。", "Stay nearby and protect the sealing worker."],
+
  ["ruin.sand", "折光連鎖", "折光连锁", "Prism circuit"],
  ["ruin.frost", "冰脈調溫", "冰脉调温", "Thermal balance"],
  ["ruin.swamp", "根脈連鎖", "根脉连锁", "Root circuit"],
