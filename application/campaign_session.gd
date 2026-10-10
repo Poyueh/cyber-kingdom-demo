@@ -18,6 +18,9 @@ const Modules=preload("res://application/knight_modules.gd")
 var modules: Modules
 const Trials=preload("res://domain/ruin_trials.gd")
 const RuinInteractions=preload("res://application/ruin_interactions.gd")
+const MountQuest=preload("res://domain/mount_expedition.gd")
+const MountInteractions=preload("res://application/mount_interactions.gd")
+var mount_quest: MountQuest
 var trials: Trials
 const WorkArea=preload("res://domain/resident_work_area.gd")
 var work_area: WorkArea
@@ -164,6 +167,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	tower_range=clampf(config.get("tower_range",460.0),200,800)
 	modules=Modules.new(frontier,config)
 	trials=Trials.new(modules.relics,config,RandomStreams.new(map_seed).of(RandomStreams.Stream.EVENT))
+	mount_quest=MountQuest.new(config,world.sites.hall)
 	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
 	time_to_raid = clock.remaining
 
@@ -225,6 +229,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var choice: Dictionary
 	candidates.append_array(PlanetOps.candidates(self,x,_player_y))
 	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
+	candidates.append_array(MountInteractions.candidates(self,x,_player_y))
 	if merchant.can_dispatch() and absf(x-merchant.x)<73 and absf(_player_y-430)<42:
 		candidates.append(_choice("merchant",merchant.x,"委託龍晶商人出遊",int(merchant.rules.merchant_cost)))
 	var shrine: float=spirit.shrine_x(world.sites.hall)
@@ -406,6 +411,7 @@ func _execute(choice: Dictionary) -> void:
 	match choice.id:
 		"dragon_core","rocket","star_map": PlanetOps.execute(self,choice.id)
 		"trial": RuinInteractions.execute(self,choice)
+		"mount_lever","mount_recover","mount_stable","mount_switch": MountInteractions.execute(self,choice)
 		"merchant": merchant.dispatch(clock.day)
 		"spirit": spirit.summon(int(workforce.elapsed*Spirit.TICKS_PER_SECOND))
 		"tower","field": buildings[choice.building_id].pending=true
@@ -468,6 +474,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		animal.x=animal.home_x+sin(workforce.elapsed*0.36+animal.region*1.7)*28
 	super.advance(seconds,hero_x,hero_y)
 	trials.advance(roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+	if life.enabled and not can_wield_sword():mount_quest.riding=false
 	PlanetOps.resolve(self)
 	if not is_running(): return
 	_advance_expeditions(seconds,hero_x,hero_y)
@@ -653,7 +660,9 @@ func _advance_invasion(seconds: float) -> void:
 		for arrival in ecology.renew(clock.day,world.people):_add_person(arrival.x,arrival.region)
 	if transition=="night":
 		wave=clock.day
-		_spawn_remaining=night_pressure.count_for(clock.day)
+		var bonus: int=mount_quest.night_bonus(clock.day,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+		_spawn_remaining=maxi(1,night_pressure.count_for(clock.day)+bonus)
+		if bonus!=0:effects.append({"kind":"mount_assault" if bonus>0 else "mount_recovery","x":world.sites.hall,"life":8.0})
 		_spawn_timer=0.0
 		_night_spawn_index=0
 	if _spawn_remaining>0:
@@ -725,7 +734,7 @@ func _collect_loot(drop: Dictionary) -> void:
 
 ## The riding rule lives here so the view and the audio cannot drift apart.
 func mounted() -> bool:
-	return frontier.drill_level>=3 if life.enabled else growth.can_ride(frontier.drill_level,frontier.training_limit)
+	return (mount_quest.riding or frontier.drill_level>=3) if life.enabled else growth.can_ride(frontier.drill_level,frontier.training_limit)
 
 func kingdom_established() -> bool:
 	var citizens := 0
@@ -775,7 +784,7 @@ func _summon_dragon(hero_x: float) -> void:
 	dragon.x=clampf(hero_x+side*480,frontier.left_boundary+80,frontier.right_boundary-80)
 	dragon.fighter.stats.max_hp=power.health;dragon.fighter.hp=power.health
 	dragon.fighter.stats.damage=power.damage;dragon.fighter.stats.hurt_invulnerability=0.0
-	dragon.wall_damage=12+maxi(0,clock.day-int(mission.dragon_rules.baseline_day))*2
+	dragon.wall_damage=12+preload("res://domain/dragon_rules.gd").growth_days(clock.day,mission.dragon_rules)*2
 	dragon.cooldown=5.0
 	raiders.append(dragon)
 	effects.append({"kind":"dragon_arrival","x":dragon.x,"to":hero_x,"life":5.0})

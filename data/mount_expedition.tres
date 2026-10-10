@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/mount_expedition_tuning.gd" id="1"]
+[resource]
+script = ExtResource("1")
+ruin_distance = 2800.0
+relay_spacing = 320.0
+stable_cost = 6
+warning_seconds = 70.0
+assault_extra = 6
+recovery_discount = 4
+dragon_growth_days = 8

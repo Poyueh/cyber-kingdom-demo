@@ -1,0 +1,1 @@
+Generated using built-in imagegen, 2026-10-10. Original mechanical horse cradle and camp stable, side-view medieval cyberpunk pixel art, transparent background; two separated equal cells. Muted blue/slate/ochre/moss and cyan energy. No characters, text or landscape. Rebuild runtime crops with tools/prepare_mount_expedition.py. Source excluded from exports.

@@ -1,0 +1,15 @@
+{
+  "version": "0.0.22",
+  "full_check": true,
+  "core_assertions": 2662,
+  "new_native_scene_assertions": 8,
+  "actual_previous_release_save_migration": true,
+  "native_capture": "test-results/mount-expedition",
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Long-session balance and player flow require human playtests"
+  ]
+}

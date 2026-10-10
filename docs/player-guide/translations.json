@@ -1602,5 +1602,33 @@
   "每次落地留下火箭殘骸，需 12 龍晶與工匠重建。未擊敗當地龍也可返回已到訪星球，但不能越過鎖住的航線。居民、建築、日數與採集留在各星；晶袋、劍、部件與剩餘冷卻跟著騎士，不重領商人贈禮。": {
     "zh_CN": "每次落地留下火箭残骸，需 12 龙晶与工匠重建。未击败当地龙也可返回已到访星球，但不能越过锁住的航线。居民、建筑、日数与采集留在各星；晶袋、剑、部件与剩余冷却跟随骑士，不重领商人赠礼。",
     "en": "Every landing leaves a wreck: rebuild with 12 crystals and workers. You may return to visited colonies before defeating the local dragon, but locked routes stay locked. Colonies and calendars stay local; the pouch, sword, modules and remaining cooldown travel with you. Merchant gifts never reset."
+  },
+  "循著纜線，喚醒戰馬。": {
+    "zh_CN": "循着缆线，唤醒战马。",
+    "en": "Follow the cables. Awaken the steed."
+  },
+  "新旅程的微光林地西方藏著戰馬遺跡。沿地上的纜線找兩座導流器，按 E／手機下滑轉動指針，對準各自的發光接點。機關沒有倒數，轉錯可以重試，進度會保存。": {
+    "zh_CN": "新旅程的微光林地西方藏着战马遗迹。沿地上的缆线找两座导流器，按 E／手机下滑转动指针，对准各自的发光接点。机关没有倒数，转错可以重试，进度会保存。",
+    "en": "A steed ruin lies west of camp in new Glimmerwood journeys. Follow the cables to two conduits. Press E or swipe down to align each handle with its glowing socket. There is no timer; retry freely and save your progress."
+  },
+  "能量接通後，在遺跡互動取回核心。回營地西側的馬廄投入 6 顆龍晶，即可騎乘；靠近馬廄再次互動可免費上下馬。戰馬移動快 25%，體力與晶袋規則不變，也能帶往其他星球。掉劍會被迫下馬，取回劍後可回馬廄再騎。": {
+    "zh_CN": "能量接通后，在遗迹互动取回核心。回营地西侧的马厩投入 6 颗龙晶，即可骑乘；靠近马厩再次互动可免费上下马。战马移动快 25%，体力与晶袋规则不变，也能带往其他星球。掉剑会被迫下马，取回剑后可回马厩再骑。",
+    "en": "Once powered, interact with the ruin to claim its core. Restore the stable west of camp for 6 crystals. Interact there to mount or dismount freely. Riding is 25% faster; stamina and pouch rules stay the same. Your mount travels between worlds. Losing your sword forces a dismount; recover it before remounting at a stable."
+  },
+  "修復馬廄會驚動雙門：先出現橘色警訊，至少準備 70 秒後，下一個夜晚才額外來襲 6 隻魔物，仍由地圖兩端入侵。襲擊後下一晚少 4 隻、至少仍有 1 隻，趁空檔修牆、補器具，再出發。每趟森林旅程只觸發一次。": {
+    "zh_CN": "修复马厩会惊动双门：先出现橘色警讯，至少准备 70 秒后，下一个夜晚才额外来袭 6 只魔物，仍由地图两端入侵。袭击后下一晚少 4 只、至少仍有 1 只，趁空档修墙、补器具，再出发。每趟森林旅程只触发一次。",
+    "en": "Restoring the stable stirs both gates. Orange omens allow at least 70 seconds to prepare before an eligible night brings 6 extra enemies from the map edges. The following night has 4 fewer enemies, with a minimum of 1: repair, resupply, and explore again. This forest event happens once per journey."
+  },
+  "實際遊戲中的馬廄、騎乘騎士與襲擊預告。": {
+    "zh_CN": "实际游戏中的马厩、骑乘骑士与袭击预告。",
+    "en": "The in-game stable, mounted knight and assault warning."
+  },
+  "新旅程的巨龍以第 6 天為基準，第 7 天起增加強度，到第 14 天封頂，召喚時鎖定；之後可安心探索，不會無限追漲。舊紀錄保留原設定。七龍都有不同預警與反擊空檔，完成的城牆可攔住攻勢。": {
+    "zh_CN": "新旅程的巨龙以第 6 天为基准，第 7 天起增加强度，到第 14 天封顶，召唤时锁定；之后可安心探索，不会无限追涨。旧记录保留原设定。七龙都有不同预警与反击空档，完成的城墙可拦住攻势。",
+    "en": "In new journeys, dragons use day 6 as their baseline, grow from day 7, and cap at day 14. Strength locks on summoning. Explore without endless dragon escalation; older saves keep their rules. Each dragon has distinct warnings and recovery openings, and completed walls can intercept attacks."
+  },
+  "適用 v0.0.22：新增森林戰馬遺跡、導流機關、馬廄切換與預警襲擊，七星球遠征仍可遊玩。新探索事件與巨龍成長上限請開新旅程體驗；舊紀錄可繼續。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
+    "zh_CN": "适用 v0.0.22：新增森林战马遗迹、导流机关、马厩切换与预警袭击，七星球远征仍可游玩。新探索事件与巨龙成长上限请开新旅程体验；旧记录可继续。更多坐骑、武器与各地专属谜题仍待后续开发。",
+    "en": "For v0.0.22: forest steed ruins, conduit puzzle, stable switching and a telegraphed assault join the seven-world journey. Start a new journey for the quest and dragon growth cap; existing saves remain playable. More mounts, weapons and world-specific puzzles are future work."
   }
 }

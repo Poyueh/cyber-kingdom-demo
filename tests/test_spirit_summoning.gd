@@ -92,7 +92,7 @@ func test_late_recall_survives_save_and_v8_migrates_safely(t) -> void:
  var legacy: Dictionary=saved.duplicate(true)
  for key in legacy.config.keys():
   if str(key).begins_with("ruin_"):legacy.config.erase(key)
- legacy.version=8;legacy.erase("merchant");legacy.erase("trials");legacy.erase("modules");legacy.erase("spirit")
+ legacy.version=8;preload("res://tests/legacy_checkpoint.gd").before_mount(legacy);legacy.erase("merchant");legacy.erase("trials");legacy.erase("modules");legacy.erase("spirit")
  var migrated: Dictionary=codec.restore(legacy)
  t.truth(not migrated.is_empty(),"v8 save upgrades without losing progress")
  if not migrated.is_empty():
