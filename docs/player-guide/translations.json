@@ -1627,8 +1627,100 @@
     "zh_CN": "新旅程的巨龙以第 6 天为基准，第 7 天起增加强度，到第 14 天封顶，召唤时锁定；之后可安心探索，不会无限追涨。旧记录保留原设定。七龙都有不同预警与反击空档，完成的城墙可拦住攻势。",
     "en": "In new journeys, dragons use day 6 as their baseline, grow from day 7, and cap at day 14. Strength locks on summoning. Explore without endless dragon escalation; older saves keep their rules. Each dragon has distinct warnings and recovery openings, and completed walls can intercept attacks."
   },
-  "適用 v0.0.22：新增森林戰馬遺跡、導流機關、馬廄切換與預警襲擊，七星球遠征仍可遊玩。新探索事件與巨龍成長上限請開新旅程體驗；舊紀錄可繼續。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
-    "zh_CN": "适用 v0.0.22：新增森林战马遗迹、导流机关、马厩切换与预警袭击，七星球远征仍可游玩。新探索事件与巨龙成长上限请开新旅程体验；旧记录可继续。更多坐骑、武器与各地专属谜题仍待后续开发。",
-    "en": "For v0.0.22: forest steed ruins, conduit puzzle, stable switching and a telegraphed assault join the seven-world journey. Start a new journey for the quest and dragon growth cap; existing saves remain playable. More mounts, weapons and world-specific puzzles are future work."
+  "適用 v0.0.23：七星球遠征新增八件用途各異的部件、收藏里程碑與來源線索，並保留森林戰馬與預警襲擊。新增星球部件請開新旅程體驗；舊紀錄保留原兩件配置，可繼續遊玩。更多坐騎、武器與各地專屬謎題仍待後續開發。": {
+    "zh_CN": "适用 v0.0.23：七星球远征新增八件用途各异的部件、收藏里程碑与来源线索，并保留森林战马与预警袭击。新增星球部件请开新旅程体验；旧记录保留原两件配置，可继续游玩。更多坐骑、武器与各地专属谜题仍待后续开发。",
+    "en": "For v0.0.23: the seven-world journey now has eight modules with distinct uses, collection milestones and planet clues, alongside the forest steed and telegraphed assault. Start a new journey for the new planet modules; existing saves keep their original two-module layout and remain playable. More mounts, weapons and world-specific puzzles are future work."
+  },
+  "每顆星球，帶回不同的作戰方式。": {
+    "zh_CN": "每颗星球，带回不同的作战方式。",
+    "en": "Bring a different playstyle home from each world."
+  },
+  "新旅程共有八件可收藏的主動部件。森林有兩件，其餘六地各一件；探索機關、解開封印後靠近領取，第一次免費裝上。新發現會替換身上部件，舊件留在本趟旅程的收藏中。": {
+    "zh_CN": "新旅程共有八件可收藏的主动部件。森林有两件，其余六地各一件；探索机关、解开封印后靠近领取，第一次免费装上。新发现会替换身上部件，旧件留在本趟旅程的收藏中。",
+    "en": "New journeys contain eight active modules: two in the forest and one in each other world. Solve a ruin and approach its reward to equip it free. Each discovery replaces the active module and keeps previous finds in this journey’s collection."
+  },
+  "森林｜雷弧震盪": {
+    "zh_CN": "森林｜雷弧震荡",
+    "en": "Forest | Arc Pulse"
+  },
+  "震退附近敵人，適合被小怪包圍時脫身。": {
+    "zh_CN": "震退附近敌人，适合被小怪包围时脱身。",
+    "en": "Repel nearby enemies to make room when surrounded."
+  },
+  "森林｜穿甲雷槍": {
+    "zh_CN": "森林｜穿甲雷枪",
+    "en": "Forest | Thunder Lance"
+  },
+  "朝面向方向射出能量，適合集中打擊前方敵人。": {
+    "zh_CN": "朝面向方向射出能量，适合集中打击前方敌人。",
+    "en": "Fire a straight energy lance at enemies ahead."
+  },
+  "沙地｜回收磁爪": {
+    "zh_CN": "沙地｜回收磁爪",
+    "en": "Desert | Salvage Claw"
+  },
+  "吸回 200 距離內最多五顆現有龍晶。滿袋無法啟動；不搶居民／怪物持有的晶，也不拉剛丟出的供品。15 體力，冷卻 16 秒。": {
+    "zh_CN": "吸回 200 距离内最多五颗现有龙晶。满袋无法启动；不抢居民／怪物持有的晶，也不拉刚丢出的供品。15 体力，冷却 16 秒。",
+    "en": "Draw in up to five loose crystals within 200 units. Requires bag space; does not steal held crystals or retrieve offerings. Costs 15 stamina; 16-second cooldown."
+  },
+  "冰岸｜冷凝針": {
+    "zh_CN": "冰岸｜冷凝针",
+    "en": "Frost | Frost Needle"
+  },
+  "前方最多三敵受 12 傷害，普通敵移速降低 35% 四秒。巨龍只減速 10% 兩秒，出招時間不變。25 體力，冷卻 16 秒。": {
+    "zh_CN": "前方最多三敌受 12 伤害，普通敌移速降低 35% 四秒。巨龙只减速 10% 两秒，出招时间不变。25 体力，冷却 16 秒。",
+    "en": "Hit up to three foes ahead for 12 damage. Slow ordinary movement by 35% for four seconds; dragons by 10% for two. Attack timing stays unchanged. Costs 25 stamina; 16-second cooldown."
+  },
+  "沼澤｜牽引線圈": {
+    "zh_CN": "沼泽｜牵引线圈",
+    "en": "Swamp | Gravity Coil"
+  },
+  "聚攏前方最多四隻小怪，各造成 10 傷害；不拉動守門者、巨龍，也不穿城牆。30 體力，冷卻 18 秒。": {
+    "zh_CN": "聚拢前方最多四只小怪，各造成 10 伤害；不拉动守门者、巨龙，也不穿城墙。30 体力，冷却 18 秒。",
+    "en": "Gather up to four small foes ahead for 10 damage each. Guardians and dragons stay put; walls block displacement. Costs 30 stamina; 18-second cooldown."
+  },
+  "熔谷｜工匠脈衝": {
+    "zh_CN": "熔谷｜工匠脉冲",
+    "en": "Volcanic | Builder Pulse"
+  },
+  "附近兩名工匠的施工速度提高 50%，持續四秒。只加速已付款的城牆、塔、拓荒站或火箭；不增加採集收益，危險時仍避難。25 體力，冷卻 24 秒。": {
+    "zh_CN": "附近两名工匠的施工速度提高 50%，持续四秒。只加速已付款的城墙、塔、拓荒站或火箭；不增加采集收益，危险时仍避难。25 体力，冷却 24 秒。",
+    "en": "Two nearby engineers build 50% faster for four seconds on funded walls, towers, outposts or rockets. Harvest yield is unchanged; threatened workers still flee. Costs 25 stamina; 24-second cooldown."
+  },
+  "雷城｜指揮透鏡": {
+    "zh_CN": "雷城｜指挥透镜",
+    "en": "Storm | Command Lens"
+  },
+  "附近最多三名弓兵，下一箭各多 8 傷害，四秒後失效。不會強迫立刻射箭，沒有弓兵不收費。20 體力，冷卻 14 秒。": {
+    "zh_CN": "附近最多三名弓兵，下一箭各多 8 伤害，四秒后失效。不会强迫立刻射箭，没有弓兵不收费。20 体力，冷却 14 秒。",
+    "en": "Up to three nearby archers deal 8 extra damage on their next arrow within four seconds. It does not force an immediate shot. No archers means no cost. Costs 20 stamina; 14-second cooldown."
+  },
+  "墓環｜電容卸載": {
+    "zh_CN": "墓环｜电容卸载",
+    "en": "Void | Reserve Cell"
+  },
+  "體力低於 70 才可發動，三秒逐漸額外補回 30 體力。不能跳過喘息、慢行或再次衝刺的休息條件。冷卻 30 秒。": {
+    "zh_CN": "体力低于 70 才可发动，三秒逐渐额外补回 30 体力。不能跳过喘息、慢行或再次冲刺的休息条件。冷却 30 秒。",
+    "en": "Activate below 70 stamina to recover an extra 30 over three seconds. Does not bypass breathing, slow recovery or sprint-rest requirements. 30-second cooldown."
+  },
+  "只裝一件，決定這次出門的任務：清群、拖慢追兵、救回龍晶，或帶居民守城施工。取得首件、四件與全部八件時會短暫顯示收藏里程碑；它們不增加貨幣或永久能力。": {
+    "zh_CN": "只装一件，决定这次出门的任务：清群、拖慢追兵、救回龙晶，或带居民守城施工。取得首件、四件与全部八件时会短暂显示收藏里程碑；它们不增加货币或永久能力。",
+    "en": "Choose one module for the next outing: clear crowds, slow a pursuit, salvage crystals or support your town. Brief collection milestones mark your first, fourth and eighth discoveries without granting currency or permanent power."
+  },
+  "在營火旁工坊按 F／點齒輪，查看用途、收藏與來源星球線索；花八晶換回已收藏的部件。K／雙指上滑使用，共用冷卻會隨存檔與旅行保留，進行中的充能不會重新開始。": {
+    "zh_CN": "在营火旁工坊按 F／点齿轮，查看用途、收藏与来源星球线索；花八晶换回已收藏的部件。K／双指上滑使用，共用冷却会随存档与旅行保留，进行中的充能不会重新开始。",
+    "en": "At the camp workshop, press F or tap the gear to see roles, your collection and world clues. Pay eight crystals to switch to an owned module. Use K or a two-finger upward swipe. Saving and travel preserve shared cooldown and remaining recharge."
+  },
+  "實際遊戲中的部件收藏介面，示例已取得四件。": {
+    "zh_CN": "实际游戏中的部件收藏界面，示例已取得四件。",
+    "en": "In-game module collection, shown with four discoveries."
+  },
+  "新增星球部件與收藏配置從新旅程開始。舊紀錄保留原本兩件配置與已完成的探索，不會重新鎖住遺跡。符石謎題仍是現有的符序與限時中繼，更多謎題類型將另行設計。": {
+    "zh_CN": "新增星球部件与收藏配置从新旅程开始。旧记录保留原本两件配置与已完成的探索，不会重新锁住遗迹。符石谜题仍是现有的符序与限时中继，更多谜题类型将另行设计。",
+    "en": "Start a new journey for the expanded world rewards. Existing saves keep their two-module setup and completed discoveries. Ruins currently use the existing sequence and timed relay puzzles; further puzzle types are planned separately."
+  },
+  "按 K 或雙指向上滑使用部件。依種類消耗體力，所有部件共用冷卻，換裝不會重置；光環亮起表示冷卻完成。": {
+    "zh_CN": "按 K 或双指向上滑使用部件。依种类消耗体力，所有部件共用冷却，换装不会重置；光环亮起表示冷却完成。",
+    "en": "Press K or swipe up with two fingers to use your module. Stamina costs vary by module. All share a cooldown that switching cannot reset; a glow signals readiness."
   }
 }

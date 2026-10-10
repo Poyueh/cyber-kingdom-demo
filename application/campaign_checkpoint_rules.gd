@@ -1,5 +1,6 @@
 extends RefCounted
 ## Current schema admission rules, after known-version migration. Validate plain shapes before constructing live state.
+const ModuleConditions=preload("res://domain/module_conditions.gd")
 const Combatant=preload("res://domain/combatant.gd")
 const Stats=preload("res://domain/combat_stats.gd")
 const ROLES=["wanderer","citizen","engineer","guard","hunter","farmer"]
@@ -8,6 +9,7 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/module_specs.gd").valid_config(config):return false
 	if not preload("res://domain/mount_expedition.gd").valid_config(config):return false
 	if config.has("dragon_growth_days") and (not in_range(config.dragon_growth_days,2,20) or floorf(config.dragon_growth_days)!=config.dragon_growth_days):return false
 	if not preload("res://domain/ruin_trials.gd").valid_config(config):return false
@@ -131,11 +133,15 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if not in_range(data.body.x,left,right) or not in_range(data.body.y,-1000,500):return false
 	if not in_range(data.body.vx,-2000,2000) or not in_range(data.body.vy,-2000,2000):return false
 	var optional={"y":0.0,"moving":false,"direction":0.0,"sheltering":false,"work_state":"","walk_distance":0.0,
-		"crystals":0,"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
+		"module_command_until":0,"module_workshop_until":0,"crystals":0,"roam_role":"","roam_home":0.0,"roam_leg":0,"roam_wait":0.0,"roam_target":0.0,"defense_post":""}
 	for person in people:
 		if not shape(person,{"x":0.0,"role":"","hurt":0.0,"cooldown":0.0,"region":0},optional):return false
 		if not in_range(person.get("crystals",0),0,12):return false
 		if person.role not in ROLES or person.hurt<0 or person.cooldown<0:return false
+		for effect: String in ["command","workshop"]:
+			var key: String="module_"+effect+"_until"
+			if not ModuleConditions.valid(person,key,data,"module_"+effect+"_duration"):return false
+			if person.has(key) and person.role!=("hunter" if effect=="command" else "engineer"):return false
 		if not index_valid(person.region,base.frontier.regions.size()):return false
 		if person.has("defense_post") and person.defense_post not in ["wall","wall_left"]:return false
 		if person.has("roam_role") and person.roam_role not in ROLES:return false
@@ -171,8 +177,10 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if not same(pouch.platforms,base.pouch.platforms) or pouch.left_boundary!=left or pouch.right_boundary!=right:return false
 	var ids: Dictionary={}
 	for gem in pouch.drops:
-		if not shape(gem,{"id":0,"x":0.0,"y":0.0,"amount":0,"vx":0.0,"vy":0.0,"age":0.0,"grace":0.0,"offering":false,"attracted":false},{"trail_x":0.0,"trail_y":0.0}):return false
+		if not shape(gem,{"id":0,"x":0.0,"y":0.0,"amount":0,"vx":0.0,"vy":0.0,"age":0.0,"grace":0.0,"offering":false,"attracted":false},{"trail_x":0.0,"trail_y":0.0,"pull_until_age":0.0}):return false
 		if gem.id<=0 or gem.id>pouch._next_id or ids.has(gem.id) or gem.amount<=0 or gem.age<0 or gem.grace<0:return false
+		if gem.has("pull_until_age"):
+			if not data.config.has("module_catalog_version") or gem.pull_until_age<=gem.age or gem.pull_until_age>gem.age+2.0 or gem.offering:return false
 		ids[gem.id]=true
 	var mission: Dictionary=data.mission
 	if mission.outcome not in ["active","victory","defeat"] or mission.defeat_reason not in ["","core","knight"]:return false
@@ -207,8 +215,9 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		var without_target=enemy.state.duplicate(true)
 		without_target.target={}
 		if not shape(without_target,{"x":0.0,"windup":0.0,"cooldown":0.0,"target":{}},
-			{"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
+			{"module_chill_until":0,"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
 		var state: Dictionary=enemy.state
+		if not ModuleConditions.valid(state,"module_chill_until",data,"module_frost_boss_duration" if state.get("kind","")=="dragon" else "module_frost_duration"):return false
 		if not state.get("carried_crystals",0) is int or not in_range(state.get("carried_crystals",0),0,1):return false
 		if state.get("carried_crystals",0)>0:
 			if state.get("kind","") in ["dragon","warden"] or state.get("side") not in [-1,1]:return false

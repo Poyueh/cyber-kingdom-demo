@@ -164,8 +164,7 @@ func safe_rect() -> Rect2:
 func _process(_seconds: float) -> void:
 	if safe_rect()!=_last_safe_rect:_layout()
 	if is_instance_valid(module_menu) and module_menu.visible:
-		module_menu.size=Vector2(minf(510,_last_safe_rect.size.x-32),module_menu.get_combined_minimum_size().y)
-		module_menu.position=_last_safe_rect.get_center()-module_menu.size*0.5
+		module_menu.arrange(_last_safe_rect)
 
 func _layout() -> void:
 	_last_safe_rect=safe_rect()
@@ -291,13 +290,16 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	_near_modules=sim.can_use_module_station(at)
 	module_button.visible=_near_modules and not is_paused
 	module_button.position=Vector2(_last_safe_rect.get_center().x-30,_last_safe_rect.end.y-82);module_button.size=Vector2(60,60)
-	module_menu.size=Vector2(minf(510,_last_safe_rect.size.x-32),0)
-	module_menu.position=_last_safe_rect.get_center()-module_menu.size*0.5
+	module_menu.arrange(_last_safe_rect)
 	if module_menu.visible:module_menu.present(sim.modules,touch,sim.pouch.amount)
 	var message: String=""
 	if _near_modules and not is_paused:message=tr("點齒輪選配特殊部件") if touch else tr("按 F 選配特殊部件")
 	for effect in sim.effects:
-		if effect.kind=="module_pickup":message=tr("新部件已裝配；舊部件可在工坊付費換回。")
+		if effect.kind=="module_pickup":
+			message=tr("module.discovered %s")%tr(preload("res://presentation/module_style.gd").title(effect.module))
+			message+="  ·  "+tr(preload("res://presentation/module_style.gd").role(effect.module))
+			message+="\n"+(tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配"))
+		elif effect.kind=="module_milestone":message=tr("module.milestone %s")%tr("module.rank.%d"%effect.count)+"\n"+tr("module.discovered %s")%tr(preload("res://presentation/module_style.gd").title(effect.module))
 		elif effect.kind=="mount_recovered":message=tr("戰馬核心已回收，回營地西側修復馬廄。")
 		elif effect.kind=="mount_warning":message=tr("遺跡甦醒驚動了雙門。準備城防，襲擊將在夜裡到來。")
 		elif effect.kind=="mount_assault":message=tr("雙門湧動！騎上戰馬支援兩側防線。")
@@ -305,7 +307,7 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 		elif effect.kind=="module_stored":message=tr("部件已入庫，可以選配安裝。")
 		elif effect.kind=="module_equipped":message=tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配")
 	module_hint.text=message;module_hint.visible=not message.is_empty() and not is_paused
-	module_hint.position=Vector2(_last_safe_rect.get_center().x-200,_last_safe_rect.end.y-126);module_hint.size=Vector2(400,42)
+	module_hint.position=Vector2(_last_safe_rect.get_center().x-300,_last_safe_rect.end.y-140);module_hint.size=Vector2(600,56)
 	if module_menu.visible:
 		for button in [fullscreen_button,save_button,audio_button,new_map_button,$restart]:button.hide()
 

@@ -1,0 +1,60 @@
+{
+  "version": "0.0.23",
+  "published": false,
+  "tdd_red_assertions": 61,
+  "tdd_red_failures": 26,
+  "native_scene_assertions": 8,
+  "native_capture": "test-results/planet-modules",
+  "actual_previous_release_save_migration": true,
+  "previous_save_version": 16,
+  "current_save_version": 17,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "No human playtest or sales outcome is implied by automated verification"
+  ],
+  "full_check": true,
+  "core_assertions": 3510,
+  "check_log_sha256": "d2360b34d5ade1e57eb161feccdd379be35b8878c9f153e038d445551c56bd94",
+  "seeded_planet_cases": 224,
+  "source_commit": "64671e57c4c13005f7db746861e53381c1c6cd01",
+  "source_tree": "b7f1685ddb4cd2376f225a39f49c252113556eeb",
+  "packaged_native_smoke": true,
+  "mac_adhoc_signature_verified": true,
+  "android_version_verified": true,
+  "archive_integrity_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.23-debug.apk",
+      "size": 87191119,
+      "sha256": "3f140604f6c9c161c8e484e30e6258235397a3bc4191de1ce035cb39d565b5fc"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.23.html",
+      "size": 3964971,
+      "sha256": "ed8241d86928135e5f05b772be17e01932f0b50a5a53a48f9510844c700fe404"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.23.zip",
+      "size": 71194063,
+      "sha256": "03a365660db0cda7a16b70f37d288f05b9163a466862d3acb12ec38c75e37cea"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.23.zip",
+      "size": 96080267,
+      "sha256": "6e43ae0d42ded3a2489b1aac4115efff3956e424eac744a1092d6730bfa78fe5"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.23-Xcode.zip",
+      "size": 170871232,
+      "sha256": "131e34fd0fe8e79dd484ebc590178f8cecd1ad333a51303e511c1eb5bba12d20"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.23.zip",
+      "size": 118502312,
+      "sha256": "4f818da2eee52008f9b03abbb25684a9be0dc9559720e10b19da3673a73ac859"
+    }
+  ],
+  "guide_source_commit": "59cfd9cb75baf770d72feabee85bb15b5397b7af"
+}

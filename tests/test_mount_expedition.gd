@@ -36,7 +36,7 @@ func test_mount_route_requires_circuit_recovery_and_paid_stable(t) -> void:
  t.equal(sim.mount_quest.capture(),restored.session.mount_quest.capture(),"same commands after load produce same progress")
  var bad: Dictionary=saved.duplicate(true);bad.mount.rotations=[4,2]
  t.truth(codec.restore(bad).is_empty(),"impossible junction state is rejected")
- var old: Dictionary=saved.duplicate(true);old.version=15;old.erase("mount")
+ var old: Dictionary=saved.duplicate(true);old.version=15;preload("res://tests/legacy_checkpoint.gd").before_module_catalog(old);old.erase("mount")
  for key: String in old.config.keys():
   if key.begins_with("mount_"):old.config.erase(key)
  var legacy: Dictionary=codec.restore(old)
