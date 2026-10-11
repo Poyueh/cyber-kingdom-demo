@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: actual new forest starts a single telegraphed fight
+PASS: ordinary D movement escapes the locked first lunge
+EVADE_STATE 6 before=6 phase=3 paused=false x=179.73828125
+PASS: evade keeps crystals and exposes recovery
+PASS: two normal J attacks clear the introductory beast
+PASS: normal E collects the defeated nest reward
+PASS: actual ghost points to the known free roadside find
+PASS: roadside prompt describes gathering rather than a purchase
+PASS: normal touch down-swipe claims the quiet find
+PASS: brief return cue points to camp in zh_TW
+PASS: return caption translates in zh_TW
+RETURN_LAYOUT zh_TW safe=[P: (0.0, 0.0), S: (960.0, 540.0)] caption=[P: (80.0, 120.0), S: (800.0, 64.0)] reserved=[P: (370.0, 26.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in zh_TW
+PASS: return cue does not resurrect spirit dialogue
+PASS: brief return cue points to camp in zh_CN
+PASS: return caption translates in zh_CN
+RETURN_LAYOUT zh_CN safe=[P: (0.0, 0.0), S: (960.0, 540.0)] caption=[P: (80.0, 120.0), S: (800.0, 64.0)] reserved=[P: (370.0, 26.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in zh_CN
+PASS: return cue does not resurrect spirit dialogue
+PASS: brief return cue points to camp in en
+PASS: return caption translates in en
+RETURN_LAYOUT en safe=[P: (70.0, 18.0), S: (866.0, 498.0)] caption=[P: (150.0, 138.0), S: (706.0, 64.0)] reserved=[P: (393.0, 44.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in en
+PASS: return cue does not resurrect spirit dialogue
+PASS: pause hides return reminder
+PASS: return reminder expires after eight seconds
+PASS: leaving camp again does not repeat the same day's reminder
+Early exploration scene assertions: 23; failures: 0

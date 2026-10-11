@@ -45,11 +45,11 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, reserved: Rect2 = Rect2
 	_age=maxf(0,sim.workforce.elapsed-_shown_at)
 	modulate.a=smoothstep(0,0.4,_age)*(1-smoothstep(visible_seconds-1,visible_seconds,_age))
 	visible=_age<visible_seconds
-	caption.text=tr(_info.key)
 	var top: float=safe.position.y+safe.size.y*0.17
 	if reserved.has_area():top=maxf(top,reserved.end.y+12)
 	caption.position=Vector2(safe.position.x+80,top)
 	caption.size=Vector2(maxf(100,safe.size.x-160),64)
+	caption.text=tr(_info.key)
 	queue_redraw()
 
 func _draw() -> void:
@@ -62,7 +62,12 @@ func _draw() -> void:
 		var color: Color=Color("ffc875") if heavy else Color("b9ced6")
 		var pulse: float=0.82+sin(_age*3.5)*0.18
 		draw_style_box(_background,Rect2(x-8,y-8,60,72))
-		draw_texture_rect(Icons.get_icon("rift"),Rect2(x,y,44,44),false,Color(color, pulse))
+		var homeward: bool=_info.style==&"home"
+		draw_texture_rect(Icons.get_icon("camp" if homeward else "rift"),Rect2(x,y,44,44),false,Color(color, pulse))
+		if homeward:
+			var tip: Vector2=Vector2(x+22+side*26,y+22)
+			draw_line(tip-Vector2(side*6,6),tip,color,2)
+			draw_line(tip,tip-Vector2(side*6,-6),color,2)
 		for mark: int in range(3 if heavy else 1):
 			draw_rect(Rect2(x+10+mark*9,y+48,6,3),color)
 
