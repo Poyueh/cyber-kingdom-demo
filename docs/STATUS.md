@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-11：v0.0.38 駐點人物工作與回應（套件完成，發佈中）
+## 2026-10-11：v0.0.38 駐點人物工作與回應（已發佈）
 
 - 六種工作節拍、靠近反應與回到工作；進出距離與招呼間隔分開，面向在反應期間鎖定。
 - 既有付款／服務驅動完整姿勢；近敵警戒與安全等待；暫停和讀檔隔離。六份有限的呈現記憶，快照仍 v20，舊存檔不需重開。
-- 完整 tools/check.sh 通過：4,377 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；新增 NPC 場景 headless／macOS 原生各 50 項通過。三語單檔指南瀏覽器確認，原生六職業循環與服務圖已保存。五平台套件來源 0d2c116，實際 PCK 原生 50 項通過；Mac 簽章、Android 簽署／對齊、iOS 專案版本與套件完整性已核對。
+- 完整 tools/check.sh 通過：4,377 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；新增 NPC 場景 headless／macOS 原生各 50 項通過。三語單檔指南瀏覽器確認，原生六職業循環與服務圖已保存。五平台套件來源 0d2c116，實際 PCK 原生 50 項通過；Mac 簽章、Android 簽署／對齊、iOS 專案版本與套件完整性已核對。[v0.0.38 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.38) 與 [Pages 試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.38) 已公開；七個附件雜湊／大小及七份線上檔案與套件相符。部署 38151003129 成功，瀏覽器確認主選單、新版指南與動畫，無 console errors，未建立玩家旅程。[發行驗收](reports/release-0.0.38/verification.json)。Windows／手機未真機驗收；iOS 為待簽署專案。
 - [設計](design/attendant-behaviors.md) · [第 115 課](lessons/115-attendant-work-and-reactions.md)。三語指南已同步。
 
 ## 2026-10-11：v0.0.37 稀疏遭遇與聚落造型（已發佈）
