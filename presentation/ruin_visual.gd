@@ -83,4 +83,4 @@ static func _reveal(view: Node2D, sim: RefCounted, x: float) -> float:
  for index: int in range(sim.frontier.regions.size()):
   var region: Dictionary=sim.frontier.regions[index]
   if x>=region.x and x<=region.x+region.width:return view._region_reveal(index)
- return 0
+ return 1.0 if Rules.known(sim,x) else 0.0

@@ -1,0 +1,37 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+WORLD 1 start { "value": 5, "marks": 0 } actions [2, 1]
+2 at 0 accepted=true state={ "value": 4, "marks": 0 } progress=1
+1 at 0 accepted=true state={ "value": 7, "marks": 0 } progress=3
+reward ["magnet"]
+FROST positions [1679.0, 1959.0, 2239.0] relic 2519.0
+at 1679.0 known=false context={ "id": "", "x": 1679.0, "text": "探索邊境，尋找流浪者與寶箱", "cost": 0, "currency": "", "enabled": false, "reason": "靠近目標互動", "key": "", "paid": 0 }
+at 1959.0 known=true context={ "id": "trial", "x": 1959.0, "text": "接通符石", "cost": 0, "currency": "", "enabled": true, "reason": "", "key": "trial:frost:1", "paid": 0, "trial": "frost", "station": 1 }
+at 2239.0 known=true context={ "id": "trial", "x": 2239.0, "text": "接通符石", "cost": 0, "currency": "", "enabled": true, "reason": "", "key": "trial:frost:2", "paid": 0, "trial": "frost", "station": 2 }
+WORLD 2 start { "value": -1, "marks": 0 } actions [1, 0, 0, 2]
+1 at 0 accepted=true state={ "value": -2, "marks": 0 } progress=0
+0 at 0 accepted=false state={ "value": -2, "marks": 0 } progress=0
+0 at 0 accepted=false state={ "value": -2, "marks": 0 } progress=0
+2 at 0 accepted=true state={ "value": -2, "marks": 0 } progress=0
+reward []
+WORLD 3 start { "value": 0, "marks": 0 } actions [2, 1]
+2 at 0 accepted=true state={ "value": 2, "marks": 0 } progress=1
+1 at 0 accepted=true state={ "value": 7, "marks": 0 } progress=3
+reward ["gravity"]
+WORLD 4 start { "value": 4, "marks": 0 } actions [1, 1, 1, 0, 2]
+1 at 0 accepted=true state={ "value": 2, "marks": 0 } progress=0
+1 at 0 accepted=true state={ "value": 0, "marks": 0 } progress=0
+1 at 0 accepted=true state={ "value": -2, "marks": 0 } progress=0
+0 at 0 accepted=true state={ "value": -1, "marks": 0 } progress=0
+2 at 0 accepted=true state={ "value": -1, "marks": 1 } progress=3
+reward ["workshop"]
+WORLD 5 start { "value": 0, "marks": 0 } actions [0, 1, 2]
+0 at 30 accepted=true state={ "value": 0, "marks": 1 } progress=1
+1 at 45 accepted=true state={ "value": 0, "marks": 3 } progress=2
+2 at 105 accepted=true state={ "value": 0, "marks": 7 } progress=3
+reward ["command"]
+WORLD 6 start { "value": 0, "marks": 0 } actions [0, 1, 2]
+0 at 231 accepted=true state={ "value": 0, "marks": 1 } progress=1
+1 at 336 accepted=true state={ "value": 0, "marks": 3 } progress=2
+2 at 396 accepted=true state={ "value": 0, "marks": 7 } progress=3
+reward ["capacitor"]

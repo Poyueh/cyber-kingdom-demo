@@ -1,0 +1,6 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Layout variants across 16 journeys: [14,5,16,5,16,16]
+500-seed solved layouts: 3000; unique per destination: [140,6,140,6,480,478]
+FAIL: solving awards only this world's one module expected=1 got=0
+Ruin variation assertions: 62; failures: 1

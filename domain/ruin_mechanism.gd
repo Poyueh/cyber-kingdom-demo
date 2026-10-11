@@ -31,6 +31,9 @@ func _init(config: Dictionary, planet: int) -> void:
 static func configured(config: Dictionary) -> bool:
  return config.get("mechanism_version",0)==1 and int(config.get("planet_id",0))>0
 static func valid_config(config: Dictionary) -> bool:
+ if config.has("ruin_variation"):return false
+ if config.has("ruin_layout_version"):
+  if not config.ruin_layout_version is int or config.ruin_layout_version!=1 or config.get("mechanism_version",0)!=1:return false
  var enabled: bool=config.has("mechanism_version")
  if not enabled:
   for key: String in config:

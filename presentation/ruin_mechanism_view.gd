@@ -45,7 +45,7 @@ static func station(view: Node2D, sim: RefCounted, site: RefCounted, index: int,
   Mechanism.Kind.BALANCE:
    hint="ruin.balance.hint"
    _gauge(view,at+Vector2(0,-38),m,alpha)
-   if index==2:glyph(view,at,2,ON if m.value==m.target else OFF,11)
+   if index==2:glyph(view,at,2,Color(ON if m.value==m.target else OFF,alpha),11)
    else:
     var tint: Color=Color("ffad7a") if index==0 else Color("8dceff");tint.a=alpha
     var count: int=absi(m.warm if index==0 else m.cool)
@@ -80,6 +80,9 @@ static func vault(view: Node2D, site: RefCounted, alpha: float) -> void:
   caption(view,at+Vector2(0,-26),"封印已解開" if site.progress==3 else "沿來路尋找符石",Color(ON,alpha))
 static func _gauge(view: CanvasItem, at: Vector2, m: RefCounted, alpha: float) -> void:
  var width: float=80.0
+ var plate: Rect2=Rect2(at-Vector2(width/2+7,16),Vector2(width+14,30))
+ view.draw_rect(plate,Color(0.025,0.065,0.09,alpha*0.9))
+ view.draw_rect(plate,Color(OFF,alpha*0.8),false,1)
  for tick: int in range(m.minimum,m.maximum+1):
   var x: float=at.x-width/2+width*float(tick-m.minimum)/(m.maximum-m.minimum)
   var tint: Color=Color("8dceff") if tick<m.target else Color("ffad7a")
@@ -105,4 +108,4 @@ static func reveal(view: Node2D, sim: RefCounted, x: float) -> float:
  for index: int in range(sim.frontier.regions.size()):
   var region: Dictionary=sim.frontier.regions[index]
   if x>=region.x and x<=region.x+region.width:return view._region_reveal(index)
- return 0.0
+ return 1.0 if Rules.known(sim,x) else 0.0

@@ -1739,10 +1739,6 @@
     "zh_CN": "看指针走进亮窗，再按 E／下滑接通。每座完成就会保留，不必同时启动；错过可等下一圈，暂停时指针也会停。",
     "en": "Activate with E or swipe down while the needle is in the bright window. Each charged station stays lit; they need not be simultaneous. Missed windows return next cycle, and pausing stops the needle."
   },
-  "不用趕著一次解完。部分機關進度會保存，夜裡先回防，改天再來也可以。新機關需要開新旅程；舊紀錄保留原解法。": {
-    "zh_CN": "不用赶着一次解完。部分机关进度会保存，夜里先回防，改天再来也可以。新机关需要开新旅程；旧记录保留原解法。",
-    "en": "You can return to defend camp and finish later: partial mechanism progress is saved. Start a new journey for these mechanisms; existing saves keep their original puzzles."
-  },
   "實際遊戲：觀察刻度、用加減調整，再鎖定封印。": {
     "zh_CN": "实际游戏：观察刻度、用加减调整，再锁定封印。",
     "en": "In-game: read the gauge, adjust with plus and minus, then lock the seal."
@@ -1863,12 +1859,24 @@
     "zh_CN": "抱走龙晶的小怪在离开战区后也会加速返回原门，仍会被途中完整城墙阻挡。守门者与巨龙不加速；每日敌数、近战伤害与攻击预警不变。旧记录维持原行军规则。",
     "en": "Crystal carriers also hurry back to their original gate once clear of the battle area. Intact walls still block their route. Wardens and dragons gain no speed; daily enemy totals, melee damage and attack warnings remain unchanged. Existing saves retain their original travel rules."
   },
-  "適用 v0.0.30：普通魔物遠程行軍與抱晶撤退更俐落，接近戰區保留原速度。三種旅程節奏、七地探索及建設回顧皆可使用；舊紀錄保留原規則。": {
-    "zh_CN": "适用 v0.0.30：普通魔物远程行军与抱晶撤退更利落，接近战区保留原速度。三种旅程节奏、七地探索及建设回顾皆可使用；旧记录保留原规则。",
-    "en": "For v0.0.30: ordinary raiders march and retreat faster through distant terrain while keeping their original speed near battle. Three journey paces, seven-world exploration and settlement history remain available. Existing saves keep their original rules."
-  },
   "遠征採均衡的白晝與夜襲增援，適合第一次遊玩。拓荒白晝較長、夜襲增援較少，留時間探索與建造；圍城白晝較短，增援更快增長，考驗回防與分配。": {
     "zh_CN": "远征采用均衡的白昼与夜袭增援，适合第一次游玩。拓荒白昼较长、夜袭增援较少，留时间探索与建造；围城白昼较短，增援增长更快，考验回防与分配。",
     "en": "Expedition offers balanced daylight and nightly reinforcements, recommended for a first playthrough. Settler has longer days and fewer reinforcements for exploration and building. Siege has shorter days and faster reinforcement growth, testing how you divide resources and return to defend."
+  },
+  "同一星球，下一次有不同線索。": {
+    "zh_CN": "同一星球，下一次有不同线索。",
+    "en": "The same world. New clues on your next journey."
+  },
+  "新旅程的連動燈會改變連線與初態，冷熱機關會換起始位置與目標刻度，脈衝裝置則有不同節拍。先看現場的線、框與亮窗，再嘗試操作；不必背上一局的按法，錯按也不扣龍晶。": {
+    "zh_CN": "新旅程的连动灯会改变连线与初态，冷热机关会换起始位置与目标刻度，脉冲装置则有不同节拍。先看现场的线、框与亮窗，再尝试操作；不必背上一局的按法，错按也不扣龙晶。",
+    "en": "On new journeys, linked lamps change their wiring and initial lights, balance devices change their starting and target positions, and pulse devices change rhythm. Read the links, marked band and bright window before experimenting. You do not need the last run’s button sequence, and wrong presses cost no crystals."
+  },
+  "不用趕著一次解完。本趟旅程的配置與部分進度會保存，夜裡先回防、改天再來，或跨星後返回，都會接著同一道題目。森林入門機關與舊紀錄的配置保留；隨機變化從新旅程開始。": {
+    "zh_CN": "不用赶着一次解完。本趟旅程的配置与部分进度会保存，夜里先回防、改天再来，或跨星后返回，都会接着同一道题目。森林入门机关与旧记录的配置保留；随机变化从新旅程开始。",
+    "en": "You can leave a puzzle unfinished and return to defend. Its layout and partial progress stay with this journey, including after loading or visiting another planet. Forest introductory puzzles and existing saves keep their layouts; variation starts with a new journey."
+  },
+  "適用 v0.0.31：新旅程後六地的機關配置會變化，現場線索同步，回防與返訪保留進度；修正部分營地空地符石無法互動。三種旅程節奏、七地探索、部件收藏與建設回顧皆可使用。": {
+    "zh_CN": "适用 v0.0.31：新旅程后六地的机关配置会变化，现场线索同步，回防与返访保留进度；修正部分营地空地符石无法互动。三种旅程节奏、七地探索、部件收藏与建设回顾皆可使用。",
+    "en": "For v0.0.31: the six destination worlds vary their puzzle layouts on new journeys, with matching clues and progress retained when returning. Devices in the camp clearing are now usable. Three journey paces, seven-world exploration, module collection and settlement history remain available."
   }
 }
