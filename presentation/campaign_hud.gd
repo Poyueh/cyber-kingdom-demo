@@ -64,7 +64,7 @@ func _ready() -> void:
 		button.shape=shape
 		button.texture_normal=_button_texture({"move_left":"left","move_right":"right","attack":"sword","pause":"menu"}.get(key,key))
 		if key=="attack":button.texture_normal=_button_texture("sword",ATTACK_SIZE,60)
-		button.texture_pressed=button.texture_normal
+		button.texture_pressed=preload("res://presentation/refuge_theme.gd").touch_texture({"move_left":"left","move_right":"right","attack":"sword","pause":"menu"}.get(key,key),ATTACK_SIZE if key=="attack" else 64,60 if key=="attack" else 32,true)
 		# The native texture origin is top-left, while the touch shape is centered.
 		button.shape_centered=true
 		button.modulate=Color(1,1,1,0.88)
@@ -131,31 +131,14 @@ func _ready() -> void:
 	add_child(settlement_growth)
 
 func _button_texture(key: String, side: int=64, glyph_size: int=32) -> Texture2D:
-	# SVG drawing remains editable and matches the resource and interaction symbols.
-	var image:=Image.create(side,side,false,Image.FORMAT_RGBA8)
-	image.fill(Color(0.04,0.09,0.12,0.72))
-	var glyph:=Icons.get_icon(key).get_image()
-	glyph.resize(glyph_size,glyph_size,Image.INTERPOLATE_LANCZOS)
-	var inset: int=(side-glyph_size)/2
-	image.blend_rect(glyph,Rect2i(0,0,glyph_size,glyph_size),Vector2i(inset,inset))
-	return ImageTexture.create_from_image(image)
+	return preload("res://presentation/refuge_theme.gd").touch_texture(key,side,glyph_size)
 
 func _skin(button: Button, key: String) -> void:
-	button.text=""
-	button.icon=Icons.get_icon(key)
-	button.icon_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	button.expand_icon=true
-	button.add_theme_constant_override("icon_max_width",30)
+	button.theme=preload("res://presentation/refuge_theme.gd").make()
+	button.text="";button.icon=Icons.get_icon(key)
+	button.icon_alignment=HORIZONTAL_ALIGNMENT_CENTER;button.expand_icon=true
+	button.add_theme_constant_override("icon_max_width",28)
 	button.focus_mode=Control.FOCUS_NONE
-	var style:=StyleBoxFlat.new()
-	style.bg_color=Color(0.04,0.09,0.12,0.82)
-	style.set_corner_radius_all(10)
-	style.set_content_margin_all(12)
-	button.add_theme_stylebox_override("normal",style)
-	var pressed:=style.duplicate()
-	pressed.bg_color=Color(0.18,0.36,0.36,0.94)
-	button.add_theme_stylebox_override("pressed",pressed)
-	button.add_theme_stylebox_override("hover",pressed)
 
 func safe_rect() -> Rect2:
 	var viewport:=get_viewport().get_visible_rect()

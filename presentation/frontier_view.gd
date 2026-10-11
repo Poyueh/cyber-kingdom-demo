@@ -7,7 +7,7 @@ const LABEL_MARGIN := 260.0
 func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -> void:
 	var texture: Texture2D = art.props[name]
 	var size := texture.get_size()*scale
-	draw_texture_rect(texture,Rect2(at-Vector2(size.x*0.5,size.y),size),false,tint)
+	draw_texture_rect(texture,Rect2(preload("res://presentation/grounded_art.gd").anchor(texture,at,scale)-Vector2(size.x*0.5,size.y),size),false,tint)
 
 func _draw() -> void:
 	if _sim == null or _font == null: return

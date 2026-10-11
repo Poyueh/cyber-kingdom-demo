@@ -25,7 +25,7 @@ static func draw_on(view: Node2D, sites: Array[Dictionary], sim: RefCounted) -> 
   var ink:=Color(0.8,0.91,0.94,reveal)
   if sim.planet.id>0 and sim.frontier.regions[site.region].has("level_role"):
    var texture: Texture2D=preload("res://presentation/planet_scenery.gd").LANDMARK[sim.planet.id-1]
-   view.draw_texture(texture,(at-Vector2(texture.get_width()*0.5,texture.get_height())).round(),ink)
+   view.draw_texture(texture,(Ground.anchor(texture,at)-Vector2(texture.get_width()*0.5,texture.get_height())).round(),ink)
   else:match site.kind:
     "forest":
      _prop(view,"dead_tree",at+Vector2(-68,0),ink)

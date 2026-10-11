@@ -23,12 +23,16 @@ func _draw() -> void:
  for index: int in range(3):draw_texture_rect(GROUND,Rect2(index*384,433,384,32),false,Color("7e9898"))
  var fire_at: Vector2=Vector2(383,440)
  var frame: Texture2D=FRAMES.get_frame_texture(&"idle",int(_age*4)%FRAMES.get_frame_count(&"idle"))
- draw_texture_rect(frame,Rect2(197,268,256,192),false)
- draw_texture_rect(FIRE,Rect2(349,387,68,57),false,Color(1.0,0.91+sin(_age*7.0)*0.07,0.76))
+ var scale: float=192.0/frame.get_height()
+ var feet: Vector2=preload("res://presentation/grounded_art.gd").anchor(frame,Vector2(305,435),scale)
+ draw_texture_rect(frame,Rect2(feet-Vector2(128,192),Vector2(256,192)),false)
+ var fire_origin: Vector2=preload("res://presentation/grounded_art.gd").anchor(FIRE,Vector2(383,438),57.0/FIRE.get_height())
+ draw_texture_rect(FIRE,Rect2(fire_origin-Vector2(34,57),Vector2(68,57)),false,Color(1.0,0.91+sin(_age*7.0)*0.07,0.76))
  for index: int in range(20):
   var phase: float=fposmod(_age*0.19+index*0.071,1.0)
   var at: Vector2=fire_at+Vector2(sin(index*2.3+phase*4)*22,-18-phase*120)
   draw_rect(Rect2(at.round(),Vector2(2,2)),Color(1,0.7,0.35,sin(phase*PI)*0.7))
+ draw_line(Vector2(46,300),Vector2(194,300),Color("7b765c"),1)
  for index: int in range(7):
   var at: Vector2=Vector2(46+index*18,318)
   var diamond: PackedVector2Array=PackedVector2Array([at+Vector2(0,-3),at+Vector2(3,0),at+Vector2(0,3),at+Vector2(-3,0)])
