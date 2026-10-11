@@ -1,6 +1,6 @@
 {
   "version": "0.0.31",
-  "published": false,
+  "published": true,
   "source_commit": "3ffcd44608c40414781f16be61c0a108a3dddb7a",
   "source_tree": "ebfa2ab9d91508890e88e52ea863a2b5867c115c",
   "full_check": true,
@@ -51,5 +51,53 @@
   ],
   "packaged_native_smoke": true,
   "packaged_native_assertions": 37,
-  "check_log_sha256": "83e08172bbbe8b6cd25fd350b4c9d674ccc3838b93d06f92d2b5c878d79b57d5"
+  "check_log_sha256": "83e08172bbbe8b6cd25fd350b4c9d674ccc3838b93d06f92d2b5c878d79b57d5",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.31",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "d6e4b326908a6a4433a6f566f117a17cc45cfd39011b6176401c57b07d709757",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.31"
+    },
+    {
+      "name": "guide.html",
+      "size": 4857739,
+      "sha256": "54438282feb490391512f30919d8e02e81a538bdbd9df347c5acc0fe76e28d38",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.31"
+    },
+    {
+      "name": "index.pck",
+      "size": 59369784,
+      "sha256": "e7f10d130f1bf2c88e2e0c7d7788c2f004fb26083ac23ce25899ab546d59e1e6",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.31"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.31",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38102789471,
+    "headSha": "eb819eaa7cc3ec08ae50c36b69fdfca4359fae0c",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38102789471"
+  },
+  "browser_verification": {
+    "version": "0.0.31",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.31",
+    "main_menu": true,
+    "embedded_guide_ruin_variation": true,
+    "locales": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "version_faq_verified_in_all_locales": true,
+    "main_menu_language_drives_embedded_guide": true,
+    "original_system_language_restored": true,
+    "console_errors": [],
+    "player_save_created": false,
+    "native_gameplay_verification": "docs/reports/release-0.0.31/packaged-smoke.log"
+  }
 }
