@@ -1,5 +1,7 @@
 extends RefCounted
 ## Seeded, passable region templates and finite harvests, independent of scenes.
+const Level=preload("res://domain/planet_level_layout.gd")
+const Streams=preload("res://domain/rng/rng_streams.gd")
 const Harvest = preload("res://domain/harvest_node.gd")
 var regions: Array[Dictionary] = []
 var nodes: Array[RefCounted] = []
@@ -32,6 +34,9 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 	training_food = maxi(1,int(rules.get("training_food",2)))
 	training_damage = maxi(1,int(rules.get("training_damage",5)))
 	training_limit = maxi(1,int(rules.get("training_limit",3)))
+	if rules.has(Level.MARKER):
+		_authored_regions(rules,Streams.new(map_seed).of(Streams.Stream.WORLD))
+		return
 	var rng := RandomNumberGenerator.new()
 	rng.seed = map_seed
 	var types := ["forest","forest","quarry","quarry","ruins","ruins"]
@@ -81,6 +86,15 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 
 	if rules.get("flat_ground",0):
 		for node in nodes:node.y=430.0;node.pickup_y=430.0
+
+func _authored_regions(rules: Dictionary, rng: RandomNumberGenerator) -> void:
+	# Adapter to the existing persisted frontier rows; route planning itself uses typed zones.
+	for zone: Level.Zone in Level.zones(rules):
+		regions.append({"kind":String(zone.kind),"x":zone.x,"width":zone.width,"level_role":zone.role,"discovered":false,"outpost_x":0.0,"outpost_ready":false,"outpost_pending":false,"outpost_built":false,"outpost_progress":0.0})
+		left_boundary=minf(left_boundary,zone.x);right_boundary=maxf(right_boundary,zone.x+zone.width)
+		if zone.role==Level.Role.SUPPLY:_populate(zone.index,String(zone.kind),zone.x,zone.width,rng)
+		elif zone.role==Level.Role.TREASURE:_add(zone.index,"cache",zone.x+zone.width*0.5,430,0,0,0,4)
+	for node: RefCounted in nodes:node.y=430.0;node.pickup_y=430.0
 
 func _populate(index: int, kind: String, x: float, width: float, rng: RandomNumberGenerator) -> void:
 	match kind:
@@ -153,6 +167,7 @@ func deposit(node: RefCounted) -> Dictionary:
 
 func expansion_cleared(index: int) -> bool:
 	if index<0 or index>=regions.size() or not regions[index].discovered:return false
+	if not Level.is_supply(regions[index]):return false
 	# Buildings appear only after the finite terrain resources have actually been removed.
 	return not nodes.any(func(n):return n.region==index and n.kind in ["tree","crystal","stone","cache"] and not n.collected)
 

@@ -1,6 +1,13 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["補給區", "補給區", "补给区", "Supply clearing"],
+ ["靜謐荒野", "靜謐荒野", "静谧荒野", "Quiet wilds"],
+ ["封印聖所", "封印聖所", "封印圣所", "Sealed sanctuary"],
+ ["旅人遺藏", "旅人遺藏", "旅人遗藏", "Wayfarer cache"],
+ ["龍門前庭", "龍門前庭", "龙门前庭", "Rift approach"],
+ ["戰馬遺跡", "戰馬遺跡", "战马遗迹", "Steed ruins"],
+
  ["opening.kicker", "七個世界・一段尚未揭開的傳說", "七个世界・一段尚未揭开的传说", "SEVEN WORLDS. AN UNTOLD LEGEND."],
  ["opening.promise", "循著龍晶的微光，走向星圖之外。", "循着龙晶的微光，走向星图之外。", "Follow the crystal light. Venture beyond the map."],
  ["opening.begin", "開始旅程", "开始旅程", "Begin Journey"],

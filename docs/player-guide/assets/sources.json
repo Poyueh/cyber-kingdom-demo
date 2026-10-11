@@ -16,7 +16,8 @@
     "planet-storm.webp": "test-results/seven-planets/storm.png; real native game, 960x540 thumbnail",
     "planet-void.webp": "test-results/seven-planets/void.png; real native game, 960x540 thumbnail",
     "star-chart.webp": "test-results/seven-planets/chart-desert.png; real native route interface",
-    "dragon-counterattack.webp": "test-results/dragon-opening/world-6.png; actual native v0.0.32 scene, controlled combat setup, 960x540 thumbnail"
+    "dragon-counterattack.webp": "test-results/dragon-opening/world-6.png; actual native v0.0.32 scene, controlled combat setup, 960x540 thumbnail",
+    "planet-levels.webp": "tools/preview_planet_levels.gd; actual native generated Frost Coast shrine, all regions revealed for inspection; source capture docs/reports/planet-level-design/world-2-role-2.webp"
   },
   "animation": "docs/previews/combo-v004-closeup.gif",
   "characters": "art/characters/resident-motion-v002/residents.png; idle frame 0, row = role * 2 + 1, 64 x 64",

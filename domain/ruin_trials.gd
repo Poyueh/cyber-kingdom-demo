@@ -19,6 +19,7 @@ func _init(relics: Array, config: Dictionary, rng: RandomNumberGenerator) -> voi
  if int(config.get("ruin_enabled",0))!=1:return
  duration=Clock.ticks_for(config.ruin_seconds);radius=config.ruin_radius
  for relic: RefCounted in relics:
+  if not preload("res://domain/planet_level_layout.gd").has_puzzle(config,relic.id):continue
   var site: Site=Site.new()
   site.id=relic.id;site.x=relic.x;site.region=relic.region;site.timed=relic.id=="lance"
   var inward: float=-signf(site.x)

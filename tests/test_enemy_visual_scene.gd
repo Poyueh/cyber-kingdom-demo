@@ -10,8 +10,7 @@ func run_scene() -> void:
 	check(Cast.valid(),"all shipped animation clips address complete native atlases")
 	var codec: RefCounted=Codec.new()
 	for planet: int in range(7):
-		var config: Dictionary=game._campaign_config.duplicate(true)
-		config.merge(game.PLANET_PROFILES[planet].rules(),true);config.planet_id=planet
+		var config: Dictionary=game.journey.configs[planet].duplicate(true)
 		var sim: RefCounted=Campaign.new(config);sim.world.people.clear()
 		var enemy: Dictionary=sim._spawn_raider();enemy.x=2550.0;enemy.direction=-1.0
 		var boss: Dictionary=sim._spawn_raider();boss.kind="dragon";boss.x=2700.0;boss.direction=-1.0

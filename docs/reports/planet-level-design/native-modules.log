@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: exploration collects the lance after the forest shrine
+PASS: F opens module selection at the upgrade station
+PASS: selection does not overlap settings or offer combat practice
+PASS: choosing a previous module charges eight crystals
+PASS: quick K press activates the equipped ability
+PASS: cooldown cannot charge stamina again
+PASS: real two-finger upward events activate the ability
+PASS: special gesture never invests a crystal
+PASS: night light follows the knight and illuminates the world
+PASS: lamp fades away in daytime
+PASS: expanded water fills the visible river area
+Module scene assertions: 11; failures: 0

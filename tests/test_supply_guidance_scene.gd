@@ -36,7 +36,8 @@ func run_scene() -> void:
  game.sim.world.people[0].role="engineer";game.sim.world.people[0].x=510.0
  game.sim.world.people[0]["crystals"]=4
  game.sim.world.people[1].role="citizen"
- game.sim.frontier.nodes.filter(func(n: RefCounted)->bool:return n.kind=="tree")[0].marked=true
+ # This fixture follows a carrier east with D; choose his job on that side.
+ game.sim.frontier.nodes.filter(func(n: RefCounted)->bool:return n.kind=="tree" and n.x>510.0)[0].marked=true
  game.knight.position=Vector2(game.sim.spirit.shrine_x(game.sim.world.sites.hall),430)
  game._arrival_banner.hide();game.hud.control_mode=2
  key(KEY_E,true);key(KEY_E,false);game._physics_process(1.0/30)

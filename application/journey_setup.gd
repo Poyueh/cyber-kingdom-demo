@@ -1,4 +1,5 @@
 extends RefCounted
+const Levels=preload("res://domain/planet_level_layout.gd")
 const Layout=preload("res://domain/ruin_layout.gd")
 const Streams=preload("res://domain/rng/rng_streams.gd")
 const Voyage = preload("res://application/star_voyage.gd")
@@ -8,7 +9,9 @@ static func create(base: Dictionary, profiles: Array[Dictionary], selected: Dict
 	for config: Dictionary in journey.configs:
 		var options: Dictionary=base.get("ruin_variation",{})
 		config.erase("ruin_variation")
+		config.erase("level_design")
 		if not options.is_empty():Layout.apply(config,options,Streams.new(int(config.seed)).of(Streams.Stream.RUIN_LAYOUT))
+		if base.has("level_design"):Levels.apply(config,base.level_design,Streams.new(int(config.seed)).of(Streams.Stream.LEVEL_LAYOUT))
 		config.journey_style=int(selected.id)
 		config.day_seconds+=float(selected.day_adjustment)
 		config.night_first+=int(selected.first_adjustment)

@@ -9,6 +9,7 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/planet_level_layout.gd").valid_config(config):return false
 	if config.has("journey_style") and (not config.journey_style is int or config.journey_style not in [0,1,2]):return false
 	if not preload("res://domain/night_pattern.gd").valid_config(config):return false
 	if not preload("res://domain/invasion_march.gd").valid_config(config):return false
@@ -156,6 +157,7 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	for i in range(map.regions.size()):
 		var region=map.regions[i]
 		if not shape(region,base.frontier.regions[i]):return false
+		if base.frontier.regions[i].has("level_role") and region.level_role!=base.frontier.regions[i].level_role:return false
 		for key in ["kind","x","width"]:
 			if region[key]!=base.frontier.regions[i][key]:return false
 		if region.outpost_progress<0:return false

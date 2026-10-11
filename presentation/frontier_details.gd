@@ -12,6 +12,15 @@ static func layout(seed: int,regions: Array) -> Array[Dictionary]:
 			"quarry":[["basalt","dead_tree"],["quartz","basalt","dead_tree"],["gear","ferns","mushrooms","log"]],
 			"ruins":[["arch","dragon_statue"],["dead_tree","dragon_statue","oak"],["gear","mushrooms","ferns","quartz"]]}
 		var palette: Array=palettes[region.kind]
+		if region.has("level_role"):
+			# Wilderness keeps low natural texture. Only authored destinations get
+			# monumental silhouettes, supplied by ExplorationLandmarks.
+			var count: int=4 if region.level_role==0 else 2
+			for i: int in range(count):
+				var kind: String=["ferns","log","mushrooms"][rng.randi_range(0,2)]
+				var x: float=region.x+region.width*(0.08+0.84*float(i)/maxi(1,count-1))
+				result.append({"region":index,"x":x,"kind":kind,"scale":rng.randf_range(18,32)/TEXTURES[kind].get_height(),"flip":rng.randf()<0.5,"layer":2,"y":432})
+			continue
 		# One tall focal point per region, an offset middle cluster and a quiet gap.
 		var anchor: float=region.x+region.width*rng.randf_range(0.28,0.60)
 		for layer in range(3):

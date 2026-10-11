@@ -6,12 +6,14 @@ static func layout(sim: RefCounted) -> Array[Dictionary]:
  var result: Array[Dictionary]=[]
  for index: int in range(sim.frontier.regions.size()):
   var region: Dictionary=sim.frontier.regions[index]
+  if region.has("level_role") and int(region.level_role) not in [2,3,5]:continue
   var site: Dictionary={"region":index,"kind":region.kind,"x":roundf(region.x+region.width*0.5),"node":-1,"module":""}
   for n: int in range(sim.frontier.nodes.size()):
    var resource: RefCounted=sim.frontier.nodes[n]
    if resource.region==index and resource.kind=="cache":site.x=resource.x;site.node=n;break
   for relic: RefCounted in sim.modules.relics:
    if relic.region==index:site.x=relic.x;site.node=-1;site.module=relic.id;break
+  if region.get("level_role",-1)==5:site.x=sim.mount_quest.ruin_x
   result.append(site)
  return result
 static func draw_on(view: Node2D, sites: Array[Dictionary], sim: RefCounted) -> void:
@@ -21,20 +23,23 @@ static func draw_on(view: Node2D, sites: Array[Dictionary], sim: RefCounted) -> 
   if reveal<=0:continue
   var at:=Vector2(roundf(site.x),430)
   var ink:=Color(0.8,0.91,0.94,reveal)
-  match site.kind:
-   "forest":
-    _prop(view,"dead_tree",at+Vector2(-68,0),ink)
-    _prop(view,"log",at+Vector2(74,0),ink)
-    _prop(view,"gear",at+Vector2(-30,0),ink)
-    _prop(view,"ferns",at+Vector2(105,0),ink)
-   "quarry":
-    _prop(view,"basalt",at+Vector2(-64,0),ink)
-    _prop(view,"quartz",at+Vector2(62,0),ink)
-    _prop(view,"gear",at+Vector2(8,0),ink)
-   "ruins":
-    _prop(view,"arch",at+Vector2(-69,0),ink)
-    _prop(view,"dragon_statue",at+Vector2(73,0),ink)
-    _prop(view,"gear",at+Vector2(-104,0),ink)
+  if sim.planet.id>0 and sim.frontier.regions[site.region].has("level_role"):
+   var texture: Texture2D=preload("res://presentation/planet_scenery.gd").LANDMARK[sim.planet.id-1]
+   view.draw_texture(texture,(at-Vector2(texture.get_width()*0.5,texture.get_height())).round(),ink)
+  else:match site.kind:
+    "forest":
+     _prop(view,"dead_tree",at+Vector2(-68,0),ink)
+     _prop(view,"log",at+Vector2(74,0),ink)
+     _prop(view,"gear",at+Vector2(-30,0),ink)
+     _prop(view,"ferns",at+Vector2(105,0),ink)
+    "quarry":
+     _prop(view,"basalt",at+Vector2(-64,0),ink)
+     _prop(view,"quartz",at+Vector2(62,0),ink)
+     _prop(view,"gear",at+Vector2(8,0),ink)
+    "ruins":
+     _prop(view,"arch",at+Vector2(-69,0),ink)
+     _prop(view,"dragon_statue",at+Vector2(73,0),ink)
+     _prop(view,"gear",at+Vector2(-104,0),ink)
   var unclaimed: bool=(site.node>=0 and not sim.frontier.nodes[site.node].collected) or (not site.module.is_empty() and not sim.modules.found.has(site.module))
   # Lit ground runes lead inward to an actual remaining reward; spent sites go quiet.
   if not unclaimed:continue
