@@ -1962,5 +1962,33 @@
   "實際主選單：星環廢墟中的營火，等待下一段旅程。": {
     "zh_CN": "实际主菜单：星环废墟中的营火，等待下一段旅程。",
     "en": "Actual main menu: a campfire among the shattered star rings, awaiting the next journey."
+  },
+  "看輪廓認敵人，看動作抓時機。": {
+    "zh_CN": "看轮廓认敌人，看动作抓时机。",
+    "en": "Read the silhouette. Watch the windup."
+  },
+  "噬晶異獸以黑色甲殼、發光裂口和長爪辨認。牠們伏低蓄力後向前爪擊；命中時會後仰、閃亮並迸出碎晶，重劈的衝擊更明顯。抱著龍晶的怪物正撤回原側裂隙。": {
+    "zh_CN": "噬晶异兽以黑色甲壳、发光裂口和长爪辨认。它们伏低蓄力后向前爪击；命中时会后仰、闪亮并迸出碎晶，重劈的冲击更明显。抱着龙晶的怪物正撤回原侧裂隙。",
+    "en": "Crystal devourers have black carapaces, glowing maws and long claws. They crouch before striking. A confirmed hit produces recoil, a brief flash and crystal fragments; heavy slashes have a stronger impact. A beast clutching a crystal is retreating to its original rift."
+  },
+  "七地守門怪有各自的輪廓：森林棘角、沙地厚殼、冰岸晶鬃、沼澤孢囊、熔谷爐甲、雷城長肢、墓環空顎。牠們沿用守門者的戰力與出現條件，不撿龍晶離場。": {
+    "zh_CN": "七地守门怪有各自的轮廓：森林棘角、沙地厚壳、冰岸晶鬃、沼泽孢囊、熔谷炉甲、雷城长肢、墓环空颚。它们沿用守门者的战力与出现条件，不捡龙晶离场。",
+    "en": "Each world has a distinct rift guardian: forest thorns, dune armor, frost mane, swamp spore sacs, volcanic plates, storm limbs and a hollow void jaw. These are the existing wardens with distinct appearances and the same combat rules. They cannot be bribed with crystals."
+  },
+  "巨龍先沉身、抬胸蓄力，再釋放攻勢。地面標記是鎖定的危險範圍；連段還沒結束時不要折返。最後一擊後等待龍核曝露再反擊，受擊閃光不代表巨龍已被打斷。": {
+    "zh_CN": "巨龙先沉身、抬胸蓄力，再释放攻势。地面标记是锁定的危险范围；连段还没结束时不要折返。最后一击后等待龙核暴露再反击，受击闪光不代表巨龙已被打断。",
+    "en": "Dragons brace and raise their chest before unleashing an attack. Ground marks show the locked danger area; stay clear until all beats end. Counterattack when the core is exposed after the final strike. A hit flash does not mean the dragon was interrupted."
+  },
+  "原生遊戲演出驗證：噬晶異獸與森林守門怪。": {
+    "zh_CN": "原生游戏演出验证：噬晶异兽与森林守门怪。",
+    "en": "Native presentation capture: a crystal devourer and a forest rift guardian."
+  },
+  "原生遊戲演出驗證：焰龍展翼蓄力，地面顯示危險範圍。": {
+    "zh_CN": "原生游戏演出验证：焰龙展翼蓄力，地面显示危险范围。",
+    "en": "Native presentation capture: a flame dragon winds up above its marked danger area."
+  },
+  "適用 v0.0.35：無武器噬晶異獸、七地守門怪、碎晶受擊與七龍完整姿勢演出。原有夜襲、巨龍招式、反擊窗口與旅程紀錄可續玩。": {
+    "zh_CN": "适用 v0.0.35：无武器噬晶异兽、七地守门怪、碎晶受击与七龙完整姿势演出。原有夜袭、巨龙招式、反击窗口与旅程记录可续玩。",
+    "en": "For v0.0.35: unarmed crystal devourers, seven rift guardian appearances, crystal impact effects and expanded full-body dragon animation. Existing raids, dragon attacks, counterattack windows and saved journeys continue unchanged."
   }
 }

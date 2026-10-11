@@ -1,7 +1,7 @@
 extends Node2D
 ## World-space buildings, stock, people and feedback; simulation stays in application/domain.
 const PeopleArt = preload("res://presentation/refuge_residents.gd")
-const EnemyFrames = preload("res://data/sentinel_animation_frames.tres")
+const EnemyLook = preload("res://data/enemy_cast.tres")
 ## Art is anchored off centre, so a margin keeps it from popping at the edge.
 const CULL_MARGIN := 160.0
 var _sim
@@ -96,26 +96,19 @@ func _draw_activity() -> void:
 		match effect.kind:
 			"bolt": draw_line(Vector2(effect.x,396),Vector2(effect.to,396),Color("91ece3"),2)
 			"pay": draw_circle(Vector2(effect.x,380-(0.45-effect.life)*50),4,Color("f0ce82"))
-			"hit":
-				draw_line(Vector2(effect.x-8,382),Vector2(effect.x+8,406),Color("ffb28b"),2)
-				draw_line(Vector2(effect.x+8,382),Vector2(effect.x-8,406),Color("ffb28b"),2)
-				if effect.get("heavy",false):
-					var progress := clampf(1.0-float(effect.life)/0.28,0.0,1.0)
-					for spark in range(7):
-						var angle := -1.2+spark*0.4
-						var direction := Vector2(cos(angle)*int(effect.get("facing",1)),sin(angle))
-						var at := Vector2(effect.x,394)+direction*(8+progress*33)
-						draw_line(at.round(),(at+direction*(6*(1-progress))).round(),Color(0.8,1.0,0.9,1-progress),2)
-					draw_arc(Vector2(effect.x,394),8+progress*22,-PI*0.5,PI*0.5,8,Color(0.55,0.95,0.9,(1-progress)*0.7),2)
+			"hit": _hit_effect(effect)
 	_draw_interaction()
 
+func _hit_effect(effect: Dictionary) -> void:
+	if not _on_screen(effect.x,80):return
+	var heavy: bool=effect.get("heavy",false)
+	var duration: float=0.28 if heavy else (0.20 if effect.has("heavy") else 0.25)
+	preload("res://presentation/enemy_impact_view.gd").burst(self,Vector2(effect.x,398),clampf(1-effect.life/duration,0,1),effect.get("facing",1.0),heavy,Color("91e3d9"))
+
 func _raider(raider: Dictionary) -> void:
-	var clip := "windup" if raider.windup>0 else "run"
-	var frame := 0 if clip == "windup" else posmod(int(raider.x/12),2)
-	var texture: Texture2D = EnemyFrames.get_frame_texture(clip,frame)
-	draw_set_transform(Vector2(raider.x,398),0,Vector2(raider.get("direction",-1.0),1))
-	draw_texture(texture,-texture.get_size()*0.5,Color(1.5,1.6,1.6) if raider.fighter.invulnerability_remaining>0 else Color.WHITE)
-	draw_set_transform(Vector2.ZERO)
+	var look: EnemyAppearance=EnemyLook.grunt
+	var frame: int=look.windup[0] if raider.windup>0 else look.sample(look.walk,fposmod(raider.x/look.stride,1.0))
+	preload("res://presentation/raider_motion_view.gd").draw_pose(self,look,frame,Vector2(raider.x,430),raider.get("direction",-1.0),Color(2.3,2.1,1.8) if raider.fighter.invulnerability_remaining>0 else Color.WHITE)
 	draw_rect(Rect2(raider.x-22,360,44,4),Color("482a3a"))
 	draw_rect(Rect2(raider.x-22,360,44.0*raider.fighter.hp/raider.fighter.stats.max_hp,4),Color("df8491"))
 	if raider.windup>0: _text("!",raider.x,348,Color("ffd087"),22)

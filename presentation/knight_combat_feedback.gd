@@ -1,6 +1,7 @@
 extends Node2D
 ## Observe confirmed sword-hit records; do not infer contact from animation.
 const Style = preload("res://data/sword_feedback_tuning.gd")
+const EnemyStyle = preload("res://data/enemy_cast.tres")
 const CAMERA_LIFETIME: float = 0.18
 const SPARK_COUNT: int = 9
 class Contact extends RefCounted:
@@ -17,12 +18,14 @@ var _seen: Array[Dictionary] = []
 var _stop: float = 0.0
 var _kick_age: float = CAMERA_LIFETIME
 var _kick: Vector2 = Vector2.ZERO
+var _kick_duration: float = CAMERA_LIFETIME
 
 func reset(effects: Array[Dictionary]) -> void:
 	_seen.assign(effects)
 	_contacts.clear()
 	_stop = 0.0
 	_kick_age = CAMERA_LIFETIME
+	_kick_duration = CAMERA_LIFETIME
 	_kick = Vector2.ZERO
 	if is_instance_valid(camera): camera.offset = Vector2.ZERO
 	queue_redraw()
@@ -33,7 +36,7 @@ func advance(seconds: float) -> float:
 	for index: int in range(_contacts.size()-1,-1,-1):
 		_contacts[index].age += seconds
 		if _contacts[index].age >= _contacts[index].lifetime: _contacts.remove_at(index)
-	_kick_age = minf(CAMERA_LIFETIME,_kick_age+seconds)
+	_kick_age = minf(_kick_duration,_kick_age+seconds)
 	_present_camera()
 	queue_redraw()
 	var held: float = minf(_stop,seconds)
@@ -42,6 +45,12 @@ func advance(seconds: float) -> float:
 
 func observe(effects: Array[Dictionary], knight_at: Vector2) -> void:
 	for effect: Dictionary in effects:
+		if effect.kind in ["dragon_fire","planet_strike"]:
+			if _seen.any(func(old: Dictionary)->bool:return is_same(old,effect)):continue
+			if minf(absf(effect.x-knight_at.x),absf(effect.get("to",effect.x)-knight_at.x))>EnemyStyle.impact_distance:continue
+			_kick=Vector2(0,EnemyStyle.impact_kick)
+			_kick_duration=EnemyStyle.impact_seconds;_kick_age=0.0
+			continue
 		# Arrow impacts also use 'hit', but never carry the sword's heavy field.
 		if effect.kind != "hit" or not effect.has("heavy"): continue
 		if _seen.any(func(old: Dictionary) -> bool: return is_same(old,effect)): continue
@@ -59,13 +68,14 @@ func observe(effects: Array[Dictionary], knight_at: Vector2) -> void:
 		var strength: float = style.heavy_kick if heavy else style.light_kick
 		_kick = Vector2(-facing*strength,-strength*0.3)
 		_kick_age = 0.0
+		_kick_duration = CAMERA_LIFETIME
 	_seen.assign(effects)
 	_present_camera()
 	queue_redraw()
 
 func _present_camera() -> void:
 	if not is_instance_valid(camera): return
-	var progress: float = clampf(_kick_age/CAMERA_LIFETIME,0,1)
+	var progress: float = clampf(_kick_age/_kick_duration,0,1)
 	camera.offset = _kick * cos(progress*PI*2.5) * pow(1-progress,2)
 	if progress >= 1: camera.offset = Vector2.ZERO
 

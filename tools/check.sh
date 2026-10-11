@@ -64,6 +64,7 @@ run_check night_patterns --script res://tests/test_night_patterns_scene.gd
 run_check invasion_march --script res://tests/test_invasion_march_scene.gd
 run_check settlement_growth --script res://tests/test_settlement_growth_scene.gd
 run_check mount --script res://tests/test_mount_scene.gd
+run_check enemy_visual --script res://tests/test_enemy_visual_scene.gd
 run_check feedback --script res://tests/test_feedback_scene.gd
 run_check spirit_hit --script res://tests/test_spirit_hit_scene.gd
 run_check guide --script res://tests/test_guide_scene.gd

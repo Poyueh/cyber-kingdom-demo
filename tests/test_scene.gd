@@ -160,7 +160,7 @@ func run_scene() -> void:
 	scene.knight.position = Vector2(620, 430)
 	scene.sentinel.position = Vector2(655, 430)
 	await frames(3)
-	check(scene.sentinel.visual.animation == &"windup" and scene.session.hero.hp == 100, "sentinel raises cleaver before causing damage")
+	check(scene.sentinel.visual.animation == &"windup" and scene.session.hero.hp == 100, "devourer braces its claws before causing damage")
 
 	scene.set_physics_process(false)
 	await physics_frame
