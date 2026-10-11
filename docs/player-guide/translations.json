@@ -1811,8 +1811,28 @@
     "zh_CN": "实际游戏：傍晚的方向警讯短暂出现，再淡出。",
     "en": "In-game capture: the directional dusk warning appears briefly, then fades."
   },
-  "適用 v0.0.27：新增七地夜襲攻勢與傍晚方向警訊，修正音樂片段交接快取。請建立新旅程體驗新攻勢；舊紀錄可續玩並保留原規則。": {
-    "zh_CN": "适用 v0.0.27：新增七地夜袭攻势与傍晚方向警讯，修正音乐片段交接缓存。请建立新旅程体验新攻势；旧记录可续玩并保留原规则。",
-    "en": "For v0.0.27: new night-assault tactics and directional dusk warnings across all worlds, plus a music-cache handoff fix. Start a new journey for the tactics; existing saves remain playable with their original rules."
+  "讓每一筆建設，都看得見成長。": {
+    "zh_CN": "让每一笔建设，都看得见成长。",
+    "en": "See what your investment makes possible."
+  },
+  "營火升到二、三級時，會短暫顯示聚落稱號與新設施用途，光脈從營火通往新工坊。提示會淡出；夜襲警訊與戰鬥優先。": {
+    "zh_CN": "营火升到二、三级时，会短暂显示聚落称号与新设施用途，光脉从营火通往新工坊。提示会淡出；夜袭警讯与战斗优先。",
+    "en": "Upgrading the camp to its second or third stage briefly reveals a settlement title and newly available facilities. Crystal light leads to the new workshop. The caption fades and yields to raid warnings or nearby enemies."
+  },
+  "想回顧時，打開暫停選單的探索地圖，再點右上營火圖示。三枚印記分別對應工程／獵弓、農具、槍盾與堡壘改建資格；點選可看用途，點地圖圖示返回荒野。": {
+    "zh_CN": "想回顾时，打开暂停菜单的探索地图，再点右上营火图示。三枚印记分别对应工程／猎弓、农具、枪盾与堡垒改建资格；点选可看用途，点地图图示返回荒野。",
+    "en": "To review your progress, open the exploration map from Pause and select the campfire icon at the top right. Its three seals cover hammer and bow stalls, farming, and spear kits plus fortress upgrades. Select a seal to learn more, or the map icon to return to the frontier."
+  },
+  "解鎖不會免費送器具、士兵或城牆。你仍要投入龍晶，讓居民取用工具、完成施工；各星球建設分開記錄，舊旅程也能查看。": {
+    "zh_CN": "解锁不会免费送器具、士兵或城墙。你仍要投入龙晶，让居民取用工具、完成施工；各星球建设分开记录，旧旅程也能查看。",
+    "en": "Unlocks do not grant free tools, soldiers or walls. Invest crystals so residents can take equipment and finish construction. Each world has its own progress; existing journeys can use this page too."
+  },
+  "實際遊戲：在聚落頁回顧已開放的設施與下一個建設階段。": {
+    "zh_CN": "实际游戏：在聚落页回顾已开放的设施与下一个建设阶段。",
+    "en": "In-game settlement page: review available facilities and the next stage."
+  },
+  "適用 v0.0.28：新增聚落成長演出及探索地圖的建設回顧頁。既有旅程可使用，讀檔不重播；七地夜襲與機關規則沿用。": {
+    "zh_CN": "适用 v0.0.28：新增聚落成长演出及探索地图的建设回顾页。既有旅程可使用，读档不重播；七地夜袭与机关规则沿用。",
+    "en": "For v0.0.28: settlement growth cues and a settlement review page in the exploration map. Existing journeys can use them without replaying old ceremonies. Seven-world tactics and puzzle rules remain unchanged."
   }
 }
