@@ -1,6 +1,6 @@
 {
   "version": "0.0.27",
-  "published": false,
+  "published": true,
   "source_commit": "fe96ceaabd3c849c9188aacd3c0499ee0ffebcd6",
   "source_tree": "a712941c0e3edeccff3e098d49efd8233c344d22",
   "full_check": true,
@@ -52,5 +52,47 @@
   ],
   "packaged_native_smoke": true,
   "packaged_native_assertions": 59,
-  "check_log_sha256": "0ef479314b7e4ee568a9c5be70a7aa1009b9764b0bca983224d66498662542a0"
+  "check_log_sha256": "0ef479314b7e4ee568a9c5be70a7aa1009b9764b0bca983224d66498662542a0",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.27",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "a54f2ea57b5342a5dab90073deb2c62753bfd73f699b540a7ca0423971ae29cc",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.27"
+    },
+    {
+      "name": "guide.html",
+      "size": 4744394,
+      "sha256": "558ffa007128dd58bd1d4e4bfe18430f32b1ee29c16690e0e028cb47c0a94ecf",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.27"
+    },
+    {
+      "name": "index.pck",
+      "size": 59330764,
+      "sha256": "941f7722abe73312033c151e712d2f4a5368da714fb15f90ad6fe5ce4660cd7d",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.27"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.27",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38097746629,
+    "headSha": "a5e01781fcf938783630d657b55628d2023d97cc",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38097746629"
+  },
+  "browser_verification": {
+    "version": "0.0.27",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.27",
+    "prologue": true,
+    "main_menu": true,
+    "embedded_guide_night_tactics": true,
+    "guide_heading": "看懂魔潮，再決定站在哪一側。",
+    "guide_version_text": "適用 v0.0.27：新增七地夜襲攻勢與傍晚方向警訊，修正音樂片段交接快取。請建立新旅程體驗新攻勢；舊紀錄可續玩並保留原規則。",
+    "console_errors": [],
+    "returned_to_main_menu": true
+  }
 }
