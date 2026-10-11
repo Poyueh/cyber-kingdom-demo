@@ -22,7 +22,7 @@ func run_scene() -> void:
  stage.elapsed=4.01;await frames(3)
  check(game.sim.frontier.city_level==1 and game.sim.can_wield_sword(),"performance lights camp and equips the knight")
  stage.elapsed=10.01;await frames(3)
- check(game.sim.clock.is_night and not game.sim.raiders.is_empty(),"night shot runs actual approaching enemies")
+ check(cinema._worlds.visible and game.sim.raiders.is_empty(),"mystery montage reveals world art without unrelated combat")
  stage.elapsed=18.01;await frames(3)
  check(game.sim.mission.dragon_summoned,"sealed gates summon the actual dragon in the final shot")
  stage.elapsed=25.01;await frames(4)

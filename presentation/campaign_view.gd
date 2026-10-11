@@ -37,6 +37,7 @@ const Ambient=preload("res://presentation/ambient_motion.gd")
 @export var chest_open: Texture2D=preload("res://art/ambient/v001/chest-open.png")
 var keyboard_hint:=true
 var interactions_visible:=true
+var cinematic: bool=false
 var _slot_key:=""
 var _slot_paid:=0
 var _slot_changed:=0.0
@@ -226,7 +227,7 @@ func _draw_structures() -> void:
 		var defense: Dictionary=world.walls[id]
 		if defense.level>0:
 			_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color(0.45,0.5,0.5) if defense.pending else Color.WHITE if defense.hp>0 else Color(0.4,0.35,0.38))
-			if not _sim.life.enabled:
+			if not _sim.life.enabled and not cinematic:
 				draw_rect(Rect2(wall_x-28,316,56,4),Color("263940"))
 				draw_rect(Rect2(wall_x-28,316,56.0*defense.hp/_sim.world.wall_max_hp(defense.level),4),Color("8fdbbe"))
 
@@ -527,6 +528,7 @@ func _bubble_style() -> StyleBoxFlat:
 	return style
 
 func _icon(key: String, at: Vector2, size: float=24, tint:=Color.WHITE) -> void:
+	if cinematic:return
 	size*=1.3
 	tint.a*=_world_alpha
 	draw_texture_rect(Icons.get_icon(key),Rect2(at-Vector2.ONE*size*0.5,Vector2.ONE*size),false,tint)
@@ -560,6 +562,7 @@ func _raider(enemy: Dictionary) -> void:
 	if not enemy.fighter.is_alive():return
 	var hit:=hit_feedback.enemy_pose(enemy)
 	_raider_motion.draw(self,enemy,hit)
+	if cinematic:return
 	draw_rect(Rect2(enemy.x-22,380,44,4),Color("482a3a"))
 	draw_rect(Rect2(enemy.x-22,380,44.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,4),Color("df8491"))
 	if enemy.windup>0:_icon("sword",Vector2(enemy.x,368),20,Color("ffd087"))

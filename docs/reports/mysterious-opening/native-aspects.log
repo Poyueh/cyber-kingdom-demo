@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: replay fits (1024, 768) / zh_TW
+PASS: primary action fits (1024, 768) / zh_TW
+PASS: replay fits (1024, 768) / zh_CN
+PASS: primary action fits (1024, 768) / zh_CN
+PASS: replay fits (1024, 768) / en
+PASS: primary action fits (1024, 768) / en
+PASS: replay fits (1170, 540) / zh_TW
+PASS: primary action fits (1170, 540) / zh_TW
+PASS: replay fits (1170, 540) / zh_CN
+PASS: primary action fits (1170, 540) / zh_CN
+PASS: replay fits (1170, 540) / en
+PASS: primary action fits (1170, 540) / en
+PASS: Enter skips and returns to the menu
+PASS: Enter skip does not begin a journey
+Title aspect assertions: 14; failures: 0
