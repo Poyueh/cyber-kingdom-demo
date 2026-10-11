@@ -1,0 +1,13 @@
+{
+  "source_tree": "a712941c0e3edeccff3e098d49efd8233c344d22",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "entry": "res://scenes/start_menu.tscn",
+  "configuration": "committed settings, release export, prototype content",
+  "macOS_signing": "ad-hoc; not notarized",
+  "Windows_signing": "unsigned",
+  "checksums_sha256": {
+    "Cyber-Kingdom-macOS.zip": "a379eedac6620bd67678974254f5ed650333b43f707feb4c802cc97475fd857c",
+    "Cyber-Kingdom-Windows.zip": "8d1cd292a4344b4549e3fdadd90fa1fe2f30bd4e227849aa2a161d4088e17d39"
+  },
+  "platform_playtest": "must be recorded separately; export alone is not a pass"
+}
