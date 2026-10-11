@@ -1,0 +1,21 @@
+{
+  "previous_turn": "progress: v0.0.26 published and verified",
+  "feature": "Night assault tactics",
+  "red_behavior_failures": 5,
+  "native_scene_assertions": 12,
+  "native_script_errors": false,
+  "legacy_source_release": "v0.0.26",
+  "legacy_actual_pack_resume": true,
+  "save_schema": 19,
+  "legacy_save_sha256": "6dd03eee7d0a435130949650438304ac6208b8557e414e7938bbaa4278e45daa",
+  "music_cache_red_failures": 2,
+  "music_cache_green_assertions": 3,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "Warning and tactics comprehensibility require human playtesting",
+    "No retention or commercial outcome evidence"
+  ],
+  "full_check": true,
+  "core_assertions": 3684,
+  "full_check_sha256": "0ef479314b7e4ee568a9c5be70a7aa1009b9764b0bca983224d66498662542a0"
+}

@@ -50,13 +50,13 @@ func _stream(name: String) -> AudioStream:
 			stream = stream.duplicate()
 			stream.loop = name in LOOPS
 		_cache[name] = stream
-	_forget_unused()
+	_forget_unused(name)
 	return _cache[name]
 
 ## Only what is on a player right now must stay loaded.
-func _forget_unused() -> void:
+func _forget_unused(reserved: String = "") -> void:
 	if _cache.size() <= CACHE_LIMIT: return
-	var live: Array = [current, layer]
+	var live: Array = [current, layer, reserved]
 	for name in _cache.keys():
 		if _cache.size() <= CACHE_LIMIT: return
 		if live.has(name): continue
@@ -76,6 +76,7 @@ func observe(seconds: float, sim, x: float, paused: bool) -> void:
 	_advance_track(seconds, wanted.track)
 	_advance_layer(seconds, wanted.layer)
 	if not wanted.sting.is_empty(): _play_sting(wanted.sting)
+	_forget_unused() # New streams now own their player; old entries can be released.
 
 func _duck(paused: bool) -> void:
 	var bus := AudioServer.get_bus_index("Music")
