@@ -1,0 +1,62 @@
+{
+  "version": "0.0.29",
+  "published": false,
+  "source_commit": "28b960c2cc12f632ac1f98a95296fa9f263cc079",
+  "source_tree": "36ebaf652d8cb3afab862410b239ccbcabaed17e",
+  "full_check": true,
+  "core_assertions": 3832,
+  "native_scene_assertions": 29,
+  "save_schema": 19,
+  "actual_previous_release_save_continuation": true,
+  "archive_integrity_verified": true,
+  "mac_adhoc_signature_verified": true,
+  "android_version_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.29.zip",
+      "size": 118550667,
+      "sha256": "195fa28a588003f6d0e2daaf3bd89b7384e29a4f8565f946f012124154adf051"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.29.zip",
+      "size": 96128620,
+      "sha256": "d1768c1de90c7ca7895c5324b2b5cbce73249f3329e049be77f367ca62acc118"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.29.zip",
+      "size": 71947905,
+      "sha256": "1033096e9b6bbf4bb39541f9c5ddfb27eac4448cbb241cbc8add3a3fa7092e44"
+    },
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.29-debug.apk",
+      "size": 87256875,
+      "sha256": "ba0c85712679636081ab245de7a9b770e64d4ba53a5cabe1db163b8c5b27d9bd"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.29-Xcode.zip",
+      "size": 170926489,
+      "sha256": "38a6b5478d8734f4829c1fc2b0850de2d24f608f6ee03df68c2ae66c371f4e72"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.29.html",
+      "size": 4901700,
+      "sha256": "52f40de35585f72d7e3bdf5333f33d3f3066a106acdebd23f0eaa2fb00ee1373"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Human comprehension, retention and commercial outcomes unverified"
+  ],
+  "packaged_native_smoke": true,
+  "packaged_native_assertions": 29,
+  "check_log_sha256": "118917b18d7b8224ab655e726272c121b85c1582a76876889ec30c5c431b3298",
+  "desktop_import_attempts": 2,
+  "desktop_first_import": {
+    "outcome": "Godot crashed with signal 5 after asset import during concurrent platform exports",
+    "log_sha256": "84ec49ed21fab3547a0c8175ae964992924a5809ec709e36b5c12321f011e267",
+    "recovery": "Same committed source exported successfully alone, then actual packaged PCK passed 29 assertions",
+    "root_cause": "Not established; no game code change or engine workaround applied"
+  }
+}

@@ -48,12 +48,13 @@ func show_records() -> void:
 		rows.append(row)
 	view.show_records(rows)
 
-func start_new_game() -> void:
+func start_new_game(pace: int=0) -> void:
 	if _launching:return
+	if preload("res://data/journey_paces.tres").find(pace)==null:return
 	audio.click("ui_confirm")
 	var path: String=catalog.allocate()
 	if path.is_empty():view.show_error(catalog.last_error);return
-	_launch(path,int(randi()%1000000000))
+	_launch(path,int(randi()%1000000000),pace)
 
 func select_record(index: int) -> void:
 	if _launching or index<0 or index>=rows.size():return
@@ -68,11 +69,11 @@ func select_record(index: int) -> void:
 		path=catalog.allocate()
 		if path.is_empty():view.show_error(catalog.last_error);return
 		var fork=Progress.new(Store.new(path));fork.open()
-		if not fork.save(restored.session,restored.config,restored.body):
+		if not fork.save(restored.session,restored.config,restored.body,restored.get("journey")):
 			view.show_error("無法另存檢查點，原紀錄未變更。請稍後重試。 ");return
 	_launch(path)
 
-func _launch(path: String, seed_value: int=-1) -> void:
+func _launch(path: String, seed_value: int=-1, pace: int=0) -> void:
 	_launching=true
-	get_tree().set_meta("campaign_launch",{"path":path,"seed":seed_value})
+	get_tree().set_meta("campaign_launch",{"path":path,"seed":seed_value,"pace":pace})
 	get_tree().call_deferred("change_scene_to_file","res://scenes/frontier.tscn")

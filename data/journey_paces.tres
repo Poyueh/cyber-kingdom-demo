@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=5 format=3]
+[ext_resource type="Script" path="res://data/journey_paces.gd" id="1"]
+[ext_resource type="Resource" path="res://data/journey_paces/expedition.tres" id="2"]
+[ext_resource type="Resource" path="res://data/journey_paces/settler.tres" id="3"]
+[ext_resource type="Resource" path="res://data/journey_paces/siege.tres" id="4"]
+[resource]
+script = ExtResource("1")
+options = Array[Resource]([ExtResource("2"), ExtResource("3"), ExtResource("4")])

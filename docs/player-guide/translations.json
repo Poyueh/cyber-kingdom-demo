@@ -1834,5 +1834,29 @@
   "適用 v0.0.28：新增聚落成長演出及探索地圖的建設回顧頁。既有旅程可使用，讀檔不重播；七地夜襲與機關規則沿用。": {
     "zh_CN": "适用 v0.0.28：新增聚落成长演出及探索地图的建设回顾页。既有旅程可使用，读档不重播；七地夜袭与机关规则沿用。",
     "en": "For v0.0.28: settlement growth cues and a settlement review page in the exploration map. Existing journeys can use them without replaying old ceremonies. Seven-world tactics and puzzle rules remain unchanged."
+  },
+  "為旅程選擇你的節奏。": {
+    "zh_CN": "为旅程选择你的节奏。",
+    "en": "Choose the pace of your journey."
+  },
+  "點新遊戲後，可先選遠征、拓荒或圍城，再按開始旅程。返回不會建立紀錄。": {
+    "zh_CN": "点新游戏后，可先选远征、拓荒或围城，再按开始旅程。返回不会建立记录。",
+    "en": "Select New Game, choose Expedition, Settler or Siege, then Begin journey. Going back creates no record."
+  },
+  "遠征沿用原本設定，適合第一次遊玩。拓荒白晝較長、夜襲增援較少，留時間探索與建造；圍城白晝較短，增援更快增長，考驗回防與分配。": {
+    "zh_CN": "远征沿用原本设置，适合第一次游玩。拓荒白昼较长、夜袭增援较少，留时间探索与建造；围城白昼较短，增援更快增长，考验回防与分配。",
+    "en": "Expedition retains the original balance and is recommended first. Settler offers longer days and fewer reinforcements for exploration and building. Siege shortens preparation and brings faster-growing waves."
+  },
+  "三種都有七星球、機關、坐騎與完整收藏。選擇會隨紀錄保存，跨星或讀檔不改變；要換節奏請另開旅程。舊紀錄沿用原規則，清單會標示原有旅程。": {
+    "zh_CN": "三种都有七星球、机关、坐骑与完整收藏。选择会随记录保存，跨星或读档不改变；要换节奏请另开旅程。旧记录沿用原规则，列表会标示原有旅程。",
+    "en": "Every pace includes seven worlds, ruins, the mount and all collectibles. Your choice stays with the save through travel and loading. Start a new journey to change it. Existing saves keep their original rules."
+  },
+  "實際遊戲：選擇節奏後才建立新旅程。": {
+    "zh_CN": "实际游戏：选择节奏后才建立新旅程。",
+    "en": "Actual game: choose a pace before creating a journey."
+  },
+  "適用 v0.0.29：新增三種新旅程節奏，修正手動檢查點另存遺失星球進度。舊紀錄維持原規則，七地探索與建設回顧皆可使用。": {
+    "zh_CN": "适用 v0.0.29：新增三种新旅程节奏，修正手动检查点另存丢失星球进度。旧记录维持原规则，七地探索与建设回顾皆可使用。",
+    "en": "For v0.0.29: three new-journey paces and complete planetary progress when forking a manual checkpoint. Existing saves keep their rules; seven-world exploration and settlement review remain available."
   }
 }

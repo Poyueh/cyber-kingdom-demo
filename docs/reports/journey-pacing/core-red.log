@@ -1,0 +1,8 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: explorer can finish a standard-length daylight outing before dark expected true, got false
+FAIL: explorer faces two enemies on the first night expected 2, got 3
+FAIL: explorer still gains nightly pressure, more gradually expected 6, got 11
+FAIL: chosen pace follows all seven planets expected true, got false
+FAIL: loaded journey remembers its chosen pace expected 1, got -1
+Journey pacing assertions: 6; failures: 5
