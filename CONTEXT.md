@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+整合企劃入口：`docs/game-spec/content.json`（公開 `/spec/`），現行玩法以該文件與實際程式交叉核對。新增功能須同輪審訂、檢查並隨 Web 發佈，詳見 `docs/game-spec/README.md`。歷史設計稿保留脈絡，不代表全部仍適用。
+
 2026-10-11 v0.0.38：六職業獨立工作節拍、靠近短招呼、實際付款／完成服務反應與近敵警戒，data/attendant_behavior.tres 控制時長及距離。只新增有上限的呈現記憶，不增加勞力、物品或任務，快照仍 v20，舊紀錄直接可用。見 docs/design/attendant-behaviors.md。
 
 2026-10-11 v0.0.37：每星新增一處 1–2 隻當地異獸晶巢與另一側安靜發現，選做／一次性／有限追逐，不增加謎題、不阻止黎明或航行。七地數值在 data/trails；快照 v20 保存攻擊 tick，v19 舊旅程升級但不追加事件。六種職業駐點人物與建築採同一原生像素網格。見 docs/design/trail-encounters.md。

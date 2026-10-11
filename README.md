@@ -7,9 +7,10 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.33 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.33)
+- [v0.0.38 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.38)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
+- [遊戲企劃規格書](https://poyueh.github.io/cyber-kingdom-demo/spec/)（隨功能同步；[維護流程](docs/game-spec/README.md)）
 
 此 demo 倉庫是目前的玩家下載入口；原 cyber-kingdom 倉庫保留早期開發歷史。
 

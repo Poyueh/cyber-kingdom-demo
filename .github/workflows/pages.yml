@@ -7,7 +7,11 @@ on:
       tag:
         description: Existing release tag to deploy
         required: true
-        default: v0.0.1
+        default: v0.0.38
+      refresh_spec:
+        description: Refresh reviewed specification from main (must match release version)
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -38,6 +42,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout deployment source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Download the released web build
         env:
           GH_TOKEN: ${{ github.token }}
@@ -69,6 +77,14 @@ jobs:
                   raise SystemExit('Missing web runtime: '+name)
           (destination/'.nojekyll').touch()
           PY
+      - name: Include matching game specification
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+          REFRESH_SPEC: ${{ inputs.refresh_spec }}
+        run: |
+          args=()
+          if [ "$REFRESH_SPEC" = 'true' ]; then args+=(--refresh); fi
+          python3 tools/build_game_spec.py --publish-site _site --tag "$RELEASE_TAG" --source-ref "$GITHUB_SHA" "${args[@]}"
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload site
