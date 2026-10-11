@@ -25,7 +25,7 @@ func observe() -> void:
   if not root.sim.planet.core_claimed:root._arrival_banner.show_notice(tr("planet.dragon_down"),tr("planet.claim_info"))
  if not root.sim.planet.launch_requested:return
  root.sim.planet.launch_requested=false
- if root.sim.raiders.is_empty() and root.sim.planet.rocket_ready:
+ if root.sim.invasion_empty() and root.sim.planet.rocket_ready:
   open_chart(false)
 func close() -> void:
  map.hide();root.paused=_was_paused;root.controls.release_all();root.hud.cancel_touch_gestures()

@@ -37,6 +37,7 @@ run_check growth --script res://tests/test_growth_scene.gd
 run_check ecology --script res://tests/test_ecology_scene.gd
 run_check exploration --script res://tests/test_exploration_scene.gd
 run_check ruins --script res://tests/test_ruins_scene.gd
+run_check trail_encounters --script res://tests/test_trail_scene.gd
 run_check planet_ruins --script res://tests/test_planet_ruins_scene.gd
 run_check voyage_progress --script res://tests/test_voyage_progress_scene.gd
 run_check dragon_opening --script res://tests/test_dragon_opening_scene.gd

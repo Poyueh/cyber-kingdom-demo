@@ -40,6 +40,6 @@ func _layer(sim) -> String:
 	if _loop(sim, sim.world.sites.hall) != "night_watch":
 		return ""
 	for raider in sim.raiders:
-		if raider.fighter.is_alive():
+		if raider.fighter.is_alive() and not raider.has("trail_slot"):
 			return "night_raid"
 	return ""

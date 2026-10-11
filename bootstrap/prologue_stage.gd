@@ -17,6 +17,7 @@ func _ready() -> void:
  game._map_seed=416;game._seed_initialized=true
  game.tuning=game.tuning.duplicate();game.tuning.larger_desktop_window=false
  add_child(game)
+ _isolate_cast()
  game.set_physics_process(false);game.controls.set_process_unhandled_key_input(false);game.controls.set_process_unhandled_input(false)
  game.hud.hide();game.hud.set_process(false);game.hud.cancel_touch_gestures()
  game.hud.drag_controls.enabled=false
@@ -34,6 +35,16 @@ func _ready() -> void:
  game.knight.refresh_visual(0);game._sync_knight_equipment()
  game.view.present(game.sim,game.knight.position.x)
  game._water.present(game.sim);game._lantern.present(game.sim,game.knight);game._sunbeams.present(game.sim)
+func _isolate_cast() -> void:
+ # The directed opening has its own cast; optional road encounters belong to play.
+ var config: Dictionary=game._campaign_config.duplicate(true)
+ for key: String in config.keys():
+  if key.begins_with("trail_"):config.erase(key)
+ game.sim=preload("res://application/campaign_session.gd").new(config,game.sim.hero.stats)
+ game._campaign_config=config;game.journey=null
+ game.knight.configure(game.sim.hero,game.knight_tuning)
+ game.sword_feedback.reset(game.sim.effects)
+
 func _configure_sound() -> void:
  if not sound_levels.is_empty():
   game.audio.music_volume=float(sound_levels.music)

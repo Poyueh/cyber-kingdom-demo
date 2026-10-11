@@ -1,5 +1,5 @@
 extends RefCounted
-## Strip v16 additions when constructing genuine older checkpoint shapes.
+## Remove later fields when constructing genuinely older checkpoint shapes.
 static func before_mount(packet: Dictionary) -> void:
  before_module_catalog(packet)
  packet.erase("mount")
@@ -16,6 +16,7 @@ static func before_module_catalog(packet: Dictionary) -> void:
    if key.begins_with("module_"+id+"_"):packet.config.erase(key)
 
 static func before_night_patterns(packet: Dictionary) -> void:
+ before_trails(packet)
  for key: String in packet.config.keys():
   if key.begins_with("night_pattern_"):packet.config.erase(key)
 
@@ -23,3 +24,6 @@ static func before_ruin_mechanisms(packet: Dictionary) -> void:
  before_night_patterns(packet)
  for key: String in packet.config.keys():
   if key.begins_with("mechanism_"):packet.config.erase(key)
+
+static func before_trails(packet: Dictionary) -> void:
+ packet.erase("trails")

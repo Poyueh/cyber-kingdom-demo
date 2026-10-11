@@ -9,6 +9,9 @@ static func read(sim: RefCounted, knight_x: float) -> Dictionary:
   var known: bool=region.discovered
   regions.append({"x":float(region.x),"width":float(region.width),"kind":region.kind if known else "unknown","title":(LEVEL_TITLES[int(region.level_role)] if region.has("level_role") else TITLES.get(region.kind,"未探索")) if known else "未探索"})
  regions.sort_custom(func(a: Dictionary,b: Dictionary)->bool:return a.x<b.x)
+ for index: int in range(sim.trails.sites.size()):
+  var site: RefCounted=sim.trails.sites[index]
+  if site.revealed and not site.claimed:markers.append(_marker("lock" if not sim.trails.available(index) else "chest",site.x,"trail.nest.%d"%sim.planet.id if site.guarded else "trail.find.%d"%sim.planet.id))
  for node: RefCounted in sim.frontier.nodes:
   if node.kind=="cache" and not node.collected and sim.frontier.regions[node.region].discovered:
    markers.append(_marker("chest",node.x,"寶箱"))

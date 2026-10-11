@@ -103,7 +103,7 @@ func test_v17_partial_ruins_keep_original_rules_and_can_finish(t: SceneTree) -> 
   if key.begins_with("mechanism_") or key.begins_with("night_pattern_"):rules.erase(key)
  var sim: RefCounted=Campaign.new(rules);var site: RefCounted=sim.trials.sites[0]
  sim.trials.activate(site.id,site.order[0],0)
- var codec: RefCounted=Codec.new();var saved: Dictionary=codec.capture(sim,rules,BODY);saved.version=17
+ var codec: RefCounted=Codec.new();var saved: Dictionary=codec.capture(sim,rules,BODY);saved.version=17;preload("res://tests/legacy_checkpoint.gd").before_trails(saved)
  var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(saved)))
  t.truth(not loaded.is_empty(),"actual v17 shape remains playable")
  if loaded.is_empty():return
@@ -112,7 +112,7 @@ func test_v17_partial_ruins_keep_original_rules_and_can_finish(t: SceneTree) -> 
  t.equal(old.progress,1,"existing partial progress is retained")
  for index: int in [1,2]:loaded.session.trials.activate(old.id,old.order[index],0)
  t.truth(loaded.session.trials.unlocked(old.id),"old sequence can still finish")
- t.equal(codec.capture(loaded.session,loaded.config,BODY).version,19,"old game resaves in current format")
+ t.equal(codec.capture(loaded.session,loaded.config,BODY).version,Codec.VERSION,"old game resaves in current format")
  var unknown: Dictionary=saved.duplicate(true);unknown.version=999
  t.truth(codec.restore(unknown).is_empty(),"unknown future saves remain protected")
 func test_every_world_preserves_partial_progress_and_solutions(t: SceneTree) -> void:

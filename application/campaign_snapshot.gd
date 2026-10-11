@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=19
+const VERSION:=20
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -75,7 +75,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area"]),
-		"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"trails":sim.trails.capture(),"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -126,13 +126,14 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19]:keys.append("modules")
-	if data.get("version",0) in [14,15,16,17,18,19]:keys.append("merchant")
-	if data.get("version",0) in [15,16,17,18,19]:keys.append("trials")
-	if data.get("version",0) in [16,17,18,19]:keys.append("mount")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17,18,19,20]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17,18,19,20]:keys.append("trials")
+	if data.get("version",0) in [16,17,18,19,20]:keys.append("mount")
+	if data.get("version",0)==20:keys.append("trails")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -182,6 +183,10 @@ func restore(raw) -> Dictionary:
 	if data.version==18:
 		if not data.config is Dictionary or data.config.has("night_pattern_version"):return _invalid()
 		data.version=19
+	if data.version==19:
+		if not data.config is Dictionary or data.config.has("trail_version"):return _invalid()
+		data["trails"]={"sites":[],"units":[]}
+		data.version=20
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -198,6 +203,7 @@ func restore(raw) -> Dictionary:
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
 	if not _restore_spirit(sim,data):return _invalid()
+	if not sim.trails.restore(data.trails,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)):return _invalid()
 	if not sim.mount_quest.restore(data.mount,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND),sim.clock.day):return _invalid()
 	if not sim.modules.restore(data.modules,sim.workforce.elapsed):return _invalid()
 	if not sim.trials.restore(data.trials,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)):return _invalid()
@@ -223,6 +229,7 @@ func restore(raw) -> Dictionary:
 	for i in range(data.nodes.size()):
 		if not _copy_fields(sim.frontier.nodes[i],data.nodes[i]):return _invalid()
 	if not data.raiders is Array or data.raiders.size()>100:return _invalid()
+	sim.raiders.clear() # New-world creation populates wildlife; restore uses only saved creatures.
 	for saved in data.raiders:
 		if not saved is Dictionary or not saved.get("state") is Dictionary:return _invalid()
 		var enemy=sim._spawn_raider()
@@ -231,6 +238,7 @@ func restore(raw) -> Dictionary:
 		enemy=saved.state.duplicate(true)
 		enemy.fighter=actor
 		sim.raiders.append(enemy)
+	if not sim.trails.valid_creatures(sim.raiders):return _invalid()
 	if not data.hero_hits is Array:return _invalid()
 	for index in data.hero_hits:
 		if not index is int or index<0 or index>=sim.raiders.size():return _invalid()

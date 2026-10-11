@@ -2066,5 +2066,73 @@
   " 新旅程每顆星球左右各一處遺藏，共兩個寶箱，與主要機關分區；直接開啟後，龍晶會湧出並吸收入袋。": {
     "zh_CN": " 新旅程每颗星球左右各一处遗藏，共两个宝箱，与主要机关分区；直接开启后，龙晶会涌出并吸收入袋。",
     "en": " Each world in a new journey has one cache on each side, two chests in total, separate from the main puzzle. Open a chest to release its crystals into your pouch."
+  },
+  "留白裡，偶爾值得停下。": {
+    "zh_CN": "留白里，偶尔值得停下。",
+    "en": "A reason to pause along the open road."
+  },
+  "v0.0.37 新旅程每星只增加兩處路邊節奏點：一側的晶巢由一至兩隻當地異獸守護，另一側是一處安靜發現。其餘荒野保留空間，不追加謎題。": {
+    "zh_CN": "v0.0.37 新旅程每星只增加两处路边节奏点：一侧的晶巢由一至两只当地异兽守护，另一侧是一处安静发现。其余荒野保留空间，不追加谜题。",
+    "en": "New v0.0.37 journeys add just two roadside moments per planet: a crystal nest guarded by one or two local beasts on one route, and a peaceful find on the other. The remaining wilderness stays open, with no additional puzzles."
+  },
+  "觀察蓄力與地面預警，離開落點，利用收招反擊。退離領地便能脫戰，異獸不追入聚落。清巢獎勵與安靜發現都只領一次；靠近按 E／觸控下滑收取。選做遭遇不阻擋黎明、龍核或啟航。": {
+    "zh_CN": "观察蓄力与地面预警，离开落点，利用收招反击。退离领地便能脱战，异兽不追入聚落。清巢奖励与安静发现都只领一次；靠近按 E／触控下滑收取。选做遭遇不阻挡黎明、龙核或启航。",
+    "en": "Read the windup and ground warning, move out of the impact, then counter during recovery. Retreat beyond the territory to disengage; the beasts do not pursue settlers. Nest rewards and peaceful finds can each be claimed once with E or a downward swipe. Optional encounters never delay dawn, cores, or travel."
+  },
+  "實際遊戲：林地晶巢與棘角異獸。": {
+    "zh_CN": "实际游戏：林地晶巢与棘角异兽。",
+    "en": "In-game view: a woodland crystal nest and thorn beasts."
+  },
+  "微光林地：棘角雙獸短撲，另一側尋找樹根藏晶。": {
+    "zh_CN": "微光林地：棘角双兽短扑，另一侧寻找树根藏晶。",
+    "en": "Glimmerwood: two thorn beasts make short pounces; find crystals among roots on the other route."
+  },
+  "銹沙盆地：厚殼獸長距離突進，沙埋行囊留下補給。": {
+    "zh_CN": "锈沙盆地：厚壳兽长距离突进，沙埋行囊留下补给。",
+    "en": "Rustsand: an armored beast makes long rushes; a half-buried pack holds supplies."
+  },
+  "鏡霜海岸：晶鬃獸慢蓄力後廣掃，冰封補給可直接取回。": {
+    "zh_CN": "镜霜海岸：晶鬃兽慢蓄力后广扫，冰封补给可直接取回。",
+    "en": "Mirrorfrost: a crystal-maned beast winds up slowly for a wide sweep; recover frozen supplies."
+  },
+  "孢潮沼澤：孢囊雙獸錯峰短衝，菌根旁留有旅人遺物。": {
+    "zh_CN": "孢潮沼泽：孢囊双兽错峰短冲，菌根旁留有旅人遗物。",
+    "en": "Sporetide: two spore beasts stagger their short rushes; a traveler left belongings by the fungal roots."
+  },
+  "熔脊裂谷：爐甲獸重掃後空檔較長，冷卻匣內藏著龍晶。": {
+    "zh_CN": "熔脊裂谷：炉甲兽重扫后空档较长，冷却匣内藏着龙晶。",
+    "en": "Moltenridge: a furnace beast leaves a long opening after its heavy sweep; a cooling chest holds crystals."
+  },
+  "雷纜廢都：長肢雙獸快速交錯衝擊，廢棄電匣仍有收穫。": {
+    "zh_CN": "雷缆废都：长肢双兽快速交错冲击，废弃电匣仍有收获。",
+    "en": "Stormwire: two long-limbed beasts rush in quick succession; search an abandoned power box."
+  },
+  "黯潮墓環：空顎獸長蓄力後延遲突進，龍骨匣保存旅人的晶體。": {
+    "zh_CN": "黯潮墓环：空颚兽长蓄力后延迟突进，龙骨匣保存旅人的晶体。",
+    "en": "Darktide: a hollow-jawed beast delays its rush after a long warning; a bone casket preserves a traveler's crystals."
+  },
+  "用造型認出，誰在守著這座聚落。": {
+    "zh_CN": "用造型认出，谁在守着这座聚落。",
+    "en": "Recognize the people who keep your settlement running."
+  },
+  "營火守望者披著厚斗篷；機械師戴護目鏡、背著工具；育種師戴寬帽、抱著幼苗；獵務官披獸皮；晶工佩著發光晶具；軍需官穿厚甲、守著器具架。六種駐點人物有獨立工作姿勢，附近有敵人時躲避。": {
+    "zh_CN": "营火守望者披着厚斗篷；机械师戴护目镜、背着工具；育种师戴宽帽、抱着幼苗；猎务官披兽皮；晶工佩着发光晶具；军需官穿厚甲、守着器具架。六种驻点人物有独立工作姿势，附近有敌人时躲避。",
+    "en": "The keeper wears a heavy cloak; the mechanic carries tools and goggles; the seedkeeper wears a broad hat and tends seedlings; the huntmaster wears pelts; the artificer carries glowing crystal tools; the quartermaster wears heavy armor by the supply rack. Each has distinct work poses and takes shelter when enemies approach."
+  },
+  "工坊以齒輪煙囪辨認，農具站是圓頂溫室，獵具站有獸角棚架，兵器站有護甲器具架，晶工站以龍晶環為中心，拓荒站則有獨立瞭望輪廓。人物演出不增加免費勞力，生產與招募仍依原本規則。": {
+    "zh_CN": "工坊以齿轮烟囱辨认，农具站是圆顶温室，猎具站有兽角棚架，兵器站有护甲器具架，晶工站以龙晶环为中心，拓荒站则有独立瞭望轮廓。人物演出不增加免费劳力，生产与招募仍依原本规则。",
+    "en": "Look for the workshop's gear chimney, the domed greenhouse, the hunting lodge's antler canopy, the armory's equipment rack, the artificer's crystal ring, and the outpost's lookout silhouette. These attendants add no free labor; production and recruitment keep their existing rules."
+  },
+  "實際遊戲：溫室、營火守望者、晶工站與機械工坊。": {
+    "zh_CN": "实际游戏：温室、营火守望者、晶工站与机械工坊。",
+    "en": "In-game view: the greenhouse, keeper, artificer station, and mechanical workshop."
+  },
+  "適用 v0.0.37：每星兩處稀疏路邊遭遇與發現、六種駐點 NPC 與建築新造型。保留每星一座主要聖所、八件部件與森林戰馬；新遭遇從新旅程開始，舊地圖和進度照常保留。": {
+    "zh_CN": "适用 v0.0.37：每星两处稀疏路边遭遇与发现、六种驻点 NPC 与建筑新造型。保留每星一座主要圣所、八件部件与森林战马；新遭遇从新旅程开始，旧地图和进度照常保留。",
+    "en": "Applies to v0.0.37: two sparse roadside encounters and finds per planet, six distinct facility attendants, and new building silhouettes. Each planet retains one main shrine; all eight modules and the woodland mount remain. Start a new journey for the encounters; existing maps and progress are preserved."
+  },
+  "首次在營火西側領取龍核，再投入 20 龍晶建造火箭；最多兩名工匠完成 30 工秒施工。靠近完工火箭按 E／手機下滑，選星球後再按啟航。場上仍有入侵敵人或沒有劍時不能出發；領域內的選做異獸不阻擋啟航。": {
+    "zh_CN": "首次在营火西侧领取龙核，再投入 20 龙晶建造火箭；最多两名工匠完成 30 工秒施工。靠近完工火箭按 E／手机下滑，选星球后再按启航。场上仍有入侵敌人或没有剑时不能出发；领域内的选做异兽不阻挡启航。",
+    "en": "Claim the first core west of the campfire, then invest 20 crystals in a rocket; up to two engineers complete 30 work-seconds of construction. Use E or swipe down by the finished rocket, select a planet, then confirm launch. Invaders or a missing sword block departure; optional territorial beasts do not."
   }
 }

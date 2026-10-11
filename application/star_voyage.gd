@@ -33,7 +33,7 @@ func observe(sim: RefCounted) -> void:
  if core_count(sim)>0:sim.planet.reactor=true
  if core_count(sim)==WORLD_COUNT:
   sim.planet.completed=true
-  sim.mission.resolve(sim.hero.is_alive(),sim.raiders.is_empty())
+  sim.mission.resolve(sim.hero.is_alive(),sim.invasion_empty())
 func capture(sim: RefCounted, body: Dictionary) -> Dictionary:
  var worlds: Array[Dictionary]=planets.duplicate(true)
  worlds[current]={"campaign":Codec.new().capture(sim,configs[current],body),"planet":sim.planet.capture()}
@@ -54,6 +54,7 @@ static func restore(raw: Variant) -> Dictionary:
   var config: Variant=packet.configs[id]
   if not config is Dictionary or not preload("res://application/campaign_checkpoint_rules.gd").config_valid(config):return {}
   if config.get("journey_style",-1)!=packet.configs[0].get("journey_style",-1):return {}
+  if config.get("trail_version",0)!=packet.configs[0].get("trail_version",0):return {}
   if config.get("level_design_version",0)!=packet.configs[0].get("level_design_version",0):return {}
   if config.get("ruin_layout_version",0)!=packet.configs[0].get("ruin_layout_version",0):return {}
   if config.get("dragon_opening_version",0)!=packet.configs[0].get("dragon_opening_version",0):return {}
@@ -79,7 +80,7 @@ static func restore(raw: Variant) -> Dictionary:
 func prepare(sim: RefCounted, body: Dictionary, target: int) -> Dictionary:
  if target<0 or target>=planets.size() or target==current or not sim.is_running() or not sim.can_wield_sword():return {}
  if not accessible(target,sim):return {}
- if not sim.planet.rocket_ready or core_count(sim)==0 or not sim.raiders.is_empty():return {}
+ if not sim.planet.rocket_ready or core_count(sim)==0 or not sim.invasion_empty():return {}
  if absf(body.x-Operations.rocket_x(sim))>=90:return {}
  var copied: Dictionary=restore(capture(sim,body))
  if copied.is_empty():return {}

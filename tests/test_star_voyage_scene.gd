@@ -25,7 +25,9 @@ func capture(game: Node, name: String) -> void:
  game.get_viewport().get_texture().get_image().save_png("res://test-results/seven-planets/"+name+".png")
 func clear_world(game: Node) -> void:
  for rift: Dictionary in game.sim.mission.rifts:rift.sealed=true
- game.sim.raiders.clear();game.sim.mission.dragon_summoned=true;game.sim.mission.dragon_defeated=true;game.sim.mission.dragon_day=6
+ # Optional local beasts remain alive to verify they do not gate the voyage.
+ game.sim.raiders=game.sim.raiders.filter(func(enemy: Dictionary)->bool:return enemy.has("trail_slot"))
+ game.sim.mission.dragon_summoned=true;game.sim.mission.dragon_defeated=true;game.sim.mission.dragon_day=6
  game.sim.frontier.city_level=1;game.sim.survival.armed=true;game.sim.advance(0.1,30)
  game.sim.planet.claim_core();game.sim.planet.rocket_ready=true;game.knight.position.x=-730
 func run_scene() -> void:
@@ -55,7 +57,7 @@ func run_scene() -> void:
   game.knight.position=Vector2(30,430);await capture(game,NAMES[id])
   for rift: Dictionary in game.sim.mission.rifts:rift.sealed=true
   game.sim._summon_dragon(game.knight.position.x)
-  var dragon: Dictionary=game.sim.raiders[0];dragon.x=game.knight.position.x+250;dragon.direction=-1.0;dragon.windup=1.4;dragon.target={"kind":"hero","x":game.knight.position.x}
+  var dragon: Dictionary=game.sim.raiders.filter(func(enemy: Dictionary)->bool:return enemy.get("kind","")=="dragon")[0];dragon.x=game.knight.position.x+250;dragon.direction=-1.0;dragon.windup=1.4;dragon.target={"kind":"hero","x":game.knight.position.x}
   await capture(game,NAMES[id]+"-dragon")
   clear_world(game);game.journey.observe(game.sim)
   check(game.sim.mission.outcome==("victory" if id==6 else "active"),"win requires all seven cores")

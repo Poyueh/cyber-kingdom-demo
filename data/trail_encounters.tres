@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrailCatalog" load_steps=10 format=3]
+[ext_resource type="Script" path="res://data/defs/trail_catalog.gd" id="1"]
+[ext_resource type="Script" path="res://data/defs/trail_profile.gd" id="2"]
+[ext_resource type="Resource" path="res://data/trails/forest.tres" id="p0"]
+[ext_resource type="Resource" path="res://data/trails/desert.tres" id="p1"]
+[ext_resource type="Resource" path="res://data/trails/frost.tres" id="p2"]
+[ext_resource type="Resource" path="res://data/trails/swamp.tres" id="p3"]
+[ext_resource type="Resource" path="res://data/trails/volcanic.tres" id="p4"]
+[ext_resource type="Resource" path="res://data/trails/storm.tres" id="p5"]
+[ext_resource type="Resource" path="res://data/trails/void.tres" id="p6"]
+
+[resource]
+script = ExtResource("1")
+profiles = Array[ExtResource("2")]([ExtResource("p0"), ExtResource("p1"), ExtResource("p2"), ExtResource("p3"), ExtResource("p4"), ExtResource("p5"), ExtResource("p6")])
