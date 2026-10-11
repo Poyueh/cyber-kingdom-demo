@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+Movie Maker mode enabled, recording movie in 1152×648 @ 24 FPS...
+PASS: natural opening reveals the menu
+PASS: pace controls fit: zh_TW
+PASS: menu exploration never allocates a journey: zh_TW
+PASS: pace controls fit: zh_CN
+PASS: menu exploration never allocates a journey: zh_CN
+PASS: pace controls fit: en
+PASS: menu exploration never allocates a journey: en
+PASS: replay button stays on screen
+Title native assertions: 8; failures: 0
+--------------------------------------------------------------------------------
+Done recording movie at path: /tmp/cyber-opening-v34.avi
+525 frames at 24 FPS (movie length: 00:00:21:21), recorded in 00:00:09 (233% of real-time speed).
+CPU render time: 0.08 seconds (average: 0.15 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 2.39 seconds (average: 4.55 ms/frame)
+--------------------------------------------------------------------------------

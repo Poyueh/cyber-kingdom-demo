@@ -14,12 +14,12 @@ func run_scene() -> void:
  service.choose("zh_TW")
  var menu=load("res://scenes/start_menu.tscn").instantiate();root.add_child(menu);current_scene=menu
  await frames(3)
- check(menu.view.new_button.text=="新遊戲","Traditional title text")
+ check(menu.view.new_button.text=="開始旅程","Traditional title text")
  var selector=menu.view.get_node("%LanguageSelector")
  check(selector.get_theme_font("font").has_char("简".unicode_at(0)),"language selector includes Simplified Chinese glyphs without system fonts")
  selector.item_selected.emit(3)
  await frames(3)
- check(menu.view.new_button.text=="New Game","selector immediately updates title")
+ check(menu.view.new_button.text=="Begin Journey","selector immediately updates title")
  check(Preferences.new(path).read_choice()=="en","manual language survives new preference instance")
  var records: Array[Dictionary]=[{"manual":false,"legacy":false,"status":"ready","outcome":"active","day":2,"settlement":1,"date":"2026-09-14 UTC"}]
  menu.view.show_records(records)

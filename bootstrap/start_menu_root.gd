@@ -12,6 +12,8 @@ var catalog: RefCounted
 var rows: Array[Dictionary]=[]
 var _launching:=false
 var audio: Node
+var _prologue: Control
+var _ambience_level: float=0.6
 @onready var view=$Menu
 func _ready() -> void:
 	catalog=Catalog.new(campaigns_directory,legacy_path)
@@ -23,20 +25,27 @@ func _ready() -> void:
 	if not audio_preferences_path.is_empty():
 		levels=AudioPreferences.new(audio_preferences_path).read()
 	audio.apply(levels)
+	_ambience_level=float(levels.ambience)
 	view.new_game_requested.connect(start_new_game)
 	view.records_requested.connect(show_records)
 	view.record_selected.connect(select_record)
+	view.prologue_requested.connect(show_prologue)
 	if not get_tree().has_meta("campaign_prologue_seen"):
 		get_tree().set_meta("campaign_prologue_seen",true)
-		view.hide()
-		audio.suspended=true
-		var prologue=preload("res://presentation/campaign_prologue.gd").new()
-		prologue.stage=preload("res://bootstrap/prologue_stage.gd").new()
-		prologue.stage.sound_levels=levels
-		add_child(prologue)
-		prologue.completed.connect(func():
-			audio.suspended=false
-			view.show())
+		show_prologue()
+
+func show_prologue() -> void:
+	if is_instance_valid(_prologue) or _launching:return
+	view.hide();audio.suspended=true
+	_prologue=preload("res://presentation/campaign_prologue.gd").new()
+	_prologue.stage=preload("res://bootstrap/prologue_stage.gd").new()
+	var levels: Dictionary={"music":audio.music.volume,"effects":audio.effects_volume,"ambience":_ambience_level,"muted":not audio.enabled}
+	_prologue.stage.sound_levels=levels
+	add_child(_prologue)
+	_prologue.completed.connect(func() -> void:
+		_prologue=null
+		audio.suspended=false
+		view.reveal())
 
 func show_records() -> void:
 	audio.click("ui_select")
