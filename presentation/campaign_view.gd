@@ -406,10 +406,7 @@ func _draw_activity() -> void:
 				draw_line(tip-direction*5+Vector2(0,-3),tip,Color("a9e8ce"),2)
 			continue
 		if effect.kind=="dragon_fire":
-			for i in range(28):
-				var progress: float=i/27.0
-				var point:=Vector2(lerpf(effect.x,effect.to,progress),lerpf(325,416,progress)+sin(i*2.3+effect.life*22)*18)
-				draw_rect(Rect2(point.round(),Vector2(12,7)),Color(1,0.5+progress*0.25,0.27,effect.life/0.7))
+			if _on_screen(effect.x,420) or _on_screen(effect.to,200):preload("res://presentation/dragon_visual.gd").breath(self,effect)
 			continue
 		if effect.kind=="portal_spawn":
 			var radius: float=28*(1-effect.life/0.6)
@@ -563,23 +560,23 @@ func _raider(enemy: Dictionary) -> void:
 	var hit:=hit_feedback.enemy_pose(enemy)
 	_raider_motion.draw(self,enemy,hit)
 	if cinematic:return
-	draw_rect(Rect2(enemy.x-22,380,44,4),Color("482a3a"))
-	draw_rect(Rect2(enemy.x-22,380,44.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,4),Color("df8491"))
-	if enemy.windup>0:_icon("sword",Vector2(enemy.x,368),20,Color("ffd087"))
-	if enemy.get("carried_crystals",0)>0:_icon("crystal",Vector2(enemy.x+enemy.direction*15,395+sin(_sim.workforce.elapsed*9)*2),19,Color("c1ffe4"))
+	var look: EnemyAppearance=_raider_motion.appearance(enemy.get("kind",""))
+	var health_y: float=430-look.hit_height-37
+	draw_rect(Rect2(enemy.x-19,health_y,38,3),Color("482a3a"))
+	draw_rect(Rect2(enemy.x-19,health_y,38.0*enemy.fighter.hp/enemy.fighter.stats.max_hp,3),look.tint)
+
+func _hit_effect(effect: Dictionary) -> void:
+	# Actor reactions cover ALL damage sources. Keep unowned contacts (walls,
+	# citizens and the knight), but do not duplicate enemy bursts with old Xs.
+	for enemy: Dictionary in _sim.raiders:
+		if absf(enemy.x-effect.x)<35:return
+	super._hit_effect(effect)
+
 func _draw_fallen() -> void:
-	var texture: Texture2D=EnemyFrames.get_frame_texture("idle",0)
-	for body in hit_feedback.fallen:
+	for body: Dictionary in hit_feedback.fallen:
+		if not _on_screen(body.x,260):continue
 		var progress: float=clampf(body.age/HitFeedback.FALL_SECONDS,0,1)
-		if body.get("kind","")=="dragon":
-			preload("res://presentation/dragon_visual.gd").draw_fallen(self,body,progress)
-			continue
-		draw_set_transform(Vector2(body.x-body.direction*progress*12,430),-body.direction*smoothstep(0.0,0.55,progress)*1.5,Vector2(body.direction,1-progress*0.5))
-		preload("res://presentation/compact_people.gd").draw(self,texture,Rect2(Vector2.ZERO,texture.get_size()),Color(1.3,0.9,0.85,1-smoothstep(0.45,1.0,progress)),41,80)
-		draw_set_transform(Vector2.ZERO)
-		for i in range(6):
-			var mote:=Vector2(body.x+(i-2.5)*22*progress,423-sin(progress*PI)*(18+i*5))
-			draw_rect(Rect2(mote,Vector2(4,4)),Color(0.9,0.53,0.65,1-progress))
+		preload("res://presentation/raider_motion_view.gd").draw_fallen(self,body,progress)
 
 func _draw() -> void:
 	super._draw()

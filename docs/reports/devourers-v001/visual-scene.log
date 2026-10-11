@@ -1,0 +1,64 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: all shipped animation clips address complete native atlases
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 0
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 1
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 2
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 3
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 4
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 5
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 6
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: nearby confirmed dragon impact gives a short weight cue
+PASS: dragon weight cue neither stops gameplay nor leaves a camera offset
+PASS: loading with a retained impact never replays a quake
+PASS: offscreen dragon impacts do not shake the player's view
+Enemy visual scene assertions: 61; failures: 0

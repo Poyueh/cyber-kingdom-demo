@@ -1,0 +1,146 @@
+{
+  "grunt": {
+    "frames": 16,
+    "cell": [
+      128,
+      96
+    ],
+    "standing_height": 60,
+    "facing": "right"
+  },
+  "elite-forest": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-desert": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-frost": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-swamp": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-volcanic": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-storm": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "elite-void": {
+    "frames": 16,
+    "cell": [
+      160,
+      128
+    ],
+    "standing_height": 84,
+    "facing": "right"
+  },
+  "dragon-forest": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-desert": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-frost": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-swamp": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-volcanic": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-storm": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "dragon-void": {
+    "frames": 20,
+    "cell": [
+      384,
+      256
+    ],
+    "standing_height": 210,
+    "facing": "left"
+  },
+  "carry": {
+    "frames": 8,
+    "cell": [
+      128,
+      96
+    ],
+    "standing_height": 60,
+    "facing": "right"
+  }
+}

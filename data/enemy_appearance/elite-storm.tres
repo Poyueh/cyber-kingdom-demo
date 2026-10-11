@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyAppearance" load_steps=3 format=3]
+[ext_resource type="Script" path="res://data/defs/enemy_appearance.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/devourers-v001/elite-storm.png" id="2"]
+[resource]
+script = ExtResource("1")
+atlas = ExtResource("2")
+cell = Vector2i(160, 128)
+baseline = 122
+facing = 1.0
+stride = 54.0
+strike_seconds = 0.34
+idle_fps = 1.4
+hit_height = 47.0
+tint = Color(0.37, 0.91, 1, 1)
+walk = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)
+windup = PackedInt32Array(8, 9)
+strike = PackedInt32Array(10, 11)
+hurt = PackedInt32Array(12, 13)
+fallen = PackedInt32Array(14, 15)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyCast" load_steps=4 format=3]
+[ext_resource type="Script" path="res://data/defs/enemy_cast.gd" id="1"]
+[ext_resource type="Resource" path="res://data/enemy_appearance/grunt.tres" id="2"]
+[ext_resource type="Resource" path="res://data/enemy_appearance/carry.tres" id="3"]
+[resource]
+script = ExtResource("1")
+impact_kick = 2.5
+impact_seconds = 0.28
+impact_distance = 650.0
+grunt = ExtResource("2")
+carry = ExtResource("3")
+guardians = Array[String](["res://data/enemy_appearance/elite-forest.tres", "res://data/enemy_appearance/elite-desert.tres", "res://data/enemy_appearance/elite-frost.tres", "res://data/enemy_appearance/elite-swamp.tres", "res://data/enemy_appearance/elite-volcanic.tres", "res://data/enemy_appearance/elite-storm.tres", "res://data/enemy_appearance/elite-void.tres"])
+dragons = Array[String](["res://data/enemy_appearance/dragon-forest.tres", "res://data/enemy_appearance/dragon-desert.tres", "res://data/enemy_appearance/dragon-frost.tres", "res://data/enemy_appearance/dragon-swamp.tres", "res://data/enemy_appearance/dragon-volcanic.tres", "res://data/enemy_appearance/dragon-storm.tres", "res://data/enemy_appearance/dragon-void.tres"])

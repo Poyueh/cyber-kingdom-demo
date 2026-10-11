@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 [ext_resource type="Script" path="res://presentation/sentinel_visual.gd" id="script"]
-[ext_resource type="SpriteFrames" path="res://data/sentinel_animation_frames.tres" id="frames"]
 [node name="SentinelVisual" type="AnimatedSprite2D"]
 texture_filter = 1
-position = Vector2(0, -32)
-sprite_frames = ExtResource("frames")
-animation = &"idle"
+position = Vector2(0, -42)
 script = ExtResource("script")
