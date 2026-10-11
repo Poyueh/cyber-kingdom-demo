@@ -4,12 +4,12 @@
 script = ExtResource("1")
 planet_id = 0
 combat_side = -1
-guard_count = 2
+guard_count = 1
 health = 36
 damage = 12
 speed = 62
-windup_seconds = 0.85
-recovery_seconds = 1.8
+windup_seconds = 1.2
+recovery_seconds = 2.4
 reach = 38
 charge_distance = 55
 charge_seconds = 0.35

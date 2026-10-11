@@ -2150,5 +2150,33 @@
   "實際遊戲：六個職業不同的工作節奏。": {
     "zh_CN": "实际游戏：六个职业不同的工作节奏。",
     "en": "Actual gameplay: distinct work rhythms for six professions."
+  },
+  "先探索一段，再帶收穫回家。": {
+    "en": "Explore a stretch. Bring your finds home.",
+    "zh_CN": "先探索一段，再带收获回家。"
+  },
+  "新旅程的森林晶巢只有一隻守獸。先看 1.2 秒蓄力，走出撲擊落點，再利用 2.4 秒收招回頭反擊；初始劍兩次有效普通命中即可清除。巢中的兩晶只領一次，不必打完才能繼續探索。": {
+    "en": "A new forest journey introduces one nest guardian. Read its 1.2-second windup, step away from the locked lunge, then counter during its 2.4-second recovery. Two landed normal sword cuts defeat it. The two-crystal reward is one-time and optional.",
+    "zh_CN": "新旅程的森林晶巢只有一只守兽。先看 1.2 秒蓄力，走出扑击落点，再利用 2.4 秒收招回头反击；初始剑两次有效普通命中即可清除。巢中的两晶只领一次，不必打完才能继续探索。"
+  },
+  "另一側的安靜晶藏不用戰鬥。已發現又尚未領取時，缺晶引導也會考慮它；未清空的晶巢不會被當成安全補給。": {
+    "en": "The quiet find on the opposite side needs no combat. Once discovered, an unclaimed find is also considered by supply guidance. A guarded nest is never offered as ready supplies.",
+    "zh_CN": "另一侧的安静晶藏不用战斗。已发现又尚未领取时，缺晶引导也会考虑它；未清空的晶巢不会被当成安全补给。"
+  },
+  "當地前三天，離開工作範圍後若距日落不到 75 秒，會短暫出現指向營火的圖示與警音。帶著收穫回去準備守夜；提醒約八秒就淡出，不會再叫出鬼魂。": {
+    "en": "During the first three local days, explorers outside the work area get a brief camp direction cue and warning sound within 75 seconds of dusk. Bring your finds home and prepare for night. The cue fades after about eight seconds without recalling the spirit.",
+    "zh_CN": "当地前三天，离开工作范围后若距日落不到 75 秒，会短暂出现指向营火的图示与警音。带着收获回去准备守夜；提醒约八秒就淡出，不会再叫出鬼魂。"
+  },
+  "實際遊戲：森林首戰保留單獸、鎖定撲擊與清楚的反擊空檔。": {
+    "en": "Actual gameplay: one forest guardian, a committed lunge and a clear counterattack window.",
+    "zh_CN": "实际游戏：森林首战保留单兽、锁定扑击与清楚的反击空档。"
+  },
+  "微光林地：單隻棘角守獸短撲，另一側尋找樹根藏晶。": {
+    "en": "Glimmerwood: a lone thorn guardian with a short lunge; rootlight crystals on the opposite side.",
+    "zh_CN": "微光林地：单只棘角守兽短扑，另一侧寻找树根藏晶。"
+  },
+  "適用 v0.0.39：森林新旅程改為單獸首戰，缺晶引導納入已知可領的路邊晶藏，前三天野外探索新增短暫返城方向提示。舊紀錄保留原本森林雙獸與攻擊節奏；每星兩處稀疏遭遇、一座主要聖所與六職業工作演出維持。": {
+    "en": "For v0.0.39: new forest journeys start with one nest guardian; supply advice includes known available roadside finds; early exploration gets a brief homeward cue. Existing saves keep their original forest pair and attack timing. Two sparse roadside moments, one main sanctuary and six professions remain.",
+    "zh_CN": "适用 v0.0.39：森林新旅程改为单兽首战，缺晶引导纳入已知可领的路边晶藏，前三天野外探索新增短暂返城方向提示。旧纪录保留原本森林双兽与攻击节奏；每星两处稀疏遭遇、一座主要圣所与六职业工作演出维持。"
   }
 }

@@ -53,6 +53,7 @@ var _disarmed:=false
 var _alive:=true
 func sample(sim,x: float,paused: bool) -> Array[String]:
 	var result: Array[String]=[]
+	if _session!=sim:_warned=0
 	var active: bool=sim.hero.is_attack_active()
 	var sealed: int=sim.mission.rifts.filter(func(r):return r.sealed).size()
 	var offered: int=_offered_crystals(sim)
@@ -113,7 +114,7 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 		if settled>_settled:result.append("crystal_land")
 		if held<_held and sim.pouch.amount>_pouch:result.append("handoff")
 		var warning_seconds: float=30.0
-		if sim.night_pattern.enabled and sim.clock.day>=sim.night_pattern.first_day:warning_seconds=float(sim.night_pattern.warning_ticks)/30.0
+		if sim.night_pattern.enabled and (sim.clock.day>=sim.night_pattern.first_day or not sim.night_watch().is_empty()):warning_seconds=float(sim.night_pattern.warning_ticks)/30.0
 		if not sim.clock.is_night and sim.clock.remaining<=warning_seconds and _warned!=sim.clock.day:
 			_warned=sim.clock.day
 			result.append("raid_warning")
