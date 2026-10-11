@@ -1990,5 +1990,81 @@
   "適用 v0.0.35：無武器噬晶異獸、七地守門怪、碎晶受擊與七龍完整姿勢演出。原有夜襲、巨龍招式、反擊窗口與旅程紀錄可續玩。": {
     "zh_CN": "适用 v0.0.35：无武器噬晶异兽、七地守门怪、碎晶受击与七龙完整姿势演出。原有夜袭、巨龙招式、反击窗口与旅程记录可续玩。",
     "en": "For v0.0.35: unarmed crystal devourers, seven rift guardian appearances, crystal impact effects and expanded full-body dragon animation. Existing raids, dragon attacks, counterattack windows and saved journeys continue unchanged."
+  },
+  "新旅程每顆星球左右各一處遺藏，共兩個寶箱，與主要機關分區；直接開啟後，龍晶會湧出並吸收入袋。": {
+    "zh_CN": "新旅程每颗星球左右各一处遗藏，共两个宝箱，与主要机关分区；直接开启后，龙晶会涌出并吸收入袋。",
+    "en": "Each world in a new journey has one cache on each side, two chests in total, separate from the main puzzle. Open a chest to release its crystals into your pouch."
+  },
+  "免費開啟，一次湧出 4 龍晶。每星左右各一箱，遠離營火，不是日常收入來源。": {
+    "zh_CN": "免费开启，一次涌出 4 龙晶。每星左右各一箱，远离营火，不是日常收入来源。",
+    "en": "Open for free to receive 4 crystals. Each world has one chest on each side, far from camp; these are occasional rewards."
+  },
+  "新旅程先開放營地兩側的第一處補給區。完成補給區外緣的城牆，才能跨過空曠路段、開發下一區；城牆倒下會失去這段工作通路。遠方寶箱與部件仍可自行探索。": {
+    "zh_CN": "新旅程先开放营地两侧的第一处补给区。完成补给区外缘的城墙，才能跨过空旷路段、开发下一区；城墙倒下会失去这段工作通路。远方宝箱与部件仍可自行探索。",
+    "en": "New journeys begin with the first supply clearing on each side available for work. Finish a wall at the clearing’s outer edge to reach the next clearing across open ground. Losing that wall closes the work route. Distant chests and relics remain open to personal exploration."
+  },
+  "暫停後點地圖圖示開啟邊境探索圖；只顯示已走過的地形與已知獎勵。新旅程每星一座主要機關，三個操作點集中在同一座聖所。森林讀取封印上的符號，按順序靠近符石按 E／手機下滑；其餘六地保留連動燈、冷熱平衡與脈衝亮窗。解開後回封印處領取部件。": {
+    "zh_CN": "暂停后点地图图标开启边境探索图；只显示已走过的地形与已知奖励。新旅程每星一座主要机关，三个操作点集中在同一座圣所。森林读取封印上的符号，按顺序靠近符石按 E／手机下滑；其余六地保留连动灯、冷热平衡与脉冲亮窗。解开后回封印处领取部件。",
+    "en": "Pause and select the map to see explored terrain and known rewards. New journeys have one main puzzle per world, with all three controls inside one sanctuary. In the forest, read the seal’s symbols and activate runestones in order with E or a downward swipe. The other worlds retain linked lights, balance controls and pulse windows. Return to the opened seal for its module."
+  },
+  "新旅程共有八件主動部件。森林的雷弧震盪藏在主要聖所，穿甲雷槍可在西側遺藏直接發現；其餘六地各有一件機關獎勵。靠近領取後免費裝上，原本部件留在本趟收藏中。": {
+    "zh_CN": "新旅程共有八件主动部件。森林的雷弧震荡藏在主要圣所，穿甲雷枪可在西侧遗藏直接发现；其余六地各有一件机关奖励。靠近领取后免费装上，原本部件留在本趟收藏中。",
+    "en": "All eight active modules remain. The forest’s Arc Burst awaits in its main sanctuary; find the Piercing Lance directly at the western cache. Each other world has one puzzle reward. Approach to collect and equip it for free; the previous module stays in your collection."
+  },
+  "v0.0.36 的新旅程採分區關卡：森林不再重複限時中繼，仍保留選做的戰馬探索。舊紀錄完整保留原地圖、寶箱、機關與已完成進度。": {
+    "zh_CN": "v0.0.36 的新旅程采用分区关卡：森林不再重复限时中继，仍保留选做的战马探索。旧记录完整保留原地图、宝箱、机关与已完成进度。",
+    "en": "New journeys in v0.0.36 use authored zones. The forest no longer repeats a timed relay and still offers the optional steed expedition. Existing journeys retain their original maps, chests, puzzles and progress."
+  },
+  "適用 v0.0.36：七星球分區關卡、每星一座主要聖所、稀疏遺藏與空曠前庭。保留八件部件、森林戰馬與噬晶異獸演出；新配置從新旅程開始，舊紀錄照常續玩。": {
+    "zh_CN": "适用 v0.0.36：七星球分区关卡、每星一座主要圣所、稀疏遗藏与空旷前庭。保留八件部件、森林战马与噬晶异兽演出；新配置从新旅程开始，旧记录照常续玩。",
+    "en": "For v0.0.36: authored zones on seven worlds, one main sanctuary per world, sparse caches and open rift approaches. All eight modules, the forest steed and devourer animations remain. Start a new journey for the new layouts; existing saves continue unchanged."
+  },
+  "讓旅程有停頓，也有值得抵達的地方。": {
+    "zh_CN": "让旅程有停顿，也有值得抵达的地方。",
+    "en": "Room to travel. Places worth reaching."
+  },
+  "新旅程先安排路段用途，再用種子變化長度與細節。補給區、安靜荒野、主要聖所、遺藏和龍門前庭各有位置；約三成路程留給移動與觀察，無需一路解謎。": {
+    "zh_CN": "新旅程先安排路段用途，再用种子变化长度与细节。补给区、安静荒野、主要圣所、遗藏和龙门前庭各有位置；约三成路程留给移动与观察，无需一路解谜。",
+    "en": "New journeys place purposeful zones first, then vary their lengths and details by seed. Supply clearings, quiet wilds, a main sanctuary, caches and rift approaches each have a place. Roughly a third of the route leaves room to travel and observe."
+  },
+  "微光林地：先在近郊建立補給；向西尋戰馬與雷槍，向東挑戰古龍符序。": {
+    "zh_CN": "微光林地：先在近郊建立补给；向西寻战马与雷枪，向东挑战古龙符序。",
+    "en": "Glimmerwood: establish supplies nearby. Seek the steed and lance westward; decipher the runestones to the east."
+  },
+  "銹沙盆地：礦帶與綠洲分開，大段沙路通往東側艦骸聖所。": {
+    "zh_CN": "锈沙盆地：矿带与绿洲分开，大段沙路通往东侧舰骸圣所。",
+    "en": "Rustsand Basin: ore belts and oases are separated by open sand leading toward the eastern wreck sanctuary."
+  },
+  "鏡霜海岸：長距離冰原之後，西側觀測聖所集中冷熱平衡機關。": {
+    "zh_CN": "镜霜海岸：长距离冰原之后，西侧观测圣所集中冷热平衡机关。",
+    "en": "Mirrorfrost Coast: long open ice leads to a western observatory with its balance controls grouped together."
+  },
+  "孢潮沼澤：菌林補給與開闊濕地交替，西側只有一處核心機關。": {
+    "zh_CN": "孢潮沼泽：菌林补给与开阔湿地交替，西侧只有一处核心机关。",
+    "en": "Sporetide Marsh: supply groves alternate with open wetlands around one western puzzle site."
+  },
+  "熔脊裂谷：集中礦場供應建造，穿過熔脊空地後抵達東側爐心聖所。": {
+    "zh_CN": "熔脊裂谷：集中矿场供应建造，穿过熔脊空地后抵达东侧炉心圣所。",
+    "en": "Moltenridge Rift: concentrated ore fields support construction; open ridges lead to the eastern furnace sanctuary."
+  },
+  "雷纜廢都：把脈衝裝置收進西側樞紐，斷橋與空曠街段用來觀察和回防。": {
+    "zh_CN": "雷缆废都：把脉冲装置收进西侧枢纽，断桥与空旷街段用来观察和回防。",
+    "en": "Thundercable Ruins: pulse devices occupy one western hub, with open streets and broken spans between destinations."
+  },
+  "黯潮墓環：留白最多，東側深處的最後聖所之後，才是遺藏與龍門前庭。": {
+    "zh_CN": "黯潮墓环：留白最多，东侧深处的最后圣所之后，才是遗藏与龙门前庭。",
+    "en": "Darktide Grave Ring: the quietest route, with a late eastern sanctuary followed by a cache and the rift approach."
+  },
+  "遺跡與戰馬皆可選做，不是封門或取得龍核的必經條件。新地圖不會重排舊存檔；請從主選單另開旅程體驗。": {
+    "zh_CN": "遗迹与战马皆可选做，不是封门或取得龙核的必经条件。新地图不会重排旧存档；请从主菜单另开旅程体验。",
+    "en": "Ruins and the steed are optional; neither blocks sealing the rifts or claiming a dragon core. Existing maps are preserved. Start a new journey from the main menu to try these routes."
+  },
+  "實際新關卡：冰岸的機關集中在一處聖所，周圍留出空曠旅途。": {
+    "zh_CN": "实际新关卡：冰岸的机关集中在一处圣所，周围留出空旷旅途。",
+    "en": "Actual new layout: the Frost Coast controls share one sanctuary, with open travel ground around it."
+  },
+  " 新旅程每顆星球左右各一處遺藏，共兩個寶箱，與主要機關分區；直接開啟後，龍晶會湧出並吸收入袋。": {
+    "zh_CN": " 新旅程每颗星球左右各一处遗藏，共两个宝箱，与主要机关分区；直接开启后，龙晶会涌出并吸收入袋。",
+    "en": " Each world in a new journey has one cache on each side, two chests in total, separate from the main puzzle. Open a chest to release its crystals into your pouch."
   }
 }

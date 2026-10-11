@@ -23,9 +23,7 @@ func run() -> void:
 	game.set_physics_process(false);game.knight.set_physics_process(false)
 	game.hud.hide();game.paused=false
 	for planet: int in range(7):
-		var config: Dictionary=game._campaign_config.duplicate(true)
-		config.merge(game.PLANET_PROFILES[planet].rules(),true)
-		config.planet_id=planet;config.voyage_enabled=1
+		var config: Dictionary=game.journey.configs[planet].duplicate(true)
 		var sim: RefCounted=Campaign.new(config)
 		game.sim=sim;game.knight.configure(sim.hero,game.knight_tuning)
 		game.knight.position=Vector2(2500,430);game.knight.velocity=Vector2.ZERO

@@ -1,12 +1,13 @@
 extends RefCounted
 ## Read-only UI data. Unknown regions never disclose terrain or unclaimed rewards.
 const TITLES: Dictionary={"forest":"旅人林地","quarry":"龍脊晶谷","ruins":"斷環聖所"}
+const LEVEL_TITLES: Array[String]=["補給區","靜謐荒野","封印聖所","旅人遺藏","龍門前庭","戰馬遺跡"]
 static func read(sim: RefCounted, knight_x: float) -> Dictionary:
  var regions: Array[Dictionary]=[]
  var markers: Array[Dictionary]=[_marker("camp",sim.world.sites.hall,"營火")]
  for region: Dictionary in sim.frontier.regions:
   var known: bool=region.discovered
-  regions.append({"x":float(region.x),"width":float(region.width),"kind":region.kind if known else "unknown","title":TITLES.get(region.kind,"未探索") if known else "未探索"})
+  regions.append({"x":float(region.x),"width":float(region.width),"kind":region.kind if known else "unknown","title":(LEVEL_TITLES[int(region.level_role)] if region.has("level_role") else TITLES.get(region.kind,"未探索")) if known else "未探索"})
  regions.sort_custom(func(a: Dictionary,b: Dictionary)->bool:return a.x<b.x)
  for node: RefCounted in sim.frontier.nodes:
   if node.kind=="cache" and not node.collected and sim.frontier.regions[node.region].discovered:

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlanetLevelProfile" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/defs/planet_level_profile.gd" id="1"]
+[resource]
+script = ExtResource("1")
+planet_id = 6
+left_roles = PackedInt32Array(0, 1, 0, 3, 1, 0, 4)
+right_roles = PackedInt32Array(0, 1, 0, 1, 2, 3, 4)
+left_terrain = PackedInt32Array(0, 2, 1, 2, 2, 0, 2)
+right_terrain = PackedInt32Array(0, 2, 1, 2, 2, 2, 2)
+left_widths = PackedFloat32Array(650, 1100, 850, 1000, 1200, 850, 1100)
+right_widths = PackedFloat32Array(650, 1100, 850, 750, 1200, 900, 1100)
+width_jitter = 50.0
+station_spacing = 200.0

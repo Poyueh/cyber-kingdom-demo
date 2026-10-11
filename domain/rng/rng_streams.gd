@@ -1,8 +1,8 @@
 extends RefCounted
 ## One sequence per purpose. Adding a draw to one system must never shift the
 ## dice of another, so streams are derived from the run seed and never shared.
-enum Stream {WORLD, LOOT, EVENT, COMBAT, RUIN_LAYOUT}
-const STREAM_SALT: Array[int]=[0x9E3779B1,0x85EBCA77,0x1B873593,0x27D4EB2F,0x165667B1]
+enum Stream {WORLD, LOOT, EVENT, COMBAT, RUIN_LAYOUT, LEVEL_LAYOUT}
+const STREAM_SALT: Array[int]=[0x9E3779B1,0x85EBCA77,0x1B873593,0x27D4EB2F,0x165667B1,0xD3A2646C]
 ## The two murmur3 finalisation constants, written signed because GDScript
 ## integers are 64-bit signed (0xFF51AFD7ED558CCD and 0xC4CEB9FE1A85EC53).
 const MIX_A := -51049160248110899

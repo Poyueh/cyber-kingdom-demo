@@ -269,7 +269,7 @@ func _draw_buildings() -> void:
 
 func _draw_recruitment_camps() -> void:
 	for i in range(_sim.frontier.regions.size()):
-		if not _sim.frontier.regions[i].discovered:continue
+		if not _sim.frontier.regions[i].discovered or not preload("res://domain/planet_level_layout.gd").is_supply(_sim.frontier.regions[i]):continue
 		_world_alpha=_region_reveal(i)
 		var x: float=_sim.ecology.camp_x(i)
 		var active: bool=_sim.ecology.habitat(i)
