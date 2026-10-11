@@ -1,6 +1,6 @@
 {
   "version": "0.0.30",
-  "published": false,
+  "published": true,
   "source_commit": "67d2753b6cc3cce4bd483815198964b320ac5ff1",
   "source_tree": "414b7b744ebab735f8cd03809036d130e28acea2",
   "full_check": true,
@@ -53,5 +53,51 @@
   "packaged_native_assertions": 8,
   "check_log_sha256": "7e53115f9928e85579128ef9eac5ce4e34c4c24a505cdcf28646dff083f06a65",
   "packaged_timing_matches_source": true,
-  "packaged_timing_cases": 21
+  "packaged_timing_cases": 21,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.30",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "3b12e6d292fae8bc37d69c669138846a3800ee107c8e3c05ae66b2f950496835",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.30"
+    },
+    {
+      "name": "guide.html",
+      "size": 4904252,
+      "sha256": "329203d79d40086dae9da9e3f972f97e969834865ef701da6def660a8e84221e",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.30"
+    },
+    {
+      "name": "index.pck",
+      "size": 59361980,
+      "sha256": "e8cc2643a4398cb4b5ddc587c1d9cfcdf26e7178a2863ba0ba314dd1c7354892",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.30"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.30",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38101439069,
+    "headSha": "bf7d57cf4c4170dae6e65c14bde72771e882a93c",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38101439069"
+  },
+  "browser_verification": {
+    "version": "0.0.30",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.30",
+    "main_menu": true,
+    "embedded_guide_invasion_march": true,
+    "languages": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "guide_version_verified_in_all_languages": true,
+    "language_preference_restored": "system/platform",
+    "console_errors": [],
+    "method": "Opened deployed game, skipped prologue, opened guide from menu in all three languages, verified march heading and version FAQ; returned to main menu without creating a save."
+  }
 }
