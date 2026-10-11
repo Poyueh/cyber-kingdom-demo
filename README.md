@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.29 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.29)
+- [v0.0.30 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.30)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -26,6 +26,8 @@
 ```bash
 bash tools/check.sh
 ```
+
+v0.0.30 新旅程魔物遠方行軍與抱晶撤退更快，接近騎士、居民及防線後平順降回原速，縮短入夜後空等。每日敵數與近戰規則不變，舊紀錄保留原行軍方式。詳見 [本版更新](docs/releases/0.0.30.md)。
 
 v0.0.29 新旅程可選遠征／拓荒／圍城，白天準備時間與夜襲壓力各異，七星球與完整收藏共用。節奏隨紀錄保存；修正手動檢查點另存漏帶星球進度。三語指南同步。詳見 [本版更新](docs/releases/0.0.29.md)。
 
@@ -49,7 +51,7 @@ v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮
 
 ## 平台狀態
 
-v0.0.29 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.30 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 

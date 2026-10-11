@@ -1843,10 +1843,6 @@
     "zh_CN": "点新游戏后，可先选远征、拓荒或围城，再按开始旅程。返回不会建立记录。",
     "en": "Select New Game, choose Expedition, Settler or Siege, then Begin journey. Going back creates no record."
   },
-  "遠征沿用原本設定，適合第一次遊玩。拓荒白晝較長、夜襲增援較少，留時間探索與建造；圍城白晝較短，增援更快增長，考驗回防與分配。": {
-    "zh_CN": "远征沿用原本设置，适合第一次游玩。拓荒白昼较长、夜袭增援较少，留时间探索与建造；围城白昼较短，增援更快增长，考验回防与分配。",
-    "en": "Expedition retains the original balance and is recommended first. Settler offers longer days and fewer reinforcements for exploration and building. Siege shortens preparation and brings faster-growing waves."
-  },
   "三種都有七星球、機關、坐騎與完整收藏。選擇會隨紀錄保存，跨星或讀檔不改變；要換節奏請另開旅程。舊紀錄沿用原規則，清單會標示原有旅程。": {
     "zh_CN": "三种都有七星球、机关、坐骑与完整收藏。选择会随记录保存，跨星或读档不改变；要换节奏请另开旅程。旧记录沿用原规则，列表会标示原有旅程。",
     "en": "Every pace includes seven worlds, ruins, the mount and all collectibles. Your choice stays with the save through travel and loading. Start a new journey to change it. Existing saves keep their original rules."
@@ -1855,8 +1851,24 @@
     "zh_CN": "实际游戏：选择节奏后才建立新旅程。",
     "en": "Actual game: choose a pace before creating a journey."
   },
-  "適用 v0.0.29：新增三種新旅程節奏，修正手動檢查點另存遺失星球進度。舊紀錄維持原規則，七地探索與建設回顧皆可使用。": {
-    "zh_CN": "适用 v0.0.29：新增三种新旅程节奏，修正手动检查点另存丢失星球进度。旧记录维持原规则，七地探索与建设回顾皆可使用。",
-    "en": "For v0.0.29: three new-journey paces and complete planetary progress when forking a manual checkpoint. Existing saves keep their rules; seven-world exploration and settlement review remain available."
+  "少一點空等，多一點回防抉擇。": {
+    "zh_CN": "少一点空等，多一点回防抉择。",
+    "en": "Less waiting. More decisions about returning to defend."
+  },
+  "新旅程的普通魔物會從地獄之門快速穿越遠方荒野，接近騎士、居民、營火或防禦設施時逐漸放慢，回到原本的交戰速度。日落前就準備回防，不要等敵人走到眼前。": {
+    "zh_CN": "新旅程的普通魔物会从地狱之门快速穿越远方荒野，接近骑士、居民、营火或防御设施时逐渐放慢，回到原本的交战速度。日落前就准备回防，不要等敌人走到眼前。",
+    "en": "In new journeys, ordinary raiders travel quickly from their gates through distant wilderness. They ease back to their normal combat speed near the knight, residents, campfire or defenses. Prepare to return before dusk; do not wait until enemies are on your doorstep."
+  },
+  "抱走龍晶的小怪在離開戰區後也會加速返回原門，仍會被途中完整城牆阻擋。守門者與巨龍不加速；每日敵數、近戰傷害與攻擊預警不變。舊紀錄維持原行軍規則。": {
+    "zh_CN": "抱走龙晶的小怪在离开战区后也会加速返回原门，仍会被途中完整城墙阻挡。守门者与巨龙不加速；每日敌数、近战伤害与攻击预警不变。旧记录维持原行军规则。",
+    "en": "Crystal carriers also hurry back to their original gate once clear of the battle area. Intact walls still block their route. Wardens and dragons gain no speed; daily enemy totals, melee damage and attack warnings remain unchanged. Existing saves retain their original travel rules."
+  },
+  "適用 v0.0.30：普通魔物遠程行軍與抱晶撤退更俐落，接近戰區保留原速度。三種旅程節奏、七地探索及建設回顧皆可使用；舊紀錄保留原規則。": {
+    "zh_CN": "适用 v0.0.30：普通魔物远程行军与抱晶撤退更利落，接近战区保留原速度。三种旅程节奏、七地探索及建设回顾皆可使用；旧记录保留原规则。",
+    "en": "For v0.0.30: ordinary raiders march and retreat faster through distant terrain while keeping their original speed near battle. Three journey paces, seven-world exploration and settlement history remain available. Existing saves keep their original rules."
+  },
+  "遠征採均衡的白晝與夜襲增援，適合第一次遊玩。拓荒白晝較長、夜襲增援較少，留時間探索與建造；圍城白晝較短，增援更快增長，考驗回防與分配。": {
+    "zh_CN": "远征采用均衡的白昼与夜袭增援，适合第一次游玩。拓荒白昼较长、夜袭增援较少，留时间探索与建造；围城白昼较短，增援增长更快，考验回防与分配。",
+    "en": "Expedition offers balanced daylight and nightly reinforcements, recommended for a first playthrough. Settler has longer days and fewer reinforcements for exploration and building. Siege has shorter days and faster reinforcement growth, testing how you divide resources and return to defend."
   }
 }

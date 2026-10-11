@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: native scenario uses desktop layout first
+PASS: actual scene advances a distant attacker faster than its combat walk
+PASS: arrival is continuous world movement outside the reaction zone
+PASS: visible close approach keeps the original movement speed
+PASS: desktop pause stops the encounter
+PASS: distant march also freezes while paused
+PASS: touch scenario displays actual touch controls
+PASS: touch layout has the same near-field movement rule
+Invasion march scene assertions: 8; failures: 0

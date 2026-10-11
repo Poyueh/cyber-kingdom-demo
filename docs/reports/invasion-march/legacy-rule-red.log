@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS test_far_gate_approach_reaches_defenses_within_the_first_minute
+PASS test_march_keeps_close_combat_and_resident_escape_speed
+PASS test_paid_off_raider_leaves_remote_ground_without_a_long_night_tail
+PASS test_near_knight_walls_and_towers_keep_the_same_movement
+PASS test_march_blends_smoothly_and_never_speeds_up_special_enemies
+FAIL test_legacy_retreat_and_march_rules_remain_exact
+PASS test_new_retreat_respects_chill_and_completed_walls
+PASS test_save_resume_during_march_matches_uninterrupted_invasion
+PASS test_partial_or_unknown_march_profiles_are_rejected
+old saved crystal carriers retain their original 105-unit return speed: expected true, got false
+Assertions: 35; failures: 1

@@ -58,6 +58,7 @@ run_check modules --script res://tests/test_modules_scene.gd
 run_check planet_modules --script res://tests/test_planet_modules_scene.gd
 run_check mount_expedition --script res://tests/test_mount_expedition_scene.gd
 run_check night_patterns --script res://tests/test_night_patterns_scene.gd
+run_check invasion_march --script res://tests/test_invasion_march_scene.gd
 run_check settlement_growth --script res://tests/test_settlement_growth_scene.gd
 run_check mount --script res://tests/test_mount_scene.gd
 run_check feedback --script res://tests/test_feedback_scene.gd

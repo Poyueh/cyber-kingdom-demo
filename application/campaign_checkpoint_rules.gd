@@ -11,6 +11,7 @@ static func number(value) -> bool:
 static func config_valid(config: Dictionary) -> bool:
 	if config.has("journey_style") and (not config.journey_style is int or config.journey_style not in [0,1,2]):return false
 	if not preload("res://domain/night_pattern.gd").valid_config(config):return false
+	if not preload("res://domain/invasion_march.gd").valid_config(config):return false
 	if not preload("res://domain/module_specs.gd").valid_config(config):return false
 	if not preload("res://domain/mount_expedition.gd").valid_config(config):return false
 	if config.has("dragon_growth_days") and (not in_range(config.dragon_growth_days,2,20) or floorf(config.dragon_growth_days)!=config.dragon_growth_days):return false

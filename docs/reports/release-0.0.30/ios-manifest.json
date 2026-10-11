@@ -1,0 +1,9 @@
+{
+  "source_tree": "414b7b744ebab735f8cd03809036d130e28acea2",
+  "xcode_project": "CyberKingdomDemo.xcodeproj",
+  "bundle_id": "org.cyberkingdom.demo",
+  "export": "Xcode project only",
+  "installable": false,
+  "signing": "Pending Xcode build and real device deployment",
+  "device_playtest": "not performed"
+}

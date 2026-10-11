@@ -23,7 +23,8 @@ func arrivals(sim: RefCounted, duration: int = 650) -> Array[Dictionary]:
 		sim.advance(0.1,30.0)
 		for enemy: Dictionary in sim.raiders:
 			if not enemy.fighter.is_alive(): continue
-			result.append({"side":enemy.side,"time":tick*0.1,"x":enemy.x})
+			var spawn: Array=sim.effects.filter(func(effect: Dictionary)->bool:return effect.kind=="portal_spawn")
+			result.append({"side":enemy.side,"time":tick*0.1,"x":float(spawn.back().x) if not spawn.is_empty() else INF})
 			enemy.fighter.hp = 0
 	return result
 

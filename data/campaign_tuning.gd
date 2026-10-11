@@ -96,6 +96,7 @@ var shield_charge_scrap: int = 1
 @export_range(1,100,1) var tower_damage:=12
 @export_range(200,800,20) var tower_range:=460.0
 @export_group("Days and nights")
+@export var invasion_march: Resource = preload("res://data/invasion_march.tres")
 @export var night_patterns: Resource = preload("res://data/night_patterns.tres")
 @export var night_pressure: Resource = preload("res://data/night_pressure.tres")
 @export_range(30,600,10) var day_seconds: float = 180.0
@@ -110,6 +111,8 @@ func campaign_rules() -> Dictionary:
 	rules.merge(night_pressure.rules(),true)
 	if immersive_loop:
 		rules.merge(night_patterns.rules(),true)
+		rules.merge(invasion_march.rules(),true)
+		assert(preload("res://domain/invasion_march.gd").valid_config(rules),"Invalid invasion march profile")
 		rules.merge(crystal_merchant.rules(),true)
 		rules.merge(ruin_trials.rules(),true)
 		rules.merge(mount_expedition.rules(),true)
