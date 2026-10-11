@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/settlement_feedback_style.gd" id="1"]
+[resource]
+script = ExtResource("1")
+duration = 6.5
+pulse_seconds = 2.8
+fade_seconds = 0.6
+refresh_seconds = 0.15
+danger_distance = 360.0
+gold = Color(0.91, 0.80, 0.57, 1)
+glow = Color(0.48, 0.91, 0.79, 1)

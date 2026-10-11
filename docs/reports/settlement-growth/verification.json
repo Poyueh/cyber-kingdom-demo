@@ -1,0 +1,40 @@
+{
+  "unit": "settlement-growth-feedback",
+  "date": "2026-10-11",
+  "godot": "4.7.2",
+  "full_check": true,
+  "core_assertions": 3696,
+  "new_core_assertions": 12,
+  "new_native_scene_assertions": 25,
+  "tdd_red": {
+    "core_failures": 3,
+    "native_scene_failures": 1
+  },
+  "full_check_sha256": "7e1060a9cedf5f49c629b42c4fc0825ce06018156cb7974346300be77011af76",
+  "previous_release_save": {
+    "created_by": "v0.0.27 exported macOS PCK",
+    "schema": 19,
+    "sha256": "075128c68131edc269e518d5e9df4b1dfb0dc1dd5ca5ab90595aeb46ff11257f",
+    "preserved": [
+      "camp stage 2",
+      "one hoe",
+      "two-crystal partial upgrade payment",
+      "unchanged complete snapshot"
+    ]
+  },
+  "native_verification": [
+    "actual E payment",
+    "touch tab and card input",
+    "three languages",
+    "mobile safe margins",
+    "pause and expiry",
+    "night-warning priority",
+    "no ceremony on load",
+    "new journey reset"
+  ],
+  "limitations": [
+    "No Windows or mobile physical-device acceptance",
+    "No human comprehension or retention evidence",
+    "No commercial outcome evidence"
+  ]
+}
