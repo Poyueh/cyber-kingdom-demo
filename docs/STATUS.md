@@ -1,13 +1,13 @@
 # 製作進度
 
 
-## 2026-10-12：遊戲企劃規格網站（待部署驗收）
+## 2026-10-12：遊戲企劃規格網站（已發佈）
 
 - 依 v0.0.38 實際程式整合 17 章，區分現行新局、歷史／相容與待決策；附七星球航線、經濟／部件／日夜／NPC 規格、實際遊戲圖片及固定來源連結。
 - 單一內容來源 `docs/game-spec/content.json`，文件修訂 3；桌面與 390px 手機閱讀、搜尋、空結果、篩選、章節定位已驗證。圖片預留尺寸避免跳章後位移。列印 CSS 顯示完整文件；內建瀏覽器開啟列印時阻塞，未驗收系統 PDF 輸出。
 - 六項同步／部署行為測試通過，涵蓋來源新增／修改、內容審訂、版本不符、舊包保持、檔案雜湊與安全路徑。專案按鍵／入口設定也需審訂，匯出產品名等只做正規化。
 - 全 tools/check.sh 通過：4,377 核心斷言與所有場景，無 SCRIPT ERROR／ERROR。新增專案設定檢查後再次通過規格與 Web 測試；未修改遊戲程式或資料。Web 包將帶同提交規格，GitHub CI 檢查漏同步，Pages 可發布同版本純文件更新。
-- 本次維持 v0.0.38 遊戲與附件；待 Pages 部署及線上雜湊驗證。[維護](game-spec/README.md) · [第 116 課](lessons/116-living-game-spec.md) · [驗收](reports/game-spec/README.md)。
+- [企劃網頁](https://poyueh.github.io/cyber-kingdom-demo/spec/) 已公開，Pages 部署 38153810280 與同步 CI 38153810804 成功。線上規格 12 檔逐一位元組一致；既有七個 Release 附件與七份線上遊戲／指南檔案保持 v0.0.38 原樣。正式站 17 章、NPC 搜尋、狀態篩選與復原均通過，無 console errors；[線上驗證](reports/game-spec/verification.json)。[維護](game-spec/README.md) · [第 116 課](lessons/116-living-game-spec.md) · [驗收](reports/game-spec/README.md)。
 
 ## 2026-10-11：v0.0.38 駐點人物工作與回應（已發佈）
 
