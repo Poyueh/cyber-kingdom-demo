@@ -16,6 +16,7 @@ var _brand: Label
 var _top: ColorRect
 var _bottom: ColorRect
 func _ready() -> void:
+ theme=preload("res://presentation/refuge_theme.gd").make()
  set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
  mouse_filter=Control.MOUSE_FILTER_STOP
  var screen: SubViewportContainer=SubViewportContainer.new()
@@ -28,7 +29,7 @@ func _ready() -> void:
   stage.completed.connect(finish);_viewport.add_child(stage)
   stage.set_physics_process(false)
  _worlds=preload("res://presentation/opening_worlds.gd").new();add_child(_worlds)
- _worlds.starts=DIRECTION.shot_starts[1];_worlds.ends=DIRECTION.shot_starts[3];_worlds.hide()
+ _worlds.starts=DIRECTION.shot_starts[4];_worlds.ends=DIRECTION.duration;_worlds.hide()
  _top=_bar();_bottom=_bar()
  _caption=_label(22);_caption.add_theme_color_override("font_color",Color("eddfc4"))
  _brand=_label(42);_brand.text="CYBER KINGDOM"

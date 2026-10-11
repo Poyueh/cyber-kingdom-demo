@@ -14,7 +14,7 @@ func _ready() -> void:
 	assert(catalog.valid())
 	size_flags_vertical=Control.SIZE_EXPAND_FILL
 	alignment=BoxContainer.ALIGNMENT_CENTER
-	add_theme_constant_override("separation",10)
+	add_theme_constant_override("separation",8)
 	var row: HBoxContainer=HBoxContainer.new()
 	row.add_theme_constant_override("separation",6);add_child(row)
 	for option: Resource in catalog.options:
@@ -26,10 +26,10 @@ func _ready() -> void:
 		button.toggle_mode=true
 		button.pressed.connect(func() -> void:select(option.pace_id))
 		choices.append(button)
-	description=_label(15,Color("dfd9bd"))
-	description.custom_minimum_size.y=72
-	note=_label(13,Color("9db6b7"))
-	note.custom_minimum_size.y=54
+	description=_label(14,Color("dfd9bd"))
+	description.custom_minimum_size.y=60
+	note=_label(12,Color("9db6b7"))
+	note.custom_minimum_size.y=44
 	confirm=_button(self,46);confirm.name="BeginJourney"
 	confirm.pressed.connect(func() -> void:confirmed.emit(selected))
 	back=_button(self,34);back.pressed.connect(func() -> void:cancelled.emit())
@@ -40,14 +40,10 @@ func _button(parent: Node, height: float) -> Button:
 	button.custom_minimum_size=Vector2(0,height)
 	button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	button.add_theme_font_size_override("font_size",15)
-	var plate: StyleBoxFlat=StyleBoxFlat.new()
-	plate.bg_color=Color("19383e");plate.border_color=Color("4c7271")
-	plate.set_border_width_all(1);plate.set_content_margin_all(6)
-	button.add_theme_stylebox_override("normal",plate)
-	var active: StyleBoxFlat=plate.duplicate()
-	active.bg_color=Color("365557");active.border_color=Color("dfc588")
-	button.add_theme_stylebox_override("pressed",active)
-	button.add_theme_stylebox_override("hover",active)
+	button.theme=preload("res://presentation/refuge_theme.gd").make()
+	for state: StringName in [&"normal",&"hover",&"pressed",&"disabled"]:
+		var skin: StyleBoxFlat=button.theme.get_stylebox(state,"Button").duplicate()
+		skin.set_content_margin_all(7);button.add_theme_stylebox_override(state,skin)
 	parent.add_child(button)
 	return button
 

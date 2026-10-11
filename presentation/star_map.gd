@@ -29,7 +29,7 @@ func _ready() -> void:
  var shade: ColorRect=ColorRect.new();shade.color=Color("030b16ed");shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(shade)
  var center: CenterContainer=CenterContainer.new();center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(center)
  _panel=PanelContainer.new();center.add_child(_panel)
- _panel.theme=Theme.new();_panel.theme.default_font=preload("res://presentation/localized_font.gd").current()
+ _panel.theme=preload("res://presentation/refuge_theme.gd").make()
  var skin: StyleBoxFlat=StyleBoxFlat.new();skin.bg_color=Color("0c1928");skin.border_color=Color("728d92");skin.set_border_width_all(1);skin.border_width_top=3;skin.set_content_margin_all(16);skin.set_corner_radius_all(8)
  _panel.add_theme_stylebox_override("panel",skin)
  var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",8);_panel.add_child(box)

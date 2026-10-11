@@ -49,7 +49,7 @@ func run_scene() -> void:
  check(is_equal_approx(menu.audio.music.volume,0.35),"audio handoff preserves the saved music volume")
  await _dispose(menu)
  menu=_open_menu(false);await create_timer(1.8).timeout
- movie=_movie(menu);movie.stage.elapsed=24.98
+ movie=_movie(menu);movie.stage.elapsed=preload("res://data/opening_direction.tres").duration-0.02
  await frames(6)
  check(menu.view.visible and menu.audio.music.current=="title","natural movie completion also starts the title score")
  await _dispose(menu)

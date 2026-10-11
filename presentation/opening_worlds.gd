@@ -32,7 +32,7 @@ func _world(index: int, phase: float, alpha: float) -> void:
  var landmark: Texture2D=Scenery.LANDMARK[index]
  var ratio: float=230.0/landmark.get_height()
  var dimensions: Vector2=landmark.get_size()*ratio
- draw_texture_rect(landmark,Rect2(Vector2(480,443)-Vector2(dimensions.x/2,dimensions.y),dimensions),false,Color(0.73,0.84,0.88,alpha))
+ draw_texture_rect(landmark,Rect2(preload("res://presentation/grounded_art.gd").anchor(landmark,Vector2(480,440),ratio)-Vector2(dimensions.x/2,dimensions.y),dimensions),false,Color(0.73,0.84,0.88,alpha))
  for tile: int in range(3):
   draw_texture_rect(Scenery.GROUND[index],Rect2(tile*384-phase*10,437,384,38),false,Color(0.5,0.65,0.75,alpha))
  draw_rect(Rect2(0,475,960,65),Color(0.025,0.045,0.07,alpha*0.9))

@@ -22,8 +22,7 @@ var pace_picker: VBoxContainer
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	theme=Theme.new()
-	theme.default_font=preload("res://presentation/localized_font.gd").current()
+	theme=preload("res://presentation/refuge_theme.gd").make()
 	texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
 	add_child(preload("res://presentation/title_backdrop.gd").new())
 	var margin:=MarginContainer.new();add_child(margin)
@@ -38,18 +37,21 @@ func _ready() -> void:
 	_label(identity,"最後的避難所",23,Color("e2c9a0"))
 	_label(identity,"opening.promise",15,Color("b9c8c9"))
 	var card:=PanelContainer.new();card.custom_minimum_size.x=350;card.size_flags_vertical=Control.SIZE_EXPAND_FILL;columns.add_child(card)
-	var style:=StyleBoxFlat.new();style.bg_color=Color(0.02,0.05,0.07,0.88)
-	style.border_color=Color("426c6c");style.set_border_width_all(1);style.set_corner_radius_all(3);style.set_content_margin_all(22)
+	var style: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("0a151fef"),Color("82795f"),24)
 	card.add_theme_stylebox_override("panel",style)
-	var body:=VBoxContainer.new();body.add_theme_constant_override("separation",14);card.add_child(body)
-	_heading=_label(body,"旅程",22,Color("d7e4d7"))
+	var scroll_body: ScrollContainer=ScrollContainer.new();scroll_body.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+	scroll_body.size_flags_vertical=Control.SIZE_EXPAND_FILL;card.add_child(scroll_body)
+	var body:=VBoxContainer.new();body.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.size_flags_vertical=Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation",12);scroll_body.add_child(body)
+	_heading=_label(body,"旅程",22,Color("e0c995"))
+	body.add_child(HSeparator.new())
 	var selector=LanguageSelector.new();body.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
 	_home=VBoxContainer.new();_home.size_flags_vertical=Control.SIZE_EXPAND_FILL;_home.alignment=BoxContainer.ALIGNMENT_CENTER;_home.add_theme_constant_override("separation",12);body.add_child(_home)
 	new_button=_button(_home,"opening.begin","camp");new_button.pressed.connect(show_paces)
 	var primary: StyleBoxFlat=new_button.get_theme_stylebox("normal").duplicate()
-	primary.bg_color=Color("a9783c");primary.border_color=Color("efcb8d");primary.set_border_width_all(1)
+	primary.bg_color=Color("796241");primary.border_color=Color("d6bb86");primary.set_border_width_all(1)
 	new_button.add_theme_stylebox_override("normal",primary)
-	var primary_hover: StyleBoxFlat=primary.duplicate();primary_hover.bg_color=Color("bc8e51")
+	var primary_hover: StyleBoxFlat=primary.duplicate();primary_hover.bg_color=Color("9b7b4e")
 	new_button.add_theme_stylebox_override("hover",primary_hover);new_button.add_theme_stylebox_override("pressed",primary_hover)
 	new_button.add_theme_color_override("font_color",Color("fff1d9"))
 	records_button=_button(_home,"選擇紀錄","restore");records_button.custom_minimum_size.y=50;records_button.pressed.connect(func():records_requested.emit())
@@ -80,12 +82,8 @@ func _button(parent: Node, text: String, icon: String) -> Button:
 	var button:=Button.new();button.text=tr(text);_bindings.append({"node":button,"source":text});button.icon=Icons.get_icon(icon);button.expand_icon=true
 	button.custom_minimum_size=Vector2(0,64);button.add_theme_constant_override("icon_max_width",26);button.add_theme_constant_override("h_separation",14)
 	button.add_theme_font_size_override("font_size",19)
-	var style:=StyleBoxFlat.new();style.bg_color=Color("19383e");style.set_corner_radius_all(3);style.set_content_margin_all(12)
-	button.add_theme_stylebox_override("normal",style)
-	var active:=style.duplicate();active.bg_color=Color("2b5659");button.add_theme_stylebox_override("hover",active);button.add_theme_stylebox_override("pressed",active)
-	var focus: StyleBoxFlat=style.duplicate();focus.bg_color=Color(0,0,0,0)
-	focus.border_color=Color("f2d396");focus.set_border_width_all(2)
-	button.add_theme_stylebox_override("focus",focus)
+	button.alignment=HORIZONTAL_ALIGNMENT_LEFT
+	button.add_theme_stylebox_override("normal",preload("res://presentation/refuge_theme.gd").plate(Color("14242cbd"),Color("3c5357"),14))
 	parent.add_child(button);return button
 
 func show_home() -> void:

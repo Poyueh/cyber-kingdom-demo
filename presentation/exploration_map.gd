@@ -17,7 +17,7 @@ var _growth_mode: bool=false
 var _safe: Rect2
 const LEGEND: Array[String]=["營火","寶箱","特殊部件","地獄之門"]
 func _ready() -> void:
- theme=Theme.new();theme.default_font=preload("res://presentation/localized_font.gd").current()
+ theme=preload("res://presentation/refuge_theme.gd").make()
  mouse_filter=Control.MOUSE_FILTER_STOP
  # Wrapped labels settle after container layout; refit when their minimum shrinks.
  minimum_size_changed.connect(func():

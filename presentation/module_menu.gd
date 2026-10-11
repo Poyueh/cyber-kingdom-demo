@@ -19,7 +19,7 @@ func _skin(fill: Color, border: Color) -> StyleBoxFlat:
  skin.set_corner_radius_all(4)
  return skin
 func _ready() -> void:
- theme=Theme.new();theme.default_font=preload("res://presentation/localized_font.gd").current()
+ theme=preload("res://presentation/refuge_theme.gd").make()
  add_theme_stylebox_override("panel",_skin(Color("0a1728f7"),Color("56747d")))
  _selected_skin=_skin(Color("183937"),Color("a5e5c4"));_locked_skin=_skin(Color("101e30"),Color("2c4052"))
  var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)

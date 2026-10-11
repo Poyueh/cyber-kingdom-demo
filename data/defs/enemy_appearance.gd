@@ -15,6 +15,7 @@ extends Resource
 @export var idle_fps: float
 @export var hit_height: float
 @export var tint: Color
+@export var breath_muzzles: PackedVector2Array
 
 func region(frame: int) -> Rect2:
 	return Rect2(Vector2((frame%4)*cell.x,(frame/4)*cell.y),Vector2(cell))
@@ -24,6 +25,7 @@ func sample(clip: PackedInt32Array, progress: float) -> int:
 
 func valid() -> bool:
 	if atlas==null or cell.x<=0 or cell.y<=0 or baseline<=0 or stride<=0 or strike_seconds<=0:return false
+	if not breath_muzzles.is_empty() and breath_muzzles.size()!=strike.size():return false
 	var count: int=int(atlas.get_width()/cell.x)*int(atlas.get_height()/cell.y)
 	for clip: PackedInt32Array in [walk,windup,strike,hurt,fallen]:
 		if clip.is_empty():return false

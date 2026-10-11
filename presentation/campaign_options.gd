@@ -16,12 +16,9 @@ var load_button: Button
 var _tooltips: Dictionary={}
 var _numbers: Array[Label]=[]
 func _ready() -> void:
-	theme=Theme.new();theme.default_font=preload("res://presentation/localized_font.gd").current()
+	theme=preload("res://presentation/refuge_theme.gd").make()
 	mouse_filter=Control.MOUSE_FILTER_STOP
-	var style:=StyleBoxFlat.new()
-	style.bg_color=Color(0.025,0.065,0.085,0.96)
-	style.set_corner_radius_all(12)
-	style.set_content_margin_all(18)
+	var style: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("0b1721f7"),Color("82795f"),18)
 	add_theme_stylebox_override("panel",style)
 	var box:=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)
 	var selector=LanguageSelector.new();box.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
