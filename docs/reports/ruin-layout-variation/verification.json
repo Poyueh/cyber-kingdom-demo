@@ -1,0 +1,36 @@
+{
+  "version": "0.0.31",
+  "full_check": true,
+  "core_assertions": 3957,
+  "new_core_assertions": 89,
+  "native_scene_assertions": 37,
+  "save_schema": 19,
+  "tdd_red": {
+    "fixed_layouts": 6,
+    "camp_clearing_hidden_control": 1
+  },
+  "generation": {
+    "seeds": 500,
+    "solvable_layouts": 3000,
+    "unique_per_destination": [
+      140,
+      6,
+      140,
+      6,
+      480,
+      478
+    ],
+    "real_map_interaction_cases": 384
+  },
+  "actual_previous_release_save": {
+    "version": "0.0.30",
+    "partial_worlds": 6,
+    "sixty_tick_continuation_identical": true,
+    "fixture_sha256": "29a92d6e5f4aafbd948696265cee6e7324de5890ae5beaa7800a8872cb508989"
+  },
+  "check_log_sha256": "83e08172bbbe8b6cd25fd350b4c9d674ccc3838b93d06f92d2b5c878d79b57d5",
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "Generated variety and solvability do not establish human fun, retention or commercial performance"
+  ]
+}

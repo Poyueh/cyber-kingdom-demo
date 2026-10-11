@@ -56,7 +56,7 @@ const ROWS=[
  ["ruin.volcano", "爐心卸壓", "炉心卸压", "Furnace pressure"],
  ["ruin.storm", "雷纜充能", "雷缆充能", "Storm capacitor"],
  ["ruin.void", "回聲鎖環", "回声锁环", "Echo lock"],
- ["ruin.circuit.hint", "沿線觀察，讓三盞燈都亮起", "沿线观察，让三盏灯都亮起", "Follow the links; light all three lamps"],
+ ["ruin.circuit.hint", "觀察本次連線，讓三盞燈都亮起", "观察本次连线，让三盏灯都亮起", "Read this circuit’s links; light all three lamps"],
  ["ruin.balance.hint", "用加減調到綠框，再按菱形鎖定", "用加减调到绿框，再按菱形锁定", "Balance to the marked band; lock at the diamond"],
  ["ruin.pulse.hint", "亮窗時接通；已充能的符石會保留", "亮窗时接通；已充能的符石会保留", "Activate in the bright window; charged nodes stay lit"],
 

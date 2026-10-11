@@ -24,6 +24,7 @@ func press(game: Node, station: int, mobile: bool) -> void:
 func run_scene() -> void:
  var game: Node=load("res://scenes/frontier.tscn").instantiate()
  game.campaign_save_path="";game.audio_preferences_path=""
+ game._map_seed=416;game._seed_initialized=true
  root.add_child(game);await frames(10);game.set_physics_process(false)
  clear_world(game)
  for planet: int in [1,3,2,4,5,6]:
@@ -40,22 +41,21 @@ func run_scene() -> void:
   # Let the actual 1.8-second exploration reveal finish before judging pixels.
   for i: int in range(65):game._physics_process(1.0/30)
   await capture(game,"world-"+str(planet))
-  if planet==2:
+  if planet in [1,2]:
    for locale: String in ["zh_CN","en"]:
-    TranslationServer.set_locale(locale);await capture(game,"frost-"+locale)
+    TranslationServer.set_locale(locale);await capture(game,"world-%d-%s"%[planet,locale])
     check(not game.tr("ruin.balance.hint").begins_with("ruin."),"mechanism guidance translates in "+locale)
    TranslationServer.set_locale("zh_TW")
+  if planet==2:
+   game.knight.position=Vector2(site.positions[0],430);game._physics_process(1.0/30)
+   await capture(game,"frost-clearing")
+   check(game.sim.context(game.knight.position.x).id=="trial","camp-clearing device accepts actual scene interactions")
   var amount: int=game.sim.pouch.amount
-  var actions: Array[int]=[];var times: Array[int]=[]
-  match planet:
-   1:actions.assign([0,2])
-   3:actions.assign([1,2])
-   2:actions.assign([0,0,1,2])
-   4:actions.assign([1,1,0,2])
-   5:actions.assign([0,1,2]);times.assign([24,28,32])
-   6:actions.assign([0,1,2]);times.assign([28,30,32])
+  var actions: Array[int]=preload("res://tests/ruin_search.gd").actions(m)
+  check(not actions.is_empty(),"visible generated devices provide a solvable route")
   for i: int in range(actions.size()):
-   if not times.is_empty():game.sim.workforce.elapsed=float(times[i])
+   var tick: int=preload("res://tests/ruin_search.gd").next_tick(m,actions[i],roundi(game.sim.workforce.elapsed*30))
+   game.sim.workforce.elapsed=float(tick)/30
    await press(game,actions[i],planet%2==0)
   check(site.progress==3,"keyboard or mobile gesture solves this family in the real scene")
   check(game.sim.pouch.amount==amount,"mechanism interactions do not accidentally throw crystals")

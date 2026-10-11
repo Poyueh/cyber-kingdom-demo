@@ -1,0 +1,11 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/ruin_variation_tuning.gd" id="1"]
+[resource]
+script = ExtResource("1")
+circuit_minimum_switches = 2
+circuit_maximum_switches = 3
+balance_minimum_moves = 3
+balance_maximum_moves = 5
+balance_target_radius = 2
+pulse_periods_seconds = Array[float]([6.0, 7.0, 8.0])
+pulse_phase_step_seconds = 0.5
