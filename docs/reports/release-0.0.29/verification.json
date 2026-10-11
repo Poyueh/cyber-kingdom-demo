@@ -1,6 +1,6 @@
 {
   "version": "0.0.29",
-  "published": false,
+  "published": true,
   "source_commit": "28b960c2cc12f632ac1f98a95296fa9f263cc079",
   "source_tree": "36ebaf652d8cb3afab862410b239ccbcabaed17e",
   "full_check": true,
@@ -58,5 +58,51 @@
     "log_sha256": "84ec49ed21fab3547a0c8175ae964992924a5809ec709e36b5c12321f011e267",
     "recovery": "Same committed source exported successfully alone, then actual packaged PCK passed 29 assertions",
     "root_cause": "Not established; no game code change or engine workaround applied"
+  },
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.29",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "b7130799e69e7acc2dd2eb0df4d2706b6480a5f59e7122f0ac515b287eaf9d3c",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.29"
+    },
+    {
+      "name": "guide.html",
+      "size": 4901700,
+      "sha256": "52f40de35585f72d7e3bdf5333f33d3f3066a106acdebd23f0eaa2fb00ee1373",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.29"
+    },
+    {
+      "name": "index.pck",
+      "size": 59356540,
+      "sha256": "42f655fc05bffeef1a822226402da61cf811b8196c757ab9ff44451f13008b9c",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.29"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.29",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38100171511,
+    "headSha": "79f037a7e753a26a3eb859c3371e902471cdfe8d",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38100171511"
+  },
+  "browser_verification": {
+    "version": "0.0.29",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.29",
+    "main_menu": true,
+    "prologue_loaded_and_skip_to_menu": true,
+    "new_game_opens_pace_picker": true,
+    "expedition_recommended_initial_choice": true,
+    "settler_selection_updates_description": true,
+    "back_returns_to_menu": true,
+    "embedded_guide_journey_pacing": true,
+    "guide_version_text": "適用 v0.0.29：新增三種新旅程節奏，修正手動檢查點另存遺失星球進度。舊紀錄維持原規則，七地探索與建設回顧皆可使用。",
+    "guide_closes_to_menu": true,
+    "console_errors": [],
+    "scope": "In-app browser menu and embedded guide only; no new player save created during this browser check. Native packaged scenario tests cover launch, travel, checkpoint fork and retry."
   }
 }
