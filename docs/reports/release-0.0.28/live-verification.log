@@ -1,0 +1,11 @@
+ASSET OK Cyber-Kingdom-Android-v0.0.28-debug.apk
+ASSET OK Cyber-Kingdom-Guide-v0.0.28.html
+ASSET OK Cyber-Kingdom-Web-v0.0.28.zip
+ASSET OK Cyber-Kingdom-Windows-v0.0.28.zip
+ASSET OK Cyber-Kingdom-iOS-v0.0.28-Xcode.zip
+ASSET OK Cyber-Kingdom-macOS-v0.0.28.zip
+ASSET OK SHA256SUMS.txt
+LIVE OK index.html 5542
+LIVE OK guide.html 4828423
+LIVE OK index.pck 59344956
+PASS: all seven assets and live runtime/guide match this release.

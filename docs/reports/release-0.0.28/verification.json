@@ -1,6 +1,6 @@
 {
   "version": "0.0.28",
-  "published": false,
+  "published": true,
   "source_commit": "6d4fe44559608254ecc5699037a1a003cafcc7b7",
   "source_tree": "31f5cf81e471a99034cbfe299681cbb7ffdc0eaf",
   "full_check": true,
@@ -51,5 +51,49 @@
   ],
   "packaged_native_smoke": true,
   "packaged_native_assertions": 25,
-  "check_log_sha256": "7e1060a9cedf5f49c629b42c4fc0825ce06018156cb7974346300be77011af76"
+  "check_log_sha256": "7e1060a9cedf5f49c629b42c4fc0825ce06018156cb7974346300be77011af76",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.28",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "e91dda4c9fb01b29ff12c223552e5caae24fff5d0bb7811b8e15278e3c37eb65",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.28"
+    },
+    {
+      "name": "guide.html",
+      "size": 4828423,
+      "sha256": "9a11a4ce3fac3d775278e30eae9388224e75d93d672b023f4bd5b94d7d40da72",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.28"
+    },
+    {
+      "name": "index.pck",
+      "size": 59344956,
+      "sha256": "824e6611e3d9ce46c65d524a7f8a555e23fd51b5f5ea48fffcc3c41cb75d68f7",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.28"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.28",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38098905502,
+    "headSha": "06d8bb83a8b395754b5ca55c128b9be82f5d4da0",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38098905502"
+  },
+  "browser_verification": {
+    "version": "0.0.28",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.28",
+    "browser": "Codex in-app browser",
+    "prologue": true,
+    "skip_to_main_menu": true,
+    "main_menu": true,
+    "embedded_guide_settlement_growth": true,
+    "embedded_guide_version_text": "適用 v0.0.28：新增聚落成長演出及探索地圖的建設回顧頁。既有旅程可使用，讀檔不重播；七地夜襲與機關規則沿用。",
+    "returned_to_main_menu": true,
+    "console_errors": [],
+    "scope": "Public startup, menu and embedded guide; native scene and packaged PCK tests cover gameplay changes. This is not a full human playthrough or physical mobile acceptance."
+  }
 }
