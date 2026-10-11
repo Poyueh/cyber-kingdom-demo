@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="AttendantBehavior" load_steps=9 format=3]
+[ext_resource type="Script" path="res://data/defs/attendant_behavior.gd" id="style"]
+[ext_resource type="Script" path="res://data/defs/attendant_profile.gd" id="profile"]
+
+[sub_resource type="Resource" id="job0"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 1, 0, 3)
+work_holds = PackedFloat32Array(1.8, 0.45, 0.8, 0.35, 1.0, 1.2)
+greeting_frames = PackedInt32Array(0, 1, 2, 0)
+service_frames = PackedInt32Array(0, 1, 2, 1, 0)
+alert_frame = 2
+hand = Vector2(19, -23)
+accent = Color(0.35, 0.95, 0.82, 1)
+detail = &"lantern"
+
+[sub_resource type="Resource" id="job1"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 1, 2, 3)
+work_holds = PackedFloat32Array(1.3, 0.35, 0.16, 0.3, 0.16, 1.1)
+greeting_frames = PackedInt32Array(0, 3, 3, 0)
+service_frames = PackedInt32Array(0, 1, 2, 1, 2, 3)
+alert_frame = 3
+hand = Vector2(17, -31)
+accent = Color(1, 0.76, 0.35, 1)
+detail = &"sparks"
+
+[sub_resource type="Resource" id="job2"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 2, 3, 0)
+work_holds = PackedFloat32Array(1.6, 0.5, 0.5, 0.3, 0.6, 1.0)
+greeting_frames = PackedInt32Array(0, 2, 2, 0)
+service_frames = PackedInt32Array(0, 1, 2, 2, 3, 0)
+alert_frame = 0
+hand = Vector2(18, -24)
+accent = Color(0.63, 0.88, 0.37, 1)
+detail = &"seeds"
+
+[sub_resource type="Resource" id="job3"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 1, 3)
+work_holds = PackedFloat32Array(1.3, 0.6, 0.8, 0.3, 1.5)
+greeting_frames = PackedInt32Array(0, 1, 1, 0)
+service_frames = PackedInt32Array(0, 1, 2, 1, 3)
+alert_frame = 2
+hand = Vector2(17, -30)
+accent = Color(0.74, 0.86, 0.92, 1)
+detail = &"feather"
+
+[sub_resource type="Resource" id="job4"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 1, 3)
+work_holds = PackedFloat32Array(1.6, 0.7, 0.65, 0.5, 1.2)
+greeting_frames = PackedInt32Array(0, 1, 2, 0)
+service_frames = PackedInt32Array(0, 1, 2, 2, 1, 3)
+alert_frame = 0
+hand = Vector2(18, -29)
+accent = Color(0.26, 1, 0.88, 1)
+detail = &"crystal"
+
+[sub_resource type="Resource" id="job5"]
+script = ExtResource("profile")
+work_frames = PackedInt32Array(0, 1, 2, 3, 0)
+work_holds = PackedFloat32Array(1.8, 0.55, 0.35, 0.55, 1.0)
+greeting_frames = PackedInt32Array(0, 2, 2, 0)
+service_frames = PackedInt32Array(0, 1, 2, 3, 0)
+alert_frame = 2
+hand = Vector2(14, -28)
+accent = Color(0.95, 0.84, 0.52, 1)
+detail = &"metal"
+
+[resource]
+script = ExtResource("style")
+profiles = Array[ExtResource("profile")]([SubResource("job0"), SubResource("job1"), SubResource("job2"), SubResource("job3"), SubResource("job4"), SubResource("job5")])
+approach_radius = 110.0
+departure_radius = 170.0
+notice_seconds = 0.25
+greeting_seconds = 1.2
+greeting_interval = 8.0
+acknowledgement_seconds = 0.55
+service_seconds = 1.65
+danger_radius = 180.0
+safety_radius = 240.0
+safety_seconds = 2.0

@@ -1,0 +1,53 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: campaign scene wires a persistent facility animation presenter
+PASS: approaching hall triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at hall lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching workshop triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at workshop lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching farm_tools triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at farm_tools lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching hunt_tools triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at hunt_tools lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching drill triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at drill lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching armory triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at armory lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: ordinary E investment gets a short acknowledgement
+PASS: completed paid production gets its own service animation
+PASS: redrawing a paused clock does not replay service
+PASS: animation and proximity observations never mutate saved economy or population
+PASS: facility interaction remains a valid v20 checkpoint
+PASS: danger scenario has an actual living local creature
+PASS: nearby danger interrupts work without deleting the NPC
+PASS: keeper waits for safety before returning to work
+PASS: presentation adds no campaign save fields
+PASS: loading a saved scene clears transient service without replay
+PASS: existing module menu opens at the artificer
+PASS: actual paid module swap cues the artificer's calibration
+PASS: cinematic staging suppresses player-service reactions
+Attendant native scene assertions: 50; failures: 0

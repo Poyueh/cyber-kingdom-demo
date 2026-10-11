@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-11 v0.0.38：六職業獨立工作節拍、靠近短招呼、實際付款／完成服務反應與近敵警戒，data/attendant_behavior.tres 控制時長及距離。只新增有上限的呈現記憶，不增加勞力、物品或任務，快照仍 v20，舊紀錄直接可用。見 docs/design/attendant-behaviors.md。
+
 2026-10-11 v0.0.37：每星新增一處 1–2 隻當地異獸晶巢與另一側安靜發現，選做／一次性／有限追逐，不增加謎題、不阻止黎明或航行。七地數值在 data/trails；快照 v20 保存攻擊 tick，v19 舊旅程升級但不追加事件。六種職業駐點人物與建築採同一原生像素網格。見 docs/design/trail-encounters.md。
 
 2026-10-11 v0.0.35：敵人改為無武器噬晶異獸，七地守門者各有專屬完整圖集；一般怪物有抱晶撤退。七龍完整姿勢、真實攻擊驅動的蓄力／爆發與碎晶受擊。設定在 data/enemy_cast.tres 與 data/enemy_appearance；純呈現更新，快照仍 v19、戰鬥及夜襲規則不變。見 docs/design/crystal-devourers.md。
