@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.40",
-  "revision": 7,
-  "review_note": "場景可見底部統一落地；共用石墨霧金介面、透明圓形觸控；28 秒建造／實際戰鬥／巨龍破牆前導、森林龍息嘴部連接。保留稀疏探索、正式戰鬥數值、三語、存檔 v20 與跳過／音樂隔離。",
-  "content_sha256": "13f5153bb80ba043a2574c9fb534b3f138b025651d625f0961946f65adad087e",
+  "revision": 8,
+  "review_note": "版本邊界章節校正為 v0.0.40，明確記錄場景／介面／前導適用本版，森林平衡保留 v0.0.39 規則；純文件修訂，不變更已發行遊戲與附件。",
+  "content_sha256": "e57b3d9e1401e58ab9356c8c0332066c12743252f449a4e728b53cac079b3682",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "2c1ff56256b7b834f1e63a3b2a3bacd59a754e6e32ed0567ea59cbbbec087b3a",
