@@ -14,7 +14,13 @@ static func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]
 static func known(sim: RefCounted, x: float) -> bool:
  for region: Dictionary in sim.frontier.regions:
   if x>=region.x and x<=region.x+region.width:return region.discovered
- return false
+ # The starting clearing has no region row and is already visible ground.
+ var left_edge: float=-INF;var right_edge: float=INF
+ var home: float=sim.world.sites.hall
+ for region: Dictionary in sim.frontier.regions:
+  if region.x+region.width<=home:left_edge=maxf(left_edge,region.x+region.width)
+  elif region.x>=home:right_edge=minf(right_edge,region.x)
+ return is_finite(left_edge) and is_finite(right_edge) and x>left_edge and x<right_edge
 static func execute(sim: RefCounted, choice: Dictionary) -> void:
  var success: bool=sim.trials.activate(choice.trial,choice.station,roundi(sim.workforce.elapsed*Clock.TICKS_PER_SECOND))
  sim.effects.append({"kind":"rune_success" if success else "rune_reset","x":choice.x,"life":0.8})
