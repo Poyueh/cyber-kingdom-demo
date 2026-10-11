@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TrailProfile" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/defs/trail_profile.gd" id="1"]
+[resource]
+script = ExtResource("1")
+planet_id = 5
+combat_side = -1
+guard_count = 2
+health = 48
+damage = 14
+speed = 92
+windup_seconds = 0.85
+recovery_seconds = 1.7
+reach = 40
+charge_distance = 120
+charge_seconds = 0.3
+territory = 205
+notice = 230
+combat_reward = 3
+discovery_reward = 2

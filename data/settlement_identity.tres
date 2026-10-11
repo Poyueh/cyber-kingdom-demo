@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SettlementIdentity" load_steps=9 format=3]
+[ext_resource type="Script" path="res://data/defs/settlement_identity.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/attendants.png" id="staff"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/workshop.png" id="workshop"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/farm_tools.png" id="farm_tools"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/hunt_tools.png" id="hunt_tools"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/armory.png" id="armory"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/drill.png" id="drill"]
+[ext_resource type="Texture2D" path="res://art/settlement/inhabitants-v001/outpost.png" id="outpost"]
+
+[resource]
+script = ExtResource("1")
+attendants = ExtResource("staff")
+cell = Vector2i(96, 80)
+baseline = 74
+frames_per_second = 2.8
+cycle = PackedInt32Array(0, 1, 2, 3, 2, 1)
+sites = Array[StringName]([&"hall", &"workshop", &"farm_tools", &"hunt_tools", &"drill", &"armory"])
+offsets = PackedVector2Array(-65, 0, 68, 0, -66, 0, 65, 0, 62, 0, 72, 0)
+buildings = {
+&"workshop": ExtResource("workshop"),
+&"farm_tools": ExtResource("farm_tools"),
+&"hunt_tools": ExtResource("hunt_tools"),
+&"armory": ExtResource("armory"),
+&"drill": ExtResource("drill"),
+&"outpost": ExtResource("outpost")
+}

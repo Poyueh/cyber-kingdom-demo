@@ -1,0 +1,19 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL test_new_journey_has_two_sparse_roadside_moments
+PASS test_existing_v36_journeys_do_not_gain_new_monsters
+authored journey resolves local encounter rules on planet 0: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 1: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 2: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 3: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 4: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 5: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+authored journey resolves local encounter rules on planet 6: expected 1, got 0
+roadside progress has a persistent bounded subsystem: expected true, got false
+Assertions: 15; failures: 14

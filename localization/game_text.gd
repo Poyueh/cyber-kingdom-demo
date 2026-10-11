@@ -1,6 +1,23 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["trail.claim", "拾取野外晶藏", "拾取野外晶藏", "Gather the crystal find"],
+ ["trail.guarded", "異獸仍在守護這處晶藏", "异兽仍在守护这处晶藏", "The creatures still guard this cache"],
+ ["trail.nest.0", "藤巢群獵", "藤巢群猎", "Thicket pack"],
+ ["trail.nest.1", "沙脊伏獸", "沙脊伏兽", "Dune prowler"],
+ ["trail.nest.2", "冰甲守望", "冰甲守望", "Iceback watch"],
+ ["trail.nest.3", "菌潮雙襲", "菌潮双袭", "Spore pair"],
+ ["trail.nest.4", "熔殼重擊", "熔壳重击", "Cinder crusher"],
+ ["trail.nest.5", "電棘疾獵", "电棘疾猎", "Stormclaw pair"],
+ ["trail.nest.6", "黯潮潛伏", "黯潮潜伏", "Void stalker"],
+ ["trail.find.0", "樹根晶光", "树根晶光", "Rootlight crystals"],
+ ["trail.find.1", "沙埋旅囊", "沙埋旅囊", "Sand-buried satchel"],
+ ["trail.find.2", "冰封補給", "冰封补给", "Frozen supplies"],
+ ["trail.find.3", "菌傘藏晶", "菌伞藏晶", "Sporecap cache"],
+ ["trail.find.4", "冷卻晶殼", "冷却晶壳", "Cooled crystal shell"],
+ ["trail.find.5", "失落電匣", "失落电匣", "Lost charge casket"],
+ ["trail.find.6", "古旅人遺物", "古旅人遗物", "Ancient wayfarer relic"],
+
  ["補給區", "補給區", "补给区", "Supply clearing"],
  ["靜謐荒野", "靜謐荒野", "静谧荒野", "Quiet wilds"],
  ["封印聖所", "封印聖所", "封印圣所", "Sealed sanctuary"],

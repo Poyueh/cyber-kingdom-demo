@@ -16,7 +16,8 @@ func capture(game: Node, name: String) -> void:
 	game.get_viewport().get_texture().get_image().save_png("res://test-results/voyage-progress/"+name+".png")
 func ready_core(game: Node) -> void:
 	for gate: Dictionary in game.sim.mission.rifts:gate.sealed=true
-	game.sim.raiders.clear();game.sim.mission.dragon_summoned=true;game.sim.mission.dragon_defeated=true;game.sim.mission.dragon_day=6
+	game.sim.raiders=game.sim.raiders.filter(func(enemy: Dictionary)->bool:return enemy.has("trail_slot"))
+	game.sim.mission.dragon_summoned=true;game.sim.mission.dragon_defeated=true;game.sim.mission.dragon_day=6
 	game.sim.frontier.city_level=1;game.sim.survival.armed=true
 	game.sim.spirit.opening_finished=true;game.sim.spirit.expires_tick=0
 	game.sim.clock.remaining=game.sim.clock.day_seconds*0.65
@@ -61,6 +62,7 @@ func verify_pause_and_restore(game: Node) -> void:
 	var state: Dictionary=game.journey.capture(game.sim,{"x":-185.0,"y":430.0,"vx":0.0,"vy":0.0})
 	var restored: Dictionary=Voyage.restore(JSON.parse_string(JSON.stringify(state)))
 	check(not restored.is_empty(),"actual multiworld save restores after reclaiming core")
+	if restored.is_empty():return
 	game._apply_restored(restored);game.paused=false;game._physics_process(1.0/30)
 	check(not ceremony.visible,"loading a previously claimed core does not replay its ceremony")
 func run_scene() -> void:

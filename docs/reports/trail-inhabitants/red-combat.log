@@ -1,0 +1,33 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS test_new_journey_has_two_sparse_roadside_moments
+PASS test_existing_v36_journeys_do_not_gain_new_monsters
+FAIL test_local_monsters_stay_out_of_camp_and_do_not_hold_the_calendar
+FAIL test_quiet_find_and_cleared_nest_reward_once_through_normal_interaction
+FAIL test_telegraph_escape_and_shelter_are_safe
+FAIL test_active_roadside_state_survives_checkpoint
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+local wildlife stays within its authored territory: expected true, got false
+unvisited optional monsters never postpone dawn: expected 2, got 1
+quiet destination is discoverable without an extra puzzle: expected trail_cache, got
+ordinary interaction claims the small find: expected true, got false
+discovery is permanently consumed: expected true, got false
+clearing local creatures opens the guarded reward: expected true, got false
+cleared reward is persisted: expected true, got false
+sand prowler visibly telegraphs before its rush: expected true, got false
+leaving the territory evades the attack: expected 0, got 6
+a fleeing player is not chased into the supply clearing: expected true, got false
+checkpoint explicitly stores finite roadside and attack progress: expected true, got false
+checkpoint supports local monster identity: expected true, got false
+Assertions: 91; failures: 24

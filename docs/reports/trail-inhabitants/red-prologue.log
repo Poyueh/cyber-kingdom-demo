@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: title starts with a real campaign performance
+PASS: cinematic cannot read or write a campaign or audio preferences
+PASS: cinematic owns an isolated physics world
+PASS: cinematic hides gameplay UI and rejects live controls
+PASS: opening fade holds the performance before narration
+PASS: opening fade contains no premature caption
+PASS: performance starts only after opening fade
+PASS: performance lights camp and equips the knight
+FAIL: mystery montage reveals world art without unrelated combat
+PASS: sealed gates summon the actual dragon in the final shot
+PASS: natural completion reveals title and frees the entire performance
+PASS: watching the prologue does not create a player journey
+PASS: skip reveals title and releases the performance, repeat 0
+PASS: skip reveals title and releases the performance, repeat 1
+Prologue scene assertions: 14; failures: 1

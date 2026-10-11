@@ -1,0 +1,81 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: six facility staff have a complete native-pixel cast
+PASS: local enemy budget stays small on planet 0
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 1000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 1
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 3000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 2
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+FAIL: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 1000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 3
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 3000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 4
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+FAIL: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 3000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 5
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 1000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local enemy budget stays small on planet 6
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+FAIL: normal keyboard or touch input claims the quiet discovery
+UNKNOWN KEY id VALUE 3000
+RULE REJECT 224
+CODEC REJECT 196
+FAIL: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+Trail native scene assertions: 57; failures: 10
