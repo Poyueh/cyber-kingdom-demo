@@ -1,11 +1,13 @@
 # 製作進度
 
-## 2026-10-12：v0.0.40 落地場景、介面與行動前導（發行驗證中）
+## 2026-10-12：v0.0.40 落地場景、介面與行動前導（已發佈）
 
 - 七星球景物統一可見底部貼地，沙漠／冰霜遺跡的 10／8 像素透明間隙已修正。原生七地像素驗證通過。
 - 石墨霧金主選單／暫停／共用控制、圓形透明觸控；三語節奏選單自適應較低視窗，保留攻擊尺寸與手勢範圍。
 - 28 秒前導具實際施工、騎士命中、巨龍蓄力吐息與破牆殘骸，再進七世界掠影；森林龍息跟隨嘴部姿勢。舞台與存檔隔離、正式傷害與平衡不變，快照 v20。
 - [設計](design/grounded-cinematic-interface.md) · [第 118 課](lessons/118-grounding-and-cinematic-direction.md) · [原生證據](reports/cinematic-interface/README.md)。企劃 r7、三語指南與實機圖片同步。完整 tools/check.sh 通過：4,426 核心斷言、所有場景及新增前導 5 項；無 SCRIPT ERROR／ERROR。五平台同源 1c949a3 匯出完成，實際 PCK 原生 25 項通過；Mac 簽章、Android 簽署／對齊、iOS 版本及封裝完整性核對完成。
+
+- [v0.0.40 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.40) 與 [Pages 試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.40) 已公開。七附件雜湊／大小、七份線上遊戲／指南檔案均與套件完全相符；遊戲部署 38159941436 成功。線上規格校對發現版本邊界文字殘留 v39，修訂 8 已校正並審訂，文件部署 38160181375 成功；13 份規格檔與來源 d06a71d 一致。包內規格維持 r7，不重寫遊戲／附件／標籤。規格六項行為測試與同步檢查通過。瀏覽器確認新版前導、實際戰鬥、重播回選單、內嵌指南及規格 r8，無 console errors，未建立玩家旅程。Windows／手機未真機驗收，iOS 為待簽署專案。[發行驗收](reports/release-0.0.40/verification.json)。
 
 
 ## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（已發佈）

@@ -1,6 +1,6 @@
 {
   "version": "0.0.40",
-  "published": false,
+  "published": true,
   "source_commit": "1c949a3a97bfe7626491341e4aa8243e5dbd7a77",
   "source_tree": "caa24c764a366098b03304b413d360e84f78ab2a",
   "full_check": true,
@@ -55,5 +55,118 @@
   "android_zipalign_verified": true,
   "ios_marketing_version": "0.0.40",
   "ios_build_number": 40,
-  "guide_three_languages_browser_verified": true
+  "guide_three_languages_browser_verified": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.40",
+  "public_assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.40-debug.apk",
+      "size": 97984184,
+      "sha256": "97cd69969c0b47b3aa893ef4832c7468fb08846e399c321b0cac070660bfece7"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.40.html",
+      "size": 9417300,
+      "sha256": "4e77f5c1b7066e682f6eab1653e3688a62542d8bf1a6e6859d39cae83f93ae93"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.40-Xcode.zip",
+      "size": 181524940,
+      "sha256": "aa97e9029ca28fa26ca7925a1f468c32525546652423f14c4e3b8bea20f362e7"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.40.zip",
+      "size": 129177611,
+      "sha256": "32ef5b6b0645d1b3e15902a209bf0d9a169321d70aab801e61728587f5fbf48f"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.40.zip",
+      "size": 89807881,
+      "sha256": "a3b64a681966ec1c750036bf63f93a95e316ed4d179811ecd5aa48f53b4ff922"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.40.zip",
+      "size": 106755573,
+      "sha256": "0d577b1566e1742b296f1eb0b8231b9c91fbd652152d9b148797c522dfe751c8"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "sha256": "e4ef90b0958035d4c1b3732af7880e481d8cc483be31cf859b1544e4ce82d233"
+    }
+  ],
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "d4f12287ccbcf269d4e596156d94637493aca41c7f7cf8e181023416b2ec2930",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.40"
+    },
+    {
+      "name": "guide.html",
+      "size": 9417300,
+      "sha256": "4e77f5c1b7066e682f6eab1653e3688a62542d8bf1a6e6859d39cae83f93ae93",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.40"
+    },
+    {
+      "name": "index.pck",
+      "size": 70056848,
+      "sha256": "40b914bc820dde5849cfc4c6240cb44f2c48c4815a873e2314cc195bfaf935da",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.40"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.40"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.40"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.40"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.40"
+    }
+  ],
+  "game_pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38159941436,
+    "headSha": "b18ab91c56c42c8b386fa460f028d159f484c3f6",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38159941436"
+  },
+  "specification_pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38160181375,
+    "headSha": "d06a71d5129fce69ddfddc801488a2ea9d4a351c",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38160181375"
+  },
+  "specification": {
+    "game_version": "0.0.40",
+    "revision": 8,
+    "source_ref": "d06a71d5129fce69ddfddc801488a2ea9d4a351c",
+    "all_files_verified": true
+  },
+  "packaged_specification_revision": 7,
+  "browser_validation": {
+    "intro_to_menu": true,
+    "replay_to_menu": true,
+    "combat_visible": true,
+    "updated_embedded_guide": true,
+    "specification_revision_8": true,
+    "console_errors": 0,
+    "new_player_journey_created": false
+  },
+  "game_files_unchanged_after_document_correction": true
 }
