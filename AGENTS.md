@@ -40,6 +40,8 @@
 ## 新功能交付與試玩發佈
 
 - 使用者已要求：每次新功能都同步更新遊戲說明，並發佈版本供試玩。此為持續授權；除非當次明確要求只保留本機，功能交付包含發布，不再只回覆「尚未發佈」。
+- 使用者已要求企劃規格書公開成網頁，未來功能同步。唯一內容來源為 `docs/game-spec/content.json`，公開於既有 Pages 的 `/spec/`。每次功能／平衡／美術／相容規則變更，審訂受影響章節，更新適用遊戲版本、遞增文件 revision、補 review_note 與變更紀錄；依 `docs/game-spec/README.md` 記錄審訂。純重構也要說明玩家規格是否不變，不得只重算指紋略過審查。
+- `tools/check.sh`、規格 CI 與 Web 打包必須通過規格同步檢查。Web 包含同來源的 `spec/`，發佈後驗證線上規格版本及檔案。純文件修訂維持遊戲版本，使用 Pages `refresh_spec` 並核對版本一致；不因此重寫現有 release/tag 或重匯出五平台遊戲。
 - 同步遊戲內操作／引導文字、docs/player-guide 的繁中／簡中／英文與版本更新條目；重建單檔指南，打包帶入最新版說明。
 - 驗證通過後依 Gitflow 建 release 分支、增加版本號，發布到 Poyueh/cyber-kingdom-demo 的 GitHub Release，更新既有 GitHub Pages 試玩站，驗證部署成功及線上遊戲／指南與本次套件一致。
 - 預設沿用現有發行平台與簽署方式：H5、Windows、macOS、Android debug APK、待簽署 iOS Xcode 專案。匯出成功不代表真機驗收；保留限制說明。此授權不包含購買服務、正式商店上架或變更付費帳號。

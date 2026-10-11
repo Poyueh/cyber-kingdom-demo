@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import sys
-from build_desktop import prepare_tree, run_logged
+from build_desktop import prepare_tree, run_logged, git
 
 
 def install_guide_reader(stage: Path, web: Path) -> None:
@@ -33,6 +33,10 @@ def export_project(ref: str, output: Path, godot: str) -> Path:
     with tempfile.TemporaryDirectory(prefix='cyber-web-') as folder:
         stage = Path(folder)
         tree = prepare_tree(ref, stage)
+        # Use the committed tree's reviewed document; never bless a stale spec.
+        source_ref = git('rev-parse', '--verify', '--end-of-options', ref).decode().strip()
+        run_logged([sys.executable, str(stage / 'tools/build_game_spec.py'),
+                    '--output', str(web / 'spec'), '--source-ref', source_ref], output / 'spec.log')
         engine = [godot, '--headless', '--path', str(stage)]
         run_logged(engine + ['--editor', '--import'], output / 'import.log')
         run_logged(engine + ['--export-release', 'Web Demo', str(web / 'index.html')], output / 'export.log')
@@ -49,7 +53,8 @@ def export_project(ref: str, output: Path, godot: str) -> Path:
         '把此資料夾的全部檔案放在同一個網站目錄，再開啟 index.html 的網址。\n'
         '本機試玩：在此資料夾執行 python3 -m http.server 8780，開啟 http://localhost:8780。\n'
         '請勿使用 file:// 直接雙擊遊戲 HTML；引擎必須下載旁邊的 .wasm 與 .pck。\n'
-        'guide.html 是可離線閱讀的玩家圖文指南。\n\n'
+        'guide.html 是可離線閱讀的玩家圖文指南。\n'
+        'spec/index.html 是本版本的遊戲企劃規格書。\n\n'
         '先點一下遊戲畫面，以便瀏覽器啟用聲音與鍵盤。\n'
         'A/D 移動；同方向雙按並按住衝刺；J／滑鼠左鍵連斬；E 互動；Q 丟晶；Esc 暫停。\n'
         '暫停選單可調整音量與手動存讀檔；書本圖示會在遊戲內開啟玩家圖文指南。\n'
@@ -61,7 +66,7 @@ def export_project(ref: str, output: Path, godot: str) -> Path:
         'source_tree': tree, 'entry': 'index.html', 'threads': False,
         'persistence': 'browser IndexedDB; separate per origin/profile',
         'sha256': hashlib.sha256(archive.read_bytes()).hexdigest(),
-        'files': {p.name: p.stat().st_size for p in web.iterdir() if p.is_file()},
+        'files': {p.relative_to(web).as_posix(): p.stat().st_size for p in web.rglob('*') if p.is_file()},
         'browser_playtest': 'record separately; successful export is not a playtest'
     }, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     return archive

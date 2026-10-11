@@ -1,0 +1,19 @@
+name: Check game specification sync
+on:
+  push:
+    branches: [main, develop, 'feature/**', 'release/**', 'hotfix/**']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Test review gate and verify current specification
+        run: |
+          python3 tools/test_game_spec.py
+          python3 tools/build_game_spec.py --check
+          python3 tools/build_game_spec.py --output /tmp/cyber-spec-preview --source-ref "$GITHUB_SHA"
