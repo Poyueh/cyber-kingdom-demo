@@ -23,7 +23,7 @@ func test_new_journey_night_forecast_matches_real_spawns_beyond_day_ten(t) -> vo
 		var forecast: Dictionary = sim.raid_pressure()
 		t.equal(forecast.left + forecast.right,pair[1],"dusk forecasts the new nightly force")
 		var spawned: int = 0
-		for tick in range(pair[1]*30):
+		for tick in range(pair[1]*30+200): # Includes the intentional regroup interval.
 			sim.advance(0.1,30.0)
 			for enemy in sim.raiders:
 				if enemy.fighter.is_alive():

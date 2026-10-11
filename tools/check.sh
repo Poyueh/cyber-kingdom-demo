@@ -46,6 +46,7 @@ run_check running_recovery --script res://tests/test_running_recovery_scene.gd
 run_check languages --script res://tests/test_language_scene.gd
 run_check prologue --script res://tests/test_prologue_scene.gd
 run_check prologue_audio --script res://tests/test_prologue_audio_scene.gd
+run_check music_cache --script res://tests/test_music_cache_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check star_voyage --script res://tests/test_star_voyage_scene.gd
@@ -55,6 +56,7 @@ run_check mobile --script res://tests/test_mobile_scene.gd
 run_check modules --script res://tests/test_modules_scene.gd
 run_check planet_modules --script res://tests/test_planet_modules_scene.gd
 run_check mount_expedition --script res://tests/test_mount_expedition_scene.gd
+run_check night_patterns --script res://tests/test_night_patterns_scene.gd
 run_check mount --script res://tests/test_mount_scene.gd
 run_check feedback --script res://tests/test_feedback_scene.gd
 run_check spirit_hit --script res://tests/test_spirit_hit_scene.gd

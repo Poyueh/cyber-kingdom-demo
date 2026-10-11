@@ -108,7 +108,9 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 		if enemy_health<_enemy_health and not active and _bolt_flew(sim,x):result.append("arrow_hit")
 		if settled>_settled:result.append("crystal_land")
 		if held<_held and sim.pouch.amount>_pouch:result.append("handoff")
-		if not sim.clock.is_night and sim.clock.remaining<=30.0 and _warned!=sim.clock.day:
+		var warning_seconds: float=30.0
+		if sim.night_pattern.enabled and sim.clock.day>=sim.night_pattern.first_day:warning_seconds=float(sim.night_pattern.warning_ticks)/30.0
+		if not sim.clock.is_night and sim.clock.remaining<=warning_seconds and _warned!=sim.clock.day:
 			_warned=sim.clock.day
 			result.append("raid_warning")
 		if sim.spirit!=null and sim.spirit.opening_finished and not _guided:result.append("farewell")

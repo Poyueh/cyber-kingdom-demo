@@ -1775,8 +1775,44 @@
     "zh_CN": "新增星球部件与收藏配置从新旅程开始。旧记录保留各自的部件配置与解谜进度，不会重新锁住遗迹。森林使用符序与限时中继；后续六地使用连动灯、冷热平衡与脉冲亮窗，详见前方的机关说明。",
     "en": "Start a new journey for expanded world rewards. Existing saves retain their own module setup and puzzle progress without relocking ruins. Forest seals use rune sequences and timed relays; the six later worlds use linked lamps, thermal balance and pulse windows, as described in the mechanisms section."
   },
-  "適用 v0.0.26：前導配樂與主選單正確交接，前導沿用音量與靜音偏好，機關說明校正。七星球、八件部件、森林戰馬、預警襲擊與補給指引沿用；本次改善適用既有紀錄，新增機關與收藏配置仍需新旅程。": {
-    "zh_CN": "适用 v0.0.26：前导配乐与主菜单正确交接，前导沿用音量与静音偏好，机关说明校正。七星球、八件部件、森林战马、预警袭击与补给指引沿用；本次改善适用既有记录，新增机关与收藏配置仍需新旅程。",
-    "en": "For v0.0.26: prologue-to-title music handoff, opening volume and mute preferences, and corrected mechanism guidance. Seven worlds, eight modules, the forest mount, warned raids and supply guidance remain. These fixes work with existing saves; expanded mechanisms and collections still require a new journey."
+  "看懂魔潮，再決定站在哪一側。": {
+    "zh_CN": "看懂魔潮，再决定站在哪一侧。",
+    "en": "Read the assault. Choose which wall to support."
+  },
+  "新旅程第四晚起，七地會輪替偏側壓境、延遲夾擊與雙側常規攻勢。日落前 75 秒會有警訊聲、門紋及短暫文字；暫停不會消耗準備時間。": {
+    "zh_CN": "新旅程第四晚起，七地会轮替偏侧压境、延迟夹击与双侧常规攻势。日落前 75 秒会有警讯声、门纹及短暂文字；暂停不会消耗准备时间。",
+    "en": "From night four in new journeys, each world rotates concentrated, pincer and balanced assaults. A sound, gate symbols and a brief caption warn you 75 seconds before dusk. Pausing preserves preparation time."
+  },
+  "偏側壓境": {
+    "zh_CN": "偏侧压境",
+    "en": "Concentrated pressure"
+  },
+  "金色三道光痕標示主攻側，多數魔物從該側出現；另一側仍有少量敵人，別把防線完全留空。": {
+    "zh_CN": "金色三道光痕标示主攻侧，多数魔物从该侧出现；另一侧仍有少量敌人，别把防线完全留空。",
+    "en": "Three gold marks identify the main gate. Most attackers come from that side; a smaller force still probes the other wall."
+  },
+  "延遲夾擊": {
+    "zh_CN": "延迟夹击",
+    "en": "Delayed pincer"
+  },
+  "先由一側出兵，最後一隻先鋒出門後留出 18 秒，再由對側出兵。第二波集結時會再提示；這是出兵間隔，不代表場上的敵人已清空。": {
+    "zh_CN": "先由一侧出兵，最后一只先锋出门后留出 18 秒，再由对侧出兵。第二波集结时会再提示；这是出兵间隔，不代表场上的敌人已清空。",
+    "en": "One gate sends the first wave. Eighteen seconds after its final attacker leaves, the opposite gate sends the second. A fresh cue warns of the change. This is a spawn interval; enemies already on the field may still be fighting."
+  },
+  "雙側常規": {
+    "zh_CN": "双侧常规",
+    "en": "Balanced assault"
+  },
+  "兩側交替出兵，適合分配守軍。三種攻勢沿用原本逐日敵數和同場上限；封門會取消該側增援，不轉移到另一門。舊紀錄保留原攻勢。": {
+    "zh_CN": "两侧交替出兵，适合分配守军。三种攻势沿用原本逐日敌数和同场上限；封门会取消该侧增援，不转移到另一门。旧记录保留原攻势。",
+    "en": "Both gates alternate arrivals. All three tactics keep the existing daily enemy budget and battlefield limit. Sealing a gate cancels its reinforcements instead of sending them elsewhere. Existing journeys keep their original tactics."
+  },
+  "實際遊戲：傍晚的方向警訊短暫出現，再淡出。": {
+    "zh_CN": "实际游戏：傍晚的方向警讯短暂出现，再淡出。",
+    "en": "In-game capture: the directional dusk warning appears briefly, then fades."
+  },
+  "適用 v0.0.27：新增七地夜襲攻勢與傍晚方向警訊，修正音樂片段交接快取。請建立新旅程體驗新攻勢；舊紀錄可續玩並保留原規則。": {
+    "zh_CN": "适用 v0.0.27：新增七地夜袭攻势与傍晚方向警讯，修正音乐片段交接缓存。请建立新旅程体验新攻势；旧记录可续玩并保留原规则。",
+    "en": "For v0.0.27: new night-assault tactics and directional dusk warnings across all worlds, plus a music-cache handoff fix. Start a new journey for the tactics; existing saves remain playable with their original rules."
   }
 }

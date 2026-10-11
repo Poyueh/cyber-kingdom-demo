@@ -100,7 +100,7 @@ func test_corrupt_mechanisms_and_unsolvable_data_are_rejected(t: SceneTree) -> v
 func test_v17_partial_ruins_keep_original_rules_and_can_finish(t: SceneTree) -> void:
  var rules: Dictionary=config(2)
  for key: String in rules.keys():
-  if key.begins_with("mechanism_"):rules.erase(key)
+  if key.begins_with("mechanism_") or key.begins_with("night_pattern_"):rules.erase(key)
  var sim: RefCounted=Campaign.new(rules);var site: RefCounted=sim.trials.sites[0]
  sim.trials.activate(site.id,site.order[0],0)
  var codec: RefCounted=Codec.new();var saved: Dictionary=codec.capture(sim,rules,BODY);saved.version=17
@@ -112,7 +112,7 @@ func test_v17_partial_ruins_keep_original_rules_and_can_finish(t: SceneTree) -> 
  t.equal(old.progress,1,"existing partial progress is retained")
  for index: int in [1,2]:loaded.session.trials.activate(old.id,old.order[index],0)
  t.truth(loaded.session.trials.unlocked(old.id),"old sequence can still finish")
- t.equal(codec.capture(loaded.session,loaded.config,BODY).version,18,"old game resaves in current format")
+ t.equal(codec.capture(loaded.session,loaded.config,BODY).version,19,"old game resaves in current format")
  var unknown: Dictionary=saved.duplicate(true);unknown.version=999
  t.truth(codec.restore(unknown).is_empty(),"unknown future saves remain protected")
 func test_every_world_preserves_partial_progress_and_solutions(t: SceneTree) -> void:
