@@ -1,10 +1,12 @@
 # 製作進度
 
-## 2026-10-11：v0.0.27 七地夜襲節奏（已驗證，準備發佈）
+## 2026-10-11：v0.0.27 七地夜襲節奏（已發佈）
 
 - 第四晚起的偏側壓境、延遲夾擊、雙側常規；提前方向警訊與三語短字幕。保持每日總數、同場上限、封門取消與舊檔原規則。
-- 行為 TDD 先重現五項缺失；原生場景十二項通過。另重現並修正新音樂片段遭快取提前移除，三項場景檢查通過。完整 tools/check.sh 通過：3,684 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR；真正 v0.0.26 套件建立的夜襲中存檔可接續並保存為 v19。正在準備五平台發行。
+- 行為 TDD 先重現五項缺失；原生場景十二項通過。另重現並修正新音樂片段遭快取提前移除，三項場景檢查通過。完整 tools/check.sh 通過：3,684 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR；真正 v0.0.26 套件建立的夜襲中存檔可接續並保存為 v19。五平台匯出、封裝完整性、Mac 臨時簽章與 Android 版本已核對；真正匯出的 PCK 59 項檢查通過。
 - [設計](design/night-assault-patterns.md) · [第 104 課](lessons/104-night-pattern-resources.md)。
+- [v0.0.27 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.27) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.27) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。瀏覽器確認主選單及內嵌指南的夜襲內容／版本說明，無 console errors。Windows／手機未真機驗收，iOS 為待簽署專案。[發行驗證](reports/release-0.0.27/verification.json)。
+- 下一步以真人試玩驗證警訊理解度、回防時間和第二波的抉擇；目前尚無留存與商業成果證據，不視為整體目標完成。
 
 ## 2026-10-11：v0.0.26 前導音訊交接（已發佈）
 
