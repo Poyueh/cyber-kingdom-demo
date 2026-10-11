@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: core has its own liberation signal rather than an ordinary chest burst expected 1 got 0
+FAIL: repeated input cannot replay liberation expected 1 got 0
+FAIL: the present colony has reviewable achievements expected true got <null>
+FAIL: lighting a fire is one real settlement step expected 1 got <null>
+FAIL: unvisited worlds do not reveal exploration or ruin counts expected { "known": false } got {  }
+FAIL: forest core opens the actual desert and frost branches expected [1, 2] got []
+Voyage progress assertions: 10; failures: 6

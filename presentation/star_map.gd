@@ -15,6 +15,7 @@ var _name: Label
 var _dragon: Label
 var _description: Label
 var _preview: TextureRect
+var _milestones: Control
 var _chart: Chart
 var _buttons: Array[Button]=[]
 var _back: Button
@@ -29,18 +30,19 @@ func _ready() -> void:
  var center: CenterContainer=CenterContainer.new();center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(center)
  _panel=PanelContainer.new();center.add_child(_panel)
  _panel.theme=Theme.new();_panel.theme.default_font=preload("res://presentation/localized_font.gd").current()
- var skin: StyleBoxFlat=StyleBoxFlat.new();skin.bg_color=Color("0c1928");skin.border_color=Color("728d92");skin.set_border_width_all(1);skin.border_width_top=3;skin.set_content_margin_all(18);skin.set_corner_radius_all(8)
+ var skin: StyleBoxFlat=StyleBoxFlat.new();skin.bg_color=Color("0c1928");skin.border_color=Color("728d92");skin.set_border_width_all(1);skin.border_width_top=3;skin.set_content_margin_all(16);skin.set_corner_radius_all(8)
  _panel.add_theme_stylebox_override("panel",skin)
- var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",10);_panel.add_child(box)
+ var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",8);_panel.add_child(box)
  _title=_label(box,24);_title.add_theme_color_override("font_color",Color("ead5a1"))
  _legend=_label(box,13);_legend.add_theme_color_override("font_color",Color("9db4c4"))
  var row: HBoxContainer=HBoxContainer.new();row.add_theme_constant_override("separation",18);box.add_child(row)
  _chart=Chart.new();row.add_child(_chart);_chart.selected.connect(select_planet);_buttons=_chart.buttons
- var card: VBoxContainer=VBoxContainer.new();card.custom_minimum_size=Vector2(230,0);row.add_child(card)
- _preview=TextureRect.new();_preview.custom_minimum_size=Vector2(230,102);_preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;_preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED;card.add_child(_preview)
+ var card: VBoxContainer=VBoxContainer.new();card.custom_minimum_size=Vector2(280,0);row.add_child(card)
+ _preview=TextureRect.new();_preview.custom_minimum_size=Vector2(280,60);_preview.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;_preview.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED;card.add_child(_preview)
  _name=_label(card,20);_dragon=_label(card,14);_dragon.add_theme_color_override("font_color",Color("cfb98d"))
- _description=_label(card,14,true);_description.custom_minimum_size=Vector2(230,76)
- _detail=_label(card,13,true);_detail.custom_minimum_size=Vector2(230,54);_detail.add_theme_color_override("font_color",Color("96ccca"))
+ _description=_label(card,14,true);_description.custom_minimum_size=Vector2(230,54)
+ _milestones=preload("res://presentation/planet_milestones.gd").new();card.add_child(_milestones)
+ _detail=_label(card,13,true);_detail.custom_minimum_size=Vector2(230,44);_detail.add_theme_color_override("font_color",Color("96ccca"))
  var controls: HBoxContainer=HBoxContainer.new();controls.add_theme_constant_override("separation",12);box.add_child(controls)
  _back=_button(controls);_back.pressed.connect(func():closed.emit())
  _launch=_button(controls);_launch.pressed.connect(func():
@@ -60,13 +62,14 @@ func present(journey: RefCounted, sim: RefCounted, read_only: bool=false) -> voi
  _journey=journey;_sim=sim;_read_only=read_only
  _panel.theme.default_font=preload("res://presentation/localized_font.gd").current()
  _title.text=tr("planet.atlas")+"   ·   ◇ %d / 7"%journey.core_count(sim)
- _legend.text=tr("planet.legend")
+ _legend.text=tr("planet.legend")+"\n"+tr("milestone.legend")
  _chart.present(journey,sim,NAMES)
  _back.text=tr("返回選單" if read_only else "返回旅程")
  select_planet(journey.current)
  show()
 func select_planet(id: int) -> void:
  _selected=id;_chart.selection=id;_chart.queue_redraw()
+ _milestones.present(preload("res://application/voyage_progress.gd").read(_journey,_sim,id))
  _name.text=tr(NAMES[id]);_name.modulate=Chart.COLORS[id]
  _dragon.text=tr(DRAGONS[id]);_description.text=tr(DESCRIPTIONS[id])
  _preview.texture=preload("res://data/cyber_frontier_art.tres").woodland if id==0 else Scenery.SKIES[id-1]

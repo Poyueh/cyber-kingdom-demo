@@ -3,10 +3,13 @@ extends Node
 const Map=preload("res://presentation/star_map.gd")
 var root: Node
 var map: Map
+var liberation: Control
 var _observed: int=0
 var _cleared_seen: bool=false
 var _was_paused: bool=false
 func _ready() -> void:
+ var ceremony_layer: CanvasLayer=CanvasLayer.new();ceremony_layer.layer=60;add_child(ceremony_layer)
+ liberation=preload("res://presentation/planet_liberation.gd").new();ceremony_layer.add_child(liberation)
  map=Map.new();add_child(map)
  map.destination_selected.connect(_depart)
  map.closed.connect(close)
@@ -14,6 +17,7 @@ func active() -> bool:return map!=null and map.visible
 func observe() -> void:
  if root.journey==null:return
  root.journey.observe(root.sim)
+ liberation.present(root.journey,root.sim,root.hud.safe_rect(),root.paused,root.hud.immersive_feedback.day_caption_bounds())
  if _observed!=root.sim.get_instance_id():
   _observed=root.sim.get_instance_id();_cleared_seen=root.sim.planet.cleared
  elif root.sim.planet.cleared and not _cleared_seen:
@@ -36,6 +40,7 @@ func _depart(id: int) -> void:
 
 func open_chart(read_only: bool=true) -> void:
  if root.journey==null:return
+ liberation.hide()
  _was_paused=root.paused
  root.paused=true;root.controls.release_all();root.hud.cancel_touch_gestures()
  root.hud.options_menu.hide()

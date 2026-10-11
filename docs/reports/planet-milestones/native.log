@@ -1,0 +1,95 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: real map contains achievements
+PASS: real voyage contains the claim ceremony
+PASS: fresh journey does not invent a celebration
+PASS: real route reaches world 0
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: forest ceremony reveals only desert and frost routes
+PASS: liberation caption translated: zh_TW
+PASS: liberation caption translated: zh_CN
+PASS: liberation caption translated: en
+PASS: pause hides and freezes the ceremony
+PASS: resume restores the remaining celebration
+PASS: actual multiworld save restores after reclaiming core
+PASS: loading a previously claimed core does not replay its ceremony
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 1
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: every world card fits: zh_TW / 0
+PASS: every world card fits: zh_TW / 1
+PASS: every world card fits: zh_TW / 2
+PASS: every world card fits: zh_TW / 3
+PASS: every world card fits: zh_TW / 4
+PASS: every world card fits: zh_TW / 5
+PASS: every world card fits: zh_TW / 6
+PASS: chart shows current or archived world without rebuilding it: zh_TW
+PASS: full milestone chart fits phone viewport: zh_TW
+PASS: milestone names translated: zh_TW
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: every world card fits: zh_CN / 0
+PASS: every world card fits: zh_CN / 1
+PASS: every world card fits: zh_CN / 2
+PASS: every world card fits: zh_CN / 3
+PASS: every world card fits: zh_CN / 4
+PASS: every world card fits: zh_CN / 5
+PASS: every world card fits: zh_CN / 6
+PASS: chart shows current or archived world without rebuilding it: zh_CN
+PASS: full milestone chart fits phone viewport: zh_CN
+PASS: milestone names translated: zh_CN
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: every world card fits: en / 0
+PASS: every world card fits: en / 1
+PASS: every world card fits: en / 2
+PASS: every world card fits: en / 3
+PASS: every world card fits: en / 4
+PASS: every world card fits: en / 5
+PASS: every world card fits: en / 6
+PASS: chart shows current or archived world without rebuilding it: en
+PASS: full milestone chart fits phone viewport: en
+PASS: milestone names translated: en
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: ceremony expires and does not leave a permanent HUD
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 3
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 2
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 4
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 5
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 6
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: seven actual core interactions still complete the journey
+Voyage progress scene assertions: 91; failures: 0
