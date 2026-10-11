@@ -1,10 +1,12 @@
 # 製作進度
 
-## 2026-10-11：v0.0.28 聚落成長回饋（已驗證，準備發佈）
+## 2026-10-11：v0.0.28 聚落成長回饋（已發佈）
 
 - 完成升級後的短演出、新設施光脈與探索地圖建設頁；三語、舊紀錄可用，存檔及費用不變。
-- TDD 已重現付款階段資訊缺口三項與原生演出缺失一項；完整 tools/check.sh 通過，3,696 核心斷言與全部場景回歸無 SCRIPT ERROR／ERROR。新增 25 項原生場景檢查涵蓋 E／觸控、三語、安全區、暫停與讀檔；真正 v0.0.27 套件建立的紀錄保留農具及兩晶未完成付款。正在準備五平台發行。
+- TDD 已重現付款階段資訊缺口三項與原生演出缺失一項；完整 tools/check.sh 通過，3,696 核心斷言與全部場景回歸無 SCRIPT ERROR／ERROR。新增 25 項原生場景檢查涵蓋 E／觸控、三語、安全區、暫停與讀檔；真正 v0.0.27 套件建立的紀錄保留農具及兩晶未完成付款。五平台匯出、封裝完整性、Mac 臨時簽章與 Android 版本已核對；真正匯出的 PCK 25 項檢查通過。
 - [設計](design/settlement-growth-feedback.md) · [第 105 課](lessons/105-settlement-feedback.md)。
+- [v0.0.28 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.28) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.28) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。瀏覽器確認主選單及內嵌指南的聚落成長內容／版本說明，無 console errors。Windows／手機未真機驗收，iOS 為待簽署專案。[發行驗證](reports/release-0.0.28/verification.json)。
+- 下一步須透過真人試玩觀察玩家升級後是否知道製作農具及提供槍盾器具、是否願意再次擴張。成就感、留存與商業成果尚未驗證，不視為整體目標完成。
 
 ## 2026-10-11：v0.0.27 七地夜襲節奏（已發佈）
 
