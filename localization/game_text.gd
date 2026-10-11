@@ -1,6 +1,15 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["milestone.survey", "荒野探索", "荒野探索", "Wilderness"],
+ ["milestone.ruins", "遺跡破譯", "遗迹破译", "Ruins"],
+ ["milestone.settlement", "聚落建設", "聚落建设", "Settlement"],
+ ["milestone.unvisited", "尚未踏足此地。抵達後開始留下你的功績。", "尚未踏足此地。抵达后开始留下你的功绩。", "Your story here begins when you arrive."],
+ ["milestone.legend", "三枚印記：探索／遺跡／聚落。均為選做，七核即可通關。", "三枚印记：探索／遗迹／聚落。均为选做，七核即可通关。", "Seals: wilderness / ruins / settlement. Optional; seven cores still win."],
+ ["planet.liberation %s", "%s・龍核已回收", "%s・龙核已回收", "%s · core reclaimed"],
+ ["planet.new_routes %s", "新航線：%s", "新航线：%s", "New routes: %s"],
+ ["planet.keep_growing", "重建火箭繼續遠征，或留下完成這顆星球的功績。", "重建火箭继续远征，或留下完成这颗星球的功绩。", "Rebuild the rocket to travel, or stay to finish this world’s milestones."],
+
  ["dragon.opening", "龍核曝露・趁隙反擊", "龙核暴露・趁隙反击", "Core exposed · counterattack"],
  ["journey.choose", "選擇旅程節奏", "选择旅程节奏", "Choose your pace"],
  ["journey.expedition", "遠征", "远征", "Expedition"],

@@ -1898,5 +1898,53 @@
   "適用 v0.0.32：新旅程七龍攻勢後曝露龍核，全軍可趁隙反擊。機關配置變化、三種旅程節奏、七地探索、部件收藏與建設回顧皆可使用；舊紀錄保留原有戰鬥規則。": {
     "en": "For v0.0.32: in new journeys, all seven dragons expose their cores after a volley for a coordinated counterattack. Varied ruins, three journey styles, seven worlds, module collections and settlement milestones are available. Existing saves keep their original combat rules.",
     "zh_CN": "适用 v0.0.32：新旅程七龙攻势后暴露龙核，全军可趁隙反击。机关配置变化、三种旅程节奏、七地探索、部件收藏与建设回顾均可使用；旧记录保留原有战斗规则。"
+  },
+  "留下你在每顆星球的足跡。": {
+    "zh_CN": "留下你在每颗星球的足迹。",
+    "en": "Leave your mark on every world."
+  },
+  "領取龍核時，晶體會飛入七核印記，短暫揭示真正開啟的新航線；第七顆龍核直接進入遠征通關。提示會淡出，暫停凍結，讀檔不重播。": {
+    "zh_CN": "领取龙核时，晶体会飞入七核印记，短暂揭示真正开启的新航线；第七颗龙核直接进入远征通关。提示会淡出，暂停冻结，读档不重播。",
+    "en": "Reclaim a dragon core to see it join the seven seals and reveal newly opened routes. The seventh core completes the expedition. The ceremony fades, freezes on pause and never replays after loading."
+  },
+  "在星宇航線點選到訪過的星球，可以回顧三種功績。離開後也保留當地成果；尚未到訪的星球不會透露完成數量。": {
+    "zh_CN": "在星宇航线点选到访过的星球，可以回顾三种功绩。离开后也保留当地成果；尚未到访的星球不会透露完成数量。",
+    "en": "Select a visited world on Star Routes to review three milestones. Its local progress remains after departure; unvisited worlds reveal no counts."
+  },
+  "功績均為選做，不會額外送龍晶，也不阻擋航線或通關。你可以留下完成探索，或重建火箭繼續旅程；集齊七核即可通關。": {
+    "zh_CN": "功绩均为选做，不会额外送龙晶，也不阻挡航线或通关。你可以留下完成探索，或重建火箭继续旅程；集齐七核即可通关。",
+    "en": "Milestones are optional: no extra crystals and no additional travel or victory requirements. Stay to explore, or rebuild the rocket and move on. Seven cores still complete the journey."
+  },
+  "荒野探索": {
+    "zh_CN": "荒野探索",
+    "en": "Wilderness"
+  },
+  "親自揭露地圖區域，回顧已走過的比例；不用砍光森林。": {
+    "zh_CN": "亲自揭露地图区域，回顾已走过的比例；不用砍光森林。",
+    "en": "Reveal regions and review how much you have explored. You do not need to clear every tree."
+  },
+  "遺跡破譯": {
+    "zh_CN": "遗迹破译",
+    "en": "Ruins"
+  },
+  "解開當地機關。森林也計入戰馬導流核心；到別的星球仍需解開當地遺跡。": {
+    "zh_CN": "解开当地机关。森林也计入战马导流核心；到别的星球仍需解开当地遗迹。",
+    "en": "Solve local mechanisms. The forest includes the mount circuit; bringing a mount elsewhere does not solve that world’s ruins."
+  },
+  "聚落建設": {
+    "zh_CN": "聚落建设",
+    "en": "Settlement"
+  },
+  "點亮營火，再逐步升到三級。探索、遺跡與聚落各自完成後，星圖會亮起金色印記。": {
+    "zh_CN": "点亮营火，再逐步升到三级。探索、遗迹与聚落各自完成后，星图会亮起金色印记。",
+    "en": "Light the camp and develop it to tier three. Each completed milestone earns its own gold seal on the star chart."
+  },
+  "實際遊戲：星圖保留每顆已到訪星球的探索、遺跡與聚落進度。": {
+    "zh_CN": "实际游戏：星图保留每颗已到访星球的探索、遗迹与聚落进度。",
+    "en": "Actual game: the chart remembers each visited world’s exploration, ruins and settlement."
+  },
+  "適用 v0.0.33：新增領核演出與星圖功績回顧，探索、遺跡及聚落各有選做目標。七地、部件收藏、反擊窗口與三種旅程節奏皆可使用；既有紀錄可續玩。": {
+    "zh_CN": "适用 v0.0.33：新增领核演出与星图功绩回顾，探索、遗迹及聚落各有选做目标。七地、部件收藏、反击窗口与三种旅程节奏皆可使用；既有记录可续玩。",
+    "en": "For v0.0.33: core-reclaim ceremonies and star-chart milestones add optional exploration, ruin and settlement goals. Seven worlds, modules, counterattack windows and three journey paces remain available. Existing journeys continue."
   }
 }

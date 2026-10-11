@@ -1,6 +1,7 @@
 extends RefCounted
 ## Ephemeral presentation observer. No sound history enters campaign saves.
 const EFFECTS={
+ "planet_core_claimed":"victory",
  "dragon_opening":"module_store",
  "rune_success":"module_store","rune_reset":"slot_refund","ruin_open":"module_equip",
  "core_hit":"core_hit","tower_arrow":"bow_shot","bolt":"bow_shot","tower_laser":"tower_laser",
@@ -76,6 +77,7 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 		if sim.hero.dash_remaining>_dash:result.append("dash")
 		for effect in sim.effects:
 			if _seen.any(func(old):return is_same(old,effect)):continue
+			if effect.kind=="planet_core_claimed" and sim.planet.completed:continue
 			var kind: String=EFFECTS.get(effect.kind,"")
 			if kind.is_empty():continue
 			if absf(effect.x-x)>FAR_ENOUGH and not (effect.kind in UNMISSABLE):continue
