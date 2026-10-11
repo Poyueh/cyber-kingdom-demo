@@ -1,12 +1,12 @@
 # 製作進度
 
-## 2026-10-11：v0.0.36 七星球關卡節奏（待發布）
+## 2026-10-11：v0.0.36 七星球關卡節奏（已發佈）
 
 - 七地每側七段作者配置，獨立亂數局部變化；每星主要機關一處、遺藏兩處，森林保留戰馬與直接發現雷槍，八件收藏不減。
 - 安靜段不放採集／招募／施工點，大型地標僅重要目的地；補給區外緣城牆逐區接通工作路線。
 - 64 種子共 448 圖正常互動完成，存讀／壞檔／亂數隔離檢查通過。原生六地鍵鼠／觸控 37 項與七地 28 張巡覽完成；真正 v35 七檔續跑 60 ticks 相同。
 - 三語地圖區段與指南、第 113 課同步。[設計](design/planet-level-design.md) · [教學](lessons/113-authored-planet-routes.md) · [驗證](reports/planet-level-design/README.md)。
-- 完整 tools/check.sh 通過：4,227 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；原生工坊 11 項與三語指南瀏覽器檢查通過。五平台包已完成，同一來源提交 3a7c330；封裝完整性、Mac 簽章、Android 版本及匯出 PCK 原生 42 項操作通過。公開發布與線上核對進行中。
+- 完整 tools/check.sh 通過：4,227 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；原生工坊 11 項與三語指南瀏覽器檢查通過。五平台包已完成，同一來源提交 3a7c330；封裝完整性、Mac 簽章、Android 版本及匯出 PCK 原生 42 項操作通過。[v0.0.36 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.36) 七個附件與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.36) 已公開；附件大小／SHA-256 及七份線上檔案均與套件相符。瀏覽器確認開場、跳過進入主選單及三語新版指南，無 console errors，未建立或覆寫玩家紀錄。[發行驗收](reports/release-0.0.36/verification.json)。新配置需另開旅程，舊地圖與進度保留。Windows／手機尚未真機驗收，iOS 為待簽署專案。
 
 ## 2026-10-11：v0.0.35 噬晶異獸與七龍演出（已發佈）
 

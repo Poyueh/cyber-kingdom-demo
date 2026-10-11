@@ -1,6 +1,6 @@
 {
   "version": "0.0.36",
-  "published": false,
+  "published": true,
   "source_commit": "3a7c330baadfb2b4617b5297c9dea539a740a0ad",
   "source_tree": "073d31892ce0477b8c40b8617c13553ca15a23a8",
   "full_check": true,
@@ -48,5 +48,113 @@
   "macos_signature_verified": true,
   "android_version_code": 36,
   "packaged_native_assertions": 42,
-  "packaged_visuals_reviewed": true
+  "packaged_visuals_reviewed": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.36",
+  "public_assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.36-debug.apk",
+      "size": 97572424,
+      "sha256": "65c6a49be37d693a11ebbf14d2217db01335ab7bbe467af61063a8fb8a6f5be9"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.36.html",
+      "size": 6555609,
+      "sha256": "b467727fd331b6482887ca828dbc2ef4eea6b48d9ce3b67c3f12a259146f9d99"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.36-Xcode.zip",
+      "size": 181168145,
+      "sha256": "c390db423a334d219a0ebd3d0a1f1d0c0f0d7339234a15ccb0257c387e125229"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.36.zip",
+      "size": 128789793,
+      "sha256": "ae65ef52533ee60407e2e6e31e3c3556ba432d452193511dd075f83eb20c8f4b"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.36.zip",
+      "size": 83427924,
+      "sha256": "41761c814c94d4ad18c4e41884734931637b234d4c66c73e00580180daae071e"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.36.zip",
+      "size": 106367752,
+      "sha256": "063d5ba7699dcfc1fecc809c9afca3adf6230aac190a2fc992fbdd010de0f54f"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "sha256": "db18656c81a6bfe4e796106bab1b367f36de78a9d04b9b3edcc5b7f188c3cc62"
+    }
+  ],
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "8ca59503a558560d6bdb491a3414053a7b0cff8b3b9d3cbe66f289a54804c1be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.36"
+    },
+    {
+      "name": "guide.html",
+      "size": 6555609,
+      "sha256": "b467727fd331b6482887ca828dbc2ef4eea6b48d9ce3b67c3f12a259146f9d99",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.36"
+    },
+    {
+      "name": "index.pck",
+      "size": 69647104,
+      "sha256": "a7758701ebdf7ae63a6a32cccc36ae358693dea8769dbb5debdb8a5702b33f8a",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.36"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.36"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.36"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.36"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.36"
+    }
+  ],
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38122790804,
+    "headSha": "284199835ffdd49b5cee5ca2962f128d6d19c93a",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38122790804"
+  },
+  "browser_verification": {
+    "game_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.36",
+    "opening_loaded": true,
+    "skip_to_main_menu": true,
+    "main_menu_loaded": true,
+    "guide_languages": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "planet_routes_visible_in_all_languages": true,
+    "guide_version": "0.0.36",
+    "console_errors": [],
+    "player_saves_created_or_overwritten": false,
+    "screenshots": [
+      "browser-main-menu.jpg",
+      "browser-guide-tw.jpg"
+    ]
+  }
 }
