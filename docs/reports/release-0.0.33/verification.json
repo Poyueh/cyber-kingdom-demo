@@ -1,6 +1,6 @@
 {
   "version": "0.0.33",
-  "published": false,
+  "published": true,
   "source_commit": "993b4f78bffa46ece0f7285d80e1c257b71f733a",
   "source_tree": "3fd8abf6dd9177fec0ecfb6d92adc3b8d83678dc",
   "full_check": true,
@@ -47,9 +47,91 @@
     "Windows and mobile physical devices not tested",
     "iOS Xcode project requires signing",
     "Android debug certificate",
-    "Human comprehension, retention and commercial outcomes unverified"
+    "Human comprehension, retention and commercial outcomes unverified",
+    "Pre-existing 0.8-unit resident position difference between uninterrupted play and reload remains undiagnosed; old/new versions reload identically for the checked fixtures. See ../planet-milestones/compatibility-note.md."
   ],
   "packaged_native_smoke": true,
   "packaged_native_assertions": 91,
-  "check_log_sha256": "ee926967d539dca243eeacea0d7403270580305536d1c15226bd17be0214e458"
+  "check_log_sha256": "ee926967d539dca243eeacea0d7403270580305536d1c15226bd17be0214e458",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.33",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "42edfc10cd20b65b86d89a52b431108532ded08db9dcfed8ae30d9325779494a",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.33"
+    },
+    {
+      "name": "guide.html",
+      "size": 5086051,
+      "sha256": "c913815a6a04c3624b38ad2d9c667dac344bb375c416069fd35fd0272a18f83a",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.33"
+    },
+    {
+      "name": "index.pck",
+      "size": 59389348,
+      "sha256": "4e8f3434307f2ca6f5d48c435338ca20e14a2513d3df7ee2cef311b8082a1094",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.33"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.33"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.33"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.33"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.33"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.33",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38109485497,
+    "headSha": "6970c8656f25ec301233d199be964813a76fcaa4",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38109485497"
+  },
+  "browser_verification": {
+    "version": "0.0.33",
+    "main_menu": true,
+    "prologue_loaded_and_skipped": true,
+    "embedded_guide_planet_milestones": true,
+    "locales": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "guide_version_verified_each_locale": true,
+    "optional_milestones_and_seven_core_victory_visible_each_locale": true,
+    "original_system_language_restored": true,
+    "console_errors": [],
+    "browser_gameplay_not_exercised": true,
+    "gameplay_evidence": "Original native and exported PCK each passed 91 scene assertions; resumed full headless regression passed again.",
+    "screenshot": "browser-main-menu.png"
+  },
+  "resumed_full_check": {
+    "date": "2026-10-11",
+    "core_assertions": 4127,
+    "voyage_scene_assertions": 91,
+    "script_errors": false,
+    "log": "resume-full-check.log",
+    "sha256": "a95d746f5bc9f60184f4fb78421f69e7e85ac98ed9ce9c59c0da730efcb9653a"
+  }
 }
