@@ -1,0 +1,28 @@
+{
+  "version": "0.0.32",
+  "full_check": true,
+  "core_assertions": 4081,
+  "new_core_assertions": 124,
+  "native_scene_assertions": 42,
+  "save_schema": 19,
+  "tdd_red": {
+    "missing_damage_bonus": 7,
+    "missing_opening_events": 7,
+    "forest_recovery_too_short": 1
+  },
+  "actual_previous_release_save": {
+    "version": "0.0.31",
+    "warning_or_recovery_fixtures": 14,
+    "sixty_tick_continuation_identical": true,
+    "fixture_sha256": "3060530857901ea7331ad2c58b69ccb45e7252fc5727fb67b13c769426cc2ec6"
+  },
+  "check_log_sha256": "67c930fb81867d4c311aa3e83e10fd2cf10d5c2bd121e983bc92c4df43530576",
+  "harness_corrections": [
+    "Actual HUD attack is a TouchScreenButton",
+    "Resume updates HUD visibility before injecting touch, matching normal input order"
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "Timing and consistency checks do not establish human fun, retention or commercial performance"
+  ]
+}

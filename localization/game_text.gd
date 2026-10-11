@@ -1,6 +1,7 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["dragon.opening", "龍核曝露・趁隙反擊", "龙核暴露・趁隙反击", "Core exposed · counterattack"],
  ["journey.choose", "選擇旅程節奏", "选择旅程节奏", "Choose your pace"],
  ["journey.expedition", "遠征", "远征", "Expedition"],
  ["journey.settler", "拓荒", "拓荒", "Settler"],

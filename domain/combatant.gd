@@ -78,7 +78,7 @@ func start_dash() -> bool:
 	_cancel_combo()
 	return true
 
-func strike(target: RefCounted, signed_distance: float) -> bool:
+func strike(target: RefCounted, signed_distance: float, resolved_damage: int=-1) -> bool:
 	if not is_alive() or not is_attack_active():
 		return false
 	if signed_distance * attack_facing < 0.0 or absf(signed_distance) > stats.attack_range:
@@ -86,7 +86,7 @@ func strike(target: RefCounted, signed_distance: float) -> bool:
 	var target_id: int = target.get_instance_id()
 	if _hit_targets.has(target_id):
 		return false
-	if not target.take_damage(attack_damage()):
+	if not target.take_damage(attack_damage() if resolved_damage<0 else resolved_damage):
 		return false
 	_hit_targets[target_id] = true
 	return true

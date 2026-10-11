@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: one actual sword hit exploits the exposed core in forest expected 30 got 20
+FAIL: every completed volley leaves at least six seconds to counterattack expected true got false
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in desert expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in frost expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in swamp expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in volcanic expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in storm expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+FAIL: one actual sword hit exploits the exposed core in void expected 30 got 20
+FAIL: whole volley opens the core once expected 1 got 0
+Dragon opening assertions: 58; failures: 15

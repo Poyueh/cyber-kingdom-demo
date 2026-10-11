@@ -832,6 +832,9 @@ func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: f
 		else:preload("res://application/dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
 	else:super._advance_raider(enemy,seconds,hero_x,hero_y)
 
+func attack_damage_against(enemy: Dictionary, amount: int) -> int:
+	return planet.attack.opening.damage(enemy,amount)
+
 func strike_from(x: float, y: float) -> void:
 	if not can_wield_sword():return
 	# The dragon is massive: a finisher damages it but cannot cancel its breath forever.
@@ -927,7 +930,7 @@ func _advance_towers(seconds: float) -> void:
 			if enemy.fighter.is_alive() and absf(enemy.x-site.x)<distance:
 				nearest=enemy;distance=absf(enemy.x-site.x)
 		if nearest.is_empty():continue
-		nearest.fighter.take_damage(power.damage)
+		nearest.fighter.take_damage(attack_damage_against(nearest,power.damage))
 		site.cooldown=power.interval
 		effects.append({"kind":"tower_laser" if site.level==3 else "tower_arrow","x":site.x,"to":nearest.x,"life":0.28,"tier":site.level})
 

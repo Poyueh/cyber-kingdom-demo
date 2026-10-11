@@ -17,7 +17,9 @@ static func advance(sim: RefCounted, dragon: Dictionary, seconds: float, hero_x:
      sim.move_raider(dragon,dragon.target.x+dragon.direction*profile.spacing)
     dragon.target={"kind":"hero","x":clampf(next_x,sim.frontier.left_boundary+40,sim.frontier.right_boundary-40)}
     dragon.windup=profile.followup
-   else:dragon.cooldown=profile.recovery
+   else:
+    dragon.cooldown=maxf(profile.recovery,profile.opening.minimum_recovery)
+    if profile.opening.enabled:sim.effects.append({"kind":"dragon_opening","x":dragon.x,"life":1.8})
   return
  if dragon.cooldown>0:return
  var target: Dictionary=sim._target(dragon,hero_x,hero_y)

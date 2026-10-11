@@ -1,4 +1,6 @@
 extends RefCounted
+const Opening=preload("res://domain/dragon_opening.gd")
+var opening: Opening
 ## Immutable numeric attack profile injected from planet Resources.
 var reach: float
 var speed: float
@@ -10,6 +12,7 @@ var beats: int
 var spacing: float
 var pattern: int
 func _init(config: Dictionary) -> void:
+ opening=Opening.new(config)
  # Defaults apply only to pre-profile legacy snapshots and independent prototypes.
  var ice: bool=int(config.get("planet_id",0))==2
  reach=float(config.get("dragon_reach",240.0 if ice else 300.0))
@@ -28,6 +31,7 @@ func next_aim(previous: float, origin: float, direction: float, beat: int) -> fl
   3:return previous # echo repeats the recorded location, never follows input
  return previous+direction*spacing
 static func valid_config(config: Dictionary) -> bool:
+ if not Opening.valid_config(config):return false
  var limits: Dictionary={"dragon_reach":Vector2(50,400),"dragon_speed":Vector2(40,180),"dragon_warning":Vector2(1,5),"dragon_followup":Vector2(1,4),"dragon_recovery":Vector2(4,18),"dragon_radius":Vector2(40,200),"dragon_beats":Vector2(1,4),"dragon_spacing":Vector2(-350,350),"dragon_pattern":Vector2(0,3)}
  for key: String in limits:
   if not config.has(key):continue
