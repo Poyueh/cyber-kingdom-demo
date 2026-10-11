@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.39",
-  "revision": 5,
-  "review_note": "完成前期探索對照審訂：森林單獸與攻防窗口、已知可領晶藏、前三天短效返程提示；交叉校正七星球表及舊檔邊界，新增跨星首日警音與三語安全範圍驗證。",
-  "content_sha256": "37b4c2df1745ef1e8c9899ab41acb41df5b3fc6ea99b8dc353de54479b7e0b80",
+  "revision": 6,
+  "review_note": "發布後視覺校對：將關卡章節舊版雙獸圖片換成 v0.0.39 單獸首戰實機畫面，遊戲規則、五平台執行檔及已通過的驗證保持不變。",
+  "content_sha256": "0ba8e70f35fddd5c03a2cceb8fa1374659e6d337654411bbf9c4ba879d29d902",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "2c1ff56256b7b834f1e63a3b2a3bacd59a754e6e32ed0567ea59cbbbec087b3a",
