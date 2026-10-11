@@ -1,6 +1,19 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["settlement.stage.1", "希望初燃", "希望初燃", "A spark of hope"],
+ ["settlement.stage.2", "聚落成形", "聚落成形", "A home takes shape"],
+ ["settlement.stage.3", "守望之火", "守望之火", "The watchfire rises"],
+ ["settlement.unlock.1", "工程錘與獵弓工坊已就緒；投入龍晶供應器具。", "工程锤与猎弓工坊已就绪；投入龙晶供应器具。", "Hammer and bow stalls are ready. Fund tools for your people."],
+ ["settlement.unlock.2", "農具工坊已就緒。製作鋤頭，讓居民耕種已開墾的農地。", "农具工坊已就绪。制作锄头，让居民耕种已开垦的农地。", "The farm workshop is ready. Make hoes for cleared fields."],
+ ["settlement.unlock.3", "槍盾器具與堡壘改建已開放；仍需付款與居民施工。", "枪盾器具与堡垒改建已开放；仍需付款与居民施工。", "Spear kits and fortress upgrades are unlocked. Fund and build them."],
+ ["settlement.history", "聚落建設", "聚落建设", "Settlement"],
+ ["settlement.map", "荒野探索", "荒野探索", "Frontier"],
+ ["settlement.ready", "已開放", "已开放", "Unlocked"],
+ ["settlement.locked", "尚未開放", "尚未开放", "Locked"],
+ ["settlement.history_hint", "這顆星球的營火，已走過哪些階段？點選印記查看用途。", "这颗星球的营火，已走过哪些阶段？点选印记查看用途。", "Trace this world’s growth. Select a seal to review its facilities."],
+ ["settlement.requirement", "先提升營火階段，才會開放這些建設。", "先提升营火阶段，才会开放这些建设。", "Upgrade the camp to unlock these facilities."],
+
  ["night.pressure.west", "西側魔潮凝聚。東側仍有零星攻勢。", "西侧魔潮凝聚。东侧仍有零星攻势。", "Main force gathering west. Keep a watch east."],
  ["night.pressure.east", "東側魔潮凝聚。西側仍有零星攻勢。", "东侧魔潮凝聚。西侧仍有零星攻势。", "Main force gathering east. Keep a watch west."],
  ["night.pincer.west", "先西後東，魔潮將分兩波來襲。", "先西后东，魔潮将分两波来袭。", "Two waves: west first, then east."],

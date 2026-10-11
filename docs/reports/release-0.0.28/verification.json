@@ -1,0 +1,55 @@
+{
+  "version": "0.0.28",
+  "published": false,
+  "source_commit": "6d4fe44559608254ecc5699037a1a003cafcc7b7",
+  "source_tree": "31f5cf81e471a99034cbfe299681cbb7ffdc0eaf",
+  "full_check": true,
+  "core_assertions": 3696,
+  "native_scene_assertions": 25,
+  "save_schema": 19,
+  "actual_previous_release_save_continuation": true,
+  "archive_integrity_verified": true,
+  "mac_adhoc_signature_verified": true,
+  "android_version_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.28.zip",
+      "size": 118542805,
+      "sha256": "075f7490a9a97176b9da7dc0b1fb22e32f0ae0c6f6f8f47c5c7443a3cc507980"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.28.zip",
+      "size": 96120762,
+      "sha256": "b7494c9abafb8d1054cefe1d6b2ee139f4ea0da9979fab131a893500c98a3b40"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.28.zip",
+      "size": 71885039,
+      "sha256": "0a4146ae5e35be07802ef55be03828727552947f35dbe2848a6b151ec4be3a15"
+    },
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.28-debug.apk",
+      "size": 87243047,
+      "sha256": "35f334e4b4b0db41295c30279e933622cebbecb92c57c7afb2abeefe63b32200"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.28-Xcode.zip",
+      "size": 170918356,
+      "sha256": "761393b7a5d09babb7f86724b8944be4c7cb87d6421b8ce4dc3a0efa30ab97b7"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.28.html",
+      "size": 4828423,
+      "sha256": "9a11a4ce3fac3d775278e30eae9388224e75d93d672b023f4bd5b94d7d40da72"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Human comprehension, retention and commercial outcomes unverified"
+  ],
+  "packaged_native_smoke": true,
+  "packaged_native_assertions": 25,
+  "check_log_sha256": "7e1060a9cedf5f49c629b42c4fc0825ce06018156cb7974346300be77011af76"
+}
