@@ -30,6 +30,8 @@ const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
 var _sword_trail: SwordTrail
 const Voyage=preload("res://application/star_voyage.gd")
 const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://data/planets/desert.tres"),preload("res://data/planets/frost.tres"),preload("res://data/planets/swamp.tres"),preload("res://data/planets/volcanic.tres"),preload("res://data/planets/storm.tres"),preload("res://data/planets/void.tres")]
+@export var journey_paces: Resource=preload("res://data/journey_paces.tres")
+var _journey_pace: int=0
 var journey: Voyage
 var _star_travel: Node
 var _arrival_banner: CanvasLayer
@@ -55,6 +57,7 @@ func _ready() -> void:
 		get_tree().remove_meta("campaign_launch")
 		campaign_save_path=launch.path
 		if launch.seed>=0:
+			_journey_pace=int(launch.get("pace",0))
 			tuning=tuning.duplicate()
 			tuning.map_seed=launch.seed
 	super._ready()
@@ -164,7 +167,8 @@ func restart() -> void:
 	config.merge(tuning.campaign_rules(),true)
 	journey=null
 	if int(config.get("immersive_loop",0))==1:
-		journey=Voyage.new(config,_planet_profiles())
+		assert(journey_paces.valid())
+		journey=preload("res://application/journey_setup.gd").create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
 		config=journey.configs[0]
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
@@ -282,6 +286,7 @@ func _apply_restored(restored: Dictionary) -> void:
 		if sim.mission.outcome=="victory":sim.mission.outcome="active"
 	if journey!=null:journey.expand(_planet_profiles(),sim)
 	_campaign_config=journey.configs[journey.current] if journey!=null else restored.config
+	_journey_pace=int(_campaign_config.get("journey_style",0))
 	_map_seed=sim.map_seed
 	knight.configure(sim.hero,knight_tuning)
 	if sword_feedback != null: sword_feedback.reset(sim.effects)

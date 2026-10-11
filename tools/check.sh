@@ -48,6 +48,7 @@ run_check prologue --script res://tests/test_prologue_scene.gd
 run_check prologue_audio --script res://tests/test_prologue_audio_scene.gd
 run_check music_cache --script res://tests/test_music_cache_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd
+run_check journey_pacing --script res://tests/test_journey_pacing_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check star_voyage --script res://tests/test_star_voyage_scene.gd
 run_check campaign_save --script res://tests/test_campaign_save_scene.gd

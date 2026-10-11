@@ -15,6 +15,9 @@ func run_scene() -> void:
  await scene_frames(3)
  check(menu.catalog.entries().is_empty(),"opening title does not create or overwrite a journey")
  menu.view.new_button.pressed.emit()
+ await scene_frames(2)
+ check(menu.catalog.entries().is_empty(),"choosing a pace does not allocate a journey")
+ menu.view.pace_picker.confirm.pressed.emit()
  await scene_frames(15)
  var game=current_scene
  check(game.name=="Frontier","new game launches actual campaign")

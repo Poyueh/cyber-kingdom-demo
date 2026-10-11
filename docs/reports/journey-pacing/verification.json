@@ -1,0 +1,29 @@
+{
+  "version": "0.0.29",
+  "full_check": true,
+  "core_assertions": 3832,
+  "new_core_assertions": 136,
+  "native_scene_assertions": 29,
+  "save_schema": 19,
+  "tdd_red": {
+    "core_missing_behavior": 5,
+    "missing_ui": 1,
+    "mixed_journey_admission": 1,
+    "manual_fork_loses_other_planet_rules": 1
+  },
+  "diagnosis": "Checkpoint test string comparison initially confused integral floats with ints. Recursive comparison confirmed zero semantic changes; final tests compare complete numeric state with existing 1e-6 tolerance.",
+  "actual_previous_release_save": {
+    "version": "0.0.28",
+    "current_planet": 1,
+    "schema": 19,
+    "sha256": "af7f45b90d717383dd0cfc1d36b9b87e8b4a8ea58d792dbfad51e58c428254d8",
+    "unchanged_rules_and_progress": true,
+    "continuation": true
+  },
+  "check_log_sha256": "118917b18d7b8224ab655e726272c121b85c1582a76876889ec30c5c431b3298",
+  "limitations": [
+    "No Windows or mobile physical-device acceptance",
+    "Three paces are initial balance, not proven fun or retention",
+    "No commercial outcome evidence"
+  ]
+}

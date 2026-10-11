@@ -53,6 +53,7 @@ static func restore(raw: Variant) -> Dictionary:
  for id: int in range(count):
   var config: Variant=packet.configs[id]
   if not config is Dictionary or not preload("res://application/campaign_checkpoint_rules.gd").config_valid(config):return {}
+  if config.get("journey_style",-1)!=packet.configs[0].get("journey_style",-1):return {}
   if config.get("planet_id")!=id or config.get("voyage_enabled")!=1:return {}
   voyage.configs.append(config.duplicate(true))
   var world: Variant=packet.planets[id]
