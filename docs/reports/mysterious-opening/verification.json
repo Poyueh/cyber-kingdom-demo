@@ -17,5 +17,6 @@
   "limitations": [
     "Native window sizes are not physical iPad or iPhone tests",
     "Player desire to play still requires human feedback"
-  ]
+  ],
+  "clean_export_preflight_repair": "Prior release evidence used a .png suffix for JPEG bytes. Renamed the evidence image to .jpg and updated its report reference; no game resources or behavior changed."
 }

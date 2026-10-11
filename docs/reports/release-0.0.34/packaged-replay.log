@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: title offers a replay without starting a journey
+PASS: replay opens one isolated performance
+PASS: replay suspends the title score
+PASS: replay never allocates a player save
+PASS: duplicate replay requests cannot create overlapping performances
+PASS: Escape returns to the same menu and audio owner
+PASS: skip input never starts a journey or opens pace selection
+PASS: replay opens one isolated performance
+PASS: replay suspends the title score
+PASS: replay never allocates a player save
+PASS: duplicate replay requests cannot create overlapping performances
+PASS: Escape returns to the same menu and audio owner
+PASS: skip input never starts a journey or opens pace selection
+Title replay scene assertions: 13; failures: 0
