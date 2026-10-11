@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual E investment reaches the second camp stage
+PASS: a completed camp upgrade has a visible growth presentation
+PASS: actual upgrade announces the correct new stage
+PASS: the upgrade has a localized title
+PASS: pause hides the growth overlay
+PASS: reviewing milestones cannot consume the night timer
+PASS: camp tab replaces the map in the existing panel
+PASS: camp history is translated: zh_TW
+PASS: camp history fits the safe viewport: zh_TW
+PASS: camp history is translated: zh_CN
+PASS: camp history fits the safe viewport: zh_CN
+PASS: camp history is translated: en
+PASS: camp history fits the safe viewport: en
+PASS: unbuilt stage explains the requirement rather than claiming unlocked tools
+PASS: frontier tab restores the existing exploration chart
+PASS: later growth supersedes the earlier celebration
+PASS: unlock presentation never supplies free soldiers
+PASS: real touch input opens the settlement tab
+PASS: settlement tab fits mobile cutout margins
+PASS: real touch input reviews an earlier unlocked stage
+PASS: night attack warning takes priority over the celebration caption
+PASS: celebration expires instead of becoming a permanent HUD
+PASS: upgraded native world remains a valid save
+PASS: resuming a loaded camp does not replay its ceremony
+PASS: new journey clears old celebration state
+Settlement growth scene assertions: 25; failures: 0
