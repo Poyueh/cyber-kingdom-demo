@@ -124,7 +124,7 @@
     "console_errors": [],
     "browser_gameplay_not_exercised": true,
     "gameplay_evidence": "Original native and exported PCK each passed 91 scene assertions; resumed full headless regression passed again.",
-    "screenshot": "browser-main-menu.png"
+    "screenshot": "browser-main-menu.jpg"
   },
   "resumed_full_check": {
     "date": "2026-10-11",
