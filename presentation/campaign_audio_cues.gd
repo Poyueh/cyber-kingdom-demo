@@ -1,6 +1,7 @@
 extends RefCounted
 ## Ephemeral presentation observer. No sound history enters campaign saves.
 const EFFECTS={
+ "dragon_opening":"module_store",
  "rune_success":"module_store","rune_reset":"slot_refund","ruin_open":"module_equip",
  "core_hit":"core_hit","tower_arrow":"bow_shot","bolt":"bow_shot","tower_laser":"tower_laser",
  "construction_done":"build","pay":"pay","chest_burst":"chest","recruited":"recruit",

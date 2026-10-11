@@ -19,7 +19,7 @@ static func _attack(sim: RefCounted, spec: Catalog.Spec, x: float, now: int) -> 
   targets.append(enemy)
  targets.sort_custom(func(a: Dictionary,b: Dictionary)->bool:return absf(a.x-x)<absf(b.x-x))
  for enemy: Dictionary in targets.slice(0,spec.targets):
-  if not enemy.fighter.take_damage(spec.damage):continue
+  if not enemy.fighter.take_damage(sim.attack_damage_against(enemy,spec.damage)):continue
   match spec.id:
    "frost":
     enemy["module_chill_until"]=now+(spec.boss_duration if enemy.get("kind","")=="dragon" else spec.duration)

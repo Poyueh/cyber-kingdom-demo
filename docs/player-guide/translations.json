@@ -1875,8 +1875,28 @@
     "zh_CN": "不用赶着一次解完。本趟旅程的配置与部分进度会保存，夜里先回防、改天再来，或跨星后返回，都会接着同一道题目。森林入门机关与旧记录的配置保留；随机变化从新旅程开始。",
     "en": "You can leave a puzzle unfinished and return to defend. Its layout and partial progress stay with this journey, including after loading or visiting another planet. Forest introductory puzzles and existing saves keep their layouts; variation starts with a new journey."
   },
-  "適用 v0.0.31：新旅程後六地的機關配置會變化，現場線索同步，回防與返訪保留進度；修正部分營地空地符石無法互動。三種旅程節奏、七地探索、部件收藏與建設回顧皆可使用。": {
-    "zh_CN": "适用 v0.0.31：新旅程后六地的机关配置会变化，现场线索同步，回防与返访保留进度；修正部分营地空地符石无法互动。三种旅程节奏、七地探索、部件收藏与建设回顾皆可使用。",
-    "en": "For v0.0.31: the six destination worlds vary their puzzle layouts on new journeys, with matching clues and progress retained when returning. Devices in the camp clearing are now usable. Three journey paces, seven-world exploration, module collection and settlement history remain available."
+  "等牠攻完，再把握龍核亮起的時刻。": {
+    "en": "Let the volley finish. Strike when the core shines.",
+    "zh_CN": "等它攻完，再把握龙核亮起的时刻。"
+  },
+  "新旅程中，七種巨龍整套攻勢結束後，龍核會亮起金色菱形與青色裂環，至少留下六秒反擊時間。短音效和文字只在開始時出現，核心光效會持續到窗口結束。": {
+    "en": "In new journeys, all seven dragons expose a gold core with cyan brackets after their complete volley. You have at least six seconds to counterattack. A brief sound and caption mark the start; the core stays lit until the window closes.",
+    "zh_CN": "新旅程中，七种巨龙整套攻势结束后，龙核会亮起金色菱形与青色裂环，至少留下六秒反击时间。短音效和文字只在开始时出现，核心光效会持续到窗口结束。"
+  },
+  "曝露期間，劍、攻擊部件、居民與箭塔造成的傷害提高 50%。留一些體力、等部件冷卻，再和弓兵一起反擊；別為了多打一刀而忽略附近魔物。": {
+    "en": "Swords, attack modules, residents and towers deal 50% more damage while the core is exposed. Save stamina and a ready module, then attack alongside your archers. Nearby monsters can still hurt you.",
+    "zh_CN": "暴露期间，剑、攻击部件、居民与箭塔造成的伤害提高 50%。留一些体力、等部件冷却，再和弓兵一起反击；别为了多打一刀而忽略附近魔物。"
+  },
+  "登場停頓與連招中途不算反擊窗口。其他時間仍可造成普通傷害，並非必須等亮起才能出手。舊紀錄保留原攻擊節奏與傷害，另開新旅程才套用新規則。": {
+    "en": "Arrival pauses and gaps between follow-ups are not openings. You still deal normal damage at other times. Existing saves keep their original timing and damage; start a new journey to use these rules.",
+    "zh_CN": "登场停顿与连招中途不算反击窗口。其他时间仍可造成普通伤害，并非必须等亮起才能出手。旧记录保留原攻击节奏与伤害，另开新旅程才应用新规则。"
+  },
+  "實際遊戲：等整套攻勢結束，亮起的核心提示全軍反擊時機。": {
+    "en": "Actual gameplay: after the complete volley, the lit core marks an opportunity for the whole force.",
+    "zh_CN": "实际游戏：等整套攻势结束，亮起的核心提示全军反击时机。"
+  },
+  "適用 v0.0.32：新旅程七龍攻勢後曝露龍核，全軍可趁隙反擊。機關配置變化、三種旅程節奏、七地探索、部件收藏與建設回顧皆可使用；舊紀錄保留原有戰鬥規則。": {
+    "en": "For v0.0.32: in new journeys, all seven dragons expose their cores after a volley for a coordinated counterattack. Varied ruins, three journey styles, seven worlds, module collections and settlement milestones are available. Existing saves keep their original combat rules.",
+    "zh_CN": "适用 v0.0.32：新旅程七龙攻势后暴露龙核，全军可趁隙反击。机关配置变化、三种旅程节奏、七地探索、部件收藏与建设回顾均可使用；旧记录保留原有战斗规则。"
   }
 }
