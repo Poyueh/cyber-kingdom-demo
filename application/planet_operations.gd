@@ -20,7 +20,7 @@ static func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]
 static func execute(sim: RefCounted, id: String) -> void:
  match id:
   "dragon_core":
-   if sim.planet.claim_core():sim.effects.append({"kind":"chest_burst","x":core_x(sim),"y":380.0,"life":0.8})
+   if sim.planet.claim_core():sim.effects.append({"kind":"planet_core_claimed","x":core_x(sim),"y":380.0,"life":0.8})
   "rocket":sim.planet.rocket_pending=true;sim.planet.work=0.0
   "star_map":sim.planet.launch_requested=true
 static func engineer(sim: RefCounted, index: int, seconds: float) -> float:

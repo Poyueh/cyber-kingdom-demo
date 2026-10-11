@@ -8,6 +8,7 @@ var _labels: Array[Label]=[]
 var _masks: Array[int]=[]
 var _open: Array[bool]=[]
 var _cores: Array[bool]=[]
+var _seals: Array[int]=[]
 var _current: int=0
 var selection: int=0
 var _time: float=0.0
@@ -30,10 +31,17 @@ func _layout() -> void:
  queue_redraw()
 func _point(id: int) -> Vector2:return POSITIONS[id]*Vector2(size.x/608.0,1.0)
 func present(journey: RefCounted, sim: RefCounted, names: Array[String]) -> void:
- _current=journey.current;_masks.clear();_open.clear();_cores.clear()
+ _current=journey.current;_masks.clear();_open.clear();_cores.clear();_seals.clear()
  for id: int in range(7):
   _masks.append(journey.required_mask(id));_open.append(journey.accessible(id,sim));_cores.append(journey.has_core(id,sim))
   _labels[id].text=tr(names[id]);_labels[id].modulate=COLORS[id] if _open[id] else Color("788a9c")
+  var report: Dictionary=preload("res://application/voyage_progress.gd").read(journey,sim,id)
+  var seal: int=-1
+  if report.known:
+   seal=0
+   for index: int in range(3):
+    if report.goals[index].complete:seal|=1<<index
+  _seals.append(seal)
   buttons[id].tooltip_text=tr(names[id])
  _layout()
 func _process(delta: float) -> void:
@@ -63,6 +71,9 @@ func _draw() -> void:
   elif not _open[id]:
    draw_rect(Rect2(at+Vector2(-5,-2),Vector2(10,8)),Color("99a4af"))
    draw_arc(at-Vector2(0,2),4,PI,TAU,10,Color("99a4af"),2)
+  if _seals[id]>=0:
+   for index: int in range(3):
+    draw_rect(Rect2(at+Vector2(-10+index*8,34),Vector2(4,3)),Color("ead5a1") if _seals[id]&(1<<index) else Color("40565e"))
   if id==_current:
    var y: float=at.y-44+sin(_time*3)*2
    draw_colored_polygon(PackedVector2Array([Vector2(at.x,y+7),Vector2(at.x-5,y),Vector2(at.x+5,y)]),Color("ffe0a2"))

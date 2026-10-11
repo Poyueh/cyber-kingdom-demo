@@ -1,0 +1,26 @@
+{
+  "version": "0.0.33",
+  "full_check": true,
+  "core_assertions": 4127,
+  "new_core_assertions": 46,
+  "native_scene_assertions": 91,
+  "save_schema": 19,
+  "tdd_red": {
+    "missing_core_or_report_behavior": 6,
+    "missing_scene_connections": 2
+  },
+  "actual_previous_release_save": {
+    "version": "0.0.32",
+    "checkpoints": 2,
+    "old_and_new_reload_sixty_tick_continuation_identical": true,
+    "fixture_sha256": "7f3c963642bbd386f6544c762007d7da6d688df1bcdb385f3e6afb88b92a3772"
+  },
+  "check_log_sha256": "ee926967d539dca243eeacea0d7403270580305536d1c15226bd17be0214e458",
+  "corrections": [
+    "English chart overflow reproduced and fixed with a shorter preview and wider planet card"
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "Behavior and UI consistency do not establish human fun, retention or commercial performance"
+  ]
+}
