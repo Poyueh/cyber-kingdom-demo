@@ -41,6 +41,7 @@ var fullscreen_button: Button
 var drag_controls: Node2D
 var _gesture_can_invest:=false
 var immersive_feedback: Node2D
+var night_watch_view: Control
 
 func _ready() -> void:
 	super._ready()
@@ -123,6 +124,7 @@ func _ready() -> void:
 	exploration_map.closed.connect(func():exploration_map.hide())
 	guide_view=GuideView.new()
 	add_child(guide_view)
+	night_watch_view=preload("res://presentation/night_watch_view.gd").new();add_child(night_watch_view)
 
 func _button_texture(key: String, side: int=64, glyph_size: int=32) -> Texture2D:
 	# SVG drawing remains editable and matches the resource and interaction symbols.
@@ -250,6 +252,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	var map=sim.frontier
 	dashboard.immersive=sim.life.enabled
 	immersive_feedback.present(sim,get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),_last_safe_rect,is_paused)
+	night_watch_view.present(sim,_last_safe_rect,is_paused,immersive_feedback.day_caption_bounds())
 	dashboard.values={"hp":sim.hero.hp,"shield":sim.hero.shield,"crystal":"%d/%d" % [sim.pouch.amount,sim.pouch.capacity],"day":sim.clock.day,"survived":sim.clock.survived,"full":sim.pouch.amount>=sim.pouch.capacity}
 	var pressure: Dictionary=sim.raid_pressure()
 	dashboard.values["damage"]=sim.hero.stats.damage

@@ -10,6 +10,8 @@ var planet: Planet
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const NightPressure = preload("res://domain/night_pressure.gd")
 var night_pressure: NightPressure
+const NightPattern = preload("res://domain/night_pattern.gd")
+var night_pattern: NightPattern
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
 const Spirit=preload("res://application/spirit_guidance.gd")
@@ -73,6 +75,7 @@ const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","far
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	planet=Planet.new(config)
 	night_pressure = NightPressure.new(config)
+	night_pattern = NightPattern.new(config)
 	spirit=Spirit.new(config)
 	life.enabled=int(config.get("immersive_loop",0))==1
 	survival.enabled=life.enabled and int(config.get("crystal_survival",0))==1
@@ -629,15 +632,25 @@ func _defense_position(index: int, inset: float) -> float:
 	var side:=1.0 if post=="wall" else -1.0
 	return world.sites[defenses.active_post(int(side))]-side*(inset+mini(rank,4)*18.0)
 
+func planned_night_count() -> int:
+	if clock.is_night:return _night_spawn_index+_spawn_remaining
+	var dusk_tick: int = roundi((workforce.elapsed+clock.remaining)*RecoveryClock.TICKS_PER_SECOND)
+	return maxi(1,night_pressure.count_for(clock.day)+mount_quest.forecast_bonus(clock.day,dusk_tick))
+
+func night_watch() -> Dictionary:
+	return preload("res://application/night_watch.gd").describe(self)
+
 func raid_pressure() -> Dictionary:
 	var pressure: Dictionary={"left":0,"right":0}
 	if not clock.is_night and clock.remaining>30 and raiders.is_empty(): return pressure
 	for enemy in raiders:
 		if enemy.fighter.is_alive(): pressure["right" if enemy.get("side",1)>0 else "left"]+=1
 	var start: int=_night_spawn_index if clock.is_night else 0
-	var pending: int=_spawn_remaining if clock.is_night else (night_pressure.count_for(clock.day) if clock.remaining<=30 else 0)
+	var total: int=planned_night_count()
+	var pending: int=_spawn_remaining if clock.is_night else (total if clock.remaining<=30 else 0)
 	for i in range(start,start+pending):
-		if mission.side_open(1 if i%2==0 else -1):pressure["right" if i%2==0 else "left"]+=1
+		var side: int=night_pattern.side_for(clock.day,i,total)
+		if mission.side_open(side):pressure["right" if side>0 else "left"]+=1
 	return pressure
 
 func is_running() -> bool:
@@ -671,10 +684,16 @@ func _advance_invasion(seconds: float) -> void:
 		_spawn_timer=maxf(0.0,_spawn_timer-seconds)
 		# JSON round trips can put an expired legacy seconds timer just above zero.
 		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and raiders.size()<night_pressure.concurrent_limit:
-			var side:=1 if _night_spawn_index%2==0 else -1
+			var total: int=planned_night_count()
+			var side: int=night_pattern.side_for(clock.day,_night_spawn_index,total)
 			_night_spawn_index+=1
 			_spawn_remaining-=1
-			if not mission.side_open(side):continue
+			var interval: float=float(night_pattern.gap_after(clock.day,_night_spawn_index,total))/RecoveryClock.TICKS_PER_SECOND
+			if not mission.side_open(side):
+				if interval>2.5:
+					_spawn_timer=interval
+					break
+				continue
 			var enemy:=_spawn_raider()
 			enemy["side"]=side
 			enemy.x=mission.entry_x(side)
@@ -682,7 +701,7 @@ func _advance_invasion(seconds: float) -> void:
 			enemy["exit_x"]=enemy.x+side*70.0
 			enemy["direction"]=-float(side)
 			raiders.append(enemy)
-			_spawn_timer=2.5
+			_spawn_timer=interval
 	time_to_raid=clock.remaining
 
 func _spawn_raider() -> Dictionary:

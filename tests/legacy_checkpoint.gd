@@ -15,6 +15,11 @@ static func before_module_catalog(packet: Dictionary) -> void:
   for id: String in ["magnet","frost","gravity","workshop","command","capacitor"]:
    if key.begins_with("module_"+id+"_"):packet.config.erase(key)
 
+static func before_night_patterns(packet: Dictionary) -> void:
+ for key: String in packet.config.keys():
+  if key.begins_with("night_pattern_"):packet.config.erase(key)
+
 static func before_ruin_mechanisms(packet: Dictionary) -> void:
+ before_night_patterns(packet)
  for key: String in packet.config.keys():
   if key.begins_with("mechanism_"):packet.config.erase(key)

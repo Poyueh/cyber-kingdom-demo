@@ -1,6 +1,15 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["night.pressure.west", "西側魔潮凝聚。東側仍有零星攻勢。", "西侧魔潮凝聚。东侧仍有零星攻势。", "Main force gathering west. Keep a watch east."],
+ ["night.pressure.east", "東側魔潮凝聚。西側仍有零星攻勢。", "东侧魔潮凝聚。西侧仍有零星攻势。", "Main force gathering east. Keep a watch west."],
+ ["night.pincer.west", "先西後東，魔潮將分兩波來襲。", "先西后东，魔潮将分两波来袭。", "Two waves: west first, then east."],
+ ["night.pincer.east", "先東後西，魔潮將分兩波來襲。", "先东后西，魔潮将分两波来袭。", "Two waves: east first, then west."],
+ ["night.second.west", "西門開始集結第二波。留意兩側防線。", "西门开始集结第二波。留意两侧防线。", "The second wave is gathering west. Watch both walls."],
+ ["night.second.east", "東門開始集結第二波。留意兩側防線。", "东门开始集结第二波。留意两侧防线。", "The second wave is gathering east. Watch both walls."],
+ ["night.balanced", "雙門同時湧動，兩側都需要守護。", "双门同时涌动，两侧都需要守护。", "Both gates are stirring. Defend both walls."],
+ ["night.only.west", "東門已封，後續增援只從西門出現。", "东门已封，后续增援只从西门出现。", "East gate sealed. Reinforcements come only from the west."],
+ ["night.only.east", "西門已封，後續增援只從東門出現。", "西门已封，后续增援只从东门出现。", "West gate sealed. Reinforcements come only from the east."],
  ["guide.rocket_building", "工匠正在建造火箭，完成後就能啟航。", "工匠正在建造火箭，完成后就能启航。", "Engineers are building your rocket for departure."],
  ["guide.command.rocket_wait", "工程已付款；讓工匠完成施工。", "工程已付款；让工匠完成施工。", "Already paid. Let your engineers finish building."],
 

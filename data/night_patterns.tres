@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/night_pattern_tuning.gd" id="1"]
+[resource]
+script = ExtResource("1")
+first_day = 4
+warning_seconds = 75
+regroup_seconds = 18

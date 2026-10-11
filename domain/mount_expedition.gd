@@ -43,8 +43,12 @@ func toggle() -> bool:
  if not unlocked:return false
  riding=not riding
  return true
-func night_bonus(day: int, now: int) -> int:
+func forecast_bonus(day: int, now: int) -> int:
  if not enabled or warning_until==0 or now<warning_until:return 0
+ if raid_day==0:return extra_enemies
+ return -recovery_discount if day>raid_day and not recovery_used else 0
+func night_bonus(day: int, now: int) -> int:
+ if forecast_bonus(day,now)==0:return 0
  if raid_day==0:
   raid_day=day
   return extra_enemies
