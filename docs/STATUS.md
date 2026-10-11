@@ -1,12 +1,12 @@
 # 製作進度
 
-## 2026-10-11：v0.0.35 噬晶異獸與七龍演出（交付驗證中）
+## 2026-10-11：v0.0.35 噬晶異獸與七龍演出（已發佈）
 
 - 無武器共通噬晶獸、獨立抱晶撤退、七地守門者不同輪廓；276 個原生完整姿勢，原稿／提示／重建工具保留。
 - 取消 X 字命中記號，新增全身受創、碎晶、重擊扇面、倒地消散；巨龍真實事件驅動蓄力、連段爆發、恢復、地面預警與短震動，暫停凍結、讀檔不補播。
 - 戰鬥與存檔規則未改，快照仍 v19。七地 61 項視覺場景驗證與原生實際連斬 18 項通過；原生七地影片／42 張擷取無繪圖錯誤。三語星圖與指南同步，第 112 課完成。
 - 改為當地圖集載入，原生開局貼圖由本輪全預載 156.7 MiB 降到 86.7 MiB（v34 為 84.6 MiB）。桌面量測不代表手機真機。
-- 完整 tools/check.sh 通過：4,137 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。五平台套件、Mac 簽章、Android 版本與封裝完整性已核對；實際匯出 PCK 的 61 項七地演出檢查及原生七地 42 張擷取通過，發布進行中；[設計](design/crystal-devourers.md) · [驗證紀錄](reports/devourers-v001/verification.json) · [教學](lessons/112-enemy-animation.md)。
+- 完整 tools/check.sh 通過：4,137 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。五平台套件、Mac 簽章、Android 版本與封裝完整性已核對；實際匯出 PCK 的 61 項七地演出檢查及原生七地 42 張擷取通過，[v0.0.35 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.35) 七個附件與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.35) 已公開；大小／SHA-256 與七份線上檔案完全相符。瀏覽器確認開場進入主選單、新版內嵌指南與三語內容，無 console errors，未建立玩家紀錄。[發行驗收](reports/release-0.0.35/verification.json)。Windows／手機尚未真機驗收，iOS 為待簽署專案；[設計](design/crystal-devourers.md) · [驗證紀錄](reports/devourers-v001/verification.json) · [教學](lessons/112-enemy-animation.md)。
 
 ## 2026-10-11：v0.0.34 神祕探索開場與主選單（已發佈）
 
