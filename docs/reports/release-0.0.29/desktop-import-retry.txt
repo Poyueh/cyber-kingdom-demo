@@ -1,0 +1,66 @@
+First desktop import failed; other three platform imports succeeded.
+Retrying the same source without concurrent Godot imports succeeded.
+This does not establish concurrency as the cause. Final packages were validated separately.
+
+handle_crash: Program crashed with signal 5
+Engine version: Godot Engine v4.7.2.stable.official (ed1daf0bf001b61586d9930840f2f1394092c079)
+Dumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues
+Load address: 100a70000
+
+[1] 18c481744 (libsystem_platform.dylib+3744) - _sigtramp + 56
+[2] 10529a6cc (main+482a6cc) - ZSTD_decompressStream_simpleArgs + 894568
+[3] 10529a6cc (main+482a6cc) - ZSTD_decompressStream_simpleArgs + 894568
+[4] 106338a3c (main+58c8a3c) - GL_ShadingRateQCOM + 8912984
+[5] 103259d20 (main+27e9d20) - SDL_GetPerformanceFrequency + 10654852
+[6] 105423298 (main+49b3298) - ZSTD_decompressStream_simpleArgs + 2503220
+[7] 104604f2c (main+3b94f2c) - SDL_GetPerformanceFrequency + 31278736
+[8] 10460b82c (main+3b9b82c) - SDL_GetPerformanceFrequency + 31305616
+[9] 10544b0d0 (main+49db0d0) - ZSTD_decompressStream_simpleArgs + 2666604
+[10] 10544ce20 (main+49dce20) - ZSTD_decompressStream_simpleArgs + 2674108
+[11] 10544f620 (main+49df620) - ZSTD_decompressStream_simpleArgs + 2684348
+[12] 104604be8 (main+3b94be8) - SDL_GetPerformanceFrequency + 31277900
+[13] 10460b82c (main+3b9b82c) - SDL_GetPerformanceFrequency + 31305616
+[14] 10544b0d0 (main+49db0d0) - ZSTD_decompressStream_simpleArgs + 2666604
+[15] 10544ce20 (main+49dce20) - ZSTD_decompressStream_simpleArgs + 2674108
+[16] 10544f620 (main+49df620) - ZSTD_decompressStream_simpleArgs + 2684348
+[17] 10544fbe4 (main+49dfbe4) - ZSTD_decompressStream_simpleArgs + 2685824
+[18] 10167a9c8 (main+c0a9c8) - main + 4972244
+[19] 101664118 (main+bf4118) - main + 4879908
+[20] 10167507c (main+c0507c) - main + 4949384
+[21] 101664100 (main+bf4100) - main + 4879884
+[22] 10167751c (main+c0751c) - main + 4958760
+[23] 1016640d8 (main+bf40d8) - main + 4879844
+[24] 10166a9d8 (main+bfa9d8) - main + 4906724
+[25] 10166aaa8 (main+bfaaa8) - main + 4906932
+[26] 1016691d4 (main+bf91d4) - main + 4900576
+[27] 101667348 (main+bf7348) - main + 4892756
+[28] 10166971c (main+bf971c) - main + 4901928
+[29] 10168bfa8 (main+c1bfa8) - main + 5043380
+[30] 101644708 (main+bd4708) - main + 4750356
+[31] 1016a592c (main+c3592c) - main + 5148216
+[32] 101755a64 (main+ce5a64) - main + 5869424
+[33] 10544b0d0 (main+49db0d0) - ZSTD_decompressStream_simpleArgs + 2666604
+[34] 10544ce20 (main+49dce20) - ZSTD_decompressStream_simpleArgs + 2674108
+[35] 10544f620 (main+49df620) - ZSTD_decompressStream_simpleArgs + 2684348
+[36] 104604be8 (main+3b94be8) - SDL_GetPerformanceFrequency + 31277900
+[37] 10460b82c (main+3b9b82c) - SDL_GetPerformanceFrequency + 31305616
+[38] 10544b0d0 (main+49db0d0) - ZSTD_decompressStream_simpleArgs + 2666604
+[39] 10544ce20 (main+49dce20) - ZSTD_decompressStream_simpleArgs + 2674108
+[40] 10544f620 (main+49df620) - ZSTD_decompressStream_simpleArgs + 2684348
+[41] 10544fbe4 (main+49dfbe4) - ZSTD_decompressStream_simpleArgs + 2685824
+[42] 102995658 (main+1f25658) - SDL_GetPerformanceFrequency + 1461692
+[43] 1029792f0 (main+1f092f0) - SDL_GetPerformanceFrequency + 1346132
+[44] 102977d48 (main+1f07d48) - SDL_GetPerformanceFrequency + 1340588
+[45] 105804ac4 (main+4d94ac4) - ZSTD_decompressStream_simpleArgs + 6572640
+[46] 102e5b630 (main+23eb630) - SDL_GetPerformanceFrequency + 6466964
+[47] 102e5dfe4 (main+23edfe4) - SDL_GetPerformanceFrequency + 6477640
+[48] 105801998 (main+4d91998) - ZSTD_decompressStream_simpleArgs + 6560052
+[49] 10392eb30 (main+2ebeb30) - SDL_GetPerformanceFrequency + 17818260
+[50] 10392cc80 (main+2ebcc80) - SDL_GetPerformanceFrequency + 17810404
+[51] 10392d3d0 (main+2ebd3d0) - SDL_GetPerformanceFrequency + 17812276
+[52] 1011e1ea4 (main+771ea4) - main + 152496
+[53] 10115a498 (main+6ea498) - mvk::SPIRVToMSLConverter::convert(mvk::SPIRVToMSLConversionConfiguration&, mvk::SPIRVToMSLConversionResult&, bool, bool, bool)
+[54] 1011bcea4 (main+74cea4) - main (in Godot) + 944
+[55] 18c0ac4e4 (dyld+204e4) - start + 6992
+-- END OF C++ BACKTRACE --
+================================================================
