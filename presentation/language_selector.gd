@@ -3,7 +3,7 @@ const CHOICES=["auto","zh_TW","zh_CN","en"]
 var language_service: Node
 func _ready() -> void:
  name="LanguageSelector";unique_name_in_owner=true
- theme=Theme.new();theme.default_font=preload("res://presentation/localized_font.gd").current()
+ theme=preload("res://presentation/refuge_theme.gd").make()
  auto_translate_mode=Node.AUTO_TRANSLATE_MODE_DISABLED
  custom_minimum_size=Vector2(220,44)
  add_theme_font_size_override("font_size",16)

@@ -233,7 +233,9 @@ func _draw_structures() -> void:
 		if not _on_screen(wall_x,320):continue
 		var defense: Dictionary=world.walls[id]
 		if defense.level>0:
-			_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color(0.45,0.5,0.5) if defense.pending else Color.WHITE if defense.hp>0 else Color(0.4,0.35,0.38))
+			if defense.hp<=0 and not defense.pending:
+				preload("res://presentation/construction_scaffold.gd").ruins(self,Vector2(wall_x,430),EXTRA_ART["wall-%d"%defense.level])
+			else:_prop("wall-%d"%defense.level,Vector2(wall_x,430),1.0,Color(0.45,0.5,0.5) if defense.pending else Color.WHITE)
 			if not _sim.life.enabled and not cinematic:
 				draw_rect(Rect2(wall_x-28,316,56,4),Color("263940"))
 				draw_rect(Rect2(wall_x-28,316,56.0*defense.hp/_sim.world.wall_max_hp(defense.level),4),Color("8fdbbe"))

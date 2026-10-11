@@ -2178,5 +2178,17 @@
   "適用 v0.0.39：森林新旅程改為單獸首戰，缺晶引導納入已知可領的路邊晶藏，前三天野外探索新增短暫返城方向提示。舊紀錄保留原本森林雙獸與攻擊節奏；每星兩處稀疏遭遇、一座主要聖所與六職業工作演出維持。": {
     "en": "For v0.0.39: new forest journeys start with one nest guardian; supply advice includes known available roadside finds; early exploration gets a brief homeward cue. Existing saves keep their original forest pair and attack timing. Two sparse roadside moments, one main sanctuary and six professions remain.",
     "zh_CN": "适用 v0.0.39：森林新旅程改为单兽首战，缺晶引导纳入已知可领的路边晶藏，前三天野外探索新增短暂返城方向提示。旧纪录保留原本森林双兽与攻击节奏；每星两处稀疏遭遇、一座主要圣所与六职业工作演出维持。"
+  },
+  "看見工匠築牆、騎士迎戰，以及巨龍吐息擊垮防線，再循著七個世界的遺跡踏上旅程。28 秒開場可按跳過、Enter 或 Esc 略過，也能在主選單重看。選「開始旅程」後挑選節奏，或選擇紀錄繼續；演出不會建立或改寫旅程，配樂沿用音量與靜音設定。": {
+    "en": "Watch builders raise a wall, the knight face the beasts, and a dragon shatter the defense with its breath. Then follow the ruins across seven worlds. Skip the 28-second opening with the button, Enter or Esc, or replay it from the title. Choose Begin Journey to select a pace, or load an existing record. The performance never creates or changes a journey and respects your audio settings.",
+    "zh_CN": "看见工匠筑墙、骑士迎战，以及巨龙吐息击垮防线，再循着七个世界的遗迹踏上旅程。28 秒开场可按跳过、Enter 或 Esc 略过，也能在主选单重看。选“开始旅程”后挑选节奏，或选择记录继续；演出不会建立或改写旅程，配乐沿用音量与静音设置。"
+  },
+  "適用 v0.0.40：修正星球植被與遺跡離地，統一霧金深色介面，新增建造、戰鬥與巨龍破牆前導，龍息跟隨嘴部動作。前期單獸首戰、晶藏引導與短暫返城提示維持；舊紀錄保留原本規則，不需重開。": {
+    "en": "For v0.0.40: grounded planetary plants and ruins, a unified dark and muted-gold interface, and an opening featuring construction, combat and a dragon breaking the wall. Breath follows the animated mouth. Early single-beast encounters, cache guidance and brief return cues remain; existing journeys keep their saved rules.",
+    "zh_CN": "适用 v0.0.40：修正星球植被与遗迹离地，统一雾金深色界面，新增建造、战斗与巨龙破墙前导，龙息跟随嘴部动作。前期单兽首战、晶藏引导与短暂返城提示维持；旧记录保留原本规则，不需重开。"
+  },
+  "實際前導：巨龍蓄力吐息，摧毀工匠剛完成的防線。": {
+    "en": "Actual prologue: a dragon winds up and breathes through the newly completed defense.",
+    "zh_CN": "实际前导：巨龙蓄力吐息，摧毁工匠刚完成的防线。"
   }
 }

@@ -1,4 +1,5 @@
 extends RefCounted
+const Ground=preload("res://presentation/grounded_art.gd")
 const SKIES=[preload("res://art/planets/v001/desert-sky.png"),preload("res://art/planets/v001/frost-sky.png"),preload("res://art/planets/v002/swamp-sky.png"),preload("res://art/planets/v002/volcanic-sky.png"),preload("res://art/planets/v002/storm-sky.png"),preload("res://art/planets/v002/void-sky.png")]
 const TREE=[preload("res://art/planets/v001/desert-tree.png"),preload("res://art/planets/v001/frost-tree.png"),preload("res://art/planets/v002/swamp-tree.png"),preload("res://art/planets/v002/volcanic-tree.png"),preload("res://art/planets/v002/storm-tree.png"),preload("res://art/planets/v002/void-tree.png")]
 const ORE=[preload("res://art/planets/v001/desert-ore.png"),preload("res://art/planets/v001/frost-ore.png"),preload("res://art/planets/v002/swamp-ore.png"),preload("res://art/planets/v002/volcanic-ore.png"),preload("res://art/planets/v002/storm-ore.png"),preload("res://art/planets/v002/void-ore.png")]
@@ -24,7 +25,7 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
   var last: int=ceili((bounds.end.x-offset)/step)+1
   for index: int in range(first,last):
    var tex: Texture2D=TREE[id] if authored or posmod(index,3)!=0 else LANDMARK[id]
-   var at: Vector2=Vector2(round(index*step+offset),430)
+   var at: Vector2=Ground.anchor(tex,Vector2(round(index*step+offset),432))
    var tint: Color=TINTS[id]
    tint.a=0.32 if layer==0 else 0.7
    view.draw_texture(tex,at-Vector2(tex.get_width()*0.5,tex.get_height()),tint)
@@ -34,7 +35,8 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
   var texture: Texture2D=SHRUB[id] if authored else (LANDMARK[id] if region.kind=="ruins" else SHRUB[id])
   var alpha: float=view._region_reveal(sim.frontier.regions.find(region))
   if alpha<=0:continue
-  view.draw_texture(texture,Vector2(x-texture.get_width()*0.5,430-texture.get_height()),Color(1,1,1,alpha))
+  var at: Vector2=Ground.anchor(texture,Vector2(x,432))
+  view.draw_texture(texture,at-Vector2(texture.get_width()*0.5,texture.get_height()),Color(1,1,1,alpha))
 
  # Bounded ambient particles only in the visible rectangle; they carry no damage.
  var time: float=sim.workforce.elapsed

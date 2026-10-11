@@ -6,6 +6,7 @@ const CYAN: Color=Color("9ffff1")
 # Local core positions in the existing right-facing poses; mirrored with the body.
 const CORES: Array[Vector2]=[Vector2(102,358),Vector2(40,398),Vector2(30,362),Vector2(36,365),Vector2(-22,377),Vector2(50,358),Vector2(36,373)]
 static func draw(view: Node2D, enemy: Dictionary, time: float) -> void:
+	if view.cinematic:return
 	if not view._sim.planet.attack.opening.exposed(enemy) or not view._on_screen(enemy.x,350):return
 	var pulse: float=0.65+sin(time*5.0)*0.2
 	var core: Vector2=CORES[view._sim.planet.id]

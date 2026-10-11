@@ -6,3 +6,13 @@ extends Resource
 @export var shot_starts: PackedFloat32Array
 @export var caption_keys: PackedStringArray
 @export var duration: float
+
+@export var camp_x: float
+@export var wall_x: float
+@export var combat_x: float
+@export var dragon_x: float
+@export var camera_center: float
+@export var sword_interval: float
+@export var enemy_health: int
+@export var dragon_strike_x: float
+@export var dragon_warning_seconds: float

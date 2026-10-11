@@ -71,6 +71,16 @@ static func breath(view: Node2D, effect: Dictionary) -> void:
 	var progress: float=clampf(1-effect.life/0.7,0,1)
 	var direction: float=signf(effect.to-effect.x)
 	var origin: Vector2=Vector2(effect.x+direction*115,323)
+	# Follow the full-body release pose; the boss can advance during recovery.
+	for enemy: Dictionary in view._sim.raiders:
+		if enemy.get("kind","")!="dragon" or not enemy.fighter.is_alive():continue
+		var look: EnemyAppearance=view._raider_motion.appearance("dragon")
+		var state: Motion.MotionState=view._raider_motion.state_for(enemy)
+		if state==null or look.breath_muzzles.size()!=look.strike.size():break
+		var release: float=clampf(state.strike_age/look.strike_seconds,0,1)
+		var muzzle: Vector2=look.breath_muzzles[mini(int(release*look.strike.size()),look.strike.size()-1)]
+		origin=Vector2(enemy.x+direction*(muzzle.x+sin(release*PI)*7),430+muzzle.y)
+		break
 	var target: Vector2=Vector2(effect.to,418)
 	var fade: float=1-smoothstep(0.45,1,progress)
 	var reach: float=clampf(progress/0.20,0,1)
