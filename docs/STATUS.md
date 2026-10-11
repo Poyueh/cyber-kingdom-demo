@@ -1,10 +1,11 @@
 # 製作進度
 
-## 2026-10-11：v0.0.32 巨龍反擊窗口（已驗證，準備發佈）
+## 2026-10-11：v0.0.32 巨龍反擊窗口（已發佈）
 
 - 新旅程七龍整套攻勢後的核心曝露、最少六秒收招、我方 1.5 倍傷害與三語短效回饋；設定來自 Resource 並隨旅程保存，快照仍 v19。
 - 核心 TDD 先重現十五項缺失，124 項驗證通過。原生七地 42 項檢查通過，含鍵盤／觸控／暫停／三語；測試先修正按鈕類型與解除暫停後才送觸控的測試時機，未更改遊戲輸入。真正 v0.0.31 套件的十四份戰鬥存檔續跑六十 ticks 一致。
-- 完整 tools/check.sh 通過：4,081 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR。準備五平台發行。[驗收證據](reports/dragon-counterattack/verification.json)。[設計](design/dragon-counterattack.md) · [第 109 課](lessons/109-dragon-counterattack.md)。
+- 完整 tools/check.sh 通過：4,081 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR。五平台匯出、壓縮檔完整性、Mac 臨時簽章與 Android 版本已核對；實際匯出 PCK 的 42 項場景檢查通過。[驗收證據](reports/dragon-counterattack/verification.json)。[設計](design/dragon-counterattack.md) · [第 109 課](lessons/109-dragon-counterattack.md)。
+- [v0.0.32 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.32) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.32) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。瀏覽器確認主選單與三語內嵌指南的反擊說明／版本，無 console errors。[發行驗證](reports/release-0.0.32/verification.json)。Windows／手機未真機驗收，iOS 為待簽署專案。
 - 接著用真人試玩觀察反擊時機、體力與帶兵選擇；尚未證明心流、留存或商業成果，整體目標仍在進行。
 
 
