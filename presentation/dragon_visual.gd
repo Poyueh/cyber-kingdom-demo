@@ -5,7 +5,7 @@ const BIOMES=[preload("res://art/planets/v001/sand-dragon.png"),preload("res://a
 static func draw(view: Node2D, enemy: Dictionary, time: float) -> void:
  if not enemy.fighter.is_alive():return
  if view._sim.planet.enabled and view._sim.planet.id>0:
-  draw_biome(view,enemy,time);return
+  draw_biome(view,enemy,time);preload("res://presentation/dragon_opening_view.gd").draw(view,enemy,time);return
  var hit: Dictionary=view.hit_feedback.enemy_pose(enemy)
  var direction: float=enemy.get("direction",-1.0)
  var frame: int=3 if enemy.windup>0 else [0,2,0,1][int(time*3.2)%4]
@@ -14,6 +14,7 @@ static func draw(view: Node2D, enemy: Dictionary, time: float) -> void:
  view.draw_set_transform(Vector2(enemy.x,430)+hit.offset*0.4,hit.rotation*0.12,Vector2(-direction,1)*Vector2(1,1-(1-hit.scale.y)*0.3))
  view.draw_texture_rect_region(SHEET,Rect2(-172,-245+breathing,307.2,249.6-breathing),Rect2(frame*256,0,256,208),tint)
  view.draw_set_transform(Vector2.ZERO)
+ preload("res://presentation/dragon_opening_view.gd").draw(view,enemy,time)
  if enemy.windup>0:
   var aim: float=enemy.target.x
   var progress: float=1-enemy.windup/1.6

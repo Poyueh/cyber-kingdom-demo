@@ -20,6 +20,9 @@ static func advance(sim, dragon: Dictionary, seconds: float, hero_x: float, hero
      if p.role!="wanderer" and absf(p.x-aim)<100 and absf(p.get("y",430)-430)<48:sim.world.hit_person(i)
     if absf(sim.world.sites.hall-aim)<100:sim.mission.damage_core(dragon.wall_damage)
    sim.effects.append({"kind":"dragon_fire","x":dragon.x,"to":aim,"life":0.7})
+   if sim.planet.attack.opening.enabled:
+    dragon.cooldown=maxf(dragon.cooldown,sim.planet.attack.opening.minimum_recovery)
+    sim.effects.append({"kind":"dragon_opening","x":dragon.x,"life":1.8})
   return
  var target: Dictionary=sim._target(dragon,hero_x,hero_y)
  dragon.direction=signf(target.x-dragon.x) if absf(target.x-dragon.x)>1 else dragon.direction

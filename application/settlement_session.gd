@@ -205,7 +205,7 @@ func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interv
 			nearest = raider
 			distance = hit_distance
 	if nearest.is_empty(): return false
-	nearest.fighter.take_damage(damage)
+	nearest.fighter.take_damage(attack_damage_against(nearest,damage))
 	person.cooldown = interval
 	effects.append({"kind":"bolt","x":person.x,"to":nearest.x,"life":0.18})
 	return true
@@ -318,6 +318,9 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 		raider.windup = 0.6
 		raider.cooldown = 1.5
 
+func attack_damage_against(_enemy: Dictionary, amount: int) -> int:
+	return amount
+
 func strike_from(x: float, y: float) -> void:
 	if not is_running():return
 	if absf(y-430)>hero.stats.vertical_range:
@@ -325,7 +328,7 @@ func strike_from(x: float, y: float) -> void:
 	for raider in raiders:
 		var distance: float=raider.x-x
 		if raider.get("kind","")=="dragon":distance=signf(distance)*maxf(0,absf(distance)-70)
-		if hero.strike(raider.fighter,distance):
+		if hero.strike(raider.fighter,distance,attack_damage_against(raider,hero.attack_damage())):
 			var heavy := hero.combo_step == 3
 			effects.append({"kind":"hit","x":raider.x,"to":raider.x,"life":0.28 if heavy else 0.2,"heavy":heavy,"facing":hero.attack_facing})
 			if heavy:
