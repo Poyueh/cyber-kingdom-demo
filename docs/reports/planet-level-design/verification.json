@@ -1,0 +1,26 @@
+{
+  "source_commit": "a99af16baff9c511b11cd1056b51bfb74ee3677d",
+  "core_assertions": 4227,
+  "full_check": true,
+  "errors": 0,
+  "seeds": 64,
+  "worlds_solved_through_normal_interaction": 448,
+  "native_destination_controls": 37,
+  "native_module_workshop": 11,
+  "native_route_captures": 28,
+  "legacy_release": "0.0.35",
+  "legacy_worlds": 7,
+  "legacy_continuation_ticks": 60,
+  "legacy_layout_retained": true,
+  "snapshot_schema": 19,
+  "guide_locales": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ],
+  "guide_browser_verified": true,
+  "limitations": [
+    "No mobile physical-device test",
+    "Route pacing and enjoyment still need human playtesting"
+  ]
+}
