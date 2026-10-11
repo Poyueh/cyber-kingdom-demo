@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: opening movie owns the screen before the title
+PASS: title score stays silent while the prologue has its own score
+PASS: opening score follows saved music level with its cinematic mix
+PASS: opening effects follow saved effects level
+PASS: opening ambience follows saved ambience level
+PASS: native prologue still plays its scene score
+PASS: native title score does not overlap the opening scene
+PASS: real Escape input finishes the opening
+PASS: skipping the opening starts the title score
+PASS: audio handoff preserves the saved music volume
+PASS: natural movie completion also starts the title score
+PASS: saved mute also silences the opening performance
+PASS: muted prologue has no playing music voice
+PASS: skipping the movie preserves the saved mute preference
+PASS: muted title stays silent after the handoff
+PASS: watching and skipping never rewrite audio preferences
+Prologue audio assertions: 16; failures: 0
