@@ -23,6 +23,8 @@ run_check() {
 python3 "$ROOT/tools/test_build_desktop.py"
 python3 "$ROOT/tools/test_build_ios.py"
 python3 "$ROOT/tools/test_build_web.py"
+python3 "$ROOT/tools/test_game_spec.py"
+python3 "$ROOT/tools/build_game_spec.py" --check
 python3 "$ROOT/tools/test_localization.py"
 python3 "$ROOT/tools/check_architecture.py"
 run_check import --editor --import
