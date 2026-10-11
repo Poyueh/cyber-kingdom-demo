@@ -7,6 +7,8 @@ const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.tres")
 var _daylight: Daylight
 var _camp_ignition_age: float=-1.0
+const SettlementIdentity=preload("res://data/settlement_identity.tres")
+const TrailView=preload("res://presentation/trail_view.gd")
 const PlanetScenery=preload("res://presentation/planet_scenery.gd")
 var _original_art: Resource
 
@@ -48,7 +50,7 @@ var focus_key := ""
 var _view_player_x := 0.0
 var investment_progress := 0.0
 const Icons=preload("res://presentation/ui_icons.gd")
-const SITE_ICONS={"rocket":"hammer","star_map":"map","dragon_core":"crystal","merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
+const SITE_ICONS={"trail_cache":"chest","rocket":"hammer","star_map":"map","dragon_core":"crystal","merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
 const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"drill":preload("res://art/structures/immersive-v001/drill.png"),"wall-1":preload("res://art/structures/immersive-v001/wall-1.png"),"wall-2":preload("res://art/structures/immersive-v001/wall-2.png"),"wall-3":preload("res://art/structures/immersive-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
 
 func present(sim, player_x: float) -> void:
@@ -107,7 +109,9 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 				draw_rect(Rect2(at+Vector2(side*22-5,-3),Vector2(10,3)),Color("68736b")*tint)
 				draw_rect(Rect2(at+Vector2(side*18-3,-5),Vector2(6,2)),Color("8b8c72")*tint)
 		return
-	var texture: Texture2D=PlanetScenery.texture(_sim.planet.id if _sim.planet.enabled else 0,name)
+	var texture: Texture2D=SettlementIdentity.buildings.get(StringName(name))
+	var unique_building: bool=texture!=null
+	if texture==null:texture=PlanetScenery.texture(_sim.planet.id if _sim.planet.enabled else 0,name)
 	if texture==null:texture=Details.harvest_texture(name,at.x,_sim.map_seed)
 	else:scale=1.0
 	if texture==null:texture=EXTRA_ART.get(name,art.props.get(name))
@@ -118,7 +122,7 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 				tint.a*=assembled
 				at.y+=(1-assembled)*24
 	Ambient.prop(self,texture,name,at,scale,tint,_sim.workforce.elapsed)
-	var emission: Texture2D=art.emission_masks.get(name)
+	var emission: Texture2D=null if unique_building else art.emission_masks.get(name)
 	if emission!=null:
 		var size:=texture.get_size()*scale
 		var pulse: float=0.20+0.16*sin(_sim.workforce.elapsed*2.4+at.x*0.013)
@@ -156,6 +160,7 @@ func _draw_power_grid() -> void:
 		draw_line(Vector2(x,430),Vector2(x,445),Color("306b78"),2)
 
 func _draw_structures() -> void:
+	TrailView.draw_on(self,_sim)
 	preload("res://presentation/planet_rocket_view.gd").draw_on(self,_sim)
 	var world = _sim.world
 	var map = _sim.frontier
@@ -204,9 +209,9 @@ func _draw_structures() -> void:
 				if effect.kind=="tool_produced" and is_equal_approx(effect.x,at.x):flash=effect.life
 			preload("res://presentation/farm_workshop.gd").draw_on(self,at,world.tools.hoe,_context.id==site and _context.enabled,flash)
 			continue
-		var asset: String = {"farm_tools":"workshop","hunt_tools":"armory"}.get(site,site)
+		var asset: String = site
 		if _sim.built.get(site,false):
-			_prop(asset,at,0.7 if site in ["farm_tools","hunt_tools"] else 1.0)
+			_prop(asset,at)
 			if site=="farm_tools":
 				draw_rect(Rect2(at+Vector2(-14,-73),Vector2(28,25)),Color("2c383b"))
 				_tool(at+Vector2(0,-56),"hoe")

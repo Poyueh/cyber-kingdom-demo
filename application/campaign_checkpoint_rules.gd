@@ -10,6 +10,7 @@ static func number(value) -> bool:
 
 static func config_valid(config: Dictionary) -> bool:
 	if not preload("res://domain/planet_level_layout.gd").valid_config(config):return false
+	if not preload("res://domain/trail_rules.gd").valid_config(config):return false
 	if config.has("journey_style") and (not config.journey_style is int or config.journey_style not in [0,1,2]):return false
 	if not preload("res://domain/night_pattern.gd").valid_config(config):return false
 	if not preload("res://domain/invasion_march.gd").valid_config(config):return false
@@ -220,7 +221,7 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		var without_target=enemy.state.duplicate(true)
 		without_target.target={}
 		if not shape(without_target,{"x":0.0,"windup":0.0,"cooldown":0.0,"target":{}},
-			{"module_chill_until":0,"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
+			{"trail_slot":0,"module_chill_until":0,"side":0,"exit_x":0.0,"direction":0.0,"wall_damage":0,"stagger":0.0,"escaped":false,"kind":"","carried_crystals":0,"retreat_x":0.0}):return false
 		var state: Dictionary=enemy.state
 		if not ModuleConditions.valid(state,"module_chill_until",data,"module_frost_boss_duration" if state.get("kind","")=="dragon" else "module_frost_duration"):return false
 		if not state.get("carried_crystals",0) is int or not in_range(state.get("carried_crystals",0),0,1):return false

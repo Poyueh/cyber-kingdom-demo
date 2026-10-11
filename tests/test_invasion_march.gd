@@ -124,7 +124,7 @@ func test_save_resume_during_march_matches_uninterrupted_invasion(t: SceneTree) 
 	for tick: int in range(450):
 		sim.advance(1.0/30.0,30.0);loaded.session.advance(1.0/30.0,30.0)
 	t.truth(Rules.same(codec.capture(sim,config,BODY),codec.capture(loaded.session,loaded.config,BODY)),"saved-and-resumed march has exactly the same positions, clocks, loot and progress")
-	t.equal(codec.capture(loaded.session,loaded.config,BODY).version,19,"derived travel speed needs no new snapshot entity fields")
+	t.equal(codec.capture(loaded.session,loaded.config,BODY).version,Codec.VERSION,"resumed march resaves in the current checkpoint format")
 
 func test_partial_or_unknown_march_profiles_are_rejected(t: SceneTree) -> void:
 	var config: Dictionary=rules();var sim: RefCounted=settled(config)

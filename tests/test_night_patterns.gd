@@ -99,7 +99,7 @@ func test_old_v18_journey_keeps_alternating_gates_and_rejects_future_rules(t: Sc
 		if key.begins_with("night_pattern_"):config.erase(key)
 	var sim: RefCounted=dusk(config,5)
 	var codec: RefCounted=Codec.new()
-	var old: Dictionary=codec.capture(sim,config,BODY);old.version=18
+	var old: Dictionary=codec.capture(sim,config,BODY);old.version=18;preload("res://tests/legacy_checkpoint.gd").before_trails(old)
 	var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(old)))
 	t.truth(not loaded.is_empty(),"genuine v18 rule shape remains playable")
 	if loaded.is_empty():return
@@ -107,8 +107,8 @@ func test_old_v18_journey_keeps_alternating_gates_and_rejects_future_rules(t: Sc
 	t.equal(force.size(),11,"legacy total remains eleven")
 	t.equal(force[1].side,-1,"legacy still alternates instead of adopting a new first wave")
 	t.truth(force[6].time-force[5].time<3,"legacy has no new regroup pause")
-	t.equal(codec.capture(loaded.session,loaded.config,BODY).version,19,"legacy resaves in the guarded current schema")
-	var future: Dictionary=codec.capture(dusk(rules(),5),rules(),BODY);future.version=18
+	t.equal(codec.capture(loaded.session,loaded.config,BODY).version,Codec.VERSION,"legacy resaves in the guarded current schema")
+	var future: Dictionary=codec.capture(dusk(rules(),5),rules(),BODY);future.version=18;preload("res://tests/legacy_checkpoint.gd").before_trails(future)
 	t.truth(codec.restore(future).is_empty(),"new tactics cannot masquerade as old data")
 	for missing: String in ["night_pattern_warning","night_pattern_gap"]:
 		var corrupt: Dictionary=codec.capture(dusk(rules(),5),rules(),BODY);corrupt.config.erase(missing)

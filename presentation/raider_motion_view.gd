@@ -28,7 +28,7 @@ func _init() -> void:
 
 func appearance(kind: String) -> EnemyAppearance:
 	if kind=="dragon":return _dragon
-	if kind=="warden":return _guardian
+	if kind in ["warden","roamer"]:return _guardian
 	return Cast.grunt
 
 func state_for(enemy: Dictionary) -> MotionState:
@@ -94,6 +94,7 @@ func frame_for(enemy: Dictionary, look: EnemyAppearance, hit: Dictionary) -> int
 	var boss: bool=enemy.get("kind","")=="dragon"
 	# A real multi-beat impact gets a brief release before its next warning pose.
 	if boss and state.strike_age<0.20:return look.sample(look.strike,state.strike_age/look.strike_seconds)
+	if enemy.has("trail_slot") and _sim.trails.units[int(enemy.trail_slot)].phase==preload("res://domain/trail_encounters.gd").Phase.CHARGE:return look.sample(look.walk,state.phase)
 	if enemy.windup>0:return look.sample(look.windup,1-enemy.windup/maxf(0.001,state.windup_total))
 	if hit.active and not boss:return look.sample(look.hurt,hit.progress)
 	if state.strike_age<look.strike_seconds:return look.sample(look.strike,state.strike_age/look.strike_seconds)

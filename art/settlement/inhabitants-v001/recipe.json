@@ -1,0 +1,451 @@
+{
+  "tool": "built-in image_gen",
+  "staff_scale": 0.21,
+  "building_scale": 0.3,
+  "staff_cell": [
+    96,
+    80
+  ],
+  "roles": [
+    "keeper",
+    "mechanic",
+    "seedkeeper",
+    "huntmaster",
+    "artificer",
+    "quartermaster"
+  ],
+  "frames": [
+    {
+      "role": "keeper",
+      "frame": 0,
+      "source_bounds": [
+        55,
+        17,
+        226,
+        223
+      ],
+      "position": [
+        34,
+        31
+      ],
+      "size": [
+        36,
+        43
+      ]
+    },
+    {
+      "role": "keeper",
+      "frame": 1,
+      "source_bounds": [
+        43,
+        16,
+        227,
+        223
+      ],
+      "position": [
+        34,
+        31
+      ],
+      "size": [
+        39,
+        43
+      ]
+    },
+    {
+      "role": "keeper",
+      "frame": 2,
+      "source_bounds": [
+        29,
+        21,
+        204,
+        222
+      ],
+      "position": [
+        35,
+        32
+      ],
+      "size": [
+        37,
+        42
+      ]
+    },
+    {
+      "role": "keeper",
+      "frame": 3,
+      "source_bounds": [
+        40,
+        16,
+        194,
+        223
+      ],
+      "position": [
+        35,
+        31
+      ],
+      "size": [
+        32,
+        43
+      ]
+    },
+    {
+      "role": "mechanic",
+      "frame": 0,
+      "source_bounds": [
+        64,
+        7,
+        213,
+        243
+      ],
+      "position": [
+        33,
+        24
+      ],
+      "size": [
+        31,
+        50
+      ]
+    },
+    {
+      "role": "mechanic",
+      "frame": 1,
+      "source_bounds": [
+        58,
+        6,
+        217,
+        244
+      ],
+      "position": [
+        35,
+        24
+      ],
+      "size": [
+        33,
+        50
+      ]
+    },
+    {
+      "role": "mechanic",
+      "frame": 2,
+      "source_bounds": [
+        59,
+        7,
+        196,
+        243
+      ],
+      "position": [
+        37,
+        24
+      ],
+      "size": [
+        29,
+        50
+      ]
+    },
+    {
+      "role": "mechanic",
+      "frame": 3,
+      "source_bounds": [
+        50,
+        7,
+        190,
+        243
+      ],
+      "position": [
+        33,
+        24
+      ],
+      "size": [
+        29,
+        50
+      ]
+    },
+    {
+      "role": "seedkeeper",
+      "frame": 0,
+      "source_bounds": [
+        46,
+        5,
+        225,
+        234
+      ],
+      "position": [
+        29,
+        26
+      ],
+      "size": [
+        38,
+        48
+      ]
+    },
+    {
+      "role": "seedkeeper",
+      "frame": 1,
+      "source_bounds": [
+        42,
+        9,
+        225,
+        234
+      ],
+      "position": [
+        30,
+        27
+      ],
+      "size": [
+        38,
+        47
+      ]
+    },
+    {
+      "role": "seedkeeper",
+      "frame": 2,
+      "source_bounds": [
+        32,
+        3,
+        215,
+        234
+      ],
+      "position": [
+        31,
+        25
+      ],
+      "size": [
+        38,
+        49
+      ]
+    },
+    {
+      "role": "seedkeeper",
+      "frame": 3,
+      "source_bounds": [
+        36,
+        4,
+        209,
+        234
+      ],
+      "position": [
+        30,
+        26
+      ],
+      "size": [
+        36,
+        48
+      ]
+    },
+    {
+      "role": "huntmaster",
+      "frame": 0,
+      "source_bounds": [
+        46,
+        5,
+        209,
+        264
+      ],
+      "position": [
+        28,
+        20
+      ],
+      "size": [
+        34,
+        54
+      ]
+    },
+    {
+      "role": "huntmaster",
+      "frame": 1,
+      "source_bounds": [
+        52,
+        6,
+        226,
+        264
+      ],
+      "position": [
+        31,
+        20
+      ],
+      "size": [
+        37,
+        54
+      ]
+    },
+    {
+      "role": "huntmaster",
+      "frame": 2,
+      "source_bounds": [
+        49,
+        6,
+        213,
+        264
+      ],
+      "position": [
+        32,
+        20
+      ],
+      "size": [
+        34,
+        54
+      ]
+    },
+    {
+      "role": "huntmaster",
+      "frame": 3,
+      "source_bounds": [
+        48,
+        6,
+        200,
+        264
+      ],
+      "position": [
+        29,
+        20
+      ],
+      "size": [
+        32,
+        54
+      ]
+    },
+    {
+      "role": "artificer",
+      "frame": 0,
+      "source_bounds": [
+        40,
+        3,
+        211,
+        250
+      ],
+      "position": [
+        27,
+        22
+      ],
+      "size": [
+        36,
+        52
+      ]
+    },
+    {
+      "role": "artificer",
+      "frame": 1,
+      "source_bounds": [
+        37,
+        4,
+        211,
+        250
+      ],
+      "position": [
+        31,
+        22
+      ],
+      "size": [
+        37,
+        52
+      ]
+    },
+    {
+      "role": "artificer",
+      "frame": 2,
+      "source_bounds": [
+        30,
+        3,
+        207,
+        250
+      ],
+      "position": [
+        29,
+        22
+      ],
+      "size": [
+        37,
+        52
+      ]
+    },
+    {
+      "role": "artificer",
+      "frame": 3,
+      "source_bounds": [
+        38,
+        3,
+        209,
+        250
+      ],
+      "position": [
+        27,
+        22
+      ],
+      "size": [
+        36,
+        52
+      ]
+    },
+    {
+      "role": "quartermaster",
+      "frame": 0,
+      "source_bounds": [
+        39,
+        3,
+        236,
+        264
+      ],
+      "position": [
+        25,
+        19
+      ],
+      "size": [
+        41,
+        55
+      ]
+    },
+    {
+      "role": "quartermaster",
+      "frame": 1,
+      "source_bounds": [
+        40,
+        5,
+        216,
+        265
+      ],
+      "position": [
+        29,
+        19
+      ],
+      "size": [
+        37,
+        55
+      ]
+    },
+    {
+      "role": "quartermaster",
+      "frame": 2,
+      "source_bounds": [
+        35,
+        4,
+        219,
+        265
+      ],
+      "position": [
+        28,
+        19
+      ],
+      "size": [
+        39,
+        55
+      ]
+    },
+    {
+      "role": "quartermaster",
+      "frame": 3,
+      "source_bounds": [
+        39,
+        3,
+        229,
+        264
+      ],
+      "position": [
+        26,
+        19
+      ],
+      "size": [
+        40,
+        55
+      ]
+    }
+  ]
+}

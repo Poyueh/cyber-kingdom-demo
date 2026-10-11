@@ -2,6 +2,7 @@ extends RefCounted
 ## Ephemeral presentation observer. No sound history enters campaign saves.
 const EFFECTS={
  "planet_core_claimed":"victory",
+ "trail_impact":"heavy",
  "dragon_opening":"module_store",
  "rune_success":"module_store","rune_reset":"slot_refund","ruin_open":"module_equip",
  "core_hit":"core_hit","tower_arrow":"bow_shot","bolt":"bow_shot","tower_laser":"tower_laser",
@@ -149,7 +150,7 @@ func sample(sim,x: float,paused: bool) -> Array[String]:
 ## Village and battle noise stays local; only run-wide warnings carry.
 func _near_enough(result: Array[String], kind: String, sim, id: int, x: float) -> void:
 	for raider in sim.raiders:
-		if raider.get("id",-1)==id and absf(raider.x-x)<=FAR_ENOUGH and not result.has(kind):
+		if raider.fighter.get_instance_id()==id and absf(raider.x-x)<=FAR_ENOUGH and not result.has(kind):
 			result.append(kind)
 			return
 
@@ -157,8 +158,7 @@ func _raider_flags(sim, field: String) -> Dictionary:
 	var flags: Dictionary={}
 	for index in range(sim.raiders.size()):
 		var raider: Dictionary=sim.raiders[index]
-		if not raider.has("id"):raider["id"]=index+1000*int(raider.get("side",0)+2)
-		flags[raider.id]=raider.get(field,0)
+		flags[raider.fighter.get_instance_id()]=raider.get(field,0)
 	return flags
 
 func _person_flags(sim, field: String) -> Dictionary:

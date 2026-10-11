@@ -219,7 +219,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	# No textual panel participates in the playable HUD.
 	var choice: Dictionary=sim.context(at) if focus_key.is_empty() else sim.context_for_key(at,focus_key)
 	interact_button.disabled=is_paused or not grounded or not choice.enabled or not sim.is_running()
-	interact_button.icon=Icons.get_icon("chest" if choice.id=="chest" else "crystal" if choice.cost>0 else "hand")
+	interact_button.icon=Icons.get_icon("chest" if choice.id in ["chest","trail_cache"] else "crystal" if choice.cost>0 else "hand")
 	_tap_fill.visible=sim.life.enabled and not is_paused and grounded and choice.enabled and choice.paid>0 and choice.cost>choice.paid
 	if _tap_fill.visible:
 		var y: float=430-(184 if choice.id=="rift" else 141)

@@ -158,7 +158,7 @@ func test_v16_upgrade_retains_inventory_and_rejects_unknown_charge(t: SceneTree)
  var old_config: Dictionary={"seed":42,"immersive_loop":1}
  var sim: RefCounted=Campaign.new(old_config);sim.interact(30,"hall");equip(sim,"arc")
  var codec: RefCounted=Codec.new();var packet: Dictionary=codec.capture(sim,old_config,BODY)
- packet.version=16;packet.modules.erase("charge_ticks");packet.modules.erase("charge_last_tick")
+ packet.version=16;preload("res://tests/legacy_checkpoint.gd").before_trails(packet);packet.modules.erase("charge_ticks");packet.modules.erase("charge_last_tick")
  var loaded: Dictionary=codec.restore(packet)
  t.truth(not loaded.is_empty(),"genuine v16 module shape upgrades without replacing the journey")
  if loaded.is_empty():return

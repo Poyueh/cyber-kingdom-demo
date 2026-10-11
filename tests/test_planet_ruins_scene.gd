@@ -31,6 +31,7 @@ func run_scene() -> void:
   game.sim.planet.launch_requested=true;game._star_travel.observe()
   await click(game._star_travel.map._buttons[planet]);await click(game._star_travel.map._launch);await frames(3)
   check(game.journey.current==planet,"actual voyage reaches puzzle world "+str(planet))
+  if game.journey.current!=planet:game.queue_free();quit(1);return
   game._arrival_banner.hide();game.sim.spirit.opening_finished=true;game.sim.spirit.expires_tick=0
   game.sim.clock.remaining=game.sim.clock.day_seconds*0.65
   for region: Dictionary in game.sim.frontier.regions:region.discovered=true

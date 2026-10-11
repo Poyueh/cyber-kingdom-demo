@@ -1,5 +1,8 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const Trails=preload("res://domain/trail_encounters.gd")
+const TrailActivity=preload("res://application/trail_activity.gd")
+var trails: Trails
 const Level=preload("res://domain/planet_level_layout.gd")
 const Merchant = preload("res://domain/crystal_merchant.gd")
 const ScarceTreasure = preload("res://domain/scarce_treasure.gd")
@@ -179,6 +182,8 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	trials=Trials.new(modules.relics,config,RandomStreams.new(map_seed).of(RandomStreams.Stream.EVENT))
 	mount_quest=MountQuest.new(config,world.sites.hall)
 	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
+	trails=Trails.new(config)
+	TrailActivity.populate(self)
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:
@@ -237,6 +242,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	candidates.append_array(TrailActivity.candidates(self,x,_player_y))
 	candidates.append_array(PlanetOps.candidates(self,x,_player_y))
 	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
 	candidates.append_array(MountInteractions.candidates(self,x,_player_y))
@@ -419,6 +425,7 @@ func interact(x: float, target_key: String = "") -> bool:
 
 func _execute(choice: Dictionary) -> void:
 	match choice.id:
+		"trail_cache": TrailActivity.execute(self,int(choice.trail_index))
 		"dragon_core","rocket","star_map": PlanetOps.execute(self,choice.id)
 		"trial": RuinInteractions.execute(self,choice)
 		"mount_lever","mount_recover","mount_stable","mount_switch": MountInteractions.execute(self,choice)
@@ -475,6 +482,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	PlanetOps.resolve(self)
 	if not is_running():return
 	_hero_x=hero_x
+	trails.observe(hero_x)
 	if life.enabled and agriculture_available():built.farm_tools=true
 	if survival.advance(seconds,hero,hero_x,hero_y):effects.append({"kind":"sword_recovered","x":hero_x,"y":hero_y,"life":0.7})
 	mission.reveal(hero_x)
@@ -648,8 +656,9 @@ func night_watch() -> Dictionary:
 
 func raid_pressure() -> Dictionary:
 	var pressure: Dictionary={"left":0,"right":0}
-	if not clock.is_night and clock.remaining>30 and raiders.is_empty(): return pressure
+	if not clock.is_night and clock.remaining>30 and invasion_empty(): return pressure
 	for enemy in raiders:
+		if enemy.has("trail_slot"):continue
 		if enemy.fighter.is_alive(): pressure["right" if enemy.get("side",1)>0 else "left"]+=1
 	var start: int=_night_spawn_index if clock.is_night else 0
 	var total: int=planned_night_count()
@@ -675,8 +684,17 @@ func _hit_structure(target: Dictionary, amount: int) -> void:
 	else:super._hit_structure(target,amount)
 func begin_raid() -> bool: return false # The calendar alone starts a night.
 
+func invasion_empty() -> bool:
+	return raiders.all(func(enemy: Dictionary)->bool:return enemy.has("trail_slot"))
+
+func invading_count() -> int:
+	var total: int=0
+	for enemy: Dictionary in raiders:
+		if not enemy.has("trail_slot"):total+=1
+	return total
+
 func _advance_invasion(seconds: float) -> void:
-	var transition := clock.advance(seconds,raiders.is_empty() and _spawn_remaining==0)
+	var transition := clock.advance(seconds,invasion_empty() and _spawn_remaining==0)
 	if transition=="dawn":
 		for arrival in ecology.renew(clock.day,world.people):_add_person(arrival.x,arrival.region)
 	if transition=="night":
@@ -689,7 +707,7 @@ func _advance_invasion(seconds: float) -> void:
 	if _spawn_remaining>0:
 		_spawn_timer=maxf(0.0,_spawn_timer-seconds)
 		# JSON round trips can put an expired legacy seconds timer just above zero.
-		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and raiders.size()<night_pressure.concurrent_limit:
+		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and invading_count()<night_pressure.concurrent_limit:
 			var total: int=planned_night_count()
 			var side: int=night_pattern.side_for(clock.day,_night_spawn_index,total)
 			_night_spawn_index+=1
@@ -828,6 +846,9 @@ func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interv
 	return fired
 
 func _advance_raider(enemy: Dictionary, seconds: float, hero_x: float, hero_y: float) -> void:
+	if enemy.has("trail_slot"):
+		TrailActivity.advance_enemy(self,enemy,seconds,hero_x,hero_y)
+		return
 	if survival.enabled and Forager.advance(self,enemy,seconds):return
 	if enemy.get("kind","")=="dragon":
 		if planet.enabled and planet.id>0:preload("res://application/biome_dragon_assault.gd").advance(self,enemy,seconds,hero_x,hero_y)
