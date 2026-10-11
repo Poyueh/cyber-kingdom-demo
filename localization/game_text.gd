@@ -1,9 +1,10 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["night.return", "天色將暗，帶著收穫回營火。", "天色将暗，带着收获回营火。", "Dusk is nearing. Bring your finds back to the fire."],
  ["trail.claim", "拾取野外晶藏", "拾取野外晶藏", "Gather the crystal find"],
  ["trail.guarded", "異獸仍在守護這處晶藏", "异兽仍在守护这处晶藏", "The creatures still guard this cache"],
- ["trail.nest.0", "藤巢群獵", "藤巢群猎", "Thicket pack"],
+ ["trail.nest.0", "藤巢守獸", "藤巢守兽", "Thicket guardian"],
  ["trail.nest.1", "沙脊伏獸", "沙脊伏兽", "Dune prowler"],
  ["trail.nest.2", "冰甲守望", "冰甲守望", "Iceback watch"],
  ["trail.nest.3", "菌潮雙襲", "菌潮双袭", "Spore pair"],

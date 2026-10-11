@@ -69,6 +69,12 @@ static func funding_hint(sim: RefCounted, x: float) -> Dictionary:
    hint["y"]=node.y
    options.append(hint)
 
+ for i: int in range(sim.trails.sites.size()):
+  if sim.trails.available(i):
+   var hint: Dictionary=_hint("chest",sim.trails.sites[i].x,"trail:%d"%i,"open",0)
+   hint["goal"]="trail.claim"
+   options.append(hint)
+
  if not options.is_empty():return _nearest(options,x)
  var pending: Dictionary=_pending_income(sim,x)
  return pending if not pending.is_empty() else _explore(sim,x,0)
