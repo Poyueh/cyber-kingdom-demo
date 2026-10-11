@@ -5,7 +5,7 @@
 - 七星球景物統一可見底部貼地，沙漠／冰霜遺跡的 10／8 像素透明間隙已修正。原生七地像素驗證通過。
 - 石墨霧金主選單／暫停／共用控制、圓形透明觸控；三語節奏選單自適應較低視窗，保留攻擊尺寸與手勢範圍。
 - 28 秒前導具實際施工、騎士命中、巨龍蓄力吐息與破牆殘骸，再進七世界掠影；森林龍息跟隨嘴部姿勢。舞台與存檔隔離、正式傷害與平衡不變，快照 v20。
-- [設計](design/grounded-cinematic-interface.md) · [第 118 課](lessons/118-grounding-and-cinematic-direction.md) · [原生證據](reports/cinematic-interface/README.md)。企劃 r7、三語指南與實機圖片同步。完整 tools/check.sh 通過：4,426 核心斷言、所有場景及新增前導 5 項；無 SCRIPT ERROR／ERROR。
+- [設計](design/grounded-cinematic-interface.md) · [第 118 課](lessons/118-grounding-and-cinematic-direction.md) · [原生證據](reports/cinematic-interface/README.md)。企劃 r7、三語指南與實機圖片同步。完整 tools/check.sh 通過：4,426 核心斷言、所有場景及新增前導 5 項；無 SCRIPT ERROR／ERROR。五平台同源 1c949a3 匯出完成，實際 PCK 原生 25 項通過；Mac 簽章、Android 簽署／對齊、iOS 版本及封裝完整性核對完成。
 
 
 ## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（已發佈）
