@@ -37,7 +37,8 @@ static func advance(sim: RefCounted, enemy: Dictionary, seconds: float) -> bool:
   enemy.stagger=maxf(0,enemy.stagger-seconds);return true
  var destination: float=enemy.retreat_x
  enemy.direction=signf(destination-enemy.x)
- sim.move_raider(enemy,move_toward(enemy.x,destination,RETREAT_SPEED*seconds))
+ var return_speed: float=sim.raider_speed(enemy,RETREAT_SPEED) if sim.march.enabled else RETREAT_SPEED
+ sim.move_raider(enemy,move_toward(enemy.x,destination,return_speed*seconds))
  if absf(enemy.x-destination)<10:
   enemy.fighter.hp=0;enemy["escaped"]=true;enemy.carried_crystals=0
   sim.effects.append({"kind":"portal_spawn","x":destination,"y":430.0,"life":0.6})

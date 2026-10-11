@@ -55,7 +55,7 @@ func test_raid_has_warning_gate_spawns_and_one_recovery_night(t) -> void:
  other.clock.remaining=0.01
  other.advance(0.02,other.world.sites.hall)
  t.equal(other.raiders.size(),1,"assault enters through the regular paced spawner")
- t.truth(absf(other.raiders[0].x-other.mission.entry_x(1))<3,"first enemy materializes at its outer gate and begins moving inward")
+ t.truth(other.effects.any(func(effect: Dictionary)->bool:return effect.kind=="portal_spawn" and effect.x==other.mission.entry_x(1)) and other.raiders[0].x<other.mission.entry_x(1),"first enemy materializes at its outer gate and begins moving inward")
  var codec=Codec.new();var data: Dictionary=codec.capture(other,config(),{"x":other.world.sites.hall,"y":430.0,"vx":0.0,"vy":0.0})
  var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(data)))
  t.truth(not loaded.is_empty(),"active assault saves and resumes")
