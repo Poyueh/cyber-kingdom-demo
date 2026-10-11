@@ -5,7 +5,7 @@ const ROWS=[
  ["journey.expedition", "遠征", "远征", "Expedition"],
  ["journey.settler", "拓荒", "拓荒", "Settler"],
  ["journey.siege", "圍城", "围城", "Siege"],
- ["journey.expedition_description", "建議初次遊玩。白天探索與建造，夜晚回防；沿用原本的夜襲節奏。", "建议初次游玩。白天探索与建造，夜晚回防；沿用原本的夜袭节奏。", "Recommended first journey. Explore and build by day, defend at night. Original pacing."],
+ ["journey.expedition_description", "建議初次遊玩。白天探索與建造，夜晚回防；白晝與敵軍增援保持均衡。", "建议初次游玩。白天探索与建造，夜晚回防；白昼与敌军增援保持均衡。", "Recommended first journey. Explore and build by day, defend at night. Balanced daylight and reinforcements."],
  ["journey.settler_description", "較長的白晝、較少的增援。留時間慢慢探索機關、收藏部件；夜晚仍有危險。", "较长的白昼、较少的增援。留时间慢慢探索机关、收藏部件；夜晚仍有危险。", "Longer days and fewer reinforcements. Take time for ruins and collections. Nights remain dangerous."],
  ["journey.siege_description", "較短的白晝、更多且增長更快的增援。為熟悉回防與資源分配的騎士準備。", "较短的白昼、更多且增长更快的增援。为熟悉回防与资源分配的骑士准备。", "Shorter days and faster-growing enemy waves. For knights ready to plan defenses under pressure."],
  ["journey.note", "三種節奏都有七星球與完整收藏。選定後隨紀錄保存；要換節奏，請另開旅程。", "三种节奏都有七星球与完整收藏。选定后随记录保存；要换节奏，请另开旅程。", "All paces include seven worlds and every collectible. Saved with this journey; start another to change pace."],

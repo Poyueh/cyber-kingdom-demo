@@ -12,6 +12,9 @@ const NightPressure = preload("res://domain/night_pressure.gd")
 var night_pressure: NightPressure
 const NightPattern = preload("res://domain/night_pattern.gd")
 var night_pattern: NightPattern
+const March=preload("res://domain/invasion_march.gd")
+const RaidMarch=preload("res://application/raid_march.gd")
+var march: March
 const Life=preload("res://application/kingdom_life.gd")
 var life: Life=Life.new()
 const Spirit=preload("res://application/spirit_guidance.gd")
@@ -76,6 +79,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	planet=Planet.new(config)
 	night_pressure = NightPressure.new(config)
 	night_pattern = NightPattern.new(config)
+	march = March.new(config)
 	spirit=Spirit.new(config)
 	life.enabled=int(config.get("immersive_loop",0))==1
 	survival.enabled=life.enabled and int(config.get("crystal_survival",0))==1
@@ -811,7 +815,7 @@ func _summon_dragon(hero_x: float) -> void:
 	effects.append({"kind":"dragon_arrival","x":dragon.x,"to":hero_x,"life":5.0})
 
 func raider_speed(enemy: Dictionary, base: float=70.0) -> float:
-	return modules.movement_speed(enemy,base,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+	return modules.movement_speed(enemy,RaidMarch.speed(enemy,base,_hero_x,world,buildings,march),roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 
 func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float) -> bool:
 	var adjusted: int=modules.arrow_damage(person,damage,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))

@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL test_far_gate_approach_reaches_defenses_within_the_first_minute
+FAIL test_march_keeps_close_combat_and_resident_escape_speed
+FAIL test_paid_off_raider_leaves_remote_ground_without_a_long_night_tail
+a remote first-night force reaches the defense after a fair approach, without a ninety-second empty night: expected true, got false
+an ordinary raider crosses empty distant terrain faster: expected true, got false
+a bribed raider completes its remote return in ten seconds: expected true, got false
+Assertions: 6; failures: 3

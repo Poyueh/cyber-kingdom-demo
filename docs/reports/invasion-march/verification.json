@@ -1,0 +1,408 @@
+{
+  "version": "0.0.30",
+  "full_check": true,
+  "core_assertions": 3867,
+  "new_core_assertions": 35,
+  "native_scene_assertions": 8,
+  "save_schema": 19,
+  "tdd_red": {
+    "long_approach_and_retreat": 3,
+    "legacy_retreat_changed": 1
+  },
+  "benchmark": {
+    "method": "Seven biomes, seeds 103/742601/8842, fourth night; initial walls and instant defeat at 320 range. Before uses released v0.0.29 PCK. Not a player completion-time claim.",
+    "before": [
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 93.8,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 127.2,
+        "resolved": 9,
+        "seed": 103
+      },
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 98.0,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 120.0,
+        "resolved": 9,
+        "seed": 742601
+      },
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 100.9,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 124.3,
+        "resolved": 9,
+        "seed": 8842
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 109.5,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 134.5,
+        "resolved": 11,
+        "seed": 103
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 102.3,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 138.7,
+        "resolved": 11,
+        "seed": 742601
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 106.6,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 141.6,
+        "resolved": 11,
+        "seed": 8842
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 96.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 134.7,
+        "resolved": 12,
+        "seed": 103
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 100.5,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 127.5,
+        "resolved": 12,
+        "seed": 742601
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 103.4,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 131.8,
+        "resolved": 12,
+        "seed": 8842
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 101.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 211.1,
+        "resolved": 13,
+        "seed": 103
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 102.3,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 204.9,
+        "resolved": 13,
+        "seed": 742601
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 106.6,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 213.5,
+        "resolved": 13,
+        "seed": 8842
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 93.8,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 206.1,
+        "resolved": 14,
+        "seed": 103
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 98.0,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 203.1,
+        "resolved": 14,
+        "seed": 742601
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 100.9,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 210.3,
+        "resolved": 14,
+        "seed": 8842
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 96.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 216.1,
+        "resolved": 15,
+        "seed": 103
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 100.5,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 208.1,
+        "resolved": 15,
+        "seed": 742601
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 103.4,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 216.0,
+        "resolved": 15,
+        "seed": 8842
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 93.8,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 213.6,
+        "resolved": 16,
+        "seed": 103
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 98.0,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 210.6,
+        "resolved": 16,
+        "seed": 742601
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 100.9,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 217.8,
+        "resolved": 16,
+        "seed": 8842
+      }
+    ],
+    "after": [
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 39.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 62.2,
+        "resolved": 9,
+        "seed": 103
+      },
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 40.7,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 60.9,
+        "resolved": 9,
+        "seed": 742601
+      },
+      {
+        "biome": "forest",
+        "first_defense_contact_seconds": 41.6,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 61.8,
+        "resolved": 9,
+        "seed": 8842
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 44.5,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 80.0,
+        "resolved": 11,
+        "seed": 103
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 42.1,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 81.4,
+        "resolved": 11,
+        "seed": 742601
+      },
+      {
+        "biome": "desert",
+        "first_defense_contact_seconds": 43.5,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 82.3,
+        "resolved": 11,
+        "seed": 8842
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 41.8,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 80.2,
+        "resolved": 12,
+        "seed": 103
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 42.1,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 80.2,
+        "resolved": 12,
+        "seed": 742601
+      },
+      {
+        "biome": "frost",
+        "first_defense_contact_seconds": 43.5,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 80.2,
+        "resolved": 12,
+        "seed": 8842
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 44.5,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 89.3,
+        "resolved": 13,
+        "seed": 103
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 42.1,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 84.5,
+        "resolved": 13,
+        "seed": 742601
+      },
+      {
+        "biome": "swamp",
+        "first_defense_contact_seconds": 43.5,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 87.3,
+        "resolved": 13,
+        "seed": 8842
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 39.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 92.7,
+        "resolved": 14,
+        "seed": 103
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 40.7,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 90.3,
+        "resolved": 14,
+        "seed": 742601
+      },
+      {
+        "biome": "volcanic",
+        "first_defense_contact_seconds": 41.6,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 91.7,
+        "resolved": 14,
+        "seed": 8842
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 41.8,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 91.8,
+        "resolved": 15,
+        "seed": 103
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 42.1,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 89.5,
+        "resolved": 15,
+        "seed": 742601
+      },
+      {
+        "biome": "storm",
+        "first_defense_contact_seconds": 43.5,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 92.3,
+        "resolved": 15,
+        "seed": 8842
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 39.3,
+        "gate_east": 9080.0,
+        "gate_west": -7980.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 94.1,
+        "resolved": 16,
+        "seed": 103
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 40.7,
+        "gate_east": 8580.0,
+        "gate_west": -8280.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 92.0,
+        "resolved": 16,
+        "seed": 742601
+      },
+      {
+        "biome": "void",
+        "first_defense_contact_seconds": 41.6,
+        "gate_east": 8880.0,
+        "gate_west": -8480.0,
+        "night_seconds_if_instantly_defeated_at_320_range": 94.8,
+        "resolved": 16,
+        "seed": 8842
+      }
+    ]
+  },
+  "actual_previous_release_save": {
+    "version": "0.0.29",
+    "schema": 19,
+    "sha256": "9bf6e796cf94fa5e31c33055aeaa331b45c71b90bec259cde2a6092c244c4805",
+    "sixty_tick_continuation_identical": true
+  },
+  "check_log_sha256": "7e53115f9928e85579128ef9eac5ce4e34c4c24a505cdcf28646dff083f06a65",
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "Human pacing, retention and commercial outcomes unverified"
+  ]
+}
