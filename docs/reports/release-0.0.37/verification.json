@@ -1,6 +1,6 @@
 {
   "version": "0.0.37",
-  "published": false,
+  "published": true,
   "source_commit": "80d400e309908d610cddadb33c629cc66f9444f7",
   "source_tree": "4d2db085827ed5a74258371917e47fa4448f5b69",
   "full_check": true,
@@ -52,5 +52,97 @@
   "android_16k_alignment_verified": true,
   "android_version_verified": "0.0.37 / 37",
   "ios_project_version_verified": "0.0.37 / 37",
-  "local_three_language_guide_browser_verified": true
+  "local_three_language_guide_browser_verified": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.37",
+  "public_assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.37-debug.apk",
+      "size": 97962422,
+      "sha256": "8c96355cb57421a009befc14857e0e53cf75d209e2becd7705185aa2d54dfb1a"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.37.html",
+      "size": 7023549,
+      "sha256": "98dfcaaeff2b818ab66dff0aaee7185c7650bf0b4607d5b91d56d101cb5425be"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.37-Xcode.zip",
+      "size": 181538191,
+      "sha256": "0a040b31159e9f80cd58ac5d036d0e61cf55814622864027ac61cc2fb418f285"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.37.zip",
+      "size": 129158610,
+      "sha256": "eb771acdbd1ae19112171b75e92125148d007d7dd61a68377e74475a83a5ad62"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.37.zip",
+      "size": 84148256,
+      "sha256": "13ab25baef1ab39ed2dd0f65f969915f52da45eb4ec3a3f6297d0f208026411e"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.37.zip",
+      "size": 106736557,
+      "sha256": "13272cc0f88bdec7189f00400bbb44706fc1ef973e2a61cd1136fb5b3fe55dd6"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "sha256": "09919a19914edb0558fcc08998f48edef6d8a8c399e051cbdb93550bcd3b2a16"
+    }
+  ],
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "04ea8becd997bbcf52195b72c6a23e8ee4e58bff70088796e290d3f073fc0d14",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.37"
+    },
+    {
+      "name": "guide.html",
+      "size": 7023549,
+      "sha256": "98dfcaaeff2b818ab66dff0aaee7185c7650bf0b4607d5b91d56d101cb5425be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.37"
+    },
+    {
+      "name": "index.pck",
+      "size": 70034800,
+      "sha256": "6c104a89a39f825932fda049e56e33bcd0030c52fe0257032eb385a1a52bcdb4",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.37"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.37"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.37"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.37"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.37"
+    }
+  ],
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38130243551,
+    "headSha": "00a9e02880af6724ff21f74693eb59f53c833fbf",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38130243551"
+  },
+  "browser_opening_and_menu_verified": true,
+  "browser_live_guide_verified": true,
+  "browser_console_errors": []
 }
