@@ -1,0 +1,25 @@
+Refreshing run status every 10 seconds. Press Ctrl+C to quit.
+
+* main Publish released web game · 38097746629
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+* deploy (ID 114347092742)
+  ✓ Set up job
+  ✓ Download the released web build
+  ✓ Configure Pages
+  ✓ Upload site
+  * Deploy
+- dispatch in 0s (ID 114347093608)
+✓ main Publish released web game · 38097746629
+Triggered via workflow_dispatch less than a minute ago
+
+JOBS
+✓ deploy in 16s (ID 114347092742)
+  ✓ Set up job
+  ✓ Download the released web build
+  ✓ Configure Pages
+  ✓ Upload site
+  ✓ Deploy
+  ✓ Complete job
+- dispatch in 0s (ID 114347093608)
