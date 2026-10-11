@@ -2134,5 +2134,21 @@
   "首次在營火西側領取龍核，再投入 20 龍晶建造火箭；最多兩名工匠完成 30 工秒施工。靠近完工火箭按 E／手機下滑，選星球後再按啟航。場上仍有入侵敵人或沒有劍時不能出發；領域內的選做異獸不阻擋啟航。": {
     "zh_CN": "首次在营火西侧领取龙核，再投入 20 龙晶建造火箭；最多两名工匠完成 30 工秒施工。靠近完工火箭按 E／手机下滑，选星球后再按启航。场上仍有入侵敌人或没有剑时不能出发；领域内的选做异兽不阻挡启航。",
     "en": "Claim the first core west of the campfire, then invest 20 crystals in a rocket; up to two engineers complete 30 work-seconds of construction. Use E or swipe down by the finished rocket, select a planet, then confirm launch. Invaders or a missing sword block departure; optional territorial beasts do not."
+  },
+  "守望者提燈巡看、機械師敲修工具、育種師拈種篩籃、獵務官整理箭簇、晶工校準晶片、軍需官檢查盾具。各職業有自己的工作停頓與收手節奏。": {
+    "zh_CN": "守望者提灯巡看、机械师敲修工具、育种师拈种筛篮、猎务官整理箭簇、晶工校准晶片、军需官检查盾具。各职业有自己的工作停顿与收手节奏。",
+    "en": "The keeper checks the lantern, the mechanic repairs tools, the seedkeeper sifts seeds, the huntmaster sorts arrowheads, the artificer calibrates crystals, and the quartermaster inspects shields. Each has distinct working pauses and finishing gestures."
+  },
+  "靠近時，駐點人物會短暫停手招呼，再繼續工作。投入龍晶會得到回應，完成製造、升級、充能或換裝時會做出服務動作；費用與操作沿用原本規則。附近有敵人便警戒，安全後才恢復工作；夜晚沒有敵人時照常工作。": {
+    "zh_CN": "靠近时，驻点人物会短暂停手招呼，再继续工作。投入龙晶会得到回应，完成制造、升级、充能或换装时会做出服务动作；费用与操作沿用原本规则。附近有敌人便警戒，安全后才恢复工作；夜晚没有敌人时照常工作。",
+    "en": "Approach a keeper for a brief greeting before work resumes. Crystal investments get an acknowledgement; completed production, upgrades, recharging and module swaps get a service gesture. Existing costs and controls apply. Nearby enemies put keepers on alert until it is safe; peaceful nights do not stop their work."
+  },
+  "適用 v0.0.38：六職業工作節拍、靠近招呼、付款服務與近敵警戒。舊紀錄直接套用人物演出，不必重新開局；每星兩處稀疏遭遇與一座主要聖所的配置保留。": {
+    "zh_CN": "适用 v0.0.38：六职业工作节拍、靠近招呼、付款服务与近敌警戒。旧纪录直接套用人物演出，不必重新开局；每星两处稀疏遭遇与一座主要圣所的配置保留。",
+    "en": "For v0.0.38: six distinct work rhythms, approach greetings, paid-service gestures and danger alerts. Existing saves receive these animations without restarting. The sparse two-event routes and one main sanctuary per planet remain."
+  },
+  "實際遊戲：六個職業不同的工作節奏。": {
+    "zh_CN": "实际游戏：六个职业不同的工作节奏。",
+    "en": "Actual gameplay: distinct work rhythms for six professions."
   }
 }

@@ -10,6 +10,7 @@ var _camp_ignition_age: float=-1.0
 const SettlementIdentity=preload("res://data/settlement_identity.tres")
 const TrailView=preload("res://presentation/trail_view.gd")
 const PlanetScenery=preload("res://presentation/planet_scenery.gd")
+var _attendants: RefCounted=preload("res://presentation/building_attendants.gd").new()
 var _original_art: Resource
 
 func _ready() -> void:
@@ -74,6 +75,7 @@ func present(sim, player_x: float) -> void:
 	_reveal.observe(sim.frontier.regions+sim.mission.rifts,sim.workforce.elapsed)
 	hit_feedback.present(sim)
 	_raider_motion.present(sim)
+	_attendants.present(sim,player_x,cinematic)
 	_view_player_x=player_x
 	_context=sim.context(player_x) if focus_key.is_empty() else sim.context_for_key(player_x,focus_key)
 	if _context.key!=_slot_key or _context.paid!=_slot_paid:
@@ -254,7 +256,7 @@ func _draw_structures() -> void:
 			draw_rect(Rect2(at.x-40,355,80*map.farm_progress/map.farm_cycle,3),Color("d8dd9f"))
 
 	_draw_buildings()
-	preload("res://presentation/building_attendants.gd").draw_on(self,_sim,_view_player_x)
+	_attendants.draw_on(self)
 
 func _draw_buildings() -> void:
 	for id in _sim.buildings:
