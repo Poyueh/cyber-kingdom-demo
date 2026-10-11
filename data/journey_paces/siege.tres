@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/journey_pace.gd" id="1"]
+[resource]
+script = ExtResource("1")
+pace_id = 2
+title_key = &"journey.siege"
+description_key = &"journey.siege_description"
+icon = &"rift"
+daylight_adjustment = -20.0
+first_night_adjustment = 2
+nightly_growth_adjustment = 1
+nightly_limit_adjustment = 12
