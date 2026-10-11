@@ -1,11 +1,11 @@
 # 製作進度
 
 
-## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（驗證中）
+## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（套件完成，發佈中）
 
 - 對照規格並量測 32 種子／224 圖；保留每星兩處稀疏節奏點，聚焦首戰辨識、現有資源回收與返城時機。
 - 森林新旅程單獸、1.2 秒蓄力／2.4 秒收招；補給引導讀取真正可領的路邊晶藏；前三天野外 75 秒預警窗短效營火方向提示，不增加鬼魂對話或任務。舊雙獸設定與快照 v20 保留。
-- 三語指南與企劃 r5 同步；[設計與落差](design/early-exploration-pacing.md) · [第 117 課](lessons/117-early-exploration-pacing.md)。測試與發行結果於完成後補記。
+- 三語指南與企劃 r5 同步；[設計與落差](design/early-exploration-pacing.md) · [第 117 課](lessons/117-early-exploration-pacing.md)。完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；原生與實際匯出 PCK 各 23 項通過。五平台同源 4050e50，封裝完整性、Mac 簽章、Android 簽署／對齊、iOS 版本均已核對；[驗收](reports/release-0.0.39/verification.json)。
 
 ## 2026-10-12：遊戲企劃規格網站（已發佈）
 
