@@ -7,7 +7,7 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.32 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.32)
+- [v0.0.33 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.33)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 
@@ -27,7 +27,7 @@
 bash tools/check.sh
 ```
 
-v0.0.32 新旅程七龍整套攻勢後曝露龍核，至少留下六秒反擊時間；騎士、部件、居民與箭塔傷害提高 50%。核心光效與三語提示同步，舊紀錄保留原有戰鬥規則。詳見 [本版更新](docs/releases/0.0.32.md)。
+v0.0.33 領核時揭示新航線，星圖回顧各星球的探索、遺跡與聚落功績；完成項目亮起金色印記，離開星球後仍可回顧。功績均為選做，七核通關不變；三語指南同步，既有紀錄可續玩。詳見 [本版更新](docs/releases/0.0.33.md)。
 
 v0.0.29 新旅程可選遠征／拓荒／圍城，白天準備時間與夜襲壓力各異，七星球與完整收藏共用。節奏隨紀錄保存；修正手動檢查點另存漏帶星球進度。三語指南同步。詳見 [本版更新](docs/releases/0.0.29.md)。
 
@@ -51,7 +51,7 @@ v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮
 
 ## 平台狀態
 
-v0.0.32 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
+v0.0.33 提供含 v002 音效的 H5、macOS、Windows、Android debug APK 與待簽署的 iOS Xcode 專案。macOS／Windows 尚未正式簽署，Android 未以 Google Play 正式金鑰簽署；iOS 專案仍需在 Xcode 連接裝置後簽署。
 
 ## 授權與開發紀錄
 
