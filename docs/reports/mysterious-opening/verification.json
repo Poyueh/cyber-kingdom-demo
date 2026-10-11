@@ -1,0 +1,22 @@
+{
+  "direction": "User-selected mysterious exploration: seven worlds and ancient dragon ruins",
+  "core_assertions": 4127,
+  "full_check": true,
+  "check_sha256": "719f5ec29f9878fe7b81e4ce0225f5d31e3928aa84e667b0ef7d28e63c7a3611",
+  "replay_assertions": 13,
+  "prologue_assertions": 14,
+  "headless_audio_assertions": 14,
+  "native_playback_and_locale_assertions": 8,
+  "native_aspect_and_enter_assertions": 14,
+  "script_errors": false,
+  "save_schema": 19,
+  "test_expectations_updated": [
+    "Night attack shot intentionally replaced by world glimpses",
+    "Begin Journey replaces New Game in localization scene assertions"
+  ],
+  "limitations": [
+    "Native window sizes are not physical iPad or iPhone tests",
+    "Player desire to play still requires human feedback"
+  ],
+  "clean_export_preflight_repair": "Prior release evidence used a .png suffix for JPEG bytes. Renamed the evidence image to .jpg and updated its report reference; no game resources or behavior changed."
+}

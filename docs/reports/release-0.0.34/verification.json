@@ -1,0 +1,61 @@
+{
+  "version": "0.0.34",
+  "published": false,
+  "source_commit": "e9ed41d4dd5718601e663c18b4678e9cec3af7ec",
+  "source_tree": "b17bcf174be0488fd1f21ee2d56aafc8b748f8b3",
+  "full_check": true,
+  "core_assertions": 4127,
+  "save_schema": 19,
+  "archive_integrity_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.34.zip",
+      "size": 118587866,
+      "sha256": "d490dc6c1829c712a31ad67cfcd4b998329a113a4b29ce3c82087a8d1e529ab8"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.34.zip",
+      "size": 96165823,
+      "sha256": "064d487f4cef7d543009bc73d19671bf24006efe15a816bf0c4293080a5bed9e"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.34.zip",
+      "size": 72417301,
+      "sha256": "41f87505990cab11472e8c5572ad7b294963ff93d7cad4c9aae0577e029f8abc"
+    },
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.34-debug.apk",
+      "size": 87305586,
+      "sha256": "424fa9e59ad5e3f234c02e9852501e71610213e6325437e4863cec6adeda7e20"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.34-Xcode.zip",
+      "size": 170964310,
+      "sha256": "a6226ffec28d6f02e4c09cf11888bbcf4a919622240d4d59b2ebc669a691b012"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.34.html",
+      "size": 5482475,
+      "sha256": "c916f76dc43bad7665d4fc01fd4a051c3729de631f5c140b2a39fef42a5fc9bc"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Player curiosity and retention require human playtesting"
+  ],
+  "mac_adhoc_signature_verified": true,
+  "mac_version_verified": "0.0.34",
+  "android_version_verified": {
+    "code": 34,
+    "name": "0.0.34"
+  },
+  "packaged_native_smoke": true,
+  "packaged_native_assertions": 37,
+  "packaged_replay_assertions": 13,
+  "packaged_audio_assertions": 16,
+  "packaged_playback_and_locale_assertions": 8,
+  "clean_import": true,
+  "check_log_sha256": "719f5ec29f9878fe7b81e4ce0225f5d31e3928aa84e667b0ef7d28e63c7a3611"
+}

@@ -1946,5 +1946,21 @@
   "適用 v0.0.33：新增領核演出與星圖功績回顧，探索、遺跡及聚落各有選做目標。七地、部件收藏、反擊窗口與三種旅程節奏皆可使用；既有紀錄可續玩。": {
     "zh_CN": "适用 v0.0.33：新增领核演出与星图功绩回顾，探索、遗迹及聚落各有选做目标。七地、部件收藏、反击窗口与三种旅程节奏皆可使用；既有记录可续玩。",
     "en": "For v0.0.33: core-reclaim ceremonies and star-chart milestones add optional exploration, ruin and settlement goals. Seven worlds, modules, counterattack windows and three journey paces remain available. Existing journeys continue."
+  },
+  "循著龍晶的回聲，掠過七個世界與古龍遺跡，再進入星環廢墟中的主選單。約二十秒的開場可按跳過、Enter 或 Esc 略過，也能在主選單重看。選「開始旅程」後挑選節奏，或選擇紀錄繼續；觀看演出不會建立或改寫旅程。配樂沿用音量與靜音設定，開場結束後交接主題曲。": {
+    "zh_CN": "循着龙晶的回声，掠过七个世界与古龙遗迹，再进入星环废墟中的主菜单。约二十秒的开场可按跳过、Enter 或 Esc 略过，也能在主菜单重看。选“开始旅程”后挑选节奏，或选择记录继续；观看演出不会建立或改写旅程。配乐沿用音量与静音设置，开场结束后交接主题曲。",
+    "en": "Follow a crystal echo through seven worlds and ancient dragon ruins, then arrive at the star-ring title screen. Skip the roughly twenty-second opening with Skip, Enter or Esc, or replay it from the menu. Choose Begin Journey and a pace, or continue a saved record. Watching never creates or changes a journey. The opening hands over to the title theme using your volume and mute preferences."
+  },
+  "適用 v0.0.34：神祕探索開場、七世界遺跡掠影、動態星環主選單與重看開場。七地旅程、領核演出及選做功績皆保留；既有紀錄可續玩。": {
+    "zh_CN": "适用 v0.0.34：神秘探索开场、七世界遗迹掠影、动态星环主菜单与重看开场。七地旅程、领核演出及选做功绩皆保留；已有记录可续玩。",
+    "en": "For v0.0.34: a mysterious opening, glimpses of seven worlds, a living star-ring title screen and replay. Seven-world journeys, core ceremonies and optional milestones remain available. Existing saves continue."
+  },
+  "在主選單選「開始旅程」後，可先選遠征、拓荒或圍城，再確認出發。返回不會建立紀錄。": {
+    "zh_CN": "在主菜单选择“开始旅程”后，可先选远征、拓荒或围城，再确认出发。返回不会建立记录。",
+    "en": "Choose Begin Journey on the main menu, select Expedition, Settler or Siege, then confirm to set out. Going back creates no save."
+  },
+  "實際主選單：星環廢墟中的營火，等待下一段旅程。": {
+    "zh_CN": "实际主菜单：星环废墟中的营火，等待下一段旅程。",
+    "en": "Actual main menu: a campfire among the shattered star rings, awaiting the next journey."
   }
 }

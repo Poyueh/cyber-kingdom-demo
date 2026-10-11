@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3]
+[ext_resource type="Script" path="res://data/opening_direction.gd" id="1"]
+[resource]
+script = ExtResource("1")
+fade_in_seconds = 0.7
+fade_out_seconds = 0.7
+menu_reveal_seconds = 0.65
+shot_starts = PackedFloat32Array(0, 3.4, 8.2, 13.2)
+caption_keys = PackedStringArray("opening.alone", "opening.home", "opening.night", "opening.dragon")
+duration = 19.0

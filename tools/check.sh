@@ -47,6 +47,7 @@ run_check desktop_controls --script res://tests/test_desktop_controls_scene.gd
 run_check running_recovery --script res://tests/test_running_recovery_scene.gd
 run_check languages --script res://tests/test_language_scene.gd
 run_check prologue --script res://tests/test_prologue_scene.gd
+run_check title_replay --script res://tests/test_title_replay_scene.gd
 run_check prologue_audio --script res://tests/test_prologue_audio_scene.gd
 run_check music_cache --script res://tests/test_music_cache_scene.gd
 run_check start_menu --script res://tests/test_start_menu_scene.gd

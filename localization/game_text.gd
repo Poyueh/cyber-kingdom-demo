@@ -1,6 +1,14 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["opening.kicker", "七個世界・一段尚未揭開的傳說", "七个世界・一段尚未揭开的传说", "SEVEN WORLDS. AN UNTOLD LEGEND."],
+ ["opening.promise", "循著龍晶的微光，走向星圖之外。", "循着龙晶的微光，走向星图之外。", "Follow the crystal light. Venture beyond the map."],
+ ["opening.begin", "開始旅程", "开始旅程", "Begin Journey"],
+ ["opening.replay", "重看開場", "重看开场", "Watch the Opening"],
+ ["opening.alone", "龍晶深處，有一道來自遠方的回聲。", "龙晶深处，有一道来自远方的回声。", "Deep within the crystal, a distant echo."],
+ ["opening.home", "七個世界，藏著同一段失落的傳說。", "七个世界，藏着同一段失落的传说。", "Seven worlds. One forgotten legend."],
+ ["opening.night", "循著古老的遺跡，喚醒沉睡的航線。", "循着古老的遗迹，唤醒沉睡的航线。", "Follow the ruins. Awaken the paths between stars."],
+ ["opening.dragon", "而守望群星的古龍，仍在等待。", "而守望群星的古龙，仍在等待。", "And the ancient dragons are still waiting."],
  ["milestone.survey", "荒野探索", "荒野探索", "Wilderness"],
  ["milestone.ruins", "遺跡破譯", "遗迹破译", "Ruins"],
  ["milestone.settlement", "聚落建設", "聚落建设", "Settlement"],
