@@ -1,12 +1,14 @@
 # 製作進度
 
 
-## 2026-10-11：v0.0.31 遺跡配置變化（已驗證，準備發佈）
+## 2026-10-11：v0.0.31 遺跡配置變化（已發佈）
 
 - 已重現 16 新種子在六地都只有一種配置，完成連線／刻度／脈衝變化；設定只在建立時解析、以獨立亂數生成，快照仍 v19。
 - 3,000 題機關與 384 張實際地圖互動完成；89 項核心驗證通過，含獎勵一次性、跨星返訪、存讀接續與原地形不變。
-- 額外重現並修正營地空地符石被當成未探索，實際領獎流程已通過。37 項原生場景檢查通過，包含鍵盤／觸控和三語畫面；實際 v0.0.30 套件產生的六份部分進度續跑 60 ticks 與舊版一致。完整 tools/check.sh 通過：3,957 核心斷言及全部場景回歸，無 SCRIPT ERROR／ERROR。[驗收證據](reports/ruin-layout-variation/verification.json)。準備五平台發行。
+- 額外重現並修正營地空地符石被當成未探索，實際領獎流程已通過。37 項原生場景檢查通過，包含鍵盤／觸控和三語畫面；實際 v0.0.30 套件產生的六份部分進度續跑 60 ticks 與舊版一致。完整 tools/check.sh 通過：3,957 核心斷言及全部場景回歸，無 SCRIPT ERROR／ERROR。[驗收證據](reports/ruin-layout-variation/verification.json)。五平台匯出、壓縮檔完整性、Mac 臨時簽章與 Android 版本已核對；實際匯出 PCK 的 37 項場景檢查通過。
 - [設計](design/ruin-layout-variation.md) · [第 108 課](lessons/108-ruin-variation.md)。
+- [v0.0.31 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.31) 七個附件及 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.31) 已公開；附件大小／SHA-256、線上首頁／指南／PCK 均相符。瀏覽器確認主選單與三語內嵌指南的配置變化說明／版本，無 console errors。[發行驗證](reports/release-0.0.31/verification.json)。
+- Windows／手機未真機驗收，iOS 為待簽署專案。下一步用真人試玩觀察線索理解、自由返訪與解謎意願；本次可解性與多樣性驗證不能證明心流、留存或商業成果，整體目標仍在進行。
 
 ## 2026-10-11：v0.0.30 夜襲遠程行軍（已發佈）
 
