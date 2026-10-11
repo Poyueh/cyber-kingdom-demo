@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyAppearance" load_steps=3 format=3]
+[ext_resource type="Script" path="res://data/defs/enemy_appearance.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/devourers-v001/dragon-frost.png" id="2"]
+[resource]
+script = ExtResource("1")
+atlas = ExtResource("2")
+cell = Vector2i(384, 256)
+baseline = 250
+facing = -1.0
+stride = 150.0
+strike_seconds = 0.82
+idle_fps = 4.2
+hit_height = 76.0
+tint = Color(0.59, 0.88, 1, 1)
+walk = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)
+windup = PackedInt32Array(8, 9, 10, 11)
+strike = PackedInt32Array(12, 13, 14, 15)
+hurt = PackedInt32Array(16)
+fallen = PackedInt32Array(17, 18, 19)

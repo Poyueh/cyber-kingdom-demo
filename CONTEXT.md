@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-11 v0.0.35：敵人改為無武器噬晶異獸，七地守門者各有專屬完整圖集；一般怪物有抱晶撤退。七龍完整姿勢、真實攻擊驅動的蓄力／爆發與碎晶受擊。設定在 data/enemy_cast.tres 與 data/enemy_appearance；純呈現更新，快照仍 v19、戰鬥及夜襲規則不變。見 docs/design/crystal-devourers.md。
+
 2026-10-11 v0.0.34：依使用者選定的神祕探索方向，開場改為七世界遺跡掠影與古龍守望，約二十秒後淡入動態星環主選單；可重看、隨時跳過。時長在 opening_direction.tres，遊戲規則與快照仍 v19。見 docs/design/mysterious-opening.md。
 
 2026-10-11 v0.0.33：領核短演出揭示實際新航線，星圖回顧各星荒野／遺跡／聚落三項選做功績。直接投影當地狀態與既有快照，不送晶、不改通關，未知星球隱藏數量。快照仍 v19，讀檔不重播。見 docs/design/planet-milestones.md。

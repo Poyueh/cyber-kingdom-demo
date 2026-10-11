@@ -1,0 +1,45 @@
+{
+  "version": "0.0.35",
+  "save_schema": 19,
+  "full_check": true,
+  "source_art": "built-in imagegen",
+  "source_sheets": 16,
+  "native_full_body_frames": 276,
+  "visual_scene_assertions": 61,
+  "native_sword_feedback_assertions": 18,
+  "native_tour": {
+    "worlds": 7,
+    "screenshots": 42,
+    "movie": "native-tour.mp4",
+    "render_errors": 0,
+    "method": "tools/preview_devourers.gd, actual campaign renderer, staged actor states"
+  },
+  "native_startup_memory": {
+    "v0.0.34": {
+      "static_bytes": 225635160,
+      "texture_bytes": 88731781.0
+    },
+    "all_planets_preloaded": {
+      "static_bytes": 228108031,
+      "texture_bytes": 164316961.0
+    },
+    "current_planet_only": {
+      "static_bytes": 228055674,
+      "texture_bytes": 90916753.0
+    }
+  },
+  "memory_scope": "Same Godot 4.7.2 Compatibility renderer, same fresh frontier scene, Apple M3 Pro. Texture bytes, not total app or mobile RAM. No frame-rate claim.",
+  "fixed_during_validation": [
+    "Late-life shard polygons became degenerate: retain one native pixel until alpha expires.",
+    "Sentinel scene selected idle before script-created SpriteFrames existed: remove premature scene property.",
+    "Custom Resource properties preceded script assignment and remained zero: bind script first.",
+    "Untyped test empty arrays corrected to Array[Dictionary]."
+  ],
+  "limitations": [
+    "Guardian variety is visual identity plus existing warden combat rules; no new elemental status effects.",
+    "Generated native poses still need player feedback on animation feel.",
+    "Windows and physical mobile devices not tested."
+  ],
+  "core_assertions": 4137,
+  "full_check_errors": 0
+}
