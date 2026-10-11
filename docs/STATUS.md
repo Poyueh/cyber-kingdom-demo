@@ -1,11 +1,16 @@
 # 製作進度
 
-## 2026-10-11：v0.0.33 星球功績與領核演出（已驗證，準備發佈）
+## 2026-10-11：v0.0.33 星球功績與領核演出（已發佈、完成接續驗收）
 
 - 星圖回顧當地與離開星球的荒野探索／遺跡破譯／聚落建設，未訪星球不洩漏數量；選做功績不改七核通關條件或資源收益。
 - 實際領核六秒演出、新航線揭示、核心飛入印記與一次音效，暫停凍結、讀檔不重播，第七核讓位給通關結算。快照仍 v19。
 - 核心 TDD 先重現六項缺口，46 項核心驗證通過；原生先重現兩項缺失，再完成 91 項鍵盤／觸控／七地／三語／暫停與讀檔檢查。原生英文面板高度溢出已重現並修正。
-- 完整 tools/check.sh 通過：4,127 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR。真正 v0.0.32 套件的兩份跨星紀錄，在新舊版讀入後續跑六十 ticks 相同。準備五平台發行。[驗收證據](reports/planet-milestones/verification.json)。[設計](design/planet-milestones.md) · [第 110 課](lessons/110-planet-milestones.md)。
+- 完整 tools/check.sh 通過：4,127 核心斷言與全部場景回歸，無 SCRIPT ERROR／ERROR。真正 v0.0.32 套件的兩份跨星紀錄，在新舊版讀入後續跑六十 ticks 相同。五平台包已匯出並公開。[驗收證據](reports/planet-milestones/verification.json)。[設計](design/planet-milestones.md) · [第 110 課](lessons/110-planet-milestones.md)。
+- [v0.0.33 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.33) 七個附件與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.33) 已公開。接手後重新比對七個附件大小／SHA-256，線上 HTML、指南、PCK、JS、WASM 與指南讀取器均與發行包完全相同；部署成功。
+- 補完原聊天中斷的瀏覽器驗收：前導、主選單、繁中／簡中／英文內嵌指南與 v0.0.33 版本均正常，選做功績及七核通關說明一致，無 console errors；恢復原本跟隨系統語系，未建立或覆寫玩家紀錄。
+- 在新聊天重新完成 tools/check.sh：4,127 核心斷言、91 項功績場景與全部既有回歸通過，無 SCRIPT ERROR／ERROR。[發行與接續驗收](reports/release-0.0.33/verification.json)。Windows／手機仍未真機驗收，iOS 為待簽署專案。
+- 接續基線：實際 Godot 原始碼位於 `/Users/jenpoyueh/GitHub/cyber-kingdom-design`，由 develop 接續；聊天專案目錄內的 AshenKnight 是歷史專案，不是本次開發基線。v0.0.33 功能已完成，勿重做；source tag 與已上傳套件保持原樣。
+- 後續工程待辦：既有居民在不中斷／讀回後續跑有 0.8 單位位移差，新舊版讀檔結果一致，尚未診斷。保留[相容性邊界與重現線索](reports/planet-milestones/compatibility-note.md)，不可當成本版已修復項目。
 - 下一步以真人試玩確認新航線理解、返訪意願及選做目標是否形成壓力；目前不宣稱心流、留存或商業成果已達標。
 
 ## 2026-10-11：v0.0.32 巨龍反擊窗口（已發佈）
