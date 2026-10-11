@@ -1,11 +1,11 @@
 # 製作進度
 
 
-## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（套件完成，發佈中）
+## 2026-10-12：v0.0.39 前期探索與戰鬥節奏（已發佈）
 
 - 對照規格並量測 32 種子／224 圖；保留每星兩處稀疏節奏點，聚焦首戰辨識、現有資源回收與返城時機。
 - 森林新旅程單獸、1.2 秒蓄力／2.4 秒收招；補給引導讀取真正可領的路邊晶藏；前三天野外 75 秒預警窗短效營火方向提示，不增加鬼魂對話或任務。舊雙獸設定與快照 v20 保留。
-- 三語指南與企劃 r6 同步（首戰圖片校正）；[設計與落差](design/early-exploration-pacing.md) · [第 117 課](lessons/117-early-exploration-pacing.md)。完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；原生與實際匯出 PCK 各 23 項通過。五平台同源 4050e50，封裝完整性、Mac 簽章、Android 簽署／對齊、iOS 版本均已核對；[驗收](reports/release-0.0.39/verification.json)。
+- 三語指南與企劃 r6 同步（首戰圖片校正）；[設計與落差](design/early-exploration-pacing.md) · [第 117 課](lessons/117-early-exploration-pacing.md)。完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；原生與實際匯出 PCK 各 23 項通過。五平台同源 4050e50，封裝完整性、Mac 簽章、Android 簽署／對齊、iOS 版本均已核對；[v0.0.39 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.39) 與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.39) 已公開。七附件、七份線上遊戲／指南檔案、規格 12 檔均與已審訂來源一致。遊戲部署 38156392234、純文件圖片校正部署 38156692116 成功；線上規格 r6，包內 r5，遊戲與下載附件不重寫。瀏覽器確認主選單、內嵌新版指南與單獸規格圖，無 console errors、未新增玩家存檔。Windows／手機未真機驗收，iOS 為待簽署專案。[驗收](reports/release-0.0.39/verification.json)。
 
 ## 2026-10-12：遊戲企劃規格網站（已發佈）
 

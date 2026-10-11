@@ -1,6 +1,6 @@
 {
   "version": "0.0.39",
-  "published": false,
+  "published": true,
   "source_commit": "4050e50a8d3362baf165801eeade862a5cc9a659",
   "source_tree": "e1de291bfc3cb7c9ba0904b134f9db282f03f742",
   "full_check": true,
@@ -52,5 +52,181 @@
     "Android_zipalign": "passed",
     "iOS_project_version": "0.0.39 (39), both Xcode configurations",
     "five_platform_source_tree_match": true
-  }
+  },
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.39",
+  "public_assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.39-debug.apk",
+      "size": 97975640,
+      "sha256": "5c73131f725bff5ca32723f707a2c467af2d1c5fedfb556ee0a9ac60ed1ba393"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.39.html",
+      "size": 8712578,
+      "sha256": "20eb0ef7e69a5d03d51ac9ad102e6b80e4e069b80d1a6ba06562222804e69b4a"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.39-Xcode.zip",
+      "size": 181517318,
+      "sha256": "e2e0d1af887172f4f59f1f8fbd12e63bc20da83a1e990bcc5d82790ab5772e2d"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.39.zip",
+      "size": 129170046,
+      "sha256": "0f7886c610a95249296b9ec15a96b3f9b21c97b98d752fc4af2110737ed33863"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.39.zip",
+      "size": 88814086,
+      "sha256": "4f04da057a625b2a55068c4b0ab4e2f7b0165e1d1c3afec5575a5a960d4d4178"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.39.zip",
+      "size": 106747984,
+      "sha256": "342f8e2e602438701ff58c3a35fffdac8199fd3360488e03716306cfd2abbe1c"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "sha256": "09de3917c0d7965414856d90e38ee8b03361c95a9d2c7f13eb8cebe9cbb6e25b"
+    }
+  ],
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "922f37b459728882d86f84d27eb9d600c55282733518f890fb1334a046723754",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.39"
+    },
+    {
+      "name": "guide.html",
+      "size": 8712578,
+      "sha256": "20eb0ef7e69a5d03d51ac9ad102e6b80e4e069b80d1a6ba06562222804e69b4a",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.39"
+    },
+    {
+      "name": "index.pck",
+      "size": 70047884,
+      "sha256": "5505c3286010e53e34a3ff9d64e92027c9f9148dd38eb04377055d2cafafb7f1",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.39"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.39"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.39"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.39"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.39"
+    }
+  ],
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38156692116,
+    "headSha": "90600b02811d0e9daf205c75db6093a82f3a5777",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38156692116"
+  },
+  "specification": {
+    "published": true,
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/spec/",
+    "game_version": "0.0.39",
+    "revision": 6,
+    "source_ref": "90600b02811d0e9daf205c75db6093a82f3a5777",
+    "files": [
+      {
+        "path": "assets/26559190e8-attendant-work.webp",
+        "bytes": 1169838,
+        "sha256": "26559190e8feb73f2a2c74a1325120c459b1adb7ed7e4bd72aa7381286f2f3ea"
+      },
+      {
+        "path": "assets/30d8c59ac7-dragon-counterattack.webp",
+        "bytes": 103942,
+        "sha256": "30d8c59ac76bdd08d82ac67e3fd46b4b4afa487053fcb44425982a54f1ab537a"
+      },
+      {
+        "path": "assets/3fed57f821-mysterious-menu.png",
+        "bytes": 295209,
+        "sha256": "3fed57f821fe14e54659d09cf201ef1183039ada6070a5a8de401eab9cf0a08d"
+      },
+      {
+        "path": "assets/473d4b2a11-star-chart.webp",
+        "bytes": 34368,
+        "sha256": "473d4b2a113ea27639cd2c4f011c6d5c9dd02d8ba6b28f888aca62c5b569253c"
+      },
+      {
+        "path": "assets/6fb0311681-planet-levels.webp",
+        "bytes": 220194,
+        "sha256": "6fb03116815310292109c85fe5dcaf38e3e229cfe46fbbe1a9c47688716dd2cd"
+      },
+      {
+        "path": "assets/ade86e08e4-early-exploration.webp",
+        "bytes": 91172,
+        "sha256": "ade86e08e490493610fa615f0614f43d0128585f6c086cd85b2b72b371df64a4"
+      },
+      {
+        "path": "assets/d4f1036c94-settlement-inhabitants.webp",
+        "bytes": 181748,
+        "sha256": "d4f1036c945064f097e18c5d8f8db4f10f846a5aeed4520260ab3223cb6c2aca"
+      },
+      {
+        "path": "assets/d5df6b3c90-devourers.webp",
+        "bytes": 289270,
+        "sha256": "d5df6b3c90806ec5425ef10dd966b76a28e5fbcca5d4c21b5565f793bd6ef4cf"
+      },
+      {
+        "path": "assets/e2573f5d0d-combo.webp",
+        "bytes": 914436,
+        "sha256": "e2573f5d0de80dbedd78d2a37b24c9c64aa8ec417b82587eeba0b911b094627f"
+      },
+      {
+        "path": "index.html",
+        "bytes": 58352,
+        "sha256": "dafa0a4501e599c5ed72628a21a3d7917be7bdba5c1bc2c9372e80ac11d68b2a"
+      },
+      {
+        "path": "reader.js",
+        "bytes": 2706,
+        "sha256": "6cc33a6ae719d50267acced5b925c88847b45550adfa92b61b9200a10fec7a4d"
+      },
+      {
+        "path": "style.css",
+        "bytes": 11078,
+        "sha256": "4ab246c449276ab11259ef4615bc86f4a3f136408fd74579ca5ce73e9f690172"
+      }
+    ],
+    "pages_run": 38156692116,
+    "bundled_revision": 5,
+    "document_only_refresh": true
+  },
+  "game_source_unchanged_after_doc_refresh": true,
+  "browser_verification": {
+    "main_menu_visible": true,
+    "embedded_updated_guide_visible": true,
+    "guide_languages": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "console_errors": 0,
+    "player_journey_created": false,
+    "live_spec_revision": 6,
+    "live_single_guardian_image": true
+  },
+  "initial_game_pages_run": 38156392234
 }
