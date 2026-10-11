@@ -1,0 +1,15 @@
+ASSET OK Cyber-Kingdom-Android-v0.0.33-debug.apk
+ASSET OK Cyber-Kingdom-Guide-v0.0.33.html
+ASSET OK Cyber-Kingdom-iOS-v0.0.33-Xcode.zip
+ASSET OK Cyber-Kingdom-macOS-v0.0.33.zip
+ASSET OK Cyber-Kingdom-Web-v0.0.33.zip
+ASSET OK Cyber-Kingdom-Windows-v0.0.33.zip
+ASSET OK SHA256SUMS.txt
+LIVE OK index.html 5542
+LIVE OK guide.html 5086051
+LIVE OK index.pck 59389348
+LIVE OK index.js 279815
+LIVE OK index.wasm 39514754
+LIVE OK guide-reader.js 2969
+LIVE OK guide-reader.css 1750
+PASS: release assets and live runtime match v0.0.33.
