@@ -30,6 +30,7 @@ const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
 var _sword_trail: SwordTrail
 const Voyage=preload("res://application/star_voyage.gd")
 const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://data/planets/desert.tres"),preload("res://data/planets/frost.tres"),preload("res://data/planets/swamp.tres"),preload("res://data/planets/volcanic.tres"),preload("res://data/planets/storm.tres"),preload("res://data/planets/void.tres")]
+@export var planet_levels: Resource=preload("res://data/planet_levels.tres")
 @export var ruin_variation: Resource=preload("res://data/ruin_variation.tres")
 @export var dragon_opening: Resource=preload("res://data/dragon_opening.tres")
 @export var journey_paces: Resource=preload("res://data/journey_paces.tres")
@@ -171,6 +172,7 @@ func restart() -> void:
 	if int(config.get("immersive_loop",0))==1:
 		assert(journey_paces.valid())
 		config.ruin_variation=ruin_variation.rules()
+		config.level_design=planet_levels.rules()
 		config.merge(dragon_opening.rules(),true)
 		journey=preload("res://application/journey_setup.gd").create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
 		config=journey.configs[0]

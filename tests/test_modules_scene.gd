@@ -9,6 +9,8 @@ func run_scene() -> void:
    scene.sim.advance(0.1,site.positions[station])
    scene.sim.interact(site.positions[station],"trial:%s:%d"%[site.id,station])
   scene.sim.advance(0.1,site.x)
+ for relic: RefCounted in scene.sim.modules.relics:scene.sim.advance(0.1,relic.x)
+ check(scene.sim.modules.equipped=="lance","exploration collects the lance after the forest shrine")
  scene.sim.pouch.amount=12
  scene.knight.position=Vector2(scene.sim.world.sites.drill,430)
  scene.sim.advance(0.1,scene.knight.position.x)

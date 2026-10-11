@@ -25,6 +25,10 @@ func _init(frontier: RefCounted, config: Dictionary={}) -> void:
  specs=Catalog.build(config)
  for spec: Catalog.Spec in specs:
   if config.has("module_catalog_version") and spec.planet!=int(config.get("planet_id",0)):continue
+  if config.has("level_design_version"):
+   var relic: Relic=Relic.new()
+   relic.id=spec.id;relic.x=config["level_module_"+spec.id+"_x"];relic.region=int(config["level_module_"+spec.id+"_region"])
+   relics.append(relic);continue
   var selected: RefCounted=null
   for node: RefCounted in frontier.nodes:
    if node.kind!="cache" or (node.x<0)!=(spec.side<0):continue

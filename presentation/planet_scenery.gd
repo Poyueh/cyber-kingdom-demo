@@ -15,14 +15,15 @@ static func texture(id: int, name: String) -> Texture2D:
 static func draw_on(view: Node2D, sim: RefCounted) -> void:
  var id: int=sim.planet.id-1
  var bounds: Rect2=view._background_rect()
+ var authored: bool=sim.frontier.regions[0].has("level_role")
  # Repeat sparse silhouettes in screen-cullable cells, grounded above the path.
  for layer: int in range(2):
-  var step: int=430 if layer==0 else 730
+  var step: int=(720 if layer==0 else 1200) if authored else (430 if layer==0 else 730)
   var offset: float=bounds.position.x*(0.72 if layer==0 else 0.32)
   var first: int=floori((bounds.position.x-offset)/step)-1
   var last: int=ceili((bounds.end.x-offset)/step)+1
   for index: int in range(first,last):
-   var tex: Texture2D=TREE[id] if posmod(index,3)!=0 else LANDMARK[id]
+   var tex: Texture2D=TREE[id] if authored or posmod(index,3)!=0 else LANDMARK[id]
    var at: Vector2=Vector2(round(index*step+offset),430)
    var tint: Color=TINTS[id]
    tint.a=0.32 if layer==0 else 0.7
@@ -30,7 +31,7 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
  for region: Dictionary in sim.frontier.regions:
   var x: float=region.x+region.width*0.62
   if not view._on_screen(x,400):continue
-  var texture: Texture2D=LANDMARK[id] if region.kind=="ruins" else SHRUB[id]
+  var texture: Texture2D=SHRUB[id] if authored else (LANDMARK[id] if region.kind=="ruins" else SHRUB[id])
   var alpha: float=view._region_reveal(sim.frontier.regions.find(region))
   if alpha<=0:continue
   view.draw_texture(texture,Vector2(x-texture.get_width()*0.5,430-texture.get_height()),Color(1,1,1,alpha))

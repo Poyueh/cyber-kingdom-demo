@@ -1,5 +1,6 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const Level=preload("res://domain/planet_level_layout.gd")
 const Merchant = preload("res://domain/crystal_merchant.gd")
 const ScarceTreasure = preload("res://domain/scarce_treasure.gd")
 const RandomStreams = preload("res://domain/rng/rng_streams.gd")
@@ -145,6 +146,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	for x in [180.0,245.0]: _add_person(x,-1)
 	for index in range(frontier.regions.size()):
 		var region: Dictionary = frontier.regions[index]
+		if not Level.is_supply(region):continue
 		_add_person(region.x+region.width*0.12,index)
 		var node := Harvest.new()
 		node.kind = "stone" if region.kind=="quarry" else "herbs"

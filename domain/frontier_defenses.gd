@@ -11,6 +11,7 @@ func _init(settlement, map, config: Dictionary={}) -> void:
 	var previous: Dictionary={-1:"wall_left",1:"wall"}
 	for index in range(frontier.regions.size()):
 		var region: Dictionary=frontier.regions[index]
+		if not preload("res://domain/planet_level_layout.gd").is_supply(region):continue
 		var side:=1 if region.x>world.sites.hall else -1
 		var id: String="frontier_wall:%d" % index
 		var x: float=region.x+(region.width if side>0 else 0.0)

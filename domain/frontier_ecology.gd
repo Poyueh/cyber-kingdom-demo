@@ -12,6 +12,7 @@ func camp_x(index: int) -> float:
 	var region: Dictionary=frontier.regions[index]
 	return region.x+region.width*0.12
 func habitat(index: int) -> bool:
+	if not preload("res://domain/planet_level_layout.gd").is_supply(frontier.regions[index]):return false
 	if frontier.regions[index].kind!="forest":return true
 	return frontier.nodes.any(func(n):return n.region==index and n.kind=="tree" and not n.collected)
 func waiting(index: int, people: Array) -> int:

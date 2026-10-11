@@ -1,6 +1,7 @@
 extends RefCounted
 ## Select from authored ruins without disturbing world generation's random stream.
 static func apply(map: RefCounted, camp_x: float, rules: Dictionary, rng: RandomNumberGenerator) -> void:
+	if rules.has("level_design_version"):return # Authored treasure rooms already enforce the budget and spacing.
 	if not rules.has("treasure_limit"):return # Historical layouts remain unchanged.
 	var candidates: Array[RefCounted] = []
 	for node: RefCounted in map.nodes:
