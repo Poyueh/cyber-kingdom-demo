@@ -1,9 +1,10 @@
 # 製作進度
 
-## 2026-10-11：v0.0.34 神祕探索開場與主選單（套件驗收通過，正在發佈）
+## 2026-10-11：v0.0.34 神祕探索開場與主選單（已發佈）
 
 - 依使用者指定方向製作森林回聲、六地遺跡掠影與古龍揭題，約二十秒淡入星環主選單；暖金色開始旅程、動態騎士／營火、重看開場與三語說明。
 - 重播缺口先以實際場景重現，再完成 13 項回歸；開場 14 項與音訊 14 項通過。原生播放／三語／節奏／紀錄頁 8 項、兩種視窗比例與 Enter 跳過 14 項通過。完整 tools/check.sh 通過：4,127 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。快照仍 v19。五平台套件與單檔指南已完成；成品再通過 37 項原生播放／重播／音訊／三語檢查，macOS ad-hoc 與 Android 版本已核對。
+- [v0.0.34 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.34) 七個附件與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.34) 已公開，附件大小／SHA-256 及七份線上檔案均與套件相同。瀏覽器確認遺跡開場、跳過、重播、Enter、節奏選擇返回與新版內嵌指南，無 console errors。[發行驗收](reports/release-0.0.34/verification.json)。Windows／手機尚未真機驗收，iOS 為待簽署專案。
 - [設計](design/mysterious-opening.md) · [第 111 課](lessons/111-mysterious-opening.md)。玩家的探索期待仍需真人試玩回饋。
 
 ## 2026-10-11：v0.0.33 星球功績與領核演出（已發佈、完成接續驗收）

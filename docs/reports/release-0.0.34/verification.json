@@ -1,6 +1,6 @@
 {
   "version": "0.0.34",
-  "published": false,
+  "published": true,
   "source_commit": "e9ed41d4dd5718601e663c18b4678e9cec3af7ec",
   "source_tree": "b17bcf174be0488fd1f21ee2d56aafc8b748f8b3",
   "full_check": true,
@@ -57,5 +57,78 @@
   "packaged_audio_assertions": 16,
   "packaged_playback_and_locale_assertions": 8,
   "clean_import": true,
-  "check_log_sha256": "719f5ec29f9878fe7b81e4ce0225f5d31e3928aa84e667b0ef7d28e63c7a3611"
+  "check_log_sha256": "719f5ec29f9878fe7b81e4ce0225f5d31e3928aa84e667b0ef7d28e63c7a3611",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.34",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "c15c935c818d0bc7117bbb6dcf2f2b3e3f865590a24410891131cdd829282c17",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.34"
+    },
+    {
+      "name": "guide.html",
+      "size": 5482475,
+      "sha256": "c916f76dc43bad7665d4fc01fd4a051c3729de631f5c140b2a39fef42a5fc9bc",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.34"
+    },
+    {
+      "name": "index.pck",
+      "size": 59398820,
+      "sha256": "d6692b57ebf75d40a84cd91fc5886572527713e9b0f548523f1c1fb4b36abd82",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.34"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.34"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.34"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.34"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.34"
+    }
+  ],
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38112241984,
+    "headSha": "f00169c44d426b54de27110edb51310c9cdf9f87",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38112241984"
+  },
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.34",
+  "browser_verification": {
+    "version": "0.0.34",
+    "opening_world_glimpses": true,
+    "skip_button": true,
+    "replay_button": true,
+    "enter_skips_without_starting_a_journey": true,
+    "begin_opens_pace_choice_and_back_returns": true,
+    "embedded_guide_new_opening_and_version": true,
+    "locale": "zh_TW",
+    "native_menu_locales": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "console_errors": [],
+    "screenshot": "browser-main-menu.jpg",
+    "gameplay_exercised_in_browser": false
+  }
 }
