@@ -1,6 +1,6 @@
 {
   "version": "0.0.32",
-  "published": false,
+  "published": true,
   "source_commit": "9b132b6565995fce38c20184e6bf1f63a5fc77c1",
   "source_tree": "af5797757ee4e6d9b3978ba9a0da9102d17e3222",
   "full_check": true,
@@ -51,5 +51,54 @@
   ],
   "packaged_native_smoke": true,
   "packaged_native_assertions": 42,
-  "check_log_sha256": "67c930fb81867d4c311aa3e83e10fd2cf10d5c2bd121e983bc92c4df43530576"
+  "check_log_sha256": "67c930fb81867d4c311aa3e83e10fd2cf10d5c2bd121e983bc92c4df43530576",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.32",
+  "asset_digests_verified": true,
+  "public_assets": 7,
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "0668a73802222c9224bc5874a93277c78bf3680cd2726a2591cc0847c5b96f9c",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.32"
+    },
+    {
+      "name": "guide.html",
+      "size": 4999812,
+      "sha256": "c48854b7730b23b14db7edeb363b0f1712be0fbfcc7bafc912cae6d7b9d5e66f",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.32"
+    },
+    {
+      "name": "index.pck",
+      "size": 59376668,
+      "sha256": "abb3f08ee3c2666dbb8ff4f63557240e279fbedc4acf86c80777d67c86da613d",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.32"
+    }
+  ],
+  "pages_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.32",
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38106580346,
+    "headSha": "a6596e8e3e3359774bc3d724056a954700a6caee",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38106580346"
+  },
+  "browser_verification": {
+    "version": "0.0.32",
+    "url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.32",
+    "main_menu": true,
+    "prologue_loaded_and_skipped": true,
+    "embedded_guide_dragon_counterattack": true,
+    "locales": [
+      "zh_TW",
+      "zh_CN",
+      "en"
+    ],
+    "guide_version_verified_each_locale": true,
+    "minimum_six_seconds_and_fifty_percent_visible": true,
+    "console_errors": [],
+    "original_system_language_restored": true,
+    "browser_gameplay_not_exercised": true,
+    "gameplay_evidence": "Native scene and exported PCK each passed 42 assertions across seven worlds."
+  }
 }
