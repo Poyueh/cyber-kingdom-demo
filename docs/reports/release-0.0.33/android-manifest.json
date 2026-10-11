@@ -1,0 +1,8 @@
+{
+  "source_tree": "3fd8abf6dd9177fec0ecfb6d92adc3b8d83678dc",
+  "architecture": "arm64-v8a",
+  "package": "org.cyberkingdom.demo",
+  "signing": "local debug certificate; not a store release",
+  "sha256": "8f867a111d046bf4bca308b0a1f26c0115ccf07c61885d003b404c1854afbcf9",
+  "runtime_playtest": "record separately; export alone is not validation"
+}
