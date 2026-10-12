@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: round softened disc (960, 300) night=false extent=(28, 28)
+PASS: halo blends beyond disc night=false pixels=3734
+PASS: round softened disc (960, 300) night=true extent=(18, 18)
+PASS: halo blends beyond disc night=true pixels=1730
+PASS: round softened disc (960, 700) night=false extent=(64, 64)
+PASS: round softened disc (960, 700) night=true extent=(40, 40)
+PASS: round softened disc (1500, 400) night=false extent=(36, 36)
+PASS: round softened disc (1500, 400) night=true extent=(24, 24)
+PASS: continuous boundary from night=false max channel delta=0.000000
+PASS: continuous boundary from night=true max channel delta=0.000000
+Native atmosphere failures: 0
