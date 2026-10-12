@@ -1,6 +1,6 @@
 {
   "version": "0.0.41",
-  "published": false,
+  "published": true,
   "source_commit": "af94be3122924f71332c9fb94b9653eab6fdd8b2",
   "source_tree": "0a63049c4466902f4df83d0f64f53c12c0809833",
   "full_check": true,
@@ -63,5 +63,107 @@
   "runtime_source_frozen": true,
   "post_export_changes": "Only test setup timing and release evidence; no runtime, resource, guide or specification edits.",
   "script_errors": 0,
-  "scene_suites": 57
+  "scene_suites": 57,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.41",
+  "public_assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.41-debug.apk",
+      "size": 97993468,
+      "sha256": "83e42bfbb5093c83df56d2b13e67491027de085317b38848fba0c0ce0f11cc17"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.41.html",
+      "size": 9420175,
+      "sha256": "13b9d4c45b89d573c5c3cf4a3cb241273c4a991ddf319bbc91f7e836aa22b0df"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.41-Xcode.zip",
+      "size": 181528899,
+      "sha256": "b3ef4d00d32dd56c5f781ce7f53577a63f9de4d4e9fd70a96b1b04e73fc31e44"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.41.zip",
+      "size": 129183017,
+      "sha256": "1559535abc8fb164d91e5c7a478ca62c4743e4d75498b056afe0b6572d7348ac"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.41.zip",
+      "size": 89815153,
+      "sha256": "617af58763a733fb04580df0f16fd4947e2a732788885a0211e783da5b1cf5d5"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.41.zip",
+      "size": 106760974,
+      "sha256": "797d63efd1464a552a08dfcd4e196024ffb570c3d21b00a67b63e64698ec884c"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "size": 601,
+      "sha256": "30d7a2237c121166c93ef3ffc7fa96ef03764dbde395539993f7e9a35e0b48c3"
+    }
+  ],
+  "live_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "1d322dd432898b373151e9d71e0b73487ace3cf0091c98c9cd10b70545cca735",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.html?v=0.0.41"
+    },
+    {
+      "name": "guide.html",
+      "size": 9420175,
+      "sha256": "13b9d4c45b89d573c5c3cf4a3cb241273c4a991ddf319bbc91f7e836aa22b0df",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide.html?v=0.0.41"
+    },
+    {
+      "name": "index.pck",
+      "size": 70063244,
+      "sha256": "d07f379799114f3ea459ef3c1e0f8d92f9ea9fbf71b123af58ad37d83a2798cd",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.pck?v=0.0.41"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.js?v=0.0.41"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/index.wasm?v=0.0.41"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.js?v=0.0.41"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "url": "https://poyueh.github.io/cyber-kingdom-demo/guide-reader.css?v=0.0.41"
+    }
+  ],
+  "pages_deployment": {
+    "conclusion": "success",
+    "databaseId": 38197258959,
+    "headSha": "849ec3792f126a39ef2bba2f75875d253dcaf1fb",
+    "status": "completed",
+    "url": "https://github.com/Poyueh/cyber-kingdom-demo/actions/runs/38197258959"
+  },
+  "specification": {
+    "game_version": "0.0.41",
+    "revision": 10,
+    "source_ref": "af94be3122924f71332c9fb94b9653eab6fdd8b2",
+    "all_files_verified": true
+  },
+  "browser_checks": {
+    "main_menu": true,
+    "in_game_updated_guide": true,
+    "specification_revision_10": true,
+    "console_errors": 0,
+    "created_player_journey": false
+  }
 }

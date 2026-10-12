@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-12：v0.0.41 劍擊接觸與拔劍建營（發行中）
+## 2026-10-12：v0.0.41 劍擊接觸與拔劍建營（已發佈）
 
 - 修正中心點與實際身體輪廓不一致的命中落差；左右三類敵人、邊界、重斬、背後及同刀去重通過，實際 v40 舊檔可續用，快照仍 v20。
 - 拔劍 2.4 秒完整播放後，營地以 0.85 秒貼地顯現，NPC 再進場；暫停、重啟與完成邊界驗證通過。
-- [設計](design/sword-contact-and-founding.md) · [第 119 課](lessons/119-sword-contact-and-founding.md)。三語指南與企劃修訂 10 同步；完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；實際成品 PCK 原生接觸 28 項、拔劍 10 項通過。五平台同源 af94be3，Mac 簽章、Android 簽署／對齊、iOS 版本及封裝完整性核對完成；正在發布並核對線上檔案。Windows／手機未真機驗收，iOS 為待簽署專案。[驗收](reports/release-0.0.41/verification.json)。
+- [設計](design/sword-contact-and-founding.md) · [第 119 課](lessons/119-sword-contact-and-founding.md)。三語指南與企劃修訂 10 同步；完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR；實際成品 PCK 原生接觸 28 項、拔劍 10 項通過。五平台同源 af94be3，Mac 簽章、Android 簽署／對齊、iOS 版本及封裝完整性核對完成；[v0.0.41 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.41) 與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.41) 已公開。部署 38197258959 成功；七附件雜湊／大小、七份線上遊戲／指南、13 份規格檔與套件完全一致。包內及線上企劃皆修訂 10。瀏覽器確認主選單、新指南與規格，無 console errors，未新增玩家旅程。Windows／手機未真機驗收，iOS 為待簽署專案。[驗收](reports/release-0.0.41/verification.json)。
 
 ## 2026-10-12：v0.0.40 落地場景、介面與行動前導（已發佈）
 
