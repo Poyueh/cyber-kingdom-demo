@@ -25,6 +25,8 @@ var _water: Node2D
 var _lantern: Node2D
 var _sunbeams: Node2D
 var _requested_special: bool=false
+@export var sword_contact_profile: Resource=preload("res://data/sword_contact.tres")
+const CampReveal=preload("res://presentation/camp_reveal.gd")
 const SwordTrail = preload("res://presentation/knight_sword_trail.gd")
 @export var sword_style: Resource = preload("res://data/sword_feedback.tres")
 var _sword_trail: SwordTrail
@@ -212,11 +214,11 @@ func _physics_process(seconds: float) -> void:
 	super._physics_process(seconds)
 	if is_instance_valid(_star_travel):_star_travel.observe()
 	if paused and not was_paused:hud.cancel_touch_gestures()
-	if _requested_throw and not paused:
+	if _requested_throw and not paused and not CampReveal.extracting(sim,knight.position.x):
 		sim.throw_crystal(knight.position.x,knight.position.y,sim.hero.facing)
 		hud.present_world(sim,paused,knight.position.x,knight.is_on_floor())
 	_requested_throw = false
-	if _requested_special and not paused:sim.activate_module(knight.position.x)
+	if _requested_special and not paused and not CampReveal.extracting(sim,knight.position.x):sim.activate_module(knight.position.x)
 	_requested_special=false
 	if hud.module_menu.visible and not paused:hud.module_menu.hide()
 	if paused or not sim.is_running():
@@ -241,10 +243,13 @@ func _physics_process(seconds: float) -> void:
 	audio.report_footing(knight.is_on_floor(),paused)
 
 func _travel_axis(direction: float, seconds: float) -> float:
+	if CampReveal.extracting(sim,knight.position.x):return 0.0
 	var pace: float=tuning.walking_speed/maxf(1,knight_tuning.move_speed) if sim.life.enabled else 1.0
 	return sim.travel_axis(direction,seconds)*pace
 
 func _apply_interaction(command: Dictionary, seconds: float) -> void:
+	if CampReveal.extracting(sim,knight.position.x) or view.camp_reveal.progress()<1.0:
+		investment.cancel();_sync_investment_focus();_sync_knight_equipment();return
 	# Keep a completed swipe until physics consumes it; each new swipe releases the previous order.
 	var pressed: bool=_requested_interaction or command.get("interaction_pressed",false)
 	if pressed:investment.step(0.0,false,true,sim,knight.position.x)
@@ -381,6 +386,7 @@ func _build_terrain() -> void:
 	add_child(_terrain)
 
 func _sync_knight_equipment() -> void:
+	if not sim.sword_contact.configured:sword_contact_profile.apply_to(sim.sword_contact)
 	knight.visual.equipped_module=sim.modules.equipped
 	knight.visual.set_equipment(sim.frontier.drill_level,0 if sim.life.enabled else sim.growth.capacitor_level)
 	knight.visual.unarmed=not sim.can_wield_sword()
@@ -395,6 +401,8 @@ func _sync_knight_equipment() -> void:
 	knight.visual.tired_walk=sim.life.enabled and sim.travel.winded
 	knight.visual.exertion=sim.travel.breath_load(sim.hero)
 	knight.set_mounted(sim.mounted())
-	if _sword_trail != null: _sword_trail.present(sim.hero,sim.can_wield_sword(),sim.mounted())
+	if _sword_trail != null:
+		_sword_trail.finisher_extension=sim.sword_contact.finisher_extension
+		_sword_trail.present(sim.hero,sim.can_wield_sword(),sim.mounted())
 
-func _can_attack() -> bool:return sim.can_wield_sword() and not (sim.life.enabled and sim.travel.winded)
+func _can_attack() -> bool:return sim.can_wield_sword() and not CampReveal.extracting(sim,knight.position.x) and not (sim.life.enabled and sim.travel.winded)

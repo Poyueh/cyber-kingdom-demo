@@ -4,6 +4,7 @@ func run_scene() -> void:
  game.tuning=game.tuning.duplicate();game.tuning.larger_desktop_window=false
  root.add_child(game);await frames(10)
  game.sim.interact(30,"hall");game.knight.position=Vector2(30,430)
+ await frames(200) # Test attack-button geometry after first sword extraction and assembly.
  game.hud.preview_safe_margins=Vector4(44,10,35,20)
  await frames(4)
  # Safe-area layout runs on render frames, independently from physics ticks.

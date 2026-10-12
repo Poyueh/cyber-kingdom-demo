@@ -20,6 +20,7 @@ func run_scene() -> void:
  check(game.sim.frontier.city_level==1,"E draws the sword and lights camp")
  check(not game.knight.visual.unarmed,"ignition enables armed appearance")
  check(game.hud.dashboard.immersive,"new journey hides numerical top dashboard")
+ await frames(200) # Finish extraction and assembly before testing workshop investment.
  game.knight.position.x=game.sim.world.sites.workshop
  await frames(4)
  var wallet: int=game.sim.pouch.amount
@@ -64,6 +65,7 @@ func run_scene() -> void:
  touch(20,Vector2(100,260),true);drag(20,Vector2(100,320));await frames(2)
  touch(20,Vector2(100,320),false);await frames(3)
  check(game.sim.frontier.city_level==1,"phone downward gesture ignites camp")
+ await frames(200) # The touch route observes the same completed founding transition.
  game.knight.position.x=game.sim.world.sites.workshop;await frames(3)
  touch(21,Vector2(450,210),true);drag(21,Vector2(450,270));await frames(2)
  touch(21,Vector2(450,270),false);await frames(2)

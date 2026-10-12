@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: visible raider body contact connects facing -1
+PASS: one cut cannot damage raider twice
+FAIL: visible warden body contact connects facing -1
+PASS: one cut cannot damage warden twice
+FAIL: visible dragon body contact connects facing -1
+PASS: one cut cannot damage dragon twice
+FAIL: visible raider body contact connects facing 1
+PASS: one cut cannot damage raider twice
+FAIL: visible warden body contact connects facing 1
+PASS: one cut cannot damage warden twice
+FAIL: visible dragon body contact connects facing 1
+PASS: one cut cannot damage dragon twice
+PASS: body radius cannot turn a forward cut into a rear hit
+PASS: clear space beyond blade and body remains a miss
+Sword contact scene assertions: 14; failures: 6

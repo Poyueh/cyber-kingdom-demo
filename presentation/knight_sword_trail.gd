@@ -8,6 +8,8 @@ var _phase: float = 0.0
 var _step: int = 1
 var _facing: int = 1
 var _mounted: bool = false
+var _reach: float = 64.0
+var finisher_extension: float = 0.0
 
 func present(hero: Fighter, armed: bool, mounted: bool) -> void:
 	visible = armed and hero.is_alive() and hero.is_attack_active()
@@ -16,6 +18,7 @@ func present(hero: Fighter, armed: bool, mounted: bool) -> void:
 	_step = hero.combo_step
 	_facing = hero.attack_facing
 	_mounted = mounted
+	_reach = hero.stats.attack_range
 	queue_redraw()
 
 func _point(angle: float, radius: float, flatten: float) -> Vector2:
@@ -41,7 +44,7 @@ func _draw() -> void:
 	var head: float = lerpf(-0.85,-1.40,sweep) if rising else lerpf(0.70 if heavy else 0.62,0.40 if heavy else 0.32,sweep)
 	var length: float = lerpf(2.25 if heavy else 1.85,0.8,_phase)
 	var tail: float = head + length if rising else head - length
-	var radius: float = style.trail_radius + (8 if heavy else 0)
+	var radius: float = minf(style.trail_radius,maxf(1,_reach-(12 if _mounted else 8)-2)) + (finisher_extension if heavy else 0)
 	var width: float = style.heavy_width if heavy else style.light_width
 	var flatten: float = 0.82 if rising else (0.77 if heavy else 0.65)
 	var fade: float = 1.0 - smoothstep(0.45,1.0,_phase)
