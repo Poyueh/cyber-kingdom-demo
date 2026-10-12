@@ -11,3 +11,9 @@ extends Resource
 @export var night_sky: Color=Color("101a39")
 @export var night_horizon: Color=Color("343959")
 @export_range(8.0,28.0) var sun_radius: float=17.0
+
+@export var dawn_sky: Color
+@export var dawn_horizon: Color
+@export_range(0.0,0.6) var sun_halo_strength: float
+@export_range(0.0,0.4) var moon_halo_strength: float
+@export_range(2.0,7.0) var halo_extent: float
