@@ -27,6 +27,8 @@ func run_scene() -> void:
  await empty_camp(game,false)
  game.restart();await frames(3);game.set_physics_process(false)
  await empty_camp(game,true)
+ # Supply guidance starts after the mobile founding presentation completes.
+ for tick: int in range(105):game._physics_process(1.0/30)
  # Visual fixture: first gift already used, a resident owns earned income.
  game.sim.merchant.phase=game.sim.merchant.Phase.WAITING_PAYMENT
  game.sim.merchant.x=game.sim.merchant.home_x

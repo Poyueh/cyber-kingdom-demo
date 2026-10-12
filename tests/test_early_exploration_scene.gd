@@ -7,6 +7,8 @@ func run_scene() -> void:
  root.add_child(game);await frames(10)
  game.set_physics_process(false);game.knight.set_physics_process(false)
  game.sim.interact(game.sim.world.sites.hall,"hall")
+ # Exploration begins after the real founding transition, before teleporting the fixture.
+ for tick: int in range(105):game._physics_process(1.0/30)
  game.sim.spirit.opening_finished=true;game.sim.spirit.expires_tick=0
  game.sim.pouch.amount=6;game.sim.clock.remaining=160
  game._sync_knight_equipment();game._arrival_banner.hide()

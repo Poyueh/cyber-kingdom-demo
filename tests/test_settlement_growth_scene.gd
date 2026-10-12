@@ -31,6 +31,7 @@ func run_scene() -> void:
 	root.add_child(game);await frames(10)
 	game.hud.control_mode=2
 	await upgrade(game)
+	await frames(200) # Finish founding before funding the next camp tier.
 	game.sim.pouch.amount=30
 	await upgrade(game)
 	check(game.sim.frontier.city_level==2,"actual E investment reaches the second camp stage")

@@ -2,6 +2,7 @@ extends RefCounted
 const World = preload("res://domain/settlement.gd")
 const Fighter = preload("res://domain/combatant.gd")
 const Stats = preload("res://domain/combat_stats.gd")
+var sword_contact: RefCounted=preload("res://domain/sword_contact.gd").new()
 var world: World
 var hero: Fighter
 var raiders: Array[Dictionary] = []
@@ -327,7 +328,7 @@ func strike_from(x: float, y: float) -> void:
 		return
 	for raider in raiders:
 		var distance: float=raider.x-x
-		if raider.get("kind","")=="dragon":distance=signf(distance)*maxf(0,absf(distance)-70)
+		distance=sword_contact.distance(distance,raider.get("kind",""),raider.get("direction",-1.0),hero.attack_facing,hero.combo_step)
 		if hero.strike(raider.fighter,distance,attack_damage_against(raider,hero.attack_damage())):
 			var heavy := hero.combo_step == 3
 			effects.append({"kind":"hit","x":raider.x,"to":raider.x,"life":0.28 if heavy else 0.2,"heavy":heavy,"facing":hero.attack_facing})

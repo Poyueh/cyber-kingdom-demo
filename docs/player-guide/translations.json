@@ -2190,5 +2190,17 @@
   "實際前導：巨龍蓄力吐息，摧毀工匠剛完成的防線。": {
     "en": "Actual prologue: a dragon winds up and breathes through the newly completed defense.",
     "zh_CN": "实际前导：巨龙蓄力吐息，摧毁工匠刚完成的防线。"
+  },
+  "首次拔劍會先完成約 2.4 秒的動作，期間暫停移動與攻擊；之後營地建築以約 0.85 秒逐步出現，駐點人物再進場。暫停會一起停住演出；讀取已建立的營地不會重播。": {
+    "zh_CN": "首次拔剑会先完成约 2.4 秒的动作，期间暂停移动与攻击；之后营地建筑以约 0.85 秒逐步出现，驻点人物再进场。暂停会一起停住演出；读取已建立的营地不会重播。",
+    "en": "The first sword extraction finishes its roughly 2.4-second animation before movement and attacks resume. Camp buildings then appear over about 0.85 seconds, followed by their attendants. Pausing freezes the sequence; loading an established camp does not replay it."
+  },
+  "劍擊判定會計入敵人的身體寬度，不必碰到中心點才算命中。小怪、守門獸與巨龍各有對應邊界；重劈配合較長刀光，背後和超出劍路仍不會命中。同一刀對同一敵人只造成一次傷害，舊旅程也套用此修正。": {
+    "zh_CN": "剑击判定会计入敌人的身体宽度，不必碰到中心点才算命中。小怪、守门兽与巨龙各有对应边界；重劈配合较长刀光，背后和超出剑路仍不会命中。同一刀对同一敌人只造成一次伤害，旧旅程也套用此修正。",
+    "en": "Sword contact now accounts for enemy body width instead of requiring a hit on the centre point. Devourers, guardians and dragons have matching body boundaries. The heavy cleave matches its longer blade trail; enemies behind you or beyond the blade still evade the hit. Each swing damages each enemy only once. Existing journeys also receive this correction."
+  },
+  "適用 v0.0.41：修正劍路接觸敵人身體卻揮空的落差，拔劍完成後才顯現營地建築與駐點人物。每刀傷害、體力、敵人數量及既有旅程進度保留；不增加任務與對話。": {
+    "zh_CN": "适用 v0.0.41：修正剑路接触敌人身体却挥空的落差，拔剑完成后才显现营地建筑与驻点人物。每刀伤害、体力、敌人数量及既有旅程进度保留；不增加任务与对话。",
+    "en": "For v0.0.41: sword contact now matches enemy body boundaries, and camp buildings and attendants appear after the sword extraction finishes. Damage, stamina costs, enemy counts and existing journey progress are preserved. No quests or dialogue are added."
   }
 }

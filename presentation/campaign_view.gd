@@ -6,7 +6,7 @@ var _raider_motion: RefCounted=preload("res://presentation/raider_motion_view.gd
 const Daylight=preload("res://presentation/daylight_view.gd")
 @export var daylight_style: Resource=preload("res://data/daylight_style.tres")
 var _daylight: Daylight
-var _camp_ignition_age: float=-1.0
+var camp_reveal: RefCounted=preload("res://presentation/camp_reveal.gd").new()
 const SettlementIdentity=preload("res://data/settlement_identity.tres")
 const TrailView=preload("res://presentation/trail_view.gd")
 const PlanetScenery=preload("res://presentation/planet_scenery.gd")
@@ -69,9 +69,7 @@ func present(sim, player_x: float) -> void:
 		_details=Details.layout(sim.map_seed,sim.frontier.regions)
 		_details=_details.filter(func(d):return d.layer==2 or not _landmarks.any(func(site):return absf(d.x-site.x)<145))
 	_sim=sim
-	_camp_ignition_age=-1.0
-	for effect in sim.effects:
-		if effect.kind=="camp_ignition":_camp_ignition_age=2.4-effect.life
+	camp_reveal.present(sim)
 	_reveal.observe(sim.frontier.regions+sim.mission.rifts,sim.workforce.elapsed)
 	hit_feedback.present(sim)
 	_raider_motion.present(sim)
@@ -117,12 +115,6 @@ func _prop(name: String, at: Vector2, scale: float = 1.0, tint := Color.WHITE) -
 	if texture==null:texture=Details.harvest_texture(name,at.x,_sim.map_seed)
 	else:scale=1.0
 	if texture==null:texture=EXTRA_ART.get(name,art.props.get(name))
-	if _sim.life.enabled and name in ["workshop","armory"]:
-		for effect in _sim.effects:
-			if effect.kind=="camp_ignition":
-				var assembled: float=smoothstep(1.0,2.1,2.4-effect.life)
-				tint.a*=assembled
-				at.y+=(1-assembled)*24
 	Ambient.prop(self,texture,name,at,scale,tint,_sim.workforce.elapsed)
 	var emission: Texture2D=null if unique_building else art.emission_masks.get(name)
 	if emission!=null:
@@ -141,7 +133,7 @@ func _draw_atmosphere(_left: float) -> void:
 
 func _draw_power_grid() -> void:
 	# Decorative circuitry follows actual constructed sites and the paused game clock.
-	if _sim.frontier.city_level==0: return
+	if _sim.frontier.city_level==0 or camp_reveal.progress()<1.0: return
 	var points: Array[float]=[float(_sim.world.sites.hall)]
 	for site in _sim.built:
 		if _sim.built[site]: points.append(float(_sim.world.sites[site]))
@@ -162,15 +154,15 @@ func _draw_power_grid() -> void:
 		draw_line(Vector2(x,430),Vector2(x,445),Color("306b78"),2)
 
 func _draw_structures() -> void:
+	if camp_reveal.progress()<1.0:
+		camp_reveal.draw_on(self,_sim);return
 	TrailView.draw_on(self,_sim)
 	preload("res://presentation/planet_rocket_view.gd").draw_on(self,_sim)
 	var world = _sim.world
 	var map = _sim.frontier
 	var hall: float = world.sites.hall
 	var core_tint:=Color.WHITE if _sim.mission.core_hp>0 else Color("566779")
-	if _camp_ignition_age>=0:core_tint.a*=smoothstep(0.82,1.35,_camp_ignition_age)
 	if map.city_level>0: _prop("hall-%d" % map.city_level,Vector2(hall,430),1.0,core_tint)
-	if _camp_ignition_age>=0 and _camp_ignition_age<1.1:_prop("stone",Vector2(hall,430),0.45)
 	if _sim.mission.core_hp<=0:
 		_prop("stone",Vector2(hall+104,430),0.35,Color("4a5158"))
 	elif not _sim.life.enabled or map.city_level>0:
@@ -437,6 +429,7 @@ func _crystal(at: Vector2, filled: bool, radius: float = 8.0) -> void:
 	draw_polyline(points,Color("b6f6df") if filled else Color("76989e"),1.0)
 
 func _draw_interaction() -> void:
+	if camp_reveal.progress()<1.0:return
 	if not interactions_visible:return
 	if _context.id.is_empty() or _context.id in ["trial","mount_lever"]: return
 	if _sim.life.enabled and not _context.enabled:
