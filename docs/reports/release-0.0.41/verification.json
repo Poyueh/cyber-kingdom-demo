@@ -1,0 +1,67 @@
+{
+  "version": "0.0.41",
+  "published": false,
+  "source_commit": "af94be3122924f71332c9fb94b9653eab6fdd8b2",
+  "source_tree": "0a63049c4466902f4df83d0f64f53c12c0809833",
+  "full_check": true,
+  "core_assertions": 4426,
+  "save_schema": 20,
+  "archive_integrity_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.41.zip",
+      "size": 129183017,
+      "sha256": "1559535abc8fb164d91e5c7a478ca62c4743e4d75498b056afe0b6572d7348ac"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.41.zip",
+      "size": 106760974,
+      "sha256": "797d63efd1464a552a08dfcd4e196024ffb570c3d21b00a67b63e64698ec884c"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.41.zip",
+      "size": 89815153,
+      "sha256": "617af58763a733fb04580df0f16fd4947e2a732788885a0211e783da5b1cf5d5"
+    },
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.41-debug.apk",
+      "size": 97993468,
+      "sha256": "83e42bfbb5093c83df56d2b13e67491027de085317b38848fba0c0ce0f11cc17"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.41-Xcode.zip",
+      "size": 181528899,
+      "sha256": "b3ef4d00d32dd56c5f781ce7f53577a63f9de4d4e9fd70a96b1b04e73fc31e44"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.41.html",
+      "size": 9420175,
+      "sha256": "13b9d4c45b89d573c5c3cf4a3cb241273c4a991ddf319bbc91f7e836aa22b0df"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "iOS Xcode project requires signing",
+    "Android debug certificate",
+    "Player curiosity and retention require human playtesting"
+  ],
+  "packaged_native_assertions": 38,
+  "packaged_contact_assertions": 28,
+  "packaged_founding_assertions": 10,
+  "native_keyboard_contact_cases": 3,
+  "macos_signature_verified": true,
+  "android_signature_verified": true,
+  "android_alignment_16k_verified": true,
+  "ios_version": "0.0.41",
+  "ios_build": 41,
+  "guide_locales_reviewed": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ],
+  "packaged_specification_revision": 10,
+  "runtime_source_frozen": true,
+  "post_export_changes": "Only test setup timing and release evidence; no runtime, resource, guide or specification edits.",
+  "script_errors": 0,
+  "scene_suites": 57
+}
