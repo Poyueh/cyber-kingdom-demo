@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: drawing the first sword completes before held movement resumes
+PASS: attack cannot replace an unfinished sword extraction
+PASS: extraction stays visible through queued movement and attack
+PASS: all founding buildings remain hidden during extraction
+PASS: pause freezes extraction and building reveal together
+PASS: construction begins only after the extraction body has finished
+PASS: camp starts a gradual grounded assembly after extraction
+PASS: camp assembly completes and exposes buildings and attendants
+PASS: movement resumes normally after extraction
+PASS: restart discards the previous founding transition
+Founding scene assertions: 10; failures: 0

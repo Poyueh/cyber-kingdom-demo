@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: visible raider body contact connects facing -1
+PASS: one cut cannot damage raider twice
+PASS: visible warden body contact connects facing -1
+PASS: one cut cannot damage warden twice
+PASS: visible dragon body contact connects facing -1
+PASS: one cut cannot damage dragon twice
+PASS: visible raider body contact connects facing 1
+PASS: one cut cannot damage raider twice
+PASS: visible warden body contact connects facing 1
+PASS: one cut cannot damage warden twice
+PASS: visible dragon body contact connects facing 1
+PASS: one cut cannot damage dragon twice
+PASS: body radius cannot turn a forward cut into a rear hit
+PASS: clear space beyond blade and body remains a miss
+PASS: raider silhouette boundary at 102
+PASS: raider silhouette boundary at 106
+PASS: warden silhouette boundary at 125
+PASS: warden silhouette boundary at 130
+PASS: dragon silhouette boundary at 230
+PASS: dragon silhouette boundary at 234
+PASS: turning away uses the shorter rear silhouette
+PASS: light blade does not borrow the heavy cleave extension
+PASS: heavy blade's visible extension deals the existing 29 damage
+PASS: contact geometry does not change the v20 save shape
+PASS: restoring mid-cut never duplicates a hit
+PASS: restored campaigns receive the corrected contact profile
+PASS: actual v0.0.40 package save opens without migration
+PASS: existing journeys also receive body-edge contact correction
+Sword contact scene assertions: 28; failures: 0
