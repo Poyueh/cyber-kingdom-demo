@@ -1,0 +1,16 @@
+ASSET OK Cyber-Kingdom-Android-v0.0.42-debug.apk
+ASSET OK Cyber-Kingdom-Guide-v0.0.42.html
+ASSET OK Cyber-Kingdom-iOS-v0.0.42-Xcode.zip
+ASSET OK Cyber-Kingdom-macOS-v0.0.42.zip
+ASSET OK Cyber-Kingdom-Web-v0.0.42.zip
+ASSET OK Cyber-Kingdom-Windows-v0.0.42.zip
+ASSET OK SHA256SUMS.txt
+LIVE OK index.html 5542
+LIVE OK guide.html 9420012
+LIVE OK index.pck 70064188
+LIVE OK index.js 279815
+LIVE OK index.wasm 39514754
+LIVE OK guide-reader.js 2969
+LIVE OK guide-reader.css 1750
+PASS: live specification 0.0.42 11 13 files
+PASS: release assets and live runtime match v0.0.42.

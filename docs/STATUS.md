@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-12：v0.0.42 中景貼地與圓形日月（待公開部署）
+## 2026-10-12：v0.0.42 中景貼地與圓形日月（已發佈）
 
 - 補齊馬廄、戰馬遺跡／導流器透明底邊，火箭三階段與路邊圖集分幀貼地；日月在世界座標等比例繪製，雲色不再切碎圓面。適用既有旅程，互動位置／玩法／快照 v20 不變。
 - 原生七地巡覽、12 項日月比例／遮罩檢查、成品 PCK 6 項日月及五種物件畫面通過。完整 tools/check.sh：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。五平台同源 c2536ae；Mac 簽章、Android 簽署／對齊、iOS 版本與封裝核對完成。企劃 r11、三語指南同步。
-- [設計](design/grounding-and-round-sky.md) · [第 120 課](lessons/120-grounding-and-round-sky.md) · [畫面證據](reports/grounding-round-sky/README.md) · [發行驗收](reports/release-0.0.42/verification.json)。Windows／手機未真機驗收，iOS 為待簽署專案。下一步核對公開 Release 與 Pages。
+- [設計](design/grounding-and-round-sky.md) · [第 120 課](lessons/120-grounding-and-round-sky.md) · [畫面證據](reports/grounding-round-sky/README.md) · [發行驗收](reports/release-0.0.42/verification.json)。Windows／手機未真機驗收，iOS 為待簽署專案。[v0.0.42 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.42) 與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.42) 已公開；部署 38199835021 成功。七附件雜湊／大小、七份線上遊戲／指南與 13 份規格檔皆與套件一致，包內與線上規格皆 r11。瀏覽器確認前導、主選單、新版內嵌指南及規格，無 console errors，未建立玩家旅程。
 
 ## 2026-10-12：v0.0.41 劍擊接觸與拔劍建營（已發佈）
 
