@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-12：v0.0.43 日月光暈與天空融合（待公開部署）
+## 2026-10-12：v0.0.43 日月光暈與天空融合（已發佈）
 
 - 圓形日月增加帶天空色的像素柔邊、盤面明暗與分層抖色光暈；晨光與夕照獨立調色，日月／星光在晨昏漸入漸出，兩個日夜端點無跳色。舊旅程直接套用，日夜長度／敵潮／快照 v20 不變。
 - 原生及成品 PCK 各 10 項比例／光暈／交界驗證、七地巡覽與六個日夜時點通過。完整 tools/check.sh：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。五平台同源 6249841，Mac 簽章、Android 簽署／對齊、iOS 版本及封裝完整性核對完成；規格 r12 與三語指南同步。
-- [設計](design/atmospheric-pixel-sky.md) · [第 121 課](lessons/121-pixel-sky-atmosphere.md) · [畫面證據](reports/atmospheric-pixel-sky/README.md) · [發行驗收](reports/release-0.0.43/verification.json)。Windows／手機未真機驗收，iOS 為待簽署專案。下一步核對公開 Release 與 Pages。
+- [設計](design/atmospheric-pixel-sky.md) · [第 121 課](lessons/121-pixel-sky-atmosphere.md) · [畫面證據](reports/atmospheric-pixel-sky/README.md) · [發行驗收](reports/release-0.0.43/verification.json)。Windows／手機未真機驗收，iOS 為待簽署專案。[v0.0.43 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.43) 與 [Pages](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.43) 已公開，部署 38201773079 成功。七附件雜湊／大小、七份線上遊戲／指南與 13 份規格檔均與套件一致，包內與線上規格皆 r12。瀏覽器確認前導、主選單、新版指南及規格，無 console errors，未建立玩家旅程。
 
 ## 2026-10-12：v0.0.42 中景貼地與圓形日月（已發佈）
 
