@@ -1,4 +1,5 @@
 extends RefCounted
+const Ground=preload("res://presentation/grounded_art.gd")
 const Junction=preload("res://art/structures/mount-v001/junction.png")
 const Cradle=preload("res://art/structures/mount-v001/cradle.png")
 const Stable=preload("res://art/structures/mount-v001/stable.png")
@@ -26,7 +27,7 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
    if absf(view._view_player_x-q.ruin_x)<120 and not q.recovered:
     Ruins._caption(view,Vector2(q.ruin_x,223),"喚醒機械戰馬" if q.powered() else "沿纜線對準兩座導流器",Color("c5e9df"))
    if q.powered() and not q.recovered:
-    view.draw_arc(Vector2(q.ruin_x,356),36,-PI,PI,20,Color(0.3,1,0.82,0.5+sin(sim.workforce.elapsed*3)*0.2),2)
+    view.draw_arc(Ground.anchor(Cradle,Vector2(q.ruin_x,356)),36,-PI,PI,20,Color(0.3,1,0.82,0.5+sin(sim.workforce.elapsed*3)*0.2),2)
  if (q.recovered or q.unlocked) and sim.frontier.city_level>0 and view._on_screen(q.stable_x,200):
   var tint:=Color.WHITE if q.unlocked else Color(0.53,0.66,0.67,0.75)
   if absf(view._view_player_x-q.stable_x)<65:tint=tint.lightened(0.3)
@@ -35,7 +36,7 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
    var key: String=("下馬" if q.riding else "騎乘機械戰馬") if q.unlocked else "修復馬廄"
    Ruins._caption(view,Vector2(q.stable_x,223),key,Color("e2d0a5"))
 static func _prop(view: Node2D, texture: Texture2D, x: float, tint: Color) -> void:
- view.draw_texture(texture,Vector2(roundf(x-texture.get_width()*0.5),430-texture.get_height()),tint)
+ view.draw_texture(texture,Ground.anchor(texture,Vector2(roundf(x-texture.get_width()*0.5),430-texture.get_height())),tint)
 static func _junction(view: Node2D, sim: RefCounted, index: int) -> void:
  var q: RefCounted=sim.mount_quest
  var x: float=q.levers[index]
@@ -52,7 +53,7 @@ static func _junction(view: Node2D, sim: RefCounted, index: int) -> void:
    var dot_x: float=lerpf(x,next,fposmod(sim.workforce.elapsed*0.3+k*0.2,1))
    view.draw_rect(Rect2(Vector2(dot_x,426).round(),Vector2(7,3)),tint)
  _prop(view,Junction,x,Color(1,1,1,alpha))
- var center:=Vector2(x-3,394)
+ var center:=Ground.anchor(Junction,Vector2(x-3,394))
  view.draw_circle(center,12,Color(0.06,0.12,0.15,alpha))
  view.draw_arc(center,13,0,TAU,12,tint,2)
  # Permanent bright socket shows the target; the handle shows the current turn.

@@ -8,6 +8,7 @@ uniform float warmth;
 uniform float phase;
 uniform bool night;
 uniform float sun_radius;
+uniform vec2 sky_size;
 uniform bool layered_biome = false;
 void fragment() {
  vec4 original=texture(TEXTURE,UV);
@@ -20,13 +21,15 @@ void fragment() {
  float cloud=clamp((0.36-original.r)*5.0,0.0,0.7);
  sky*=1.0-cloud*0.28;
  vec2 pixel=floor(UV/TEXTURE_PIXEL_SIZE/2.0)*2.0;
- vec2 center=vec2(mix(0.08,0.92,phase),0.225-sin(phase*3.14159265)*0.175)/TEXTURE_PIXEL_SIZE;
- float radius=night ? sun_radius*0.65 : sun_radius;
- float distance_to_body=length(pixel-center);
+ // Measure both axes in world pixels; the background may stretch independently.
+ float radius=sun_radius*sky_size.y*TEXTURE_PIXEL_SIZE.y*(night ? 0.65 : 1.0);
+ vec2 center=vec2(mix(0.08,0.92,phase),0.225-sin(phase*3.14159265)*0.175)*sky_size;
+ center.y=max(center.y,radius+2.0);
+ vec2 body_pixel=(floor((UV*sky_size-center)/2.0)+0.5)*2.0;
+ float distance_to_body=length(body_pixel);
  vec3 body=night ? vec3(0.72,0.84,0.89) : mix(vec3(1.0,0.93,0.65),vec3(1.0,0.64,0.34),warmth);
  float glow=(1.0-smoothstep(radius,radius*3.2,distance_to_body))*(night ? 0.10 : 0.23);
  sky=mix(sky,body,glow);
- if (distance_to_body<radius) sky=body;
  // A few stable pixel stars, never a scrolling screen-space particle field.
  vec2 cell=floor(pixel/vec2(39.0,29.0));
  float seed=fract(sin(dot(cell,vec2(12.9898,78.233)))*43758.5453);
@@ -35,5 +38,8 @@ void fragment() {
  if (layered_biome) {
   sky_weight=(1.0-smoothstep(0.14,0.42,UV.y))*smoothstep(0.14,0.30,original.r)*smoothstep(0.88,1.08,original.r/max(original.g,0.01));
  }
- COLOR=vec4(mix(terrain,sky,sky_weight),original.a);
+ // Clouds tint the sky, but must not punch holes in the celestial disc.
+ vec3 result=mix(terrain,sky,sky_weight);
+ if (distance_to_body<radius) result=body;
+ COLOR=vec4(result,original.a);
 }
