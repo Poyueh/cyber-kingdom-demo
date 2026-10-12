@@ -2199,8 +2199,8 @@
     "zh_CN": "剑击判定会计入敌人的身体宽度，不必碰到中心点才算命中。小怪、守门兽与巨龙各有对应边界；重劈配合较长刀光，背后和超出剑路仍不会命中。同一刀对同一敌人只造成一次伤害，旧旅程也套用此修正。",
     "en": "Sword contact now accounts for enemy body width instead of requiring a hit on the centre point. Devourers, guardians and dragons have matching body boundaries. The heavy cleave matches its longer blade trail; enemies behind you or beyond the blade still evade the hit. Each swing damages each enemy only once. Existing journeys also receive this correction."
   },
-  "適用 v0.0.41：修正劍路接觸敵人身體卻揮空的落差，拔劍完成後才顯現營地建築與駐點人物。每刀傷害、體力、敵人數量及既有旅程進度保留；不增加任務與對話。": {
-    "zh_CN": "适用 v0.0.41：修正剑路接触敌人身体却挥空的落差，拔剑完成后才显现营地建筑与驻点人物。每刀伤害、体力、敌人数量及既有旅程进度保留；不增加任务与对话。",
-    "en": "For v0.0.41: sword contact now matches enemy body boundaries, and camp buildings and attendants appear after the sword extraction finishes. Damage, stamina costs, enemy counts and existing journey progress are preserved. No quests or dialogue are added."
+  "適用 v0.0.42：修正馬廄、戰馬遺跡與火箭的浮空，太陽和月亮在不同畫面比例下保持圓形。既有旅程可直接繼續，戰鬥與建造規則不變。": {
+    "zh_CN": "适用 v0.0.42：修正马厩、战马遗迹与火箭的浮空，太阳和月亮在不同画面比例下保持圆形。既有旅程可直接继续，战斗与建造规则不变。",
+    "en": "For v0.0.42: stables, mount ruins and rockets now sit on the ground. The sun and moon stay circular across screen proportions. Continue existing journeys with the same combat and construction rules."
   }
 }

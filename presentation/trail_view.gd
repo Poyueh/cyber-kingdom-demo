@@ -1,4 +1,5 @@
 extends RefCounted
+const Ground=preload("res://presentation/grounded_art.gd")
 ## Local landmarks and telegraphs reflect saved encounter state. No gameplay timers here.
 const Trails=preload("res://domain/trail_encounters.gd")
 const PROPS=preload("res://art/settlement/inhabitants-v001/trail-props.png")
@@ -13,7 +14,8 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
 		var alpha: float=view._region_reveal(site.region)
 		if alpha<=0:continue
 		var tint: Color=Color(0.48,0.52,0.55,alpha) if site.claimed else Color(1,1,1,alpha)
-		view.draw_texture_rect_region(PROPS,Rect2(at+Vector2(-64,-74),Vector2(128,80)),Rect2(index*128,sim.planet.id*80,128,80),tint)
+		var source:=Rect2i(index*128,sim.planet.id*80,128,80)
+		view.draw_texture_rect_region(PROPS,Ground.frame_rect(PROPS,source,at),Rect2(source),tint)
 		if site.claimed:continue
 		var locked: bool=not sim.trails.available(index)
 		view._icon("lock" if locked else "crystal",at+Vector2(0,-57),19,Color(color,glow))

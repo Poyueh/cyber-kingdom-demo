@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: sun viewport=(960, 300) visible extent=(28, 28)
+PASS: moon viewport=(960, 300) visible extent=(16, 16)
+PASS: sun viewport=(960, 700) visible extent=(60, 60)
+PASS: moon viewport=(960, 700) visible extent=(40, 40)
+PASS: sun viewport=(1500, 400) visible extent=(36, 36)
+PASS: moon viewport=(1500, 400) visible extent=(24, 24)

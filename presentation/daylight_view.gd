@@ -31,6 +31,7 @@ func present(clock: RefCounted, texture: Texture2D, bounds: Rect2, layered_biome
  _sky.texture=texture
  _sky.position=bounds.position
  _sky.scale=bounds.size/texture.get_size()
+ _material.set_shader_parameter("sky_size",bounds.size)
  _material.set_shader_parameter("sky_top",top)
  _material.set_shader_parameter("sky_horizon",horizon)
  _material.set_shader_parameter("daylight",day)
