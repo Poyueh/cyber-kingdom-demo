@@ -4,3 +4,8 @@
 
 [resource]
 script = ExtResource("1")
+dawn_sky = Color(0.34, 0.39, 0.56, 1)
+dawn_horizon = Color(0.88, 0.69, 0.57, 1)
+sun_halo_strength = 0.3
+moon_halo_strength = 0.16
+halo_extent = 4.5

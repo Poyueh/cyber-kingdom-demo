@@ -25,8 +25,8 @@ func present(clock: RefCounted, texture: Texture2D, bounds: Rect2, layered_biome
  var dawn: float=smoothstep(0.84,1,phase) if clock.is_night else 1.0-smoothstep(0,0.17,phase)
  var twilight_light: Color=style.night_light.lerp(style.sunset_light,dusk).lerp(style.dawn_light,dawn)
  _light.color=twilight_light.lerp(style.daylight,day)
- var top: Color=style.night_sky.lerp(style.sunset_sky,maxf(dusk,dawn)*0.8).lerp(style.day_sky,day)
- var horizon: Color=style.night_horizon.lerp(style.sunset_horizon,maxf(dusk,dawn)).lerp(style.day_horizon,day)
+ var top: Color=style.night_sky.lerp(style.sunset_sky,dusk).lerp(style.dawn_sky,dawn).lerp(style.day_sky,day)
+ var horizon: Color=style.night_horizon.lerp(style.sunset_horizon,dusk).lerp(style.dawn_horizon,dawn).lerp(style.day_horizon,day)
  _material.set_shader_parameter("layered_biome",layered_biome)
  _sky.texture=texture
  _sky.position=bounds.position
@@ -40,3 +40,5 @@ func present(clock: RefCounted, texture: Texture2D, bounds: Rect2, layered_biome
  _material.set_shader_parameter("night",clock.is_night)
  _material.set_shader_parameter("sun_radius",style.sun_radius)
  _material.set_shader_parameter("world_light",_light.color)
+ _material.set_shader_parameter("halo_strength",style.moon_halo_strength if clock.is_night else style.sun_halo_strength)
+ _material.set_shader_parameter("halo_extent",style.halo_extent)

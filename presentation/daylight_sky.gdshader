@@ -9,6 +9,8 @@ uniform float phase;
 uniform bool night;
 uniform float sun_radius;
 uniform vec2 sky_size;
+uniform float halo_strength;
+uniform float halo_extent;
 uniform bool layered_biome = false;
 void fragment() {
  vec4 original=texture(TEXTURE,UV);
@@ -28,18 +30,38 @@ void fragment() {
  vec2 body_pixel=(floor((UV*sky_size-center)/2.0)+0.5)*2.0;
  float distance_to_body=length(body_pixel);
  vec3 body=night ? vec3(0.72,0.84,0.89) : mix(vec3(1.0,0.93,0.65),vec3(1.0,0.64,0.34),warmth);
- float glow=(1.0-smoothstep(radius,radius*3.2,distance_to_body))*(night ? 0.10 : 0.23);
- sky=mix(sky,body,glow);
+ // Fade at both horizons so sun/moon switching cannot flash a new disc.
+ float visibility=smoothstep(0.0,0.1,phase)*(1.0-smoothstep(0.9,1.0,phase));
  // A few stable pixel stars, never a scrolling screen-space particle field.
  vec2 cell=floor(pixel/vec2(39.0,29.0));
  float seed=fract(sin(dot(cell,vec2(12.9898,78.233)))*43758.5453);
- if (night && seed>0.72 && mod(pixel.x,39.0)<2.0 && mod(pixel.y,29.0)<2.0) sky=mix(sky,vec3(0.74,0.84,0.9),(1.0-warmth)*0.7);
+ if (night && seed>0.72 && mod(pixel.x,39.0)<2.0 && mod(pixel.y,29.0)<2.0) sky=mix(sky,vec3(0.74,0.84,0.9),(1.0-warmth)*visibility*0.7);
  float sky_weight=open_sky ? 1.0 : 0.0;
  if (layered_biome) {
   sky_weight=(1.0-smoothstep(0.14,0.42,UV.y))*smoothstep(0.14,0.30,original.r)*smoothstep(0.88,1.08,original.r/max(original.g,0.01));
  }
- // Clouds tint the sky, but must not punch holes in the celestial disc.
  vec3 result=mix(terrain,sky,sky_weight);
- if (distance_to_body<radius) result=body;
+ // Ordered, world-pixel dithering keeps the halo soft without a smooth HD blur.
+ vec2 grid=floor((UV*sky_size-center)/2.0);
+ float dither=mod(grid.x+grid.y*2.0,4.0)/4.0;
+ float radial=distance_to_body/max(radius,1.0);
+ float halo=pow(1.0-smoothstep(0.6,halo_extent,radial),2.0);
+ halo=floor(halo*24.0+dither)/24.0;
+ float atmosphere=(1.0-smoothstep(0.24,0.45,UV.y))*mix(0.45,1.0,sky_weight);
+ vec3 halo_color=mix(sky_horizon.rgb,body,night ? 0.48 : 0.7);
+ result=mix(result,halo_color,halo*halo_strength*visibility*atmosphere);
+ // A narrow pixel rim shares sky/cloud colour; the circular silhouette stays whole.
+ float rim=floor(smoothstep(0.12,1.0,radial)*5.0)/5.0;
+ vec3 core=night ? vec3(0.78,0.85,0.92) : mix(vec3(1.0,0.97,0.78),body,warmth*0.6);
+ vec3 disc=mix(core,mix(body,sky_horizon.rgb,0.24),rim*0.7);
+ if (night) {
+  vec2 patch=floor(body_pixel/4.0);
+  float grain=fract(sin(dot(patch,vec2(12.9898,78.233)))*43758.5453);
+  disc*=1.0-step(0.72,grain)*0.065;
+ }
+ float edge=1.0-smoothstep(radius-2.0,radius+1.0,distance_to_body);
+ edge=floor(edge*4.0+dither)/4.0;
+ float opacity=(night ? 0.88 : 0.94)*(1.0-cloud*0.12)*visibility;
+ result=mix(result,disc,edge*opacity);
  COLOR=vec4(result,original.a);
 }
