@@ -1,4 +1,5 @@
 extends RefCounted
+const Ground=preload("res://presentation/grounded_art.gd")
 const ATLAS=preload("res://art/planets/v001/rocket.png")
 const Ops=preload("res://application/planet_operations.gd")
 static func draw_on(view: Node2D, sim: RefCounted) -> void:
@@ -8,7 +9,8 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
  if view._on_screen(x,180) and (sim.planet.reactor or sim.planet.wrecked):
   var frame: int=2 if sim.planet.rocket_ready else (1 if sim.planet.rocket_pending else 0)
   var tint: Color=Color(1.2,1.35,1.35) if absf(view._view_player_x-x)<73 else Color.WHITE
-  view.draw_texture_rect_region(ATLAS,Rect2(x-90,246,180,188),Rect2(frame*180,0,180,188),tint)
+  var source:=Rect2i(frame*180,0,180,188)
+  view.draw_texture_rect_region(ATLAS,Ground.frame_rect(ATLAS,source,Vector2(roundf(x),430)),Rect2(source),tint)
   view._icon("map" if sim.planet.rocket_ready else "hammer",Vector2(x,218),29,Color("9de0db"))
   if sim.planet.rocket_pending:
    view.draw_line(Vector2(x-32,237),Vector2(x+32,237),Color("24434d"),4)
