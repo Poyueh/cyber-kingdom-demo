@@ -1,0 +1,28 @@
+ASSET OK Cyber-Kingdom-Android-v0.0.44-debug.apk
+ASSET OK Cyber-Kingdom-Guide-v0.0.44.html
+ASSET OK Cyber-Kingdom-iOS-v0.0.44-Xcode.zip
+ASSET OK Cyber-Kingdom-macOS-v0.0.44.zip
+ASSET OK Cyber-Kingdom-Web-v0.0.44.zip
+ASSET OK Cyber-Kingdom-Windows-v0.0.44.zip
+ASSET OK SHA256SUMS.txt
+LIVE OK index.html 5542
+LIVE OK index.js 279815
+LIVE OK guide.html 9414816
+LIVE OK guide-reader.js 2969
+LIVE OK guide-reader.css 1750
+LIVE OK index.wasm 39514754
+LIVE OK index.pck 70071380
+LIVE OK spec/assets/30d8c59ac7-dragon-counterattack.webp 103942
+LIVE OK spec/assets/056284ed5a-mysterious-menu.png 287460
+LIVE OK spec/assets/26559190e8-attendant-work.webp 1169838
+LIVE OK spec/assets/473d4b2a11-star-chart.webp 34368
+LIVE OK spec/assets/6fb0311681-planet-levels.webp 220194
+LIVE OK spec/assets/9dbca9b182-cinematic-dragon.png 530468
+LIVE OK spec/assets/ade86e08e4-early-exploration.webp 91172
+LIVE OK spec/assets/d4f1036c94-settlement-inhabitants.webp 181748
+LIVE OK spec/assets/d5df6b3c90-devourers.webp 289270
+LIVE OK spec/index.html 64326
+LIVE OK spec/assets/e2573f5d0d-combo.webp 914436
+LIVE OK spec/reader.js 2706
+LIVE OK spec/style.css 11078
+PASS: all release assets, live game, guide and specification match v0.0.44.
