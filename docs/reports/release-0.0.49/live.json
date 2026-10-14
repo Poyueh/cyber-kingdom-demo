@@ -1,0 +1,116 @@
+{
+  "version": "0.0.49",
+  "pages_run": "38542755895",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.49",
+  "assets_verified": 7,
+  "runtime_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "b811782ffc8d32663ef721a2ede224129abb41bfbb507f40c2595d7c5ddf88f3"
+    },
+    {
+      "name": "guide.html",
+      "size": 16352281,
+      "sha256": "dd378f7d00c3f9f5d3df5487dbc0d973d78da631321ed69ea467117e4ea0c9b6"
+    },
+    {
+      "name": "index.pck",
+      "size": 72120980,
+      "sha256": "edce765cb483063e17a38622957e191530cebe04f5f00ac2a5a386e6cb83ccfc"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056"
+    }
+  ],
+  "spec_revision": 23,
+  "spec_files": [
+    {
+      "name": "spec/assets/26559190e8-attendant-work.webp",
+      "size": 1169838,
+      "sha256": "26559190e8feb73f2a2c74a1325120c459b1adb7ed7e4bd72aa7381286f2f3ea"
+    },
+    {
+      "name": "spec/assets/30d8c59ac7-dragon-counterattack.webp",
+      "size": 103942,
+      "sha256": "30d8c59ac76bdd08d82ac67e3fd46b4b4afa487053fcb44425982a54f1ab537a"
+    },
+    {
+      "name": "spec/assets/628eb68e7c-mysterious-menu.png",
+      "size": 281396,
+      "sha256": "628eb68e7c4cb68d7d7efff875a1132bb7ba984bfec4538aa73de3a454493410"
+    },
+    {
+      "name": "spec/assets/6fb0311681-planet-levels.webp",
+      "size": 220194,
+      "sha256": "6fb03116815310292109c85fe5dcaf38e3e229cfe46fbbe1a9c47688716dd2cd"
+    },
+    {
+      "name": "spec/assets/9dbca9b182-cinematic-dragon.png",
+      "size": 530468,
+      "sha256": "9dbca9b182ae166f1270165e9850c67bf410bf60d67e9174fa7698a4cc8bd23d"
+    },
+    {
+      "name": "spec/assets/ade86e08e4-early-exploration.webp",
+      "size": 91172,
+      "sha256": "ade86e08e490493610fa615f0614f43d0128585f6c086cd85b2b72b371df64a4"
+    },
+    {
+      "name": "spec/assets/b182ee438b-combo.webp",
+      "size": 1236496,
+      "sha256": "b182ee438b7355214a4571eb325f5ce3d8f64f49ca73b24b2db205022f98cbc8"
+    },
+    {
+      "name": "spec/assets/d4f1036c94-settlement-inhabitants.webp",
+      "size": 181748,
+      "sha256": "d4f1036c945064f097e18c5d8f8db4f10f846a5aeed4520260ab3223cb6c2aca"
+    },
+    {
+      "name": "spec/assets/d5df6b3c90-devourers.webp",
+      "size": 289270,
+      "sha256": "d5df6b3c90806ec5425ef10dd966b76a28e5fbcca5d4c21b5565f793bd6ef4cf"
+    },
+    {
+      "name": "spec/assets/da0b1cfc0a-star-chart.webp",
+      "size": 90294,
+      "sha256": "da0b1cfc0ae6d0ca0b6cc3f056f5b01d3c0a08ce773694ae8b2bd1bed05002e6"
+    },
+    {
+      "name": "spec/assets/f851f7e130-gait.webp",
+      "size": 4596668,
+      "sha256": "f851f7e1301a337f4e38bffe13a119851ba989dc7fad9fee8e50dd66bd4df7b8"
+    },
+    {
+      "name": "spec/index.html",
+      "size": 74871,
+      "sha256": "e57ebd20f8bc512e3e94f1f6d6d3c8fee2c054242dae34c1c72d9463f1062775"
+    },
+    {
+      "name": "spec/reader.js",
+      "size": 2706,
+      "sha256": "6cc33a6ae719d50267acced5b925c88847b45550adfa92b61b9200a10fec7a4d"
+    },
+    {
+      "name": "spec/style.css",
+      "size": 11078,
+      "sha256": "4ab246c449276ab11259ef4615bc86f4a3f136408fd74579ca5ce73e9f690172"
+    }
+  ]
+}

@@ -48,7 +48,7 @@
     "iOS 0.0.49 / 49"
   ],
   "browser_local_guide_errors": [],
-  "published": false,
+  "published": true,
   "limitations": [
     "Windows and mobile physical devices not tested",
     "macOS ad-hoc signing, not notarized",
@@ -76,5 +76,10 @@
     "armed",
     "unarmed"
   ],
-  "public_player_journey_created": false
+  "public_player_journey_created": false,
+  "pages_run": "38542755895",
+  "browser_public_menu_errors": [],
+  "browser_public_guide_errors": [],
+  "browser_public_spec_errors": [],
+  "public_guide_animation_verified": true
 }
