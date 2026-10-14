@@ -1,6 +1,6 @@
 {
   "version": "0.0.45",
-  "published": false,
+  "published": true,
   "source_commit": "b624cee86fa86e18bccfbbdc20c543b0934cf7e4",
   "source_tree": "2514f00361bf9093dad7feae04b571b16db5b8a3",
   "full_check": true,
@@ -62,5 +62,12 @@
   "webgl_console_errors": 0,
   "spec_revision": 14,
   "validation_test_commit": "0ff0c2f",
-  "runtime_unchanged_after_export": true
+  "runtime_unchanged_after_export": true,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.45",
+  "pages_run": 38509702936,
+  "release_assets_verified": 7,
+  "live_runtime_files_verified": 7,
+  "live_spec_files_verified": 13,
+  "browser_menu_guide_spec_verified": true,
+  "browser_console_errors": 0
 }
