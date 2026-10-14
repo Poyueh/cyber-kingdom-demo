@@ -1435,10 +1435,6 @@
     "en": "For v0.0.18: three distinct pixel blade trails, contact sparks, brief hit stop and camera feedback, with clearer anticipation and recovery on the heavy cut. Includes the redrawn action set with 12-frame runs and sprints; existing saves work. New journeys also have the merchant, scarce chests, exploration map and two module ruins. Older illustrations remain labelled. This guide is not the game.",
     "zh_CN": "适用 v0.0.18：新增三段像素刀光、命中火花、短暂停顿与镜头反馈，重劈蓄力与收招节奏更鲜明。沿用全套重绘动作，跑步与冲刺各 12 张；既有记录也能使用。新旅程另有商人、稀缺宝箱、探索图与两座部件遗迹。较早图片保留旧版示意标示。这是指南，不是游戏本体。"
   },
-  "v0.0.19 原生遊戲實錄 · 轉肩、沉腰與蹬地帶動三段連斬。": {
-    "en": "v0.0.19 native gameplay · Shoulder turns, shifting weight and leg drive power all three cuts.",
-    "zh_CN": "v0.0.19 原生游戏实录 · 转肩、沉腰与蹬地带动三段连斩。"
-  },
   "連續點按接斜切、回挑、重劈。騎士先轉肩蓄力，蹬地轉腰揮劍，收招時穩住重心；每刀都有完整的全身姿勢。青白刀光、命中火花與短暫停頓配合劍路，揮空不會停頓。不按方向就原地出刀，按住方向才踏斬，放開就停止推進。": {
     "en": "Tap to chain a diagonal cut, rising cut and heavy finisher. The knight winds up through the shoulders, drives the blade with the legs and hips, then settles into recovery. Cyan-white blade trails, contact sparks and brief hit stop follow each strike; misses do not pause. Stay planted without a direction, or hold a direction to advance. Releasing stops the advance.",
     "zh_CN": "连续点按接斜切、回挑、重劈。骑士先转肩蓄力，蹬地转腰挥剑，收招时稳住重心；每刀都有完整的全身姿势。青白刀光、命中火花与短暂停顿配合剑路，挥空不会停顿。不按方向就原地出刀，按住方向才踏斩，放开就停止推进。"
@@ -2239,10 +2235,6 @@
     "zh_CN": "可以。新旅程森林、沙漠、冰原各 2 门；沼泽、火山各 3 门；风暴、虚空各 4 门。第一颗龙核与火箭完成后自由选星，旧旅程保留原本门数、地图和进度。",
     "en": "Yes. New journeys have 2 gates in forest, desert and frost; 3 in swamp and volcano; 4 in storm and void. After the first core and rocket, freely choose destinations. Existing journeys retain their gate counts, maps and progress."
   },
-  "適用 v0.0.46：營火熄滅改為先黑幕再訊息；武器工具加入鋼鐵、皮革與黃銅細節；新旅程依星球配置 2–4 門；星球自然散布，首核與火箭完成後自由航行。": {
-    "zh_CN": "适用 v0.0.46：营火熄灭改为先黑幕再讯息；武器工具加入钢铁、皮革与黄铜细节；新旅程依星球配置 2–4 门；星球自然散布，首核与火箭完成后自由航行。",
-    "en": "For v0.0.46: campfire defeat fades to black before its message; weapons and tools gain steel, leather and brass details; new worlds have 2–4 gates; planets are scattered naturally with free travel after the first core and rocket."
-  },
   "兩側交替出兵，適合分配守軍。三種攻勢沿用原本逐日敵數和同場上限；封完該側所有門才取消增援，不轉移到另一門。舊紀錄保留原攻勢。": {
     "zh_CN": "两侧交替出兵，适合分配守军。三种攻势沿用原本逐日敌数和同场上限；封完该侧所有门才取消增援，不转移到另一门。旧记录保留原攻势。",
     "en": "Both sides alternate arrivals. All three tactics keep the existing daily enemy budget and battlefield limit. Sealing all gates on a side cancels its reinforcements instead of sending them elsewhere. Existing journeys keep their original tactics."
@@ -2254,5 +2246,17 @@
   "Cyber Kingdom 玩家圖文指南：點燃營火、招募居民、經營龍晶、改裝部件，封印裂隙並擊敗巨龍。": {
     "en": "Cyber Kingdom player guide: build a refuge, recruit residents, use crystals and modules, seal the rifts and defeat dragons.",
     "zh_CN": "Cyber Kingdom 玩家图文指南：点燃营火、招募居民、经营龙晶、改装部件，封印裂隙并击败巨龙。"
+  },
+  "v0.0.47 原生遊戲實錄 · 深紅披風、黑鋼長劍與完整三段連斬。": {
+    "en": "v0.0.47 native gameplay · Crimson cape, blacksteel sword and three full-body cuts.",
+    "zh_CN": "v0.0.47 原生游戏实录 · 深红披风、黑钢长剑与完整三段连斩。"
+  },
+  "適用 v0.0.47：騎士全套造型與動作更新，移除突兀發光方塊、肩部部件改為細緻刻紋；加強連斬、受擊、拔劍、跑步與騎乘表現。既有旅程可直接繼續。": {
+    "en": "For v0.0.47: redesigned knight artwork and animation, intrusive glowing blocks removed, and a subtle engraved shoulder module. Improved sword cuts, hit reactions, sword drawing, running and riding. Existing journeys remain playable.",
+    "zh_CN": "适用 v0.0.47：骑士全套造型与动作更新，移除突兀发光方块、肩部部件改为细致刻纹；加强连斩、受击、拔剑、跑步与骑乘表现。既有旅程可直接继续。"
+  },
+  "黑鋼護甲、黃銅接點與深紅披風統一騎士輪廓。每刀十二個完整姿勢，輕擊乾脆、重劈停頓更明顯；徒手、持劍、喘息、受擊、倒地與騎乘也有對應動作。劍的傷害、攻擊距離與體力花費保持原規則。": {
+    "en": "Blacksteel armor, brass joints and a crimson cape define the knight. Each cut uses twelve full-body poses, with crisp light hits and a stronger pause on the heavy cut. Unarmed movement, armed movement, fatigue, injury, falling and riding have matching animation. Damage, reach and stamina costs retain their existing rules.",
+    "zh_CN": "黑钢护甲、黄铜接点与深红披风统一骑士轮廓。每刀十二个完整姿势，轻击干脆、重劈停顿更明显；徒手、持剑、喘息、受击、倒地与骑乘也有对应动作。剑的伤害、攻击距离与体力花费保持原规则。"
   }
 }

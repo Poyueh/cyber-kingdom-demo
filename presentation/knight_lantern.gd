@@ -21,11 +21,6 @@ func present(sim: RefCounted, knight: Node2D) -> void:
  var phase: float=1.0-sim.clock.remaining/(sim.clock.night_seconds if sim.clock.is_night else sim.clock.day_seconds)
  _amount=(1.0-smoothstep(0.84,1.0,phase)) if sim.clock.is_night else maxf(1.0-smoothstep(0.0,0.17,phase),smoothstep(0.67,0.93,phase))
  _facing=sim.hero.facing
- position=knight.position+Vector2(_facing*8,-53-(24 if knight.visual.mounted else 0))
+ position=knight.visual.to_global(knight.visual.armor_socket()+Vector2(_facing*7,-4))
  visible=sim.hero.is_alive() and _amount>0.01
  _light.energy=style.lantern_energy*_amount
- queue_redraw()
-func _draw() -> void:
- draw_rect(Rect2(-4,-2,8,4),Color(0.16,0.5,0.55,_amount))
- draw_rect(Rect2(-2,-2,4,3),Color(0.5,1,0.89,_amount))
- draw_rect(Rect2(-_facing*10,9,3,2),Color(1,0.32,0.77,_amount*0.8))
