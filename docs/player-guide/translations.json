@@ -2258,5 +2258,9 @@
   "黑鋼護甲、黃銅接點與深紅披風統一騎士輪廓。每刀十二個完整姿勢，輕擊乾脆、重劈停頓更明顯；徒手、持劍、喘息、受擊、倒地與騎乘也有對應動作。劍的傷害、攻擊距離與體力花費保持原規則。": {
     "en": "Blacksteel armor, brass joints and a crimson cape define the knight. Each cut uses twelve full-body poses, with crisp light hits and a stronger pause on the heavy cut. Unarmed movement, armed movement, fatigue, injury, falling and riding have matching animation. Damage, reach and stamina costs retain their existing rules.",
     "zh_CN": "黑钢护甲、黄铜接点与深红披风统一骑士轮廓。每刀十二个完整姿势，轻击干脆、重劈停顿更明显；徒手、持剑、喘息、受击、倒地与骑乘也有对应动作。剑的伤害、攻击距离与体力花费保持原规则。"
+  },
+  "另修正少數旅程因存檔時間的小數誤差而無法讀取的問題，既有進度與玩法不變。": {
+    "en": "Also fixed a rare saved-journey loading failure caused by decimal timing precision. Existing progress and gameplay rules remain unchanged.",
+    "zh_CN": "另修正少数旅程因存档时间的小数误差而无法读取的问题，既有进度与玩法不变。"
   }
 }

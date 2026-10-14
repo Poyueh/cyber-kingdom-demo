@@ -154,3 +154,19 @@ func test_sparse_sites_are_separated_and_repeatable_across_seeds(t: SceneTree) -
 			if sim.trails.sites.size()!=2 or sim.trials.sites.size()!=1:errors.append("budget exceeded")
 	t.equal(errors,[],"224 generated worlds preserve sparse encounters and authored destinations")
 	t.equal(journey(76).configs,journey(76).configs,"same seed resolves identical roadside geometry and rules")
+
+func test_half_tick_json_checkpoint_preserves_real_elapsed_state(t: SceneTree) -> void:
+	var config: Dictionary=journey(472665975).configs[0]
+	var sim: RefCounted=Campaign.new(config)
+	var codec: RefCounted=preload("res://application/campaign_snapshot.gd").new()
+	var body: Dictionary={"x":30.0,"y":430.0,"vx":0.0,"vy":0.0}
+	for frame: int in range(45):
+		sim.advance(1.0/60.0,30)
+		var saved: Dictionary=JSON.parse_string(JSON.stringify(codec.capture(sim,config,body)))
+		var restored: Dictionary=codec.restore(saved)
+		t.truth(not restored.is_empty(),"60Hz save restores after JSON precision at frame "+str(frame+1))
+		if not restored.is_empty():
+			t.equal(restored.session.trails.units[0].last_tick,sim.trails.units[0].last_tick,"restore retains the actual creature clock")
+	var invalid: Dictionary=JSON.parse_string(JSON.stringify(codec.capture(sim,config,body)))
+	invalid.trails.units[0].last_tick=roundi(sim.workforce.elapsed*30)+1
+	t.truth(codec.restore(invalid).is_empty(),"serialization tolerance does not admit a whole future creature tick")
