@@ -1,4 +1,5 @@
 extends Node2D
+const Direction=preload("res://data/outcome_direction.tres")
 const Icons=preload("res://presentation/ui_icons.gd")
 const Layout=preload("res://presentation/campaign_layout.gd")
 var panels: Dictionary={}
@@ -109,10 +110,16 @@ func _draw_outcome() -> void:
 	number(str(values.get("survived",0)),center+Vector2(67,70),ink,22)
 	# Action controls stay at their existing safe-area positions above this panel.
 
+func blackout_alpha() -> float:
+	return smoothstep(Direction.last_blow_hold,Direction.blackout_end,outcome_age)
+func message_alpha() -> float:
+	return smoothstep(Direction.message_start,Direction.message_end,outcome_age)
+func camp_transition() -> bool:
+	return dead and values.get("defeat_reason","")=="core" and outcome_age<Direction.message_start
 func _draw_epilogue() -> void:
 	var viewport: Rect2=get_viewport_rect()
-	var reveal: float=smoothstep(0.6,2.8,outcome_age)
-	draw_rect(viewport,Color(0.015,0.025,0.04,reveal*0.48))
+	var reveal: float=message_alpha() if dead else smoothstep(0.6,2.8,outcome_age)
+	draw_rect(viewport,Color(0,0,0,blackout_alpha()) if dead else Color(0.015,0.025,0.04,reveal*0.48))
 	var lines: Array[String]=[]
 	if victory:lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
 	elif values.get("defeat_reason","")=="core":lines.assign(["營火熄滅了。","人類的希望之火，再度逝去。"])

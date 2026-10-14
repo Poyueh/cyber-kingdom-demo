@@ -89,7 +89,7 @@ func run_scene() -> void:
 		for i: int in range(20):game._physics_process(1.0/30)
 		check(game._star_travel.liberation.visible==(planet!=6),"seventh core yields to the terminal victory instead of overlapping it")
 		if planet==0:
-			check(game._star_travel.liberation._routes==[1,2],"forest ceremony reveals only desert and frost routes")
+			check(game._star_travel.liberation._routes==[1,2,3,4,5,6],"first reactor reveals all six destinations")
 			for locale: String in ["zh_TW","zh_CN","en"]:
 				TranslationServer.set_locale(locale);game._star_travel.observe()
 				await capture(game,"liberation-"+locale)

@@ -28,7 +28,7 @@ func resolve(knight_alive: bool, enemies_cleared: bool) -> void:
 	if not knight_alive or core_hp<=0:
 		outcome="defeat"
 		defeat_reason="knight" if not knight_alive else "core"
-	elif rifts.size()==2 and rifts.all(func(r):return r.sealed) and dragon_defeated and enemies_cleared:
+	elif not rifts.is_empty() and rifts.all(func(r):return r.sealed) and dragon_defeated and enemies_cleared:
 		outcome="victory"
 
 func add_rift(side: int, x: float) -> void:
@@ -44,8 +44,8 @@ func order(index: int) -> bool:
 	return true
 func side_open(side: int) -> bool:
 	for rift in rifts:
-		if rift.side==side:return not rift.sealed
-	return true
+		if rift.side==side and not rift.sealed:return true
+	return false
 func advance_seal(index: int, seconds: float, ready: bool, knight_near: bool, contested: bool) -> void:
 	var rift: Dictionary=rifts[index]
 	if seconds<=0 or not is_finite(seconds) or outcome!="active":return
@@ -54,6 +54,12 @@ func advance_seal(index: int, seconds: float, ready: bool, knight_near: bool, co
 	if rift.progress>=seal_seconds:rift.sealed=true
 
 func entry_x(side: int) -> float:
-	for rift in rifts:
+	var entry: float=NAN
+	for rift: Dictionary in rifts:
+		if rift.side!=side or rift.sealed:continue
+		if is_nan(entry) or absf(rift.x)<absf(entry):entry=float(rift.x)
+	if not is_nan(entry):return entry
+	# A thief already carrying a crystal can still retreat after the last seal.
+	for rift: Dictionary in rifts:
 		if rift.side==side:return float(rift.x)
 	return NAN

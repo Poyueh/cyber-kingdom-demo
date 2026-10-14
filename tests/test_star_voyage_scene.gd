@@ -40,15 +40,15 @@ func run_scene() -> void:
  await capture(game,"forest")
  game.paused=true;game._star_travel.open_chart(true)
  game._star_travel.map.select_planet(6)
- check(game._star_travel.map._launch.disabled,"pause-menu chart inspects locked worlds without allowing launch")
- await capture(game,"locked-chart")
+ check(game._star_travel.map._launch.disabled,"pause-menu chart inspects distant worlds without allowing launch")
+ await capture(game,"preview-chart")
  game._star_travel.close();check(game.paused,"closing preview returns to paused menu")
  clear_world(game);game.paused=false
- for id: int in [1,3,2,4,5,6]:
+ for id: int in [6,3,1,4,2,5]:
   game.sim.planet.launch_requested=true;game._star_travel.observe()
   check(game._star_travel.active(),"completed rocket opens star chart")
   await click(game._star_travel.map._buttons[id])
-  check(not game._star_travel.map._launch.disabled,"available destination enables launch confirmation")
+  check(game._star_travel.map._selected==id and not game._star_travel.map._launch.disabled,"selected destination enables launch confirmation")
   check(game.journey.current!=id,"inspecting a planet does not launch immediately")
   await capture(game,"chart-"+NAMES[id])
   await click(game._star_travel.map._launch);await frames(3)
@@ -60,7 +60,7 @@ func run_scene() -> void:
   var dragon: Dictionary=game.sim.raiders.filter(func(enemy: Dictionary)->bool:return enemy.get("kind","")=="dragon")[0];dragon.x=game.knight.position.x+250;dragon.direction=-1.0;dragon.windup=1.4;dragon.target={"kind":"hero","x":game.knight.position.x}
   await capture(game,NAMES[id]+"-dragon")
   clear_world(game);game.journey.observe(game.sim)
-  check(game.sim.mission.outcome==("victory" if id==6 else "active"),"win requires all seven cores")
+  check(game.sim.mission.outcome==("victory" if id==5 else "active"),"win requires all seven cores")
  var packet: Dictionary=game.journey.capture(game.sim,{"x":game.knight.position.x,"y":430.0,"vx":0.0,"vy":0.0})
  check(not Voyage.restore(packet).is_empty(),"complete seven-world save restores through actual scene")
  print("Seven-world checkpoint bytes: ",JSON.stringify(packet).to_utf8_buffer().size())

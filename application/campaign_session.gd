@@ -114,8 +114,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	world.add_wall("wall_left",left_post)
 	mission=Mission.new(config)
 	growth=Growth.new(config,world.shield_value)
-	mission.add_rift(-1,frontier.left_boundary-180.0)
-	mission.add_rift(1,frontier.right_boundary+180.0)
+	preload("res://domain/rift_layout.gd").populate(mission,config,frontier.left_boundary,frontier.right_boundary)
 	frontier.left_boundary-=400.0
 	frontier.right_boundary+=400.0
 	expedition=RiftWorkforce.new(world,frontier,mission)

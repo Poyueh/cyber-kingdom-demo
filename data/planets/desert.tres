@@ -6,4 +6,6 @@ planet_id = 1
 day_seconds = 165.0
 night_seconds = 70.0
 night_first = 5
-route_requires = 1
+route_requires = 0
+left_gates = 1
+right_gates = 1

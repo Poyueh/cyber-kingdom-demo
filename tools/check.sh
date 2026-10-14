@@ -37,6 +37,7 @@ run_check founding --script res://tests/test_founding_scene.gd
 run_check residents --script res://tests/test_resident_scene.gd
 run_check bilateral --script res://tests/test_bilateral_scene.gd
 run_check mission --script res://tests/test_mission_scene.gd
+run_check camp_loss --script res://tests/test_camp_loss_scene.gd
 run_check growth --script res://tests/test_growth_scene.gd
 run_check ecology --script res://tests/test_ecology_scene.gd
 run_check exploration --script res://tests/test_exploration_scene.gd
