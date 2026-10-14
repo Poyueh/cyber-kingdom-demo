@@ -6,7 +6,7 @@
   "behavior_assertions": 4545,
   "native_gait_assertions": 12,
   "native_presentation_assertions": 161,
-  "spec_revision": 21,
+  "spec_revision": 22,
   "save_schema": 20,
   "assets": [
     {
@@ -75,11 +75,15 @@
   "pages_run": "38536482846",
   "release_dispatch_run": "38536474246",
   "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.48",
-  "live_verification": "live.json",
+  "live_verification": "live-spec22.json",
   "browser_live_errors": [],
   "browser_live_views": [
     "public main menu",
     "public animated walking and running guide",
-    "public specification version 0.0.48 revision 21"
-  ]
+    "public specification version 0.0.48 revision 22: free travel and current gait description"
+  ],
+  "bundled_spec_revision": 21,
+  "spec_pages_run": "38537114903",
+  "spec_source_commit": "61b0d887f3a79fcff9a167700c4ba0444546a1d6",
+  "specification_behavior_tests": 6
 }
