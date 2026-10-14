@@ -14,17 +14,14 @@ var _scroll: ScrollContainer
 var _selected_skin: StyleBoxFlat
 var _locked_skin: StyleBoxFlat
 func _skin(fill: Color, border: Color) -> StyleBoxFlat:
- var skin: StyleBoxFlat=StyleBoxFlat.new()
- skin.bg_color=fill;skin.border_color=border;skin.set_border_width_all(1);skin.set_content_margin_all(12)
- skin.set_corner_radius_all(4)
- return skin
+ return preload("res://presentation/refuge_theme.gd").plate(fill,border,12)
 func _ready() -> void:
  theme=preload("res://presentation/refuge_theme.gd").make()
  add_theme_stylebox_override("panel",_skin(Color("0a1728f7"),Color("56747d")))
  _selected_skin=_skin(Color("183937"),Color("a5e5c4"));_locked_skin=_skin(Color("101e30"),Color("2c4052"))
  var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)
- _title=Label.new();_title.add_theme_font_size_override("font_size",23);_title.add_theme_color_override("font_color",Color("f1dfb9"));box.add_child(_title)
- _progress=Label.new();_progress.add_theme_font_size_override("font_size",14);_progress.add_theme_color_override("font_color",Color("90b3ba"));box.add_child(_progress)
+ _title=Label.new();_title.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").heading_size);_title.add_theme_color_override("font_color",Color("f1dfb9"));box.add_child(_title)
+ _progress=Label.new();_progress.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size);_progress.add_theme_color_override("font_color",Color("90b3ba"));box.add_child(_progress)
  _scroll=ScrollContainer.new();_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
  _scroll.size_flags_vertical=Control.SIZE_EXPAND_FILL;box.add_child(_scroll)
  _grid=GridContainer.new();_grid.columns=2;_grid.size_flags_horizontal=Control.SIZE_EXPAND_FILL
@@ -32,7 +29,7 @@ func _ready() -> void:
  for id: String in IDS:
   var button: Button=Button.new();button.alignment=HORIZONTAL_ALIGNMENT_LEFT
   button.custom_minimum_size=Vector2(0,108);button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-  button.add_theme_font_size_override("font_size",15);button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+  button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").body_size);button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
   button.icon=Icons.get_icon(Style.icon(id));button.add_theme_constant_override("icon_max_width",28);button.expand_icon=true
   button.add_theme_color_override("icon_normal_color",Style.tint(id));button.add_theme_color_override("icon_disabled_color",Style.tint(id).darkened(0.35))
   button.add_theme_color_override("font_disabled_color",Color("9faebb"))
@@ -40,7 +37,7 @@ func _ready() -> void:
   button.add_theme_stylebox_override("hover",_skin(Color("213e48"),Style.tint(id)))
   button.pressed.connect(func():module_selected.emit(id))
   _grid.add_child(button);_buttons.append(button)
- _hint=Label.new();_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_hint.add_theme_font_size_override("font_size",14);box.add_child(_hint)
+ _hint=Label.new();_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_hint.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size);box.add_child(_hint)
  _close=Button.new();_close.custom_minimum_size.y=46;_close.pressed.connect(func():closed.emit());box.add_child(_close)
  hide()
 func arrange(bounds: Rect2) -> void:

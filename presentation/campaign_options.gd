@@ -20,6 +20,7 @@ func _ready() -> void:
 	mouse_filter=Control.MOUSE_FILTER_STOP
 	var style: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("0b1721f7"),Color("82795f"),18)
 	add_theme_stylebox_override("panel",style)
+	preload("res://presentation/refuge_theme.gd").decorate(self)
 	var box:=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)
 	var selector=LanguageSelector.new();box.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
 	music=_volume_row(box,"music")

@@ -39,6 +39,7 @@ func _ready() -> void:
 	var card:=PanelContainer.new();card.custom_minimum_size.x=350;card.size_flags_vertical=Control.SIZE_EXPAND_FILL;columns.add_child(card)
 	var style: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("0a151fef"),Color("82795f"),24)
 	card.add_theme_stylebox_override("panel",style)
+	preload("res://presentation/refuge_theme.gd").decorate(card)
 	var scroll_body: ScrollContainer=ScrollContainer.new();scroll_body.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
 	scroll_body.size_flags_vertical=Control.SIZE_EXPAND_FILL;card.add_child(scroll_body)
 	var body:=VBoxContainer.new();body.size_flags_horizontal=Control.SIZE_EXPAND_FILL;body.size_flags_vertical=Control.SIZE_EXPAND_FILL
@@ -57,10 +58,10 @@ func _ready() -> void:
 	records_button=_button(_home,"選擇紀錄","restore");records_button.custom_minimum_size.y=50;records_button.pressed.connect(func():records_requested.emit())
 	_label(_home,"每次新遊戲都另存一段旅程。",14,Color("96acae"))
 	if OS.has_feature("web"):
-		var guide=_button(_home,"玩家圖文指南","book");guide.custom_minimum_size.y=40;guide.add_theme_font_size_override("font_size",15)
+		var guide=_button(_home,"玩家圖文指南","book");guide.custom_minimum_size.y=40;guide.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
 		guide.pressed.connect(preload("res://presentation/web_player_guide.gd").open)
 	replay_button=_button(_home,"opening.replay","restore");replay_button.custom_minimum_size.y=36
-	replay_button.add_theme_font_size_override("font_size",14)
+	replay_button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
 	replay_button.pressed.connect(func() -> void:prologue_requested.emit())
 	pace_picker=preload("res://presentation/journey_pace_picker.gd").new()
 	pace_picker.name="JourneyPaceChooser"
@@ -76,14 +77,14 @@ func _ready() -> void:
 	show_home()
 
 func _label(parent: Node, text: String, size: int, color: Color) -> Label:
-	var label:=Label.new();label.text=tr(text);_bindings.append({"node":label,"source":text});label.add_theme_font_size_override("font_size",size);label.add_theme_color_override("font_color",color);label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;parent.add_child(label);return label
+	var label:=Label.new();label.text=tr(text);_bindings.append({"node":label,"source":text});label.add_theme_font_size_override("font_size",preload("res://presentation/refuge_theme.gd").type_size(size));label.add_theme_color_override("font_color",color);label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;parent.add_child(label);return label
 
 func _button(parent: Node, text: String, icon: String) -> Button:
 	var button:=Button.new();button.text=tr(text);_bindings.append({"node":button,"source":text});button.icon=Icons.get_icon(icon);button.expand_icon=true
 	button.custom_minimum_size=Vector2(0,64);button.add_theme_constant_override("icon_max_width",26);button.add_theme_constant_override("h_separation",14)
-	button.add_theme_font_size_override("font_size",19)
+	button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
 	button.alignment=HORIZONTAL_ALIGNMENT_LEFT
-	button.add_theme_stylebox_override("normal",preload("res://presentation/refuge_theme.gd").plate(Color("14242cbd"),Color("3c5357"),14))
+	button.add_theme_stylebox_override("normal",preload("res://presentation/refuge_theme.gd").plate(Color("152a32f2"),Color("536b6c"),14))
 	parent.add_child(button);return button
 
 func show_home() -> void:
@@ -108,7 +109,7 @@ func show_records(rows: Array[Dictionary]) -> void:
 		if row.status=="ready":
 			var outcome: String={"active":"","victory":tr(" · 已通關"),"defeat":tr(" · 挑戰結束")}[row.outcome]
 			text=tr("第 %d 天 · 聚落 %d%s\n%s")%[row.day,row.settlement,outcome,kind]
-		var button=_button(_list,text,"restore" if row.manual else "save");button.add_theme_font_size_override("font_size",16)
+		var button=_button(_list,text,"restore" if row.manual else "save");button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").body_size)
 		button.disabled=row.status!="ready";button.pressed.connect(func():record_selected.emit(i))
 		var pace: int=int(row.get("pace",-1))
 		var pace_key: String="journey.legacy" if pace<0 else ["journey.expedition","journey.settler","journey.siege"][pace]

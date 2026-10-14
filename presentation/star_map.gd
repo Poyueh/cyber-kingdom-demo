@@ -30,8 +30,9 @@ func _ready() -> void:
  var center: CenterContainer=CenterContainer.new();center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);add_child(center)
  _panel=PanelContainer.new();center.add_child(_panel)
  _panel.theme=preload("res://presentation/refuge_theme.gd").make()
- var skin: StyleBoxFlat=StyleBoxFlat.new();skin.bg_color=Color("0c1928");skin.border_color=Color("728d92");skin.set_border_width_all(1);skin.border_width_top=3;skin.set_content_margin_all(16);skin.set_corner_radius_all(8)
+ var skin: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("0c1928"),Color("82795f"),18)
  _panel.add_theme_stylebox_override("panel",skin)
+ preload("res://presentation/refuge_theme.gd").decorate(_panel)
  var box: VBoxContainer=VBoxContainer.new();box.add_theme_constant_override("separation",8);_panel.add_child(box)
  _title=_label(box,24);_title.add_theme_color_override("font_color",Color("ead5a1"))
  _legend=_label(box,13);_legend.add_theme_color_override("font_color",Color("9db4c4"))
@@ -49,14 +50,12 @@ func _ready() -> void:
   if not _launch.disabled:destination_selected.emit(_selected))
  hide()
 func _label(parent: Node, font_size: int, wrap: bool=false) -> Label:
- var label: Label=Label.new();label.add_theme_font_size_override("font_size",font_size)
+ var label: Label=Label.new();label.add_theme_font_size_override("font_size",preload("res://presentation/refuge_theme.gd").type_size(font_size))
  if wrap:label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  parent.add_child(label);return label
 func _button(parent: Node) -> Button:
  var button: Button=Button.new();button.custom_minimum_size=Vector2(0,48);button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
- var skin: StyleBoxFlat=StyleBoxFlat.new();skin.bg_color=Color("1b3d48");skin.border_color=Color("62928f");skin.set_border_width_all(1);skin.set_corner_radius_all(4)
- button.add_theme_stylebox_override("normal",skin)
- var hover: StyleBoxFlat=skin.duplicate();hover.bg_color=Color("305c61");hover.border_color=Color("ead5a1");button.add_theme_stylebox_override("hover",hover)
+
  parent.add_child(button);return button
 func present(journey: RefCounted, sim: RefCounted, read_only: bool=false) -> void:
  _journey=journey;_sim=sim;_read_only=read_only

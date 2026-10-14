@@ -6,7 +6,7 @@ func _ready() -> void:
  theme=preload("res://presentation/refuge_theme.gd").make()
  auto_translate_mode=Node.AUTO_TRANSLATE_MODE_DISABLED
  custom_minimum_size=Vector2(220,44)
- add_theme_font_size_override("font_size",16)
+ add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").body_size)
  for label in ["","繁體中文","简体中文","English"]:add_item(label)
  language_service=get_node("/root/GameLanguage")
  language_service.changed.connect(refresh)

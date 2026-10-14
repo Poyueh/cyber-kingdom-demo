@@ -1,0 +1,30 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+SHOT START menu-zh_TW
+SHOT DRAW menu-zh_TW
+SHOT START pace-zh_TW
+SHOT DRAW pace-zh_TW
+SHOT START menu-zh_CN
+SHOT DRAW menu-zh_CN
+SHOT START pace-zh_CN
+SHOT DRAW pace-zh_CN
+SHOT START menu-en
+SHOT DRAW menu-en
+SHOT START pace-en
+SHOT DRAW pace-en
+SHOT START deer-0
+SHOT DRAW deer-0
+SHOT START deer-1
+SHOT DRAW deer-1
+PASS: visible deer faces actual travel direction
+SHOT START deer-2
+SHOT DRAW deer-2
+PASS: visible deer faces actual travel direction
+PASS: paused wildlife does not accumulate a walking cycle
+PASS: rewound time clears visual travel without touching the save
+SHOT START options
+SHOT DRAW options
+SHOT START star-map
+SHOT DRAW star-map
+Native finish proof: 4 checks, 0 failures
