@@ -1,9 +1,10 @@
 # 製作進度
 
-## 2026-10-14：v0.0.49 騎士起停身形一致性（發行中）
+## 2026-10-14：v0.0.49 騎士起停身形一致性（已發布）
 
 - 修正騎士移動時比待機顯得矮胖的身形落差：四套持劍／徒手走跑重繪頭盔、胸腰與腿甲，統一修長比例。保留16格雙步、路程步頻與起停銜接；新舊旅程直接套用，玩法與快照v20／航行v2不變。
 - 四套原稿與提示保存，已接入正式原生圖集；同倍率待機／走跑對照與持劍／徒手起停實錄已確認。完整 tools/check.sh 通過，核心4,545斷言與全場景無SCRIPT ERROR／ERROR；原生步態12項、人物161項、成品步態12項／人物161項／操作30項通過。五平台同源21cb20d，簽章／對齊、平台版本與封裝核對完成。本機H5走跑、轉向、停步及暫停零瀏覽器錯誤，三語指南加入新版起停示範、企劃r23同步。Windows／手機待實機驗收，iOS為待簽署Xcode專案。[發行驗收](reports/release-0.0.49/verification.json)。
+- [Release v0.0.49](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.49) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.49) 已發布，Pages 38542755895 成功。七附件、七份線上遊戲／指南與規格r23的14檔均與套件一致；公開主選單、走跑指南及規格已驗收，瀏覽器零錯誤，未建立玩家旅程。[線上核對](reports/release-0.0.49/live.json) · [起停示範畫面](reports/release-0.0.49/public-guide.png)。
 - [設計](design/knight-proportion-consistency.md) · [第127課](lessons/127-knight-proportions.md) · [畫面驗收](reports/hero-gait-v007/README.md)。
 
 ## 2026-10-14：v0.0.48 騎士換腳與走跑銜接（已發布）
