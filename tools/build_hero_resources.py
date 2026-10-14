@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 ROOT=Path(__file__).resolve().parents[1]
 OUT='res://art/characters/hero-v005/'
-GAIT='res://art/characters/hero-gait-v006/'
+GAIT='res://art/characters/hero-gait-v007/'
 def atlas_path(file): return (GAIT if file.startswith('gait-') else OUT)+file+'.png'
 clips={'idle':('idle',4,4,3),'run':('gait-walk',16,8,28),'sprint':('gait-sprint',16,8,36),'tired_walk':('gait-walk',16,8,16),'attack':('idle',4,4,12),'dash':('gait-sprint',16,8,36),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
 files=list(dict.fromkeys(x[0] for x in clips.values()))
@@ -37,7 +37,7 @@ lines+=['','[resource]','script = ExtResource("script")','frames = ExtResource("
 for key in textures:lines.append(f'{key} = ExtResource("{key}")')
 lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 16','stride_columns = 8','run_fps = 28.0','sprint_fps = 36.0','tired_fps = 16.0','run_reference_speed = 165.0','sprint_reference_speed = 321.75','tired_reference_speed = 69.3','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','module_sockets = {']
 sockets=json.loads((ROOT/'art/characters/hero-v005/sockets.json').read_text())
-sockets.update(json.loads((ROOT/'art/characters/hero-gait-v006/sockets.json').read_text()))
+sockets.update(json.loads((ROOT/'art/characters/hero-gait-v007/sockets.json').read_text()))
 for name,points in sockets.items():
  lines.append('"'+name+'": ['+', '.join(f'Vector2({p[0]}, {p[1]})' for p in points)+'],')
 lines.append('}')
