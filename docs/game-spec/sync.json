@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.48",
-  "revision": 21,
-  "review_note": "修正騎士走跑缺少完整換腳、腳步頻率與移動不一致的問題。四套持劍／徒手走跑改為16格雙步循環，固定同一人物比例及腰胯錨點；疲勞慢走沿用較低步頻。走跑、方向及持劍狀態共用步態進度，腳步按實際速度推進；移速、體力、攻擊與快照v20／航行v2不變。",
-  "content_sha256": "fe92d084769693871e523314b6936054a44a053a20f971b0a9032abc2b267fbb",
+  "revision": 22,
+  "review_note": "純文件校對：移除七星球章節殘留的固定前置航線圖文，對齊現行自由選星；人物規格改述完整動作與四套16格走跑，刪除過期姿勢總數。遊戲、指南與已發布附件維持v0.0.48原版，包內規格維持r21。",
+  "content_sha256": "bd5461679fd645083d71775f31c7e9139a23eef59a0071915e4c28363ddd2718",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "53e0341bead45bc45d1acd3fce55d4f5664598c756bf758530552cb817bd9369",
