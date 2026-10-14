@@ -40,6 +40,7 @@ var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
+var _mounted_time: float=0.0
 @export_range(20,44,0.5) var walking_frame_rate: float=32.0
 @export_range(32,60,0.5) var running_frame_rate: float=48.0
 var _gait_rate: float=32.0
@@ -91,6 +92,8 @@ func _bind_motion() -> void:
 		_ceremony.sheet=appearance.ceremony
 		fatigue.sheet=appearance.rest
 		fatigue.mounted_sheet=appearance.mounted
+		fatigue.authored_transition=appearance.rest_transition_frames
+		fatigue.mounted_rest_frame=appearance.mounted_rest_frame
 		fatigue.mounted_offset=appearance.mounted_offset
 		_mount.offset=appearance.mounted_offset
 		return
@@ -136,6 +139,7 @@ func _apply_art_overrides() -> void:
 func reset_pose() -> void:
 	super.reset_pose()
 	_gait_time=0
+	_mounted_time=0
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
 	fatigue.reset()
@@ -163,17 +167,20 @@ func present(pose: Dictionary, seconds: float) -> void:
 	var ceremony: bool=ceremony_age>=0 and ceremony_age<2.4 and safe_pose and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
 	if ceremony:
 		_fatigue_weight=0
-		var blend: float=smoothstep(0,0.13,ceremony_age)*(1.0-smoothstep(2.12,2.4,ceremony_age))
+		var blend: float=1.0 if appearance!=null and appearance.rest_transition_frames else smoothstep(0,0.13,ceremony_age)*(1.0-smoothstep(2.12,2.4,ceremony_age))
 		_dim_body(1.0-blend)
 		_ceremony.present(ceremony_age,int(pose.facing))
 		_ceremony.modulate.a=blend
-	elif _fatigue_weight>0:
+	elif _fatigue_weight>0.0:
 		var weight: float=smoothstep(0,1,_fatigue_weight)
-		_dim_body(1.0-weight)
+		_dim_body(0.0 if fatigue.authored_transition else 1.0-weight)
 		# Cavalry has its own baked top-tier palette; do not recolour its horse.
 		fatigue.material=_mount.material if mounted else equipment_material
-		fatigue.present(unarmed,mounted,int(pose.facing),seconds)
-		fatigue.modulate.a=weight
+		if mounted and unarmed and appearance!=null and appearance.unarmed_mounted!=null:
+			fatigue.mounted_sheet=appearance.unarmed_mounted
+		elif appearance!=null:fatigue.mounted_sheet=appearance.mounted
+		fatigue.present(unarmed,mounted,int(pose.facing),seconds,weight)
+		fatigue.modulate.a=1.0 if fatigue.authored_transition else weight
 	else:fatigue.reset()
 	_module_attachment.present(self,equipped_module,seconds)
 
@@ -223,6 +230,11 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 			elif sprinting and appearance.unarmed_sprint!=null:_unarmed_frame.atlas=appearance.unarmed_sprint
 		else:
 			_unarmed_frame.atlas=WalkUnarmed if slow else SprintUnarmed if sprinting else UnarmedRun if running else IdleUnarmed
+		if not pose.get("grounded",true) and appearance!=null and appearance.unarmed_jump!=null:
+			_unarmed_frame.atlas=appearance.unarmed_jump
+			var vy: float=pose.get("vertical_speed",0.0)
+			drawing=0 if vy < -450 else 1 if vy < -80 else 2 if vy<80 else 3
+			columns=4
 		_unarmed_frame.region=Rect2((drawing%columns)*128,(drawing/columns)*96,128,96)
 		_unarmed.texture=_unarmed_frame;_unarmed.flip_h=pose.facing<0
 		_unarmed.visible=true;self_modulate=Color(1,1,1,0)
@@ -250,12 +262,12 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		frame=0 if vy < -450 else (1 if vy < -80 else (2 if vy<80 else 3))
 		offset=Vector2.ZERO
 	elif animation==&"idle":
-		offset=Vector2(0,sin(_motion_time*2.8)*0.7)
+		offset=Vector2.ZERO if appearance!=null else Vector2(0,sin(_motion_time*2.8)*0.7)
 	elif animation in [&"run",&"sprint",&"tired_walk"]:
 		offset=Vector2.ZERO # Contact and airborne heights are already authored in the sheet.
 	elif animation==&"attack":
 		offset=Vector2.ZERO
-	if _landing>0 and grounded:
+	if _landing>0 and grounded and appearance==null:
 		var amount:=sin(_landing/0.12*PI)*0.055
 		scale=Vector2(1+amount,1-amount)
 		offset.y+=amount*24
@@ -308,7 +320,8 @@ func _present_authored_reaction(pose: Dictionary) -> void:
 	rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO;flip_h=pose.facing<0
 	var clip: StringName=&"hurt" if pose.alive else &"death"
 	var progress: float=float(_reaction.pose().progress) if pose.alive else clampf(_death_age/0.65,0,1)
-	var index: int=0 if progress<0.45 else 1
+	var count: int=appearance.reaction_frames
+	var index: int=mini(count-1,int(progress*count))
 	if unarmed:
 		_unarmed_frame.atlas=appearance.unarmed_hurt if pose.alive else appearance.unarmed_death
 		_unarmed_frame.region=Rect2(index*128,0,128,96)
@@ -326,27 +339,39 @@ func _hide_alternate_bodies() -> void:
 		body.modulate.a=1.0
 
 func _present_mount(pose: Dictionary, seconds: float) -> void:
+	if appearance!=null:rotation=0;scale=Vector2.ONE;offset=Vector2.ZERO
 	if seconds>0:_motion_time+=seconds
 	_mount.visible=pose.alive
 	self_modulate=Color(1,1,1,0)
 	_moving_attack.visible=false;_combo_attack.visible=false
 	_mount.flip_h=pose.facing<0
 	var progress: float=pose.get("attack_progress",1.0)
-	var index:=0
+	var idle_start: int=appearance.mounted_idle_start if appearance!=null else 0
+	var idle_count: int=appearance.mounted_idle_frames if appearance!=null else 1
+	var index: int=idle_start+int(_motion_time*2)%idle_count
 	if progress<1:
-		var step: int=pose.get("combo_step",1)
 		var start: int=appearance.mounted_attack_start if appearance!=null else 3
-		index=start if progress<0.3 else start+1 if progress<0.58 else start+2
-		if step==2:index=start+2 if progress<0.3 else start+1 if progress<0.58 else start
+		var count: int=appearance.mounted_attack_frames if appearance!=null else 3
+		# Always play forward: the previous reversed second cut snapped through the horse.
+		if count==4:
+			var active_start: float=0.25 if int(pose.get("combo_step",1))==2 else 0.4
+			var active_end: float=0.65 if int(pose.get("combo_step",1))==2 else 0.75
+			index=start+(0 if progress<active_start*0.5 else 1 if progress<active_start else 2 if progress<active_end else 3)
+		else:index=start+mini(count-1,int(progress*count))
 	elif not pose.get("grounded",true):index=2
 	elif pose.get("moving",false) or pose.get("dashing",false):
 		var count: int=appearance.mounted_gait_frames if appearance!=null else 2
-		index=int(_gait_time*12)%count if count>2 else 1+int(_gait_time*24/STRIDE_FRAMES)%2
-	if hurt_active:index=0
+		if appearance!=null:
+			_mounted_time+=maxf(0,seconds)*appearance.mounted_fps*clampf(absf(pose.get("horizontal_speed",206.0))/206.0,0.25,1.8)
+			index=int(_mounted_time)%count
+		else:index=1+int(_gait_time*24/STRIDE_FRAMES)%2
+	if hurt_active:index=appearance.mounted_hurt_frame if appearance!=null else 0
 	_mount_frame.atlas=appearance.mounted if appearance!=null else MountedSheet
-	_mount_frame.region=Rect2(index*160,0,160,128)
+	if unarmed and appearance!=null and appearance.unarmed_mounted!=null:_mount_frame.atlas=appearance.unarmed_mounted
+	var columns: int=roundi(_mount_frame.atlas.get_width()/160.0)
+	_mount_frame.region=Rect2(index%columns*160,index/columns*128,160,128)
 	_mount.texture=_mount_frame
-	_mount.position=Vector2(0,-absf(sin(_gait_time*12/STRIDE_FRAMES*TAU*2))*1.0 if index in [1,2] else sin(_motion_time*2)*0.5)
+	_mount.position=Vector2.ZERO if appearance!=null else Vector2(0,sin(_motion_time*2)*0.5)
 
 	# Brace the horse through the cut, then ease back to a balanced stance.
 	if progress<1 and not hurt_active:
@@ -354,3 +379,6 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 		var weight:=1.5 if int(pose.get("combo_step",1))==3 else 1.0
 		var advance: float=thrust*3.5*weight if pose.get("attack_advancing",false) else 0.0
 		_mount.position+=Vector2(pose.facing*advance,thrust*1.5)
+
+func armor_socket() -> Vector2:
+	return _module_attachment.socket_for(self)

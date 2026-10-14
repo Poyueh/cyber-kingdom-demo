@@ -14,5 +14,5 @@ func frame_at(step: int, progress: float) -> int:
 	var remaining := clampf(progress,0.0,1.0)*total
 	for index in range(weights.size()):
 		remaining -= maxf(0.001,weights[index])
-		if remaining<0.0: return mini(index,7)
-	return 7
+		if remaining<0.0: return index
+	return maxi(0,weights.size()-1)

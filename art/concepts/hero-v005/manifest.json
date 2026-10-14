@@ -1,0 +1,110 @@
+[
+  {
+    "name": "support",
+    "reference": "/Users/jenpoyueh/GitHub/cyber-kingdom-design/art/characters/blacksteel-v003/idle.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "support-unarmed",
+    "reference": "support.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "run",
+    "reference": "support.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "sprint",
+    "reference": "support.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "run-unarmed",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-6ed2cf4b-5a70-4050-93e8-1952f7cba464.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "sprint-unarmed",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-0c126e76-5db1-41a1-8a0d-bd31759b6373.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "ceremony",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "mounted",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "walk",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "slash",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "rising",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "heavy",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "walk-unarmed",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-323ba3e9-0f59-436d-b3c2-400e6a791843.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "slash-advance",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "rising-advance",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "heavy-advance",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "mounted-unarmed",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-e58a37d8-5ac3-4903-88bd-961b355a5f3c.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  },
+  {
+    "name": "air",
+    "reference": "/Users/jenpoyueh/.codex/generated_images/01a12924-5118-7510-b553-45d56da108b3/exec-d94705c8-d262-4858-8056-2794d6b8758a.png",
+    "tool": "built-in image_gen",
+    "transparent_requested": true
+  }
+]
