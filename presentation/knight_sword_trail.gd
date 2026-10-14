@@ -22,7 +22,7 @@ func present(hero: Fighter, armed: bool, mounted: bool) -> void:
 	queue_redraw()
 
 func _point(angle: float, radius: float, flatten: float) -> Vector2:
-	var grip: Vector2 = Vector2(8,-30 if _step != 1 else -24) if not _mounted else Vector2(12,-40)
+	var grip: Vector2 = Vector2(8,-30 if _step != 1 else -24) if not _mounted else Vector2(12,-48)
 	return Vector2((grip.x + cos(angle)*radius)*_facing,grip.y + sin(angle)*radius*flatten).round()
 
 func _ribbon(head: float, tail: float, radius: float, width: float, flatten: float, color: Color) -> void:
@@ -41,7 +41,7 @@ func _draw() -> void:
 	var heavy: bool = _step == 3
 	var rising: bool = _step == 2
 	var sweep: float = ease(clampf(_phase / 0.6,0,1),0.5)
-	var head: float = lerpf(-0.85,-1.40,sweep) if rising else lerpf(0.70 if heavy else 0.62,0.40 if heavy else 0.32,sweep)
+	var head: float = lerpf(0.65,-1.15,sweep) if rising else lerpf(-0.45 if heavy else -0.15,0.95 if heavy else 0.82,sweep)
 	var length: float = lerpf(2.25 if heavy else 1.85,0.8,_phase)
 	var tail: float = head + length if rising else head - length
 	var radius: float = minf(style.trail_radius,maxf(1,_reach-(12 if _mounted else 8)-2)) + (finisher_extension if heavy else 0)

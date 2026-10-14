@@ -4,6 +4,8 @@ const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
 const VERSION:=20
+# JSON can round the final decimal just below a half-tick; never allow a full future tick.
+const JSON_TICK_EPSILON: float=0.0000001
 const SESSION_SKIP=["raiders","effects","opened_chests"]
 const FIGHTER_SKIP=["_hit_targets","_queued_attack_seconds","_pending_attack_travel"]
 var last_error:=""
@@ -203,13 +205,14 @@ func restore(raw) -> Dictionary:
 	if not _copy_fields(sim.travel,data.travel):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
 	if not _restore_spirit(sim,data):return _invalid()
-	if not sim.trails.restore(data.trails,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)):return _invalid()
-	if not sim.mount_quest.restore(data.mount,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND),sim.clock.day):return _invalid()
+	var checkpoint_tick: int=roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND+JSON_TICK_EPSILON)
+	if not sim.trails.restore(data.trails,checkpoint_tick):return _invalid()
+	if not sim.mount_quest.restore(data.mount,checkpoint_tick,sim.clock.day):return _invalid()
 	if not sim.modules.restore(data.modules,sim.workforce.elapsed):return _invalid()
-	if not sim.trials.restore(data.trials,roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)):return _invalid()
+	if not sim.trials.restore(data.trials,checkpoint_tick):return _invalid()
 	for id: String in sim.modules.found:
 		if not sim.trials.unlocked(id):return _invalid()
-	if not sim.merchant.restore(data.merchant,int(round(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)),sim.clock.day):return _invalid()
+	if not sim.merchant.restore(data.merchant,checkpoint_tick,sim.clock.day):return _invalid()
 	var survival=sim.survival
 	if survival.enabled!=(sim.life.enabled and int(data.config.get("crystal_survival",0))==1):return _invalid()
 	if survival.hit_loss!=int(data.config.get("hit_crystal_loss",0)):return _invalid()

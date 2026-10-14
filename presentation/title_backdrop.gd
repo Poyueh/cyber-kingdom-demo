@@ -3,7 +3,7 @@ extends Control
 const SKY: Texture2D=preload("res://art/planets/v002/void-sky.png")
 const GROUND: Texture2D=preload("res://art/refuge/v001/ground.png")
 const FIRE: Texture2D=preload("res://art/campaign/v001/campfire.png")
-const FRAMES: SpriteFrames=preload("res://data/blacksteel_v003_frames.tres")
+const FRAMES: SpriteFrames=preload("res://data/hero_v005_frames.tres")
 var _age: float=0.0
 func _ready() -> void:
  mouse_filter=Control.MOUSE_FILTER_IGNORE

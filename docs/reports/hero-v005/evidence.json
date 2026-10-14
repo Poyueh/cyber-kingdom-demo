@@ -1,0 +1,402 @@
+{
+	"assertions": 161,
+	"failures": 0,
+	"poses": [
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (0.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "idle--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (256.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "run--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (128.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "hurt--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (384.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "death--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (0.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (160.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (640.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-idle--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-mounted--1-false"
+		},
+		{
+			"bodies": [
+				[
+					"idle",
+					0
+				]
+			],
+			"pose": "idle--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"run",
+					2
+				]
+			],
+			"pose": "run--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"hurt",
+					1
+				]
+			],
+			"pose": "hurt--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"death",
+					3
+				]
+			],
+			"pose": "death--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (0.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (160.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (640.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-idle--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-mounted--1-true"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (960.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-1--1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-1--1"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-2--1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-2--1"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (960.0, 256.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-3--1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-3--1"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (0.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "idle-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (256.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "run-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (128.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "hurt-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@5",
+					"[P: (384.0, 0.0), S: (128.0, 96.0)]"
+				]
+			],
+			"pose": "death-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (0.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (160.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (640.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-idle-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-mounted-1-false"
+		},
+		{
+			"bodies": [
+				[
+					"idle",
+					0
+				]
+			],
+			"pose": "idle-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"run",
+					2
+				]
+			],
+			"pose": "run-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"hurt",
+					1
+				]
+			],
+			"pose": "hurt-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"death",
+					3
+				]
+			],
+			"pose": "death-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (0.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (160.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (640.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "mounted-idle-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"@Sprite2D@2",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rest-mounted-1-true"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (960.0, 0.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-1-1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-1-1"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (1120.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-2-1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-2-1"
+		},
+		{
+			"bodies": [
+				[
+					"ComboAttack",
+					"[P: (960.0, 256.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "cut-3-1"
+		},
+		{
+			"bodies": [
+				[
+					"MountedKnight",
+					"[P: (320.0, 128.0), S: (160.0, 128.0)]"
+				]
+			],
+			"pose": "rider-cut-3-1"
+		}
+	]
+}
