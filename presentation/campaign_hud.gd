@@ -92,6 +92,7 @@ func _ready() -> void:
 	add_child(audio_button)
 	_skin(audio_button,"sound")
 	audio_button.pressed.connect(func():audio_toggled.emit())
+	audio_button.hide();new_map_button.hide();$restart.hide()
 	options_menu=Options.new()
 	options_menu.name="OptionsMenu"
 	add_child(options_menu)
@@ -229,10 +230,10 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	if not is_paused:exploration_map.hide()
 	if exploration_map.visible:exploration_map.fit(_last_safe_rect)
 	options_menu.visible=is_paused and not module_menu.visible and not exploration_map.visible
-	$restart.visible=is_paused or (not sim.is_running() and (not sim.life.enabled or dashboard.outcome_age>2.8))
-	new_map_button.visible=$restart.visible
+	$restart.visible=false
+	new_map_button.visible=false
 	$Refuge.visible=false # Standalone combat arena is no longer a player mode.
-	audio_button.visible=is_paused
+	audio_button.visible=false
 	_present_modules(sim,at,is_paused,touch)
 	_refresh_gesture_exclusions()
 	drop_button.disabled=is_paused or not sim.is_running() or sim.pouch.amount<=0
