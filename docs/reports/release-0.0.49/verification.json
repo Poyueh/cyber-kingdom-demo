@@ -1,0 +1,80 @@
+{
+  "version": "0.0.49",
+  "source_commit": "21cb20d80ca92a1f7a83eb3ea90e75045703bae9",
+  "source_tree": "5f343d3610df1536263c4afc75c056d051b130d0",
+  "full_check": true,
+  "behavior_assertions": 4545,
+  "native_gait_assertions": 12,
+  "native_presentation_assertions": 161,
+  "spec_revision": 23,
+  "save_schema": 20,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.49-debug.apk",
+      "size": 100019569,
+      "sha256": "fde52eee7e132b45d42a5557445d48a8702a995ac7c160123e0d8aa985fe5b4a"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.49.html",
+      "size": 16352281,
+      "sha256": "dd378f7d00c3f9f5d3df5487dbc0d973d78da631321ed69ea467117e4ea0c9b6"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.49.zip",
+      "size": 101955041,
+      "sha256": "aa4971e27451888dfb8bb5ae03606ced21d5acf294f85a22e5d096de21c85e0f"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.49.zip",
+      "size": 108743326,
+      "sha256": "6d073386c8c2f60a9813fe1f6d285ffb9b2b23bb7f19b205abcf975a8786f26b"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.49-Xcode.zip",
+      "size": 183513446,
+      "sha256": "d3d57e29457809efe9725db3093c6718ee590d474a828dd5f55ab63bc1a80008"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.49.zip",
+      "size": 131165374,
+      "sha256": "0a75f68e52bb9b5b5c29acccd0d0c2118600872f75f767c0c3bcee0c8b774d1b"
+    }
+  ],
+  "archive_integrity_verified": true,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "version_metadata_verified": [
+    "macOS 0.0.49 / 49",
+    "iOS 0.0.49 / 49"
+  ],
+  "browser_local_guide_errors": [],
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "packaged_gait_assertions": 12,
+  "packaged_presentation_assertions": 161,
+  "packaged_input_assertions": 30,
+  "browser_local_game_actions": [
+    "start journey",
+    "walk",
+    "double-tap run",
+    "turn",
+    "stop",
+    "pause"
+  ],
+  "browser_local_game_errors": [],
+  "guide_languages_verified": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ],
+  "native_transition_clips": [
+    "armed",
+    "unarmed"
+  ],
+  "public_player_journey_created": false
+}
