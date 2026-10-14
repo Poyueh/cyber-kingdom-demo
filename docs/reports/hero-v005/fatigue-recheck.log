@@ -26,3 +26,8 @@ PASS: phone guide chooses drag prompts
 PASS: phone downward gesture ignites camp
 PASS: phone release preserves slots for a second
 PASS: single tap on suspended sockets completes the phone payment
+PASS: phone grace expiry refunds incomplete tool purchase physically
+PASS: fixed purse does not cover touch attack button
+PASS: hamburger touch opens options and pauses play
+PASS: hamburger touch closes options and resumes play
+Immersive scene assertions: 30; failures: 0
