@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.47",
-  "revision": 17,
-  "review_note": "騎士改為黑鋼、黃銅與深紅披風的完整姿勢；移除夜間額外青色面罩／紫色方塊，部件縮為肩甲刻紋。徒手與持劍的移動、連斬、拔劍、疲勞、受擊、倒地和騎乘同批更新。每刀12格配合原有有效揮擊窗，命中停頓與鏡頭反饋加強；傷害、體力、移速、判定範圍與快照v20不變。 原生指南連斬與騎士圖同步更新，版本邊界校正為v47。",
-  "content_sha256": "7e9f1d259221c34e8af65aaea5eb78ffb702a468f5a34755c4a09e692437b5e9",
+  "revision": 18,
+  "review_note": "騎士改為黑鋼、黃銅與深紅披風的完整姿勢；移除夜間額外青色面罩／紫色方塊，部件縮為肩甲刻紋。徒手與持劍的移動、連斬、拔劍、疲勞、受擊、倒地和騎乘同批更新。每刀12格配合原有有效揮擊窗，命中停頓與鏡頭反饋加強；傷害、體力、移速、判定範圍與快照v20不變。 原生指南連斬與騎士圖同步更新，版本邊界校正為v47。 macOS與iOS的建置編號同步為47，玩法敘述不變。",
+  "content_sha256": "0c9deb3d34449af01aedcc5a47fc35889690c1f95867cc5a9b3fd3633011de3c",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "53e0341bead45bc45d1acd3fce55d4f5664598c756bf758530552cb817bd9369",
@@ -1194,7 +1194,7 @@
     "domain/trail_encounters.gd": "6541f279b79223fe9b320714ce5e520dba4561e4e455b7b1990cdbecd52f8851",
     "domain/trail_rules.gd": "134af5482fa595f183ea39f12ef9672e66b3f4173bd261518a213707319d36e0",
     "domain/travel_recovery_rules.gd": "38f467372afc18708b855313f82fab9c3a182f7d97708477f4323483848d08e9",
-    "export_presets.cfg": "4050a7faef455f7261074bab79e1c10f2e0489376156abe00eee221045ed5bf6",
+    "export_presets.cfg": "43d87ec87741f6cc9a046343bf92645d006d5dc2d402bfe8a74a52d051c7c9c9",
     "infrastructure/audio_preferences.gd": "25e7df089867c48e01e514afb2ae386085aeb4e1ae29bbc91bfd65efc90795c6",
     "infrastructure/campaign_catalog.gd": "75bbb4c662e160aa51637501e9c81c2ea140ffbe622be60e18d849182cdd8c91",
     "infrastructure/json_campaign_store.gd": "ac2d125ca4ad2a6353945e74509e319db35881523537c857fb5ee9b593bc0e14",
