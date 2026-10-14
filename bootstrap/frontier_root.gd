@@ -180,6 +180,8 @@ func restart() -> void:
 		config.trail_design=trail_encounters.rules()
 		config.merge(dragon_opening.rules(),true)
 		journey=preload("res://application/journey_setup.gd").create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
+		for id: int in range(journey.configs.size()):
+			journey.configs[id].merge({"rift_layout_version":1,"rift_left_count":PLANET_PROFILES[id].left_gates,"rift_right_count":PLANET_PROFILES[id].right_gates})
 		config=journey.configs[0]
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
@@ -205,6 +207,7 @@ func restart() -> void:
 
 func _physics_process(seconds: float) -> void:
 	if is_instance_valid(_star_travel) and _star_travel.active():return
+	if _camp_loss_transition():_requested_new_map=false
 	if _requested_new_map:
 		_requested_new_map = false
 		_map_seed += 1
@@ -242,6 +245,22 @@ func _physics_process(seconds: float) -> void:
 	if is_instance_valid(_lantern):_lantern.present(sim,knight)
 	audio.observe(seconds,sim,knight.position.x,paused)
 	audio.report_footing(knight.is_on_floor(),paused)
+
+func _camp_loss_transition() -> bool:
+	return sim!=null and sim.life.enabled and sim.mission.outcome=="defeat" and sim.mission.defeat_reason=="core" and hud.dashboard.outcome_age<preload("res://data/outcome_direction.tres").message_start
+
+func _filter_command(command: Dictionary) -> Dictionary:
+	if _camp_loss_transition():
+		command.pause=false;command.restart=false
+	return command
+
+func _terminal_motion(command: Dictionary, _seconds: float) -> void:
+	# Only the knight's last physical steps continue; terminal economy/combat stay frozen.
+	knight.velocity=Vector2.ZERO
+	if not _camp_loss_transition():return
+	knight.velocity.x=command.direction*tuning.walking_speed
+	if command.direction!=0:sim.hero.facing=int(signf(command.direction))
+	knight.move_and_slide()
 
 func _travel_axis(direction: float, seconds: float) -> float:
 	if CampReveal.extracting(sim,knight.position.x):return 0.0

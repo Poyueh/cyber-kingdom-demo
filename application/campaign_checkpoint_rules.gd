@@ -9,6 +9,7 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/rift_layout.gd").valid_config(config):return false
 	if not preload("res://domain/planet_level_layout.gd").valid_config(config):return false
 	if not preload("res://domain/trail_rules.gd").valid_config(config):return false
 	if config.has("journey_style") and (not config.journey_style is int or config.journey_style not in [0,1,2]):return false
@@ -194,8 +195,8 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 	if mission.dragon_day<0 or (mission.dragon_summoned and mission.dragon_day<1):return false
 	if mission.dragon_defeated and not mission.dragon_summoned:return false
 	if mission.outcome=="victory" and not mission.dragon_defeated:return false
-	if mission.rifts.size()!=2:return false
-	for i in range(2):
+	if mission.rifts.size()!=base.mission.rifts.size():return false
+	for i in range(mission.rifts.size()):
 		var rift=mission.rifts[i]
 		if not shape(rift,base.mission.rifts[i]):return false
 		if rift.side!=base.mission.rifts[i].side or rift.x!=base.mission.rifts[i].x:return false
@@ -227,8 +228,8 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		if not state.get("carried_crystals",0) is int or not in_range(state.get("carried_crystals",0),0,1):return false
 		if state.get("carried_crystals",0)>0:
 			if state.get("kind","") in ["dragon","warden"] or state.get("side") not in [-1,1]:return false
-			var portal: float=data.mission.rifts[0 if state.side==-1 else 1].x
-			if not number(state.get("retreat_x")) or state.retreat_x!=portal:return false
+			if not number(state.get("retreat_x")):return false
+			if not mission.rifts.any(func(r: Dictionary)->bool:return r.side==state.side and r.x==state.retreat_x):return false
 		if state.windup<0 or state.cooldown<0 or not state.target is Dictionary:return false
 		if state.target.is_empty():
 			if state.windup>0:return false

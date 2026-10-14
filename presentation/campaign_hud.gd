@@ -130,6 +130,8 @@ func _ready() -> void:
 	settlement_growth=preload("res://presentation/settlement_growth_view.gd").new()
 	settlement_growth.name="SettlementGrowth"
 	add_child(settlement_growth)
+	move_child(dashboard,get_child_count()-1)
+	move_child($pause,get_child_count()-1)
 
 func _button_texture(key: String, side: int=64, glyph_size: int=32) -> Texture2D:
 	return preload("res://presentation/refuge_theme.gd").touch_texture(key,side,glyph_size)
@@ -219,7 +221,8 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	interact_button.visible=false
 	drop_button.visible=false
 	_gesture_can_invest=not interact_button.disabled and not (sim.life.enabled and choice.id=="recruit")
-	var gestures_enabled: bool=touch and not is_paused and sim.is_running()
+	var finishing_steps: bool=sim.life.enabled and sim.mission.outcome=="defeat" and sim.mission.defeat_reason=="core" and dashboard.outcome_age<preload("res://data/outcome_direction.tres").message_start
+	var gestures_enabled: bool=touch and not is_paused and (sim.is_running() or finishing_steps)
 	if drag_controls.enabled and not gestures_enabled:drag_controls.cancel()
 	drag_controls.enabled=gestures_enabled
 	drag_controls.fast_available=not sim.travel.exhausted
@@ -266,6 +269,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.dead=sim.mission.outcome=="defeat"
 	dashboard.victory=sim.mission.outcome=="victory"
 	dashboard.queue_redraw()
+	$pause.visible=not (sim.life.enabled and dashboard.camp_transition())
 	var advice: Dictionary={}
 	if not is_paused and (first_day_guidance or expedition_guidance):
 		if sim.life.enabled:advice=sim.spirit.advice(sim,at,first_day_guidance,expedition_guidance)
@@ -281,6 +285,8 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		guide_view.reserved_caption=guide_view.reserved_caption.merge(growth_bounds) if guide_view.reserved_caption.has_area() else growth_bounds
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
 	guide_view.track(get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),sim.workforce.elapsed)
+	if not sim.is_running():
+		for overlay: CanvasItem in [immersive_feedback,night_watch_view,settlement_growth,module_hint,guide_view]:overlay.hide()
 
 func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) -> void:
 	_near_modules=sim.can_use_module_station(at)

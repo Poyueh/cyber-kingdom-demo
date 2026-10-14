@@ -125,16 +125,9 @@ func _draw_interaction() -> void:
 			draw_circle(Vector2(x+(index-(_context.cost-1)*0.5)*12,258),3,Color("b9e9d9") if _context.currency=="龍晶" else Color("d6b87e"))
 
 func _tool(at: Vector2, kind: String) -> void:
-	draw_line(at+Vector2(0,12),at+Vector2(0,-12),Color("c1aa7b"),3)
-	if kind == "hoe":
-		draw_line(at+Vector2(-1,-12),at+Vector2(10,-8),Color("a6c2b1"),4)
-	elif kind == "bow":
-		draw_arc(at,15,-PI*0.5,PI*0.5,6,Color("ceaf7a"),3)
-	elif kind == "hammer":
-		draw_rect(Rect2(at+Vector2(-8,-14),Vector2(17,7)),Color("9bafb6"))
-	else:
-		draw_line(at+Vector2(-7,0),at+Vector2(7,0),Color("9ee4df"),3)
-		draw_line(at,at+Vector2(0,-18),Color("d6eae1"),3)
+	var key: String="spear" if kind=="blade" else kind
+	var texture: Texture2D=preload("res://presentation/ui_icons.gd").get_icon(key)
+	draw_texture_rect(texture,Rect2(at.round()-Vector2(16,20),Vector2(32,40)),false)
 
 func _person(person: Dictionary, protected: bool) -> void:
 	var coat: Color = {"wanderer":Color("706477"),"citizen":Color("b78b65"),"engineer":Color("d3b066"),"guard":Color("78afba"),"farmer":Color("96b36c"),"hunter":Color("bd9872")}[person.role]

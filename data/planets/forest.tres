@@ -7,3 +7,5 @@ day_seconds = 180.0
 night_seconds = 60.0
 night_first = 3
 route_requires = 0
+left_gates = 1
+right_gates = 1

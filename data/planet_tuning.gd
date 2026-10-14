@@ -1,6 +1,9 @@
 extends Resource
 ## Editable biome balance, exported as numeric rules at the composition boundary.
 @export_range(0,6) var planet_id: int=0
+@export_group("Seal gates for new journeys")
+@export_range(1,2,1) var left_gates: int=1
+@export_range(1,2,1) var right_gates: int=1
 @export_range(1,30) var rocket_cost: int=20
 @export_range(1,30) var rocket_repair: int=12
 @export_range(1.0,120.0) var rocket_work: float=30.0

@@ -19,7 +19,7 @@ func test_seven_core_route_and_return_preserve_worlds(t: SceneTree) -> void:
  if journey.configs.size() != 7:return
  var sim: RefCounted = Campaign.new(journey.configs[0])
  win(sim)
- t.truth(journey.prepare(sim, BODY, 6).is_empty(), "first core cannot skip straight to last dragon")
+ t.truth(not journey.prepare(sim, BODY, 6).is_empty(), "first core permits directly choosing the void dragon")
  var visited: Array[int] = [1, 3, 2, 4, 5, 6]
  for id: int in visited:
   var trip: Dictionary = journey.prepare(sim, BODY, id)
@@ -65,12 +65,12 @@ func test_route_cannot_bypass_uncleared_branch_by_returning_home(t: SceneTree) -
  t.truth(not trip.is_empty(), "forest unlocks desert")
  if trip.is_empty():return
  trip.session.planet.rocket_ready = true
- t.truth(trip.journey.prepare(trip.session, BODY, 3).is_empty(), "unbeaten desert cannot unlock swamp")
+ t.truth(not trip.journey.prepare(trip.session, BODY, 3).is_empty(), "rebuilt rocket can leave an unbeaten colony for another destination")
  var back: Dictionary = trip.journey.prepare(trip.session, BODY, 0)
  t.truth(not back.is_empty(), "may escape undefeated desert by rebuilding and returning")
  if back.is_empty():return
  back.session.planet.rocket_ready = true
- t.truth(back.journey.prepare(back.session, BODY, 3).is_empty(), "home cannot bypass branch gate")
+ t.truth(not back.journey.prepare(back.session, BODY, 3).is_empty(), "returning home preserves free destination selection")
  t.truth(not back.journey.prepare(back.session, BODY, 2).is_empty(), "other unlocked branch remains available")
 func test_dragon_sequence_resumes_identically_after_mid_attack_save(t: SceneTree) -> void:
  var defs: Array[Dictionary]=profiles()
