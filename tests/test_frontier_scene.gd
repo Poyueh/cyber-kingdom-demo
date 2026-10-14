@@ -67,6 +67,9 @@ func run_test() -> void:
 	key(KEY_ESCAPE,false)
 	check(not scene.hud.new_map_button.visible,"pause also hides the redundant new-map shortcut")
 	check(scene.sim.frontier.layout_signature() == signature,"opening pause never resets the current frontier")
+	# Retain the two generated maps used by this historical gathering fixture.
+	# The removed touch shortcut is replaced by the retained keyboard command.
+	key(KEY_N,true);await frames(2);key(KEY_N,false);await frames(2)
 	var seed_before: int = scene.sim.map_seed
 	key(KEY_N,true)
 	await frames(2)
