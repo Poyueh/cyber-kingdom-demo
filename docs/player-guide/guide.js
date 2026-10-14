@@ -63,13 +63,18 @@
   });
   renderInvestment();
 
-  const animation = document.getElementById('combo-image');
-  const toggle = document.getElementById('animation-toggle');
-  let playing = false;
-  toggle.addEventListener('click', () => {
-    playing = !playing;
-    animation.src = playing ? animation.dataset.animated : animation.dataset.still;
-    toggle.setAttribute('aria-pressed', String(playing));
-    toggle.textContent = playing ? t('■ 停止示範') : t('▶ 播放連斬示範');
-  });
+  for (const [imageId, buttonId, startLabel] of [
+    ['combo-image', 'animation-toggle', '▶ 播放連斬示範'],
+    ['gait-image', 'gait-toggle', '▶ 播放走跑示範']
+  ]) {
+    const animation = document.getElementById(imageId);
+    const toggle = document.getElementById(buttonId);
+    let playing = false;
+    toggle.addEventListener('click', () => {
+      playing = !playing;
+      animation.src = playing ? animation.dataset.animated : animation.dataset.still;
+      toggle.setAttribute('aria-pressed', String(playing));
+      toggle.textContent = playing ? t('■ 停止示範') : t(startLabel);
+    });
+  }
 })();

@@ -1,0 +1,34 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: unlit knight cannot attack via actual keyboard
+PASS: unlit knight renders without sword
+PASS: unarmed body does not overlap idle sword after campaign physics
+PASS: E draws the sword and lights camp
+PASS: ignition enables armed appearance
+PASS: new journey hides numerical top dashboard
+PASS: keyboard release keeps sockets for grace period
+PASS: expired keyboard payment returns to world
+PASS: refund flies through world before collection
+PASS: empty attack stamina also shows a tired resting pose
+PASS: fast-run exhaustion stops actual movement
+PASS: exhaustion starts the breathing pose
+PASS: stationary exhaustion settles into one resting body
+PASS: ordinary walking blends back from resting pose
+PASS: purse occupies the top-right safe corner
+PASS: menu occupies the top-left safe corner
+PASS: fullscreen stays inside the closed menu
+PASS: purse stays fixed when knight moves
+PASS: ghost retires after early guidance
+PASS: core damage produces global alarm cue
+PASS: desktop guide chooses keyboard prompts
+PASS: desktop ghost names actual interaction key
+PASS: phone guide chooses drag prompts
+PASS: phone downward gesture ignites camp
+PASS: phone release preserves slots for a second
+PASS: single tap on suspended sockets completes the phone payment
+PASS: phone grace expiry refunds incomplete tool purchase physically
+PASS: fixed purse does not cover touch attack button
+PASS: hamburger touch opens options and pauses play
+PASS: hamburger touch closes options and resumes play
+Immersive scene assertions: 30; failures: 0
