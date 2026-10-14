@@ -1,0 +1,111 @@
+{
+  "version": "0.0.45",
+  "pages_run": "38509702936",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.45",
+  "assets_verified": 7,
+  "runtime_files": [
+    {
+      "name": "index.html",
+      "size": 5542,
+      "sha256": "6c4e7e4e1acfb5fb2008028cc4859029ec7f1425731c7a40951f9d7903d0bec9"
+    },
+    {
+      "name": "guide.html",
+      "size": 9476903,
+      "sha256": "7e5599557f9e4a73b86980da17342be61c0b91b14836e3407b3f26c5f38189d7"
+    },
+    {
+      "name": "index.pck",
+      "size": 70172376,
+      "sha256": "60bcc5441dee6aa4c40f0698264b0768b6a88e7ca2df1f6296b6f6b520ad69b4"
+    },
+    {
+      "name": "index.js",
+      "size": 279815,
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba"
+    },
+    {
+      "name": "index.wasm",
+      "size": 39514754,
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0"
+    },
+    {
+      "name": "guide-reader.js",
+      "size": 2969,
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be"
+    },
+    {
+      "name": "guide-reader.css",
+      "size": 1750,
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056"
+    }
+  ],
+  "spec_revision": 14,
+  "spec_files": [
+    {
+      "name": "spec/assets/26559190e8-attendant-work.webp",
+      "size": 1169838,
+      "sha256": "26559190e8feb73f2a2c74a1325120c459b1adb7ed7e4bd72aa7381286f2f3ea"
+    },
+    {
+      "name": "spec/assets/30d8c59ac7-dragon-counterattack.webp",
+      "size": 103942,
+      "sha256": "30d8c59ac76bdd08d82ac67e3fd46b4b4afa487053fcb44425982a54f1ab537a"
+    },
+    {
+      "name": "spec/assets/31c4ee3a00-star-chart.webp",
+      "size": 85426,
+      "sha256": "31c4ee3a000be8953f6c75f364db3a7fefb371cb93daf6d92f2943e96770970a"
+    },
+    {
+      "name": "spec/assets/628eb68e7c-mysterious-menu.png",
+      "size": 281396,
+      "sha256": "628eb68e7c4cb68d7d7efff875a1132bb7ba984bfec4538aa73de3a454493410"
+    },
+    {
+      "name": "spec/assets/6fb0311681-planet-levels.webp",
+      "size": 220194,
+      "sha256": "6fb03116815310292109c85fe5dcaf38e3e229cfe46fbbe1a9c47688716dd2cd"
+    },
+    {
+      "name": "spec/assets/9dbca9b182-cinematic-dragon.png",
+      "size": 530468,
+      "sha256": "9dbca9b182ae166f1270165e9850c67bf410bf60d67e9174fa7698a4cc8bd23d"
+    },
+    {
+      "name": "spec/assets/ade86e08e4-early-exploration.webp",
+      "size": 91172,
+      "sha256": "ade86e08e490493610fa615f0614f43d0128585f6c086cd85b2b72b371df64a4"
+    },
+    {
+      "name": "spec/assets/d4f1036c94-settlement-inhabitants.webp",
+      "size": 181748,
+      "sha256": "d4f1036c945064f097e18c5d8f8db4f10f846a5aeed4520260ab3223cb6c2aca"
+    },
+    {
+      "name": "spec/assets/d5df6b3c90-devourers.webp",
+      "size": 289270,
+      "sha256": "d5df6b3c90806ec5425ef10dd966b76a28e5fbcca5d4c21b5565f793bd6ef4cf"
+    },
+    {
+      "name": "spec/assets/e2573f5d0d-combo.webp",
+      "size": 914436,
+      "sha256": "e2573f5d0de80dbedd78d2a37b24c9c64aa8ec417b82587eeba0b911b094627f"
+    },
+    {
+      "name": "spec/index.html",
+      "size": 66470,
+      "sha256": "4f5496736675ed89dde7a9acc36c9a49d2774f40fdf84bb989282e0eaacda8e6"
+    },
+    {
+      "name": "spec/reader.js",
+      "size": 2706,
+      "sha256": "6cc33a6ae719d50267acced5b925c88847b45550adfa92b61b9200a10fec7a4d"
+    },
+    {
+      "name": "spec/style.css",
+      "size": 11078,
+      "sha256": "4ab246c449276ab11259ef4615bc86f4a3f136408fd74579ca5ce73e9f690172"
+    }
+  ]
+}
