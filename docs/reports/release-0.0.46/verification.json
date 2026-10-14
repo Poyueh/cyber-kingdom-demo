@@ -1,6 +1,6 @@
 {
   "version": "0.0.46",
-  "published": false,
+  "published": true,
   "source_commit": "06f6b1e8aa9761d2b6c9244558ebbf599856be51",
   "source_tree": "476f7a095681f5d70834828bb11857c2719c807d",
   "full_check": true,
@@ -57,5 +57,17 @@
     "macOS 0.0.46 / 46",
     "iOS 0.0.46 / 46"
   ],
-  "final_ceremony_assertions": 91
+  "final_ceremony_assertions": 91,
+  "pages_run": "38514781135",
+  "release_dispatch_run": "38514773362",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.46",
+  "live_verification": "live.json",
+  "browser_live_errors": [],
+  "browser_live_views": [
+    "prologue",
+    "main menu",
+    "embedded guide v0.0.46",
+    "specification r16"
+  ],
+  "public_player_journey_created": false
 }
