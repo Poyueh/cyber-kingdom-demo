@@ -2262,5 +2262,25 @@
   "另修正少數旅程因存檔時間的小數誤差而無法讀取的問題，既有進度與玩法不變。": {
     "en": "Also fixed a rare saved-journey loading failure caused by decimal timing precision. Existing progress and gameplay rules remain unchanged.",
     "zh_CN": "另修正少数旅程因存档时间的小数误差而无法读取的问题，既有进度与玩法不变。"
+  },
+  "適用 v0.0.48：修正騎士走路與跑步的換腳循環、重心和切換銜接，持劍與徒手都有對應步態。原本的移動速度、體力消耗與旅程進度不變。": {
+    "en": "For v0.0.48: corrected the knight’s alternating walk and run cycles, body balance and transitions, both armed and unarmed. Travel speed, stamina costs and journey progress are unchanged.",
+    "zh_CN": "适用 v0.0.48：修正骑士走路与跑步的换脚循环、重心和切换衔接，持剑与徒手都有对应步态。原本的移动速度、体力消耗与旅程进度不变。"
+  },
+  "步行與快跑改為完整的左右換腳循環：落腳承重、抬腳經過、換腳前進。加速、疲勞慢走和轉向會延續腳步進度，停下或暫停時停止踩步；持劍與徒手都適用。": {
+    "en": "Walking and running now use a complete two-step cycle: plant, carry weight, lift and pass, then switch feet. Acceleration, tired walking and turning retain the step phase; stopping or pausing stops the feet. Both armed and unarmed movement use this cycle.",
+    "zh_CN": "步行与快跑改为完整的左右换脚循环：落脚承重、抬脚经过、换脚前进。加速、疲劳慢走和转向会延续脚步进度，停下或暂停时停止踩步；持剑与徒手都适用。"
+  },
+  "騎士步行與快跑的完整換腳實錄": {
+    "en": "Native footage of the knight’s alternating walk and run cycles",
+    "zh_CN": "骑士步行与快跑的完整换脚实录"
+  },
+  "▶ 播放走跑示範": {
+    "en": "▶ Play walking and running demo",
+    "zh_CN": "▶ 播放走跑示范"
+  },
+  "v0.0.48 原生走跑實錄 · 三倍鏡頭觀察換腳與重心。": {
+    "en": "v0.0.48 native walk/run footage · A 3× camera view shows footwork and body balance.",
+    "zh_CN": "v0.0.48 原生走跑实录 · 三倍镜头观察换脚与重心。"
   }
 }

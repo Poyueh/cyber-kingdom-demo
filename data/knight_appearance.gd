@@ -32,3 +32,9 @@ extends Resource
 @export_range(1,60) var run_fps: float = 12.0
 @export_range(1,60) var sprint_fps: float = 18.0
 @export_range(1,60) var tired_fps: float = 7.0
+
+@export_group("Distance-driven gait")
+## Zero retains the cadence of legacy costume resources.
+@export_range(0,600,0.25) var run_reference_speed: float = 0.0
+@export_range(0,600,0.25) var sprint_reference_speed: float = 0.0
+@export_range(0,300,0.1) var tired_reference_speed: float = 0.0

@@ -1,0 +1,75 @@
+{
+  "version": "0.0.48",
+  "source_commit": "ffaf6843d39a3005b1ca1b5a1dc3b872f66f5fda",
+  "source_tree": "3120da8a210ea653ab36788515aa3b31d81816e6",
+  "full_check": true,
+  "behavior_assertions": 4545,
+  "native_gait_assertions": 12,
+  "native_presentation_assertions": 161,
+  "spec_revision": 21,
+  "save_schema": 20,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.48-debug.apk",
+      "size": 99760399,
+      "sha256": "7e3f2e7eca5bedf69576d91c4f0a1d3e663f0b40afb320e89f9d0bbcd4ac9b84"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.48.html",
+      "size": 16423618,
+      "sha256": "e55f85f86a7509ba7937ed00d74b3eec5c6c8513155fb4ba06684cbed9caf002"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.48.zip",
+      "size": 101818526,
+      "sha256": "b49ab224dd8418a8cb96ac38bdf83b68e755dc1782ddcc29511588b89fb1214a"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.48.zip",
+      "size": 108491405,
+      "sha256": "388e1b25b0459d00da3d8817875eefa0fb29b7107eead846d8e3647cf982d36d"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.48-Xcode.zip",
+      "size": 183261295,
+      "sha256": "7312578b3bd36334ecae44e91180ac72eeed22b91cd938c234083a21a7e9c21c"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.48.zip",
+      "size": 130913448,
+      "sha256": "fd4cc5c96cea69d6ca56dc1dd778f616d4e600ebac7a018cc14749a905ec0281"
+    }
+  ],
+  "archive_integrity_verified": true,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "version_metadata_verified": [
+    "macOS 0.0.48 / 48",
+    "iOS 0.0.48 / 48"
+  ],
+  "browser_local_guide_errors": [],
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "packaged_gait_assertions": 12,
+  "packaged_presentation_assertions": 161,
+  "packaged_input_assertions": 30,
+  "native_actual_input_clips": 7,
+  "local_guide_languages": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ],
+  "browser_local_errors": [],
+  "browser_local_views": [
+    "isolated new journey on localhost:18850",
+    "unarmed walking, double-tap running, turn and stop",
+    "pause menu"
+  ],
+  "browser_local_note": "Browser travel test idled until a night attack; founding was separately verified by the packaged native input test.",
+  "public_player_journey_created": false
+}

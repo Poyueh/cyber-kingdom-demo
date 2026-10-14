@@ -17,9 +17,9 @@ func _initialize() -> void:
 	DirAccess.make_dir_recursive_absolute(OUT)
 	call_deferred("build")
 
-func cuts(name: String, count: int, rows: int) -> Array[Image]:
+func cuts(name: String, count: int, rows: int, columns: int=4, source_root: String=SOURCE) -> Array[Image]:
 	if cache.has(name):return cache[name]
-	var image: Image=Image.load_from_file(SOURCE+name+".png")
+	var image: Image=Image.load_from_file(source_root+name+".png")
 	image.convert(Image.FORMAT_RGBA8)
 	var data: PackedByteArray=image.get_data()
 	var w: int=image.get_width();var h: int=image.get_height()
@@ -49,7 +49,7 @@ func cuts(name: String, count: int, rows: int) -> Array[Image]:
 	selected.sort_custom(func(a: Cut,b: Cut)->bool:return a.rect.end.y<b.rect.end.y)
 	var ordered: Array[Cut]=[]
 	for row: int in range(rows):
-		var line: Array[Cut]=[];line.assign(selected.slice(row*4,row*4+4))
+		var line: Array[Cut]=[];line.assign(selected.slice(row*columns,row*columns+columns))
 		line.sort_custom(func(a: Cut,b: Cut)->bool:return a.rect.position.x<b.rect.position.x)
 		ordered.append_array(line)
 	# The sword remains separate from the hand in the opening extraction drawing.
@@ -120,7 +120,7 @@ func shoulder(frame: Image, name: String, index: int) -> Vector2:
 			if d<distance:best=Vector2(x,y);distance=d
 	return (best+Vector2(-7,8)).round()
 
-func pack(drawings: Array[Image], columns: int, name: String) -> void:
+func pack(drawings: Array[Image], columns: int, name: String, destination: String=OUT) -> void:
 	var size: Vector2i=drawings[0].get_size()
 	var atlas: Image=Image.create(size.x*columns,size.y*ceili(float(drawings.size())/columns),false,Image.FORMAT_RGBA8)
 	var points: Array[Vector2]=[];var bounds: Array[Rect2i]=[]
@@ -128,7 +128,7 @@ func pack(drawings: Array[Image], columns: int, name: String) -> void:
 		var rect: Rect2i=drawings[i].get_used_rect();assert(rect.has_area())
 		atlas.blit_rect(drawings[i],Rect2i(Vector2i.ZERO,size),Vector2i(i%columns*size.x,i/columns*size.y))
 		points.append(shoulder(drawings[i],name,i));bounds.append(rect)
-	atlas.save_png(OUT+name+".png")
+	atlas.save_png(destination+name+".png")
 	sockets[name+".png"]=points
 	metrics[name]={"frames":drawings.size(),"columns":columns,"cell":size,"bounds":bounds}
 

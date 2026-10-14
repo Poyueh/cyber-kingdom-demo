@@ -2,10 +2,12 @@ from pathlib import Path
 import json
 ROOT=Path(__file__).resolve().parents[1]
 OUT='res://art/characters/hero-v005/'
-clips={'idle':('idle',4,4,3),'run':('run',12,4,28),'sprint':('sprint',12,4,40),'tired_walk':('walk',12,4,16),'attack':('idle',4,4,12),'dash':('sprint',12,4,40),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
+GAIT='res://art/characters/hero-gait-v006/'
+def atlas_path(file): return (GAIT if file.startswith('gait-') else OUT)+file+'.png'
+clips={'idle':('idle',4,4,3),'run':('gait-walk',16,8,28),'sprint':('gait-sprint',16,8,36),'tired_walk':('gait-walk',16,8,16),'attack':('idle',4,4,12),'dash':('gait-sprint',16,8,36),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
 files=list(dict.fromkeys(x[0] for x in clips.values()))
 lines=['[gd_resource type="SpriteFrames" format=3]','']
-for i,file in enumerate(files):lines.append(f'[ext_resource type="Texture2D" path="{OUT}{file}.png" id="{i}"]')
+for i,file in enumerate(files):lines.append(f'[ext_resource type="Texture2D" path="{atlas_path(file)}" id="{i}"]')
 animations=[]
 for name,(file,count,columns,fps) in clips.items():
  refs=[]
@@ -25,16 +27,18 @@ f'[ext_resource type="Texture2D" path="{OUT}advancing.png" id="advancing"]','',
 'rising_weights = PackedFloat32Array(0.04, 0.05, 0.06, 0.10, 0.07, 0.085, 0.11, 0.135, 0.11, 0.10, 0.08, 0.06)',
 'heavy_weights = PackedFloat32Array(0.04, 0.06, 0.08, 0.15, 0.07, 0.08, 0.13, 0.14, 0.09, 0.06, 0.05, 0.05)']
 (ROOT/'data/hero_v005_combo.tres').write_text('\n'.join(lines)+'\n')
-textures={'unarmed_run':'run-unarmed','unarmed_idle':'idle-unarmed','unarmed_sprint':'sprint-unarmed','unarmed_tired':'walk-unarmed','unarmed_hurt':'hurt-unarmed','unarmed_death':'death-unarmed','unarmed_jump':'jump-unarmed','rest':'rest','ceremony':'ceremony','mounted':'mounted','unarmed_mounted':'mounted-unarmed'}
+textures={'unarmed_run':'gait-walk-unarmed','unarmed_idle':'idle-unarmed','unarmed_sprint':'gait-sprint-unarmed','unarmed_tired':'gait-walk-unarmed','unarmed_hurt':'hurt-unarmed','unarmed_death':'death-unarmed','unarmed_jump':'jump-unarmed','rest':'rest','ceremony':'ceremony','mounted':'mounted','unarmed_mounted':'mounted-unarmed'}
 lines=['[gd_resource type="Resource" format=3]','',
 '[ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]',
 '[ext_resource type="SpriteFrames" path="res://data/hero_v005_frames.tres" id="frames"]',
 '[ext_resource type="Resource" path="res://data/hero_v005_combo.tres" id="combo"]']
-for key,file in textures.items():lines.append(f'[ext_resource type="Texture2D" path="{OUT}{file}.png" id="{key}"]')
+for key,file in textures.items():lines.append(f'[ext_resource type="Texture2D" path="{atlas_path(file)}" id="{key}"]')
 lines+=['','[resource]','script = ExtResource("script")','frames = ExtResource("frames")','combo = ExtResource("combo")']
 for key in textures:lines.append(f'{key} = ExtResource("{key}")')
-lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 12','stride_columns = 4','run_fps = 28.0','sprint_fps = 40.0','tired_fps = 16.0','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','module_sockets = {']
-for name,points in json.loads((ROOT/'art/characters/hero-v005/sockets.json').read_text()).items():
+lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 16','stride_columns = 8','run_fps = 28.0','sprint_fps = 36.0','tired_fps = 16.0','run_reference_speed = 165.0','sprint_reference_speed = 321.75','tired_reference_speed = 69.3','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','module_sockets = {']
+sockets=json.loads((ROOT/'art/characters/hero-v005/sockets.json').read_text())
+sockets.update(json.loads((ROOT/'art/characters/hero-gait-v006/sockets.json').read_text()))
+for name,points in sockets.items():
  lines.append('"'+name+'": ['+', '.join(f'Vector2({p[0]}, {p[1]})' for p in points)+'],')
 lines.append('}')
 (ROOT/'data/hero_v005_appearance.tres').write_text('\n'.join(lines)+'\n')

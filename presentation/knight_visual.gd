@@ -40,6 +40,8 @@ var _mount_frame:=AtlasTexture.new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
+var _stride: RefCounted = preload("res://presentation/knight_stride.gd").new()
+var _distance_stride: bool = false
 var _mounted_time: float=0.0
 @export_range(20,44,0.5) var walking_frame_rate: float=32.0
 @export_range(32,60,0.5) var running_frame_rate: float=48.0
@@ -89,6 +91,7 @@ func _bind_motion() -> void:
 		walking_frame_rate=appearance.run_fps
 		running_frame_rate=appearance.sprint_fps
 		_gait_rate=walking_frame_rate
+		_distance_stride=appearance.run_reference_speed>0
 		_ceremony.sheet=appearance.ceremony
 		fatigue.sheet=appearance.rest
 		fatigue.mounted_sheet=appearance.mounted
@@ -139,6 +142,7 @@ func _apply_art_overrides() -> void:
 func reset_pose() -> void:
 	super.reset_pose()
 	_gait_time=0
+	_stride.reset()
 	_mounted_time=0
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
@@ -190,7 +194,9 @@ func _dim_body(alpha: float) -> void:
 
 func _present_body(pose: Dictionary, seconds: float) -> void:
 	var striding: bool=pose.get("moving",false) and pose.get("grounded",true) and not pose.get("dashing",false)
-	if striding and seconds>0 and is_finite(seconds):
+	if striding and _distance_stride:
+		_stride.advance(seconds,float(pose.get("horizontal_speed",0.0)),appearance,tired_walk)
+	elif striding and seconds>0 and is_finite(seconds):
 		var speed: float=absf(pose.get("horizontal_speed",190.0*float(pose.get("locomotion_rate",1.0))))
 		var desired: float=lerpf(walking_frame_rate,running_frame_rate,smoothstep(165,322,speed))
 		if tired_walk:desired=appearance.tired_fps if appearance!=null else 20.0
@@ -222,7 +228,8 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 		var sprinting: bool=running and absf(pose.get("horizontal_speed",0.0))>240
 		var count: int=appearance.stride_frames if appearance!=null else STRIDE_FRAMES
 		var idle_count: int=appearance.idle_frames if appearance!=null else 4
-		var drawing: int=int(fposmod(_gait_time*12,count)) if running else int(fposmod(_motion_time*3,idle_count))
+		var gait_frame: int=_stride.frame(count) if _distance_stride else int(fposmod(_gait_time*12,count))
+		var drawing: int=gait_frame if running else int(fposmod(_motion_time*3,idle_count))
 		var columns: int=(appearance.stride_columns if running else appearance.idle_columns) if appearance!=null else (8 if running else 2)
 		if appearance!=null:
 			_unarmed_frame.atlas=appearance.unarmed_run if running else appearance.unarmed_idle
@@ -244,7 +251,7 @@ func _present_body(pose: Dictionary, seconds: float) -> void:
 	if animation==&"run":
 		if tired_walk:animation=&"tired_walk"
 		elif absf(pose.get("horizontal_speed",0.0))>240:animation=&"sprint"
-		frame=_action_frame(animation,fposmod(_gait_time*12.0/sprite_frames.get_frame_count(animation),1.0))
+		frame=_stride.frame(sprite_frames.get_frame_count(animation)) if _distance_stride else _action_frame(animation,fposmod(_gait_time*12.0/sprite_frames.get_frame_count(animation),1.0))
 	if combo_motion==null and animation==&"attack" and int(pose.get("combo_step",0))==2:
 		# Reverse time, not just the index: respect authored frame weights.
 		frame=_action_frame(&"attack",1.0-clampf(float(pose.attack_progress),0.0,1.0))
