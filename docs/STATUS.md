@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-14：v0.0.44 動物、扎地與介面（驗證中）
+## 2026-10-14：v0.0.44 動物、扎地與介面（待部署）
 
 - 修正動物固定朝向造成的倒退感，以真實位移決定面向與輕微步伐。場景透明底邊校正後下埋 4 世界像素，動物排除。
 - 主選單、暫停、探索圖、星圖與部件統一面板樣式與 14／16／18／22 字級。三語指南、企劃 r13 同步；玩法與快照 v20 不變。
-- [設計](design/grounded-wildlife-interface.md) · [第 122 課](lessons/122-grounding-and-ui-scale.md)。原生與五平台發行驗證進行中。
+- [設計](design/grounded-wildlife-interface.md) · [第 122 課](lessons/122-grounding-and-ui-scale.md)。完整 tools/check.sh 通過：4,426 核心斷言與全部場景，無 SCRIPT ERROR／ERROR。原生七地與三語介面、960×450 排版已查看；成品 PCK 動物方向／暫停／重設 4 項通過。五平台同源 821ad24，封裝完整性、Mac 簽章、Android 簽署／對齊、iOS 版本核對完成。Windows／手機尚未真機驗收；iOS 為待簽署專案。[驗收](reports/release-0.0.44/verification.json)。
 
 ## 2026-10-12：v0.0.43 日月光暈與天空融合（已發佈）
 
