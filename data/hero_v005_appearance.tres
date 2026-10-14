@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]
 [ext_resource type="SpriteFrames" path="res://data/hero_v005_frames.tres" id="frames"]
 [ext_resource type="Resource" path="res://data/hero_v005_combo.tres" id="combo"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v006/gait-walk-unarmed.png" id="unarmed_run"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v007/gait-walk-unarmed.png" id="unarmed_run"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/idle-unarmed.png" id="unarmed_idle"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v006/gait-sprint-unarmed.png" id="unarmed_sprint"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v006/gait-walk-unarmed.png" id="unarmed_tired"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v007/gait-sprint-unarmed.png" id="unarmed_sprint"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v007/gait-walk-unarmed.png" id="unarmed_tired"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/hurt-unarmed.png" id="unarmed_hurt"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/death-unarmed.png" id="unarmed_death"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/jump-unarmed.png" id="unarmed_jump"]
@@ -71,8 +71,8 @@ module_sockets = {
 "sprint.png": [Vector2(65.0, 37.0), Vector2(66.0, 41.0), Vector2(65.0, 37.0), Vector2(65.0, 39.0), Vector2(65.0, 43.0), Vector2(66.0, 41.0), Vector2(64.0, 45.0), Vector2(65.0, 46.0), Vector2(66.0, 39.0), Vector2(65.0, 39.0), Vector2(65.0, 39.0), Vector2(66.0, 42.0)],
 "walk-unarmed.png": [Vector2(66.0, 34.0), Vector2(65.0, 34.0), Vector2(66.0, 34.0), Vector2(65.0, 34.0), Vector2(66.0, 35.0), Vector2(66.0, 35.0), Vector2(66.0, 36.0), Vector2(63.0, 45.0), Vector2(65.0, 35.0), Vector2(65.0, 34.0), Vector2(64.0, 36.0), Vector2(66.0, 34.0)],
 "walk.png": [Vector2(66.0, 35.0), Vector2(63.0, 44.0), Vector2(67.0, 35.0), Vector2(68.0, 35.0), Vector2(66.0, 36.0), Vector2(65.0, 46.0), Vector2(67.0, 38.0), Vector2(64.0, 45.0), Vector2(65.0, 45.0), Vector2(67.0, 36.0), Vector2(62.0, 46.0), Vector2(67.0, 36.0)],
-"gait-sprint-unarmed.png": [Vector2(66.0, 44.0), Vector2(67.0, 43.0), Vector2(66.0, 43.0), Vector2(66.0, 43.0), Vector2(65.0, 42.0), Vector2(66.0, 41.0), Vector2(66.0, 41.0), Vector2(64.0, 43.0), Vector2(66.0, 45.0), Vector2(66.0, 43.0), Vector2(65.0, 43.0), Vector2(66.0, 43.0), Vector2(65.0, 43.0), Vector2(66.0, 42.0), Vector2(66.0, 42.0), Vector2(66.0, 43.0)],
-"gait-sprint.png": [Vector2(64.0, 46.0), Vector2(66.0, 44.0), Vector2(64.0, 46.0), Vector2(66.0, 44.0), Vector2(64.0, 44.0), Vector2(64.0, 43.0), Vector2(65.0, 42.0), Vector2(64.0, 45.0), Vector2(66.0, 46.0), Vector2(66.0, 44.0), Vector2(65.0, 45.0), Vector2(65.0, 44.0), Vector2(66.0, 43.0), Vector2(65.0, 42.0), Vector2(64.0, 43.0), Vector2(66.0, 44.0)],
-"gait-walk-unarmed.png": [Vector2(65.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(63.0, 35.0), Vector2(62.0, 35.0), Vector2(61.0, 35.0), Vector2(62.0, 35.0), Vector2(65.0, 35.0), Vector2(64.0, 36.0), Vector2(64.0, 35.0), Vector2(63.0, 35.0), Vector2(62.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0)],
-"gait-walk.png": [Vector2(65.0, 35.0), Vector2(65.0, 36.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(64.0, 35.0), Vector2(64.0, 37.0), Vector2(63.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(64.0, 35.0), Vector2(63.0, 35.0), Vector2(64.0, 37.0), Vector2(64.0, 36.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0)],
+"gait-sprint-unarmed.png": [Vector2(64.0, 41.0), Vector2(66.0, 39.0), Vector2(64.0, 41.0), Vector2(68.0, 39.0), Vector2(64.0, 40.0), Vector2(64.0, 39.0), Vector2(69.0, 37.0), Vector2(64.0, 40.0), Vector2(67.0, 41.0), Vector2(67.0, 39.0), Vector2(67.0, 39.0), Vector2(67.0, 39.0), Vector2(68.0, 38.0), Vector2(69.0, 37.0), Vector2(69.0, 37.0), Vector2(70.0, 38.0)],
+"gait-sprint.png": [Vector2(67.0, 40.0), Vector2(67.0, 39.0), Vector2(66.0, 40.0), Vector2(66.0, 40.0), Vector2(67.0, 39.0), Vector2(68.0, 38.0), Vector2(68.0, 38.0), Vector2(68.0, 39.0), Vector2(67.0, 40.0), Vector2(66.0, 40.0), Vector2(64.0, 41.0), Vector2(67.0, 39.0), Vector2(66.0, 38.0), Vector2(67.0, 37.0), Vector2(67.0, 37.0), Vector2(68.0, 39.0)],
+"gait-walk-unarmed.png": [Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(66.0, 34.0), Vector2(66.0, 34.0), Vector2(66.0, 34.0), Vector2(64.0, 36.0), Vector2(64.0, 36.0), Vector2(65.0, 34.0), Vector2(65.0, 34.0), Vector2(64.0, 36.0)],
+"gait-walk.png": [Vector2(66.0, 34.0), Vector2(63.0, 34.0), Vector2(63.0, 34.0), Vector2(62.0, 34.0), Vector2(63.0, 34.0), Vector2(62.0, 34.0), Vector2(62.0, 34.0), Vector2(62.0, 34.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(66.0, 34.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0), Vector2(64.0, 37.0)],
 }

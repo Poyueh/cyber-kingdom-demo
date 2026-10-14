@@ -2282,5 +2282,17 @@
   "v0.0.48 原生走跑實錄 · 三倍鏡頭觀察換腳與重心。": {
     "en": "v0.0.48 native walk/run footage · A 3× camera view shows footwork and body balance.",
     "zh_CN": "v0.0.48 原生走跑实录 · 三倍镜头观察换脚与重心。"
+  },
+  "適用 v0.0.49：修正騎士走路時的矮胖感，讓頭盔、腰胯與腿部比例接近待機。持劍、徒手與疲勞慢走同步更新，保留完整換腳節奏與旅程進度。": {
+    "en": "For v0.0.49: corrected the stocky walking silhouette, bringing the helmet, waist, hips and legs closer to the idle proportions. Armed, unarmed and tired walking use the updated artwork, retaining the full step cycle and journey progress.",
+    "zh_CN": "适用 v0.0.49：修正骑士走路时的矮胖感，让头盔、腰胯与腿部比例接近待机。持剑、徒手与疲劳慢走同步更新，保留完整换脚节奏与旅程进度。"
+  },
+  "v0.0.49 原生起停實錄 · 同一鏡頭比較待機、步行與快跑的身形。": {
+    "en": "v0.0.49 native start/stop footage · Compare idle, walking and running proportions in the same camera view.",
+    "zh_CN": "v0.0.49 原生起停实录 · 同一镜头比较待机、步行与快跑的身形。"
+  },
+  "騎士待機、步行與快跑連續切換的實錄": {
+    "en": "Native footage switching continuously between idle, walking and running",
+    "zh_CN": "骑士待机、步行与快跑连续切换的实录"
   }
 }

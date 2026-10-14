@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" format=3]
 
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/idle.png" id="0"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v006/gait-walk.png" id="1"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v006/gait-sprint.png" id="2"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v007/gait-walk.png" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-gait-v007/gait-sprint.png" id="2"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/jump.png" id="3"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/hurt.png" id="4"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v005/death.png" id="5"]
