@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: camp destruction records the loss
+PASS: knight can finish moving while the blackout begins
+PASS: blackout begins before any defeat message
+PASS: message locks motion, attacking and spending
+PASS: defeat message rests on a complete blackout
+PASS: finished defeat still permits returning to title through the menu
+Camp loss scene assertions: 6; failures: 0

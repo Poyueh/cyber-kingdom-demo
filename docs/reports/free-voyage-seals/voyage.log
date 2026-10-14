@@ -1,0 +1,42 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: real scene creates all seven planet definitions
+PASS: pause-menu chart inspects distant worlds without allowing launch
+PASS: closing preview returns to paused menu
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches void
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches swamp
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches desert
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches volcanic
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches frost
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: available destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches storm
+PASS: win requires all seven cores
+PASS: complete seven-world save restores through actual scene
+Seven-world checkpoint bytes: 258007
+PASS: chart fits zh_TW
+PASS: chart fits zh_CN
+PASS: chart fits en
+Seven-planet scene assertions: 37; failures: 0

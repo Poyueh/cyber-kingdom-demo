@@ -35,5 +35,5 @@ static func newly_opened(journey: RefCounted, sim: RefCounted, claimed: int) -> 
 	if claimed<0 or claimed>=journey.planets.size() or not journey.has_core(claimed,sim):return result
 	for id: int in range(journey.planets.size()):
 		if id==journey.current or not journey.planets[id].is_empty():continue
-		if journey.required_mask(id)&(1<<claimed) and journey.accessible(id,sim):result.append(id)
+		if journey.core_count(sim)==1 and journey.accessible(id,sim):result.append(id)
 	return result

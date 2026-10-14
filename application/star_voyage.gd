@@ -100,18 +100,15 @@ func prepare(sim: RefCounted, body: Dictionary, target: int) -> Dictionary:
  arrival.journey=next
  return arrival
 
-## A visited colony is always a return route. New sectors need every linked core.
+## Planet selection is free. The rocket transaction still requires the first reactor.
 func has_core(id: int, sim: RefCounted) -> bool:
  if id==current:return sim.planet.core_claimed
  return not planets[id].is_empty() and planets[id].planet.core_claimed
 func required_mask(id: int) -> int:
- return int(configs[id].get("route_requires", 0 if id==0 else 1))
+ return 0 # Historical masks remain in saved configs but no longer restrict navigation.
 func accessible(id: int, sim: RefCounted) -> bool:
  if id<0 or id>=planets.size():return false
  if id==current or not planets[id].is_empty():return true
- var mask: int=required_mask(id)
- for source: int in range(planets.size()):
-  if mask & (1<<source) and not has_core(source,sim):return false
  return true
 ## Called only at the composition boundary after a fully validated legacy load.
 ## Keep old layouts/configs byte-equivalent; only append new content definitions.

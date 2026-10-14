@@ -76,6 +76,8 @@ func select_planet(id: int) -> void:
  _milestones.present(preload("res://application/voyage_progress.gd").read(_journey,_sim,id))
  _name.text=tr(NAMES[id]);_name.modulate=Chart.COLORS[id]
  _dragon.text=tr(DRAGONS[id]);_description.text=tr(DESCRIPTIONS[id])
+ var config: Dictionary=_journey.configs[id]
+ _description.text+="\n"+tr("planet.gates %d")%(int(config.get("rift_left_count",1))+int(config.get("rift_right_count",1)))
  _preview.texture=preload("res://data/cyber_frontier_art.tres").woodland if id==0 else Scenery.SKIES[id-1]
  var available: bool=_journey.accessible(id,_sim)
  var visited: bool=id==_journey.current or not _journey.planets[id].is_empty()
@@ -93,5 +95,14 @@ func show_error() -> void:_detail.text=tr("planet.save_error")
 func _unhandled_key_input(event: InputEvent) -> void:
  if not visible:return
  if event.is_action_pressed("ui_cancel"):closed.emit();get_viewport().set_input_as_handled()
- elif event.is_action_pressed("ui_right"):select_planet((_selected+1)%7);get_viewport().set_input_as_handled()
- elif event.is_action_pressed("ui_left"):select_planet(posmod(_selected-1,7));get_viewport().set_input_as_handled()
+ else:
+  for action: String in ["ui_left","ui_right","ui_up","ui_down"]:
+   if not event.is_action_pressed(action):continue
+   var direction: Vector2={"ui_left":Vector2.LEFT,"ui_right":Vector2.RIGHT,"ui_up":Vector2.UP,"ui_down":Vector2.DOWN}[action]
+   var nearest: int=_selected;var score: float=INF
+   for id: int in range(7):
+    var offset: Vector2=_chart._point(id)-_chart._point(_selected)
+    if offset.dot(direction)<=0:continue
+    var candidate: float=offset.length()+absf(offset.cross(direction))*2
+    if candidate<score:nearest=id;score=candidate
+   select_planet(nearest);get_viewport().set_input_as_handled();return

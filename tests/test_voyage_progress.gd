@@ -33,7 +33,7 @@ func test_first_core_identifies_only_newly_opened_routes(t: SceneTree) -> void:
 	var journey: RefCounted=trip();var sim: RefCounted=Campaign.new(journey.configs[0])
 	t.equal(Report.newly_opened(journey,sim,0),[],"there is no route celebration before claiming a core")
 	defeat_dragon(sim);sim.interact(-185,"dragon_core")
-	t.equal(Report.newly_opened(journey,sim,0),[1,2],"forest core opens the actual desert and frost branches")
+	t.equal(Report.newly_opened(journey,sim,0),[1,2,3,4,5,6],"first reactor opens all six destinations")
 
 func complete_optional_goals(sim: RefCounted) -> void:
 	for region: Dictionary in sim.frontier.regions:region.discovered=true
@@ -74,7 +74,7 @@ func test_away_colony_and_restored_journey_show_the_same_earned_merits(t: SceneT
 	t.truth(preload("res://application/campaign_checkpoint_rules.gd").same(moved.journey.capture(moved.session,moved.body),restored.journey.capture(restored.session,moved.body)),"reading medals leaves the sixty-tick continuation unchanged")
 func test_branch_order_announces_only_routes_that_really_unlock(t: SceneTree) -> void:
 	var journey: RefCounted=trip();var sim: RefCounted=Campaign.new(journey.configs[0])
-	var expected: Dictionary={0:[1,2],1:[3],3:[],2:[4],4:[5],5:[6],6:[]}
+	var expected: Dictionary={0:[1,2,3,4,5,6],1:[],3:[],2:[],4:[],5:[],6:[]}
 	for id: int in [0,1,3,2,4,5,6]:
 		if id!=0:
 			sim.planet.rocket_ready=true

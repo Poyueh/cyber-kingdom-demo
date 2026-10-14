@@ -59,7 +59,7 @@ func present(journey: RefCounted, sim: RefCounted, safe: Rect2, paused: bool, re
 	caption.text = tr("planet.liberation %s")%tr(Names[_planet])
 	var destinations: PackedStringArray = []
 	for id: int in _routes:destinations.append(tr(Names[id]))
-	detail.text = tr("planet.new_routes %s")%" · ".join(destinations) if not destinations.is_empty() else tr("planet.keep_growing")
+	detail.text = tr("planet.free_routes") if not destinations.is_empty() else tr("planet.keep_growing")
 	var width: float = minf(580,safe.size.x-48)
 	var top: float = maxf(safe.position.y+34,reserved.end.y+10 if reserved.has_area() else 0)
 	_bounds = Rect2(Vector2(safe.get_center().x-width/2,top),Vector2(width,122))

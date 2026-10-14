@@ -1,13 +1,13 @@
 extends Control
 ## All visual state is a bounded, read-only projection of the voyage.
 signal selected(id: int)
-const POSITIONS: Array[Vector2]=[Vector2(48,148),Vector2(169,69),Vector2(169,230),Vector2(313,69),Vector2(313,230),Vector2(441,148),Vector2(559,148)]
+const POSITIONS: Array[Vector2]=[Vector2(0.39,0.47),Vector2(0.02,0.07),Vector2(0.14,0.92),Vector2(0.55,0.03),Vector2(0.74,0.72),Vector2(0.98,0.27),Vector2(0.94,1.0)]
 const COLORS: Array[Color]=[Color("79bda0"),Color("d3a171"),Color("98d8ec"),Color("b4c57e"),Color("ed9974"),Color("94c9ec"),Color("cf9bcc")]
 const Style=preload("res://data/cosmic_interface.tres")
 var _planets: Array[ColorRect]=[]
 var buttons: Array[Button]=[]
 var _labels: Array[Label]=[]
-var _masks: Array[int]=[]
+
 var _open: Array[bool]=[]
 var _cores: Array[bool]=[]
 var _seals: Array[int]=[]
@@ -34,15 +34,17 @@ func _ready() -> void:
 func _layout() -> void:
  for id: int in range(buttons.size()):
   var at: Vector2=_point(id)
-  _planets[id].position=at-Vector2.ONE*Style.planet_diameter*0.5;_planets[id].size=Vector2.ONE*Style.planet_diameter
+  var diameter: float=minf(Style.planet_diameter,maxf(56,(size.y-44)*0.24))
+  _planets[id].position=at-Vector2.ONE*diameter*0.5;_planets[id].size=Vector2.ONE*diameter
   buttons[id].position=at-Vector2(35,35);buttons[id].size=Vector2(70,70)
-  _labels[id].position=at+Vector2(-52.0,42);_labels[id].size=Vector2(104,44)
+  _labels[id].position=at+Vector2(-52.0,diameter*0.5+3);_labels[id].size=Vector2(104,44)
  queue_redraw()
-func _point(id: int) -> Vector2:return Vector2(52+(POSITIONS[id].x-48)/511.0*(size.x-104),20+POSITIONS[id].y/300.0*(size.y-78))
+func _point(id: int) -> Vector2:
+ return Vector2(54,48)+POSITIONS[id]*Vector2(size.x-108,maxf(110,size.y-126))
 func present(journey: RefCounted, sim: RefCounted, names: Array[String]) -> void:
- _current=journey.current;_masks.clear();_open.clear();_cores.clear();_seals.clear()
+ _current=journey.current;_open.clear();_cores.clear();_seals.clear()
  for id: int in range(7):
-  _masks.append(journey.required_mask(id));_open.append(journey.accessible(id,sim));_cores.append(journey.has_core(id,sim))
+  _open.append(journey.accessible(id,sim));_cores.append(journey.has_core(id,sim))
   _labels[id].text=tr(names[id]);_labels[id].modulate=COLORS[id] if _open[id] else Color("788a9c")
   var report: Dictionary=preload("res://application/voyage_progress.gd").read(journey,sim,id)
   var seal: int=-1
@@ -60,20 +62,14 @@ func _process(delta: float) -> void:
  for planet: ColorRect in _planets:planet.material.set_shader_parameter("phase",_time*Style.planet_rotation)
  queue_redraw()
 func _draw() -> void:
- if _masks.size()!=7:return
- for target: int in range(7):
-  for source: int in range(7):
-   if not (_masks[target] & (1<<source)):continue
-   var start: Vector2=_point(source);var end: Vector2=_point(target)
-   var color: Color=Color("6caaa9") if _cores[source] else Color("304253")
-   var direction_to_target: Vector2=(end-start).normalized()
-   start+=direction_to_target*37;end-=direction_to_target*37
-   draw_dashed_line(start,end,color,1,5)
-   if _cores[source]:
-    var pulse: Vector2=start.lerp(end,fposmod(_time*Style.route_speed,1.0)).round()
-    draw_rect(Rect2(pulse-Vector2(2,2),Vector2(4,4)),Color("d7eee2"))
-   var middle: Vector2=start.lerp(end,0.53);var direction: Vector2=(end-start).normalized()
-   draw_colored_polygon(PackedVector2Array([middle+direction*5,middle-direction*4+direction.orthogonal()*3,middle-direction*4-direction.orthogonal()*3]),color)
+ if _open.size()!=7:return
+ if selection!=_current:
+  var start: Vector2=_point(_current);var end: Vector2=_point(selection)
+  var direction: Vector2=(end-start).normalized()
+  start+=direction*38;end-=direction*38
+  draw_dashed_line(start,end,Color("5c8e98"),1,4)
+  var pulse: Vector2=start.lerp(end,fposmod(_time*Style.route_speed,1.0)).round()
+  draw_rect(Rect2(pulse-Vector2(1,1),Vector2(3,3)),Color("c4e1dc"))
  for id: int in range(7):
   var at: Vector2=_point(id)
   if id==selection:
@@ -87,7 +83,7 @@ func _draw() -> void:
    draw_arc(at+Vector2(29,23),4,PI,TAU,10,Color("99a4af"),2)
   if _seals[id]>=0:
    for index: int in range(3):
-    draw_rect(Rect2(at+Vector2(-10+index*8,34),Vector2(4,3)),Color("ead5a1") if _seals[id]&(1<<index) else Color("40565e"))
+    draw_rect(Rect2(at+Vector2(-10+index*8,-40),Vector2(4,3)),Color("ead5a1") if _seals[id]&(1<<index) else Color("40565e"))
   if id==_current:
    var y: float=at.y-52+sin(_time*3)*2
    draw_colored_polygon(PackedVector2Array([Vector2(at.x,y+7),Vector2(at.x-5,y),Vector2(at.x+5,y)]),Color("ffe0a2"))

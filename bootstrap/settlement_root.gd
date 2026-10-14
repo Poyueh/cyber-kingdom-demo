@@ -37,7 +37,7 @@ func _notification(what: int) -> void:
 		if is_instance_valid(controls): controls.release_all()
 
 func _physics_process(seconds: float) -> void:
-	var command: Dictionary = controls.read_frame()
+	var command: Dictionary = _filter_command(controls.read_frame())
 	if hud.has_method("movement_axis") and command.direction==0:command.direction=hud.movement_axis()
 	if command.restart:
 		restart()
@@ -60,10 +60,14 @@ func _physics_process(seconds: float) -> void:
 			knight.advance_motion(_travel_axis(command.direction,seconds),command.jump,seconds)
 			sim.strike_from(knight.position.x,knight.position.y)
 			if sword_feedback != null: sword_feedback.observe(sim.effects,knight.global_position)
+		else:_terminal_motion(command,seconds)
 		knight.refresh_visual(seconds)
 	_requested_interaction = false
 	view.present(sim,knight.position.x)
 	hud.present_world(sim,paused,knight.position.x,knight.is_on_floor())
+
+func _filter_command(command: Dictionary) -> Dictionary:return command
+func _terminal_motion(_command: Dictionary, _seconds: float) -> void:pass
 
 func _travel_axis(direction: float, _seconds: float) -> float:return direction
 
