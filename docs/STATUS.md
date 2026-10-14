@@ -1,9 +1,11 @@
 # 製作進度
 
-## 2026-10-14：v0.0.47 騎士造型與動作（發行中）
+## 2026-10-14：v0.0.47 騎士造型與動作（已發布）
 
 - 騎士改為黑鋼、黃銅與深紅披風的完整姿勢；移除夜間額外青色面罩／紫色方塊，部件縮為肩甲刻紋。徒手與持劍的移動、連斬、拔劍、疲勞、受擊、倒地和騎乘同批更新。每刀12格配合原有有效揮擊窗，命中停頓與鏡頭反饋加強；傷害、體力、移速、判定範圍與快照v20不變。
 - [設計](design/hero-presence-and-motion.md) · [第125課](lessons/125-hero-animation-timing.md) · [原生畫面](reports/hero-v005/README.md)。三語指南與企劃r20同步；另修正驗收發現的JSON半tick存檔誤判：先重現5處失敗，修正後91項通過，跨星檢查點29項通過；快照仍v20。完整 tools/check.sh 通過：4,545核心斷言與全場景；原生／成品騎士各161項、成品操作30項通過，無SCRIPT ERROR／ERROR。五平台同源c2836d9，簽章／對齊、平台版本與封裝核對完成，本機H5移動、拔劍、連斬與指南無瀏覽器錯誤。Windows／手機仍待實機驗收，iOS是待簽署Xcode專案。[發行驗收](reports/release-0.0.47/verification.json)。
+
+- [Release v0.0.47](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.47) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.47) 已發布，Pages 38527445129 成功。七附件、七份線上遊戲／指南與規格 r20 的 13 檔均與套件一致。公開主選單、內嵌新版指南與規格實際驗收，瀏覽器零錯誤，未建立玩家旅程。[線上核對](reports/release-0.0.47/live.json) · [主選單](reports/release-0.0.47/public-menu.png)。
 
 ## 2026-10-14：v0.0.46 自由航行、多門與營火黑幕（已發布）
 

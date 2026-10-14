@@ -1,6 +1,6 @@
 {
   "version": "0.0.47",
-  "published": false,
+  "published": true,
   "source_commit": "c2836d904673494bab734ff89136229a954c6002",
   "source_tree": "e8fa996cfd5e12b2a26ca322ebc6e2b8c5d7dd2d",
   "full_check": true,
@@ -57,5 +57,16 @@
   "version_metadata_verified": [
     "macOS 0.0.47 / 47",
     "iOS 0.0.47 / 47"
-  ]
+  ],
+  "pages_run": "38527445129",
+  "release_dispatch_run": "38527437101",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.47",
+  "live_verification": "live.json",
+  "browser_live_errors": [],
+  "browser_live_views": [
+    "public main menu with hero v005",
+    "embedded guide v0.0.47 knight description",
+    "public specification v0.0.47 revision 20"
+  ],
+  "public_player_journey_created": false
 }
