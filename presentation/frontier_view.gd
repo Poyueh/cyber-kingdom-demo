@@ -1,4 +1,5 @@
 extends "res://presentation/settlement_view.gd"
+var _wildlife: RefCounted=preload("res://presentation/wildlife_motion.gd").new()
 const Scenery = preload("res://presentation/refuge_scenery.gd")
 ## Region names and outpost plots are centred labels, so they need a wider reach.
 const LABEL_MARGIN := 260.0
@@ -30,10 +31,12 @@ func _draw() -> void:
 		if not _on_screen(resource.x):continue
 		_world_alpha=_region_reveal(resource.region)
 		if _world_alpha>0:_resource(resource)
-	for animal in map.animals:
+	_wildlife.present(_sim)
+	for animal_index: int in range(map.animals.size()):
+		var animal: Dictionary=map.animals[animal_index]
 		if not _on_screen(animal.x):continue
 		_world_alpha=_region_reveal(animal.region)
-		if animal.alive and _world_alpha>0:_prop("deer",Vector2(animal.x,430),0.75)
+		if animal.alive and _world_alpha>0:_wildlife.draw(self,art.props.deer,animal_index,Vector2(animal.x,430),0.75,Color(1,1,1,_world_alpha))
 	_world_alpha=1.0
 	for region in map.regions:
 		if not region.outpost_ready: continue

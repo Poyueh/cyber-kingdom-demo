@@ -15,7 +15,7 @@ func _ready() -> void:
 	_unknown = Label.new()
 	_unknown.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_unknown.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_unknown.add_theme_font_size_override("font_size",13)
+	_unknown.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size)
 	add_child(_unknown)
 	for index: int in range(3):
 		var row: HBoxContainer = HBoxContainer.new()
@@ -29,11 +29,11 @@ func _ready() -> void:
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		row.add_child(icon)
 		var title: Label = Label.new()
-		title.add_theme_font_size_override("font_size",13)
+		title.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size)
 		title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(title);_titles.append(title)
 		var count: Label = Label.new()
-		count.add_theme_font_size_override("font_size",13)
+		count.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size)
 		row.add_child(count);_counts.append(count)
 		var bar: ProgressBar = ProgressBar.new()
 		bar.show_percentage = false
