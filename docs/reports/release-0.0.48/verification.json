@@ -48,7 +48,7 @@
     "iOS 0.0.48 / 48"
   ],
   "browser_local_guide_errors": [],
-  "published": false,
+  "published": true,
   "limitations": [
     "Windows and mobile physical devices not tested",
     "macOS ad-hoc signing, not notarized",
@@ -71,5 +71,15 @@
     "pause menu"
   ],
   "browser_local_note": "Browser travel test idled until a night attack; founding was separately verified by the packaged native input test.",
-  "public_player_journey_created": false
+  "public_player_journey_created": false,
+  "pages_run": "38536482846",
+  "release_dispatch_run": "38536474246",
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.48",
+  "live_verification": "live.json",
+  "browser_live_errors": [],
+  "browser_live_views": [
+    "public main menu",
+    "public animated walking and running guide",
+    "public specification version 0.0.48 revision 21"
+  ]
 }
