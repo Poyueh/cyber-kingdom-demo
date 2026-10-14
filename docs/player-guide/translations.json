@@ -2199,8 +2199,16 @@
     "zh_CN": "剑击判定会计入敌人的身体宽度，不必碰到中心点才算命中。小怪、守门兽与巨龙各有对应边界；重劈配合较长刀光，背后和超出剑路仍不会命中。同一刀对同一敌人只造成一次伤害，旧旅程也套用此修正。",
     "en": "Sword contact now accounts for enemy body width instead of requiring a hit on the centre point. Devourers, guardians and dragons have matching body boundaries. The heavy cleave matches its longer blade trail; enemies behind you or beyond the blade still evade the hit. Each swing damages each enemy only once. Existing journeys also receive this correction."
   },
-  "適用 v0.0.44：動物會隨行進方向轉身，景物更深扎入地面；選單、星圖與探索介面統一字級和面板樣式。既有旅程直接套用，操作與戰鬥規則不變。": {
-    "en": "For v0.0.44: wildlife turns with its travel direction, scenery sits deeper in the ground, and menus, star routes and exploration screens share consistent typography and panel styling. Existing journeys receive these visual improvements; controls and combat rules are unchanged.",
-    "zh_CN": "适用 v0.0.44：动物会随行进方向转身，景物更深扎入地面；菜单、星图与探索界面统一字号和面板样式。现有旅程直接套用，操作与战斗规则不变。"
+  "適用 v0.0.45：星宇航線改為動態宇宙大地圖，龍晶商人依營火呈現三級造型；介面加入花紋與漸層，移除暫停外側的重開、換地圖、靜音按鈕。音量改由滑桿調整，既有旅程直接套用。": {
+    "zh_CN": "适用 v0.0.45：星宇航线改为动态宇宙大地图，龙晶商人依营火呈现三级造型；界面加入花纹与渐层，移除暂停外侧的重开、换地图、静音按钮。音量改由滑杆调整，现有旅程直接套用。",
+    "en": "For v0.0.45: explore a full cosmic map with rotating planets. The crystal merchant has three appearances tied to the local campfire. Panels gain engraved patterns and gradients. The outer restart, new-map and mute shortcuts are removed; use the volume sliders for sound. Existing journeys receive these changes."
+  },
+  "商人戴彎月兜帽、背著龍晶貨架；營火一級是簡裝晶箱，二級增加提燈與側袋，三級換成金紋長袍與晶窗背櫃。升級只改變樣貌，補給費用與數量不變。": {
+    "zh_CN": "商人戴弯月兜帽、背着龙晶货架；营火一级是简装晶箱，二级增加提灯与侧袋，三级换成金纹长袍与晶窗背柜。升级只改变外观，补给费用与数量不变。",
+    "en": "Look for the crescent-hooded merchant with a crystal pack. Campfire level one gives him a simple crate; level two adds a lantern and panniers; level three brings gold-trimmed robes and a crystal-window cabinet. These upgrades change his appearance, not delivery prices or quantities."
+  },
+  "在宇宙星圖上點選自轉的星球，右側查看特色與功績，再確認啟航。較矮視窗可捲動右側內容；暫停選單的星圖僅供查閱。音量可在暫停面板調整，全部歸零即可靜音。": {
+    "zh_CN": "在宇宙星图上点选自转的星球，右侧查看特色与功绩，再确认启航。较矮窗口可滚动右侧内容；暂停菜单的星图仅供查阅。音量可在暂停面板调整，全部归零即可静音。",
+    "en": "Select a rotating planet in the cosmic atlas, inspect its details and milestones on the right, then confirm departure. On shorter screens, scroll the details. The pause-menu atlas is read-only. Adjust sound with the pause sliders; set all three to zero to mute."
   }
 }

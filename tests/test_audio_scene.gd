@@ -33,16 +33,18 @@ func run_scene() -> void:
  scene._notification(Node.NOTIFICATION_APPLICATION_PAUSED)
  check(rack.voices.all(func(v):return not v.playing),"background notification immediately stops every voice")
  scene._physics_process(1.0/60)
- check(scene.hud.audio_button.visible and scene.hud.audio_button.text.is_empty(),"pause provides an icon-only sound control")
- touch(4,center(scene.hud.audio_button),true)
- touch(4,center(scene.hud.audio_button),false)
- check(not rack.enabled,"touching speaker mutes actual sound rack")
+ check(not scene.hud.audio_button.visible and not scene.hud.new_map_button.visible and not scene.hud.get_node("restart").visible,"pause removes the three redundant shortcuts")
+ scene.hud.options_menu.music.value=0
+ scene.hud.options_menu.effects.value=0
+ scene.hud.options_menu.ambience.value=0
+ check(not rack.enabled,"zeroing the actual pause sliders mutes the sound rack")
  scene.paused=false
  heard.clear()
  scene.sim.effects.append({"kind":"crystal_pickup","x":scene.knight.position.x,"life":0.25})
  scene._physics_process(1.0/60)
  check(heard.is_empty(),"muted gameplay produces no playback")
- rack.enabled=true
+ scene.hud.options_menu.effects.value=50
+ check(rack.enabled and is_equal_approx(rack.effects_volume,0.5),"raising a slider restores sound without a separate mute switch")
  scene._physics_process(1.0/60)
  check(heard.is_empty(),"unmuting never replays sounds that happened while muted")
  scene.restart()

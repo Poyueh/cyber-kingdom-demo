@@ -14,6 +14,7 @@ static func plate(fill: Color=INK, edge: Color=EDGE, padding: int=12) -> StyleBo
  style.bg_color=fill;style.border_color=edge
  style.set_border_width_all(1);style.border_width_top=2;style.border_width_bottom=3
  style.set_corner_radius_all(2)
+ style.border_blend=true
  style.set_content_margin_all(padding)
  style.shadow_color=Color(0,0,0,0.42);style.shadow_size=8;style.shadow_offset=Vector2(0,5)
  return style
