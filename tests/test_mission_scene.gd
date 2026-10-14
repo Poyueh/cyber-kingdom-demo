@@ -31,7 +31,10 @@ func run_scene() -> void:
 	await step(scene,160)
 	check(sim.mission.outcome=="defeat" and sim.hero.is_alive(),"actual siege ends the run while knight is alive")
 	check(scene.hud.dashboard.dead and not scene.hud.dashboard.victory,"HUD displays core defeat")
-	check(scene.hud.get_node("restart").visible and scene.hud.new_map_button.visible,"core defeat offers replay and new map")
+	check(not scene.hud.get_node("restart").visible and not scene.hud.new_map_button.visible,"core defeat keeps removed shortcuts hidden")
+	key(KEY_ESCAPE,true);await step(scene,1);key(KEY_ESCAPE,false);await step(scene,1)
+	check(scene.hud.options_menu.visible,"core defeat still permits opening pause and returning to the title")
+	key(KEY_ESCAPE,true);await step(scene,1);key(KEY_ESCAPE,false);await step(scene,1)
 	check(scene.hud.interact_button.disabled and scene.hud.drop_button.disabled,"loss disables investment and dropping")
 	var at: Vector2=scene.knight.position
 	var wallet: int=sim.pouch.amount
@@ -45,7 +48,7 @@ func run_scene() -> void:
 	await step(scene,1)
 	key(KEY_R,false)
 	await step(scene,1)
-	check(scene.sim.is_running() and scene.sim.mission.core_hp==40,"replay button restores core and active run")
+	check(scene.sim.is_running() and scene.sim.mission.core_hp==40,"keyboard replay restores core and active run")
 	sim=scene.sim
 	sim.world.people.clear()
 	sim.frontier.city_level=3
@@ -81,7 +84,10 @@ func run_scene() -> void:
 	await step(scene,3)
 	check(scene.hud.dashboard.victory and not scene.hud.dashboard.dead,"dragon defeat displays victory")
 	check(not scene.hud.guide_view.visible,"victory removes expedition advice")
-	check(scene.hud.get_node("restart").visible and scene.hud.new_map_button.visible,"victory offers replay and new map")
+	check(not scene.hud.get_node("restart").visible and not scene.hud.new_map_button.visible,"victory keeps removed shortcuts hidden")
+	key(KEY_ESCAPE,true);await step(scene,1);key(KEY_ESCAPE,false);await step(scene,1)
+	check(scene.hud.options_menu.visible,"victory still permits opening pause and returning to the title")
+	key(KEY_ESCAPE,true);await step(scene,1);key(KEY_ESCAPE,false);await step(scene,1)
 	var time: float=sim.clock.remaining
 	await step(scene,3)
 	check(sim.clock.remaining==time,"victory freezes calendar in actual scene")

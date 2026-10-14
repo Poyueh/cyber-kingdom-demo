@@ -590,7 +590,7 @@ func _draw() -> void:
 		draw_set_transform(at,progress*TAU if grace>0 else -0.35)
 		draw_texture_rect(Icons.get_icon("sword"),Rect2(-20,-20,40,40),false,Color("cef8eb"))
 		draw_set_transform(Vector2.ZERO)
-	preload("res://presentation/crystal_merchant_view.gd").draw_on(self,_sim.merchant,_sim.workforce.elapsed,_view_player_x,_context.id=="merchant" and _context.enabled)
+	preload("res://presentation/crystal_merchant_view.gd").draw_on(self,_sim.merchant,_sim.workforce.elapsed,_view_player_x,_context.id=="merchant" and _context.enabled,_sim.frontier.city_level)
 	if not _sim.planet.enabled or _sim.planet.id==0:preload("res://presentation/living_forest.gd").foreground(self,_sim.workforce.elapsed)
 	preload("res://presentation/planet_rocket_view.gd").draw_details(self,_sim)
 	_mist.draw(self,_sim.frontier.regions,_sim.workforce.elapsed,_view_player_x,_background_rect())

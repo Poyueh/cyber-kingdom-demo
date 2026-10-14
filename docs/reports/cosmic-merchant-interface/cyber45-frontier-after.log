@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: training entry opens the new playable frontier
+PASS: frontier has a grounded playable knight
+PASS: text panels leave the playable view clear
+PASS: interaction is represented by an icon
+PASS: redundant new-map shortcut is hidden
+PASS: campaign framing enlarges characters
+PASS: R replays the same map
+PASS: pause also hides the redundant new-map shortcut
+PASS: opening pause never resets the current frontier
+PASS: N is another route to a new map
+PASS: playable campaign starts at the campfire
+PASS: touch interaction fills one crystal slot
+PASS: actual recruitment and workshop button equip a working resident
+PASS: E marks work without a knight chopping animation
+PASS: knight sword leaves resource intact
+PASS: resident delivers harvested crystals to the collection point
+PASS: one harvested tree does not expose expansion in an uncleared forest
+PASS: resident finishes all marked trees before expansion appears
+PASS: depot has its own reachable investment location
+PASS: cleared-site button orders a resident-built frontier depot
+PASS: walking outside reveals a region
+PASS: icon HUD displays survival calendar
+PASS: icon HUD removes obsolete material counters
+PASS: removed jump keeps the knight on flat ruin ground
+PASS: knight directly opens ground-level treasure using the actual button
+PASS: far left generated route has actual collision
+PASS: far right generated route has actual collision
+PASS: pause freezes frontier simulation
+Frontier scene assertions: 28; failures: 0

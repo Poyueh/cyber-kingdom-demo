@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: redundant shortcuts stay hidden in native pause
+PASS: cosmic map fits zh_TW
+PASS: locked/read-only destination cannot launch
+PASS: all seven planet touch targets stay on map
+PASS: cosmic map fits zh_CN
+PASS: locked/read-only destination cannot launch
+PASS: all seven planet touch targets stay on map
+PASS: cosmic map fits en
+PASS: locked/read-only destination cannot launch
+PASS: all seven planet touch targets stay on map
+PASS: cosmic map fits short 960 by 450 viewport
+Cosmic interface native proof: 11 checks, 0 failures

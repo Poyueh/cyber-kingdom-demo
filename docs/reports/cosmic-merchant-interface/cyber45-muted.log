@@ -1,0 +1,7 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: historical muted preference stays silent
+PASS: sliders describe the actual muted state
+PASS: a real slider restores a historically muted journey
+PASS: restored sound is persisted for the next launch
+Muted migration proof: 4 checks, 0 failures

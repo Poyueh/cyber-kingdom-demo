@@ -1,0 +1,66 @@
+{
+  "version": "0.0.45",
+  "published": false,
+  "source_commit": "b624cee86fa86e18bccfbbdc20c543b0934cf7e4",
+  "source_tree": "2514f00361bf9093dad7feae04b571b16db5b8a3",
+  "full_check": true,
+  "save_schema": 20,
+  "archive_integrity_verified": true,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.45-debug.apk",
+      "size": 98101462,
+      "sha256": "b33e2361ca4806780685ac4c481ccddb873f7cf997222ac325079519567bb25b"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.45.html",
+      "size": 9476903,
+      "sha256": "7e5599557f9e4a73b86980da17342be61c0b91b14836e3407b3f26c5f38189d7"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.45.zip",
+      "size": 90005653,
+      "sha256": "0e511a4a5450ef4f8c934a5139cf0c707ddc195ddaf09f92408eca4ad7251d4e"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.45.zip",
+      "size": 106865265,
+      "sha256": "4f5f2ddc21178e67ab81267957d5bfc775eb4782f6a62467237f6c20d1fefca8"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.45-Xcode.zip",
+      "size": 181633470,
+      "sha256": "444216e06247de8200deb1a5988ada6ede2f12170f81c1d180341bb182e818a2"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.45.zip",
+      "size": 129287323,
+      "sha256": "831ddaa44e4d1c0c430a66f400499128a0e98338c10851fc6f70c1e856ee0d9e"
+    }
+  ],
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "core_assertions": 4426,
+  "native_interface_checks": 11,
+  "packaged_interface_checks": 11,
+  "seven_world_route_checks": 37,
+  "historical_muted_checks": 4,
+  "ui_languages_reviewed": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ],
+  "short_viewport": "960x450",
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "ios_version_verified": true,
+  "webgl_map_pause_verified": true,
+  "webgl_console_errors": 0,
+  "spec_revision": 14,
+  "validation_test_commit": "0ff0c2f",
+  "runtime_unchanged_after_export": true
+}

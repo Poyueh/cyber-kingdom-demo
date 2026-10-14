@@ -125,9 +125,10 @@ func _ready() -> void:
 		audio.music_volume=levels.music;audio.effects_volume=levels.effects;audio.ambience_volume=levels.ambience
 		audio.enabled=not levels.muted
 		hud.set_audio_enabled(audio.enabled)
-	hud.options_menu.set_levels(audio.music_volume,audio.effects_volume,audio.ambience_volume)
+	hud.options_menu.set_levels(audio.music_volume if audio.enabled else 0.0,audio.effects_volume if audio.enabled else 0.0,audio.ambience_volume if audio.enabled else 0.0)
 	hud.options_menu.volume_changed.connect(func(music: float,effects: float,bed: float):
 		audio.music_volume=music;audio.effects_volume=effects;audio.ambience_volume=bed
+		audio.enabled=music>0.0 or effects>0.0 or bed>0.0
 		_remember_volumes())
 	hud.options_menu.save_checkpoint_requested.connect(func():
 		_click("ui_save");save_manual_campaign())
