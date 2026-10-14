@@ -171,7 +171,7 @@ func present(pose: Dictionary, seconds: float) -> void:
 		_dim_body(1.0-blend)
 		_ceremony.present(ceremony_age,int(pose.facing))
 		_ceremony.modulate.a=blend
-	elif _fatigue_weight>(0.12 if appearance!=null and appearance.rest_transition_frames else 0.0):
+	elif _fatigue_weight>0.0:
 		var weight: float=smoothstep(0,1,_fatigue_weight)
 		_dim_body(0.0 if fatigue.authored_transition else 1.0-weight)
 		# Cavalry has its own baked top-tier palette; do not recolour its horse.

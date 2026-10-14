@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.47",
-  "revision": 19,
-  "review_note": "騎士改為黑鋼、黃銅與深紅披風的完整姿勢；移除夜間額外青色面罩／紫色方塊，部件縮為肩甲刻紋。徒手與持劍的移動、連斬、拔劍、疲勞、受擊、倒地和騎乘同批更新。每刀12格配合原有有效揮擊窗，命中停頓與鏡頭反饋加強；傷害、體力、移速、判定範圍與快照v20不變。 原生指南連斬與騎士圖同步更新，版本邊界校正為v47。 macOS與iOS的建置編號同步為47，玩法敘述不變。 修正60Hz半格時間經JSON序列化後，舊存檔偶爾被誤判無效：讀取驗證補償極小小數尾差，仍拒絕未來tick與損壞資料；快照v20／航行v2及玩法不變。",
-  "content_sha256": "4faadd86073900927f67517201984861f71f213858ad61a6133bc3b3270fa052",
+  "revision": 20,
+  "review_note": "騎士改為黑鋼、黃銅與深紅披風的完整姿勢；移除夜間額外青色面罩／紫色方塊，部件縮為肩甲刻紋。徒手與持劍的移動、連斬、拔劍、疲勞、受擊、倒地和騎乘同批更新。每刀12格配合原有有效揮擊窗，命中停頓與鏡頭反饋加強；傷害、體力、移速、判定範圍與快照v20不變。 原生指南連斬與騎士圖同步更新，版本邊界校正為v47。 macOS與iOS的建置編號同步為47，玩法敘述不變。 修正60Hz半格時間經JSON序列化後，舊存檔偶爾被誤判無效：讀取驗證補償極小小數尾差，仍拒絕未來tick與損壞資料；快照v20／航行v2及玩法不變。 力竭按不出招時，立即顯示完整喘息準備姿勢，再轉入休息；沒有額外輸入鎖定或半透明疊影。",
+  "content_sha256": "40147695afaf4aedda3638f054fdc0d47e13b50263e674762ea437fc458e5912",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "53e0341bead45bc45d1acd3fce55d4f5664598c756bf758530552cb817bd9369",
@@ -1270,7 +1270,7 @@
     "presentation/knight_lantern.gd": "9b70d000b51c2430a5a3e098106bab3cc97d6a22c4e4b122b3731bf8467dd8a7",
     "presentation/knight_module_attachment.gd": "5fc4344f31d6e39f629211daf7a5b7501303825529216eb75a173cd822a2b361",
     "presentation/knight_sword_trail.gd": "237107a6a72a05bcfa0a4d96792a679c4dfe5698634111f4a0f4e9173fb19b2e",
-    "presentation/knight_visual.gd": "a661b1448a38809cfe87a44208bd00ca117c268f1a52030c79cd7e893a7891d9",
+    "presentation/knight_visual.gd": "5bf57fbabdbb1978cf68f96edf237dc206f9d1e005fe40e11fbbc4feffd459d5",
     "presentation/language_selector.gd": "24ddff68c825c3791aa5ed02b2d71a1e649493e2e2c8b8704f6cb92eaa8d4335",
     "presentation/living_forest.gd": "b2e7d92d2dd6805aa3e5fe5fc4ff690824f37ff063fb7962de20aaa0ea72a51b",
     "presentation/localized_font.gd": "3075ae6f66fe4208e5ae0f177f125fe49bb3342318a76b61e98ad390a7a0d1e7",
