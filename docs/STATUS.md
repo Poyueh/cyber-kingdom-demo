@@ -1,10 +1,10 @@
 # 製作進度
 
-## 2026-10-14：v0.0.45 宇宙星圖與三級商人（發布中）
+## 2026-10-14：v0.0.45 宇宙星圖與三級商人（已發布）
 
 - 移除暫停外側的重開／換圖／靜音三鈕，滑桿負責音量和靜音恢復。保留面板內探索圖、星圖與存取。
 - 全景宇宙星圖、七種像素自轉星球與航線流光；商人依當地營火呈現三级兜帽、提燈、晶窗背櫃完整動作。面板加入青黑漸層與金色刻紋。
-- 三語指南與企劃 r14 同步，玩法與快照 v20 不變。[設計](design/cosmic-merchant-interface.md) · [第 123 課](lessons/123-cosmic-map-and-merchant.md)。原生七地航行 37 項、介面／打包後各 11 項、舊靜音相容 4 項及完整回歸（核心 4,426）通過。五平台已匯出，同源、macOS 簽章與 Android 簽章／對齊確認；本機 WebGL 星圖無錯誤，準備公開 Release 與 Pages。
+- 三語指南與企劃 r14 同步，玩法與快照 v20 不變。[設計](design/cosmic-merchant-interface.md) · [第 123 課](lessons/123-cosmic-map-and-merchant.md)。原生七地航行 37 項、介面／打包後各 11 項、舊靜音相容 4 項及完整回歸（核心 4,426）通過。五平台已匯出，同源、macOS 簽章與 Android 簽章／對齊確認；本機 WebGL 星圖無錯誤。[Release v0.0.45](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.45) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.45) 已發布；Pages 38509702936 成功，7 附件、7 執行檔及規格 r14 的 13 檔與套件一致。線上主選單／指南／規格實際驗收、瀏覽器零錯誤。Windows／手機仍待實機驗收，iOS 是待簽署專案。
 
 ## 2026-10-14：v0.0.44 動物、扎地與介面（已發佈）
 
