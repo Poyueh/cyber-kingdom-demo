@@ -22,13 +22,15 @@ func _ready() -> void:
  # Wrapped labels settle after container layout; refit when their minimum shrinks.
  minimum_size_changed.connect(func():
   if _safe.has_area():call_deferred("fit",_safe))
- var style:=StyleBoxFlat.new();style.bg_color=Color("10212a");style.border_color=Color("64776d");style.set_border_width_all(1);style.border_width_top=3;style.set_content_margin_all(22);style.shadow_color=Color(0,0,0,0.5);style.shadow_size=14;add_theme_stylebox_override("panel",style)
+ var style: StyleBoxFlat=preload("res://presentation/refuge_theme.gd").plate(Color("10212a"),Color("82795f"),22)
+ add_theme_stylebox_override("panel",style)
+ preload("res://presentation/refuge_theme.gd").decorate(self)
  var box:=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)
  var header:=HBoxContainer.new();box.add_child(header)
- _title=Label.new();_title.add_theme_font_size_override("font_size",25);_title.add_theme_color_override("font_color",Color("ead4a7"));_title.size_flags_horizontal=Control.SIZE_EXPAND_FILL;header.add_child(_title)
+ _title=Label.new();_title.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").heading_size);_title.add_theme_color_override("font_color",Color("ead4a7"));_title.size_flags_horizontal=Control.SIZE_EXPAND_FILL;header.add_child(_title)
  frontier_tab=Button.new();frontier_tab.icon=Icons.get_icon("map");frontier_tab.custom_minimum_size=Vector2(48,48);header.add_child(frontier_tab);frontier_tab.pressed.connect(_show_frontier)
  settlement_tab=Button.new();settlement_tab.name="SettlementTab";settlement_tab.icon=Icons.get_icon("camp");settlement_tab.custom_minimum_size=Vector2(48,48);header.add_child(settlement_tab);settlement_tab.pressed.connect(_show_settlement)
- _hint=Label.new();_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_hint.add_theme_font_size_override("font_size",14);_hint.add_theme_color_override("font_color",Color("9bb6b3"));box.add_child(_hint)
+ _hint=Label.new();_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_hint.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").caption_size);_hint.add_theme_color_override("font_color",Color("9bb6b3"));box.add_child(_hint)
  _chart=preload("res://presentation/exploration_chart.gd").new();box.add_child(_chart)
  _chart.region_selected.connect(func(key: String):_detail.text=tr(key))
  settlement_panel=preload("res://presentation/settlement_stage_panel.gd").new();box.add_child(settlement_panel);settlement_panel.hide()
@@ -38,11 +40,9 @@ func _ready() -> void:
   var entry:=HBoxContainer.new();row.add_child(entry)
   var icon:=TextureRect.new();icon.texture=Icons.get_icon(["camp","chest","gear","rift"][i]);icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;icon.custom_minimum_size=Vector2(24,24);entry.add_child(icon)
   var label:=Label.new();entry.add_child(label);_legend.append(label)
- _detail=Label.new();_detail.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_detail.add_theme_font_size_override("font_size",15);_detail.add_theme_color_override("font_color",Color("dcc8a1"));box.add_child(_detail)
+ _detail=Label.new();_detail.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;_detail.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").body_size);_detail.add_theme_color_override("font_color",Color("dcc8a1"));box.add_child(_detail)
  _close=Button.new();_close.custom_minimum_size.y=48;_close.pressed.connect(func():closed.emit());box.add_child(_close)
- var button_style:=StyleBoxFlat.new();button_style.bg_color=Color("213e42");button_style.border_color=Color("66897e");button_style.set_border_width_all(1)
- _close.add_theme_stylebox_override("normal",button_style)
- var hover: StyleBoxFlat=button_style.duplicate();hover.bg_color=Color("305756");hover.border_color=Color("ddc58b");_close.add_theme_stylebox_override("hover",hover)
+
  hide()
 func present(sim: RefCounted, knight_x: float) -> void:
  theme.default_font=preload("res://presentation/localized_font.gd").current()

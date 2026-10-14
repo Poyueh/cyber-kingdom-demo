@@ -1,7 +1,7 @@
 extends RefCounted
 ## All motion takes simulation time: pausing never leaves decorative loops running.
 static func prop(canvas: Node2D, texture: Texture2D, kind: String, at: Vector2, scale: float, tint: Color, time: float) -> void:
-	at=preload("res://presentation/grounded_art.gd").anchor(texture,at,scale)
+	at=preload("res://presentation/grounded_art.gd").anchor(texture,at,scale,kind!="deer")
 	var size := texture.get_size()*scale
 	var phase := time*1.8+at.x*0.019
 	if kind in ["tree","tree-plain","berries","herbs","crops","campfire"]:

@@ -2199,8 +2199,8 @@
     "zh_CN": "剑击判定会计入敌人的身体宽度，不必碰到中心点才算命中。小怪、守门兽与巨龙各有对应边界；重劈配合较长刀光，背后和超出剑路仍不会命中。同一刀对同一敌人只造成一次伤害，旧旅程也套用此修正。",
     "en": "Sword contact now accounts for enemy body width instead of requiring a hit on the centre point. Devourers, guardians and dragons have matching body boundaries. The heavy cleave matches its longer blade trail; enemies behind you or beyond the blade still evade the hit. Each swing damages each enemy only once. Existing journeys also receive this correction."
   },
-  "適用 v0.0.43：日月加入像素光暈與天空色柔邊，晨光、夕照和月光自然銜接。維持圓形與像素風格，既有旅程直接套用；日夜長度與戰鬥規則不變。": {
-    "zh_CN": "适用 v0.0.43：日月加入像素光晕与天空色柔边，晨光、夕照和月光自然衔接。维持圆形与像素风格，既有旅程直接套用；日夜长度与战斗规则不变。",
-    "en": "For v0.0.43: pixel halos and sky-tinted edges blend the sun and moon into dawn, sunset and moonlight. Circular silhouettes and pixel art are preserved. Existing journeys update directly; day/night durations and combat rules are unchanged."
+  "適用 v0.0.44：動物會隨行進方向轉身，景物更深扎入地面；選單、星圖與探索介面統一字級和面板樣式。既有旅程直接套用，操作與戰鬥規則不變。": {
+    "en": "For v0.0.44: wildlife turns with its travel direction, scenery sits deeper in the ground, and menus, star routes and exploration screens share consistent typography and panel styling. Existing journeys receive these visual improvements; controls and combat rules are unchanged.",
+    "zh_CN": "适用 v0.0.44：动物会随行进方向转身，景物更深扎入地面；菜单、星图与探索界面统一字号和面板样式。现有旅程直接套用，操作与战斗规则不变。"
   }
 }

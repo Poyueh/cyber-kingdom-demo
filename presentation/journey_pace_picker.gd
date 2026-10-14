@@ -20,7 +20,7 @@ func _ready() -> void:
 	for option: Resource in catalog.options:
 		var button: Button=_button(row,48)
 		button.name="Pace%d"%option.pace_id
-		button.icon=Icons.get_icon(option.icon)
+		button.alignment=HORIZONTAL_ALIGNMENT_CENTER
 		button.add_theme_constant_override("icon_max_width",22)
 		button.expand_icon=true
 		button.toggle_mode=true
@@ -39,7 +39,7 @@ func _button(parent: Node, height: float) -> Button:
 	var button: Button=Button.new()
 	button.custom_minimum_size=Vector2(0,height)
 	button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-	button.add_theme_font_size_override("font_size",15)
+	button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").body_size)
 	button.theme=preload("res://presentation/refuge_theme.gd").make()
 	for state: StringName in [&"normal",&"hover",&"pressed",&"disabled"]:
 		var skin: StyleBoxFlat=button.theme.get_stylebox(state,"Button").duplicate()
@@ -50,7 +50,7 @@ func _button(parent: Node, height: float) -> Button:
 func _label(font_size: int, color: Color) -> Label:
 	var label: Label=Label.new()
 	label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
-	label.add_theme_font_size_override("font_size",font_size)
+	label.add_theme_font_size_override("font_size",preload("res://presentation/refuge_theme.gd").type_size(font_size))
 	label.add_theme_color_override("font_color",color)
 	add_child(label)
 	return label
