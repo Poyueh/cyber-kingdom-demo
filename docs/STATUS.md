@@ -1,8 +1,9 @@
 # 製作進度
 
-## 2026-10-15：v0.0.51 騎士承重與步態（發行中）
+## 2026-10-15：v0.0.51 騎士承重與步態（已發布）
 
 - 騎士改為扎實直腰護甲、穩定肩線與低位握劍。持劍／徒手走跑補成八格雙步循環，加入承重、推蹬與回收過渡；每格停留縮短而完整步頻及實際移速不變。待機、攻擊、拔劍、受擊、疲勞及騎乘同步造型，保留共同收勢；玩法與存檔不變。
+- [Release v0.0.51](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.51) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.51) 已發布，Pages 38708397996 成功。七附件、七份線上遊戲／指南與規格r26的14檔均與套件一致；公開主選單、走跑指南及規格已驗收，瀏覽器零錯誤，未建立玩家旅程。[線上核對](reports/release-0.0.51/live.json) · [起停示範畫面](reports/release-0.0.51/public-guide.png)。
 - [設計](design/knight-grounded-motion.md) · [第129課](lessons/129-knight-keyframes-and-cadence.md)。完整回歸通過（4,545 核心斷言），五平台同源 88ae880。成品動作呈現 161、接續 17、步態 12、取樣 4、互動 30 項通過；網頁實際走跑、轉身、拔劍與攻擊通過，零瀏覽器錯誤。[驗收](reports/release-0.0.51/verification.json)。
 
 ## 2026-10-15：v0.0.50 騎士動作重製（已發布）

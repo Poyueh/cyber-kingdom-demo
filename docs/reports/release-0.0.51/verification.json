@@ -49,7 +49,7 @@
     "iOS 0.0.51 / 51"
   ],
   "browser_local_guide_errors": [],
-  "published": false,
+  "published": true,
   "limitations": [
     "Windows and mobile physical devices not tested",
     "macOS ad-hoc signing, not notarized",
@@ -68,5 +68,11 @@
   "packaged_gait_assertions": 12,
   "packaged_presentation_assertions": 161,
   "packaged_input_assertions": 30,
-  "motion_sampling_assertions": 4
+  "motion_sampling_assertions": 4,
+  "pages_run": "38708397996",
+  "browser_public_menu_errors": [],
+  "browser_public_guide_errors": [],
+  "browser_public_spec_errors": [],
+  "public_player_journey_created": false,
+  "public_guide_animation_verified": true
 }
