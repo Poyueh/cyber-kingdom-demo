@@ -1,0 +1,7 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+armed speed=165.0 longest unchanged drawing=9 ticks (limit 6): FAIL
+armed speed=321.75 longest unchanged drawing=7 ticks (limit 4): FAIL
+unarmed speed=165.0 longest unchanged drawing=9 ticks (limit 6): FAIL
+unarmed speed=321.75 longest unchanged drawing=7 ticks (limit 4): FAIL
+Motion sampling: 4 checks, 4 failures

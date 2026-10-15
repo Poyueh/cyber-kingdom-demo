@@ -1,0 +1,7 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+armed speed=165.0 longest unchanged drawing=5 ticks (limit 6): PASS
+armed speed=321.75 longest unchanged drawing=4 ticks (limit 4): PASS
+unarmed speed=165.0 longest unchanged drawing=5 ticks (limit 6): PASS
+unarmed speed=321.75 longest unchanged drawing=4 ticks (limit 4): PASS
+Motion sampling: 4 checks, 0 failures
