@@ -2306,5 +2306,17 @@
   "v0.0.50 原生遊戲實錄 · 三段連斬與相同待機身形的收勢。": {
     "en": "v0.0.50 native gameplay · Three-hit combo recovering to the same idle silhouette.",
     "zh_CN": "v0.0.50 原生游戏实录 · 三段连斩与相同待机身形的收势。"
+  },
+  "適用 v0.0.51：騎士改為扎實護甲、穩定重心與低位握劍；走跑補齊八格換腳過渡，減少逐格停頓。攻擊、拔劍與受擊同步造型及收勢，移速、戰鬥規則與旅程進度不變。": {
+    "en": "For v0.0.51: sturdier armor, grounded posture and a firm low sword grip. Eight-pose walking and running cycles reduce held-frame stepping. Attacks, sword drawing and hit reactions share the same design and recovery; movement speed, combat rules and journey progress are unchanged.",
+    "zh_CN": "适用 v0.0.51：骑士改为扎实护甲、稳定重心与低位握剑；走跑补齐八格换脚过渡，减少逐格停顿。攻击、拔剑与受击同步造型及收势，移速、战斗规则与旅程进度不变。"
+  },
+  "v0.0.51 原生起停實錄 · 穩定承重、八格換腳與走跑切換。": {
+    "en": "v0.0.51 native start/stop footage · Grounded weight, eight-pose strides and walk/run transitions.",
+    "zh_CN": "v0.0.51 原生起停实录 · 稳定承重、八格换脚与走跑切换。"
+  },
+  "v0.0.51 原生遊戲實錄 · 紮實站姿、三段連斬與穩定收勢。": {
+    "en": "v0.0.51 native gameplay · Grounded stance, three-hit combo and stable recovery.",
+    "zh_CN": "v0.0.51 原生游戏实录 · 扎实站姿、三段连斩与稳定收势。"
   }
 }

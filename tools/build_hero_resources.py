@@ -1,10 +1,10 @@
 from pathlib import Path
 import json
 ROOT=Path(__file__).resolve().parents[1]
-OUT='res://art/characters/hero-v008/'
-GAIT='res://art/characters/hero-v008/'
+OUT='res://art/characters/hero-v009/'
+GAIT='res://art/characters/hero-v009/'
 def atlas_path(file): return (GAIT if file.startswith('gait-') else OUT)+file+'.png'
-clips={'idle':('idle',4,4,3),'run':('gait-walk',4,4,7),'sprint':('gait-sprint',4,4,9),'tired_walk':('gait-walk',4,4,4),'attack':('idle',4,4,12),'dash':('gait-sprint',4,4,9),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
+clips={'idle':('idle',4,4,3),'run':('gait-walk',8,4,14),'sprint':('gait-sprint',8,4,18),'tired_walk':('gait-walk',8,4,8),'attack':('idle',4,4,12),'dash':('gait-sprint',8,4,18),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
 files=list(dict.fromkeys(x[0] for x in clips.values()))
 lines=['[gd_resource type="SpriteFrames" format=3]','']
 for i,file in enumerate(files):lines.append(f'[ext_resource type="Texture2D" path="{atlas_path(file)}" id="{i}"]')
@@ -35,8 +35,8 @@ lines=['[gd_resource type="Resource" format=3]','',
 for key,file in textures.items():lines.append(f'[ext_resource type="Texture2D" path="{atlas_path(file)}" id="{key}"]')
 lines+=['','[resource]','script = ExtResource("script")','frames = ExtResource("frames")','combo = ExtResource("combo")']
 for key in textures:lines.append(f'{key} = ExtResource("{key}")')
-lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 4','stride_columns = 4','run_fps = 7.0','sprint_fps = 9.0','tired_fps = 4.0','run_reference_speed = 165.0','sprint_reference_speed = 321.75','tired_reference_speed = 69.3','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','module_sockets = {']
-sockets=json.loads((ROOT/'art/characters/hero-v008/sockets.json').read_text())
+lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 8','stride_columns = 4','run_fps = 14.0','sprint_fps = 18.0','tired_fps = 8.0','run_reference_speed = 165.0','sprint_reference_speed = 321.75','tired_reference_speed = 69.3','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','module_sockets = {']
+sockets=json.loads((ROOT/'art/characters/hero-v009/sockets.json').read_text())
 for name,points in sockets.items():
  lines.append('"'+name+'": ['+', '.join(f'Vector2({p[0]}, {p[1]})' for p in points)+'],')
 lines.append('}')
