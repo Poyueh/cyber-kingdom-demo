@@ -1,0 +1,69 @@
+{
+  "version": "0.0.50",
+  "source_commit": "e63fc388f347d103f0cb267d3c66deb0647ddd30",
+  "source_tree": "885495df4e36a49edf3020ad75334e36f3ee5628",
+  "full_check": true,
+  "behavior_assertions": 4545,
+  "native_continuity_assertions": 17,
+  "native_gait_assertions": 12,
+  "native_presentation_assertions": 161,
+  "spec_revision": 25,
+  "save_schema": 20,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.50-debug.apk",
+      "size": 100781453,
+      "sha256": "22092d0120a37ff24e8d9957196b5f55445472a5069847ecfb438f3ea517f725"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.50.html",
+      "size": 11750862,
+      "sha256": "715bc3b65d642c394372c85cbc5bc78e18748f8c7764b11206c3cf77a9665e28"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.50.zip",
+      "size": 95924131,
+      "sha256": "1fe973abb6ed6bb5e13e4e29ee25b54fd7ecf1a9b2197a47f960b40546d5d99a"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.50.zip",
+      "size": 109489542,
+      "sha256": "152df55fd8a5d1e5e0fe1ae63b395c4cf7afdacb28f5b2eeed6c6fc1bb12ede4"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.50-Xcode.zip",
+      "size": 184260573,
+      "sha256": "c6e020d72e7252b3bdeea829e67cae161847807f5399340ef24ee7806e00b690"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.50.zip",
+      "size": 131911587,
+      "sha256": "d831678f8f8880fea8da7c1861adcac2b661d5c43bd92a4b65611b7060fa1ad8"
+    }
+  ],
+  "archive_integrity_verified": true,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "version_metadata_verified": [
+    "macOS 0.0.50 / 50",
+    "iOS 0.0.50 / 50"
+  ],
+  "browser_local_guide_errors": [],
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "packaged_continuity_assertions": 17,
+  "packaged_gait_assertions": 12,
+  "packaged_presentation_assertions": 161,
+  "packaged_input_assertions": 30,
+  "browser_local_game_errors": [],
+  "guide_locales_verified": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ]
+}

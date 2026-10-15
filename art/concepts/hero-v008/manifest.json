@@ -1,0 +1,164 @@
+{
+  "tool": "image_gen",
+  "style": "Original black steel, brass and burgundy knight; motion studies cited in docs/design/knight-motion-remaster.md",
+  "sources": [
+    {
+      "name": "walk-unarmed",
+      "file": "sources/walk-unarmed.png",
+      "prompt": "sources/walk-unarmed.prompt.txt",
+      "generation_key": "walk-keys-final-lowpass",
+      "original_file": "exec-4166a0a8-6152-46c8-b508-21c8593b23cd.png"
+    },
+    {
+      "name": "walk",
+      "file": "sources/walk.png",
+      "prompt": "sources/walk.prompt.txt",
+      "generation_key": "walk-keys-armed-final-lowpass",
+      "original_file": "exec-06160ac5-3aa6-46a9-9fc8-b1f440286b88.png"
+    },
+    {
+      "name": "sprint-unarmed",
+      "file": "sources/sprint-unarmed.png",
+      "prompt": "sources/sprint-unarmed.prompt.txt",
+      "generation_key": "sprint-keys-final",
+      "original_file": "exec-367dbfa0-fa48-4f29-ac19-facff8fc153a.png"
+    },
+    {
+      "name": "support",
+      "file": "sources/support.png",
+      "prompt": "sources/support.prompt.txt",
+      "generation_key": "support",
+      "original_file": "exec-9b8874b7-891c-45a4-9cde-720e256cd2d8.png"
+    },
+    {
+      "name": "sprint",
+      "file": "sources/sprint.png",
+      "prompt": "sources/sprint.prompt.txt",
+      "generation_key": "sprint-keys-armed-final",
+      "original_file": "exec-7452890c-bcaf-468a-94bf-c8047fd00aa7.png"
+    },
+    {
+      "name": "support-unarmed",
+      "file": "sources/support-unarmed.png",
+      "prompt": "sources/support-unarmed.prompt.txt",
+      "generation_key": "support-unarmed",
+      "original_file": "exec-4801b15d-9a88-450f-90ec-7d67e81f5a40.png"
+    },
+    {
+      "name": "ceremony",
+      "file": "sources/ceremony.png",
+      "prompt": "sources/ceremony.prompt.txt",
+      "generation_key": "ceremony",
+      "original_file": "exec-9c0523c5-2e48-4e16-83ef-2924983c18b2.png"
+    },
+    {
+      "name": "slash",
+      "file": "sources/slash.png",
+      "prompt": "sources/slash.prompt.txt",
+      "generation_key": "slash",
+      "original_file": "exec-049dd720-dc20-4b2f-ac86-818a900591f9.png"
+    },
+    {
+      "name": "rising",
+      "file": "sources/rising.png",
+      "prompt": "sources/rising.prompt.txt",
+      "generation_key": "rising",
+      "original_file": "exec-da28bcd4-1885-4729-9303-654650e689c9.png"
+    },
+    {
+      "name": "heavy",
+      "file": "sources/heavy.png",
+      "prompt": "sources/heavy.prompt.txt",
+      "generation_key": "heavy",
+      "original_file": "exec-15dd5166-3ee2-4610-9639-25a09f7b8222.png"
+    },
+    {
+      "name": "slash-advance",
+      "file": "sources/slash-advance.png",
+      "prompt": "sources/slash-advance.prompt.txt",
+      "generation_key": "slash-advance",
+      "original_file": "exec-d6010a61-c706-48da-adbd-7897e6fced53.png"
+    },
+    {
+      "name": "air",
+      "file": "sources/air.png",
+      "prompt": "sources/air.prompt.txt",
+      "generation_key": "air",
+      "original_file": "exec-e5a78f8c-36b3-4a32-9b69-747c0635ee73.png"
+    },
+    {
+      "name": "mounted",
+      "file": "sources/mounted.png",
+      "prompt": "sources/mounted.prompt.txt",
+      "generation_key": "mounted",
+      "original_file": "exec-47c8e1fd-b01b-4ea0-8d16-0942c9bcbb89.png"
+    },
+    {
+      "name": "mounted-unarmed",
+      "file": "sources/mounted-unarmed.png",
+      "prompt": "sources/mounted-unarmed.prompt.txt",
+      "generation_key": "mounted-unarmed",
+      "original_file": "exec-e49d8596-9a6f-4758-8f6a-ba06a3ee899d.png"
+    },
+    {
+      "name": "rising-advance",
+      "file": "sources/rising-advance.png",
+      "prompt": "sources/rising-advance.prompt.txt",
+      "generation_key": "rising-advance",
+      "original_file": "exec-3162bea6-1c6c-4da3-a150-8c56a373f756.png"
+    },
+    {
+      "name": "heavy-advance",
+      "file": "sources/heavy-advance.png",
+      "prompt": "sources/heavy-advance.prompt.txt",
+      "generation_key": "heavy-advance",
+      "original_file": "exec-d7cfc70c-cb0a-45b9-8f95-e3ae5f99efe2.png"
+    }
+  ],
+  "gait_prompt_history": {
+    "walk": [
+      {
+        "stage": "walk-keys",
+        "prompt": "Four animation KEY POSES of the slim knight in the reference, four separate figures in a single horizontal row on transparent background. SAME knight dimensions, narrow torso and legs, dark steel armor gold trim cyan visor short burgundy cape. Strict side view facing RIGHT. Unarmed. WALKING upright relaxed arms. CRITICAL LEG CHOREOGRAPHY: pose1 bright NEAR leg stretched FORWARD RIGHT, dark FAR leg stretched BACK LEFT; pose2 bright NEAR leg supporting vertical below hip, dark FAR knee lifted FORWARD RIGHT with foot off ground; pose3 dark FAR leg stretched FORWARD RIGHT, bright NEAR leg stretched BACK LEFT; pose4 dark FAR leg supporting vertical below hip, bright NEAR knee lifted FORWARD RIGHT with foot off ground. Four DIFFERENT poses, not repetitions. Near arm swings opposite near leg. Fixed profile helmet and torso silhouette, arms and legs move at joints. Same ground baseline and body scale. Large empty transparent gaps separating every figure. Full figures no cropping, no text, no extra figures. Pixel art game sprite."
+      },
+      {
+        "stage": "walk-keys-armed",
+        "prompt": "Edit this image: preserve EXACTLY these four existing knight figures in place, their silhouettes, body size, legs, feet, positions, pose order and pixel art. Add a straight silver sword with small gold crossguard into the visible near hand of EACH of the four figures, pointing diagonally down and forward to the right, at the same consistent length approximately hip-to-knee distance. Do not change any joint positions or legs. Four figures only. Transparent background. Keep all swords within canvas and separate from the next figure."
+      },
+      {
+        "stage": "walk-keys-final",
+        "prompt": "Keep this exact four-figure sprite sheet. Correct ONLY the FOURTH rightmost figure's legs: the leg that is lifted forward/right with knee bent must be the LIGHT GRAY foreground near leg; the straight vertical support leg must be DARK charcoal background far leg. Preserve exact joint geometry, silhouette, positions and head/body size of all four figures. This is a leg-shading swap on fourth pose so near/far legs alternate correctly.  Retain transparent background and all full figures. Do not add any effects or move figures."
+      },
+      {
+        "stage": "walk-keys-armed-final",
+        "prompt": "Keep this exact four-figure sprite sheet. Correct ONLY the FOURTH rightmost figure's legs: the leg that is lifted forward/right with knee bent must be the LIGHT GRAY foreground near leg; the straight vertical support leg must be DARK charcoal background far leg. Preserve exact joint geometry, silhouette, positions and head/body size of all four figures. This is a leg-shading swap on fourth pose so near/far legs alternate correctly. Also in FIRST figure only move sword to the visible near hand hanging at the LEFT side of hip; blade remains pointing down-right. Retain transparent background and all full figures. Do not add any effects or move figures."
+      },
+      {
+        "stage": "walk-keys-armed-final-lowpass",
+        "prompt": "Keep these four knight drawings exactly in place on transparent background. Correct ONLY the lifted legs in figures TWO and FOUR: this is gentle ordinary WALKING, NOT marching or running. The swinging foot must pass very close to the planted ankle, only slightly off the ground (about one boot sole height). Lower the swinging knee to beside the support knee, relax the thigh nearly vertical, knee softly bent. Figure TWO's swinging leg remains DARK; figure FOUR's swinging leg remains LIGHT. Preserve first and third extended stride poses entirely. Preserve helmet, chest, waist, arms, sword if present, body scale and all four positions. No background, no labels."
+      },
+      {
+        "stage": "walk-keys-final-lowpass",
+        "prompt": "Keep these four knight drawings exactly in place on transparent background. Correct ONLY the lifted legs in figures TWO and FOUR: this is gentle ordinary WALKING, NOT marching or running. The swinging foot must pass very close to the planted ankle, only slightly off the ground (about one boot sole height). Lower the swinging knee to beside the support knee, relax the thigh nearly vertical, knee softly bent. Figure TWO's swinging leg remains DARK; figure FOUR's swinging leg remains LIGHT. Preserve first and third extended stride poses entirely. Preserve helmet, chest, waist, arms, sword if present, body scale and all four positions. No background, no labels."
+      }
+    ],
+    "sprint": [
+      {
+        "stage": "sprint-keys",
+        "prompt": "Four animation KEY POSES of the slim knight in the reference, four separate figures in a single horizontal row on transparent background. SAME knight dimensions, narrow torso and legs, dark steel armor gold trim cyan visor short burgundy cape. Strict side view facing RIGHT. Unarmed. RUNNING with 12-degree forward body lean and bent elbows. CRITICAL LEG CHOREOGRAPHY: pose1 bright NEAR leg stretched FORWARD RIGHT, dark FAR leg stretched BACK LEFT; pose2 bright NEAR leg supporting vertical below hip, dark FAR knee lifted FORWARD RIGHT with foot off ground; pose3 dark FAR leg stretched FORWARD RIGHT, bright NEAR leg stretched BACK LEFT; pose4 dark FAR leg supporting vertical below hip, bright NEAR knee lifted FORWARD RIGHT with foot off ground. Four DIFFERENT poses, not repetitions. Near arm swings opposite near leg. Fixed profile helmet and torso silhouette, arms and legs move at joints. Same ground baseline and body scale. Large empty transparent gaps separating every figure. Full figures no cropping, no text, no extra figures. Pixel art game sprite."
+      },
+      {
+        "stage": "sprint-keys-armed",
+        "prompt": "Edit this image: preserve EXACTLY these four existing knight figures in place, their silhouettes, body size, legs, feet, positions, pose order and pixel art. Add a straight silver sword with small gold crossguard into the visible near hand of EACH of the four figures, pointing diagonally down and forward to the right, at the same consistent length approximately hip-to-knee distance. Do not change any joint positions or legs. Four figures only. Transparent background. Keep all swords within canvas and separate from the next figure."
+      },
+      {
+        "stage": "sprint-keys-final",
+        "prompt": "Keep this exact four-figure sprite sheet. Correct ONLY the FOURTH rightmost figure's legs: the leg that is lifted forward/right with knee bent must be the LIGHT GRAY foreground near leg; the straight vertical support leg must be DARK charcoal background far leg. Preserve exact joint geometry, silhouette, positions and head/body size of all four figures. This is a leg-shading swap on fourth pose so near/far legs alternate correctly.  Retain transparent background and all full figures. Do not add any effects or move figures."
+      },
+      {
+        "stage": "sprint-keys-armed-final",
+        "prompt": "Keep this exact four-figure sprite sheet. Correct ONLY the FOURTH rightmost figure's legs: the leg that is lifted forward/right with knee bent must be the LIGHT GRAY foreground near leg; the straight vertical support leg must be DARK charcoal background far leg. Preserve exact joint geometry, silhouette, positions and head/body size of all four figures. This is a leg-shading swap on fourth pose so near/far legs alternate correctly.  Retain transparent background and all full figures. Do not add any effects or move figures."
+      }
+    ]
+  }
+}
