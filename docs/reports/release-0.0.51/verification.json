@@ -1,0 +1,72 @@
+{
+  "version": "0.0.51",
+  "source_commit": "88ae880ed626b811157bbf801f3bc144418225c7",
+  "source_tree": "80dcf038da8b4be54cf7352a902e874f75c23136",
+  "full_check": true,
+  "behavior_assertions": 4545,
+  "native_continuity_assertions": 17,
+  "native_gait_assertions": 12,
+  "native_presentation_assertions": 161,
+  "spec_revision": 26,
+  "save_schema": 20,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.51-debug.apk",
+      "size": 101850537,
+      "sha256": "1aa1be9f682ea68300dcdc414eb6d0519ca5b701019b8420ed96ae4b00307006"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.51.html",
+      "size": 14882409,
+      "sha256": "91557a1c856e320f39f7e9ffe89d574a1a27c27bf0886a1177315bcc7b2e658f"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.51.zip",
+      "size": 101666585,
+      "sha256": "d72620d32347c3abaf864bbea922b302b1b9d3d73b56dc31c6077b5e5afd12b7"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.51.zip",
+      "size": 110544806,
+      "sha256": "d9170b1e39728c5c2112ce3fc5ba564a2a2d69412dbb5159ad9b695b471e226c"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.51-Xcode.zip",
+      "size": 185316896,
+      "sha256": "20751fb37fc33b0f549c2a76a5c0aac3779e35b8bc3907b0c0ea77f5f51e0b52"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.51.zip",
+      "size": 132966857,
+      "sha256": "281db421ee48164a4ef0877ce05a90fee2bf98f1270fca0b92880666d51ad334"
+    }
+  ],
+  "archive_integrity_verified": true,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "version_metadata_verified": [
+    "macOS 0.0.51 / 51",
+    "iOS 0.0.51 / 51"
+  ],
+  "browser_local_guide_errors": [],
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "browser_local_game_errors": [],
+  "browser_local_game_actions": [
+    "walk",
+    "sprint",
+    "turn",
+    "ceremony",
+    "attack"
+  ],
+  "packaged_continuity_assertions": 17,
+  "packaged_gait_assertions": 12,
+  "packaged_presentation_assertions": 161,
+  "packaged_input_assertions": 30,
+  "motion_sampling_assertions": 4
+}

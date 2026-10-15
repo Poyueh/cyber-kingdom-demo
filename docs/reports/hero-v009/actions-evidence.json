@@ -1,0 +1,3069 @@
+{
+	"advancing": [
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.0490196078431372,
+			"attack_step": 1,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.147058823529412,
+			"attack_step": 1,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.245098039215686,
+			"attack_step": 1,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.343137254901961,
+			"attack_step": 1,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.441176470588235,
+			"attack_step": 1,
+			"region": "[P: (640.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 50.5108909606934,
+			"x": 1400.841796875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.53921568627451,
+			"attack_step": 1,
+			"region": "[P: (960.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 242.579147338867,
+			"x": 1407.6728515625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.637254901960784,
+			"attack_step": 1,
+			"region": "[P: (960.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0002, 335.9999)",
+			"speed": 262.597045898438,
+			"x": 1416.62194824219
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.735294117647059,
+			"attack_step": 1,
+			"region": "[P: (1120.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 108.54630279541,
+			"x": 1421.88671875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.833333333333333,
+			"attack_step": 1,
+			"region": "[P: (1280.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1422.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.0626494500239116,
+			"attack_step": 2,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1422.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.182209469153515,
+			"attack_step": 2,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1422.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.301769488283118,
+			"attack_step": 2,
+			"region": "[P: (640.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0002, 335.9999)",
+			"speed": 60.6086921691895,
+			"x": 1423.01013183594
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.421329507412721,
+			"attack_step": 2,
+			"region": "[P: (960.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0002, 335.9999)",
+			"speed": 268.338531494141,
+			"x": 1430.65075683594
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.540889526542324,
+			"attack_step": 2,
+			"region": "[P: (1120.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 266.181274414062,
+			"x": 1439.98193359375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.660449545671927,
+			"attack_step": 2,
+			"region": "[P: (1280.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 55.2771186828613,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.78000956480153,
+			"attack_step": 2,
+			"region": "[P: (1440.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.0128376470588232,
+			"attack_step": 3,
+			"region": "[P: (0.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.0912690196078427,
+			"attack_step": 3,
+			"region": "[P: (160.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.169700392156862,
+			"attack_step": 3,
+			"region": "[P: (320.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.248131764705882,
+			"attack_step": 3,
+			"region": "[P: (480.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.326563137254901,
+			"attack_step": 3,
+			"region": "[P: (480.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1443.99975585938
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.404994509803921,
+			"attack_step": 3,
+			"region": "[P: (800.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 1.1617716550827,
+			"x": 1444.01916503906
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.483425882352941,
+			"attack_step": 3,
+			"region": "[P: (960.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 191.089004516602,
+			"x": 1448.58740234375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.56185725490196,
+			"attack_step": 3,
+			"region": "[P: (960.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0002, 335.9999)",
+			"speed": 310.036956787109,
+			"x": 1458.20104980469
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.64028862745098,
+			"attack_step": 3,
+			"region": "[P: (1120.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 299.351257324219,
+			"x": 1468.53857421875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.718719999999999,
+			"attack_step": 3,
+			"region": "[P: (1120.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 159.031890869141,
+			"x": 1475.27893066406
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.797151372549019,
+			"attack_step": 3,
+			"region": "[P: (1280.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1476.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.875582745098039,
+			"attack_step": 3,
+			"region": "[P: (1440.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1476.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/advancing.png",
+			"attack_progress": 0.954014117647058,
+			"attack_step": 3,
+			"region": "[P: (1760.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1476.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1478.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1484.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1489.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1495.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1500.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1506.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1511.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1517.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 165.0,
+			"x": 1522.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1528.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1533.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1539.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1544.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1550.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1555.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1561.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1566.75
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1572.25
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 1577.75
+		}
+	],
+	"ceremony": [
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/ceremony.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 30.0
+		}
+	],
+	"fatigue": [
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (320.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/rest.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 0.0,
+			"x": 1585.86242675781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1587.017578125
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1591.63818359375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1596.2587890625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1600.87939453125
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1605.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1610.12060546875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1614.7412109375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1619.36181640625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1623.982421875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1628.60302734375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1633.2236328125
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1637.84423828125
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1642.46484375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1647.08544921875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 69.3000030517578,
+			"x": 1651.7060546875
+		}
+	],
+	"planted": [
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.0490196078431372,
+			"attack_step": 1,
+			"region": "[P: (0.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.147058823529412,
+			"attack_step": 1,
+			"region": "[P: (320.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.245098039215686,
+			"attack_step": 1,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.343137254901961,
+			"attack_step": 1,
+			"region": "[P: (480.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.441176470588235,
+			"attack_step": 1,
+			"region": "[P: (640.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.53921568627451,
+			"attack_step": 1,
+			"region": "[P: (960.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.637254901960784,
+			"attack_step": 1,
+			"region": "[P: (960.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.735294117647059,
+			"attack_step": 1,
+			"region": "[P: (1120.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.833333333333333,
+			"attack_step": 1,
+			"region": "[P: (1280.0, 0.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.0626494500239116,
+			"attack_step": 2,
+			"region": "[P: (160.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.182209469153515,
+			"attack_step": 2,
+			"region": "[P: (480.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.301769488283118,
+			"attack_step": 2,
+			"region": "[P: (640.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.421329507412721,
+			"attack_step": 2,
+			"region": "[P: (960.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.540889526542324,
+			"attack_step": 2,
+			"region": "[P: (1120.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.660449545671927,
+			"attack_step": 2,
+			"region": "[P: (1280.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.78000956480153,
+			"attack_step": 2,
+			"region": "[P: (1440.0, 128.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.0128376470588232,
+			"attack_step": 3,
+			"region": "[P: (0.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.0912690196078427,
+			"attack_step": 3,
+			"region": "[P: (160.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.169700392156862,
+			"attack_step": 3,
+			"region": "[P: (320.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.248131764705882,
+			"attack_step": 3,
+			"region": "[P: (480.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.326563137254901,
+			"attack_step": 3,
+			"region": "[P: (480.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.404994509803921,
+			"attack_step": 3,
+			"region": "[P: (800.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.483425882352941,
+			"attack_step": 3,
+			"region": "[P: (960.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.56185725490196,
+			"attack_step": 3,
+			"region": "[P: (960.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.64028862745098,
+			"attack_step": 3,
+			"region": "[P: (1120.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.718719999999999,
+			"attack_step": 3,
+			"region": "[P: (1120.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.797151372549019,
+			"attack_step": 3,
+			"region": "[P: (1280.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.875582745098039,
+			"attack_step": 3,
+			"region": "[P: (1440.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/planted.png",
+			"attack_progress": 0.954014117647058,
+			"attack_step": 3,
+			"region": "[P: (1760.0, 256.0), S: (160.0, 128.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 3,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/idle.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9998, 335.9999)",
+			"speed": 0.0,
+			"x": 1400.0
+		}
+	],
+	"run": [
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 35.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 41.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 46.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 52.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 57.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 63.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 68.4999923706055
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 73.9999771118164
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 79.4999618530273
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 84.9999465942383
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 90.4999313354492
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 95.9999160766602
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 101.499900817871
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 106.999885559082
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 112.499870300293
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 117.999855041504
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 123.499839782715
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 128.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 134.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 139.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 145.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 150.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 156.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 161.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 167.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 172.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 178.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 183.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 189.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 194.99983215332
+		}
+	],
+	"sprint": [
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 208.474807739258
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 219.199783325195
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 229.924758911133
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 240.64973449707
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 251.374710083008
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 262.099731445312
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 272.824768066406
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 283.5498046875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 294.274841308594
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 304.999877929688
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 315.724914550781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 326.449951171875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 337.174987792969
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 347.900024414062
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 358.625061035156
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 369.35009765625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 380.075134277344
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 390.800170898438
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 401.525207519531
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 412.250244140625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 422.975280761719
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 433.700317382812
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 444.425354003906
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 455.150390625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 465.875427246094
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 476.600463867188
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 487.325500488281
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 498.050537109375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 508.775573730469
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 519.500549316406
+		}
+	],
+	"unarmed-run": [
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 35.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 41.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 46.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 52.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 57.5
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 63.0
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 68.4999923706055
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 73.9999771118164
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 79.4999618530273
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 84.9999465942383
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 90.4999313354492
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 95.9999160766602
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 101.499900817871
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 106.999885559082
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 112.499870300293
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 117.999855041504
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 123.499839782715
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 128.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 134.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 139.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 145.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 150.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 165.0,
+			"x": 156.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 161.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 167.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 172.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 178.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 183.99983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 189.49983215332
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-walk-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 165.0,
+			"x": 194.99983215332
+		}
+	],
+	"unarmed-sprint": [
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 208.474807739258
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 219.199783325195
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 229.924758911133
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 240.64973449707
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 251.374710083008
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 262.099731445312
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 272.824768066406
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 283.5498046875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 294.274841308594
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 304.999877929688
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 315.724914550781
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 326.449951171875
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 337.174987792969
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 347.900024414062
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 358.625061035156
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 369.35009765625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 380.075134277344
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 390.800170898438
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 401.525207519531
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 412.250244140625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 422.975280761719
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 433.700317382812
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 444.425354003906
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 455.150390625
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 465.875427246094
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (128.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 476.600463867188
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (256.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 487.325500488281
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 498.050537109375
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (384.0, 96.0), S: (128.0, 96.0)]",
+			"screen": "(480.0, 335.9999)",
+			"speed": 321.75,
+			"x": 508.775573730469
+		},
+		{
+			"atlas": "res://art/characters/hero-v009/gait-sprint-unarmed.png",
+			"attack_progress": 1.0,
+			"attack_step": 0,
+			"region": "[P: (0.0, 0.0), S: (128.0, 96.0)]",
+			"screen": "(479.9999, 335.9999)",
+			"speed": 321.75,
+			"x": 519.500549316406
+		}
+	]
+}
