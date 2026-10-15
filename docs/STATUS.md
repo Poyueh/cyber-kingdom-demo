@@ -1,9 +1,10 @@
 # 製作進度
 
-## 2026-10-15：v0.0.50 騎士動作重製（發行中）
+## 2026-10-15：v0.0.50 騎士動作重製（已發布）
 
 - 重製修長側身騎士與左右換腳關鍵姿勢，統一待機、走跑、攻擊、拔劍、受擊、疲勞及騎乘外觀。攻擊首尾、拔劍完成、受擊與休息恢復回到相同待機圖，避免身形跳變；玩法、快照v20及航行v2不變。
 - 原稿與提示、原生整理器、三語指南及企劃r25同步。交接行為先重現17處失敗，修正後17項通過。完整 tools/check.sh 通過，核心4,545斷言及全部場景無SCRIPT ERROR／ERROR。原生步態12項、人物161項，成品交接17項／步態12項／人物161項／實際操作30項通過。五平台同源e63fc38，簽章、Android對齊、版本與封裝核對完成。本機H5走跑、拔劍、連斬、轉向與暫停無瀏覽器錯誤；三語指南實際核對。Windows／手機待實機驗收，iOS為待簽署Xcode專案。[發行驗收](reports/release-0.0.50/verification.json)。
+- [Release v0.0.50](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.50) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.50) 已發布，Pages 38703660382 成功。七附件、七份線上遊戲／指南與規格r25的14檔均與套件一致；公開主選單、走跑指南及規格已驗收，瀏覽器零錯誤，未建立玩家旅程。[線上核對](reports/release-0.0.50/live.json) · [起停示範畫面](reports/release-0.0.50/public-guide.png)。
 - [設計](design/knight-motion-remaster.md) · [第128課](lessons/128-knight-motion-continuity.md) · [畫面驗收](reports/hero-v008/README.md)。
 
 ## 2026-10-14：v0.0.49 騎士起停身形一致性（已發布）
