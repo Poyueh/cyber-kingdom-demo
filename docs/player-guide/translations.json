@@ -2294,5 +2294,17 @@
   "騎士待機、步行與快跑連續切換的實錄": {
     "en": "Native footage switching continuously between idle, walking and running",
     "zh_CN": "骑士待机、步行与快跑连续切换的实录"
+  },
+  "適用 v0.0.50：重製騎士的修長側身造型與左右換腳姿勢。攻擊、拔劍、受擊與休息恢復回到相同待機身形；持劍、徒手及騎乘同步更新，旅程進度與戰鬥規則不變。": {
+    "en": "For v0.0.50: a remade slender side-view knight and alternating steps. Attacks, sword drawing, hit recovery and standing from rest return to the same idle silhouette. Armed, unarmed and mounted artwork is updated; journey progress and combat rules remain unchanged.",
+    "zh_CN": "适用 v0.0.50：重制骑士的修长侧身造型与左右换脚姿势。攻击、拔剑、受击与休息恢复回到相同待机身形；持剑、徒手及骑乘同步更新，旅程进度与战斗规则不变。"
+  },
+  "v0.0.50 原生起停實錄 · 修長側身、左右換腳與走跑切換。": {
+    "en": "v0.0.50 native start/stop footage · Slender profile, alternating steps and walking/running transitions.",
+    "zh_CN": "v0.0.50 原生起停实录 · 修长侧身、左右换脚与走跑切换。"
+  },
+  "v0.0.50 原生遊戲實錄 · 三段連斬與相同待機身形的收勢。": {
+    "en": "v0.0.50 native gameplay · Three-hit combo recovering to the same idle silhouette.",
+    "zh_CN": "v0.0.50 原生游戏实录 · 三段连斩与相同待机身形的收势。"
   }
 }

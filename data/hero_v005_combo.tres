@@ -1,8 +1,8 @@
 [gd_resource type="Resource" format=3]
 
 [ext_resource type="Script" path="res://data/combo_motion.gd" id="script"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v005/planted.png" id="planted"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v005/advancing.png" id="advancing"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v008/planted.png" id="planted"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v008/advancing.png" id="advancing"]
 
 [resource]
 script = ExtResource("script")
