@@ -1,0 +1,74 @@
+{
+  "version": "0.0.52",
+  "source_commit": "c5cdf0d6005878382474e4712f052b8f0416e732",
+  "source_tree": "53b37aaee83c747a60ea9d57f0cae90fac7ad6c2",
+  "full_check": true,
+  "behavior_assertions": 4565,
+  "native_continuity_assertions": 17,
+  "native_weighted_motion_assertions": 14,
+  "native_presentation_assertions": 165,
+  "spec_revision": 28,
+  "save_schema": 21,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.52-debug.apk",
+      "size": 103429916,
+      "sha256": "70d09b2d08d865e3d1b18a1f02407dfeb354a779df8cddb091fbaf8049b3bbf9"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.52.html",
+      "size": 15812778,
+      "sha256": "42f1022a2f768f273de059da9f03c0effaabc2a84f02f4326c0da0505327cc2d"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.52.zip",
+      "size": 104612869,
+      "sha256": "f8c382cf7008cb7ca9088b9272401096d52a95c020e84c86a0ea5fef30ee544f"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.52.zip",
+      "size": 112089368,
+      "sha256": "d8b60969e1b918719d771de91bf78a019bfaeb7bcfd842b218614947bf7aa048"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.52-Xcode.zip",
+      "size": 186862704,
+      "sha256": "0ade4a76ed9c8f9f7246a744e3f71283b801a02d9960bc11dfb5395a396cc917"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.52.zip",
+      "size": 134511410,
+      "sha256": "25d08b0fa53caf5431f8ebf241a462b8a88d1b45126c8cffb4b30ca600b13d67"
+    }
+  ],
+  "archive_integrity_verified": true,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "version_metadata_verified": [
+    "macOS 0.0.52 / 52",
+    "iOS 0.0.52 / 52"
+  ],
+  "browser_local_guide_errors": [],
+  "published": false,
+  "limitations": [
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc signing, not notarized",
+    "iOS Xcode project requires signing",
+    "Android debug certificate"
+  ],
+  "packaged_presentation_assertions": 165,
+  "packaged_motion_assertions": 14,
+  "packaged_input_assertions": 30,
+  "merchant_scene_assertions": 27,
+  "browser_local_game_errors": [],
+  "browser_local_game_actions": [
+    "start isolated journey",
+    "direction inputs",
+    "pause"
+  ],
+  "browser_guide_languages": [
+    "zh_TW",
+    "zh_CN",
+    "en"
+  ]
+}
