@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.52",
-  "revision": 28,
-  "review_note": "一般移動使用跑步，衝刺加快跑姿步頻，疲勞時才慢走。補畫手腳對擺及起步、停步、轉身的完整承重姿勢，不延遲操作。修正商人同tick更新切回站姿造成閃爍，以及野外接單立刻淡出的問題；出遊終點隨接單位置決定並保存。快照升至v21，舊旅程保留原路線與進度。 依最新回饋重繪全套hero-v011俐落護甲，收窄胸腰、肩甲與護腿，保持動作間身形一致。 補審新版連斬實錄與全套護甲描述，取代先前素材說明。",
-  "content_sha256": "36de91e452da6655a92b905a03a515ba4558776e116637e199b56a18f6e5453b",
+  "revision": 29,
+  "review_note": "純文件校對：補齊v0.0.52俐落護甲精修的變更紀錄，統一一般跑步／衝刺／疲勞慢走名稱。遊戲、指南與七份已發行附件維持原版，包內規格仍為r28。",
+  "content_sha256": "f59152c732f994bf666e0ceeee6d76ab6699e5afe63cabe2911d7b0eb59dc2a2",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "53e0341bead45bc45d1acd3fce55d4f5664598c756bf758530552cb817bd9369",
