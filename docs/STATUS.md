@@ -4,6 +4,7 @@
 
 - 全套騎士護甲收窄胸腰、肩甲與護腿，統一俐落身形。一般移動使用跑步，衝刺加快跑姿步頻，疲勞時才慢走。補畫手腳對擺及起步、停步、轉身的完整承重姿勢，不延遲操作。修正商人同tick更新切回站姿造成閃爍，以及野外接單立刻淡出的問題；出遊終點隨接單位置決定並保存。快照升至v21，舊旅程保留原路線與進度。
 - [Release v0.0.52](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.52) 與 [試玩站](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.52) 已發布，Pages 38857665903 成功。七附件、七份線上遊戲／指南和規格r28的14檔均與套件一致；公開主選單、走跑指南及規格已驗收，零瀏覽器錯誤，未建立公開玩家旅程。[線上核對](reports/release-0.0.52/live.json) · [精修畫面](reports/release-0.0.52/public-guide.png)。
+- 規格純文件校對已刷新為r29（Pages 38858155639），補齊俐落護甲紀錄與走跑名稱；14份文件核對一致。原始發行包及指南不變，包內規格維持r28。[文件核對](reports/release-0.0.52/spec29-live.json)。
 - [設計](design/weighted-running-and-merchant.md) · [第130課](lessons/130-cosmetic-transition-and-ticks.md)。完整回歸通過（4,565核心斷言）；五平台同源c5cdf0d。動作銜接17、起停轉身14、全身呈現165、商人場景27項通過；成品呈現165、過渡14及互動30項通過。本機網頁旅程、輸入及暫停和三語指南無瀏覽器錯誤。規格r28／快照v21。[驗收](reports/release-0.0.52/verification.json)。
 
 ## 2026-10-15：v0.0.51 騎士承重與步態（已發布）

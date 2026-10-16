@@ -1,0 +1,66 @@
+{
+  "game_version": "0.0.52",
+  "revision": 29,
+  "pages_run": "38858155639",
+  "bundle_spec_revision": 28,
+  "source_commit": "b615d88",
+  "files": [
+    {
+      "name": "assets/26559190e8-attendant-work.webp",
+      "sha256": "26559190e8feb73f2a2c74a1325120c459b1adb7ed7e4bd72aa7381286f2f3ea"
+    },
+    {
+      "name": "assets/30d8c59ac7-dragon-counterattack.webp",
+      "sha256": "30d8c59ac76bdd08d82ac67e3fd46b4b4afa487053fcb44425982a54f1ab537a"
+    },
+    {
+      "name": "assets/628eb68e7c-mysterious-menu.png",
+      "sha256": "628eb68e7c4cb68d7d7efff875a1132bb7ba984bfec4538aa73de3a454493410"
+    },
+    {
+      "name": "assets/6fb0311681-planet-levels.webp",
+      "sha256": "6fb03116815310292109c85fe5dcaf38e3e229cfe46fbbe1a9c47688716dd2cd"
+    },
+    {
+      "name": "assets/9dbca9b182-cinematic-dragon.png",
+      "sha256": "9dbca9b182ae166f1270165e9850c67bf410bf60d67e9174fa7698a4cc8bd23d"
+    },
+    {
+      "name": "assets/ade86e08e4-early-exploration.webp",
+      "sha256": "ade86e08e490493610fa615f0614f43d0128585f6c086cd85b2b72b371df64a4"
+    },
+    {
+      "name": "assets/b05e076d18-gait.webp",
+      "sha256": "b05e076d182978912191fd920e97c92f0ef10ccaa777cb97be57df1b5a88b20a"
+    },
+    {
+      "name": "assets/d4f1036c94-settlement-inhabitants.webp",
+      "sha256": "d4f1036c945064f097e18c5d8f8db4f10f846a5aeed4520260ab3223cb6c2aca"
+    },
+    {
+      "name": "assets/d5df6b3c90-devourers.webp",
+      "sha256": "d5df6b3c90806ec5425ef10dd966b76a28e5fbcca5d4c21b5565f793bd6ef4cf"
+    },
+    {
+      "name": "assets/d84847ebc0-combo.webp",
+      "sha256": "d84847ebc04f51b58f067ebf04213dbfc6fb22da2d66c3e2f02bbccd573e65b1"
+    },
+    {
+      "name": "assets/da0b1cfc0a-star-chart.webp",
+      "sha256": "da0b1cfc0ae6d0ca0b6cc3f056f5b01d3c0a08ce773694ae8b2bd1bed05002e6"
+    },
+    {
+      "name": "index.html",
+      "sha256": "147219733fd73ae26c9f0c13c20214e2ebf6aa3e2ef1c62968f9b2c33c3f35af"
+    },
+    {
+      "name": "reader.js",
+      "sha256": "6cc33a6ae719d50267acced5b925c88847b45550adfa92b61b9200a10fec7a4d"
+    },
+    {
+      "name": "style.css",
+      "sha256": "4ab246c449276ab11259ef4615bc86f4a3f136408fd74579ca5ce73e9f690172"
+    }
+  ],
+  "game_packages_unchanged": true
+}

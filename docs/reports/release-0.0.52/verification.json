@@ -74,5 +74,7 @@
   "pages_run": "38857665903",
   "browser_public_game_errors": [],
   "browser_public_guide_errors": [],
-  "browser_public_spec_errors": []
+  "browser_public_spec_errors": [],
+  "published_spec_revision": 29,
+  "spec_refresh_pages_run": "38858155639"
 }
