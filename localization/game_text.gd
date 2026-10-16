@@ -1,6 +1,17 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["reward.preview %s", "可獲得：%s（選擇性探索）", "可获得：%s（选择性探索）", "Optional reward: %s"],
+ ["reward.claim %s", "封印已解開，走近座台領取 %s", "封印已解开，走近座台领取 %s", "Seal open. Approach the pedestal for %s"],
+ ["reward.equipped %s", "已裝備：%s", "已装备：%s", "Equipped: %s"],
+ ["reward.use.keyboard", "按 K 發動能力；營地按 F 查看與更換", "按 K 发动能力；营地按 F 查看与更换", "Press K to activate; F at camp to inspect or swap"],
+ ["reward.use.touch", "雙指向上滑發動；營地點齒輪查看與更換", "双指向上滑发动；营地点齿轮查看与更换", "Swipe up with two fingers; tap the camp cog to inspect or swap"],
+ ["reward.horse.preview", "可獲得：戰馬核心，解鎖更快的騎乘探索", "可获得：战马核心，解锁更快的骑乘探索", "Reward: a steed core for faster mounted exploration"],
+ ["reward.horse.claim.keyboard", "導流完成，返回核心座按 E 回收", "导流完成，返回核心座按 E 回收", "Power restored. Return to the cradle and press E"],
+ ["reward.horse.claim.touch", "導流完成，返回核心座向下滑回收", "导流完成，返回核心座向下滑回收", "Power restored. Return to the cradle and swipe down"],
+ ["reward.horse.cost %d", "回營地西側投入 %d 晶修復馬廄，即可騎乘", "回营地西侧投入 %d 晶修复马厩，即可骑乘", "Spend %d crystals at the stable west of camp to ride"],
+ ["reward.horse.recovered", "已取得戰馬核心；還需修復馬廄才能騎乘", "已取得战马核心；还需修复马厩才能骑乘", "Steed core recovered. Restore the stable before riding"],
+
  ["night.return", "天色將暗，帶著收穫回營火。", "天色将暗，带着收获回营火。", "Dusk is nearing. Bring your finds back to the fire."],
  ["trail.claim", "拾取野外晶藏", "拾取野外晶藏", "Gather the crystal find"],
  ["trail.guarded", "異獸仍在守護這處晶藏", "异兽仍在守护这处晶藏", "The creatures still guard this cache"],

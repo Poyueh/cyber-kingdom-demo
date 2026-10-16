@@ -110,6 +110,7 @@ func _ready() -> void:
 	drag_controls.special_requested.connect(func():special_requested.emit())
 	module_button=Button.new();_skin(module_button,"gear");module_button.pressed.connect(func():loadout_requested.emit());add_child(module_button)
 	module_hint=Label.new();module_hint.add_theme_font_override("font",preload("res://presentation/localized_font.gd").current())
+	module_hint.add_theme_color_override("font_shadow_color",Color("07131ff0"));module_hint.add_theme_constant_override("shadow_offset_x",2);module_hint.add_theme_constant_override("shadow_offset_y",2)
 	module_hint.add_theme_font_size_override("font_size",16);module_hint.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 	module_hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;module_hint.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(module_hint)
 	module_menu=preload("res://presentation/module_menu.gd").new();add_child(module_menu)
@@ -294,22 +295,23 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	module_button.position=Vector2(_last_safe_rect.get_center().x-30,_last_safe_rect.end.y-82);module_button.size=Vector2(60,60)
 	module_menu.arrange(_last_safe_rect)
 	if module_menu.visible:module_menu.present(sim.modules,touch,sim.pouch.amount)
-	var message: String=""
+	var message: String=preload("res://presentation/ruin_reward_hint.gd").nearby(self,sim,at,touch)
 	if _near_modules and not is_paused:message=tr("點齒輪選配特殊部件") if touch else tr("按 F 選配特殊部件")
 	for effect in sim.effects:
-		if effect.kind=="module_pickup":
-			message=tr("module.discovered %s")%tr(preload("res://presentation/module_style.gd").title(effect.module))
-			message+="  ·  "+tr(preload("res://presentation/module_style.gd").role(effect.module))
-			message+="\n"+(tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配"))
-		elif effect.kind=="module_milestone":message=tr("module.milestone %s")%tr("module.rank.%d"%effect.count)+"\n"+tr("module.discovered %s")%tr(preload("res://presentation/module_style.gd").title(effect.module))
-		elif effect.kind=="mount_recovered":message=tr("戰馬核心已回收，回營地西側修復馬廄。")
+		if effect.kind=="module_pickup":continue # Presented last: a milestone must not cover the ability.
+		elif effect.kind=="module_milestone":message=tr("module.milestone %s")%tr("module.rank.%d"%effect.count)
+		elif effect.kind=="mount_recovered":message=tr("reward.horse.recovered")+"\n"+tr("reward.horse.cost %d")%sim.mount_quest.cost
 		elif effect.kind=="mount_warning":message=tr("遺跡甦醒驚動了雙門。準備城防，襲擊將在夜裡到來。")
 		elif effect.kind=="mount_assault":message=tr("雙門湧動！騎上戰馬支援兩側防線。")
 		elif effect.kind=="mount_recovery":message=tr("攻勢暫緩。修復城牆，再深入荒野。")
 		elif effect.kind=="module_stored":message=tr("部件已入庫，可以選配安裝。")
 		elif effect.kind=="module_equipped":message=tr("雙指向上滑使用已裝部件") if touch else tr("按 K 使用已裝部件；F 開啟選配")
+	for effect: Dictionary in sim.effects:
+		if effect.kind=="module_pickup":message=preload("res://presentation/ruin_reward_hint.gd").pickup(self,effect.module,touch)
 	module_hint.text=message;module_hint.visible=not message.is_empty() and not is_paused
-	module_hint.position=Vector2(_last_safe_rect.get_center().x-300,_last_safe_rect.end.y-140);module_hint.size=Vector2(600,56)
+	var hint_width: float=minf(680,_last_safe_rect.size.x-48)
+	module_hint.size=Vector2(hint_width,90)
+	module_hint.position=Vector2(_last_safe_rect.get_center().x-hint_width/2,_last_safe_rect.end.y-184)
 	if module_menu.visible:
 		for button in [fullscreen_button,save_button,audio_button,new_map_button,$restart]:button.hide()
 
