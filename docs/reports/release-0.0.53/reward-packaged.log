@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: unsolved station previews its actual reward purpose
+PASS: real station interactions solve the seal
+PASS: solving directs player to the unclaimed reward
+PASS: approaching pedestal equips actual reward
+PASS: milestone cannot hide reward purpose or activation input
+PASS: touch pickup explains the correct gesture
+PASS: claimed ruins do not keep advertising a reward
+PASS: reward text translates in zh_TW
+PASS: pause hides reward hint in zh_TW
+PASS: reward text translates in zh_CN
+PASS: pause hides reward hint in zh_CN
+PASS: reward text translates in en
+PASS: pause hides reward hint in en
+PASS: conductor previews the steed reward
+PASS: powered cradle explains recovery input
+PASS: core pickup explains actual stable price
+Ruin reward assertions: 16; failures: 0
