@@ -49,7 +49,7 @@
     "iOS 0.0.52 / 52"
   ],
   "browser_local_guide_errors": [],
-  "published": false,
+  "published": true,
   "limitations": [
     "Windows and mobile physical devices not tested",
     "macOS ad-hoc signing, not notarized",
@@ -70,5 +70,11 @@
     "zh_TW",
     "zh_CN",
     "en"
-  ]
+  ],
+  "pages_run": "38857665903",
+  "browser_public_game_errors": [],
+  "browser_public_guide_errors": [],
+  "browser_public_spec_errors": [],
+  "published_spec_revision": 29,
+  "spec_refresh_pages_run": "38858155639"
 }
