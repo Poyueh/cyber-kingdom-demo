@@ -2350,5 +2350,13 @@
   "v0.0.52 原生遊戲實錄 · 俐落護甲、三段連斬與穩定收勢。": {
     "en": "v0.0.52 native gameplay · Fitted armor, three-hit combos and a steady recovery.",
     "zh_CN": "v0.0.52 原生游戏实录 · 利落护甲、三段连斩与稳定收势。"
+  },
+  "遺跡不是通關必做。靠近機關先看獎勵用途：解開後依箭頭走回座台，靠近即可領取並免費裝備；按 K／雙指向上滑發動。已領取的遺跡不再提示獎勵，收藏里程碑也不會蓋掉能力說明。戰馬遺跡提供核心，仍需回營地西側投入 6 晶修復馬廄才能騎乘。": {
+    "en": "Ruins are optional. Nearby devices preview what their reward does. Once a seal opens, follow the arrow to its pedestal; approach to collect and equip the ability for free. Press K or swipe up with two fingers to activate it. Claimed ruins stop advertising rewards, and collection milestones no longer cover ability instructions. The steed ruin grants a core; spend 6 crystals at the stable west of camp before riding.",
+    "zh_CN": "遗迹不是通关必做。靠近机关先看奖励用途：解开后依箭头走回座台，靠近即可领取并免费装备；按 K／双指向上滑发动。已领取的遗迹不再提示奖励，收藏里程碑也不会盖掉能力说明。战马遗迹提供核心，仍需回营地西侧投入 6 晶修复马厩才能骑乘。"
+  },
+  "適用 v0.0.53：遺跡先預告能力用途，解開後指引領取，取得後說明操作；既有旅程與獎勵保留。": {
+    "en": "For v0.0.53: ruins preview reward benefits, guide collection after solving, and explain how to activate the acquired ability. Existing journeys and rewards are preserved.",
+    "zh_CN": "适用 v0.0.53：遗迹先预告能力用途，解开后指引领取，取得后说明操作；既有旅程与奖励保留。"
   }
 }
