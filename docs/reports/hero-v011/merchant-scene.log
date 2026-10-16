@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: merchant is still walking after gift
+PASS: dispatch succeeds while trader walks back
+PASS: remote dispatch does not erase the merchant
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+PASS: departing merchant remains fully visible
+Merchant scene: 27 checks, 0 failures
