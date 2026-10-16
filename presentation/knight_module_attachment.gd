@@ -7,7 +7,7 @@ var _pulse: float=0.0
 func socket_for(knight: AnimatedSprite2D) -> Vector2:
 	if knight.appearance==null:return Vector2(0,-12)
 	var body: Node2D=knight
-	for candidate: Sprite2D in [knight._unarmed,knight._mount,knight._combo_attack,knight._moving_attack,knight.fatigue,knight._ceremony]:
+	for candidate: Sprite2D in [knight._unarmed,knight._mount,knight._combo_attack,knight._moving_attack,knight.fatigue,knight._ceremony,knight.locomotion_transition]:
 		if candidate.visible and candidate.modulate.a>0.5:body=candidate
 	var drawing: Texture2D=body.sprite_frames.get_frame_texture(body.animation,body.frame) if body is AnimatedSprite2D else body.texture
 	if not drawing is AtlasTexture:return Vector2(0,-12)

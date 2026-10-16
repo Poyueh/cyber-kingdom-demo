@@ -149,3 +149,60 @@ func test_empty_knight_at_world_edge_is_approached_from_inside(t: SceneTree) -> 
 	sim.advance(0.1,sim.frontier.left_boundary)
 	t.truth(sim.merchant.x>sim.frontier.left_boundary+300,"merchant enters from inside the map instead of appearing on top of a knight at the edge")
 	t.equal(sim.pouch.ground_total(),0,"edge arrival still waits for a visible approach")
+
+func test_subtick_update_preserves_visible_walking_state(t: SceneTree) -> void:
+	var sim: RefCounted=Campaign.new(rules())
+	var trader: RefCounted=sim.merchant
+	trader.phase=trader.Phase.WAITING_PAYMENT;trader.x=-3000
+	trader.advance(1,1,-3000,430,false)
+	var before: Dictionary=trader.capture()
+	trader.advance(1,1,-3000,430,false)
+	t.equal(trader.capture(),before,"same tick preserves walking pose instead of flashing idle")
+
+func test_remote_dispatch_walks_from_payment_location_and_survives_reload(t: SceneTree) -> void:
+	var config: Dictionary=rules()
+	var codec: RefCounted=Codec.new()
+	for location: float in [-3000.0,3000.0]:
+		var sim: RefCounted=Campaign.new(config)
+		sim.world.people.clear();sim.pouch.amount=6
+		sim.merchant.phase=sim.merchant.Phase.WAITING_PAYMENT
+		sim.merchant.x=location
+		t.truth(sim.interact(location,"merchant"),"moving merchant accepts one funded dispatch in wilderness")
+		var end_x: float=sim.merchant.trip_end_x
+		t.truth(absf(end_x-location)>=config.merchant_trip,"departure has a full visible route from payment position")
+		sim.advance(0.1,location)
+		t.truth(sim.merchant.visible() and absf(sim.merchant.x-location)<10,"paid merchant stays visible and moves normally")
+		var saved: Dictionary=codec.capture(sim,config,BODY)
+		var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(saved)))
+		t.truth(not loaded.is_empty(),"remote departure survives JSON save")
+		if loaded.is_empty():continue
+		advance(sim,30,location);advance(loaded.session,30,location)
+		t.equal(loaded.session.merchant.capture(),sim.merchant.capture(),"saved departure continues the same route")
+		t.equal(sim.pouch.amount,5,"departure charges once")
+
+func test_v20_merchant_upgrade_preserves_existing_journey(t: SceneTree) -> void:
+	var config: Dictionary=rules()
+	var sim: RefCounted=Campaign.new(config)
+	var codec: RefCounted=Codec.new()
+	var saved: Dictionary=codec.capture(sim,config,BODY)
+	saved.version=20;saved.merchant.erase("trip_end_x")
+	var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(saved)))
+	t.truth(not loaded.is_empty(),"v20 merchant checkpoint migrates without discarding journey")
+	if loaded.is_empty():return
+	t.equal(loaded.session.pouch.amount,sim.pouch.amount,"migration grants no duplicate crystals")
+	t.equal(loaded.session.frontier.layout_signature(),sim.frontier.layout_signature(),"migration preserves geography")
+	var invalid: Dictionary=codec.capture(sim,config,BODY)
+	invalid.merchant.trip_end_x=sim.frontier.right_boundary+1
+	t.truth(codec.restore(invalid).is_empty(),"out-of-map route is rejected")
+
+func test_edge_dispatch_uses_inward_route(t: SceneTree) -> void:
+	var config: Dictionary=rules()
+	var sim: RefCounted=Campaign.new(config)
+	sim.world.people.clear();sim.pouch.amount=6
+	var start: float=sim.frontier.right_boundary-5
+	sim.merchant.phase=sim.merchant.Phase.WAITING_PAYMENT
+	sim.merchant.x=start
+	t.truth(sim.interact(start,"merchant"),"edge trader accepts payment")
+	t.truth(sim.merchant.trip_end_x<start-config.merchant_trip+1,"edge departure turns inward for a full trip")
+	sim.advance(0.1,start)
+	t.truth(sim.merchant.visible() and sim.merchant.x<start,"edge trader stays visible while departing inward")

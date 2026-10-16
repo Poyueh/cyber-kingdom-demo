@@ -42,6 +42,7 @@ var armor_tier:=0
 var _gait_time:=0.0
 var _stride: RefCounted = preload("res://presentation/knight_stride.gd").new()
 var _distance_stride: bool = false
+var locomotion_transition: Sprite2D=preload("res://presentation/knight_locomotion_transition.gd").new()
 var _mounted_time: float=0.0
 @export_range(20,44,0.5) var walking_frame_rate: float=32.0
 @export_range(32,60,0.5) var running_frame_rate: float=48.0
@@ -76,6 +77,7 @@ func _init() -> void:
 	_combo_attack.visible=false
 	_combo_attack.offset=Vector2(0,-16)
 	add_child(_combo_attack)
+	add_child(locomotion_transition)
 	add_child(_module_attachment)
 	sprite_frames=preload("res://data/knight_animation_frames.tres")
 	_bind_motion()
@@ -143,6 +145,7 @@ func reset_pose() -> void:
 	super.reset_pose()
 	_gait_time=0
 	_stride.reset()
+	locomotion_transition.reset()
 	_mounted_time=0
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
@@ -159,6 +162,7 @@ func reset_pose() -> void:
 func present(pose: Dictionary, seconds: float) -> void:
 	_breath_weight=move_toward(_breath_weight,exertion,maxf(0,seconds)/0.85)
 	_present_body(pose,seconds)
+	locomotion_transition.present(self,pose,seconds)
 	_breath.present(_breath_weight,int(pose.facing),seconds,pose.alive and not hurt_active and pose.get("moving",false),mounted)
 	var resting: bool=breathing and not pose.get("moving",false) and float(pose.get("attack_progress",1.0))>=1
 	var safe_pose: bool=pose.alive and not hurt_active and not pose.get("dashing",false)
@@ -318,6 +322,7 @@ func set_equipment(weapon: int, armor: int) -> void:
 		_combo_attack.material=equipment_material
 		_moving_attack.material=equipment_material
 		fatigue.material=equipment_material
+		locomotion_transition.material=equipment_material
 		_unarmed.material=equipment_material
 		_ceremony.material=equipment_material
 	equipment_material.set_shader_parameter("weapon_tier",float(weapon_tier))
@@ -341,7 +346,7 @@ func set_mounted(value: bool) -> void:
 	mounted=value
 
 func _hide_alternate_bodies() -> void:
-	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue, _ceremony]:
+	for body in [_unarmed, _mount, _moving_attack, _combo_attack, fatigue, _ceremony,locomotion_transition]:
 		body.visible=false
 		body.modulate.a=1.0
 

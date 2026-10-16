@@ -32,6 +32,7 @@ run_check behavior --script res://tests/run_tests.gd
 run_check integration --script res://tests/test_scene.gd
 run_check combo --script res://tests/test_combo_scene.gd
 run_check knight_continuity --script res://tests/test_knight_continuity.gd
+run_check weighted_locomotion --script res://tests/test_weighted_locomotion_scene.gd
 run_check sword_feedback --script res://tests/test_sword_feedback_scene.gd
 run_check sword_contact --script res://tests/test_sword_contact_scene.gd
 run_check founding --script res://tests/test_founding_scene.gd

@@ -38,3 +38,10 @@ extends Resource
 @export_range(0,600,0.25) var run_reference_speed: float = 0.0
 @export_range(0,600,0.25) var sprint_reference_speed: float = 0.0
 @export_range(0,300,0.1) var tired_reference_speed: float = 0.0
+
+@export_group("Weighted locomotion transitions")
+@export var locomotion_transition: Texture2D
+@export var unarmed_locomotion_transition: Texture2D
+@export_range(0.05,0.4,0.01) var start_seconds: float=0.16
+@export_range(0.05,0.4,0.01) var stop_seconds: float=0.20
+@export_range(0.05,0.4,0.01) var turn_seconds: float=0.24

@@ -3,17 +3,19 @@
 [ext_resource type="Script" path="res://data/knight_appearance.gd" id="script"]
 [ext_resource type="SpriteFrames" path="res://data/hero_v005_frames.tres" id="frames"]
 [ext_resource type="Resource" path="res://data/hero_v005_combo.tres" id="combo"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/gait-walk-unarmed.png" id="unarmed_run"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/idle-unarmed.png" id="unarmed_idle"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/gait-sprint-unarmed.png" id="unarmed_sprint"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/gait-walk-unarmed.png" id="unarmed_tired"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/hurt-unarmed.png" id="unarmed_hurt"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/death-unarmed.png" id="unarmed_death"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/jump-unarmed.png" id="unarmed_jump"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/rest.png" id="rest"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/ceremony.png" id="ceremony"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/mounted.png" id="mounted"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v009/mounted-unarmed.png" id="unarmed_mounted"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/gait-run-unarmed.png" id="unarmed_run"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/idle-unarmed.png" id="unarmed_idle"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/gait-run-unarmed.png" id="unarmed_sprint"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/gait-tired-unarmed.png" id="unarmed_tired"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/hurt-unarmed.png" id="unarmed_hurt"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/death-unarmed.png" id="unarmed_death"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/jump-unarmed.png" id="unarmed_jump"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/rest.png" id="rest"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/ceremony.png" id="ceremony"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/mounted.png" id="mounted"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/mounted-unarmed.png" id="unarmed_mounted"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/transition.png" id="locomotion_transition"]
+[ext_resource type="Texture2D" path="res://art/characters/hero-v011/transition-unarmed.png" id="unarmed_locomotion_transition"]
 
 [resource]
 script = ExtResource("script")
@@ -30,12 +32,14 @@ rest = ExtResource("rest")
 ceremony = ExtResource("ceremony")
 mounted = ExtResource("mounted")
 unarmed_mounted = ExtResource("unarmed_mounted")
+locomotion_transition = ExtResource("locomotion_transition")
+unarmed_locomotion_transition = ExtResource("unarmed_locomotion_transition")
 idle_frames = 4
 idle_columns = 4
 stride_frames = 8
 stride_columns = 4
 run_fps = 14.0
-sprint_fps = 18.0
+sprint_fps = 22.0
 tired_fps = 8.0
 run_reference_speed = 165.0
 sprint_reference_speed = 321.75
@@ -50,23 +54,28 @@ mounted_idle_frames = 2
 mounted_hurt_frame = 14
 mounted_rest_frame = 15
 rest_transition_frames = true
+start_seconds = 0.16
+stop_seconds = 0.20
+turn_seconds = 0.24
 module_sockets = {
-"advancing.png": [Vector2(80.0, 67.0), Vector2(82.0, 71.0), Vector2(83.0, 71.0), Vector2(83.0, 72.0), Vector2(85.0, 72.0), Vector2(85.0, 72.0), Vector2(84.0, 74.0), Vector2(81.0, 76.0), Vector2(84.0, 70.0), Vector2(83.0, 69.0), Vector2(82.0, 69.0), Vector2(80.0, 67.0), Vector2(80.0, 67.0), Vector2(79.0, 76.0), Vector2(80.0, 78.0), Vector2(80.0, 76.0), Vector2(83.0, 70.0), Vector2(81.0, 70.0), Vector2(73.0, 68.0), Vector2(69.0, 69.0), Vector2(74.0, 70.0), Vector2(80.0, 69.0), Vector2(80.0, 70.0), Vector2(80.0, 67.0), Vector2(80.0, 67.0), Vector2(79.0, 69.0), Vector2(78.0, 70.0), Vector2(80.0, 70.0), Vector2(82.0, 71.0), Vector2(84.0, 74.0), Vector2(78.0, 81.0), Vector2(80.0, 71.0), Vector2(81.0, 68.0), Vector2(80.0, 68.0), Vector2(79.0, 69.0), Vector2(80.0, 67.0)],
-"ceremony.png": [Vector2(81.0, 51.0), Vector2(81.0, 58.0), Vector2(88.0, 59.0), Vector2(80.0, 38.0), Vector2(80.0, 38.0), Vector2(80.0, 56.0), Vector2(80.0, 57.0), Vector2(80.0, 51.0)],
-"death-unarmed.png": [Vector2(71.0, 42.0), Vector2(64.0, 57.0), Vector2(69.0, 74.0), Vector2(69.0, 74.0)],
-"death.png": [Vector2(73.0, 45.0), Vector2(70.0, 57.0), Vector2(69.0, 74.0), Vector2(69.0, 74.0)],
-"gait-sprint-unarmed.png": [Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(64.0, 37.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0)],
-"gait-sprint.png": [Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(64.0, 37.0), Vector2(66.0, 39.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(65.0, 38.0), Vector2(66.0, 39.0)],
-"gait-walk-unarmed.png": [Vector2(66.0, 35.0), Vector2(66.0, 35.0), Vector2(66.0, 34.0), Vector2(66.0, 34.0), Vector2(66.0, 35.0), Vector2(66.0, 35.0), Vector2(66.0, 34.0), Vector2(66.0, 34.0)],
-"gait-walk.png": [Vector2(66.0, 35.0), Vector2(66.0, 35.0), Vector2(66.0, 34.0), Vector2(66.0, 34.0), Vector2(66.0, 35.0), Vector2(66.0, 35.0), Vector2(66.0, 34.0), Vector2(65.0, 33.0)],
-"hurt-unarmed.png": [Vector2(58.0, 37.0), Vector2(71.0, 43.0), Vector2(68.0, 40.0), Vector2(64.0, 35.0)],
-"hurt.png": [Vector2(57.0, 38.0), Vector2(71.0, 45.0), Vector2(69.0, 42.0), Vector2(64.0, 35.0)],
-"idle-unarmed.png": [Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0)],
-"idle.png": [Vector2(64.0, 35.0), Vector2(65.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0)],
-"jump-unarmed.png": [Vector2(81.0, 43.0), Vector2(64.0, 28.0), Vector2(82.0, 38.0), Vector2(64.0, 25.0)],
-"jump.png": [Vector2(64.0, 44.0), Vector2(64.0, 27.0), Vector2(64.0, 38.0), Vector2(64.0, 25.0)],
-"mounted-unarmed.png": [Vector2(90.0, 27.0), Vector2(89.0, 27.0), Vector2(81.0, 33.0), Vector2(87.0, 27.0), Vector2(67.0, 30.0), Vector2(83.0, 30.0), Vector2(82.0, 33.0), Vector2(87.0, 28.0), Vector2(79.0, 28.0), Vector2(80.0, 35.0), Vector2(89.0, 31.0), Vector2(93.0, 28.0), Vector2(92.0, 26.0), Vector2(89.0, 26.0), Vector2(99.0, 31.0), Vector2(80.0, 35.0)],
-"mounted.png": [Vector2(90.0, 27.0), Vector2(90.0, 28.0), Vector2(81.0, 32.0), Vector2(87.0, 27.0), Vector2(68.0, 29.0), Vector2(84.0, 31.0), Vector2(82.0, 32.0), Vector2(87.0, 29.0), Vector2(78.0, 29.0), Vector2(99.0, 36.0), Vector2(89.0, 31.0), Vector2(94.0, 28.0), Vector2(92.0, 26.0), Vector2(90.0, 26.0), Vector2(98.0, 31.0), Vector2(80.0, 35.0)],
-"planted.png": [Vector2(80.0, 67.0), Vector2(82.0, 71.0), Vector2(80.0, 70.0), Vector2(83.0, 73.0), Vector2(82.0, 72.0), Vector2(81.0, 72.0), Vector2(82.0, 75.0), Vector2(79.0, 76.0), Vector2(82.0, 71.0), Vector2(82.0, 70.0), Vector2(81.0, 70.0), Vector2(80.0, 67.0), Vector2(80.0, 67.0), Vector2(79.0, 76.0), Vector2(80.0, 78.0), Vector2(80.0, 76.0), Vector2(80.0, 70.0), Vector2(81.0, 70.0), Vector2(72.0, 68.0), Vector2(67.0, 69.0), Vector2(75.0, 71.0), Vector2(80.0, 69.0), Vector2(80.0, 69.0), Vector2(80.0, 67.0), Vector2(80.0, 67.0), Vector2(80.0, 69.0), Vector2(81.0, 69.0), Vector2(80.0, 69.0), Vector2(81.0, 71.0), Vector2(83.0, 75.0), Vector2(80.0, 71.0), Vector2(80.0, 71.0), Vector2(82.0, 69.0), Vector2(81.0, 68.0), Vector2(79.0, 68.0), Vector2(80.0, 67.0)],
-"rest.png": [Vector2(87.0, 58.0), Vector2(85.0, 64.0), Vector2(83.0, 52.0), Vector2(80.0, 51.0), Vector2(81.0, 58.0), Vector2(78.0, 65.0), Vector2(84.0, 53.0), Vector2(80.0, 51.0)],
+"advancing.png": [Vector2(82.0, 68.0), Vector2(80.0, 71.0), Vector2(80.0, 71.0), Vector2(81.0, 72.0), Vector2(84.0, 73.0), Vector2(85.0, 74.0), Vector2(84.0, 75.0), Vector2(81.0, 76.0), Vector2(83.0, 70.0), Vector2(82.0, 70.0), Vector2(81.0, 70.0), Vector2(82.0, 68.0), Vector2(82.0, 68.0), Vector2(79.0, 76.0), Vector2(78.0, 78.0), Vector2(79.0, 77.0), Vector2(80.0, 71.0), Vector2(80.0, 71.0), Vector2(72.0, 69.0), Vector2(69.0, 71.0), Vector2(75.0, 71.0), Vector2(80.0, 70.0), Vector2(80.0, 71.0), Vector2(82.0, 68.0), Vector2(82.0, 68.0), Vector2(77.0, 70.0), Vector2(76.0, 71.0), Vector2(80.0, 70.0), Vector2(81.0, 72.0), Vector2(83.0, 75.0), Vector2(78.0, 82.0), Vector2(80.0, 71.0), Vector2(81.0, 70.0), Vector2(78.0, 69.0), Vector2(78.0, 69.0), Vector2(82.0, 68.0)],
+"ceremony.png": [Vector2(81.0, 52.0), Vector2(81.0, 55.0), Vector2(85.0, 57.0), Vector2(80.0, 35.0), Vector2(80.0, 40.0), Vector2(78.0, 56.0), Vector2(78.0, 57.0), Vector2(80.0, 51.0)],
+"death-unarmed.png": [Vector2(69.0, 42.0), Vector2(64.0, 56.0), Vector2(69.0, 74.0), Vector2(69.0, 74.0)],
+"death.png": [Vector2(64.0, 44.0), Vector2(72.0, 55.0), Vector2(69.0, 74.0), Vector2(69.0, 74.0)],
+"hurt-unarmed.png": [Vector2(57.0, 39.0), Vector2(69.0, 43.0), Vector2(67.0, 41.0), Vector2(65.0, 35.0)],
+"hurt.png": [Vector2(58.0, 38.0), Vector2(68.0, 44.0), Vector2(68.0, 42.0), Vector2(64.0, 35.0)],
+"idle-unarmed.png": [Vector2(65.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(65.0, 35.0)],
+"idle.png": [Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0), Vector2(64.0, 35.0)],
+"jump-unarmed.png": [Vector2(82.0, 45.0), Vector2(64.0, 32.0), Vector2(82.0, 41.0), Vector2(64.0, 30.0)],
+"jump.png": [Vector2(64.0, 45.0), Vector2(64.0, 31.0), Vector2(65.0, 42.0), Vector2(65.0, 30.0)],
+"mounted-unarmed.png": [Vector2(91.0, 28.0), Vector2(90.0, 28.0), Vector2(81.0, 33.0), Vector2(88.0, 28.0), Vector2(67.0, 29.0), Vector2(82.0, 29.0), Vector2(81.0, 33.0), Vector2(65.0, 30.0), Vector2(78.0, 29.0), Vector2(80.0, 35.0), Vector2(88.0, 31.0), Vector2(93.0, 28.0), Vector2(76.0, 29.0), Vector2(75.0, 29.0), Vector2(83.0, 31.0), Vector2(85.0, 36.0)],
+"mounted.png": [Vector2(91.0, 28.0), Vector2(90.0, 27.0), Vector2(73.0, 33.0), Vector2(87.0, 27.0), Vector2(67.0, 30.0), Vector2(82.0, 30.0), Vector2(81.0, 32.0), Vector2(87.0, 30.0), Vector2(79.0, 28.0), Vector2(80.0, 35.0), Vector2(87.0, 31.0), Vector2(94.0, 29.0), Vector2(93.0, 27.0), Vector2(90.0, 27.0), Vector2(99.0, 31.0), Vector2(80.0, 35.0)],
+"planted.png": [Vector2(82.0, 68.0), Vector2(80.0, 71.0), Vector2(80.0, 71.0), Vector2(81.0, 73.0), Vector2(80.0, 74.0), Vector2(80.0, 73.0), Vector2(82.0, 76.0), Vector2(80.0, 77.0), Vector2(81.0, 72.0), Vector2(81.0, 72.0), Vector2(81.0, 72.0), Vector2(82.0, 68.0), Vector2(82.0, 68.0), Vector2(81.0, 77.0), Vector2(81.0, 79.0), Vector2(82.0, 78.0), Vector2(82.0, 72.0), Vector2(80.0, 71.0), Vector2(73.0, 70.0), Vector2(68.0, 71.0), Vector2(75.0, 72.0), Vector2(80.0, 70.0), Vector2(80.0, 71.0), Vector2(82.0, 68.0), Vector2(82.0, 68.0), Vector2(79.0, 70.0), Vector2(79.0, 71.0), Vector2(80.0, 71.0), Vector2(79.0, 73.0), Vector2(82.0, 72.0), Vector2(78.0, 81.0), Vector2(80.0, 71.0), Vector2(80.0, 68.0), Vector2(80.0, 69.0), Vector2(79.0, 68.0), Vector2(82.0, 68.0)],
+"rest.png": [Vector2(86.0, 58.0), Vector2(85.0, 66.0), Vector2(81.0, 53.0), Vector2(81.0, 51.0), Vector2(83.0, 57.0), Vector2(77.0, 65.0), Vector2(84.0, 54.0), Vector2(80.0, 51.0)],
+"gait-run-unarmed.png": [Vector2(69.0, 36.0), Vector2(66.0, 36.0), Vector2(67.0, 35.0), Vector2(66.0, 35.0), Vector2(64.0, 37.0), Vector2(66.0, 38.0), Vector2(67.0, 36.0), Vector2(66.0, 36.0)],
+"gait-run.png": [Vector2(67.0, 35.0), Vector2(67.0, 35.0), Vector2(67.0, 34.0), Vector2(67.0, 35.0), Vector2(70.0, 37.0), Vector2(67.0, 38.0), Vector2(67.0, 37.0), Vector2(67.0, 35.0)],
+"gait-tired-unarmed.png": [Vector2(65.0, 36.0), Vector2(65.0, 38.0), Vector2(66.0, 38.0), Vector2(66.0, 38.0), Vector2(66.0, 37.0), Vector2(65.0, 37.0), Vector2(65.0, 37.0), Vector2(65.0, 37.0)],
+"gait-tired.png": [Vector2(65.0, 36.0), Vector2(64.0, 36.0), Vector2(65.0, 36.0), Vector2(65.0, 36.0), Vector2(66.0, 37.0), Vector2(65.0, 37.0), Vector2(65.0, 36.0), Vector2(66.0, 37.0)],
+"transition-unarmed.png": [Vector2(65.0, 35.0), Vector2(67.0, 39.0), Vector2(67.0, 39.0), Vector2(69.0, 36.0), Vector2(69.0, 36.0), Vector2(65.0, 40.0), Vector2(67.0, 40.0), Vector2(65.0, 35.0), Vector2(67.0, 42.0), Vector2(62.0, 42.0), Vector2(60.0, 42.0), Vector2(49.0, 41.0), Vector2(46.0, 42.0), Vector2(46.0, 41.0), Vector2(47.0, 41.0), Vector2(44.0, 36.0)],
+"transition.png": [Vector2(64.0, 35.0), Vector2(66.0, 38.0), Vector2(66.0, 39.0), Vector2(67.0, 35.0), Vector2(67.0, 35.0), Vector2(66.0, 41.0), Vector2(66.0, 42.0), Vector2(64.0, 35.0), Vector2(66.0, 43.0), Vector2(62.0, 43.0), Vector2(59.0, 43.0), Vector2(49.0, 42.0), Vector2(46.0, 42.0), Vector2(46.0, 42.0), Vector2(47.0, 42.0), Vector2(46.0, 35.0)],
 }
