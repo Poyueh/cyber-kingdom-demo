@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=20
+const VERSION:=21
 # JSON can round the final decimal just below a half-tick; never allow a full future tick.
 const JSON_TICK_EPSILON: float=0.0000001
 const SESSION_SKIP=["raiders","effects","opened_chests"]
@@ -128,14 +128,14 @@ func restore(raw) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20]:keys.append("modules")
-	if data.get("version",0) in [14,15,16,17,18,19,20]:keys.append("merchant")
-	if data.get("version",0) in [15,16,17,18,19,20]:keys.append("trials")
-	if data.get("version",0) in [16,17,18,19,20]:keys.append("mount")
-	if data.get("version",0)==20:keys.append("trails")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17,18,19,20,21]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17,18,19,20,21]:keys.append("trials")
+	if data.get("version",0) in [16,17,18,19,20,21]:keys.append("mount")
+	if data.get("version",0) in [20,21]:keys.append("trails")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -164,6 +164,7 @@ func restore(raw) -> Dictionary:
 	if data.version==13:
 		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
 		data["merchant"]=Campaign.new(data.config).merchant.capture()
+		data.merchant.erase("trip_end_x")
 		data.version=14
 	if data.version==14:
 		if not data.config is Dictionary or data.config.has("ruin_enabled"):return _invalid()
@@ -189,6 +190,11 @@ func restore(raw) -> Dictionary:
 		if not data.config is Dictionary or data.config.has("trail_version"):return _invalid()
 		data["trails"]={"sites":[],"units":[]}
 		data.version=20
+	if data.version==20:
+		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
+		if not data.get("merchant") is Dictionary or data.merchant.size()!=7:return _invalid()
+		data.merchant["trip_end_x"]=Campaign.new(data.config).merchant.trip_end_x
+		data.version=21
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:

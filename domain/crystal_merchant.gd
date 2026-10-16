@@ -19,12 +19,14 @@ var return_day: int = 0
 var facing: int = 1
 var walk_distance: float = 0.0
 var moving: bool = false
+var trip_end_x: float = 0.0
 
 func _init(config: Dictionary, camp_x: float, left: float, right: float) -> void:
 	rules=config
 	enabled=int(config.get("merchant_enabled",0))==1
 	home_x=camp_x+float(config.merchant_offset) if enabled else camp_x
 	left_x=left;right_x=right;x=home_x
+	trip_end_x=minf(right_x,home_x+float(config.merchant_trip)) if enabled else home_x
 
 static func valid_config(config: Dictionary) -> bool:
 	if not CONFIG_RANGES.keys().any(func(key: String) -> bool: return config.has(key)):return true
@@ -43,6 +45,9 @@ func can_dispatch() -> bool:
 
 func dispatch(day: int) -> bool:
 	if not can_dispatch():return false
+	var distance: float=float(rules.merchant_trip)
+	trip_end_x=minf(right_x,maxf(home_x,x)+distance)
+	if trip_end_x-x<distance:trip_end_x=maxf(left_x,x-distance)
 	phase=Phase.OUTBOUND;return_day=day+1
 	return true
 
@@ -52,8 +57,8 @@ func carrying_reward() -> bool:
 func advance(now_tick: int, day: int, knight_x: float, knight_y: float, empty_pouch: bool) -> int:
 	var ticks: int=maxi(0,now_tick-last_tick)
 	last_tick=maxi(last_tick,now_tick)
-	moving=false
 	if not enabled or ticks==0:return 0
+	moving=false
 	if phase==Phase.DORMANT:
 		if empty_pouch:
 			var approach: float=float(rules.merchant_approach)
@@ -64,7 +69,7 @@ func advance(now_tick: int, day: int, knight_x: float, knight_y: float, empty_po
 	match phase:
 		Phase.APPROACHING:destination=knight_x
 		Phase.WAITING_PAYMENT,Phase.RETURNING:destination=home_x
-		Phase.OUTBOUND:destination=minf(right_x,home_x+float(rules.merchant_trip))
+		Phase.OUTBOUND:destination=trip_end_x
 		Phase.AWAY:
 			if day>=return_day:phase=Phase.RETURNING
 	_move(destination,ticks)
@@ -83,16 +88,17 @@ func _move(destination: float, ticks: int) -> void:
 	x=next_x
 
 func capture() -> Dictionary:
-	return {"phase":phase,"x":x,"last_tick":last_tick,"return_day":return_day,"facing":facing,"walk_distance":walk_distance,"moving":moving}
+	return {"phase":phase,"x":x,"last_tick":last_tick,"return_day":return_day,"facing":facing,"walk_distance":walk_distance,"moving":moving,"trip_end_x":trip_end_x}
 
 func restore(data: Variant, now_tick: int, day: int) -> bool:
-	if not data is Dictionary or data.size()!=7:return false
+	if not data is Dictionary or data.size()!=8:return false
 	for key: String in ["phase","last_tick","return_day","facing"]:
 		if not data.get(key) is int:return false
-	for key: String in ["x","walk_distance"]:
+	for key: String in ["x","walk_distance","trip_end_x"]:
 		if not (data.get(key) is int or data.get(key) is float) or not is_finite(float(data[key])):return false
 	if not data.get("moving") is bool:return false
 	if data.phase<Phase.DORMANT or data.phase>Phase.READY or data.facing not in [-1,1]:return false
+	if data.trip_end_x<left_x or data.trip_end_x>right_x:return false
 	if data.x<left_x or data.x>right_x or data.walk_distance<0:return false
 	if data.last_tick<0 or data.last_tick>now_tick+1 or data.return_day<0 or data.return_day>day+1:return false
 	if data.phase in [Phase.OUTBOUND,Phase.AWAY,Phase.RETURNING,Phase.READY] and data.return_day<1:return false
@@ -101,5 +107,5 @@ func restore(data: Variant, now_tick: int, day: int) -> bool:
 	if data.phase==Phase.READY and not is_equal_approx(float(data.x),home_x):return false
 	if not enabled and data.phase!=Phase.DORMANT:return false
 	phase=data.phase;x=data.x;last_tick=data.last_tick;return_day=data.return_day
-	facing=data.facing;walk_distance=data.walk_distance;moving=data.moving
+	facing=data.facing;walk_distance=data.walk_distance;moving=data.moving;trip_end_x=data.trip_end_x
 	return true

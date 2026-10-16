@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: start uses full-body weight transfer
+PASS: pause holds transition drawing
+PASS: ordinary movement is running
+PASS: reversal starts from prior facing with a planted pivot
+PASS: stop settles weight before idle
+PASS: attack immediately interrupts cosmetic transition
+PASS: walking is reserved for fatigue
+PASS: start uses full-body weight transfer
+PASS: pause holds transition drawing
+PASS: ordinary movement is running
+PASS: reversal starts from prior facing with a planted pivot
+PASS: stop settles weight before idle
+PASS: attack immediately interrupts cosmetic transition
+PASS: walking is reserved for fatigue
+Weighted motion: 14 checks, 0 failures

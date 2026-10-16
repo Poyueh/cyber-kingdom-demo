@@ -2318,5 +2318,37 @@
   "v0.0.51 原生遊戲實錄 · 紮實站姿、三段連斬與穩定收勢。": {
     "en": "v0.0.51 native gameplay · Grounded stance, three-hit combo and stable recovery.",
     "zh_CN": "v0.0.51 原生游戏实录 · 扎实站姿、三段连斩与稳定收势。"
+  },
+  "一般移動就是跑步；疲勞時才慢走。": {
+    "en": "Normal movement is a run; walking is reserved for fatigue.",
+    "zh_CN": "一般移动就是跑步；疲劳时才慢走。"
+  },
+  "一般移動使用跑姿，衝刺是更快地跑，疲勞時才慢走。起步壓膝推地、停步收回重心，轉身先踩穩再轉肩；手腳對擺，持劍與徒手都適用。過渡不延遲移動或攻擊，暫停會停住動作。": {
+    "en": "Normal movement runs, sprinting runs faster, and fatigue uses a walk. Starts push from bent knees, stops settle the weight, and turns plant a foot before rotating the shoulders. Arms counterbalance the legs, armed or unarmed. Transitions never delay movement or attacks and freeze when paused.",
+    "zh_CN": "一般移动使用跑姿，冲刺是更快地跑，疲劳时才慢走。起步压膝推地、停步收回重心，转身先踩稳再转肩；手脚对摆，持剑与徒手都适用。过渡不延迟移动或攻击，暂停会停住动作。"
+  },
+  "v0.0.52 原生實錄 · 一般跑步、衝刺、停步與轉身。": {
+    "en": "v0.0.52 native footage · Running, sprinting, stopping and turning.",
+    "zh_CN": "v0.0.52 原生实录 · 一般跑步、冲刺、停步与转身。"
+  },
+  "騎士跑步、衝刺、停步與轉身連續切換的實錄": {
+    "en": "Continuous footage of the knight running, sprinting, stopping and turning.",
+    "zh_CN": "骑士跑步、冲刺、停步与转身连续切换的实录"
+  },
+  "適用 v0.0.52：一般移動跑步、衝刺更快跑，疲勞才慢走；補上重甲起停與轉身。商人交貨後不再閃爍，移動中接單會連續出發；既有旅程保留。": {
+    "en": "For v0.0.52: normal running, faster sprinting and walking only when fatigued, with armored starts, stops and turns. Merchant delivery no longer flickers, and dispatch while moving begins a continuous departure. Existing journeys are preserved.",
+    "zh_CN": "适用 v0.0.52：一般移动跑步、冲刺更快跑，疲劳才慢走；补上重甲起停与转身。商人交货后不再闪烁，移动中接单会连续出发；既有旅程保留。"
+  },
+  "商人交貨後會走回營地；途中仍可付一晶委託。他會從接單位置連續走出去，再於隔日返回，不會接單就消失。": {
+    "en": "After handing over crystals, the merchant walks back to camp. You can pay one crystal while he is moving; he walks away continuously from that location and returns the next day instead of vanishing on dispatch.",
+    "zh_CN": "商人交货后会走回营地；途中仍可付一晶委托。他会从接单位置连续走出去，再于隔日返回，不会接单就消失。"
+  },
+  "騎士改用收腰胸甲、緊湊肩甲與修窄護腿，減少圓厚輪廓；待機、移動、拔劍、受擊與連斬採用一致身形。每刀十二個完整姿勢，輕擊乾脆、重劈停頓更明顯；徒手與騎乘也同步造型。劍的傷害、攻擊距離與體力花費保持原規則。": {
+    "en": "The knight now wears a fitted cuirass, compact pauldrons and tapered greaves. Idle, movement, sword drawing, reactions and combos share a leaner silhouette. Each strike has twelve full-body poses, with quick light attacks and a heavier pause on the final blow. Unarmed and mounted poses share the armor design. Damage, reach and stamina costs are unchanged.",
+    "zh_CN": "骑士改用收腰胸甲、紧凑肩甲与修窄护腿，减少圆厚轮廓；待机、移动、拔剑、受击与连斩采用一致身形。每刀十二个完整姿势，轻击干脆、重劈停顿更明显；徒手与骑乘也同步造型。剑的伤害、攻击距离与体力花费保持原规则。"
+  },
+  "v0.0.52 原生遊戲實錄 · 俐落護甲、三段連斬與穩定收勢。": {
+    "en": "v0.0.52 native gameplay · Fitted armor, three-hit combos and a steady recovery.",
+    "zh_CN": "v0.0.52 原生游戏实录 · 利落护甲、三段连斩与稳定收势。"
   }
 }
