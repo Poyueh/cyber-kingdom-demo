@@ -1,8 +1,12 @@
-## v0.0.60 完整森林 Demo 與加快引導（發佈中）
+## v0.0.60 完整森林 Demo 與加快引導（已發布）
 
 使用者回報 Demo 引導太慢、沒有工匠封門打龍、沒有龍晶商人與遺跡部件、地圖鎖小，無法體驗資源流。原因是 Demo 使用 v1 核心試玩設定（關閉商人／遺跡／戰馬、刪除關卡設計、兩夜結束）。新 Demo 旅程改為主流程模式 v3：與主遊戲同一套引導與完整森林，只有不能出航，打倒森林巨龍即完成。兩版共用加快引導：下令弓兵即開始 20 秒首夜預警（原 45 秒），未到位不入夜。理想玩家量測：右牆完工到首夜 65→23 秒，Demo 到第二夜 506→349 秒。舊 Demo 兩夜紀錄照原規則；快照 v22 不變。設計：[guided-campaign-and-demo](design/guided-campaign-and-demo.md)；教學：[第137課](lessons/137-one-forest-two-editions.md)。
 
 發佈前的 Demo 匯出檢查抓到只在封包出現的問題：封包只留森林的路線／路旁資料，但驗證要求七顆星球。先寫失敗測試再修正（5f37d26），只含森林的資料建出的森林與完整版第一顆星球完全相同；規格修訂 47。完整回歸通過（核心 4565、核心循環 73、主流程 87、森林 Demo 96 項，無 SCRIPT ERROR／ERROR）。Main／Demo 五平台 10 組成品皆由 5f37d26 重建：內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊、Demo 獨立存檔目錄均通過；本機 Demo Web 實測開場、選單、建局、招募付款與鬼魂引導，無 console errors。[驗收紀錄](reports/release-0.0.60/preflight.json)。真人理解度、完整森林實際遊玩時長與 Windows／手機真機仍待測。
+
+Release 416381099 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39119246686 成功，30 個公開檔案與 Demo 成品逐一相同。公開前導、主選單（森林試玩版 · 完整森林冒險）與企劃 v0.0.60／修訂 47 已用瀏覽器驗收，無 console errors，未建立公開玩家旅程。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.60) · [主遊戲／Demo 下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.60) · [企劃書](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.60) · [設計](design/guided-campaign-and-demo.md) · [Godot 小課](lessons/137-one-forest-two-editions.md)。
 
 ## v0.0.59 社群縮圖修正（驗收中）
 

@@ -28,5 +28,14 @@
     "human comprehension of the faster guide",
     "full forest demo play length with real players",
     "Windows and mobile device playtests"
-  ]
+  ],
+  "publication": {
+    "release_id": 416381099,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.60",
+    "release_assets_verified": 13,
+    "pages_run": 39119246686,
+    "pages_result": "success",
+    "public_files_verified": 30,
+    "public_browser": "Demo intro and menu show the Forest demo edition and Begin the Forest Adventure; specification v0.0.60 revision 47; no console errors; no public player journey created"
+  }
 }
