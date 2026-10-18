@@ -275,14 +275,17 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.victory=sim.mission.outcome=="victory"
 	dashboard.queue_redraw()
 	$pause.visible=not (sim.life.enabled and dashboard.camp_transition())
+	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition())
 	var advice: Dictionary={}
 	if not is_paused and (first_day_guidance or expedition_guidance):
 		if sim.life.enabled:advice=sim.spirit.advice(sim,at,first_day_guidance,expedition_guidance)
 		else:
 			if first_day_guidance:advice=Guide.next(sim,at)
 			if advice.is_empty() and expedition_guidance:advice=ExpeditionGuide.next(sim,at,sim._player_y)
-	guide_view.modulate.a=sim.spirit.opacity(int(sim.workforce.elapsed*sim.spirit.TICKS_PER_SECOND)) if sim.life.enabled else 1.0
+	guide_view.modulate.a=1.0 if advice.get("core",false) else sim.spirit.opacity(int(sim.workforce.elapsed*sim.spirit.TICKS_PER_SECOND)) if sim.life.enabled else 1.0
 	var ready: bool=not advice.is_empty() and advice.action in ["invest","open"] and advice.key==choice.key and not interact_button.disabled
+	guide_view.target_cost=int(choice.cost) if ready else 0
+	guide_view.reserved_regions=core_hud.exclusion_rects()
 	guide_view.touch_hint=touch
 	guide_view.reserved_caption=immersive_feedback.day_caption_bounds()
 	var growth_bounds: Rect2=settlement_growth.caption_bounds()
@@ -291,12 +294,10 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
 	guide_view.track(get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),sim.workforce.elapsed)
 	if sim.core_loop.enabled:
-		guide_view.hide()
 		if sim.core_loop.trial or sim.core_loop.stage<3:
 			night_watch_view.hide();settlement_growth.hide();module_hint.hide()
 		if core_hud.panel.visible:options_menu.hide()
 	options_menu.set_core_trial(sim.core_loop.trial)
-	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition())
 	if not sim.is_running():
 		for overlay: CanvasItem in [immersive_feedback,night_watch_view,settlement_growth,module_hint,guide_view]:overlay.hide()
 

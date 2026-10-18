@@ -1,0 +1,18 @@
+{
+  "version": "0.0.57",
+  "source": "c8d2279292565a32244f4471f11823f410e127fb",
+  "spec_revision": 40,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4565,
+  "core_spirit_assertions": 40,
+  "native_spirit_scene_assertions": 33,
+  "native_manual": "walked to camp, E founding, ghost switched to recruiting",
+  "web_manual": "demo started; ghost visible; console errors empty; spec v0.0.57 r40 search passed; English guide verified",
+  "pending": [
+    "upload and Pages",
+    "human comprehension",
+    "Windows and mobile device playtests"
+  ],
+  "build_constraint": "macOS Godot exports must run sequentially: shared _lipo path ignores TMPDIR on this host",
+  "all_platform_artifacts": "passed; Main 46 / Demo 47 checks per exported platform; macOS executables launch; Android signature and 16 KiB alignment verified"
+}

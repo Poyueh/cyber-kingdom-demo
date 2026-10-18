@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-18 v0.0.57：核心流程恢復鬼魂，不受舊開場期限限制；真實工作／收晶目標、帶路與警戒。首夜後淡出，自主準備；主／Demo共用，舊旅程與快照v22不變。見 docs/design/living-spirit-guide.md。打包時兩個macOS匯出不得並行：此主機Godot仍共用_lipo暫存，即使分別設定TMPDIR亦會衝突；macOS匯出須依序。
+
 2026-10-18 v0.0.56：新主旅程直接引導，兩夜後保留營地繼續七星；Demo獨立支線／包／存檔，實體裁切其餘六星，只提供森林兩夜。共用玩法先改main再合入demo。新主旅程core_loop_version=2、舊試玩v1、快照v22。見docs/design/guided-campaign-and-demo.md。
 
 2026-10-15 v0.0.52：一般移動使用跑步，衝刺加快跑姿步頻，疲勞時才慢走。補畫手腳對擺及起步、停步、轉身的完整承重姿勢，不延遲操作。修正商人同tick更新切回站姿造成閃爍，以及野外接單立刻淡出的問題；出遊終點隨接單位置決定並保存。快照升至v21，舊旅程保留原路線與進度。 見 docs/design/weighted-running-and-merchant.md。

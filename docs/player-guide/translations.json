@@ -2438,5 +2438,17 @@
   "v0.0.56 分開完整主遊戲與森林 Demo 的包、名稱和存檔。共用玩法由主線同步；公開試玩站使用 Demo，不含其餘六星關卡。": {
     "en": "v0.0.56 separates main-game and forest demo packages, names and saves. Gameplay updates come from the same main branch. The public trial site runs the demo, without the six later worlds.",
     "zh_CN": "v0.0.56 分开完整主游戏与森林 Demo 的包、名称和存档。共用玩法由主线同步；公开试玩站使用 Demo，不含其余六星关卡。"
+  },
+  "鬼魂會在前方帶路、靠近目標時示意，等待工匠及收晶時換動作。提示跟著真實進度走，不再超時消失；第一夜後退到一旁，第二夜再警戒。可略過或重新顯示，不增加任務或免費資源。": {
+    "zh_CN": "鬼魂会在前方带路、靠近目标时示意，等待工匠及收晶时换动作。提示跟着真实进度走，不再超时消失；第一夜后退到一旁，第二夜再警戒。可略过或重新显示，不增加任务或免费资源。",
+    "en": "The spirit leads ahead, gestures by the target, and changes pose while waiting for work or collecting income. Guidance follows real progress without timing out. After night one it steps aside, then warns you again on night two. Hide or restore it freely; no extra quests or free resources are added."
+  },
+  "v0.0.57 恢復主遊戲與 Demo 的引導鬼魂，加入帶路、工作、收晶和警戒反應。兩版仍使用獨立存檔，Demo 不含其餘六星。": {
+    "zh_CN": "v0.0.57 恢复主游戏与 Demo 的引导鬼魂，加入带路、工作、收晶和警戒反应。两版仍使用独立存档，Demo 不含其余六星。",
+    "en": "v0.0.57 restores the spirit guide in the main game and demo, with leading, work, income and warning gestures. Saves remain separate; the demo excludes the six later worlds."
+  },
+  "新主旅程的鬼魂陪你完成首次經營與防守；兩夜後自由繼續。舊旅程沿用原開場期限。完整遊戲需要後續指引時，可在營火右側引魂壇投入一晶召回，停留約 18 秒。": {
+    "zh_CN": "新主旅程的鬼魂陪你完成首次经营与防守；两夜后自由继续。旧旅程沿用原开场期限。完整游戏需要后续指引时，可在营火右侧引魂坛投入一晶召回，停留约 18 秒。",
+    "en": "The spirit accompanies new main journeys through the first economy and defence loop. Continue freely after two nights. Legacy journeys retain their opening deadline. In the full game, offer one crystal at the shrine right of the fire for about 18 seconds of further guidance."
   }
 }
