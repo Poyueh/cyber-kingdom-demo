@@ -1,6 +1,8 @@
-## v0.0.56 主流程引導與獨立 Demo（驗收中）
+## v0.0.56 主流程引導與獨立 Demo（已發布）
 
-新主旅程整合引導，兩夜後原地繼續，其他星球共用操作改善。兩種身分、獨立存檔及實體裁切已接入。完整回歸通過：既有4565項、核心72項、主流程87項、引導場景7項及節奏選單29項，無SCRIPT ERROR。Main／Demo各五平台內容隔離、macOS執行檔、簽章與封裝已驗證。13份附件已備妥，公開部署進行中。[設計](design/guided-campaign-and-demo.md)。
+新主旅程整合引導，兩夜後原地繼續，其他星球共用操作改善。兩種身分、獨立存檔及實體裁切已接入。完整回歸通過：既有4565項、核心72項、主流程87項、引導場景7項及節奏選單29項，無SCRIPT ERROR。Main／Demo各五平台內容隔離、macOS執行檔、簽章與封裝已驗證。13份附件校驗一致；Pages 39104073489成功，22個公開檔案與Demo成品一致。規格修訂37。真人理解度及Windows／手機真機仍待測。[設計](design/guided-campaign-and-demo.md)。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.56) · [主遊戲／Demo 下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.56) · [企劃書](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.56) · [驗收紀錄](reports/release-0.0.56/verification.json)。demo支線只覆寫發行設定，共用玩法與主線一致。
 
 ## v0.0.55 核心循環與重試介面（已發布）
 

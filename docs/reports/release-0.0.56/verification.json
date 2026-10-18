@@ -14,7 +14,7 @@
   "guided_scene_assertions": 7,
   "pacing_scene_assertions": 29,
   "builds": "verified ten platform editions",
-  "publication": "pending",
+  "publication": "published",
   "not_validated": [
     "Windows real device",
     "iPhone/iPad/Android real device",
@@ -111,5 +111,14 @@
   "android_signature_and_alignment_verified": true,
   "browser_entries_and_demo_three_languages_verified": true,
   "main_macos_binary_smoke": true,
-  "demo_macos_binary_smoke": true
+  "demo_macos_binary_smoke": true,
+  "pages_run_id": 39104073489,
+  "pages_conclusion": "success",
+  "public_files_verified": 22,
+  "uploaded_assets_verified": 13,
+  "public_browser_demo_entry_verified": true,
+  "public_browser_spec_revision_verified": 37,
+  "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.56",
+  "demo_url": "https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.56",
+  "spec_url": "https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.56"
 }
