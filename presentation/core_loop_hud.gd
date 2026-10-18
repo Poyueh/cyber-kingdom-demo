@@ -18,11 +18,22 @@ var panel: PanelContainer
 var rows: Dictionary={}
 var row_buttons: Dictionary={}
 var _bindings: Array[Dictionary]=[]
+## Values sit beside what they describe: stamina over the knight, the crystal count by the pouch.
+const WALLET_GAP: float=4.0
+const STAMINA_SIZE: Vector2=Vector2(56,6)
+const STAMINA_LIFT: float=82.0 # From the knight's anchor to the bar's top; the idle helmet top is about 68 above it.
+const MOUNTED_LIFT: float=28.0 # The warhorse rider's helmet sits about 27 higher than on foot.
+const STAMINA_TRACK: Color=Color("25363b")
+const STAMINA_EDGE: Color=Color("0b1519")
+const STAMINA_FULL: Color=Color("afd58b")
+const STAMINA_LOW: Color=Color("d7826d")
+const STAMINA_LOW_RATIO: float=0.18
 func _ready() -> void:
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  theme=preload("res://presentation/refuge_theme.gd").make()
  action_button=_button(self,"core.pay",func()->void:interaction_requested.emit())
  wallet=_label(self,18);stamina=ProgressBar.new();stamina.show_percentage=false;stamina.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(stamina)
+ stamina.add_theme_stylebox_override("background",_bar_box(STAMINA_TRACK,1));stamina.add_theme_stylebox_override("fill",_bar_box(STAMINA_FULL,0))
  caption=_label(self,16);caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;caption.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  interaction=_label(self,16);interaction.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;interaction.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  orders_button=_button(self,"core.orders",func()->void:panel.visible=not panel.visible;orders_toggled.emit(panel.visible))
@@ -41,21 +52,27 @@ func _ready() -> void:
   minus.custom_minimum_size=Vector2(48,48);plus.custom_minimum_size=Vector2(48,48)
   row_buttons[target]=[minus,plus]
  _button(body,"core.close",func()->void:panel.hide();orders_toggled.emit(false))
+func _bar_box(color: Color, edge: int) -> StyleBoxFlat:
+ var box: StyleBoxFlat=StyleBoxFlat.new();box.bg_color=color;box.border_color=STAMINA_EDGE;box.set_border_width_all(edge)
+ return box
 func _label(parent: Node, size: int) -> Label:
  var label: Label=Label.new();label.mouse_filter=Control.MOUSE_FILTER_IGNORE;label.add_theme_font_size_override("font_size",preload("res://presentation/refuge_theme.gd").type_size(size));parent.add_child(label);return label
 func _button(parent: Node, key: String, callback: Callable) -> Button:
  var button: Button=Button.new();button.text=tr(key);button.custom_minimum_size=Vector2(92,44);button.focus_mode=Control.FOCUS_NONE
  button.add_theme_font_size_override("font_size",16);button.pressed.connect(callback);parent.add_child(button);_bindings.append({"button":button,"key":key});return button
-func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, terminal_ready: bool) -> void:
+func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, terminal_ready: bool, hero_screen: Vector2, purse: Rect2) -> void:
  visible=sim.core_loop.enabled
  if not visible:return
  if not paused:panel.hide()
  for binding: Dictionary in _bindings:binding.button.text=tr(binding.key)
  var core: RefCounted=sim.core_loop
  wallet.visible=not paused or panel.visible
- wallet.text=tr("core.wallet %d")%sim.pouch.amount;wallet.position=safe.position+Vector2(92,22)
- stamina.position=safe.position+Vector2(92,52);stamina.size=Vector2(120,8)
+ wallet.text=tr("core.wallet %d")%sim.pouch.amount;wallet.size=wallet.get_minimum_size()
+ wallet.position=Vector2(purse.position.x-wallet.size.x-WALLET_GAP,purse.get_center().y-wallet.size.y/2) if purse.has_area() else safe.position+Vector2(92,22)
+ stamina.size=STAMINA_SIZE;stamina.position=hero_screen+Vector2(-STAMINA_SIZE.x/2,-STAMINA_LIFT-(MOUNTED_LIFT if sim.mounted() else 0.0))
  stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina
+ var low: bool=sim.hero.stamina<=sim.hero.stats.max_stamina*STAMINA_LOW_RATIO
+ (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_FULL
  orders_button.position=safe.position+Vector2(18,72);orders_button.visible=core.income>0 and sim.is_running() and (not paused or panel.visible)
  guide_button.position=safe.position+Vector2(18,122);guide_button.visible=sim.is_running() and core.stage<5 and not paused
  guide_button.text=tr("core.show" if core.skipped else "core.skip")

@@ -2399,9 +2399,9 @@
     "zh_CN": "暂停后在画面右侧点「重试准备阶段」；失败时等黑幕结束再重试。首次采集前尚未建立准备点，会显示重新开始。",
     "en": "Pause and select Retry preparation on the right. After defeat, wait for the blackout to finish. Before the first harvest, no preparation point exists, so the button restarts the trial."
   },
-  "新主旅程與 Demo 都有小型晶數、情境體力條、用途與付款進度。": {
-    "en": "New main journeys and the demo show crystal counts, contextual stamina, purposes and payment progress.",
-    "zh_CN": "新主旅程与 Demo 都有小型晶数、情境体力条、用途与付款进度。"
+  "新主旅程與 Demo 的晶數在右上晶袋旁，體力條只在消耗時出現在騎士頭頂；另有用途與付款進度。": {
+    "zh_CN": "新主旅程与 Demo 的晶数在右上晶袋旁，体力条只在消耗时出现在骑士头顶；另有用途与付款进度。",
+    "en": "In new journeys and the demo, the crystal count sits beside the pouch at top right, and the stamina bar appears over the knight's head only while it is spent. Use and payment progress are shown too."
   },
   "從營火學會經營與防守": {
     "en": "Learn to build and defend your refuge",
