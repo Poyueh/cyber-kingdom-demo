@@ -20,6 +20,26 @@ func run_scene() -> void:
  check(scene.sim.frontier.city_level==1,"real pointer click lights camp through input adapter")
  key(KEY_D,true);await frames(15);key(KEY_D,false)
  check(scene.knight.position.x>scene.sim.world.sites.hall+20,"keyboard runs the core knight")
+ # Values sit beside what they describe: stamina over the knight, the crystal count by the pouch.
+ scene.sim.hero.stamina=scene.sim.hero.stats.max_stamina*0.5
+ await frames(2)
+ var hud: Control=scene.hud.core_hud
+ var hero: Vector2=scene.get_viewport().get_canvas_transform()*Vector2(scene.knight.position.x,scene.sim._player_y)
+ var bar: Rect2=hud.stamina.get_global_rect()
+ check(hud.stamina.visible and absf(bar.get_center().x-hero.x)<=4,"stamina bar is centred on the knight")
+ # The idle helmet top is about 68 px above the knight's anchor.
+ check(bar.end.y<=hero.y-70 and bar.end.y>=hero.y-100,"stamina bar floats just above the knight's head")
+ # On the warhorse the rider's helmet top is about 95 px above the anchor.
+ scene.sim.frontier.drill_level=3
+ await frames(2)
+ bar=hud.stamina.get_global_rect()
+ check(scene.sim.mounted() and bar.end.y<=hero.y-97 and bar.end.y>=hero.y-127,"stamina bar rises above a mounted rider's head")
+ scene.sim.frontier.drill_level=0
+ await frames(2)
+ var purse: Rect2=scene.hud.immersive_feedback.purse.bounds
+ var wallet: Rect2=hud.wallet.get_global_rect()
+ check(wallet.end.x<=purse.position.x and purse.position.x-wallet.end.x<=16,"crystal count sits just left of the pouch")
+ check(wallet.get_center().y>=purse.position.y and wallet.get_center().y<=purse.end.y,"crystal count is level with the pouch")
  scene.sim.hero.stamina=0
  key(KEY_J,true);await frames(2);key(KEY_J,false)
  check(scene.sim.hero.attack_remaining>0,"real attack input works at exhausted stamina")
