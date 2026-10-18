@@ -34,6 +34,11 @@ func verify() -> void:
  check((game.journey==null)==demo,"demo cannot create a seven-world envelope")
  check((game.sim.frontier.right_boundary<3000)==demo,"demo contains short trial layout, main keeps full forest")
  check(game.hud.core_hud.wallet.visible,"common guidance UI renders in shipped scene")
+ check(game.hud.guide_view.visible and game.hud.guide_view.hint.get("core",false),"shipped companion is visible with a real core objective")
+ check(not game.hud.core_hud.caption.visible,"shipped UI has no duplicate static tutorial")
+ game.sim.advance(181,game.knight.position.x)
+ for i: int in range(3):await physics_frame
+ check(game.hud.guide_view.visible and game.hud.guide_view.modulate.a>0.9,"shipped companion survives the old time limit")
  var packet: Dictionary={"session":game.sim}
  check(preload("res://infrastructure/distribution.gd").accepts(packet),"edition accepts its own record")
  if demo:
