@@ -1,8 +1,12 @@
-## v0.0.62 數值貼近物件（發佈中）
+## v0.0.62 數值貼近物件（已發布）
 
 使用者回饋：龍晶數與耐力條要更貼近其物件。龍晶數字從左上移到右上晶袋左側；耐力條改在騎士頭頂（頭盔上方約 8 像素，騎馬升高 28），補上深色底槽、綠色填充與 18% 以下轉紅。先寫場景測試（置中於騎士、位於頭盔上方、騎乘升高、數字貼齊晶袋）再實作；原生截圖確認站立、騎乘與低耐力。規則與快照 v22 不變；規格修訂 49。教學：[第139課](lessons/139-hud-beside-its-object.md)。
 
 完整回歸通過（核心 4572 項、核心場景 20 項，無 SCRIPT ERROR／ERROR）。Main／Demo 五平台 10 組成品由 709ebf1 建置，內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊通過；本機 Pages 結構實測 Demo 晶數在晶袋旁、衝刺後頭頂顯示耐力條，無 console errors。[驗收紀錄](reports/release-0.0.62/preflight.json)。
+
+Release 416438488 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39127727869 成功，60 個公開檔案（含 main/ 30 個）與本機 Pages 結構逐一相同，企劃 v0.0.62／修訂 49；公開 Demo 載入無 console errors。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.62) · [主遊戲網頁版](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.62) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.62) · [Godot 小課](lessons/139-hud-beside-its-object.md)。
 
 ## v0.0.61 營火旁開局、鬼魂即時說明與主遊戲網頁版（已發布）
 
