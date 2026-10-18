@@ -1,0 +1,28 @@
+{
+  "version": "0.0.59",
+  "source": "b1e9762febc4cfbd454e64896843ae7e9757217d",
+  "spec_revision": 44,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4565,
+  "core_spirit_assertions": 44,
+  "native_spirit_scene_assertions": 35,
+  "native_companion_assertions": 28,
+  "supply_guidance_assertions": 24,
+  "immersive_input_assertions": 30,
+  "packaged_spirit_scene_assertions": {
+    "main": 19,
+    "demo": 16
+  },
+  "packaged_companion_assertions": {
+    "main": 28,
+    "demo": 28
+  },
+  "all_platform_artifacts": "passed; Main 46 / Demo 47 content checks per platform; macOS executable launch and signature; Android signature and 16 KiB alignment verified",
+  "test_maintenance": "Legacy visual expectations updated for brief contextual cues and removal of duplicate commands; real input, payment, recall and gestures remain checked. Gameplay artifacts were built from the source commit above.",
+  "local_browser": "Actual Demo export: opening, founding and movement; specification revision 44; no console errors",
+  "pending": [
+    "publication and online verification",
+    "human comprehension",
+    "Windows and mobile device playtests"
+  ]
+}
