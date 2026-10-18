@@ -4,13 +4,18 @@ extends "res://tests/test_core_loop.gd"
 const Setup=preload("res://application/journey_setup.gd")
 const Ops=preload("res://application/planet_operations.gd")
 const Distribution=preload("res://infrastructure/distribution.gd")
-func configuration() -> Dictionary:
+const Levels=preload("res://domain/planet_level_layout.gd")
+## forest_only mirrors the Demo package, whose catalogs keep only the forest entry.
+func configuration(forest_only: bool=false) -> Dictionary:
  var tuning: Resource=load("res://data/campaign.tres")
  var base: Dictionary=tuning.campaign_rules()
  base.merge({"seed":1054,"economy":tuning.economy_rules()},true)
  base.level_design=load("res://data/planet_levels.tres").rules()
  base.trail_design=load("res://data/trail_encounters.tres").rules()
  base.ruin_variation=load("res://data/ruin_variation.tres").rules()
+ if forest_only:
+  base.level_design.profiles=base.level_design.profiles.slice(0,1)
+  base.trail_design=base.trail_design.slice(0,1)
  var forest: Resource=load("res://data/planets/forest.tres")
  var config: Dictionary=Setup.create_forest(base,forest.rules(),load("res://data/journey_paces.tres").find(0).rules())
  config.merge(Setup.gate_rules(forest),true)
@@ -34,6 +39,7 @@ func _initialize() -> void:
  check(sim.mission.rifts.size()==int(config.rift_left_count)+int(config.rift_right_count),"demo has the forest gates for engineers to seal")
  check(not sim.planet.enabled,"demo has no rocket or star travel")
  pacing()
+ packaged_catalogs()
  if not sim.core_loop.enabled or sim.core_loop.trial:
   print("Forest demo: %d assertions, %d failures"%[assertions,failures]);quit(1);return
  run_flow()
@@ -55,6 +61,14 @@ func verify_completion(sim: RefCounted, config: Dictionary, codec: RefCounted) -
  sim.advance(0.1,30)
  check(sim.mission.outcome=="victory" and sim.finished(),"defeating the forest dragon completes the demo")
  check(Ops.candidates(sim,Ops.rocket_x(sim),430.0).is_empty(),"demo offers no rocket after the dragon")
+
+## The Demo package strips the other six worlds from the route and roadside catalogs.
+func packaged_catalogs() -> void:
+ var routes: Dictionary=load("res://data/planet_levels.tres").rules()
+ check(Levels.valid_options({"version":1,"profiles":routes.profiles.slice(0,1)}),"a forest-only route catalog is a valid package")
+ check(not Levels.valid_options({"version":1,"profiles":[]}),"an empty route catalog is refused")
+ check(not Levels.valid_options({"version":1,"profiles":routes.profiles.slice(1,2)}),"a route catalog must start with the forest")
+ check(configuration(true)==configuration(),"the Demo package builds exactly the journey's forest")
 
 ## Shared with the main game: the warning runs while the ordered archer walks,
 ## but night never falls before that archer reaches the wall.

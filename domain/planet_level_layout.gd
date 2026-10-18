@@ -5,6 +5,8 @@ const MARKER: String="level_design_version"
 const PREFIX: String="level_"
 const VERSION: int=1
 const ROOMS_PER_SIDE: int=7
+## A package may hold only the leading worlds; the Demo keeps the forest alone.
+const MAX_WORLDS: int=7
 const TERRAIN: Array[StringName]=[&"forest",&"quarry",&"ruins"]
 enum Role {SUPPLY, VISTA, SHRINE, TREASURE, APPROACH, MOUNT}
 class Zone extends RefCounted:
@@ -34,7 +36,7 @@ static func zones(economy: Dictionary) -> Array[Zone]:
 	return result
 
 static func apply(config: Dictionary, options: Dictionary, rng: RandomNumberGenerator) -> void:
-	assert(valid_options(options),"Invalid authored planet routes")
+	assert(valid_options(options) and int(config.planet_id)<options.profiles.size(),"Invalid authored planet routes")
 	var profile: Dictionary=options.profiles[int(config.planet_id)]
 	config[MARKER]=VERSION
 	var economy: Dictionary=config.economy
@@ -75,8 +77,8 @@ static func _number(value: Variant, lo: float, hi: float, whole: bool=false) -> 
 	return value>=lo and value<=hi and (not whole or floorf(float(value))==float(value))
 
 static func valid_options(options: Dictionary) -> bool:
-	if options.size()!=2 or not _number(options.get("version"),VERSION,VERSION,true) or not options.get("profiles") is Array or options.profiles.size()!=7:return false
-	for planet: int in range(7):
+	if options.size()!=2 or not _number(options.get("version"),VERSION,VERSION,true) or not options.get("profiles") is Array or not _number(options.profiles.size(),1,MAX_WORLDS,true):return false
+	for planet: int in range(options.profiles.size()):
 		var p: Variant=options.profiles[planet]
 		if not p is Dictionary or p.size()!=9 or not _number(p.get("planet_id"),planet,planet,true):return false
 		if not _number(p.get("width_jitter"),0,50) or not _number(p.get("station_spacing"),180,220):return false
