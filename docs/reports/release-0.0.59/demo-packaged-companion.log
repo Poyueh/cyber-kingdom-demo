@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: a first nearby action receives one short contextual cue
+PASS: caption never captures touch: zh_TW
+PASS: caption fits safe area: zh_TW
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: caption never captures touch: zh_CN
+PASS: caption fits safe area: zh_CN
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: caption never captures touch: en
+PASS: caption fits safe area: en
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: visible cue avoids controls and interaction text
+PASS: short cue clears while gesture remains
+PASS: same simulation time cannot advance companion animation
+PASS: actual founding input remains available below ghost
+PASS: wandering residents do not repeatedly restart the greeting
+PASS: moving knight is guided by motion without caption
+PASS: opening menu clears ghost and cue
+Companion native integration: 28 assertions, 0 failures

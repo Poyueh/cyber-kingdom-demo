@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpiritCompanionStyle" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/spirit_companion.gd" id="style"]
+[resource]
+script = ExtResource("style")
+lead_distance = 108.0
+follow_height = 98.0
+companion_distance = 76.0
+arrive_distance = 78.0
+wait_seconds = 1.5
+look_back_interval = 4.2
+look_back_seconds = 1.1
+follow_response = 5.5
+turn_response = 7.0
+caption_delay = 2.0
+caption_seconds = 3.0
+reminder_interval = 14.0
+reminder_seconds = 3.0
+cue_seconds = 4.0
