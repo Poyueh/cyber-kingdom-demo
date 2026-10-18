@@ -71,17 +71,21 @@ def main():
         tree = prepare_tree(args.ref, stage, args.edition)
         shutil.copyfile(stage / "distribution-manifest.json", output / "distribution-manifest.json")
         engine = [args.godot, "--headless", "--path", str(stage)]
-        run_logged(engine + ["--editor", "--import"], output / "import.log")
+        # Godot universal signing uses a fixed _lipo directory below TMPDIR.
+        export_temp=stage / "os-temp";export_temp.mkdir()
+        export_env=dict(os.environ,TMPDIR=str(export_temp)+"/")
+        run_logged(engine + ["--editor", "--import"], output / "import.log", env=export_env)
         edition_name = json.loads((stage / "distribution-manifest.json").read_text())["edition"]
         app_name = "Cyber Kingdom Forest Demo" if edition_name=="demo" else "Cyber Kingdom"
         mac = output / "macOS"
         windows = output / "Windows"
         mac.mkdir()
         windows.mkdir()
-        run_logged(engine + ["--export-release", "macOS Demo", str(mac / (app_name + ".app"))], output / "macOS-export.log")
-        run_logged(engine + ["--export-release", "Windows Demo", str(windows / (app_name + ".exe"))], output / "Windows-export.log")
+        run_logged(engine + ["--export-release", "macOS Demo", str(mac / (app_name + ".app"))], output / "macOS-export.log", env=export_env)
+        run_logged(engine + ["--export-release", "Windows Demo", str(windows / (app_name + ".exe"))], output / "Windows-export.log", env=export_env)
         audit=stage / "pack-audit";audit.mkdir()
         run_logged([args.godot, "--headless", "--path", str(audit), "--main-pack", str(mac / (app_name + ".app") / "Contents/Resources" / (app_name + ".pck")), "--script", str(stage / "tools/test_exported_distribution.gd")], output / "distribution-test.log")
+        run_logged(["codesign", "--verify", "--deep", "--strict", str(mac / (app_name + ".app"))], output / "macOS-signature.log")
         # ditto retains the app bundle's executable bits and macOS metadata.
         run_logged(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent", str(mac / (app_name + ".app")), str(output / "Cyber-Kingdom-macOS.zip")], output / "macOS-zip.log")
         shutil.make_archive(str(output / "Cyber-Kingdom-Windows"), "zip", windows)
