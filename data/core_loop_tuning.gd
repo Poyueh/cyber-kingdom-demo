@@ -4,7 +4,7 @@ class_name CoreLoopTuning
 @export var encounter: Resource=preload("res://data/trails/forest.tres")
 @export var day_seconds: float=300.0
 @export var night_seconds: float=55.0
-@export var warning_seconds: float=45.0
+@export var warning_seconds: float=20.0
 @export var harvest_seconds: float=8.0
 @export var harvest_crystals: int=4
 @export var cache_crystals: int=8
@@ -54,4 +54,12 @@ func resolve_campaign(base: Dictionary) -> Dictionary:
   result.chest_crystals=cache_crystals
   result.economy=result.economy.duplicate(true)
   result.economy.work_seconds=harvest_seconds
+ return result
+
+## Demo: the guided main forest in full, but contained: no rocket or voyage, so the
+## forest dragon is the finale. Other worlds are not in the Demo package at all.
+func resolve_demo(base: Dictionary) -> Dictionary:
+ var result: Dictionary=resolve_campaign(base)
+ result.core_loop_version=3
+ result.voyage_enabled=0
  return result

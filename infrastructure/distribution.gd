@@ -2,4 +2,6 @@ extends RefCounted
 static func demo() -> bool:
  return ProjectSettings.get_setting("distribution/edition","full")=="demo"
 static func accepts(restored: Dictionary) -> bool:
- return not demo() or (not restored.is_empty() and restored.session.core_loop.trial and not restored.has("journey"))
+ if not demo():return true
+ if restored.is_empty() or restored.has("journey"):return false
+ return restored.session.core_loop.trial or restored.session.core_loop.contained

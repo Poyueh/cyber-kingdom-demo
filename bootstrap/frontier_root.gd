@@ -42,6 +42,8 @@ var journey: Voyage
 @export var core_profile: Resource=preload("res://data/core_loop.tres")
 var _core_trial: bool=false
 var _guided_campaign: bool=false
+## Demo edition: the whole forest with main guidance, contained (no voyage).
+var _demo_forest: bool=false
 var _core_controller: Node
 var _star_travel: Node
 var _arrival_banner: CanvasLayer
@@ -52,7 +54,7 @@ func _planet_profiles() -> Array[Dictionary]:
 
 func _ready() -> void:
 	if preload("res://infrastructure/distribution.gd").demo():
-		_core_trial=true
+		_demo_forest=true;_guided_campaign=true
 		if campaign_save_path=="user://campaign_v1.json":campaign_save_path="user://forest_demo_v1.json"
 	sword_feedback = SwordFeedback.new()
 	sword_feedback.style = sword_style
@@ -70,7 +72,9 @@ func _ready() -> void:
 		get_tree().remove_meta("campaign_launch")
 		campaign_save_path=launch.path
 		if launch.seed>=0:
-			_core_trial=bool(launch.get("core",false)) or preload("res://infrastructure/distribution.gd").demo()
+			var demo: bool=preload("res://infrastructure/distribution.gd").demo()
+			_core_trial=bool(launch.get("core",false)) and not demo
+			_demo_forest=demo
 			_guided_campaign=not _core_trial
 			_journey_pace=int(launch.get("pace",0))
 			tuning=tuning.duplicate()
@@ -194,12 +198,18 @@ func restart() -> void:
 		config.level_design=planet_levels.rules()
 		config.trail_design=trail_encounters.rules()
 		config.merge(dragon_opening.rules(),true)
-		journey=preload("res://application/journey_setup.gd").create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
-		for id: int in range(journey.configs.size()):
-			journey.configs[id].merge({"rift_layout_version":1,"rift_left_count":PLANET_PROFILES[id].left_gates,"rift_right_count":PLANET_PROFILES[id].right_gates})
-		if _guided_campaign:
-			for id: int in range(journey.configs.size()):journey.configs[id]=core_profile.resolve_campaign(journey.configs[id])
-		config=journey.configs[0]
+		var setup: Script=preload("res://application/journey_setup.gd")
+		if _demo_forest:
+			# Same forest as the journey's first world; the Demo package holds no other world.
+			config=setup.create_forest(config,_planet_profiles()[0],journey_paces.find(_journey_pace).rules())
+			config.merge(setup.gate_rules(PLANET_PROFILES[0]),true)
+			config=core_profile.resolve_demo(config)
+		else:
+			journey=setup.create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
+			for id: int in range(journey.configs.size()):journey.configs[id].merge(setup.gate_rules(PLANET_PROFILES[id]))
+			if _guided_campaign:
+				for id: int in range(journey.configs.size()):journey.configs[id]=core_profile.resolve_campaign(journey.configs[id])
+			config=journey.configs[0]
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
 	knight.configure(sim.hero,knight_tuning)
@@ -328,8 +338,10 @@ func _apply_restored(restored: Dictionary) -> void:
 	sim=restored.session
 	_core_trial=sim.core_loop.trial
 	_guided_campaign=sim.core_loop.enabled and not _core_trial
+	_demo_forest=sim.core_loop.contained
 	journey=restored.get("journey")
-	if journey==null and sim.life.enabled and not _core_trial:
+	# A contained Demo forest must never be upgraded into the seven-world envelope.
+	if journey==null and sim.life.enabled and not _core_trial and not _demo_forest:
 		journey=Voyage.new(restored.config,_planet_profiles())
 		# Keep the exact old forest configuration/layout while enabling the envelope.
 		journey.configs[0]=restored.config.duplicate(true)

@@ -26,7 +26,7 @@
 - v0.0.56新主旅程core_loop_version=2，直接引導，兩夜後原地繼續七星；小型晶數、情境體力、用途、免費守軍配置、普攻免費與移動恢復為兩版共用。舊無標記紀錄維持原規則，v1核心試玩仍兩夜結束。
 - CP1／CP2完整還原，主遊戲兩夜完成後準備點退役，Demo保留。快照結構仍v22；真人與真機驗收另列。
 - 共用功能先更新main/develop，再合併長期demo支線；demo只改distribution.json預設edition。每版發布Main／Demo兩套五平台附件，Pages根目錄用Demo Web；完整Web另附下載。
-- Demo實體排除六星關卡和專用素材，使用獨立存檔與識別碼，不能只隱藏選單。詳見docs/design/guided-campaign-and-demo.md；舊Release不重寫。
+- Demo實體排除六星關卡和專用素材，使用獨立存檔與識別碼，不能只隱藏選單。v0.0.60起Demo新旅程為core_loop_version=3：與主遊戲相同引導與完整森林（商人、遺跡部件、戰馬、封門、森林巨龍），不能出航，打倒森林巨龍即完成；舊v1兩夜紀錄照原規則。詳見docs/design/guided-campaign-and-demo.md；舊Release不重寫。
 
 ## 架構
 
