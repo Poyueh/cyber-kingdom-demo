@@ -1,0 +1,16 @@
+{
+  "version": "0.0.62",
+  "source": "709ebf1a70b4b5b68589382b12a56896e9fbdec5",
+  "spec_revision": 49,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4572,
+  "core_scene_assertions": 20,
+  "new_behaviour_tests": "stamina bar centred on the knight, just above the helmet, raised for a mounted rider; crystal count left of and level with the pouch",
+  "native_visual": "standing, facing left, mounted and low-stamina captures; touch layout with safe-area margins",
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform (Windows, macOS, Web, Android assets, iOS PCK); macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified; Demo user directory isolated",
+  "local_browser": "Pages layout rebuilt locally: Demo journey shows the crystal count at the pouch and a green stamina bar over the knight after a sprint; no console errors",
+  "pending": [
+    "human feedback on the new placement",
+    "Windows and mobile device playtests"
+  ]
+}

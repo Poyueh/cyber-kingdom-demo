@@ -1,0 +1,2366 @@
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.028s
+
+OK
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.055s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.014s
+
+OK
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.322s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.062s
+
+OK
+PASS: specification review/build
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.090s
+
+OK
+PASS: domain/application dependency boundaries
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (10 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | SpiritCompanionStyle[39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+cannot connect to daemon at tcp:5037: Connection refused
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS test_actions_require_energy_and_each_combo_swing_pays_once
+PASS test_queued_swing_rechecks_budget_at_execution
+PASS test_legacy_save_migrates_with_current_action_costs
+PASS test_farm_facility_only_produces_tools_when_player_fully_pays
+PASS test_paid_farm_tools_are_claimed_after_normal_camp_upgrade
+PASS test_farms_and_hoes_wait_for_second_refuge_tier
+PASS test_random_farm_plots_unlock_without_rerolling_or_losing_save_state
+PASS test_the_duel_is_heard_swinging_landing_and_ending
+PASS test_a_warning_precedes_the_sentinel_strike
+PASS test_pause_swallows_arena_feedback
+PASS test_the_asset_table_can_be_told_apart_from_playback
+PASS test_every_playable_sound_has_its_file
+PASS test_no_generated_sound_is_left_without_a_trigger
+PASS test_the_pending_list_stays_honest
+PASS test_constant_texture_never_cuts_off_a_decisive_sound
+PASS test_every_generated_track_and_bed_is_reachable
+PASS test_volume_preferences_round_trip_and_protect_corrupt_input
+PASS test_settings_written_before_ambience_existed_keep_their_volumes
+PASS test_mute_survives_restarting_the_app
+PASS test_two_wall_investments_and_construction_are_independent
+PASS test_night_attackers_arrive_from_both_sides
+PASS test_wall_blocks_close_attack_against_knight
+PASS test_defenders_split_posts_and_keep_their_assignments
+PASS test_newly_completed_wall_intercepts_a_queued_strike
+PASS test_pressure_preview_matches_spawned_sides_and_clears_at_dawn
+PASS test_generated_resources_leave_space_for_both_defense_sites
+PASS test_legacy_encounter_left_retreat_does_not_create_false_loot
+PASS test_kingdom_milestone_requires_both_defenses
+PASS test_sand_rupture_respects_finished_wall
+PASS test_ice_breath_aims_twice_then_recovers
+PASS test_new_dragons_lock_distinct_sequences_and_then_allow_counterattack
+PASS test_crystal_pouch_conserves_overflow_and_ground_pickups
+PASS test_campfire_investments_persist_and_never_double_charge
+PASS test_knight_opens_chest_once_and_full_bag_spills
+PASS test_discovered_wanderer_recruits_with_crystal_and_keeps_role_until_hit
+PASS test_nights_continue_after_three_and_raise_actual_enemy_stats
+PASS test_resident_delivery_leaves_crystals_at_depot_and_banks_stone
+PASS test_later_night_damage_reaches_knight_and_wall
+PASS test_insufficient_crystals_preserve_partial_project_and_target_independence
+PASS test_campaign_raid_receives_three_cuts_and_finisher_pushback
+PASS test_day_and_night_beds_swap_without_overlapping
+PASS test_landscape_beds_follow_the_knight
+PASS test_camp_beds_need_an_actual_camp_and_closeness
+PASS test_pause_silences_every_bed
+PASS test_sound_observation_does_not_replay_effects_or_invent_payments
+PASS test_sounds_follow_active_cuts_hits_distance_and_end_states
+PASS test_world_effects_each_get_their_own_voice
+PASS test_absorbed_damage_and_growth_are_told_apart
+PASS test_losing_crystals_sword_and_life_are_audible
+PASS test_dawn_is_marked_once_per_survived_night
+PASS test_a_restored_run_stays_silent_about_its_history
+PASS test_falling_raiders_and_the_dragon_are_told_apart
+PASS test_the_walls_are_heard_taking_giving_and_regaining_ground
+PASS test_spending_on_yourself_is_audible
+PASS test_a_restored_battle_states_none_of_its_history
+PASS test_opening_a_chest_is_not_mistaken_for_losing_crystals
+PASS test_a_refund_is_not_also_a_wound
+PASS test_a_thief_getting_away_is_not_a_kill
+PASS test_new_journeys_keep_old_records_and_list_corruption_safely
+PASS test_leaving_and_meeting_the_ground_each_sound_once
+PASS test_a_paused_or_restored_run_does_not_invent_a_landing
+PASS test_guidance_follows_paid_camp_and_real_resident_jobs
+PASS test_guidance_does_not_reveal_loot_or_keep_spending_stocked_tools
+PASS test_a_shot_that_lands_is_heard_hitting
+PASS test_crystals_settle_and_are_handed_over
+PASS test_dusk_warns_once_a_day
+PASS test_the_guide_says_goodbye_once
+PASS test_a_restored_run_states_none_of_these
+PASS test_music_follows_place_and_time_of_day
+PASS test_night_adds_a_raid_layer_only_while_enemies_live
+PASS test_dragon_and_results_take_over_the_score
+PASS test_surviving_a_night_stings_once_without_changing_the_loop
+PASS test_pause_and_restart_do_not_replay_history
+PASS test_founding_the_refuge_gets_its_own_moment
+PASS test_a_restored_camp_is_not_founded_again
+PASS test_the_score_does_not_hoard_every_track_it_has_played
+PASS test_core_breach_loses_without_killing_knight_and_stops_simulation
+PASS test_intact_wall_protects_core_then_breach_exposes_it
+PASS test_core_charge_uses_slots_and_cannot_exceed_capacity
+PASS test_knight_death_and_city_milestone_are_not_victory
+PASS test_rift_requires_exploration_city_and_an_engineer
+PASS test_engineer_travels_and_waits_for_knight_before_guardians
+PASS test_fighting_unlocks_sealing_and_closed_side_stops_night_spawns
+PASS test_both_seals_and_cleared_enemies_finish_run_once
+PASS test_lost_engineer_is_replaced_without_reset_or_duplicate_wardens
+PASS test_expedition_waits_for_carried_harvest_to_be_delivered
+PASS test_sealed_sources_still_require_remaining_enemies_and_defeat_wins_ties
+PASS test_warden_stats_are_editable_through_campaign_rules
+PASS test_new_journey_night_forecast_matches_real_spawns_beyond_day_ten
+PASS test_large_night_waits_for_enemy_slots_and_resumes_after_a_kill
+PASS test_resource_economy_requires_work_instead_of_rapid_farming
+PASS test_pressure_resume_is_identical_and_legacy_journeys_keep_their_rules
+PASS test_sealed_gate_cancels_only_its_own_reinforcements
+PASS test_work_strikes_repeat_only_while_someone_works
+PASS test_each_trade_has_its_own_strike
+PASS test_distant_work_stays_quiet
+PASS test_footsteps_follow_actual_travel_speed
+PASS test_pause_stops_every_pulse
+PASS test_loops_hold_under_a_gallop_a_dragon_and_a_seal
+PASS test_full_checkpoint_restores_real_payment_cargo_and_world_continuation
+PASS test_corrupt_checkpoint_is_rejected_before_it_can_run
+PASS test_resume_preserves_hit_identity_and_drops_buffered_next_cut
+PASS test_pending_enemy_windup_survives_and_invalid_target_is_refused
+PASS test_reused_codec_keeps_snapshots_and_restored_journeys_independent
+PASS test_checkpoint_file_roundtrip_and_corruption_protection
+PASS test_failed_write_keeps_old_checkpoint_and_can_retry
+PASS test_pause_and_resume_each_click_once
+PASS test_unmuting_confirms_itself_but_muting_cannot
+PASS test_muting_while_paused_does_not_leave_a_stale_click
+PASS test_leaving_and_returning_to_the_window_is_not_a_speaker_change
+PASS test_backgrounding_a_paused_game_replays_nothing_on_return
+PASS test_enemies_warn_strike_and_steal
+PASS test_gatekeepers_and_the_seal_are_announced
+PASS test_residents_taking_tools_and_blows
+PASS test_milestones_and_riding
+PASS test_investment_completion_is_told_from_a_refund
+PASS test_a_restored_world_states_none_of_it
+PASS test_demotion_is_distinct_from_blocking_and_recruitment
+PASS test_terminal_feedback_finishes_without_advancing_the_campaign
+PASS test_hero_death_falls_and_holds_instead_of_vanishing
+PASS test_one_swing_hits_each_target_once
+PASS test_range_and_facing_do_not_consume_a_valid_hit
+PASS test_attack_window_and_cooldown
+PASS test_dash_spends_stamina_and_protects_health
+PASS test_death_and_invalid_damage
+PASS test_negative_time_cannot_rewind_combat
+PASS test_sword_only_damages_during_downward_cut
+PASS test_turning_during_swing_cannot_move_damage_behind_hero
+PASS test_short_cooldown_cannot_restart_an_unfinished_swing
+PASS test_dash_cancels_damage_in_every_swing_phase
+PASS test_overhead_anticipation_cannot_damage_before_downward_cut
+PASS test_dash_progress_tracks_motion_until_it_finishes
+PASS test_shield_absorbs_damage_before_health_and_cannot_regenerate
+PASS test_combo_accepts_early_press_without_restarting_the_current_swing
+PASS test_combo_requires_three_presses_and_finisher_recovers
+PASS test_single_press_late_followup_and_expired_chain
+PASS test_combo_target_can_receive_each_cut_only_once
+PASS test_combo_cancels_on_dash_hurt_death_and_lost_intent
+PASS test_buffer_expiry_and_large_time_step_obey_the_same_handoff
+PASS test_each_combo_cut_locks_direction_when_it_begins
+PASS test_stationary_combo_never_displaces_the_knight
+PASS test_followup_travel_is_timed_directional_and_consumed_once
+PASS test_step_distance_survives_coarse_handoff_and_custom_timing
+PASS test_cancelled_combo_discards_unapplied_step
+PASS test_releasing_direction_discards_travel_without_a_backlog
+PASS test_upgrading_tower_stops_shooting_until_engineer_finishes
+PASS test_paid_wall_upgrade_opens_route_and_completion_closes_it
+PASS test_saved_upgrades_stay_inactive_and_continue_identically
+PASS test_wall_repair_cancels_an_attack_already_winding_up
+PASS test_an_empty_catalog_is_usable
+PASS test_entries_are_found_by_id
+PASS test_duplicate_ids_are_reported
+PASS test_missing_ids_are_reported
+PASS test_an_empty_slot_is_reported
+PASS test_requirements_must_exist
+PASS test_a_grant_without_a_stat_is_reported
+PASS test_enemy_growth_is_authored_not_hardcoded
+PASS test_invisible_sites_do_not_steal_exploration_targets
+PASS test_actionable_target_wins_over_nearer_unavailable_target
+PASS test_targeted_payment_never_falls_back_to_another_person
+PASS test_holding_fills_one_project_and_stops_at_completion
+PASS test_hold_cancels_on_leaving_and_cannot_resume_on_a_neighbor
+PASS test_empty_backpack_and_cancel_require_a_fresh_press
+PASS test_free_interactions_and_tool_orders_never_repeat_while_held
+PASS test_new_nearer_candidate_does_not_steal_a_held_project
+PASS test_damaged_wall_does_not_turn_held_upgrade_into_repair
+PASS test_only_crystals_build_upgrade_and_heal
+PASS test_all_harvests_and_farming_only_supply_physical_crystals
+PASS test_v2_materials_convert_once_without_changing_original
+PASS test_real_v2_checkpoint_and_renewable_yields_survive_migration
+PASS test_throw_is_conserved_and_cannot_immediately_magnet_back
+PASS test_magnet_moves_visible_crystals_before_crediting_and_respects_capacity
+PASS test_chest_bursts_before_collecting_and_only_once
+PASS test_offerings_recruit_once_and_respect_the_configured_price
+PASS test_treasure_is_not_an_offering_and_empty_or_dead_knight_cannot_throw
+PASS test_airborne_crystals_land_on_ledges_and_fall_off_their_edges
+PASS test_zero_invalid_time_and_boundaries_preserve_ground_rewards
+PASS test_new_chests_are_sparse_distant_and_seeded
+PASS test_empty_knight_gets_one_visible_gift_then_must_fund_next_trip
+PASS test_merchant_waits_for_proximity_and_free_gift_is_not_repeatable
+PASS test_trader_travel_save_resume_and_corruption_admission
+PASS test_v13_journeys_keep_original_treasure_and_gain_no_duplicate_gift
+PASS test_delivery_is_a_physical_burst_and_return_waits_for_knight
+PASS test_paused_and_ended_sessions_do_not_advance_trader
+PASS test_empty_knight_at_world_edge_is_approached_from_inside
+PASS test_subtick_update_preserves_visible_walking_state
+PASS test_remote_dispatch_walks_from_payment_location_and_survives_reload
+PASS test_v20_merchant_upgrade_preserves_existing_journey
+PASS test_edge_dispatch_uses_inward_route
+PASS test_crystals_then_sword_then_life_on_actual_enemy_hit
+PASS test_offering_cancels_attack_and_enemy_exits_without_reward
+PASS test_left_carrier_and_killed_carrier_conserve_crystals
+PASS test_dragon_hit_uses_crystal_protection
+PASS test_disarmed_and_carrier_state_survives_save_resume
+PASS test_sword_can_be_recovered_after_drop_grace
+PASS test_v7_immersive_journey_migrates_to_crystal_survival
+PASS test_identical_seed_and_offering_inputs_repeat
+PASS test_corrupt_v7_wallet_is_not_repaired_by_larger_capacity
+PASS test_clearing_reveals_wall_plot_but_requires_local_preparation
+PASS test_expansion_is_sequential_and_trees_must_be_actually_cleared
+PASS test_guards_advance_only_after_completion_and_fall_back_without_switching_sides
+PASS test_night_spawn_is_outside_expanded_territory
+PASS test_safe_outpost_shortens_worker_return_but_lost_wall_forces_core_retreat
+PASS test_outer_wall_intercepts_then_inner_wall_remains_a_second_defense
+PASS test_seeded_expansion_spawns_stay_on_map_and_beyond_both_fronts
+PASS test_drag_fingers_are_independent_and_cancelable
+PASS test_direction_selects_intent_on_either_side
+PASS test_second_tier_does_not_chatter_at_boundary
+PASS test_two_gates_summon_a_dragon_instead_of_winning
+PASS test_dragon_has_floor_and_late_growth
+PASS test_dragon_save_resume_and_army_damage
+PASS test_idle_workers_and_guards_patrol
+PASS test_concurrent_resident_volley_is_not_discarded
+PASS test_v3_completed_run_remains_completed_and_active_run_gets_boss
+PASS test_all_seven_dragons_reward_the_completed_volley_window
+PASS test_arrival_and_legacy_dragons_do_not_gain_false_openings
+PASS test_modules_and_archers_share_the_visible_opening
+PASS test_towers_and_ordinary_enemies_keep_their_own_rules
+PASS test_partial_attack_and_opening_continue_identically_after_reload
+PASS test_opening_configuration_cannot_be_silently_corrupted
+PASS test_settled_pile_out_of_reach_only_ages
+PASS test_grace_still_expires_while_resting
+PASS test_pile_outside_the_world_is_pulled_back
+PASS test_airborne_crystal_still_lands
+PASS test_knight_still_collects_a_nearby_pile
+PASS test_thrown_offering_resists_the_magnet_until_grace_ends
+PASS test_resting_piles_do_not_change_an_active_crystal
+PASS test_supply_advice_includes_only_discovered_available_trail_rewards
+PASS test_forest_first_fight_allows_read_evade_and_counter
+PASS test_first_three_dusks_warn_explorers_without_recalling_the_ghost
+PASS test_old_forest_encounter_stays_a_pair_after_loading
+PASS test_new_local_day_rearms_warning_after_restart_or_travel
+PASS test_enemy_animation_follows_distance_freezes_and_prunes
+PASS test_cancelled_windup_never_plays_a_phantom_claw_attack
+PASS test_dragon_multibeat_animates_actual_impacts_without_replaying_on_load
+PASS test_expedition_advice_uses_unlocks_and_preserves_hidden_rifts
+PASS test_paid_expedition_reports_worker_combat_and_sealing_state
+PASS test_assigned_expedition_takes_priority_over_a_second_waiting_order
+PASS test_recovery_after_skipping_camp_or_losing_worker_with_empty_pouch
+PASS test_survey_respects_discovery_rewards_and_saved_journey
+PASS test_round_trip_and_schema_guard
+PASS test_invalid_values_preserve_original_save
+PASS test_campaign_has_ground_level_resources_and_no_gem_ledges
+PASS test_drag_has_two_distinct_speeds_and_can_return_to_slow
+PASS test_barracks_upgrades_power_existing_archers_and_stop_at_limit
+PASS test_night_civilians_move_without_leaving_the_defended_interior
+PASS test_second_tier_spends_stamina_and_falls_back_when_exhausted
+PASS test_real_v4_save_keeps_population_and_paid_resources_on_flat_ground
+PASS test_barracks_respects_town_gate_and_all_three_paid_tiers
+PASS test_night_builds_inside_defenses_but_does_not_leave_for_outer_order
+PASS test_tower_needs_construction_and_three_tiers_have_real_firepower
+PASS test_cleared_plots_are_seeded_varied_and_do_not_reroll_on_load
+PASS test_fortress_is_a_third_paid_tier_with_more_health
+PASS test_expanded_field_requires_farmer_and_produces_at_its_own_location
+PASS test_v5_keeps_wall_damage_and_old_civilian_protection
+PASS test_tower_second_tier_fires_more_often_and_pause_time_does_not_fire
+PASS test_night_work_stops_when_the_outer_wall_breaks
+PASS test_outpost_and_cleared_plot_remain_separate_payment_targets
+PASS test_free_destination_with_first_reactor_and_no_branch_cores
+PASS test_multiple_gates_preserve_pressure_until_whole_side_is_sealed
+PASS test_gate_layout_checkpoint_retains_multiple_and_legacy_worlds
+PASS test_a_partial_seal_keeps_the_night_quota_and_saved_thief_exit
+PASS test_legacy_route_masks_do_not_restrict_a_restored_journey
+PASS test_seed_reproduces_exploration_and_guarantees_reachable_resources
+PASS test_harvest_is_finite_and_rewards_only_once
+PASS test_crop_requires_worker_and_hunter_collects_discovered_animals
+PASS test_tools_assign_new_jobs_and_city_requires_real_progress
+PASS test_economy_tuning_changes_crop_output_and_training
+PASS test_generated_resources_can_fund_the_complete_kingdom_loop
+PASS test_outer_regions_extend_both_sides_without_replacing_the_opening
+PASS test_expanded_campaign_seals_beyond_resources_and_survives_save_restore
+PASS test_more_exploration_camps_still_respect_population_limit
+PASS test_scenery_is_varied_reproducible_and_never_changes_harvests
+PASS test_camps_replenish_once_per_real_dawn_and_remain_recruitable
+PASS test_camps_do_not_accumulate_infinite_people_or_remove_existing_ids
+PASS test_standing_forest_renews_hunted_prey_and_delivered_plants
+PASS test_carried_plants_never_duplicate_and_minerals_never_regrow
+PASS test_clearcut_forest_loses_future_camp_and_prey_without_erasing_survivors
+PASS test_last_tree_order_warns_about_habitat_loss
+PASS test_preserving_one_tree_per_forest_still_allows_city_and_farm
+PASS test_cleared_ground_still_supports_delivered_berry_and_herb_patches
+PASS test_knight_marks_work_and_sword_never_harvests
+PASS test_worker_walks_chops_and_hauls_before_bank_receives_resources
+PASS test_hit_worker_drops_cargo_and_another_worker_recovers_it
+PASS test_raised_salvage_is_reached_by_worker_ladder_before_harvest
+PASS test_outpost_needs_cleared_site_payment_and_engineer_then_shortens_delivery
+PASS test_work_duration_is_tunable_and_invalid_time_cannot_finish_a_job
+PASS test_ground_raider_cannot_hit_a_worker_on_an_elevated_site
+PASS test_wanderers_stroll_turn_and_stay_near_their_discovery_place
+PASS test_idle_citizen_strolls_but_available_tools_interrupt_immediately
+PASS test_approaching_wanderer_stops_for_recruitment_and_invalid_time_does_not_move
+PASS test_guidance_leads_to_actual_worker_income_and_nearby_delivery
+PASS test_advice_uses_remaining_price_instead_of_repeated_unaffordable_orders
+PASS test_free_unlit_camp_is_still_the_priority_without_crystals
+PASS test_funded_work_and_trader_return_are_distinguished_from_ready_income
+PASS test_visible_gift_does_not_send_knight_away_during_collection_grace
+PASS test_income_query_excludes_wanderers_threatened_workers_and_unseen_treasure
+PASS test_income_query_survives_json_resume_without_new_state
+PASS test_rocket_guidance_uses_same_remaining_cost_and_actual_construction
+PASS test_controls_and_information_fit_notched_landscape_and_tablet
+PASS test_safe_area_conversion_handles_scaling_and_letterboxing
+PASS test_corner_menu_and_purse_fit_phone_safe_area
+PASS test_jump_pose_responds_to_vertical_motion_and_freezes_when_paused
+PASS test_unlit_camp_and_tools
+PASS test_unfinished_payment_returns_to_ground
+PASS test_residents_collect_offer_and_recruit
+PASS test_fast_run_exhaustion_and_rest
+PASS test_repeated_yield_is_bounded_and_conserved
+PASS test_new_rules_save_and_resume
+PASS test_night_work_and_threat_retreat
+PASS test_full_pouch_sinks_excess
+PASS test_every_resident_job_carries_and_offers
+PASS test_damaged_v6_config_is_protected
+PASS test_single_taps_resume_during_refund_grace
+PASS test_refund_waits_then_falls_at_building_when_knight_leaves
+PASS test_each_tap_renews_the_payment_window
+PASS test_walking_recovers_without_rearming_sprint_early
+PASS test_smaller_arrival_pouch_can_start_worker_economy
+PASS test_impact_feedback_freezes_expires_and_resets_with_game_time
+PASS test_far_gate_approach_reaches_defenses_within_the_first_minute
+PASS test_march_keeps_close_combat_and_resident_escape_speed
+PASS test_paid_off_raider_leaves_remote_ground_without_a_long_night_tail
+PASS test_near_knight_walls_and_towers_keep_the_same_movement
+PASS test_march_blends_smoothly_and_never_speeds_up_special_enemies
+PASS test_legacy_retreat_and_march_rules_remain_exact
+PASS test_new_retreat_respects_chill_and_completed_walls
+PASS test_save_resume_during_march_matches_uninterrupted_invasion
+PASS test_partial_or_unknown_march_profiles_are_rejected
+PASS test_explorer_has_time_to_return_before_a_lighter_first_night
+PASS test_pacing_preserves_worlds_and_economy_while_separating_pressure
+PASS test_pacing_survives_travel_and_partial_night_continuation
+PASS test_unknown_pace_is_rejected_and_legacy_rules_are_unchanged
+PASS test_one_journey_cannot_restore_mixed_pace_labels
+PASS test_invasion_emerges_at_the_two_gates
+PASS test_expansion_is_hidden_until_the_region_is_cleared
+PASS test_full_shield_cannot_stack_before_city_upgrade
+PASS test_damage_offers_bounded_refill_instead_of_another_upgrade
+PASS test_training_tiers_cost_more_and_require_city_progress
+PASS test_damage_interrupts_held_upgrade_without_spending_refill_or_losing_slots
+PASS test_growth_configuration_changes_actual_cap_and_training
+PASS test_module_balance_and_switching_share_cooldown
+PASS test_relics_auto_equip_and_preserve_saved_cooldown
+PASS test_seeded_modules_and_directional_lance
+PASS test_idle_animation_advances_only_with_game_time
+PASS test_death_facing_and_restart_are_visible
+PASS test_grounded_motion_plays_run_then_returns_to_idle
+PASS test_attack_frames_follow_combat_progress_instead_of_render_time
+PASS test_airborne_does_not_play_ground_run_cycle
+PASS test_attack_respects_authored_anticipation_and_recovery_durations
+PASS test_enemy_telegraph_displays_raised_weapon_without_starting_swing
+PASS test_dash_has_launch_burst_braking_and_freezes_with_progress
+PASS test_default_cleave_shows_all_eight_poses_at_thirty_fps
+PASS test_running_phase_continues_through_attack_and_recovery
+PASS test_moving_swing_displays_running_legs_without_changing_attack_timing
+PASS test_return_cut_starts_from_previous_low_pose_and_rises_while_running
+PASS test_authored_combo_uses_independent_forward_frames_and_freezes
+PASS test_equipment_refresh_never_reopens_another_body
+PASS test_guide_never_requests_harvest_beyond_work_area
+PASS test_default_orders_stop_about_one_screen_beyond_both_walls
+PASS test_daytime_worker_and_hunter_work_outside_wall_without_chasing_far_prey
+PASS test_work_orders_follow_walls_but_treasure_stays_explorable
+PASS test_worker_keeps_harvest_and_can_continue_without_delivery
+PASS test_hunter_stays_near_walls_even_with_only_distant_prey
+PASS test_local_work_save_resume_and_legacy_station_migration
+PASS test_partly_harvested_job_resumes_and_preserves_wallet_overflow
+PASS test_two_upward_fingers_trigger_once_and_never_offer
+PASS test_release_and_focus_loss_cancel_partial_special
+PASS test_new_relic_equips_immediately_and_replaces_the_previous_module
+PASS test_workshop_charges_eight_only_for_valid_changes_and_cannot_upgrade_knight
+PASS test_cooldown_finishes_once_and_saved_run_keeps_the_same_timing
+PASS test_mount_route_requires_circuit_recovery_and_paid_stable
+PASS test_raid_has_warning_gate_spawns_and_one_recovery_night
+PASS test_exploration_does_not_scale_dragons_forever
+PASS test_mount_travels_between_planets_without_repeating_forest_assault
+PASS test_losing_sword_dismounts_and_requires_sword_before_remount
+PASS test_fourth_night_concentrates_pressure_without_creating_more_enemies
+PASS test_pincer_waits_before_sending_the_opposite_gate
+PASS test_opening_nights_and_sealed_portals_keep_fair_boundaries
+PASS test_mid_pincer_save_preserves_regroup_and_capacity
+PASS test_forecast_warns_early_without_spending_or_advancing_the_world
+PASS test_old_v18_journey_keeps_alternating_gates_and_rejects_future_rules
+PASS test_each_planet_forecast_matches_its_own_arrivals
+PASS test_routes_have_one_primary_ruin_and_meaningful_quiet_ground
+PASS test_frontier_expansion_can_cross_quiet_land_without_remote_work
+Authored route sample: [{"landmarks":4,"nodes":23,"planet":0,"quiet_percent":29.3,"width":15870.0},{"landmarks":3,"nodes":23,"planet":1,"quiet_percent":34.0,"width":16300.0},{"landmarks":3,"nodes":26,"planet":2,"quiet_percent":33.7,"width":16150.0},{"landmarks":3,"nodes":29,"planet":3,"quiet_percent":31.6,"width":16170.0},{"landmarks":3,"nodes":20,"planet":4,"quiet_percent":33.9,"width":16760.0},{"landmarks":3,"nodes":23,"planet":5,"quiet_percent":34.1,"width":16380.0},{"landmarks":3,"nodes":26,"planet":6,"quiet_percent":36.9,"width":17390.0}]
+PASS test_seeded_routes_keep_clear_controls_supply_and_gate_arenas
+PASS test_resolved_routes_and_partial_puzzles_survive_json_load
+PASS test_bad_route_packets_and_mixed_worlds_are_rejected
+PASS test_level_layout_randomness_is_isolated
+PASS test_seven_worlds_reward_eight_non_repeating_playstyles
+PASS test_magnet_retrieves_only_existing_eligible_crystals
+PASS test_frost_slows_movement_but_not_attack_timers
+PASS test_gravity_cannot_pull_through_walls_or_move_heavy_enemies
+PASS test_command_marks_three_archers_for_one_real_arrow_each
+PASS test_workshop_advances_paid_building_without_instant_defense
+PASS test_support_without_targets_is_free_and_charge_preserves_exhaustion
+PASS test_mid_effect_save_and_world_travel_preserve_remaining_charge
+PASS test_v16_upgrade_retains_inventory_and_rejects_unknown_charge
+PASS test_short_effects_survive_loading_expire_and_reject_corruption
+PASS test_charge_travels_mid_pulse_without_refilling_or_disappearing
+PASS test_workshop_needs_paid_work_and_refuses_workers_in_danger
+PASS test_catalogue_rewards_remain_accessible_across_seeds
+PASS test_rocket_construction_can_save_while_support_is_active
+PASS test_sand_switches_change_neighbors_and_open_only_when_all_lit
+PASS test_balance_needs_both_controls_and_deliberate_lock
+PASS test_pulse_rejects_dark_window_but_keeps_completed_stations
+PASS test_unseen_and_remote_mechanisms_cannot_be_operated
+PASS test_corrupt_mechanisms_and_unsolvable_data_are_rejected
+PASS test_v17_partial_ruins_keep_original_rules_and_can_finish
+PASS test_every_world_preserves_partial_progress_and_solutions
+PASS test_allocation_conserves_crystals_and_locks_on_departure
+PASS test_return_resolves_residents_once_and_keeps_a_stable_report
+PASS test_extreme_choices_victory_and_defeat_have_visible_consequences
+PASS test_tuning_changes_the_tradeoff_without_changing_combat_code
+PASS test_walk_tracks_distance_instead_of_render_rate
+PASS test_stopping_settles_and_pause_freezes_the_transition
+PASS test_distant_worker_leaves_before_sunset_and_preserves_work
+PASS test_night_pauses_farming_and_dawn_resumes_work
+PASS test_hunter_hunts_by_day_and_defends_at_night
+PASS test_carried_resource_returns_with_worker_then_deposits_at_dawn
+PASS test_unrecruited_wanderer_does_not_join_shelter_and_farmer_stops_at_home
+PASS test_same_seed_replays_the_same_sequence
+PASS test_streams_do_not_share_a_sequence
+PASS test_draining_one_stream_does_not_shift_another
+PASS test_neighbouring_seeds_do_not_produce_neighbouring_streams
+PASS test_capture_survives_a_checkpoint_round_trip
+PASS test_stored_state_stays_inside_the_checkpoint_number_range
+PASS test_restore_refuses_a_damaged_position
+PASS test_helpers_follow_their_own_stream
+PASS test_ruins_require_exploration_and_keep_checkpoint_progress
+PASS test_relay_times_out_and_same_seed_keeps_layout
+PASS test_terminal_tick_does_not_leave_an_expired_unsavable_relay
+Layout variants across 16 journeys: [14,5,16,5,16,16]
+PASS test_new_journeys_require_observing_each_ruin_again
+500-seed solved layouts: 3000; unique per destination: [140,6,140,6,480,478]
+PASS test_five_hundred_seeds_have_solvable_readable_configurations
+PASS test_configuration_only_draws_cannot_change_loot_or_world
+PASS test_partial_puzzles_resume_and_rewards_are_not_duplicated
+PASS test_unknown_layout_versions_and_mixed_voyages_are_protected
+Real-map puzzles solved through ordinary interaction: 384
+PASS test_generated_stations_are_visible_and_interactable_on_real_maps
+PASS test_partial_ruin_survives_returning_to_another_planet
+PASS test_variation_tuning_and_random_stream_are_bounded
+PASS test_defeat_rewards_once_and_persists
+PASS test_vertical_miss_and_restart
+PASS test_failed_save_reports_pending_and_can_retry
+PASS test_enemy_telegraphs_before_attack
+PASS test_confirmed_hit_freezes_combat_time_then_resumes_once
+PASS test_blocked_hit_does_not_stop_and_restart_clears_impact
+PASS test_supplies_recruit_only_on_pickup_and_tools_are_not_duplicated
+PASS test_paid_construction_needs_engineer_and_cannot_charge_twice
+PASS test_only_a_real_unblocked_hit_demotes_a_resident
+PASS test_people_walk_to_supplies_tools_and_build_without_direct_orders
+PASS test_context_interaction_checks_distance_and_shared_crystal_reserve
+PASS test_raiders_must_reach_and_hit_residents_not_just_start_a_wave
+PASS test_countdown_reaches_first_wave_and_cannot_duplicate_an_active_wave
+PASS test_attacked_worker_can_be_recruited_and_equipped_again
+PASS test_guard_defends_and_salvage_requires_pickup_once
+PASS test_destroyed_wall_can_be_repaired_without_exceeding_level_cap
+PASS test_three_completed_waves_stop_and_escaped_enemies_drop_nothing
+PASS test_paid_camp_upgrade_explains_actual_new_facility
+PASS test_seven_core_route_and_return_preserve_worlds
+PASS test_old_three_world_victory_can_continue_into_four_new_worlds
+PASS test_route_cannot_bypass_uncleared_branch_by_returning_home
+PASS test_dragon_sequence_resumes_identically_after_mid_attack_save
+PASS test_spirit_follows_ignored_advice_without_moving_the_target
+PASS test_hits_require_lost_health_or_shield_and_recover
+PASS test_knight_dash_is_not_mistaken_for_damage
+PASS test_residents_and_enemies_react_to_real_damage_only
+PASS test_spirit_points_back_at_a_reached_target
+PASS test_spirit_leaves_the_targets_interaction_column_clear
+PASS test_dragon_damage_and_death_keep_boss_silhouette_without_blocking_volley
+PASS test_contextual_press_drops_once_and_wanderer_collects_before_owner
+PASS test_offer_from_contextual_press_bribes_enemy_without_double_payment
+PASS test_opening_finishes_after_first_worker_order_and_can_be_recalled
+PASS test_late_recall_survives_save_and_v8_migrates_safely
+PASS test_empty_pouch_cannot_recall_and_configured_slots_refund
+PASS test_new_task_is_spoken_at_once_while_walking
+PASS test_arrival_and_stalls_are_answered_quickly
+PASS test_exhaustion_requires_walk_then_run_then_stationary_rest
+PASS test_recovery_checkpoint_matches_uninterrupted_ticks
+PASS test_v10_checkpoint_retains_exhaustion_during_upgrade
+PASS test_zero_time_does_not_advance_recovery
+PASS test_breathing_stop_survives_reload_and_rejects_corruption
+PASS test_three_world_trip_retains_colony_and_requires_rebuilding
+PASS test_voyage_save_rejects_corrupt_inactive_planets
+PASS test_planet_profiles_are_deterministic_and_different
+PASS test_rocket_payment_needs_workers_and_keeps_partial_investment
+PASS test_travel_keeps_module_cooldown_and_merchant_payment
+PASS test_failed_travel_save_keeps_original_session
+PASS test_dragon_dead_with_remaining_enemies_can_be_saved
+PASS test_order_is_add_then_multiply
+PASS test_override_replaces_the_whole_result
+PASS test_the_last_override_wins
+PASS test_other_stats_are_untouched
+PASS test_removal_works_on_the_source_label
+PASS test_the_same_source_can_stack
+PASS test_expiry_is_exclusive_at_its_own_tick
+PASS test_permanent_modifiers_never_expire
+PASS test_breakdown_explains_the_number
+PASS test_capture_survives_a_checkpoint_round_trip
+PASS test_restore_refuses_a_damaged_block
+PASS test_clock_counts_ticks_not_seconds
+PASS test_authored_seconds_become_whole_ticks
+PASS test_a_short_duration_never_collapses_to_nothing
+PASS test_restore_rejects_impossible_values
+PASS test_new_journey_has_two_sparse_roadside_moments
+PASS test_existing_v36_journeys_do_not_gain_new_monsters
+PASS test_local_monsters_stay_out_of_camp_and_do_not_hold_the_calendar
+PASS test_quiet_find_and_cleared_nest_reward_once_through_normal_interaction
+PASS test_telegraph_escape_and_shelter_are_safe
+PASS test_active_roadside_state_survives_checkpoint
+PASS test_mid_attack_save_replay_and_rewards_remain_finite
+PASS test_corrupt_or_cross_world_trails_are_rejected
+PASS test_v19_route_save_upgrades_without_added_wildlife
+PASS test_sparse_sites_are_separated_and_repeatable_across_seeds
+PASS test_half_tick_json_checkpoint_preserves_real_elapsed_state
+PASS test_claiming_a_core_has_its_own_once_only_reward_signal
+PASS test_chart_recognizes_partial_colony_and_hides_unvisited_merits
+PASS test_first_core_identifies_only_newly_opened_routes
+PASS test_optional_achievements_use_real_progress_without_granting_rewards
+PASS test_away_colony_and_restored_journey_show_the_same_earned_merits
+PASS test_branch_order_announces_only_routes_that_really_unlock
+PASS test_module_knockback_cannot_push_enemy_through_finished_wall
+PASS test_finisher_cannot_push_enemy_through_finished_wall
+PASS test_crystal_carrier_attacks_wall_on_exit_then_leaves_after_breach
+PASS test_carrier_wall_block_survives_save_and_repeated_run
+PASS test_ordinary_raiders_stop_at_nearest_finished_wall_on_both_sides
+PASS test_inactive_wall_allows_module_knockback_and_carrier_departure
+PASS test_top_equipment_unlocks_mount_without_consuming_shield
+PASS test_exploration_reveal_advances_smoothly_and_freezes_with_time
+PASS test_repeating_tiles_cover_camera_edges_and_keep_world_phase
+Assertions: 4572; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: unknown core mode cannot be loaded as an ordinary journey
+PASS: first preparation has no deadline before actual readiness
+PASS: core knight can attack at zero stamina
+PASS: exhausted core knight keeps normal running instead of compulsory stop
+PASS: resolved core trial configuration is save-admissible
+PASS: core mode and state survive actual JSON save/load
+PASS: v21 journey migrates without adopting core trial rules
+PASS: valid paid action: hall
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: recruited resident actually equips the hammer
+PASS: defence service stays closed before real harvest income
+PASS: valid paid action: node:3
+PASS: real harvested crystals reach wallet and unlock preparation
+PASS: CP1 captures before major defence investment
+PASS: valid paid action: node:2
+PASS: valid paid action: recruit:1
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: paid wall is actually constructed
+PASS: unassigned guards cannot prematurely start first night
+PASS: an available archer accepts right-side assignment
+PASS: assignment costs no crystals
+PASS: arrival of real defender opens first dusk once
+PASS: baseline guard and wall survive first night without knight attacks
+PASS: first wave finishes before autonomous phase and CP2
+PASS: CP1 can be restored after actual combat
+PASS: retry restores original funds without retaining later harvests
+PASS: retry restores investment choices instead of spent night-start state
+PASS: CP2 captures autonomous preparation
+PASS: corrupt preparation stage is rejected without replacing the run
+PASS: duplicated tower assignments are rejected
+PASS: autonomous route restores preparation
+PASS: quiet landmark gives a real exploration reward
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:2
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through exploration
+PASS: core completion stops simulation without seven-world victory
+PASS: completed run retries from second preparation
+PASS: autonomous route restores preparation
+PASS: valid paid action: node:1
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: valid paid action: node:4
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: valid paid action: node:0
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:5
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through additional harvests
+PASS: core completion stops simulation without seven-world victory
+PASS: completed run retries from second preparation
+PASS: world and embedded preparation point survive JSON restart
+PASS: saved continuation matches uninterrupted core simulation
+Core loop: 73 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: unfinished ghost survives the old opening timeout
+PASS: ghost advice belongs to actual core onboarding
+PASS: valid paid action: hall
+PASS: lighting the camp changes the ghost's actual target
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: ghost selects a real payable work-area tree
+PASS: valid paid action: node:3
+PASS: paid work is observed instead of requested twice
+PASS: ghost locates the actual harvest carrier before teaching defence
+PASS: following the ghost collects earned harvest, not a tutorial grant
+PASS: guidance never mutates money, progress, or random state
+PASS: existing v22 saves restore with guidance
+PASS: reload points to the same real task
+PASS: skip dismisses the companion without completing lessons
+PASS: show brings companion back to current task
+PASS: dusk switches companion to defensive warning
+PASS: independent preparation does not prescribe a new task
+PASS: completed onboarding leaves the player free
+PASS: unfinished ghost survives the old opening timeout
+PASS: ghost advice belongs to actual core onboarding
+PASS: valid paid action: hall
+PASS: lighting the camp changes the ghost's actual target
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: ghost selects a real payable work-area tree
+PASS: valid paid action: node:3
+PASS: paid work is observed instead of requested twice
+PASS: ghost locates the actual harvest carrier before teaching defence
+PASS: following the ghost collects earned harvest, not a tutorial grant
+PASS: guidance never mutates money, progress, or random state
+PASS: existing v22 saves restore with guidance
+PASS: reload points to the same real task
+PASS: skip dismisses the companion without completing lessons
+PASS: show brings companion back to current task
+PASS: dusk switches companion to defensive warning
+PASS: independent preparation does not prescribe a new task
+PASS: main-game shrine accepts a real paid recall during independent preparation
+PASS: explicit paid recall overrides quiet or skipped core guidance
+PASS: recall uses the existing one-crystal cost
+PASS: paid visit expires normally and keeps hidden core preference
+PASS: completed onboarding leaves the player free
+Core spirit: 44 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: new main journey includes the same outcome-driven guidance
+PASS: guided forest retains its full world and travel capability
+PASS: main journey retains its discoveries and merchant
+PASS: guided main configuration passes save validation
+PASS: valid paid action: hall
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: recruited resident actually equips the hammer
+PASS: defence service stays closed before real harvest income
+PASS: valid paid action: node:3
+PASS: real harvested crystals reach wallet and unlock preparation
+PASS: CP1 captures before major defence investment
+PASS: valid paid action: node:2
+PASS: valid paid action: recruit:1
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: paid wall is actually constructed
+PASS: unassigned guards cannot prematurely start first night
+PASS: an available archer accepts right-side assignment
+PASS: assignment costs no crystals
+PASS: arrival of real defender opens first dusk once
+PASS: baseline guard and wall survive first night without knight attacks
+PASS: first wave finishes before autonomous phase and CP2
+PASS: CP1 can be restored after actual combat
+PASS: retry restores original funds without retaining later harvests
+PASS: retry restores investment choices instead of spent night-start state
+PASS: CP2 captures autonomous preparation
+PASS: corrupt preparation stage is rejected without replacing the run
+PASS: duplicated tower assignments are rejected
+PASS: autonomous route restores preparation
+PASS: quiet landmark gives a real exploration reward
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:2
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through exploration
+PASS: main journey continues in the same settlement after two nights
+PASS: normal main-game building rules resume after guidance
+PASS: guided forest saves and resumes inside seven-world envelope
+PASS: loaded completed guidance does not end the main game
+PASS: completed main guidance retires preparation retry
+PASS: other planets retain shared improvements without repeating forest lessons
+PASS: new later planet saves before any local income
+PASS: main-game other planets share free ordinary attacks
+PASS: main-game later interactions are not restricted to trial actions
+PASS: completed guided settlement can take the real voyage transaction
+PASS: arrival keeps common controls without restarting lessons
+PASS: autonomous route restores preparation
+PASS: valid paid action: node:1
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: valid paid action: node:4
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:2
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through additional harvests
+PASS: main journey continues in the same settlement after two nights
+PASS: normal main-game building rules resume after guidance
+PASS: guided forest saves and resumes inside seven-world envelope
+PASS: loaded completed guidance does not end the main game
+PASS: completed main guidance retires preparation retry
+PASS: other planets retain shared improvements without repeating forest lessons
+PASS: new later planet saves before any local income
+PASS: main-game other planets share free ordinary attacks
+PASS: main-game later interactions are not restricted to trial actions
+PASS: completed guided settlement can take the real voyage transaction
+PASS: arrival keeps common controls without restarting lessons
+PASS: world and embedded preparation point survive JSON restart
+PASS: saved continuation matches uninterrupted core simulation
+Guided campaign: 87 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: demo journeys use the contained forest mode
+PASS: contained forest configuration passes save validation
+PASS: contained forest cannot claim star travel
+PASS: main guidance still requires star travel
+PASS: demo keeps the main outcome-driven guidance
+PASS: demo run knows it is the contained forest
+PASS: demo plays the full forest map, not the small trial camp
+PASS: demo includes the crystal merchant
+PASS: demo includes ruin puzzles and their modules
+PASS: demo includes the forest warhorse expedition
+PASS: demo has the forest gates for engineers to seal
+PASS: demo has no rocket or star travel
+PASS: camp lights
+PASS: a resident can become the archer
+PASS: archer accepts the right-wall order
+PASS: first-night warning starts when the archer is ordered, not when they arrive
+PASS: night falls only after the ordered archer reaches the wall
+PASS: a long walk holds dusk instead of starting the night undefended
+PASS: first night still arrives once the archer is in place
+PASS: a forest-only route catalog is a valid package
+PASS: an empty route catalog is refused
+PASS: a route catalog must start with the forest
+PASS: the Demo package builds exactly the journey's forest
+PASS: valid paid action: hall
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: recruited resident actually equips the hammer
+PASS: defence service stays closed before real harvest income
+PASS: valid paid action: node:3
+PASS: real harvested crystals reach wallet and unlock preparation
+PASS: CP1 captures before major defence investment
+PASS: valid paid action: node:2
+PASS: valid paid action: recruit:1
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: paid wall is actually constructed
+PASS: unassigned guards cannot prematurely start first night
+PASS: an available archer accepts right-side assignment
+PASS: assignment costs no crystals
+PASS: arrival of real defender opens first dusk once
+PASS: baseline guard and wall survive first night without knight attacks
+PASS: first wave finishes before autonomous phase and CP2
+PASS: CP1 can be restored after actual combat
+PASS: retry restores original funds without retaining later harvests
+PASS: retry restores investment choices instead of spent night-start state
+PASS: CP2 captures autonomous preparation
+PASS: corrupt preparation stage is rejected without replacing the run
+PASS: duplicated tower assignments are rejected
+PASS: autonomous route restores preparation
+PASS: quiet landmark gives a real exploration reward
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:2
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through exploration
+PASS: demo continues in the same forest after the two guided nights
+PASS: demo forest saves as a single contained world
+PASS: demo edition loads contained forest records
+PASS: demo edition still refuses seven-world records
+PASS: defeating the forest dragon completes the demo
+PASS: demo offers no rocket after the dragon
+PASS: autonomous route restores preparation
+PASS: valid paid action: node:1
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: valid paid action: node:4
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: autonomous route still has a recruit
+PASS: valid paid action: recruit:2
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through additional harvests
+PASS: demo continues in the same forest after the two guided nights
+PASS: demo forest saves as a single contained world
+PASS: demo edition loads contained forest records
+PASS: demo edition still refuses seven-world records
+PASS: defeating the forest dragon completes the demo
+PASS: demo offers no rocket after the dragon
+PASS: world and embedded preparation point survive JSON restart
+PASS: saved continuation matches uninterrupted core simulation
+Forest demo: 96 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real frontier opens the independent core trial
+PASS: core wallet is visible in the scene
+PASS: demo onboarding visibly restores the spirit companion
+PASS: camp exposes a tappable contextual action
+PASS: real pointer click lights camp through input adapter
+PASS: keyboard runs the core knight
+PASS: stamina bar is centred on the knight
+PASS: stamina bar floats just above the knight's head
+PASS: stamina bar rises above a mounted rider's head
+PASS: crystal count sits just left of the pouch
+PASS: crystal count is level with the pouch
+PASS: real attack input works at exhausted stamina
+PASS: orders pause the actual world
+PASS: orders replace pause options without overlap
+PASS: Escape closes orders and resumes cleanly
+PASS: core action stays inside the safe area
+PASS: core action stays inside the safe area
+PASS: pause menu leaves preparation retry clickable and restores funds
+PASS: retry appears after camp blackout completes
+PASS: retry is clickable above defeat blackout and restores camp
+Core scene assertions: 20; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene keeps the ghost visible after old deadline
+PASS: companion replaces duplicate static top instruction
+PASS: ghost short text translated: zh_TW
+PASS: ghost caption fits: zh_TW
+PASS: ghost short text translated: zh_CN
+PASS: ghost caption fits: zh_CN
+PASS: ghost short text translated: en
+PASS: ghost caption fits: en
+PASS: hide button removes ghost without advancing tutorial
+PASS: show button restores current ghost objective
+PASS: real founding input advances ghost to a resident
+PASS: pause hides companion
+PASS: independent preparation lets companion quietly step aside
+PASS: second night recalls warning companion
+PASS: companion caption avoids action controls
+PASS: defeat hides companion
+PASS: real scene keeps the ghost visible after old deadline
+PASS: companion replaces duplicate static top instruction
+PASS: ghost short text translated: zh_TW
+PASS: ghost caption fits: zh_TW
+PASS: ghost short text translated: zh_CN
+PASS: ghost caption fits: zh_CN
+PASS: ghost short text translated: en
+PASS: ghost caption fits: en
+PASS: hide button removes ghost without advancing tutorial
+PASS: show button restores current ghost objective
+PASS: real founding input advances ghost to a resident
+PASS: pause hides companion
+PASS: independent preparation lets companion quietly step aside
+PASS: actual shrine input recalls the spirit after first night
+PASS: paid recall visibly overrides the faded autonomous companion
+PASS: second night recalls warning companion
+PASS: companion caption avoids action controls
+PASS: companion caption avoids action controls
+PASS: defeat hides companion
+Core spirit scene: 35 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: main scene starts guided campaign
+PASS: main scene owns seven-world progress
+PASS: shared guidance HUD is visible in main game
+PASS: main onboarding visibly restores the spirit companion
+PASS: main-game guidance action actually founds camp
+PASS: main scene still contains forest discoveries
+PASS: main-game preparation retry restores successfully
+PASS: retry retains funds and seven-world envelope
+Guided scene assertions: 8; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: art override replaces the atlas actually displayed
+PASS: art override preserves editable frame counts, speeds and durations
+PASS: art override preserves frame crop and alignment
+PASS: art override never mutates the shared original resource
+PASS: knight lands on actual collision floor
+PASS: D key moves knight through input adapter
+PASS: moving knight displays run artwork in real scene
+PASS: Space starts physical jump
+PASS: airborne knight uses dedicated jump drawing
+PASS: L dash consumes model stamina
+PASS: airborne dash displays its own pose
+PASS: Escape pauses encounter
+PASS: pause freezes physical motion
+PASS: R restarts and resumes
+PASS: windup does not hit immediately
+PASS: visible windup matches zero damage
+PASS: J attack hits nearby sentinel
+PASS: hit occurs while visible blade is active
+PASS: killing strike still emits impact sparks
+PASS: scene grants one defeat reward
+PASS: scene writes isolated progress save
+PASS: dash cancels windup before damage
+PASS: dash replaces cancelled sword with its burst artwork
+PASS: pause freezes both sword artwork and damage
+PASS: reversing movement keeps sword facing its original target
+PASS: resumed sword hits its original forward target
+PASS: sentinel uses generated artwork
+PASS: normal slash damages once before hit stop
+PASS: hit stop freezes physics and sword together
+PASS: hit-stop action is buffered instead of moving the frozen body
+PASS: dash pressed during hit stop runs after stop ends
+PASS: restart clears sparks and camera displacement
+PASS: devourer braces its claws before causing damage
+PASS: partial time after hit stop moves only its share of a physics tick
+Scene assertions: 34; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: keyboard presses reach all three cuts in each direction
+PASS: direction selects distinct advancing choreography for every cut
+PASS: first slash advances only a controlled step
+PASS: second cut advances a short controlled step
+PASS: finisher advances farther without running
+PASS: walking resumes after attack recovery
+PASS: keyboard presses reach all three cuts in each direction
+PASS: direction selects distinct advancing choreography for every cut
+PASS: first slash advances only a controlled step
+PASS: second cut advances a short controlled step
+PASS: finisher advances farther without running
+PASS: walking resumes after attack recovery
+PASS: neutral input keeps the complete combo stationary
+PASS: held direction uses Inspector light and finishing step distances: 54.000031
+PASS: opposite input cannot reverse the current forward step
+PASS: combo advances up to actual wall collision without tunneling
+PASS: blocked travel is discarded instead of released after wall removal
+PASS: pause freezes an in-progress forward step
+PASS: resuming completes step without extra distance
+PASS: removed dash cannot cancel the planted attack
+PASS: holding touchscreen sword produces one cut
+PASS: three touchscreen taps connect the full combo
+PASS: focus pause freezes physical position
+PASS: focus pause freezes current attack pose
+PASS: resume discards buffered follow-up
+PASS: restart keeps tuning and clears old combo
+Combo scene assertions: 26; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Knight continuity: 17 assertions, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: start uses full-body weight transfer
+PASS: pause holds transition drawing
+PASS: ordinary movement is running
+PASS: reversal starts from prior facing with a planted pivot
+PASS: stop settles weight before idle
+PASS: attack immediately interrupts cosmetic transition
+PASS: walking is reserved for fatigue
+PASS: start uses full-body weight transfer
+PASS: pause holds transition drawing
+PASS: ordinary movement is running
+PASS: reversal starts from prior facing with a planted pivot
+PASS: stop settles weight before idle
+PASS: attack immediately interrupts cosmetic transition
+PASS: walking is reserved for fatigue
+Weighted motion: 14 checks, 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: standing slash stays planted
+PASS: confirmed sword hit gives camera impact
+PASS: confirmed hit briefly holds sword and world together
+PASS: frozen hit cannot deal repeated damage
+PASS: attack pressed during contact stop buffers the second slash
+PASS: restart clears contact camera offset
+PASS: an empty swing does not stop the simulation
+PASS: empty swing does not fake a contact shake
+PASS: rejected damage does not produce false contact feedback
+PASS: menu pause holds both combat and contact effect
+PASS: menu pause does not consume remaining contact stop
+PASS: camera returns exactly to rest after contact
+PASS: one sword can hit two enemies
+PASS: a group hit never multiplies the contact stop
+PASS: buffered third cut connects in the real campaign
+PASS: heavy finisher has a longer contact hold than the light cut
+PASS: archer impact does not freeze the knight
+PASS: focus loss discards buffered follow-up attacks
+Sword feedback scene assertions: 18; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: visible raider body contact connects facing -1
+PASS: one cut cannot damage raider twice
+PASS: visible warden body contact connects facing -1
+PASS: one cut cannot damage warden twice
+PASS: visible dragon body contact connects facing -1
+PASS: one cut cannot damage dragon twice
+PASS: visible raider body contact connects facing 1
+PASS: one cut cannot damage raider twice
+PASS: visible warden body contact connects facing 1
+PASS: one cut cannot damage warden twice
+PASS: visible dragon body contact connects facing 1
+PASS: one cut cannot damage dragon twice
+PASS: body radius cannot turn a forward cut into a rear hit
+PASS: clear space beyond blade and body remains a miss
+PASS: raider silhouette boundary at 102
+PASS: raider silhouette boundary at 106
+PASS: warden silhouette boundary at 125
+PASS: warden silhouette boundary at 130
+PASS: dragon silhouette boundary at 230
+PASS: dragon silhouette boundary at 234
+PASS: turning away uses the shorter rear silhouette
+PASS: light blade does not borrow the heavy cleave extension
+PASS: heavy blade's visible extension deals the existing 29 damage
+PASS: contact geometry does not change the v20 save shape
+PASS: restoring mid-cut never duplicates a hit
+PASS: restored campaigns receive the corrected contact profile
+PASS: actual v0.0.40 package save opens without migration
+PASS: existing journeys also receive body-edge contact correction
+Sword contact scene assertions: 28; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: drawing the first sword completes before held movement resumes
+PASS: attack cannot replace an unfinished sword extraction
+PASS: extraction stays visible through queued movement and attack
+PASS: all founding buildings remain hidden during extraction
+PASS: pause freezes extraction and building reveal together
+PASS: construction begins only after the extraction body has finished
+PASS: camp starts a gradual grounded assembly after extraction
+PASS: camp assembly completes and exposes buildings and attendants
+PASS: movement resumes normally after extraction
+PASS: restart discards the previous founding transition
+Founding scene assertions: 10; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: campaign physics moves the farmer home before night
+PASS: retreat advances the existing walk animation
+PASS: presentation loop cannot farm while returning
+PASS: scene calendar naturally enters night
+PASS: Inspector resident tuning reaches campaign rules
+PASS: actual night bow uses configured damage
+PASS: night bow feeds existing visible bolt effects
+PASS: pause freezes returning residents
+PASS: restart clears nightly role state
+Resident scene assertions: 9; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: touch investment establishes camp
+PASS: left touch input fills one left slot
+PASS: right touch order leaves left partial
+PASS: camp and two wall orders consume exactly eight crystals
+PASS: pause freezes left construction
+PASS: real campaign updates build both defenses
+PASS: HUD previews separate night directions
+PASS: opposite invaders face toward the camp
+PASS: left siege damages visible left defense
+PASS: right siege independently damages right defense
+PASS: restart clears both defenses
+PASS: restart clears raid warning
+Bilateral scene assertions: 12; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Inspector values reach the campaign mission
+PASS: actual siege ends the run while knight is alive
+PASS: HUD displays core defeat
+PASS: core defeat keeps removed shortcuts hidden
+PASS: core defeat still permits opening pause and returning to the title
+PASS: loss disables investment and dropping
+PASS: post-loss inputs cannot move or spend
+PASS: keyboard replay restores core and active run
+PASS: city milestone does not display premature victory
+PASS: touch slots order actual expedition 0
+PASS: scene summons real rift wardens 0
+PASS: expedition guide reports living wardens
+PASS: pause freezes sealing work
+PASS: pause hides expedition guide
+PASS: cleared wardens switch guide to live seal progress
+PASS: scene finishes engineer sealing work 0
+PASS: touch slots order actual expedition 1
+PASS: scene summons real rift wardens 1
+PASS: expedition guide reports living wardens
+PASS: pause freezes sealing work
+PASS: pause hides expedition guide
+PASS: cleared wardens switch guide to live seal progress
+PASS: scene finishes engineer sealing work 1
+PASS: two seals summon final dragon
+PASS: dragon defeat displays victory
+PASS: victory removes expedition advice
+PASS: victory keeps removed shortcuts hidden
+PASS: victory still permits opening pause and returning to the title
+PASS: victory freezes calendar in actual scene
+PASS: new map resets objectives and discovery
+Mission scene assertions: 30; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: camp destruction records the loss
+PASS: knight can finish moving while the blackout begins
+PASS: blackout begins before any defeat message
+PASS: message locks motion, attacking and spending
+PASS: defeat message rests on a complete blackout
+PASS: finished defeat still permits returning to title through the menu
+Camp loss scene assertions: 6; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: touch investment installs first capacitor
+PASS: HUD shows installed shield capacity
+PASS: first camp cannot buy another capacitor
+PASS: damage changes forge to touch recharge
+PASS: touch recharge restores energy using only crystals
+PASS: second settlement unlocks next capacitor
+PASS: HUD updates actual upgraded capacity
+PASS: touch training changes real damage without food
+PASS: HUD shows trained sword power
+PASS: pause blocks growth investment
+PASS: restart resets purchased combat strength
+PASS: restart clears capacitor capacity
+Growth scene assertions: 12; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene dawn replenishes six camps
+PASS: new arrival is selected by actual proximity UI
+PASS: touch recruits a dawn arrival
+PASS: pause cannot replenish another dawn
+PASS: next dawn replaces only recruited waiting place
+PASS: actual hunter drops two crystals
+PASS: next dawn restores hunted prey slot
+PASS: renewable prey supplies further crystals
+PASS: hunting never accumulates a second currency
+PASS: restart restores initial camps and renewal clock
+Ecology scene assertions: 10; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: pause menu exposes the exploration map on native platforms
+PASS: map opens above the paused game without stacked menus
+PASS: reading the map leaves the world clock paused
+PASS: map width fits the viewport
+PASS: map has a title in zh_TW
+PASS: map including close button fits the safe viewport in zh_TW
+PASS: map has a title in zh_CN
+PASS: map including close button fits the safe viewport in zh_CN
+PASS: map has a title in en
+PASS: map including close button fits the safe viewport in en
+PASS: closing map returns to pause options
+PASS: touch map keeps combat buttons disabled
+PASS: resuming dismisses the map
+PASS: new journey clears the old map overlay
+Exploration scene assertions: 14; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: unsolved station previews its actual reward purpose
+PASS: real station interactions solve the seal
+PASS: solving directs player to the unclaimed reward
+PASS: approaching pedestal equips actual reward
+PASS: milestone cannot hide reward purpose or activation input
+PASS: touch pickup explains the correct gesture
+PASS: claimed ruins do not keep advertising a reward
+PASS: reward text translates in zh_TW
+PASS: pause hides reward hint in zh_TW
+PASS: reward text translates in zh_CN
+PASS: pause hides reward hint in zh_CN
+PASS: reward text translates in en
+PASS: pause hides reward hint in en
+PASS: conductor previews the steed reward
+PASS: powered cradle explains recovery input
+PASS: core pickup explains actual stable price
+Ruin reward assertions: 16; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene cannot pick up a sealed module
+PASS: keyboard or down-swipe activates the nearby rune once
+PASS: keyboard or down-swipe activates the nearby rune once
+PASS: keyboard or down-swipe activates the nearby rune once
+PASS: rune gestures do not throw or charge a crystal
+PASS: finishing the circuit triggers the seal opening feedback
+PASS: returning to the opened vault grants and equips the module
+PASS: forest now has one primary shrine
+PASS: the second forest module rewards exploration without another relay
+Ruin scene assertions: 9; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: campaign scene wires a persistent facility animation presenter
+PASS: approaching hall triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at hall lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching workshop triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at workshop lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching farm_tools triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at farm_tools lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching hunt_tools triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at hunt_tools lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching drill triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at drill lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: approaching armory triggers a brief greeting
+PASS: greeting locks facing instead of flipping at the player's feet
+PASS: lingering at armory lets the keeper resume work
+PASS: pause freezes the actual facility work pose
+PASS: hovering across the approach threshold does not repeat greetings
+PASS: leaving and returning later rearms the greeting
+PASS: ordinary E investment gets a short acknowledgement
+PASS: completed paid production gets its own service animation
+PASS: redrawing a paused clock does not replay service
+PASS: animation and proximity observations never mutate saved economy or population
+PASS: facility interaction remains a valid v20 checkpoint
+PASS: danger scenario has an actual living local creature
+PASS: nearby danger interrupts work without deleting the NPC
+PASS: keeper waits for safety before returning to work
+PASS: presentation adds no campaign save fields
+PASS: loading a saved scene clears transient service without replay
+PASS: existing module menu opens at the artificer
+PASS: actual paid module swap cues the artificer's calibration
+PASS: cinematic staging suppresses player-service reactions
+Attendant native scene assertions: 50; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: six facility staff have a complete native-pixel cast
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 0
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: ordinary J sword input damages the local beast
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 1
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 2
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 3
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 4
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 5
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+PASS: local beast provides a visible windup before contact
+PASS: local enemy budget stays small on planet 6
+PASS: local beast uses the planet's complete animation atlas
+PASS: pause freezes local attacks and work poses
+PASS: attack commits then leaves a readable recovery window
+PASS: moving outside the locked strike avoids local damage
+PASS: normal keyboard or touch input claims the quiet discovery
+PASS: real scene checkpoint retains native encounter state
+PASS: encounter identity translates in zh_TW
+PASS: encounter identity translates in zh_CN
+PASS: encounter identity translates in en
+Trail native scene assertions: 79; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual new forest starts a single telegraphed fight
+PASS: ordinary D movement escapes the locked first lunge
+EVADE_STATE 6 before=6 phase=3 paused=false x=182.488037109375
+PASS: evade keeps crystals and exposes recovery
+PASS: two normal J attacks clear the introductory beast
+PASS: normal E collects the defeated nest reward
+PASS: actual ghost points to the known free roadside find
+PASS: roadside prompt describes gathering rather than a purchase
+PASS: normal touch down-swipe claims the quiet find
+PASS: brief return cue points to camp in zh_TW
+PASS: return caption translates in zh_TW
+RETURN_LAYOUT zh_TW safe=[P: (0.0, 0.0), S: (960.0, 540.0)] caption=[P: (80.0, 120.0), S: (800.0, 64.0)] reserved=[P: (370.0, 26.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in zh_TW
+PASS: return cue does not resurrect spirit dialogue
+PASS: brief return cue points to camp in zh_CN
+PASS: return caption translates in zh_CN
+RETURN_LAYOUT zh_CN safe=[P: (0.0, 0.0), S: (960.0, 540.0)] caption=[P: (80.0, 120.0), S: (800.0, 64.0)] reserved=[P: (370.0, 26.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in zh_CN
+PASS: return cue does not resurrect spirit dialogue
+PASS: brief return cue points to camp in en
+PASS: return caption translates in en
+RETURN_LAYOUT en safe=[P: (70.0, 18.0), S: (866.0, 498.0)] caption=[P: (150.0, 138.0), S: (706.0, 64.0)] reserved=[P: (393.0, 44.0), S: (220.0, 82.0)]
+PASS: return cue fits safe margins in en
+PASS: return cue does not resurrect spirit dialogue
+PASS: pause hides return reminder
+PASS: return reminder expires after eight seconds
+PASS: leaving camp again does not repeat the same day's reminder
+Early exploration scene assertions: 23; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual voyage reaches puzzle world 1
+PASS: mechanism guidance translates in zh_CN
+PASS: mechanism guidance translates in en
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: actual voyage reaches puzzle world 3
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: actual voyage reaches puzzle world 2
+PASS: mechanism guidance translates in zh_CN
+PASS: mechanism guidance translates in en
+PASS: camp-clearing device accepts actual scene interactions
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: actual voyage reaches puzzle world 4
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: actual voyage reaches puzzle world 5
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: pause freezes the visible pulse needle
+PASS: actual voyage reaches puzzle world 6
+PASS: visible generated devices provide a solvable route
+PASS: keyboard or mobile gesture solves this family in the real scene
+PASS: mechanism interactions do not accidentally throw crystals
+PASS: scene awards the expected planet module
+PASS: all six solved worlds remain valid in a real voyage save
+Planet ruin scene assertions: 37; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real map contains achievements
+PASS: real voyage contains the claim ceremony
+PASS: fresh journey does not invent a celebration
+PASS: real route reaches world 0
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: first reactor reveals all six destinations
+PASS: liberation caption translated: zh_TW
+PASS: liberation caption translated: zh_CN
+PASS: liberation caption translated: en
+PASS: pause hides and freezes the ceremony
+PASS: resume restores the remaining celebration
+PASS: actual multiworld save restores after reclaiming core
+PASS: loading a previously claimed core does not replay its ceremony
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 1
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: every world card fits: zh_TW / 0
+PASS: every world card fits: zh_TW / 1
+PASS: every world card fits: zh_TW / 2
+PASS: every world card fits: zh_TW / 3
+PASS: every world card fits: zh_TW / 4
+PASS: every world card fits: zh_TW / 5
+PASS: every world card fits: zh_TW / 6
+PASS: chart shows current or archived world without rebuilding it: zh_TW
+PASS: full milestone chart fits phone viewport: zh_TW
+PASS: milestone names translated: zh_TW
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: every world card fits: zh_CN / 0
+PASS: every world card fits: zh_CN / 1
+PASS: every world card fits: zh_CN / 2
+PASS: every world card fits: zh_CN / 3
+PASS: every world card fits: zh_CN / 4
+PASS: every world card fits: zh_CN / 5
+PASS: every world card fits: zh_CN / 6
+PASS: chart shows current or archived world without rebuilding it: zh_CN
+PASS: full milestone chart fits phone viewport: zh_CN
+PASS: milestone names translated: zh_CN
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: every world card fits: en / 0
+PASS: every world card fits: en / 1
+PASS: every world card fits: en / 2
+PASS: every world card fits: en / 3
+PASS: every world card fits: en / 4
+PASS: every world card fits: en / 5
+PASS: every world card fits: en / 6
+PASS: chart shows current or archived world without rebuilding it: en
+PASS: full milestone chart fits phone viewport: en
+PASS: milestone names translated: en
+PASS: unvisited card does not disclose hidden counts
+PASS: unknown world's three progress rows remain hidden
+PASS: ceremony expires and does not leave a permanent HUD
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 3
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 2
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 4
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 5
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: real route reaches world 6
+PASS: keyboard or downward touch swipe claims the earned core
+PASS: free core claim does not drop or consume a crystal
+PASS: core or final victory plays one actual sound cue
+PASS: seventh core yields to the terminal victory instead of overlapping it
+PASS: continued presentation never replays the claim sound
+PASS: seven actual core interactions still complete the journey
+Voyage progress scene assertions: 91; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real star voyage reaches counterattack world 0
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: opening instruction translates in zh_CN
+PASS: opening instruction translates in en
+PASS: pause preserves the actual damage opportunity
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 1
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: pause preserves the actual damage opportunity
+PASS: visible touch control receives the real finger press
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 3
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: pause preserves the actual damage opportunity
+PASS: visible touch control receives the real finger press
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 2
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: pause preserves the actual damage opportunity
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 4
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: pause preserves the actual damage opportunity
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 5
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: pause preserves the actual damage opportunity
+PASS: visible touch control receives the real finger press
+PASS: keyboard or touch sword applies one exposed-core bonus
+PASS: real star voyage reaches counterattack world 6
+PASS: warning is not presented as a safe counterattack
+PASS: completing actual volley exposes the core
+PASS: opening instruction translates in zh_CN
+PASS: opening instruction translates in en
+PASS: pause preserves the actual damage opportunity
+PASS: keyboard or touch sword applies one exposed-core bonus
+Dragon opening scene assertions: 42; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual proximity shows outward wall icon and target
+PASS: touch fills first outward wall slot
+PASS: touch completes only the outward wall order
+PASS: pause freezes outward construction
+PASS: scene worker completes outward wall
+PASS: new wall becomes actual defense destination
+PASS: actual scene night spawns beyond expanded front
+PASS: guard walks back after outward wall breaks
+PASS: restart clears expansion and restores original post
+PASS: restart hides unexplored expansion
+Expansion scene assertions: 10; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual scene selects tower investment
+PASS: touch submits tower construction
+PASS: pause blocks construction
+PASS: resident builds tower tier at night through scene
+PASS: touch submits tower construction
+PASS: pause blocks construction
+PASS: resident builds tower tier at night through scene
+PASS: touch submits tower construction
+PASS: pause blocks construction
+PASS: resident builds tower tier at night through scene
+PASS: scene renders a damaging laser
+PASS: max tier cannot buy another upgrade
+Fortification scene assertions: 12; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty stamina blocks real attack, dash and jump input
+PASS: removed jump and dash cannot activate even with energy
+PASS: first travel tier costs no stamina
+PASS: double D selects faster movement and spends real stamina
+PASS: exhaustion falls back to slow travel
+PASS: HUD reads depleted live stamina
+Stamina scene assertions: 6; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: one press starts ordinary movement
+PASS: Shift no longer activates sprint
+PASS: second D press held down starts sprint
+PASS: continued hold preserves sprint
+PASS: releasing the second press stops movement
+PASS: changing direction starts ordinary movement
+PASS: double A also sprints left
+PASS: opposed keys cancel movement
+PASS: opposed input does not transfer sprint to the other direction
+PASS: a slow second press is ordinary movement
+PASS: keyboard auto-repeat cannot trigger sprint
+PASS: Escape pauses a held sprint
+PASS: resuming does not replay a held sprint
+PASS: left mouse click starts a real sword attack
+PASS: holding mouse does not auto-attack
+PASS: repeated left clicks connect a combo
+PASS: clicking the hamburger opens UI without attacking
+PASS: closing the menu does not leak an attack
+PASS: touch-generated mouse events do not attack
+Desktop control scene assertions: 19; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: ordinary input moves the real knight
+PASS: second tier is visibly faster than the normal run
+PASS: actual exhaustion forces a breathing stop despite held input
+PASS: held movement cannot displace the knight during the visible breathing stop
+PASS: resting silhouette finishes in place before movement resumes
+PASS: breathing is followed by a distinct slow walk
+PASS: partial recovery restores running but keeps sprint locked
+PASS: holding the second tier cannot auto-cycle into sprint
+PASS: a one-second stop cannot clear the rest requirement
+PASS: two seconds of uninterrupted rest rearms the second tier
+Running recovery scene assertions: 10; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: script beats territory for Traditional Chinese
+PASS: explicit Simplified script beats Taiwan territory
+PASS: Hong Kong defaults to Traditional Chinese
+PASS: unsupported system language falls back to English
+PASS: manual choice beats Steam and system
+PASS: Steam game language takes priority in automatic mode
+PASS: Traditional title text
+PASS: language selector includes Simplified Chinese glyphs without system fonts
+PASS: selector immediately updates title
+PASS: manual language survives new preference instance
+PASS: record list stays open and updates language
+PASS: formatted records are translated
+PASS: pause selector shares language preference
+PASS: language does not alter volume
+PASS: unknown manual language rejected
+PASS: invalid selection preserves preference bytes
+PASS: unknown preference version preserved; session language still switches
+PASS: save failure is exposed while language applies
+Language scene assertions: 18; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: opening shows an engineer completing a real wall
+PASS: opening knight lands a real sword hit
+PASS: opening dragon releases an actual breath attack
+PASS: dragon breath has a visible consequence on the constructed defense
+PASS: directed actions cannot create saves or write preferences
+Cinematic action assertions: 5; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: title starts with a real campaign performance
+PASS: cinematic cannot read or write a campaign or audio preferences
+PASS: cinematic owns an isolated physics world
+PASS: cinematic hides gameplay UI and rejects live controls
+PASS: opening fade holds the performance before narration
+PASS: opening fade contains no premature caption
+PASS: performance starts only after opening fade
+PASS: performance lights camp and equips the knight
+PASS: battle remains visible before the world montage
+PASS: sealed gates summon the actual dragon for the assault
+PASS: final montage opens the seven-world journey after the assault
+PASS: natural completion reveals title and frees the entire performance
+PASS: watching the prologue does not create a player journey
+PASS: skip reveals title and releases the performance, repeat 0
+PASS: skip reveals title and releases the performance, repeat 1
+Prologue scene assertions: 15; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: title offers a replay without starting a journey
+PASS: replay opens one isolated performance
+PASS: replay suspends the title score
+PASS: replay never allocates a player save
+PASS: duplicate replay requests cannot create overlapping performances
+PASS: Escape returns to the same menu and audio owner
+PASS: skip input never starts a journey or opens pace selection
+PASS: replay opens one isolated performance
+PASS: replay suspends the title score
+PASS: replay never allocates a player save
+PASS: duplicate replay requests cannot create overlapping performances
+PASS: Escape returns to the same menu and audio owner
+PASS: skip input never starts a journey or opens pace selection
+Title replay scene assertions: 13; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: opening movie owns the screen before the title
+PASS: title score stays silent while the prologue has its own score
+PASS: opening score follows saved music level with its cinematic mix
+PASS: opening effects follow saved effects level
+PASS: opening ambience follows saved ambience level
+PASS: real Escape input finishes the opening
+PASS: skipping the opening starts the title score
+PASS: audio handoff preserves the saved music volume
+PASS: natural movie completion also starts the title score
+PASS: saved mute also silences the opening performance
+PASS: muted prologue has no playing music voice
+PASS: skipping the movie preserves the saved mute preference
+PASS: muted title stays silent after the handoff
+PASS: watching and skipping never rewrite audio preferences
+Prologue audio assertions: 14; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: a newly requested sting cannot evict itself before being bound
+PASS: requested dawn audio survives cache admission
+PASS: cache returns to its bounded size after binding the new cue
+Music cache scene assertions: 3; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: opening title does not create or overwrite a journey
+PASS: choosing a pace does not allocate a journey
+PASS: new game launches actual campaign
+PASS: new game autosaves to an independent path
+PASS: first journey records manual checkpoint
+PASS: newer automatic progress is saved separately
+PASS: failed save keeps player in the campaign to retry
+PASS: pause menu returns to title after successful save
+PASS: record picker shows automatic and manual choices
+PASS: picker previews distinct automatic and manual records
+PASS: manual choice forks a playable journey at the checkpoint
+PASS: manual fork preserves newer automatic progress
+PASS: another new game begins fresh
+PASS: another new game keeps the first journey intact
+PASS: record changed after listing is revalidated before launching
+PASS: failed selection preserves original bytes
+PASS: the start page carries its own audio
+PASS: the start page runs the title theme
+PASS: the saved music level is honoured on the title screen
+PASS: a menu press is heard once
+PASS: a muted player is not greeted with music
+PASS: a muted title screen runs no track
+Start menu assertions: 22; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: new game offers a pace choice before creating a journey
+PASS: title offers a visible pace picker
+PASS: viewing choices allocates no save
+PASS: actual touch selects the settler pace
+PASS: pace description is translated: zh_TW
+PASS: all pace controls fit the viewport: zh_TW
+PASS: changing language retains choice: zh_TW
+PASS: pace description is translated: zh_CN
+PASS: all pace controls fit the viewport: zh_CN
+PASS: changing language retains choice: zh_CN
+PASS: pace description is translated: en
+PASS: all pace controls fit the viewport: en
+PASS: changing language retains choice: en
+PASS: cancel returns home without a new record
+PASS: fresh selection recommends expedition
+PASS: confirmation launches the actual playable scene
+PASS: confirmed pace has its own saved journey
+PASS: actual scene uses siege daylight
+PASS: actual scene uses siege reinforcements
+PASS: launch carries chosen pace through seven worlds
+PASS: manual checkpoint scenario reaches a second planet through the voyage
+PASS: paced journey can make a manual checkpoint
+PASS: record picker identifies the journey's pace
+PASS: resume keeps saved pace instead of the menu default
+PASS: manual checkpoint forks instead of overwriting the automatic journey
+PASS: manual fork preserves the resolved pace of all seven planets
+PASS: manual fork keeps current planet and previous dragon core
+PASS: manual fork preserves previously collected frontier resources
+PASS: explicit retry retains chosen pace
+Journey pacing scene assertions: 29; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: pause menu supports an independent manual checkpoint
+PASS: pause exposes audio and save controls
+PASS: native desktop menu does not expose the Web-only iframe reader
+PASS: empty manual slot cannot load
+PASS: save icon writes the manual slot
+PASS: manual load restores checkpoint independently of newer autosave
+PASS: load stays paused and clears held payment
+PASS: both sliders reach the actual audio player
+PASS: background suspends soundtrack
+PASS: foreground restores soundtrack eligibility
+PASS: desktop hides touch action buttons
+PASS: mobile exposes only the sword action
+PASS: equipment visuals follow actual upgrade state
+PASS: losing the sword keeps the upgraded armour on the unarmed body
+PASS: drawing the sword keeps the same upgraded armour as idle and running
+PASS: volume preferences survive reopening
+PASS: manual checkpoint survives reopening
+Cycle menu assertions: 17; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene creates all seven planet definitions
+PASS: pause-menu chart inspects distant worlds without allowing launch
+PASS: closing preview returns to paused menu
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches void
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches swamp
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches desert
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches volcanic
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches frost
+PASS: win requires all seven cores
+PASS: completed rocket opens star chart
+PASS: selected destination enables launch confirmation
+PASS: inspecting a planet does not launch immediately
+PASS: confirmed route reaches storm
+PASS: win requires all seven cores
+PASS: complete seven-world save restores through actual scene
+Seven-world checkpoint bytes: 259255
+PASS: chart fits zh_TW
+PASS: chart fits zh_CN
+PASS: chart fits en
+Seven-planet scene assertions: 37; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real campaign scene can save and resume
+PASS: background pauses campaign and releases investment
+PASS: background creates a complete checkpoint
+PASS: reopen waits for player to resume
+PASS: physical crystals and backpack survive scene destruction
+PASS: unfinished camp investment survives
+PASS: midair position and velocity survive
+PASS: loading and paused frames do not advance time
+PASS: loading cannot replay held payment
+PASS: paused scene cannot spend or simulate
+PASS: resuming continues saved jump
+PASS: storage failure is surfaced by real scene
+PASS: retry icon is available after storage failure
+PASS: retry icon saves after storage recovers
+PASS: explicit restart creates fresh campaign
+PASS: restart retains old campaign archive
+PASS: unknown version starts paused with protected status
+PASS: protected progress has a visible status icon
+PASS: autosave cannot overwrite incompatible file
+PASS: explicit new run archives incompatible original
+Campaign save scene assertions: 20; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: outer left area of enlarged attack button starts a slash
+PASS: attack touch cannot become a movement gesture
+PASS: releasing the enlarged button clears attack input
+PASS: movement remains available beside enlarged attack button
+PASS: pause hides the enlarged attack button
+Large attack scene assertions: 5; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: new journey begins a few steps from a campfire already on screen
+PASS: movement buttons replaced with drag surface
+PASS: left thumb drags right to move
+PASS: longer drag engages second travel tier
+PASS: right downward drag invests one crystal near camp
+PASS: payment finger preserves movement finger
+PASS: downward drag without target throws a crystal
+PASS: focus loss cancels every gesture
+PASS: new finger works without old release after background
+PASS: attack button works while dragging and roots first cut
+PASS: removed skills have no visible buttons
+PASS: combat button stays within safe area
+PASS: quick down swipe survives release before physics tick
+PASS: left-side down swipe pays next crystal without an empty physics tick
+PASS: vertical swipe never leaves movement stuck
+PASS: background cancels queued quick swipe before resume
+Mobile scene assertions: 16; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: exploration collects the lance after the forest shrine
+PASS: F opens module selection at the upgrade station
+PASS: selection does not overlap settings or offer combat practice
+PASS: choosing a previous module charges eight crystals
+PASS: quick K press activates the equipped ability
+PASS: cooldown cannot charge stamina again
+PASS: real two-finger upward events activate the ability
+PASS: special gesture never invests a crystal
+PASS: night light follows the knight and illuminates the world
+PASS: lamp fades away in daytime
+PASS: expanded water fills the visible river area
+Module scene assertions: 11; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: F opens the expanded collection
+PASS: all eight styles are visible in the catalogue
+PASS: real menu click installs frost for eight crystals
+PASS: collection title translates in zh_CN
+PASS: collection title translates in en
+PASS: K uses new frost ability against an actual enemy
+PASS: two-finger up gesture activates the new ability
+PASS: touch menu retains a reachable return control
+Planet module scene assertions: 8; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real E input aligns both physical junctions
+PASS: real E input claims the awakened steed
+PASS: stable is selectable without a nearby building stealing input
+PASS: crystal sockets unlock the real horse presentation
+PASS: same E input dismounts at the stable
+PASS: same E input mounts again
+PASS: reward actually increases ground speed
+PASS: mobile presentation retains touch input
+Mount expedition scene assertions: 8; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: native warning sound is scheduled early enough to return
+PASS: sound observer does not repeat its warning each frame
+PASS: real HUD shows tactical warning near dusk
+PASS: tactical description is translated: zh_TW
+PASS: warning has room inside the safe area
+PASS: tactical description is translated: zh_CN
+PASS: warning has room inside the safe area
+PASS: tactical description is translated: en
+PASS: warning has room inside the safe area
+PASS: pause hides the transient warning
+PASS: opening options cannot consume preparation time
+PASS: real scene starts the western wave
+Night pattern scene assertions: 12; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: native scenario uses desktop layout first
+PASS: actual scene advances a distant attacker faster than its combat walk
+PASS: arrival is continuous world movement outside the reaction zone
+PASS: visible close approach keeps the original movement speed
+PASS: desktop pause stops the encounter
+PASS: distant march also freezes while paused
+PASS: touch scenario displays actual touch controls
+PASS: touch layout has the same near-field movement rule
+Invasion march scene assertions: 8; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: actual E investment reaches the second camp stage
+PASS: a completed camp upgrade has a visible growth presentation
+PASS: actual upgrade announces the correct new stage
+PASS: the upgrade has a localized title
+PASS: pause hides the growth overlay
+PASS: reviewing milestones cannot consume the night timer
+PASS: camp tab replaces the map in the existing panel
+PASS: camp history is translated: zh_TW
+PASS: camp history fits the safe viewport: zh_TW
+PASS: camp history is translated: zh_CN
+PASS: camp history fits the safe viewport: zh_CN
+PASS: camp history is translated: en
+PASS: camp history fits the safe viewport: en
+PASS: unbuilt stage explains the requirement rather than claiming unlocked tools
+PASS: frontier tab restores the existing exploration chart
+PASS: later growth supersedes the earlier celebration
+PASS: unlock presentation never supplies free soldiers
+PASS: real touch input opens the settlement tab
+PASS: settlement tab fits mobile cutout margins
+PASS: real touch input reviews an earlier unlocked stage
+PASS: night attack warning takes priority over the celebration caption
+PASS: celebration expires instead of becoming a permanent HUD
+PASS: upgraded native world remains a valid save
+PASS: resuming a loaded camp does not replay its ceremony
+PASS: new journey clears old celebration state
+Settlement growth scene assertions: 25; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: new knight begins on foot
+PASS: camera keeps whole mounted silhouette inside both map ends
+PASS: maximum sword without armor stays on foot
+PASS: both top equipment tiers mount knight
+PASS: mount increases actual travel speed
+PASS: mounted first slash still roots movement
+PASS: mounted attack retains horse and rider
+PASS: resting on horseback retains the same rider and horse artwork
+PASS: mounted rest preserves the rider and horse palette
+PASS: upgraded run still round-trips through existing checkpoint schema
+PASS: loading upgraded run restores riding from equipment
+PASS: new journey clears prior mount
+Mount scene assertions: 12; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: all shipped animation clips address complete native atlases
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 0
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 1
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 2
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 3
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 4
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 5
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: current planet loads its complete guardian and dragon atlases
+PASS: presentation cannot write combat or save state on planet 6
+PASS: loading an enemy never invents a hit
+PASS: confirmed damage plays the authored hurt clip
+PASS: paused damage frame remains still
+PASS: a crystal thief reaching its exit is never shown dying
+PASS: dragon death retains its whole-body collapse
+PASS: terminal debris is removed after its lifetime
+PASS: nearby confirmed dragon impact gives a short weight cue
+PASS: dragon weight cue neither stops gameplay nor leaves a camera offset
+PASS: loading with a retained impact never replays a quake
+PASS: offscreen dragon impacts do not shake the player's view
+Enemy visual scene assertions: 61; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: hero death selects the failure overlay
+PASS: fatal hit keeps the knight visible
+PASS: authored death keeps animating after campaign stops
+PASS: no time or economy advances during death animation
+PASS: enemy death remains visible after terminal hit
+PASS: manual pause freezes all terminal animation
+PASS: enemy dissolves while hero corpse remains
+PASS: new journey resets outcome and corpse
+PASS: core defeat retains a distinct failure reason
+PASS: victory chooses crown instead of skull
+PASS: outcome dismisses interactive hints
+Clear feedback scene assertions: 11; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: new campaign displays companion
+PASS: ignoring camp instruction keeps pointing back toward camp
+PASS: companion stays beside the actual knight
+PASS: guidance cannot force payment or progress
+PASS: actual enemy hit recoils the knight
+PASS: pause freezes injury and hides companion
+PASS: knight returns to normal animation
+PASS: shield blocks health loss while playing brace animation
+PASS: actual resident hit plays recoil before losing job silhouette
+PASS: resident shot triggers enemy recoil
+PASS: restart clears all transient hit states
+Spirit and hit scene assertions: 11; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: opening guide highlights the actual enabled camp control
+PASS: one paid slot does not falsely complete camp guidance
+PASS: touch payment advances guidance after real construction
+PASS: guide does not highlight payment for a different nearby target
+PASS: pause hides first-day overlay
+PASS: Inspector can disable guidance without changing the run
+PASS: defeat removes advice and leaves retry controls
+Guide scene assertions: 7; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty pouch is still guided to free sword and fire
+PASS: free camp lights with E
+PASS: empty pouch is still guided to free sword and fire
+PASS: free camp lights with down swipe
+PASS: last crystal summons the guide through the actual E interaction
+PASS: recalled ghost points to resident income
+PASS: distant carrier: the ghost leads and names the translated task: zh_TW
+PASS: caption fits the viewport in zh_TW
+PASS: translated hint avoids the temporary day caption in zh_TW
+PASS: distant carrier: the ghost leads and names the translated task: zh_CN
+PASS: caption fits the viewport in zh_CN
+PASS: translated hint avoids the temporary day caption in zh_CN
+PASS: distant carrier: the ghost leads and names the translated task: en
+PASS: caption fits the viewport in en
+PASS: translated hint avoids the temporary day caption in en
+PASS: English hint fits touch safe insets
+PASS: touch hint avoids sunrise caption with safe insets
+PASS: walking to the carrier receives the visible crystal burst without payment
+PASS: returning trader points to camp
+PASS: one merchant-return cue preserves waiting without tool or payment instructions
+PASS: rocket construction has a specific progress caption
+PASS: paid rocket shows only its construction cue and cannot request another purchase
+PASS: pause hides the guidance
+PASS: visit expiry still removes the guide
+Supply guidance scene assertions: 24; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: campaign has a bounded audio player
+PASS: at most six sound voices can overlap
+PASS: two real touch payments sound twice, camp completion once
+PASS: lingering effects never retrigger audio
+PASS: actual attack input produces all three distinct active-cut sounds
+PASS: sound control adds no clutter during play
+PASS: background notification immediately stops every voice
+PASS: pause removes the three redundant shortcuts
+PASS: zeroing the actual pause sliders mutes the sound rack
+PASS: muted gameplay produces no playback
+PASS: raising a slider restores sound without a separate mute switch
+PASS: unmuting never replays sounds that happened while muted
+PASS: restart never sounds like historical build or currency gain
+Audio scene assertions: 13; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Platform reached height 118.685791015625; platform height 82.0
+PASS: jump from floor lands on Platform
+Platform2 reached height 119.56103515625; platform height 98.0
+PASS: jump from floor lands on Platform2
+PASS: four platforms form a continuous refuge approach
+PASS: basic movement reaches Platform without dash or energy
+PASS: basic movement reaches PlatformStep1 without dash or energy
+PASS: basic movement reaches PlatformStep2 without dash or energy
+PASS: basic movement reaches Platform2 without dash or energy
+Traversal assertions: 7; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: refuge prototype loads independently
+PASS: allocation button updates shield preview
+PASS: departure opens playable encounter
+PASS: encounter uses allocated shield
+PASS: prototype never opens permanent progress file
+PASS: encounter cannot reset spent shield
+PASS: shield overflow reaches prototype knight health
+PASS: retreat returns to refuge
+PASS: retreat settles residents according to committed allocation
+PASS: resident display reflects injuries
+PASS: retry restores initial allocation
+PASS: combat death automatically returns a result
+PASS: full refuge protection survives knight defeat
+PASS: expedition can pause normally
+PASS: R while paused settles instead of refilling shield
+PASS: victory automatically returns to residents
+PASS: victory result shows earned salvage
+PASS: new expedition HUD shows this run's salvage only
+Refuge scene assertions: 18; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: knight stands in walkable refuge
+PASS: E throws supplies and nearby wanderer collects them
+PASS: one press spends one supply
+PASS: existing movement controls walk through refuge
+PASS: pointer interaction stocks tool at nearby workshop
+PASS: stocked tool autonomously becomes engineer profession
+PASS: site interaction orders construction
+PASS: engineer finishes physical site construction
+PASS: pause freezes wave clock and blocks spending
+PASS: retry resets complete disposable simulation
+PASS: knight sword input damages an actual settlement raider
+Settlement scene assertions: 11; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: training entry opens the new playable frontier
+PASS: frontier has a grounded playable knight
+PASS: text panels leave the playable view clear
+PASS: interaction is represented by an icon
+PASS: redundant new-map shortcut is hidden
+PASS: campaign framing enlarges characters
+PASS: R replays the same map
+PASS: pause also hides the redundant new-map shortcut
+PASS: opening pause never resets the current frontier
+PASS: N is another route to a new map
+PASS: playable campaign starts at the campfire
+PASS: touch interaction fills one crystal slot
+PASS: actual recruitment and workshop button equip a working resident
+PASS: E marks work without a knight chopping animation
+PASS: knight sword leaves resource intact
+PASS: resident delivers harvested crystals to the collection point
+PASS: one harvested tree does not expose expansion in an uncleared forest
+PASS: resident finishes all marked trees before expansion appears
+PASS: depot has its own reachable investment location
+PASS: cleared-site button orders a resident-built frontier depot
+PASS: walking outside reveals a region
+PASS: icon HUD displays survival calendar
+PASS: icon HUD removes obsolete material counters
+PASS: removed jump keeps the knight on flat ruin ground
+PASS: knight directly opens ground-level treasure using the actual button
+PASS: far left generated route has actual collision
+PASS: far right generated route has actual collision
+PASS: pause freezes frontier simulation
+Frontier scene assertions: 28; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: drop control uses an icon
+PASS: Q throws one conserved crystal through actual input
+PASS: nearby freshly thrown currency is not immediately absorbed
+PASS: downward drag throws one more crystal
+PASS: test knight is airborne
+PASS: Q throws during a jump without requiring floor contact
+PASS: pause freezes physical crystals and blocks both throw routes
+PASS: pause freezes the clock shared by all idle artwork
+PASS: paused drop button is disabled
+PASS: resuming does not replay paused throws
+PASS: empty backpack disables throw icon
+PASS: empty Q does not create a crystal
+PASS: restart clears old physical drops
+Crystal scene assertions: 13; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: E immediately fills the first campfire slot
+PASS: held E displays progress on its locked target
+PASS: holding E finishes the camp without repeated tapping
+PASS: keeping E held does not start another project
+PASS: removed jump cannot block a valid grounded payment
+PASS: downward gesture immediately completes the already partially funded tool
+PASS: held downward gesture buys exactly one tool
+PASS: releasing gesture clears held input
+PASS: pause stops held payment before the next crystal
+PASS: resuming with E still held cannot spend
+PASS: fresh E resumes the wall's preserved slots
+PASS: removed jump leaves the held wall payment uninterrupted
+PASS: pending wall order stays intact after another press
+PASS: quick E tap is retained until physics even when already released
+PASS: retained short tap is consumed only once
+Investment scene assertions: 15; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: unlit knight cannot attack via actual keyboard
+PASS: unlit knight renders without sword
+PASS: unarmed body does not overlap idle sword after campaign physics
+PASS: E draws the sword and lights camp
+PASS: ignition enables armed appearance
+PASS: new journey hides numerical top dashboard
+PASS: keyboard release keeps sockets for grace period
+PASS: expired keyboard payment returns to world
+PASS: refund flies through world before collection
+PASS: empty attack stamina also shows a tired resting pose
+PASS: fast-run exhaustion stops actual movement
+PASS: exhaustion starts the breathing pose
+PASS: stationary exhaustion settles into one resting body
+PASS: ordinary walking blends back from resting pose
+PASS: purse occupies the top-right safe corner
+PASS: menu occupies the top-left safe corner
+PASS: fullscreen stays inside the closed menu
+PASS: purse stays fixed when knight moves
+PASS: ghost retires after early guidance
+PASS: core damage produces global alarm cue
+PASS: desktop guide preserves keyboard input mode
+PASS: ghost prepares one contextual goal without an immediate duplicate command
+PASS: phone guide preserves drag input mode
+PASS: phone downward gesture ignites camp
+PASS: phone release preserves slots for a second
+PASS: single tap on suspended sockets completes the phone payment
+PASS: phone grace expiry refunds incomplete tool purchase physically
+PASS: fixed purse does not cover touch attack button
+PASS: hamburger touch opens options and pauses play
+PASS: hamburger touch closes options and resumes play
+Immersive scene assertions: 30; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: idle crystal purse fades completely out
+PASS: throwing crystal reveals purse and animates removal
+PASS: actual ground pickup animates crystal entering bag
+PASS: real scene attack drops sword
+PASS: disarmed knight retains visible hit reaction
+PASS: disarm does not reintroduce overlapping armed body
+PASS: walking back to sword restores armed appearance
+Crystal survival scene assertions: 7; failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: architecture, import, behavior, and main scene smoke checks.
+exit=0
