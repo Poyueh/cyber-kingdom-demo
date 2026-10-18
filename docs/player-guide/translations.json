@@ -2394,5 +2394,9 @@
   "七星旅程以掉晶、喘息與天色提示狀態；核心試玩另提供小型晶數與情境體力條。兩種模式都用物件發光及龍晶格提示互動與費用。": {
     "zh_CN": "七星旅程以掉晶、喘息与天色提示状态；核心试玩另提供小型晶数与情境体力条。两种模式都用物件发光及龙晶格提示互动与费用。",
     "en": "The seven-world journey conveys state through dropped crystals, breathing and the sky. The core trial adds a small crystal count and contextual stamina bar. Both modes highlight interactable objects and show crystal costs."
+  },
+  "暫停後在畫面右側點「回準備點」；失敗時等黑幕結束再重試。首次採集前尚未建立準備點，會顯示重新開始。": {
+    "zh_CN": "暂停后在画面右侧点「回准备点」；失败时等黑幕结束再重试。首次采集前尚未建立准备点，会显示重新开始。",
+    "en": "Pause and select Retry preparation on the right. After defeat, wait for the blackout to finish. Before the first harvest, no preparation point exists, so the button restarts the trial."
   }
 }
