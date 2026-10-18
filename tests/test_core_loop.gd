@@ -120,10 +120,14 @@ func second_route(source: Dictionary, explore: bool) -> void:
    var node: RefCounted=sim.frontier.nodes[index]
    pay(sim,node.x,"node:%d"%index,1)
    var before: int=sim.pouch.amount
+   var recruited: int=sim.world.people.filter(func(p: Dictionary)->bool:return p.role!="wanderer").size()
+   var income: int=0
    for tick: int in range(2400):
     ticks(sim,1,node.x)
-    if sim.pouch.amount>=before+node.crystals:break
-   check(sim.pouch.amount>=before+node.crystals,"harvest arrives before spending its income")
+    var newcomers: int=sim.world.people.filter(func(p: Dictionary)->bool:return p.role!="wanderer").size()-recruited
+    income=sim.pouch.amount-before+newcomers*sim.prices.recruit
+    if income>=node.crystals:break
+   check(income>=node.crystals,"harvest arrives as crystals or a nearby recruited resident")
  var recruit: int=-1
  for i: int in range(sim.world.people.size()):
   if sim.world.people[i].role=="wanderer":recruit=i;break
@@ -136,8 +140,13 @@ func second_route(source: Dictionary, explore: bool) -> void:
  pay(sim,sim.world.sites.wall_left,wall.key,3)
  ticks(sim,1000,sim.world.sites.hall)
  check(sim.core_loop.orders.assign(sim,"wall_left",1),"second guard can defend opposite side")
- ticks(sim,12000,sim.world.sites.hall)
+ for tick: int in range(12000):
+  ticks(sim,1,sim.world.sites.hall)
+  if sim.core_loop.stage==5:break
  check(sim.core_loop.stage==5 and sim.mission.outcome=="active","two-sided second night completes through "+("exploration" if explore else "additional harvests"))
+ verify_completion(sim,restored.config,codec)
+
+func verify_completion(sim: RefCounted, _config: Dictionary, codec: RefCounted) -> void:
  check(sim.finished() and not sim.is_running(),"core completion stops simulation without seven-world victory")
  var retry: Dictionary=load("res://application/core_checkpoints.gd").retry(sim,codec)
  check(not retry.is_empty() and retry.session.core_loop.stage==3,"completed run retries from second preparation")

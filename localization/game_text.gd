@@ -8,6 +8,8 @@ const ROWS=[
  ["core.building", "工匠施工中，或此設施已達上限。", "工匠施工中，或此设施已达上限。", "Construction in progress, or this structure is fully upgraded."],
  ["core.use.trail_cache", "野外補給 · 戰鬥或探索的收穫", "野外补给 · 战斗或探索的收获", "Trail supplies · Reward for exploration or combat"],
 
+ ["edition.demo", "森林試玩版 · 兩夜體驗", "森林试玩版 · 两夜体验", "Forest demo · two nights"],
+ ["edition.full", "主遊戲 · 引導後繼續七星旅程", "主游戏 · 引导后继续七星旅程", "Main game · guided start, seven worlds"],
  ["core.begin", "森林核心試玩 · 10–15 分鐘", "森林核心试玩 · 10–15 分钟", "Forest Trial · 10–15 min"],
  ["core.orders", "配置守軍", "配置守军", "Assign guards"],
  ["core.skip", "略過引導", "略过引导", "Hide guidance"],

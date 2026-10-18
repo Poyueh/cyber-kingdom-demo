@@ -1,0 +1,24 @@
+{
+  "game_version": "0.0.56",
+  "spec_revision": 37,
+  "full_source": "a1258cbe90b4e74621984dff2911a066c434f4b9",
+  "demo_source": "6519073eb8994e3aba3b687bd7ab6019511bde61",
+  "branch_difference": [
+    "distribution.json"
+  ],
+  "full_regression": "tools/check.sh passed; no SCRIPT ERROR or ERROR",
+  "base_assertions": 4565,
+  "core_flow_assertions": 72,
+  "guided_flow_assertions": 87,
+  "core_scene_assertions": 14,
+  "guided_scene_assertions": 7,
+  "pacing_scene_assertions": 29,
+  "builds": "pending final package verification",
+  "publication": "pending",
+  "not_validated": [
+    "Windows real device",
+    "iPhone/iPad/Android real device",
+    "first-time human comprehension",
+    "10–15 minute timing distribution"
+  ]
+}

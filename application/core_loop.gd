@@ -2,6 +2,8 @@ extends RefCounted
 ## Persistent trial facts; UI hints never decide whether work or defence happened.
 const Guards=preload("res://application/core_guard_orders.gd")
 var enabled: bool=false
+var trial: bool=false
+var forest: bool=false
 var stage: int=0 # learning, preparation, first dusk/night, autonomous, second night, complete
 var income: int=0
 var skipped: bool=false
@@ -18,15 +20,22 @@ var warning_seconds: float=0.0
 var minimum_defenders: int=0
 var arrival_radius: float=0.0
 var second_gap: float=0.0
+var first_count: int=0
+var second_count: int=0
 
 func _init(config: Dictionary={}) -> void:
- enabled=config.get("core_loop_version",0)==1
+ enabled=config.get("core_loop_version",0) in [1,2]
+ trial=config.get("core_loop_version",0)==1
+ forest=int(config.get("planet_id",0))==0
+ if enabled and not trial and not forest:stage=5
  if not enabled:return
  enemy_health=int(config.core_enemy_health);enemy_damage=int(config.core_enemy_damage);wall_damage=int(config.core_wall_damage)
  warning_seconds=float(config.core_warning)
  minimum_defenders=int(config.core_min_defenders)
  arrival_radius=float(config.core_arrival_radius)
  second_gap=float(config.core_second_gap)
+ first_count=int(config.get("core_first_enemies",config.night_first))
+ second_count=int(config.get("core_second_enemies",config.night_first+config.night_growth))
 
 func harvested(index: int, count: int) -> void:
  if enabled and income==0:harvest_held[str(index)]=int(harvest_held.get(str(index),0))+count
@@ -57,7 +66,11 @@ func observe(sim: RefCounted) -> void:
  if stage==2 and sim.clock.survived==1:
   stage=3;checkpoint_pending=2
  if stage==3 and sim.clock.is_night:stage=4
- if stage==4 and sim.clock.survived>=2:stage=5
+ if stage==4 and sim.clock.survived>=2:
+  stage=5
+  if not trial:
+   checkpoint.clear();checkpoint_index=0;checkpoint_pending=0
+   sim.effects.append({"kind":"tool_produced","x":sim.world.sites.hall,"life":1.0})
 
 func ready(sim: RefCounted) -> bool:
  if income<=0 or sim.frontier.city_level<=0 or not sim.can_wield_sword():return false
@@ -67,7 +80,7 @@ func ready(sim: RefCounted) -> bool:
  return sim.investments.is_empty() and not sim.effects.any(func(e: Dictionary)->bool:return e.kind=="camp_ignition")
 
 func site_allowed(site: String, sim: RefCounted) -> bool:
- if not enabled:return true
+ if not enabled or (not trial and stage>=3):return true
  if site=="hall":return true
  if site=="workshop":return true
  if income<=0:return false
@@ -75,7 +88,7 @@ func site_allowed(site: String, sim: RefCounted) -> bool:
  return sim.buildings.has(site) and sim.buildings[site].kind=="tower"
 
 func filter_choices(sim: RefCounted, choices: Array[Dictionary]) -> Array[Dictionary]:
- if not enabled:return choices
+ if not enabled or (not trial and stage>=3):return choices
  var result: Array[Dictionary]=[]
  for choice: Dictionary in choices:
   if choice.id not in ["hall","core_charge","recruit","workshop","hunt_tools","mark","chest","trail_cache","wall","wall_left","tower"]:continue
@@ -87,7 +100,7 @@ func filter_choices(sim: RefCounted, choices: Array[Dictionary]) -> Array[Dictio
  return result
 
 func hint(sim: RefCounted) -> String:
- if stage==5:return "core.complete"
+ if stage==5:return "core.complete" if trial else ""
  if stage==4:return "core.second_night"
  if stage==3:return "core.autonomy"
  if stage==2:return "core.first_night" if sim.clock.is_night else "core.first_warning"
@@ -127,7 +140,8 @@ func restore(data: Variant) -> bool:
   if data.checkpoint_pending==1 and (data.stage!=1 or data.checkpoint_index!=0):return false
   if data.checkpoint_pending==2 and (data.stage!=3 or data.checkpoint_index!=1):return false
   if data.stage==2 and data.checkpoint_index!=1:return false
-  if data.stage>=4 and data.checkpoint_index!=2:return false
+  if data.stage>=4 and (trial or data.stage<5) and data.checkpoint_index!=2:return false
+  if not trial and not forest and data.stage!=5:return false
   if data.orders.count("beacon")>1 or data.orders.count("core_tower_right")>1:return false
  if not enabled and data!={"stage":0,"income":0,"skipped":false,"orders":[],"checkpoint_index":0,"checkpoint":{},"checkpoint_pending":0,"harvest_held":{},"harvest_drops":[]}:return false
  stage=data.stage;income=data.income;skipped=data.skipped

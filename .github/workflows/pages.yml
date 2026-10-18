@@ -53,12 +53,14 @@ jobs:
         run: |
           [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
           mkdir release _site
-          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern 'Cyber-Kingdom-Web-*.zip' --pattern 'SHA256SUMS.txt' --dir release
+          web_asset=$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name | select(startswith("Cyber-Kingdom-Demo-Web-"))][0] // empty')
+          if [ -z "$web_asset" ]; then web_asset='Cyber-Kingdom-Web-*.zip'; fi
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$web_asset" --pattern 'SHA256SUMS.txt' --dir release
           python3 - <<'PY'
           from pathlib import Path
           import hashlib, zipfile
           root = Path('release')
-          archives = list(root.glob('Cyber-Kingdom-Web-*.zip'))
+          archives = list(root.glob('Cyber-Kingdom-Demo-Web-*.zip')) or list(root.glob('Cyber-Kingdom-Web-*.zip'))
           if len(archives) != 1:
               raise SystemExit('Expected one web archive')
           archive = archives[0]

@@ -27,6 +27,7 @@ func retry() -> bool:
  var restored: Dictionary=Points.retry(root.sim,codec)
  if restored.is_empty():return false
  root.audio.stop()
+ if root.journey!=null:restored.journey=root.journey
  root._apply_restored(restored)
  root.hud.core_hud.panel.hide()
  root._requested_special=false

@@ -22,11 +22,11 @@
 
 - 新旅程保留獵人／弓兵，三級營火解鎖槍盾兵；射箭場只供器具，不升級。移除能量護盾。居民夜間照常工作，附近有敵人才避難。以 `docs/design/immersive-kingdom-loop.md` 為新規則；舊存檔保留原規則，舊規格見 `docs/design/flat-frontier.md`。
 
-## 核心試玩模式例外
-
-- 森林核心試玩為獨立紀錄，`core_loop_version=1`。常駐小型晶數、情境體力、用途與配置文字為已確認設計；上述無數值 HUD 規則只適用七星旅程。
-- 核心普攻免費、衝刺耗盡一般跑且移動恢復；弓兵免費指派左右／塔位，夜間守位，首夜須實際收入、完工及守軍到位。只在核心模式啟用，不套用到舊紀錄。
-- 完整規格及準備點時機見 `docs/design/core-loop-optimization.md`，存檔 v22 含封閉準備快照；真人理解度與真機效能另行驗證。
+## 主流程引導與分包
+- v0.0.56新主旅程core_loop_version=2，直接引導，兩夜後原地繼續七星；小型晶數、情境體力、用途、免費守軍配置、普攻免費與移動恢復為兩版共用。舊無標記紀錄維持原規則，v1核心試玩仍兩夜結束。
+- CP1／CP2完整還原，主遊戲兩夜完成後準備點退役，Demo保留。快照結構仍v22；真人與真機驗收另列。
+- 共用功能先更新main/develop，再合併長期demo支線；demo只改distribution.json預設edition。每版發布Main／Demo兩套五平台附件，Pages根目錄用Demo Web；完整Web另附下載。
+- Demo實體排除六星關卡和專用素材，使用獨立存檔與識別碼，不能只隱藏選單。詳見docs/design/guided-campaign-and-demo.md；舊Release不重寫。
 
 ## 架構
 

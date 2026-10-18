@@ -11,7 +11,7 @@ extends Resource
 
 func valid() -> bool:
 	if impact_kick<0 or impact_seconds<=0 or impact_distance<=0:return false
-	if grunt==null or carry==null or guardians.size()!=7 or dragons.size()!=7:return false
+	if grunt==null or carry==null or guardians.size() not in [1,7] or dragons.size()!=guardians.size():return false
 	if not grunt.valid() or not carry.valid():return false
 	for group: Array[String] in [guardians,dragons]:
 		for path: String in group:

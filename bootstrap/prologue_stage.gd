@@ -64,7 +64,7 @@ func _configure_sound() -> void:
 func _physics_process(seconds: float) -> void:
  if _finished or game==null:return
  elapsed+=seconds
- if elapsed>=DIRECTION.duration:
+ if elapsed>=DIRECTION.duration or (preload("res://infrastructure/distribution.gd").demo() and elapsed>=DIRECTION.shot_starts[4]):
   _finished=true;completed.emit();return
  var shot: int=0
  for index: int in range(DIRECTION.shot_starts.size()):

@@ -187,7 +187,8 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	trails=Trails.new(config)
 	TrailActivity.populate(self)
 	if core_loop.enabled:
-		preload("res://application/core_loop_layout.gd").apply(self,config)
+		if core_loop.trial:preload("res://application/core_loop_layout.gd").apply(self,config)
+		elif core_loop.forest:preload("res://application/guided_forest_layout.gd").apply(self,config)
 		hero.stats.attack_cost=0
 		workforce.core_loop=core_loop
 	time_to_raid = clock.remaining
@@ -196,7 +197,7 @@ func agriculture_available() -> bool:
 	return not life.enabled or frontier.city_level>=2
 
 func site_visible(site: String) -> bool:
-	if core_loop.enabled:return core_loop.site_allowed(site,self)
+	if core_loop.enabled and (core_loop.trial or core_loop.stage<3):return core_loop.site_allowed(site,self)
 	if site=="trade":return false
 	if not life.enabled:return true
 	if site in ["forge","heal"]:return false
@@ -537,7 +538,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if life.enabled:
 		var opening_goal: bool=not spirit.opening_finished and frontier.city_level>0 and world.people.any(func(p):return p.role=="engineer") and frontier.nodes.any(func(n):return n.kind!="cache" and (n.marked or n.collected))
 		spirit.advance(int(workforce.elapsed*Spirit.TICKS_PER_SECOND),opening_goal)
-		if not core_loop.enabled:modules.observe(self,hero_x,hero_y)
+		if not core_loop.trial:modules.observe(self,hero_x,hero_y)
 	core_loop.observe(self)
 
 func throw_crystal(x: float, y: float, facing: int) -> bool:
@@ -673,6 +674,7 @@ func _defense_position(index: int, inset: float) -> float:
 	return world.sites[defenses.active_post(int(side))]-side*(inset+mini(rank,4)*18.0)
 
 func planned_night_count() -> int:
+	if core_loop.enabled and core_loop.forest and clock.day<=2:return core_loop.first_count if clock.day==1 else core_loop.second_count
 	if clock.is_night:return _night_spawn_index+_spawn_remaining
 	var dusk_tick: int = roundi((workforce.elapsed+clock.remaining)*RecoveryClock.TICKS_PER_SECOND)
 	return maxi(1,night_pressure.count_for(clock.day)+mount_quest.forecast_bonus(clock.day,dusk_tick))
@@ -691,13 +693,14 @@ func raid_pressure() -> Dictionary:
 	var pending: int=_spawn_remaining if clock.is_night else (total if clock.remaining<=30 else 0)
 	for i in range(start,start+pending):
 		var side: int=night_pattern.side_for(clock.day,i,total)
+		if core_loop.enabled and core_loop.forest and clock.day<=2:side=1 if clock.day==1 or i<ceili(total/2.0) else -1
 		if mission.side_open(side):pressure["right" if side>0 else "left"]+=1
 	return pressure
 
 func is_running() -> bool:
-	return hero.is_alive() and mission.outcome=="active" and not (core_loop.enabled and core_loop.stage==5)
+	return hero.is_alive() and mission.outcome=="active" and not (core_loop.trial and core_loop.stage==5)
 
-func finished() -> bool:return mission.outcome!="active" or (core_loop.enabled and core_loop.stage==5)
+func finished() -> bool:return mission.outcome!="active" or (core_loop.trial and core_loop.stage==5)
 
 func _strategic_target(_raider: Dictionary) -> Dictionary:
 	return {"kind":"core","x":world.sites.hall}
@@ -728,7 +731,7 @@ func _advance_invasion(seconds: float) -> void:
 	if transition=="night":
 		wave=clock.day
 		var bonus: int=mount_quest.night_bonus(clock.day,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
-		_spawn_remaining=maxi(1,night_pressure.count_for(clock.day)+bonus)
+		_spawn_remaining=maxi(1,(core_loop.first_count if clock.day==1 else core_loop.second_count)+bonus) if core_loop.enabled and core_loop.forest and clock.day<=2 else maxi(1,night_pressure.count_for(clock.day)+bonus)
 		if bonus!=0:effects.append({"kind":"mount_assault" if bonus>0 else "mount_recovery","x":world.sites.hall,"life":8.0})
 		_spawn_timer=0.0
 		_night_spawn_index=0
@@ -738,11 +741,11 @@ func _advance_invasion(seconds: float) -> void:
 		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and invading_count()<night_pressure.concurrent_limit:
 			var total: int=planned_night_count()
 			var side: int=night_pattern.side_for(clock.day,_night_spawn_index,total)
-			if core_loop.enabled:side=1 if clock.day==1 or _night_spawn_index<ceili(total/2.0) else -1
+			if core_loop.enabled and clock.day<=2 and core_loop.forest:side=1 if clock.day==1 or _night_spawn_index<ceili(total/2.0) else -1
 			_night_spawn_index+=1
 			_spawn_remaining-=1
 			var interval: float=float(night_pattern.gap_after(clock.day,_night_spawn_index,total))/RecoveryClock.TICKS_PER_SECOND
-			if core_loop.enabled and clock.day==2 and _night_spawn_index==ceili(total/2.0):interval=core_loop.second_gap
+			if core_loop.enabled and core_loop.forest and clock.day==2 and _night_spawn_index==ceili(total/2.0):interval=core_loop.second_gap
 			if not mission.side_open(side):
 				if interval>2.5:
 					_spawn_timer=interval
@@ -750,7 +753,7 @@ func _advance_invasion(seconds: float) -> void:
 				continue
 			var enemy:=_spawn_raider()
 			enemy["side"]=side
-			enemy.x=mission.entry_x(side)
+			enemy.x=side*2500.0 if core_loop.enabled and core_loop.forest and clock.day<=2 else mission.entry_x(side)
 			effects.append({"kind":"portal_spawn","x":enemy.x,"y":430.0,"life":0.6})
 			enemy["exit_x"]=enemy.x+side*70.0
 			enemy["direction"]=-float(side)
@@ -766,7 +769,7 @@ func _spawn_raider() -> Dictionary:
 	stats.damage=15+(clock.day-1)*enemy_damage_growth
 	raider.fighter=Fighter.new(stats)
 	raider["wall_damage"]=20+(clock.day-1)*enemy_damage_growth
-	if core_loop.enabled:
+	if core_loop.enabled and core_loop.forest and clock.day<=2:
 		raider.fighter.stats.max_hp=core_loop.enemy_health;raider.fighter.hp=core_loop.enemy_health
 		raider.fighter.stats.damage=core_loop.enemy_damage;raider.wall_damage=core_loop.wall_damage
 	return raider
@@ -984,8 +987,10 @@ func building_context(id: String) -> Dictionary:
 	return choice
 
 func _advance_towers(seconds: float) -> void:
-	if core_loop.enabled:return # Core towers require a real assigned archer.
-	for site in buildings.values():
+	if core_loop.trial:return # Trial towers require a real assigned archer.
+	for id: String in buildings:
+		var site: Dictionary=buildings[id]
+		if core_loop.enabled and id in ["beacon","core_tower_right"]:continue
 		if site.kind!="tower" or site.level<=0 or site.pending:continue
 		site.cooldown=maxf(0,site.cooldown-seconds)
 		if site.cooldown>0:continue

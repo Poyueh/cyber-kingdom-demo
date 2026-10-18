@@ -25,26 +25,34 @@ def validate_export(web: Path) -> None:
             raise ValueError('Invalid WebAssembly runtime header')
 
 
-def export_project(ref: str, output: Path, godot: str) -> Path:
+def export_project(ref: str, output: Path, godot: str, edition=None) -> Path:
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     web = output / 'web'
     web.mkdir()
     with tempfile.TemporaryDirectory(prefix='cyber-web-') as folder:
         stage = Path(folder)
-        tree = prepare_tree(ref, stage)
+        tree = prepare_tree(ref, stage, edition, configure_edition=False)
         # Use the committed tree's reviewed document; never bless a stale spec.
         source_ref = git('rev-parse', '--verify', '--end-of-options', ref).decode().strip()
         run_logged([sys.executable, str(stage / 'tools/build_game_spec.py'),
                     '--output', str(web / 'spec'), '--source-ref', source_ref], output / 'spec.log')
+        from build_distribution import configure
+        distribution = configure(stage, edition)
+        shutil.copyfile(stage / 'distribution-manifest.json', output / 'distribution-manifest.json')
         engine = [godot, '--headless', '--path', str(stage)]
         run_logged(engine + ['--editor', '--import'], output / 'import.log')
         run_logged(engine + ['--export-release', 'Web Demo', str(web / 'index.html')], output / 'export.log')
+        audit=stage / 'pack-audit';audit.mkdir()
+        run_logged([godot, '--headless', '--path', str(audit), '--main-pack', str(web / 'index.pck'), '--script', str(stage / 'tools/test_exported_distribution.gd')], output / 'distribution-test.log')
         # Validate the shipped resource graph, not the source project's defaults.
-        run_logged([godot, '--headless', '--main-pack', str(web / 'index.pck'),
+        run_logged([godot, '--headless', '--path', str(audit), '--main-pack', str(web / 'index.pck'),
                     '--script', str(stage / 'tools/test_exported_ambience.gd')],
                    output / 'packaged-ambience.log')
-        run_logged([sys.executable, str(stage / 'tools/build_player_guide.py'), '--output', str(web / 'guide.html')], output / 'guide.log')
+        if distribution['edition']=='demo':
+            shutil.copyfile(stage / 'docs/player-guide/demo.html', web / 'guide.html')
+        else:
+            run_logged([sys.executable, str(stage / 'tools/build_player_guide.py'), '--output', str(web / 'guide.html')], output / 'guide.log')
         install_guide_reader(stage, web)
         shutil.copyfile(stage / 'art/fonts/noto-sans-tc/OFL.txt', web / 'FONT-LICENSE.txt')
     validate_export(web)
@@ -77,5 +85,6 @@ if __name__ == '__main__':
     parser.add_argument('--ref', default='HEAD')
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--godot', default='/Applications/Godot.app/Contents/MacOS/Godot')
+    parser.add_argument("--edition", choices=["full","demo"])
     args = parser.parse_args()
-    print(export_project(args.ref, args.output, args.godot))
+    print(export_project(args.ref, args.output, args.godot, args.edition))

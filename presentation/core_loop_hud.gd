@@ -59,11 +59,11 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  orders_button.position=safe.position+Vector2(18,72);orders_button.visible=core.income>0 and sim.is_running() and (not paused or panel.visible)
  guide_button.position=safe.position+Vector2(18,122);guide_button.visible=sim.is_running() and core.stage<3 and not paused
  guide_button.text=tr("core.show" if core.skipped else "core.skip")
- retry_button.position=Vector2(safe.end.x-218,safe.position.y+84);retry_button.size=Vector2(200,44);retry_button.visible=terminal_ready and (paused or not sim.is_running()) and not panel.visible
+ retry_button.position=Vector2(safe.end.x-218,safe.position.y+84);retry_button.size=Vector2(200,44);retry_button.visible=(core.trial or core.stage<5) and terminal_ready and (paused or not sim.is_running()) and not panel.visible
  retry_button.text=tr("core.retry" if core.checkpoint_index>0 else "core.restart")
  title_button.position=Vector2(safe.end.x-218,safe.position.y+136);title_button.size=Vector2(200,44);title_button.visible=terminal_ready and not sim.is_running()
  caption.position=Vector2(safe.get_center().x-220,safe.position.y+20);caption.size=Vector2(minf(440,safe.size.x-280),74)
- caption.text=tr(core.hint(sim));caption.visible=not paused and (not core.skipped or core.stage>=2) and (sim.is_running() or core.stage==5)
+ caption.text=tr(core.hint(sim));caption.visible=not caption.text.is_empty() and not paused and (not core.skipped or core.stage>=2) and (sim.is_running() or core.stage==5)
  if sim.mission.outcome=="defeat" and terminal_ready:
   caption.visible=true;caption.text=tr("core.defeat_fire" if sim.mission.defeat_reason=="core" else "core.defeat_knight")
  interaction.position=Vector2(safe.get_center().x-190,safe.end.y-150);interaction.size=Vector2(380,72)
@@ -73,7 +73,8 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  action_button.text=tr("core.pay" if choice.cost>0 else "core.interact")
  if interaction.visible:
   var key: String="core.use."+str(choice.id)
-  interaction.text=tr(key)
+  if choice.id=="hall" and sim.frontier.city_level>0:key=""
+  interaction.text=tr(key) if not key.is_empty() and tr(key)!=key else tr(str(choice.get("text",choice.id)))
   if choice.cost>0:interaction.text+="\n"+tr("core.price %d %d")%[choice.paid,choice.cost]
   if choice.id=="mark":interaction.text+=" · "+tr("core.yield %d")%sim.frontier.nodes[choice.node_index].crystals
   if not choice.enabled:interaction.text+="\n"+tr(_reason(sim,choice))
