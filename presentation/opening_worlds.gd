@@ -10,6 +10,7 @@ func _ready() -> void:
  set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 func present(time: float) -> void:
  elapsed=time
+ if preload("res://infrastructure/distribution.gd").demo():hide();return
  visible=elapsed>=starts and elapsed<ends
  if visible:queue_redraw()
 func _draw() -> void:

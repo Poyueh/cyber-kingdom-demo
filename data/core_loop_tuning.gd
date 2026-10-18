@@ -36,3 +36,22 @@ func resolve(base: Dictionary) -> Dictionary:
  result.prices=prices.duplicate(true)
  result.economy.work_seconds=harvest_seconds
  return result
+
+## Main campaign shares onboarding and controls, but keeps all authored worlds.
+func resolve_campaign(base: Dictionary) -> Dictionary:
+ var shared: Dictionary=resolve(base)
+ var result: Dictionary=base.duplicate(true)
+ for key: String in shared:
+  if key.begins_with("core_"):result[key]=shared[key]
+ result.core_loop_version=2
+ result.core_first_enemies=first_enemies
+ result.core_second_enemies=second_enemies
+ result.attack_stamina=0.0
+ result.return_margin=return_margin
+ result.hunter_range=archer_range
+ if int(base.planet_id)==0:
+  result.tree_crystals=harvest_crystals
+  result.chest_crystals=cache_crystals
+  result.economy=result.economy.duplicate(true)
+  result.economy.work_seconds=harvest_seconds
+ return result

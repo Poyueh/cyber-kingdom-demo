@@ -16,6 +16,8 @@ var _prologue: Control
 var _ambience_level: float=0.6
 @onready var view=$Menu
 func _ready() -> void:
+	if preload("res://infrastructure/distribution.gd").demo():
+		campaigns_directory="user://forest_demo_campaigns";legacy_path=""
 	catalog=Catalog.new(campaigns_directory,legacy_path)
 	audio=TitleAudio.new()
 	audio.name="TitleAudio"
@@ -54,12 +56,14 @@ func show_records() -> void:
 	for entry in catalog.entries():
 		var row: Dictionary=entry.duplicate()
 		row.merge(Record.describe(Store.new(entry.path)))
+		if preload("res://infrastructure/distribution.gd").demo() and not row.get("core",false):continue
 		row.date=Time.get_datetime_string_from_unix_time(entry.updated).replace("T"," ")+" UTC"
 		rows.append(row)
 	view.show_records(rows)
 
 func start_new_game(pace: int=0, core: bool=false) -> void:
 	if _launching:return
+	if preload("res://infrastructure/distribution.gd").demo():core=true
 	if preload("res://data/journey_paces.tres").find(pace)==null:return
 	audio.click("ui_confirm")
 	var path: String=catalog.allocate()
@@ -73,7 +77,7 @@ func select_record(index: int) -> void:
 	# Re-read on selection; listing never grants permission to overwrite damaged saves.
 	var progress=Progress.new(Store.new(row.path))
 	var restored: Dictionary=progress.open()
-	if restored.is_empty():view.show_error("紀錄無法讀取，原檔已保留。請重新選擇。 ");return
+	if restored.is_empty() or not preload("res://infrastructure/distribution.gd").accepts(restored):view.show_error("紀錄無法讀取，原檔已保留。請重新選擇。 ");return
 	var path: String=row.path
 	if row.manual:
 		path=catalog.allocate()

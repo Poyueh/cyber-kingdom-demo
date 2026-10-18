@@ -7,7 +7,8 @@ func clean(sim: RefCounted) -> void:
   if i>=sim.world.people.size() or sim.world.people[i].role!="hunter":targets[i]=""
 func usable(sim: RefCounted, target: String) -> bool:
  if target in ["wall","wall_left"]:
-  var wall: Dictionary=sim.world.walls[target]
+  var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1) if not sim.core_loop.trial and sim.core_loop.stage>=3 else target
+  var wall: Dictionary=sim.world.walls[post]
   return wall.level>0 and wall.hp>0 and not wall.pending
  if sim.buildings.has(target):
   var site: Dictionary=sim.buildings[target]
@@ -15,7 +16,8 @@ func usable(sim: RefCounted, target: String) -> bool:
  return false
 func position(sim: RefCounted, target: String) -> float:
  if target in ["wall","wall_left"]:
-  return sim.world.sites[target]+(90.0 if target=="wall_left" else -90.0)
+  var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1) if not sim.core_loop.trial and sim.core_loop.stage>=3 else target
+  return sim.world.sites[post]+(90.0 if target=="wall_left" else -90.0)
  return float(sim.buildings[target].x) if sim.buildings.has(target) else sim.world.sites.hall
 func side(sim: RefCounted, target: String) -> int:
  return -1 if position(sim,target)<sim.world.sites.hall else 1

@@ -80,17 +80,18 @@ def validate_export(output):
         raise ValueError('匯出未產生完整 Xcode 專案與遊戲 PCK；不可當成成功。')
     return project.parent
 
-def export_project(ref,output,team,bundle,godot,env):
+def export_project(ref,output,team,bundle,godot,env,edition=None):
     validate_identifiers(team,bundle)
     # Refuse to reuse any destination; the engine must not erase a previous export.
     output=Path(output).resolve()
     if output.exists():raise ValueError('輸出目錄已存在，請選新的目錄：'+str(output))
     with tempfile.TemporaryDirectory(prefix='cyber-ios-') as folder:
         stage=Path(folder)
-        tree=prepare_tree(ref,stage)
+        tree=prepare_tree(ref,stage,edition)
         preset=stage/'export_presets.cfg'
         preset.write_text(configured_preset(preset.read_text(),team,bundle))
         output.mkdir(parents=True)
+        (output/"distribution-manifest.json").write_bytes((stage/"distribution-manifest.json").read_bytes())
         # A subprocess-local developer directory never changes xcode-select or other builds.
         run_logged([str(godot),'--headless','--path',str(stage),'--editor','--import'],output/'import.log',env=env)
         run_logged([str(godot),'--headless','--path',str(stage),'--export-debug',PRESET_NAME,str(output/'CyberKingdomDemo.zip')],output/'export.log',env=env)
@@ -107,13 +108,14 @@ def main():
     parser.add_argument('--bundle-id')
     parser.add_argument('--xcode',type=Path,help='Xcode.app or its Contents/Developer; leaves global selection unchanged')
     parser.add_argument('--godot',type=Path,default=Path('/Applications/Godot.app/Contents/MacOS/Godot'))
+    parser.add_argument("--edition",choices=["full","demo"])
     args=parser.parse_args()
     report,env=preflight(args.godot,args.xcode,args.team_id,args.bundle_id)
     if args.check or not report['ready_for_export']:
         print(json.dumps(report,ensure_ascii=False,indent=2))
         return 0 if report['ready_for_export'] else 2
     if args.output is None:parser.error('匯出需要 --output 指定新的目錄。')
-    try:project=export_project(args.ref,args.output,args.team_id,args.bundle_id,args.godot,env)
+    try:project=export_project(args.ref,args.output,args.team_id,args.bundle_id,args.godot,env,args.edition)
     except (ValueError,RuntimeError,OSError,subprocess.SubprocessError) as exc:
         parser.exit(1,str(exc)+'\n')
     print('Xcode 專案已產生（尚未簽署或安裝）：'+str(project))

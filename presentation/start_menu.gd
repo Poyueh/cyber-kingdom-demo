@@ -51,7 +51,10 @@ func _ready() -> void:
 	_home=VBoxContainer.new();_home.size_flags_vertical=Control.SIZE_EXPAND_FILL;_home.alignment=BoxContainer.ALIGNMENT_CENTER;_home.add_theme_constant_override("separation",12);body.add_child(_home)
 	var core_button: Button=_button(_home,"core.begin","camp")
 	core_button.pressed.connect(func()->void:core_game_requested.emit())
+	core_button.visible=preload("res://infrastructure/distribution.gd").demo()
 	new_button=_button(_home,"opening.begin","camp");new_button.pressed.connect(show_paces)
+	new_button.visible=not preload("res://infrastructure/distribution.gd").demo()
+	_label(_home,"edition.demo" if preload("res://infrastructure/distribution.gd").demo() else "edition.full",14,Color("96acae"))
 	var primary: StyleBoxFlat=new_button.get_theme_stylebox("normal").duplicate()
 	primary.bg_color=Color("796241");primary.border_color=Color("d6bb86");primary.set_border_width_all(1)
 	new_button.add_theme_stylebox_override("normal",primary)
@@ -92,7 +95,7 @@ func _button(parent: Node, text: String, icon: String) -> Button:
 
 func show_home() -> void:
 	_home.show();_records.hide();pace_picker.hide();_heading.text=tr("旅程");_error.text="";_error_source=""
-	new_button.call_deferred("grab_focus")
+	if new_button.visible:new_button.call_deferred("grab_focus")
 
 func show_paces() -> void:
 	_home.hide();_records.hide();pace_picker.show()
