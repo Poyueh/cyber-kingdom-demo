@@ -1,6 +1,6 @@
 # Cyber Kingdom 遊戲術語
 
-2026-10-18 v0.0.57：核心流程恢復鬼魂，不受舊開場期限限制；真實工作／收晶目標、帶路與警戒。首夜後淡出，自主準備；主／Demo共用，舊旅程與快照v22不變。見 docs/design/living-spirit-guide.md。
+2026-10-18 v0.0.57：核心流程恢復鬼魂，不受舊開場期限限制；真實工作／收晶目標、帶路與警戒。首夜後淡出，自主準備；主／Demo共用，舊旅程與快照v22不變。見 docs/design/living-spirit-guide.md。打包時兩個macOS匯出不得並行：此主機Godot仍共用_lipo暫存，即使分別設定TMPDIR亦會衝突；macOS匯出須依序。
 
 2026-10-18 v0.0.56：新主旅程直接引導，兩夜後保留營地繼續七星；Demo獨立支線／包／存檔，實體裁切其餘六星，只提供森林兩夜。共用玩法先改main再合入demo。新主旅程core_loop_version=2、舊試玩v1、快照v22。見docs/design/guided-campaign-and-demo.md。
 
