@@ -13,7 +13,7 @@ const WHOLE: Array[String]=["combat_side","guard_count","health","damage","comba
 static func number(value: Variant, lo: float, hi: float, whole: bool=false) -> bool:
 	return (value is int or value is float) and is_finite(float(value)) and value>=lo and value<=hi and (not whole or floorf(value)==value)
 static func apply(config: Dictionary, profiles: Array[Dictionary]) -> void:
-	assert(profiles.size()==7 and Level.valid_config(config) and config.has(Level.MARKER))
+	assert(int(config.planet_id)<profiles.size() and profiles.size()<=Level.MAX_WORLDS and Level.valid_config(config) and config.has(Level.MARKER))
 	var profile: Dictionary=profiles[int(config.planet_id)]
 	assert(profile.planet_id==config.planet_id and profile.size()==LIMITS.size()+1)
 	config.trail_version=VERSION
