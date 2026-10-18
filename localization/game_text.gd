@@ -1,7 +1,7 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
- ["spirit.follow", "跟我來。", "跟我来。", "This way."],
+ ["spirit.lead %s", "跟我來。%s", "跟我来。%s", "This way. %s"],
  ["spirit.core.wait_tool", "等他來領器具。", "等他来领器具。", "Let them take the tool."],
  ["spirit.core.wait_wall", "等工匠把牆築好。", "等工匠把墙筑好。", "Let the worker finish the wall."],
 

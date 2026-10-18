@@ -10,7 +10,8 @@ func center(button) -> Vector2:
 func run_scene() -> void:
  var scene=load("res://scenes/frontier.tscn").instantiate();scene.tuning=scene.tuning.duplicate();scene.tuning.immersive_loop=false;scene.tuning.initial_crystals=12;root.add_child(scene)
  await frames(8)
- check(scene.knight.position.x<scene.sim.world.sites.hall-800,"new journey begins in wilderness away from campfire")
+ var walk: float=scene.sim.world.sites.hall-scene.knight.position.x
+ check(walk>0 and walk<=scene.get_viewport().get_visible_rect().size.x*0.5-120,"new journey begins a few steps from a campfire already on screen")
  scene.set_physics_process(false);scene.knight.position.x=30;scene.paused=false
  var hud=scene.hud
  scene._physics_process(1.0/60)
