@@ -1,0 +1,126 @@
+{
+  "game_version": "0.0.60",
+  "spec_revision": 47,
+  "files": {
+    "FONT-LICENSE.txt": {
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+      "bytes": 4301
+    },
+    "README.txt": {
+      "sha256": "966f4558abb7fbbe7e6fd13000c8568f1a2723ba726f679776d0c4d6077325df",
+      "bytes": 992
+    },
+    "guide-reader.css": {
+      "sha256": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+      "bytes": 1750
+    },
+    "guide-reader.js": {
+      "sha256": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+      "bytes": 2969
+    },
+    "guide.html": {
+      "sha256": "54669d11c7f53cc654298ff639a2ae369fcc3e7b465d26610c212bccebd6f373",
+      "bytes": 7225
+    },
+    "index.apple-touch-icon.png": {
+      "sha256": "e897c283312c594efcc72737fd3652971a914651b0c1980b61998155d1e16afb",
+      "bytes": 1322
+    },
+    "index.audio.position.worklet.js": {
+      "sha256": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+      "bytes": 2973
+    },
+    "index.audio.worklet.js": {
+      "sha256": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+      "bytes": 7298
+    },
+    "index.html": {
+      "sha256": "f622df07518e2679eb4b62c790e64058b7a5ff77f6f21b29f420e920f71a3092",
+      "bytes": 7093
+    },
+    "index.icon.png": {
+      "sha256": "156c0c98a2f251765922f2835f8c386239914f05f7e57b25f49c77727c292618",
+      "bytes": 2744
+    },
+    "index.js": {
+      "sha256": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+      "bytes": 279815
+    },
+    "index.pck": {
+      "sha256": "4514ef55747b928da59412276d254734e116f85479d4a80cfe0c7b5917b136c5",
+      "bytes": 63593996
+    },
+    "index.png": {
+      "sha256": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+      "bytes": 21443
+    },
+    "index.wasm": {
+      "sha256": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+      "bytes": 39514754
+    },
+    "social/forest-companion-v59.png": {
+      "sha256": "5f346e975fc33385c8c527d8df9cdc130dbf402f05c914c72bfb331f50e0a615",
+      "bytes": 490667
+    },
+    "spec/assets/26559190e8-attendant-work.webp": {
+      "sha256": "26559190e8feb73f2a2c74a1325120c459b1adb7ed7e4bd72aa7381286f2f3ea",
+      "bytes": 1169838
+    },
+    "spec/assets/30d8c59ac7-dragon-counterattack.webp": {
+      "sha256": "30d8c59ac76bdd08d82ac67e3fd46b4b4afa487053fcb44425982a54f1ab537a",
+      "bytes": 103942
+    },
+    "spec/assets/628eb68e7c-mysterious-menu.png": {
+      "sha256": "628eb68e7c4cb68d7d7efff875a1132bb7ba984bfec4538aa73de3a454493410",
+      "bytes": 281396
+    },
+    "spec/assets/6fb0311681-planet-levels.webp": {
+      "sha256": "6fb03116815310292109c85fe5dcaf38e3e229cfe46fbbe1a9c47688716dd2cd",
+      "bytes": 220194
+    },
+    "spec/assets/9dbca9b182-cinematic-dragon.png": {
+      "sha256": "9dbca9b182ae166f1270165e9850c67bf410bf60d67e9174fa7698a4cc8bd23d",
+      "bytes": 530468
+    },
+    "spec/assets/ade86e08e4-early-exploration.webp": {
+      "sha256": "ade86e08e490493610fa615f0614f43d0128585f6c086cd85b2b72b371df64a4",
+      "bytes": 91172
+    },
+    "spec/assets/b05e076d18-gait.webp": {
+      "sha256": "b05e076d182978912191fd920e97c92f0ef10ccaa777cb97be57df1b5a88b20a",
+      "bytes": 4863730
+    },
+    "spec/assets/d4f1036c94-settlement-inhabitants.webp": {
+      "sha256": "d4f1036c945064f097e18c5d8f8db4f10f846a5aeed4520260ab3223cb6c2aca",
+      "bytes": 181748
+    },
+    "spec/assets/d5df6b3c90-devourers.webp": {
+      "sha256": "d5df6b3c90806ec5425ef10dd966b76a28e5fbcca5d4c21b5565f793bd6ef4cf",
+      "bytes": 289270
+    },
+    "spec/assets/d84847ebc0-combo.webp": {
+      "sha256": "d84847ebc04f51b58f067ebf04213dbfc6fb22da2d66c3e2f02bbccd573e65b1",
+      "bytes": 636960
+    },
+    "spec/assets/da0b1cfc0a-star-chart.webp": {
+      "sha256": "da0b1cfc0ae6d0ca0b6cc3f056f5b01d3c0a08ce773694ae8b2bd1bed05002e6",
+      "bytes": 90294
+    },
+    "spec/index.html": {
+      "sha256": "1e21ef90c587c9cd2ad4ab41a5a278f0b3895a8f167646735c19350cc24bb4a8",
+      "bytes": 92499
+    },
+    "spec/manifest.json": {
+      "sha256": "b222731a081f19ba3a889b525099ac3bd1aa6fc6b2efcbf447b90fbdba87d979",
+      "bytes": 1744
+    },
+    "spec/reader.js": {
+      "sha256": "6cc33a6ae719d50267acced5b925c88847b45550adfa92b61b9200a10fec7a4d",
+      "bytes": 2706
+    },
+    "spec/style.css": {
+      "sha256": "4ab246c449276ab11259ef4615bc86f4a3f136408fd74579ca5ce73e9f690172",
+      "bytes": 11078
+    }
+  }
+}
