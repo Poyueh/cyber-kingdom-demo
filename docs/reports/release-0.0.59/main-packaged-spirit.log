@@ -1,0 +1,22 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene keeps the ghost visible after old deadline
+PASS: companion replaces duplicate static top instruction
+PASS: ghost short text translated: zh_TW
+PASS: ghost caption fits: zh_TW
+PASS: ghost short text translated: zh_CN
+PASS: ghost caption fits: zh_CN
+PASS: ghost short text translated: en
+PASS: ghost caption fits: en
+PASS: hide button removes ghost without advancing tutorial
+PASS: show button restores current ghost objective
+PASS: real founding input advances ghost to a resident
+PASS: pause hides companion
+PASS: independent preparation lets companion quietly step aside
+PASS: actual shrine input recalls the spirit after first night
+PASS: paid recall visibly overrides the faded autonomous companion
+PASS: second night recalls warning companion
+PASS: companion caption avoids action controls
+PASS: companion caption avoids action controls
+PASS: defeat hides companion
+Core spirit scene: 19 assertions, 0 failures
