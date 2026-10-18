@@ -45,10 +45,11 @@ func run_scene() -> void:
  key(KEY_E,true);key(KEY_E,false);game._physics_process(1.0/30)
  check(game.sim.pouch.amount==0 and game.sim.spirit.summoned,"last crystal summons the guide through the actual E interaction")
  check(game.hud.guide_view.hint.get("kind")=="resident_income","recalled ghost points to resident income")
+ # v0.0.59 intentionally removes the repeated command line; distant targets use a follow cue.
  for locale: String in ["zh_TW","zh_CN","en"]:
   TranslationServer.set_locale(locale);await capture(game,"income-"+locale)
   var label: Label=game.hud.guide_view._guide_label
-  check(label.text.contains(game.tr("guide.income")) and not label.text.contains("guide."),"income text is translated in "+locale)
+  check(label.text==game.tr("spirit.follow") and not label.text.contains("spirit."),"distant carrier uses a translated follow cue instead of remote interaction text: "+locale)
   check(game.hud.safe_rect().encloses(label.get_rect()),"caption fits the viewport in "+locale)
   check(not label.get_rect().intersects(game.hud.immersive_feedback.day_caption_bounds()),"translated hint avoids the temporary day caption in "+locale)
  game.hud.control_mode=1;game.hud.preview_safe_margins=Vector4(90,18,30,32);game.hud._layout()
@@ -73,13 +74,13 @@ func run_scene() -> void:
  game.knight.position=Vector2(game.sim.merchant.home_x,430)
  game.hud.control_mode=1;refresh(game)
  check(game.hud.guide_view.hint.get("kind")=="merchant_return","returning trader points to camp")
- check(game.hud.guide_view._guide_label.text.contains(game.tr("guide.command.trade_wait")),"waiting for a merchant is not mislabeled as taking tools")
+ check(game.hud.guide_view.hint.action=="wait" and game.hud.guide_view._guide_label.text==game.tr("guide.merchant_return") and not game.hud.guide_view.can_invest,"one merchant-return cue preserves waiting without tool or payment instructions")
  await capture(game,"merchant-touch")
  game.sim.planet.cleared=true;game.sim.planet.claim_core();game.sim.planet.rocket_pending=true
  game.knight.position=Vector2(preload("res://application/planet_operations.gd").rocket_x(game.sim),430)
  refresh(game)
  check(game.hud.guide_view._guide_label.text.contains(game.tr("guide.rocket_building")),"rocket construction has a specific progress caption")
- check(game.hud.guide_view._guide_label.text.contains(game.tr("guide.command.rocket_wait")),"paid rocket never asks for another purchase")
+ check(game.hud.guide_view.hint.action=="wait" and not game.hud.guide_view.can_invest and game.hud.guide_view._guide_label.text==game.tr("guide.rocket_building"),"paid rocket shows only its construction cue and cannot request another purchase")
  await capture(game,"rocket-work")
  game.paused=true;refresh(game)
  check(not game.hud.guide_view.visible,"pause hides the guidance")
