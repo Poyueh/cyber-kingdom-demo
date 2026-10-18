@@ -85,6 +85,7 @@ def main():
         run_logged(engine + ["--export-release", "Windows Demo", str(windows / (app_name + ".exe"))], output / "Windows-export.log", env=export_env)
         audit=stage / "pack-audit";audit.mkdir()
         run_logged([args.godot, "--headless", "--path", str(audit), "--main-pack", str(mac / (app_name + ".app") / "Contents/Resources" / (app_name + ".pck")), "--script", str(stage / "tools/test_exported_distribution.gd")], output / "distribution-test.log")
+        run_logged(["codesign", "--verify", "--deep", "--strict", str(mac / (app_name + ".app"))], output / "macOS-signature.log")
         # ditto retains the app bundle's executable bits and macOS metadata.
         run_logged(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent", str(mac / (app_name + ".app")), str(output / "Cyber-Kingdom-macOS.zip")], output / "macOS-zip.log")
         shutil.make_archive(str(output / "Cyber-Kingdom-Windows"), "zip", windows)
