@@ -275,7 +275,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.victory=sim.mission.outcome=="victory"
 	dashboard.queue_redraw()
 	$pause.visible=not (sim.life.enabled and dashboard.camp_transition())
-	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition())
+	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition(),get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),immersive_feedback.purse.bounds)
 	var advice: Dictionary={}
 	if not is_paused and (first_day_guidance or expedition_guidance):
 		if sim.life.enabled:advice=sim.spirit.advice(sim,at,first_day_guidance,expedition_guidance)
