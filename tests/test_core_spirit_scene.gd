@@ -38,6 +38,13 @@ func run_scene() -> void:
   game.paused=false;game.sim.core_loop.stage=3;refresh(game)
   game.sim.workforce.elapsed+=12;refresh(game)
   check(guide.modulate.a==0,"independent preparation lets companion quietly step aside")
+  if not trial:
+   var shrine: float=game.sim.spirit.shrine_x(game.sim.world.sites.hall)
+   game.knight.position.x=shrine;refresh(game)
+   key(KEY_E,true);key(KEY_E,false);game._physics_process(1.0/30)
+   check(game.sim.spirit.summoned,"actual shrine input recalls the spirit after first night")
+   check(guide.visible and guide.modulate.a>0.9 and not guide.hint.get("core",false),"paid recall visibly overrides the faded autonomous companion")
+   game.sim.spirit.expires_tick=0
   game.sim.core_loop.stage=4;refresh(game)
   check(guide.visible and guide.modulate.a>0.9,"second night recalls warning companion")
   await capture(game,("demo-" if trial else "main-")+"warning")
