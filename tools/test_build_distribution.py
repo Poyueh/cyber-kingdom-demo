@@ -27,6 +27,7 @@ class DistributionTests(unittest.TestCase):
    stage=Path(d);self.stage(stage)
    report=configure(stage,"full")
    self.assertTrue((stage/"data/planets/desert.tres").exists())
-   self.assertIn('org.cyberkingdom.game',(stage/"export_presets.cfg").read_text())
+   self.assertIn('org.cyberkingdom.demo',(stage/"export_presets.cfg").read_text())
+   self.assertIn('Godot/app_userdata/Cyber Kingdom Demo',(stage/"project.godot").read_text())
    self.assertEqual(report["world_ids"],list(range(7)))
 if __name__=="__main__":unittest.main()

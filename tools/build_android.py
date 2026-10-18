@@ -33,7 +33,7 @@ def main():
         apk = output/"Cyber-Kingdom-Android-debug.apk"
         run_logged(engine+["--export-debug", "Android Demo", str(apk)], output/"export.log")
         (output/"manifest.json").write_text(json.dumps({
-            "source_tree": tree, "architecture": "arm64-v8a", "package": "org.cyberkingdom.forestdemo" if json.loads((output/"distribution-manifest.json").read_text())["edition"]=="demo" else "org.cyberkingdom.game",
+            "source_tree": tree, "architecture": "arm64-v8a", "package": "org.cyberkingdom.forestdemo" if json.loads((output/"distribution-manifest.json").read_text())["edition"]=="demo" else "org.cyberkingdom.demo",
             "signing": "local debug certificate; not a store release",
             "sha256": hashlib.sha256(apk.read_bytes()).hexdigest(),
             "runtime_playtest": "record separately; export alone is not validation"
