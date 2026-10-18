@@ -45,11 +45,11 @@ func run_scene() -> void:
  key(KEY_E,true);key(KEY_E,false);game._physics_process(1.0/30)
  check(game.sim.pouch.amount==0 and game.sim.spirit.summoned,"last crystal summons the guide through the actual E interaction")
  check(game.hud.guide_view.hint.get("kind")=="resident_income","recalled ghost points to resident income")
- # v0.0.59 intentionally removes the repeated command line; distant targets use a follow cue.
+ # v0.0.61: distant targets name the task after a short translated lead-in.
  for locale: String in ["zh_TW","zh_CN","en"]:
   TranslationServer.set_locale(locale);await capture(game,"income-"+locale)
   var label: Label=game.hud.guide_view._guide_label
-  check(label.text==game.tr("spirit.follow") and not label.text.contains("spirit."),"distant carrier uses a translated follow cue instead of remote interaction text: "+locale)
+  check(label.text==game.tr("spirit.lead %s")%game.tr("guide.income") and not label.text.contains("spirit."),"distant carrier: the ghost leads and names the translated task: "+locale)
   check(game.hud.safe_rect().encloses(label.get_rect()),"caption fits the viewport in "+locale)
   check(not label.get_rect().intersects(game.hud.immersive_feedback.day_caption_bounds()),"translated hint avoids the temporary day caption in "+locale)
  game.hud.control_mode=1;game.hud.preview_safe_margins=Vector4(90,18,30,32);game.hud._layout()

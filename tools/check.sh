@@ -23,6 +23,7 @@ run_check() {
 python3 "$ROOT/tools/test_build_desktop.py"
 python3 "$ROOT/tools/test_build_ios.py"
 python3 "$ROOT/tools/test_build_web.py"
+python3 "$ROOT/tools/test_unpack_release_site.py"
 python3 "$ROOT/tools/test_social_preview.py"
 python3 "$ROOT/tools/test_build_distribution.py"
 python3 "$ROOT/tools/test_game_spec.py"

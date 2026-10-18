@@ -26,7 +26,14 @@ class SocialPreviewTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             site=Path(folder);(site/'index.html').write_text('<head></head>')
             install(site,'full');text=(site/'index.html').read_text()
-            self.assertIn('七星旅程',text);self.assertNotIn('兩個夜晚',text);self.assertNotIn('og:url',text)
+            self.assertIn('七星旅程',text);self.assertNotIn('兩個夜晚',text)
+            self.assertIn('property="og:url" content="'+BASE+'main/"',text)
+    def test_demo_describes_the_whole_forest(self):
+        with tempfile.TemporaryDirectory() as folder:
+            site=Path(folder);(site/'index.html').write_text('<head></head>')
+            install(site,'demo');text=(site/'index.html').read_text()
+            self.assertIn('森林巨龍',text);self.assertNotIn('兩個夜晚',text)
+            self.assertIn('property="og:url" content="'+BASE+'"',text)
     def test_old_release_redeployment_is_not_rebranded(self):
         with tempfile.TemporaryDirectory() as folder:
             site=Path(folder);page=site/'index.html';page.write_text('<head>old</head>')
