@@ -1,6 +1,6 @@
 ## v0.0.57 活的引導鬼魂（發布準備中）
 
-修復核心流程隱藏鬼魂，接回真實採集／持晶／防線狀態，加入帶路、等待、收晶和警戒。移除重複頂部提示，首夜後淡出。主／Demo共用，快照v22與舊規則不變。先重現期限問題，新增40項行為及33項原生場景檢查通過；完整回歸通過（既有4565項及全部場景，無SCRIPT ERROR／ERROR），原生實際移動／拔劍與本機Web鬼魂已驗收；全部成品與發布核對進行中。規格修訂40。[設計](design/living-spirit-guide.md) · [Godot小課](lessons/135-spirit-read-only-projection.md)。
+修復核心流程隱藏鬼魂，接回真實採集／持晶／防線狀態，加入帶路、等待、收晶和警戒。移除重複頂部提示，首夜後淡出。主／Demo共用，快照v22與舊規則不變。先重現期限問題，新增40項行為及33項原生場景檢查通過；完整回歸通過（既有4565項及全部場景，無SCRIPT ERROR／ERROR），原生實際移動／拔劍與本機Web鬼魂已驗收；Main／Demo 五平台成品各46／47項內容及鬼魂檢查通過，兩個macOS執行檔可啟動，Android簽章／封裝通過；13份附件完成，等待上傳及Pages核對。規格修訂40。[設計](design/living-spirit-guide.md) · [Godot小課](lessons/135-spirit-read-only-projection.md)。
 
 ## v0.0.56 主流程引導與獨立 Demo（已發布）
 
