@@ -1,9 +1,12 @@
 extends RefCounted
 ## Persistent trial facts; UI hints never decide whether work or defence happened.
 const Guards=preload("res://application/core_guard_orders.gd")
+## Dusk never falls while an ordered archer is still walking to the wall.
+const ARRIVAL_HOLD_SECONDS: float=3.0
 var enabled: bool=false
 var trial: bool=false
 var forest: bool=false
+var contained: bool=false # Demo: whole forest, no voyage; the dragon is the finale.
 var stage: int=0 # learning, preparation, first dusk/night, autonomous, second night, complete
 var income: int=0
 var skipped: bool=false
@@ -24,8 +27,9 @@ var first_count: int=0
 var second_count: int=0
 
 func _init(config: Dictionary={}) -> void:
- enabled=config.get("core_loop_version",0) in [1,2]
+ enabled=config.get("core_loop_version",0) in [1,2,3]
  trial=config.get("core_loop_version",0)==1
+ contained=config.get("core_loop_version",0)==3
  forest=int(config.get("planet_id",0))==0
  if enabled and not trial and not forest:stage=5
  if not enabled:return
@@ -63,6 +67,8 @@ func observe(sim: RefCounted) -> void:
   sim.effects.append({"kind":"tool_produced","x":sim.world.sites.hunt_tools,"life":1.0})
  if stage==1 and ready(sim) and checkpoint_index==1:
   stage=2;sim.clock.remaining=warning_seconds
+ if stage==2 and not sim.clock.is_night and orders.arrived(sim,"wall",arrival_radius)<minimum_defenders and orders.assigned(sim,"wall")>=minimum_defenders:
+  sim.clock.remaining=maxf(sim.clock.remaining,ARRIVAL_HOLD_SECONDS)
  if stage==2 and sim.clock.survived==1:
   stage=3;checkpoint_pending=2
  if stage==3 and sim.clock.is_night:stage=4
@@ -76,7 +82,7 @@ func ready(sim: RefCounted) -> bool:
  if income<=0 or sim.frontier.city_level<=0 or not sim.can_wield_sword():return false
  var wall: Dictionary=sim.world.walls.wall
  if wall.level<=0 or wall.hp<=0 or wall.pending:return false
- if orders.arrived(sim,"wall",arrival_radius)<minimum_defenders:return false
+ if orders.assigned(sim,"wall")<minimum_defenders:return false
  return sim.investments.is_empty() and not sim.effects.any(func(e: Dictionary)->bool:return e.kind=="camp_ignition")
 
 func site_allowed(site: String, sim: RefCounted) -> bool:

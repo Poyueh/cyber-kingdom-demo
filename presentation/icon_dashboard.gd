@@ -121,13 +121,15 @@ func _draw_epilogue() -> void:
 	var reveal: float=message_alpha() if dead else smoothstep(0.6,2.8,outcome_age)
 	draw_rect(viewport,Color(0,0,0,blackout_alpha()) if dead else Color(0.015,0.025,0.04,reveal*0.48))
 	var lines: Array[String]=[]
-	if victory:lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
+	if victory:
+		lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
+		if preload("res://infrastructure/distribution.gd").demo():lines.append("森林試玩完成。完整版還有六顆星球與六條巨龍。")
 	elif values.get("defeat_reason","")=="core":lines.assign(["營火熄滅了。","人類的希望之火，再度逝去。"])
 	else:lines.assign(["無劍的騎士啊，","這一次，你未能守住任何事物。"])
 	var font: Font=preload("res://presentation/localized_font.gd").current()
 	for i in range(lines.size()):
 		var text: String=tr(lines[i])
-		var size: int=30 if i==0 else 23
+		var size: int=30 if i==0 else 23 if i==1 else 19
 		var width: float=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
 		if width>viewport.size.x-48:size=int(size*(viewport.size.x-48)/width);width=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,size).x
 		var at: Vector2=Vector2(viewport.get_center().x-width*0.5,viewport.get_center().y-15+i*50)
@@ -135,7 +137,8 @@ func _draw_epilogue() -> void:
 	if outcome_age>2.8:
 		var text: String=tr("曾守護這片土地 %d 天")%int(values.get("survived",0))
 		var width: float=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
-		draw_string(font,Vector2(viewport.get_center().x-width/2,viewport.get_center().y+87),text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(0.64,0.72,0.73,reveal))
+		# Sits under however many epilogue lines were drawn (the Demo adds one).
+		draw_string(font,Vector2(viewport.get_center().x-width/2,viewport.get_center().y-13+lines.size()*50),text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(0.64,0.72,0.73,reveal))
 
 func _draw_mission() -> void:
 	if not values.has("core_hp"):return
