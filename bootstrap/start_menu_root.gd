@@ -56,14 +56,15 @@ func show_records() -> void:
 	for entry in catalog.entries():
 		var row: Dictionary=entry.duplicate()
 		row.merge(Record.describe(Store.new(entry.path)))
-		if preload("res://infrastructure/distribution.gd").demo() and not row.get("core",false):continue
+		if preload("res://infrastructure/distribution.gd").demo() and not row.get("core",false) and not row.get("forest_demo",false):continue
 		row.date=Time.get_datetime_string_from_unix_time(entry.updated).replace("T"," ")+" UTC"
 		rows.append(row)
 	view.show_records(rows)
 
 func start_new_game(pace: int=0, core: bool=false) -> void:
 	if _launching:return
-	if preload("res://infrastructure/distribution.gd").demo():core=true
+	# The Demo starts the contained full forest; the old two-night trial is kept only for its saves.
+	if preload("res://infrastructure/distribution.gd").demo():core=false
 	if preload("res://data/journey_paces.tres").find(pace)==null:return
 	audio.click("ui_confirm")
 	var path: String=catalog.allocate()

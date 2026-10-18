@@ -27,12 +27,15 @@ func verify() -> void:
  check(menu.campaigns_directory==("user://forest_demo_campaigns" if demo else "user://edition-test-records"),"edition uses isolated record directory")
  menu.queue_free();await process_frame
  var game: Node=load("res://scenes/frontier.tscn").instantiate()
- game._guided_campaign=not demo;game.campaign_save_path="";game.audio_preferences_path=""
+ game._guided_campaign=true;game.campaign_save_path="";game.audio_preferences_path=""
  root.add_child(game)
  for i: int in range(8):await process_frame
- check(game.sim.core_loop.enabled and game.sim.core_loop.trial==demo,"shipped scene resolves correct guidance mode")
+ check(game.sim.core_loop.enabled and not game.sim.core_loop.trial and game.sim.core_loop.contained==demo,"shipped scene resolves correct guidance mode")
  check((game.journey==null)==demo,"demo cannot create a seven-world envelope")
- check((game.sim.frontier.right_boundary<3000)==demo,"demo contains short trial layout, main keeps full forest")
+ check(game.sim.frontier.right_boundary>5000,"both editions play the full forest map")
+ check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
+ check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")
+ check(game.sim.planet.enabled==not demo,"only the main edition can build a rocket and travel")
  check(game.hud.core_hud.wallet.visible,"common guidance UI renders in shipped scene")
  check(game.hud.guide_view.visible and game.hud.guide_view.hint.get("core",false),"shipped companion is visible with a real core objective")
  check(not game.hud.core_hud.caption.visible,"shipped UI has no duplicate static tutorial")

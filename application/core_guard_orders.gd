@@ -39,6 +39,13 @@ func assign(sim: RefCounted, target: String, delta: int) -> bool:
  targets[selected]=target
  sim.world.people[selected]["defense_post"]="wall_left" if side(sim,target)<0 else "wall"
  return true
+## Archers ordered to a usable post, whether or not they have reached it yet.
+func assigned(sim: RefCounted, target: String) -> int:
+ if not usable(sim,target):return 0
+ var count: int=0
+ for i: int in range(mini(targets.size(),sim.world.people.size())):
+  if targets[i]==target and sim.world.people[i].role=="hunter":count+=1
+ return count
 func arrived(sim: RefCounted, target: String, radius: float) -> int:
  if not usable(sim,target):return 0
  var count: int=0
