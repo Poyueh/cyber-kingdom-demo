@@ -11,6 +11,8 @@ extends Resource
 @export var follow_response: float
 @export var turn_response: float
 @export var caption_delay: float
+## How long each newly started task is spoken, even while the knight walks.
+@export var announce_seconds: float
 @export var caption_seconds: float
 @export var reminder_interval: float
 @export var reminder_seconds: float

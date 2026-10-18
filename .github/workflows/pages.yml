@@ -53,32 +53,15 @@ jobs:
         run: |
           [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit 1
           mkdir release _site
-          web_asset=$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '[.assets[].name | select(startswith("Cyber-Kingdom-Demo-Web-"))][0] // empty')
+          assets=$(gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+          web_asset=$(grep -m1 '^Cyber-Kingdom-Demo-Web-' <<<"$assets" || true)
           if [ -z "$web_asset" ]; then web_asset='Cyber-Kingdom-Web-*.zip'; fi
-          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$web_asset" --pattern 'SHA256SUMS.txt' --dir release
-          python3 - <<'PY'
-          from pathlib import Path
-          import hashlib, zipfile
-          root = Path('release')
-          archives = list(root.glob('Cyber-Kingdom-Demo-Web-*.zip')) or list(root.glob('Cyber-Kingdom-Web-*.zip'))
-          if len(archives) != 1:
-              raise SystemExit('Expected one web archive')
-          archive = archives[0]
-          checksums = dict(line.split(maxsplit=1)[::-1] for line in (root/'SHA256SUMS.txt').read_text().splitlines())
-          if hashlib.sha256(archive.read_bytes()).hexdigest() != checksums.get(archive.name):
-              raise SystemExit('Web archive checksum mismatch')
-          destination = Path('_site').resolve()
-          with zipfile.ZipFile(archive) as bundle:
-              for entry in bundle.infolist():
-                  target = (destination/entry.filename).resolve()
-                  if not target.is_relative_to(destination) or (entry.external_attr >> 16) & 0o170000 == 0o120000:
-                      raise SystemExit('Unsafe archive path')
-              bundle.extractall(destination)
-          for name in ('index.html', 'index.js', 'index.wasm', 'index.pck', 'guide.html'):
-              if not (destination/name).is_file() or (destination/name).stat().st_size == 0:
-                  raise SystemExit('Missing web runtime: '+name)
-          (destination/'.nojekyll').touch()
-          PY
+          patterns=(--pattern "$web_asset" --pattern 'SHA256SUMS.txt')
+          # Releases from v0.0.61 also publish the main game's web build under main/.
+          main_asset=$(grep -m1 '^Cyber-Kingdom-Main-Web-' <<<"$assets" || true)
+          if [ -n "$main_asset" ]; then patterns+=(--pattern "$main_asset"); fi
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" "${patterns[@]}" --dir release
+          python3 tools/unpack_release_site.py --release release --site _site
       - name: Include matching game specification
         env:
           RELEASE_TAG: ${{ inputs.tag }}
@@ -90,7 +73,9 @@ jobs:
       - name: Install matching gameplay sharing preview
         env:
           RELEASE_TAG: ${{ inputs.tag }}
-        run: python3 tools/install_social_preview.py --site _site --edition demo --tag "$RELEASE_TAG"
+        run: |
+          python3 tools/install_social_preview.py --site _site --edition demo --tag "$RELEASE_TAG"
+          if [ -d _site/main ]; then python3 tools/install_social_preview.py --site _site/main --edition full --tag "$RELEASE_TAG"; fi
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload site

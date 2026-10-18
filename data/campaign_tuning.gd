@@ -29,7 +29,7 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export var ruin_mechanisms: Resource=preload("res://data/ruin_mechanisms.tres")
 @export var ruin_trials: Resource=preload("res://data/ruin_trials.tres")
 @export_range(0,8,1) var outer_regions_per_side: int = 7
-@export_range(300,1250,50) var arrival_walk_distance: float=1050.0
+@export_range(150,1250,10) var arrival_walk_distance: float=260.0
 @export_group("Final dragon")
 @export_range(2,20,1) var dragon_baseline_day: int=6
 @export_range(100,6000,100) var dragon_health: int=1800
