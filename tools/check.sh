@@ -23,6 +23,7 @@ run_check() {
 python3 "$ROOT/tools/test_build_desktop.py"
 python3 "$ROOT/tools/test_build_ios.py"
 python3 "$ROOT/tools/test_build_web.py"
+python3 "$ROOT/tools/test_social_preview.py"
 python3 "$ROOT/tools/test_build_distribution.py"
 python3 "$ROOT/tools/test_game_spec.py"
 python3 "$ROOT/tools/build_game_spec.py" --check
@@ -33,6 +34,7 @@ run_check behavior --script res://tests/run_tests.gd
 run_check core_loop --script res://tests/test_core_loop.gd
 run_check core_spirit --script res://tests/test_core_spirit.gd
 run_check guided_campaign --script res://tests/test_guided_campaign.gd
+run_check forest_demo --script res://tests/test_forest_demo.gd
 run_check core_loop_scene --script res://tests/test_core_loop_scene.gd
 run_check core_spirit_scene --script res://tests/test_core_spirit_scene.gd
 run_check guided_scene --script res://tests/test_guided_scene.gd

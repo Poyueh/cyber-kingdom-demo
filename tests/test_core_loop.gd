@@ -128,6 +128,19 @@ func second_route(source: Dictionary, explore: bool) -> void:
     income=sim.pouch.amount-before+newcomers*sim.prices.recruit
     if income>=node.crystals:break
    check(income>=node.crystals,"harvest arrives as crystals or a nearby recruited resident")
+  # Harvest may arrive as recruits rather than crystals; like a player, keep
+  # gathering until the defence bought below is affordable.
+  var needed: int=int(sim.prices.recruit)+int(sim.prices.hunt_tools)+int(sim.prices.wall)
+  for index: int in range(sim.frontier.nodes.size()):
+   if sim.pouch.amount>=needed:break
+   var node: RefCounted=sim.frontier.nodes[index]
+   var choice: Dictionary=sim.context_for_key(node.x,"node:%d"%index)
+   if choice.get("id","")!="mark" or not choice.get("enabled",false) or sim.pouch.amount<1:continue
+   var before: int=sim.pouch.amount
+   pay(sim,node.x,"node:%d"%index,1)
+   for tick: int in range(2400):
+    ticks(sim,1,node.x)
+    if sim.pouch.amount>before:break
  var recruit: int=-1
  for i: int in range(sim.world.people.size()):
   if sim.world.people[i].role=="wanderer":recruit=i;break

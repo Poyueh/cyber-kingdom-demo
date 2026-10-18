@@ -1,5 +1,5 @@
 extends RefCounted
-const LIMITS: Dictionary={"core_loop_version":Vector2(1,2),"core_enemy_health":Vector2(1,200),"core_enemy_damage":Vector2(1,50),"core_wall_damage":Vector2(1,50),"core_warning":Vector2(20,90),"core_min_defenders":Vector2(1,3),"core_arrival_radius":Vector2(16,80),"core_sprint_ratio":Vector2(0.2,0.8),"core_second_gap":Vector2(10,40)}
+const LIMITS: Dictionary={"core_loop_version":Vector2(1,3),"core_enemy_health":Vector2(1,200),"core_enemy_damage":Vector2(1,50),"core_wall_damage":Vector2(1,50),"core_warning":Vector2(20,90),"core_min_defenders":Vector2(1,3),"core_arrival_radius":Vector2(16,80),"core_sprint_ratio":Vector2(0.2,0.8),"core_second_gap":Vector2(10,40)}
 static func valid(config: Dictionary) -> bool:
  if not LIMITS.keys().any(func(k: String) -> bool:return config.has(k)):return true
  for key: String in LIMITS:
@@ -10,8 +10,9 @@ static func valid(config: Dictionary) -> bool:
   var bounds: Vector2=preload("res://domain/trail_rules.gd").LIMITS[key]
   var value: Variant=config.get("core_trail_"+key)
   if not preload("res://domain/trail_rules.gd").number(value,bounds.x,bounds.y,key in preload("res://domain/trail_rules.gd").WHOLE):return false
- if config.core_loop_version==2:
+ if config.core_loop_version in [2,3]:
   for key: String in ["core_first_enemies","core_second_enemies"]:
    if not preload("res://domain/trail_rules.gd").number(config.get(key),1,12,true):return false
  if config.core_trail_combat_side!=1 or config.core_trail_guard_count!=1:return false
- return config.core_loop_version in [1,2] and config.core_min_defenders==floorf(config.core_min_defenders) and config.get("voyage_enabled",0)==(1 if config.core_loop_version==2 else 0)
+ if config.core_loop_version==3 and int(config.get("planet_id",-1))!=0:return false
+ return config.core_loop_version in [1,2,3] and config.core_min_defenders==floorf(config.core_min_defenders) and config.get("voyage_enabled",0)==(1 if config.core_loop_version==2 else 0)

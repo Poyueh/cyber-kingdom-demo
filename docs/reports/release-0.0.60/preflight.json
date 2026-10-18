@@ -1,0 +1,32 @@
+{
+  "version": "0.0.60",
+  "source": "5f37d26a66a955bb8c8231cc2cdbd3c96b984f06",
+  "spec_revision": 47,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4565,
+  "core_loop_assertions": 73,
+  "guided_campaign_assertions": 87,
+  "forest_demo_assertions": 96,
+  "pacing_probe": {
+    "right_wall_to_first_night_seconds": [
+      65,
+      23
+    ],
+    "demo_start_to_second_night_seconds": [
+      506,
+      349
+    ],
+    "main_start_to_second_night_seconds": [
+      391,
+      349
+    ]
+  },
+  "release_fix": "Packaged Demo catalogs keep only the forest; route and roadside validators demanded seven worlds. Found by the packaged Demo distribution check, fixed test-first (5f37d26) and all 10 platform packages rebuilt from that commit.",
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform (Windows, macOS, Web, Android assets, iOS PCK); macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified; Demo user directory isolated",
+  "local_browser": "Actual Demo web export: intro, menu shows Forest demo edition and Begin the Forest Adventure, new forest journey created, recruit payment and spirit guidance; no console errors",
+  "pending": [
+    "human comprehension of the faster guide",
+    "full forest demo play length with real players",
+    "Windows and mobile device playtests"
+  ]
+}
