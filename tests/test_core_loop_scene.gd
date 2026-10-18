@@ -6,6 +6,7 @@ func run_scene() -> void:
  await frames(15)
  check(scene.sim.core_loop.enabled,"real frontier opens the independent core trial")
  check(scene.hud.core_hud.wallet.visible,"core wallet is visible in the scene")
+ check(scene.hud.guide_view.visible and scene.hud.guide_view.modulate.a>0.9,"demo onboarding visibly restores the spirit companion")
  scene.knight.position.x=scene.sim.world.sites.hall
  await frames(4)
  var action: Button=scene.hud.core_hud.action_button
