@@ -9,7 +9,7 @@
   "core_flow_assertions": 72,
   "native_core_assertions": 14,
   "archive_integrity_verified": true,
-  "published": false,
+  "published": true,
   "assets": [
     {
       "name": "Cyber-Kingdom-Android-v0.0.55-debug.apk",
@@ -55,5 +55,9 @@
   "macos_signature_verified": true,
   "android_signature_and_alignment_verified": true,
   "local_browser_core_entry_verified": true,
-  "local_browser_errors": 0
+  "local_browser_errors": 0,
+  "pages_run_id": 39088209307,
+  "public_files_verified": 22,
+  "release_assets_verified": 7,
+  "public_browser_menu_and_spec_verified": true
 }
