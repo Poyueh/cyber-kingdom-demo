@@ -87,6 +87,10 @@ jobs:
           args=()
           if [ "$REFRESH_SPEC" = 'true' ]; then args+=(--refresh); fi
           python3 tools/build_game_spec.py --publish-site _site --tag "$RELEASE_TAG" --source-ref "$GITHUB_SHA" "${args[@]}"
+      - name: Install matching gameplay sharing preview
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: python3 tools/install_social_preview.py --site _site --edition demo --tag "$RELEASE_TAG"
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload site
