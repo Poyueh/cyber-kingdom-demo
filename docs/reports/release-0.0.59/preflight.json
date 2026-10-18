@@ -21,8 +21,16 @@
   "test_maintenance": "Legacy visual expectations updated for brief contextual cues and removal of duplicate commands; real input, payment, recall and gestures remain checked. Gameplay artifacts were built from the source commit above.",
   "local_browser": "Actual Demo export: opening, founding and movement; specification revision 44; no console errors",
   "pending": [
-    "publication and online verification",
     "human comprehension",
     "Windows and mobile device playtests"
-  ]
+  ],
+  "publication": {
+    "release_id": 416320764,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.59",
+    "release_assets_verified": 13,
+    "pages_run": 39110768086,
+    "pages_result": "success",
+    "public_files_verified": 22,
+    "public_browser": "Demo intro/main menu v0.0.59 and specification revision 44; no console errors; no public player journey created"
+  }
 }
