@@ -1,8 +1,12 @@
-## v0.0.61 營火旁開局、鬼魂即時說明與主遊戲網頁版（發佈中）
+## v0.0.61 營火旁開局、鬼魂即時說明與主遊戲網頁版（已發布）
 
 使用者回饋：開局應在營火旁不遠、鬼魂要說清楚要做什麼且更新要快，主遊戲也要有網頁版可測。新旅程改在營火左側 260 像素（原 1050）；鬼魂每換任務 0.3 秒內說出任務並顯示 4 秒、走動中也顯示，遠處以「跟我來。」帶出任務，停滯 6 秒再提醒（原：移動不說、靠近 2 秒、停滯 14 秒）。Pages 同步部署 Main Web 到 `main/`。Demo 分享介紹改為完整森林描述。規則、經濟與快照 v22 不變；規格修訂 48。教學：[第138課](lessons/138-spawn-voice-and-two-sites.md)。
 
 完整回歸通過（核心 4572 項，無 SCRIPT ERROR／ERROR）；新增鬼魂說話時機、開局視野與 Pages 解壓測試。Main／Demo 五平台 10 組成品由 50bc3eb 建置：內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊、Demo 獨立存檔目錄通過。本機以 Pages 相同結構實測 Main（main/）與 Demo（根目錄）：營火旁出生、鬼魂一秒內說出點火與招募，無 console errors。[驗收紀錄](reports/release-0.0.61/preflight.json)。真人理解度與 Windows／手機真機仍待測。
+
+Release 416401835 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39122344791 成功，60 個公開檔案（含 main/ 下 30 個 Main 檔案）與本機 Pages 結構逐一相同。公開 Demo 與 Main 前導、選單與企劃 v0.0.61／修訂 48 已用瀏覽器驗收，無 console errors，未建立公開玩家旅程。發佈需要 gh 的 workflow 權限（已由使用者授權）。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.61) · [主遊戲網頁版](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.61) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.61) · [企劃書](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.61) · [Godot 小課](lessons/138-spawn-voice-and-two-sites.md)。
 
 ## v0.0.60 完整森林 Demo 與加快引導（已發布）
 
