@@ -29,6 +29,8 @@ python3 "$ROOT/tools/test_localization.py"
 python3 "$ROOT/tools/check_architecture.py"
 run_check import --editor --import
 run_check behavior --script res://tests/run_tests.gd
+run_check core_loop --script res://tests/test_core_loop.gd
+run_check core_loop_scene --script res://tests/test_core_loop_scene.gd
 run_check integration --script res://tests/test_scene.gd
 run_check combo --script res://tests/test_combo_scene.gd
 run_check knight_continuity --script res://tests/test_knight_continuity.gd

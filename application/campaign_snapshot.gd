@@ -3,7 +3,7 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=21
+const VERSION:=22
 # JSON can round the final decimal just below a half-tick; never allow a full future tick.
 const JSON_TICK_EPSILON: float=0.0000001
 const SESSION_SKIP=["raiders","effects","opened_chests"]
@@ -73,11 +73,11 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 	var opened: Dictionary={}
 	for key in sim.opened_chests:opened[str(key)]=sim.opened_chests[key]
 	return {"version":VERSION,"config":rules,"body":body.duplicate(true),
-		"session":_fields(sim,SESSION_SKIP),"world":_fields(sim.world,["wall"]),
+		"core_loop":sim.core_loop.capture(),"session":_fields(sim,SESSION_SKIP),"world":_fields(sim.world,["wall"]),
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
-		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area"]),
-		"trails":sim.trails.capture(),"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area","core_loop"]),
+		"trails":sim.trails.capture(),"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel,["core_sprint"]),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -123,19 +123,20 @@ func _invalid() -> Dictionary:
 	last_error="Invalid or unsupported campaign checkpoint; original retained."
 	return {}
 
-func restore(raw) -> Dictionary:
+func restore(raw, embedded: bool=false) -> Dictionary:
 	last_error=""
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21]:keys.append("modules")
-	if data.get("version",0) in [14,15,16,17,18,19,20,21]:keys.append("merchant")
-	if data.get("version",0) in [15,16,17,18,19,20,21]:keys.append("trials")
-	if data.get("version",0) in [16,17,18,19,20,21]:keys.append("mount")
-	if data.get("version",0) in [20,21]:keys.append("trails")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17,18,19,20,21,22]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17,18,19,20,21,22]:keys.append("trials")
+	if data.get("version",0) in [16,17,18,19,20,21,22]:keys.append("mount")
+	if data.get("version",0) in [20,21,22]:keys.append("trails")
+	if data.get("version",0)==22:keys.append("core_loop")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -145,7 +146,7 @@ func restore(raw) -> Dictionary:
 	if data.version==5 and not _upgrade_v5(data):return _invalid()
 	if data.version==6:
 		if not data.config is Dictionary or not Rules.config_valid(data.config):return _invalid()
-		data["travel"]=_fields(Campaign.new(data.config).travel)
+		data["travel"]=_fields(Campaign.new(data.config).travel,["core_sprint"])
 		data.version=7
 	if data.version==7 and not _upgrade_v7(data,raw.get("version",0)==7):return _invalid()
 	if data.version==8 and not _upgrade_v8(data):return _invalid()
@@ -195,6 +196,10 @@ func restore(raw) -> Dictionary:
 		if not data.get("merchant") is Dictionary or data.merchant.size()!=7:return _invalid()
 		data.merchant["trip_end_x"]=Campaign.new(data.config).merchant.trip_end_x
 		data.version=21
+	if data.version==21:
+		if not data.config is Dictionary or data.config.has("core_loop_version"):return _invalid()
+		data["core_loop"]=preload("res://application/core_loop.gd").new().capture()
+		data.version=22
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -206,9 +211,9 @@ func restore(raw) -> Dictionary:
 		[sim,data.session,SESSION_SKIP],[sim.world,data.world,["wall"]],
 		[sim.frontier,data.frontier,["nodes"]],[sim.clock,data.clock,[]],[sim.mission,data.mission,[]],
 		[sim.growth,data.growth,[]],[sim.ecology,data.ecology,[]],[sim.pouch,data.pouch,["pickups"]],
-		[sim.workforce,data.workforce,["deliveries","work_area"]]]:
+		[sim.workforce,data.workforce,["deliveries","work_area","core_loop"]]]:
 		if not _copy_fields(part[0],part[1],part[2]):return _invalid()
-	if not _copy_fields(sim.travel,data.travel):return _invalid()
+	if not _copy_fields(sim.travel,data.travel,["core_sprint"]):return _invalid()
 	if not _copy_fields(sim.survival,data.survival):return _invalid()
 	if not _restore_spirit(sim,data):return _invalid()
 	var checkpoint_tick: int=roundi(sim.workforce.elapsed*RecoveryClock.TICKS_PER_SECOND+JSON_TICK_EPSILON)
@@ -258,6 +263,23 @@ func restore(raw) -> Dictionary:
 		sim.opened_chests[int(key)]=data.opened[key]
 	if not sim.world.walls.has("wall"):return _invalid()
 	sim.world.wall=sim.world.walls.wall
+	if not sim.core_loop.restore(data.core_loop):return _invalid()
+	if sim.core_loop.enabled:
+		if sim.core_loop.orders.targets.size()>sim.world.people.size():return _invalid()
+		if sim.core_loop.stage>0 and sim.core_loop.income<=0:return _invalid()
+		if sim.core_loop.stage>=3 and sim.clock.survived<1:return _invalid()
+		if sim.core_loop.stage==5 and sim.clock.survived<2:return _invalid()
+		var point: Dictionary=sim.core_loop.checkpoint
+		if embedded:
+			if not point.is_empty() or sim.core_loop.checkpoint_pending!=0:return _invalid()
+			if sim.core_loop.checkpoint_index==1 and (sim.core_loop.stage!=1 or sim.clock.survived!=0):return _invalid()
+			if sim.core_loop.checkpoint_index==2 and (sim.core_loop.stage!=3 or sim.clock.survived!=1):return _invalid()
+		if not point.is_empty():
+			if not point.get("core_loop") is Dictionary or not point.core_loop.get("checkpoint") is Dictionary:return _invalid()
+			if not point.core_loop.checkpoint.is_empty() or point.core_loop.get("checkpoint_index")!=sim.core_loop.checkpoint_index:return _invalid()
+			if not Rules.same(point.get("config"),data.config):return _invalid()
+			if restore(point,true).is_empty():return _invalid()
+		elif not embedded and sim.core_loop.checkpoint_index>0:return _invalid()
 	if legacy_economy:sim.convert_legacy_resources()
 	return {"session":sim,"config":data.config,"body":data.body}
 

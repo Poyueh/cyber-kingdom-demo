@@ -1,6 +1,7 @@
 extends RefCounted
 ## Resident work scheduling: claim a site, reach it, work, carry, deliver.
 ## Godot physics/rendering stays outside; vertical access follows the visible ladders.
+var core_loop: RefCounted
 var world
 var frontier
 var work_area: RefCounted
@@ -132,6 +133,7 @@ func _keep_harvest(person: Dictionary, job: RefCounted) -> void:
 	var held: int=int(person.get("crystals",0))
 	var taken: int=mini(reward.crystals,preload("res://application/kingdom_life.gd").CARRY_LIMIT-held)
 	person["crystals"]=held+taken
+	if core_loop!=null:core_loop.harvested(world.people.find(person),taken)
 	var overflow: int=reward.crystals-taken
 	if overflow>0:
 		world.crystals+=overflow

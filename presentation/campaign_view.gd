@@ -181,7 +181,7 @@ func _draw_structures() -> void:
 	preload("res://presentation/mount_expedition_view.gd").draw_on(self,_sim)
 	# Before the first investment there is only a campfire and nearby wanderers.
 	if map.city_level==0: return
-	if _sim.life.enabled:
+	if _sim.life.enabled and not _sim.core_loop.enabled:
 		var shrine_x: float=_sim.spirit.shrine_x(hall)
 		if _on_screen(shrine_x,100):
 			Shrine.draw_on(self,Vector2(shrine_x,430),_sim.workforce.elapsed,_context.id=="spirit",not _sim.spirit.active(int(_sim.workforce.elapsed*_sim.spirit.TICKS_PER_SECOND)))

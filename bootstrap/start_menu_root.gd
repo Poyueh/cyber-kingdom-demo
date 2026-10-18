@@ -27,6 +27,7 @@ func _ready() -> void:
 	audio.apply(levels)
 	_ambience_level=float(levels.ambience)
 	view.new_game_requested.connect(start_new_game)
+	view.core_game_requested.connect(func()->void:start_new_game(0,true))
 	view.records_requested.connect(show_records)
 	view.record_selected.connect(select_record)
 	view.prologue_requested.connect(show_prologue)
@@ -57,13 +58,13 @@ func show_records() -> void:
 		rows.append(row)
 	view.show_records(rows)
 
-func start_new_game(pace: int=0) -> void:
+func start_new_game(pace: int=0, core: bool=false) -> void:
 	if _launching:return
 	if preload("res://data/journey_paces.tres").find(pace)==null:return
 	audio.click("ui_confirm")
 	var path: String=catalog.allocate()
 	if path.is_empty():view.show_error(catalog.last_error);return
-	_launch(path,int(randi()%1000000000),pace)
+	_launch(path,int(randi()%1000000000),pace,core)
 
 func select_record(index: int) -> void:
 	if _launching or index<0 or index>=rows.size():return
@@ -82,7 +83,7 @@ func select_record(index: int) -> void:
 			view.show_error("無法另存檢查點，原紀錄未變更。請稍後重試。 ");return
 	_launch(path)
 
-func _launch(path: String, seed_value: int=-1, pace: int=0) -> void:
+func _launch(path: String, seed_value: int=-1, pace: int=0, core: bool=false) -> void:
 	_launching=true
-	get_tree().set_meta("campaign_launch",{"path":path,"seed":seed_value,"pace":pace})
+	get_tree().set_meta("campaign_launch",{"path":path,"seed":seed_value,"pace":pace,"core":core})
 	get_tree().call_deferred("change_scene_to_file","res://scenes/frontier.tscn")
