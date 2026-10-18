@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-18",
+  "mode": "independent forest core trial",
+  "existing_assertions": 4565,
+  "core_flow_assertions": 72,
+  "native_scene_assertions": 11,
+  "full_check": true,
+  "previous_release_save": "actual v0.0.53 PCK generated v21 save; new loader preserved camp, funds, population and disabled core mode",
+  "routes": [
+    "first night without knight attacks",
+    "second night funded by quiet exploration cache",
+    "second night funded by additional harvests"
+  ],
+  "limits": [
+    "no five-novice observation study",
+    "10–15 minute playtime target not measured with human players",
+    "no physical Windows/iPhone/iPad/Android playtest"
+  ]
+}

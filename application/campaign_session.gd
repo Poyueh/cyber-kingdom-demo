@@ -3,6 +3,8 @@ extends "res://application/frontier_session.gd"
 const Trails=preload("res://domain/trail_encounters.gd")
 const TrailActivity=preload("res://application/trail_activity.gd")
 var trails: Trails
+const CoreLoop=preload("res://application/core_loop.gd")
+var core_loop: CoreLoop
 const Level=preload("res://domain/planet_level_layout.gd")
 const Merchant = preload("res://domain/crystal_merchant.gd")
 const ScarceTreasure = preload("res://domain/scarce_treasure.gd")
@@ -80,6 +82,7 @@ const TOOL_KINDS := {"workshop":"hammer","farm_tools":"hoe","hunt_tools":"bow"}
 const NAMES := {"hall":"營火","workshop":"工匠器具","armory":"兵營","farm_tools":"農具","hunt_tools":"獵弓","forge":"義肢爐","beacon":"守護塔","wall":"右防線","wall_left":"左防線","farm":"農田","drill":"劍術訓練","heal":"龍晶治療"}
 
 func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
+	core_loop=CoreLoop.new(config)
 	planet=Planet.new(config)
 	night_pressure = NightPressure.new(config)
 	night_pattern = NightPattern.new(config)
@@ -183,12 +186,17 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	merchant=Merchant.new(config,world.sites.hall,frontier.left_boundary,frontier.right_boundary)
 	trails=Trails.new(config)
 	TrailActivity.populate(self)
+	if core_loop.enabled:
+		preload("res://application/core_loop_layout.gd").apply(self,config)
+		hero.stats.attack_cost=0
+		workforce.core_loop=core_loop
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:
 	return not life.enabled or frontier.city_level>=2
 
 func site_visible(site: String) -> bool:
+	if core_loop.enabled:return core_loop.site_allowed(site,self)
 	if site=="trade":return false
 	if not life.enabled:return true
 	if site in ["forge","heal"]:return false
@@ -308,7 +316,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		if candidate.enabled and candidate.cost>0 and pouch.amount<=0:
 			candidate.enabled = false
 			candidate.reason = "背包沒有龍晶 · 尋找寶箱、收貨點或農田"
-	return candidates
+	return core_loop.filter_choices(self,candidates)
 
 func _campaign_site(site: String) -> Dictionary:
 	var at: float = world.sites[site]
@@ -501,7 +509,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if not is_running():return
 	if life.enabled:
 		hero.shield=0;world.barrier=0
-		life.collect(world,pouch,raiders,hero_x,hero_y)
+		life.collect(world,pouch,raiders,hero_x,hero_y,core_loop)
 	# Legacy offering-only recruitment.
 	for person in world.people:
 		if not life.enabled and person.role=="wanderer" and person.hurt<=0 and person_visible(person) and pouch.consume_offering(person.x,person.get("y",430)):
@@ -523,12 +531,14 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 				gem.amount=0
 		pouch.drops=pouch.drops.filter(func(gem):return gem.amount>0)
 	for pickup in pouch.pickups:
+		core_loop.picked_up(int(pickup.get("id",0)),int(pickup.amount))
 		effects.append({"kind":"crystal_pickup","x":pickup.x,"y":pickup.y,"life":0.25})
 	pouch.pickups.clear()
 	if life.enabled:
 		var opening_goal: bool=not spirit.opening_finished and frontier.city_level>0 and world.people.any(func(p):return p.role=="engineer") and frontier.nodes.any(func(n):return n.kind!="cache" and (n.marked or n.collected))
 		spirit.advance(int(workforce.elapsed*Spirit.TICKS_PER_SECOND),opening_goal)
-		modules.observe(self,hero_x,hero_y)
+		if not core_loop.enabled:modules.observe(self,hero_x,hero_y)
+	core_loop.observe(self)
 
 func throw_crystal(x: float, y: float, facing: int) -> bool:
 	return is_running() and pouch.toss(x,y,facing)
@@ -565,6 +575,16 @@ func _advance_people(seconds: float) -> void:
 
 func _override_resident_target(index: int, seconds: float) -> float:
 	var person: Dictionary = world.people[index]
+	if core_loop.enabled and person.role=="hunter":
+		var target: String=core_loop.orders.targets[index]
+		var tower: bool=target in ["beacon","core_tower_right"] and core_loop.orders.usable(self,target)
+		var arrived: bool=absf(person.x-core_loop.orders.destination(self,index))<core_loop.arrival_radius
+		person["y"]=340.0 if tower and arrived else 430.0
+		_shoot_nearest_raider(person,tower_range if tower and arrived else hunter_range,archer_damage(),hunter_interval)
+		if core_loop.orders.must_return(self,index):
+			person["sheltering"]=true;person["work_state"]="walk"
+			return core_loop.orders.destination(self,index)
+		return NAN
 	if life.enabled:
 		if person.role=="guard":
 			_shoot_nearest_raider(person,90.0,24,1.1)
@@ -624,6 +644,13 @@ func travel_axis(request: float, seconds: float) -> float:
 func archer_damage() -> int:return hunter_damage if life.enabled else hunter_damage+barracks_level*6
 
 func _assign_defense_posts() -> void:
+	if core_loop.enabled:
+		core_loop.orders.clean(self)
+		for i: int in range(world.people.size()):
+			if world.people[i].role=="hunter":
+				var target: String=core_loop.orders.targets[i]
+				world.people[i]["defense_post"]="wall_left" if not target.is_empty() and core_loop.orders.side(self,target)<0 else "wall"
+		return
 	var counts: Dictionary={"wall":0,"wall_left":0}
 	for person in world.people:
 		if person.role=="guard" and not life.enabled:person.role="hunter"
@@ -668,9 +695,9 @@ func raid_pressure() -> Dictionary:
 	return pressure
 
 func is_running() -> bool:
-	return hero.is_alive() and mission.outcome=="active"
+	return hero.is_alive() and mission.outcome=="active" and not (core_loop.enabled and core_loop.stage==5)
 
-func finished() -> bool:return mission.outcome!="active"
+func finished() -> bool:return mission.outcome!="active" or (core_loop.enabled and core_loop.stage==5)
 
 func _strategic_target(_raider: Dictionary) -> Dictionary:
 	return {"kind":"core","x":world.sites.hall}
@@ -693,6 +720,8 @@ func invading_count() -> int:
 	return total
 
 func _advance_invasion(seconds: float) -> void:
+	if core_loop.enabled and core_loop.stage<2:
+		clock.remaining=clock.day_seconds;time_to_raid=clock.remaining;return
 	var transition := clock.advance(seconds,invasion_empty() and _spawn_remaining==0)
 	if transition=="dawn":
 		for arrival in ecology.renew(clock.day,world.people):_add_person(arrival.x,arrival.region)
@@ -709,9 +738,11 @@ func _advance_invasion(seconds: float) -> void:
 		while is_zero_approx(_spawn_timer) and _spawn_remaining>0 and invading_count()<night_pressure.concurrent_limit:
 			var total: int=planned_night_count()
 			var side: int=night_pattern.side_for(clock.day,_night_spawn_index,total)
+			if core_loop.enabled:side=1 if clock.day==1 or _night_spawn_index<ceili(total/2.0) else -1
 			_night_spawn_index+=1
 			_spawn_remaining-=1
 			var interval: float=float(night_pattern.gap_after(clock.day,_night_spawn_index,total))/RecoveryClock.TICKS_PER_SECOND
+			if core_loop.enabled and clock.day==2 and _night_spawn_index==ceili(total/2.0):interval=core_loop.second_gap
 			if not mission.side_open(side):
 				if interval>2.5:
 					_spawn_timer=interval
@@ -735,6 +766,9 @@ func _spawn_raider() -> Dictionary:
 	stats.damage=15+(clock.day-1)*enemy_damage_growth
 	raider.fighter=Fighter.new(stats)
 	raider["wall_damage"]=20+(clock.day-1)*enemy_damage_growth
+	if core_loop.enabled:
+		raider.fighter.stats.max_hp=core_loop.enemy_health;raider.fighter.hp=core_loop.enemy_health
+		raider.fighter.stats.damage=core_loop.enemy_damage;raider.wall_damage=core_loop.wall_damage
 	return raider
 
 func rift_requirements() -> Array[Dictionary]:
@@ -882,6 +916,12 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 	var prey: Dictionary={};var nearest:=INF
 	for animal in frontier.animals:
 		if not animal.alive or not frontier.regions[animal.region].discovered:continue
+		if core_loop.enabled:
+			var index: int=world.people.find(person)
+			var target: String=core_loop.orders.targets[index]
+			if core_loop.orders.must_return(self,index) or target.is_empty():continue
+			if signf(animal.x-world.sites.hall)!=core_loop.orders.side(self,target):continue
+			if (absf(person.x-animal.x)+absf(animal.x-core_loop.orders.destination(self,index)))/_person_speed+return_margin>=clock.remaining:continue
 		if life.enabled and not work_area.contains(animal.x):continue
 		var travel: float=(absf(person.x-animal.x)+absf(animal.x-world.sites.hall))/_person_speed
 		if not life.enabled and (clock.is_night or travel+return_margin+3>clock.remaining):continue
@@ -890,6 +930,7 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 	return prey
 
 func _idle_hunter_target(person: Dictionary, seconds: float) -> float:
+	if core_loop.enabled:return core_loop.orders.destination(self,world.people.find(person))
 	var index: int=world.people.find(person)
 	var center: float=world.sites.hunt_tools
 	var forests=frontier.regions.filter(func(r):return r.discovered and r.kind=="forest")
@@ -920,6 +961,7 @@ func _register_building_walls() -> void:
 		defenses.plots[id]={"region":site.region,"side":1 if site.x>world.sites.hall else -1,"previous":"wall" if site.x>world.sites.hall else "wall_left","cleared_node":site.node}
 
 func building_visible(id: String) -> bool:
+	if core_loop.enabled and core_loop.income<=0:return false
 	var site: Dictionary=buildings[id]
 	return (site.kind!="farm" or agriculture_available()) and frontier.city_level>0 and (site.level>0 or site.pending or BuildingSites.cleared(frontier,site))
 
@@ -942,6 +984,7 @@ func building_context(id: String) -> Dictionary:
 	return choice
 
 func _advance_towers(seconds: float) -> void:
+	if core_loop.enabled:return # Core towers require a real assigned archer.
 	for site in buildings.values():
 		if site.kind!="tower" or site.level<=0 or site.pending:continue
 		site.cooldown=maxf(0,site.cooldown-seconds)

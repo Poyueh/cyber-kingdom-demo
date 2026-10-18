@@ -1,0 +1,62 @@
+{
+  "version": "0.0.54",
+  "source_commit": "f3cd08455efc72d077dab1df544e551d16cf0e9a",
+  "source_tree": "31af3101b06a984b1c634d0e7a7cd0a629dd5f77",
+  "spec_revision": 34,
+  "save_schema": 22,
+  "full_check": true,
+  "behavior_assertions": 4565,
+  "core_flow_assertions": 72,
+  "native_core_assertions": 11,
+  "archive_integrity_verified": true,
+  "published": false,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.54-debug.apk",
+      "size": 103472790,
+      "sha256": "fae9a958a0198e5292f9d8da0b234a7edee8473afd3118ae311fdf5be02bf7e7"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.54.html",
+      "size": 15821187,
+      "sha256": "26ee878ec37287c5104879bb09fe447d4cf0b0af304dac2c0d2120b2fa440b77"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.54.zip",
+      "size": 104656301,
+      "sha256": "9092eb8d9686fdf9dab887ab3648a4a4ac45f4a0695067da57cbb9fea5d9fcff"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.54.zip",
+      "size": 112127157,
+      "sha256": "a470d64021ee7bcd98e715d6cdad8702583d09ad3b9d12772670040b08c62d47"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.54-Xcode.zip",
+      "size": 186900726,
+      "sha256": "d482e635f6d99acfa95d5e89b60159699c39f370e4080e886d2a5142155d85bf"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.54.zip",
+      "size": 134549197,
+      "sha256": "b5e29f7757f04cbc9fee49455c2331c99d56e1a6d023cf5cdb87b4c9a118221c"
+    }
+  ],
+  "limitations": [
+    "five-novice playtest not performed",
+    "10–15 minute human playtime distribution not measured",
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc, not notarized",
+    "Android debug certificate",
+    "iOS Xcode project requires signing"
+  ],
+  "packaged_core_flow_assertions": 72,
+  "packaged_core_scene_assertions": 11,
+  "mac_signature_verified": true,
+  "android_signature_alignment_verified": true,
+  "browser_local_core": "entry, movement, camp founding via contextual click, pause; no console errors",
+  "version_metadata_verified": [
+    "macOS 0.0.54 / 54",
+    "iOS 0.0.54 / 54"
+  ]
+}

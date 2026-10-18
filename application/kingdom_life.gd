@@ -12,7 +12,7 @@ func threatened(person: Dictionary, enemies: Array) -> bool:
   if enemy.fighter.is_alive() and int(enemy.get("carried_crystals",0))==0 and absf(enemy.x-person.x)<THREAT_RADIUS:return true
  return false
 
-func collect(world, pouch, enemies: Array, hero_x: float, hero_y: float) -> void:
+func collect(world, pouch, enemies: Array, hero_x: float, hero_y: float, core_loop: RefCounted=null) -> void:
  for person in world.people:
   var held: int=int(person.get("crystals",0))
   if person.role=="wanderer" and person.hurt>0:
@@ -20,6 +20,7 @@ func collect(world, pouch, enemies: Array, hero_x: float, hero_y: float) -> void
    continue
   if threatened(person,enemies):continue
   if person.role!="wanderer" and held>0 and absf(person.x-hero_x)<OFFER_RADIUS and absf(hero_y-430)<40:
+   if core_loop!=null:core_loop.offered(world.people.find(person),pouch._next_id,held)
    pouch.burst(held,person.x)
    person["crystals"]=0
    continue

@@ -26,5 +26,6 @@ static func before_ruin_mechanisms(packet: Dictionary) -> void:
   if key.begins_with("mechanism_"):packet.config.erase(key)
 
 static func before_trails(packet: Dictionary) -> void:
+ packet.erase("core_loop")
  packet.erase("trails")
  if packet.has("merchant"):packet.merchant.erase("trip_end_x")

@@ -1,5 +1,6 @@
 extends Control
 signal new_game_requested(pace: int)
+signal core_game_requested
 signal prologue_requested
 signal records_requested
 signal record_selected(index: int)
@@ -48,6 +49,8 @@ func _ready() -> void:
 	body.add_child(HSeparator.new())
 	var selector=LanguageSelector.new();body.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
 	_home=VBoxContainer.new();_home.size_flags_vertical=Control.SIZE_EXPAND_FILL;_home.alignment=BoxContainer.ALIGNMENT_CENTER;_home.add_theme_constant_override("separation",12);body.add_child(_home)
+	var core_button: Button=_button(_home,"core.begin","camp")
+	core_button.pressed.connect(func()->void:core_game_requested.emit())
 	new_button=_button(_home,"opening.begin","camp");new_button.pressed.connect(show_paces)
 	var primary: StyleBoxFlat=new_button.get_theme_stylebox("normal").duplicate()
 	primary.bg_color=Color("796241");primary.border_color=Color("d6bb86");primary.set_border_width_all(1)
@@ -113,6 +116,7 @@ func show_records(rows: Array[Dictionary]) -> void:
 		button.disabled=row.status!="ready";button.pressed.connect(func():record_selected.emit(i))
 		var pace: int=int(row.get("pace",-1))
 		var pace_key: String="journey.legacy" if pace<0 else ["journey.expedition","journey.settler","journey.siege"][pace]
+		if row.get("core",false):pace_key="core.begin"
 		_label(_list,tr(pace_key)+" · "+row.date,12,Color("8fa9ad"))
 	back_button.call_deferred("grab_focus")
 

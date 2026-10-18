@@ -125,7 +125,7 @@ func _advance_drop(gem: Dictionary, seconds: float, target: Vector2, reach: floa
 			var stored := mini(gem.amount,capacity-amount)
 			amount+=stored
 			gem.amount-=stored
-			pickups.append({"x":target.x,"y":target.y,"amount":stored})
+			pickups.append({"id":gem.id,"x":target.x,"y":target.y,"amount":stored})
 		return gem.amount<=0
 	if _settled(gem): return false
 	var next_x := clampf(gem.x+gem.vx*seconds,left_boundary+8,right_boundary-8)
