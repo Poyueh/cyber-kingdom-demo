@@ -2443,9 +2443,9 @@
     "zh_CN": "鬼魂会在前方带路、靠近目标时示意，等待工匠及收晶时换动作。提示跟着真实进度走，不再超时消失；第一夜后退到一旁，第二夜再警戒。可略过或重新显示，不增加任务或免费资源。",
     "en": "The spirit leads ahead, gestures by the target, and changes pose while waiting for work or collecting income. Guidance follows real progress without timing out. After night one it steps aside, then warns you again on night two. Hide or restore it freely; no extra quests or free resources are added."
   },
-  "v0.0.57 恢復主遊戲與 Demo 的引導鬼魂，加入帶路、工作、收晶和警戒反應。兩版仍使用獨立存檔，Demo 不含其餘六星。": {
-    "zh_CN": "v0.0.57 恢复主游戏与 Demo 的引导鬼魂，加入带路、工作、收晶和警戒反应。两版仍使用独立存档，Demo 不含其余六星。",
-    "en": "v0.0.57 restores the spirit guide in the main game and demo, with leading, work, income and warning gestures. Saves remain separate; the demo excludes the six later worlds."
+  "v0.0.58 恢復主遊戲與 Demo 的引導鬼魂，加入帶路、工作、收晶和警戒反應。兩版仍使用獨立存檔，Demo 不含其餘六星。": {
+    "zh_CN": "v0.0.58 恢复主游戏与 Demo 的引导鬼魂，加入带路、工作、收晶和警戒反应。两版仍使用独立存档，Demo 不含其余六星。",
+    "en": "v0.0.58 restores the spirit guide in the main game and demo, with leading, work, income and warning gestures. Saves remain separate; the demo excludes the six later worlds."
   },
   "新主旅程的鬼魂陪你完成首次經營與防守；兩夜後自由繼續。舊旅程沿用原開場期限。完整遊戲需要後續指引時，可在營火右側引魂壇投入一晶召回，停留約 18 秒。": {
     "zh_CN": "新主旅程的鬼魂陪你完成首次经营与防守；两夜后自由继续。旧旅程沿用原开场期限。完整游戏需要后续指引时，可在营火右侧引魂坛投入一晶召回，停留约 18 秒。",

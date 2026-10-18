@@ -1,0 +1,20 @@
+{
+  "version": "0.0.58",
+  "source": "c28716000f25b780f468eb6d42675a34f7a27bbb",
+  "spec_revision": 41,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4565,
+  "core_spirit_assertions": 44,
+  "native_spirit_scene_assertions": 35,
+  "packaged_spirit_scene_assertions": {
+    "main": 19,
+    "demo": 16
+  },
+  "all_platform_artifacts": "passed; Main 46 / Demo 47 checks per platform; macOS executable launch; Android signature and 16 KiB alignment verified",
+  "pending": [
+    "upload and Pages",
+    "human comprehension",
+    "Windows and mobile device playtests"
+  ],
+  "superseded": "v0.0.57 draft was removed before publication; tag and verification history retained"
+}

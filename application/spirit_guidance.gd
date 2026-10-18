@@ -44,9 +44,10 @@ func opacity(tick: int) -> float:
  return clampf(float(expires_tick-tick)/FADE_TICKS,0,1)
 
 func advice(sim: RefCounted, x: float, opening: bool=true, expedition: bool=true) -> Dictionary:
- if sim.core_loop.enabled and sim.core_loop.stage<5:
-  return preload("res://application/core_spirit_guide.gd").next(sim,x) if opening else {}
  var tick: int=int(sim.workforce.elapsed*TICKS_PER_SECOND)
+ var recalled: bool=not sim.core_loop.trial and sim.core_loop.stage>=3 and summoned and active(tick)
+ if sim.core_loop.enabled and sim.core_loop.stage<5 and not recalled:
+  return preload("res://application/core_spirit_guide.gd").next(sim,x) if opening else {}
  if not sim.is_running() or not active(tick):return {}
  if opening_finished and not summoned:
   return {"kind":"farewell","x":shrine_x(sim.world.sites.hall),"y":430.0,"key":"spirit","action":"move","stage":0}
