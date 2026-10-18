@@ -10,13 +10,13 @@ def configure(stage: Path, edition=None):
  s=re.sub(r'^config/name=.*$', 'config/name="Cyber Kingdom Forest Demo"' if edition=="demo" else 'config/name="Cyber Kingdom"',s,flags=re.M)
  s=re.sub(r'\n\[distribution\][^[]*','',s)
  # Preserve the historical main package's user directory. Demo gets its own directory.
- s=s.replace("[application]","[application]\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name="+json.dumps("Cyber Kingdom Forest Demo" if edition=="demo" else "Cyber Kingdom Demo"),1)
+ s=s.replace("[application]","[application]\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name="+json.dumps("Cyber Kingdom Forest Demo" if edition=="demo" else "Godot/app_userdata/Cyber Kingdom Demo"),1)
  s+='\n[distribution]\nedition='+json.dumps(edition)+'\n'
  project.write_text(s)
  presets=stage/"export_presets.cfg"
  if presets.exists():
   s=presets.read_text()
-  s=s.replace("org.cyberkingdom.demo","org.cyberkingdom.forestdemo" if edition=="demo" else "org.cyberkingdom.game")
+  s=s.replace("org.cyberkingdom.demo","org.cyberkingdom.forestdemo" if edition=="demo" else "org.cyberkingdom.demo")
   s=s.replace('package/name="Cyber Kingdom Demo"','package/name="Cyber Kingdom Forest Demo"' if edition=="demo" else 'package/name="Cyber Kingdom"')
   s=s.replace('application/product_name="Cyber Kingdom Demo"','application/product_name="Cyber Kingdom Forest Demo"' if edition=="demo" else 'application/product_name="Cyber Kingdom"')
   presets.write_text(s)

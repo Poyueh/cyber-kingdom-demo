@@ -43,9 +43,10 @@ def export_project(ref: str, output: Path, godot: str, edition=None) -> Path:
         engine = [godot, '--headless', '--path', str(stage)]
         run_logged(engine + ['--editor', '--import'], output / 'import.log')
         run_logged(engine + ['--export-release', 'Web Demo', str(web / 'index.html')], output / 'export.log')
-        run_logged([godot, '--headless', '--main-pack', str(web / 'index.pck'), '--script', str(stage / 'tools/test_exported_distribution.gd')], output / 'distribution-test.log')
+        audit=stage / 'pack-audit';audit.mkdir()
+        run_logged([godot, '--headless', '--path', str(audit), '--main-pack', str(web / 'index.pck'), '--script', str(stage / 'tools/test_exported_distribution.gd')], output / 'distribution-test.log')
         # Validate the shipped resource graph, not the source project's defaults.
-        run_logged([godot, '--headless', '--main-pack', str(web / 'index.pck'),
+        run_logged([godot, '--headless', '--path', str(audit), '--main-pack', str(web / 'index.pck'),
                     '--script', str(stage / 'tools/test_exported_ambience.gd')],
                    output / 'packaged-ambience.log')
         if distribution['edition']=='demo':
