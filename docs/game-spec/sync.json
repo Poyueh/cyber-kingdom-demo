@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "game_version": "0.0.53",
-  "revision": 33,
-  "review_note": "核心試玩候選實作審訂：新增獨立森林入口、採集真實收入解鎖、免費左右／塔位配置、首夜備戰門檻、第二夜自主段、普攻免費與移動恢復、v22 完整準備點重試。七星舊旅程沿用原規則；三語指南同步。真人理解度、10–15 分鐘分布與手機真機仍待驗證，候選尚未發布。 補充：排除執行期 core 控制引用的空值欄位，保持真實 v2／v4／v5 舊快照形狀與嚴格相容檢查。",
-  "content_sha256": "c6a0acbda8ad0b6ca4fda4a3ad9a4a01ebb4dd3aad92a37133d3c1c04fdf869c",
+  "game_version": "0.0.54",
+  "revision": 34,
+  "review_note": "v0.0.54 發行審訂：森林核心試玩為獨立模式，真實採集收入解鎖、免費守軍配置與回防、兩夜節奏、普攻免費／移動恢復、完整 CP1／CP2 重試與 v22 存檔已實作。原有 4565 規則、核心流程 72 項及場景回歸通過；原生介面 11 項、真實 v0.0.53 舊檔續載通過。三語指南同步。五位新手指標、10–15 分鐘實測分布及 Windows／手機真機尚未驗收。",
+  "content_sha256": "ab5b9a983186fe24aba954cd0ebe1cf05ef6ec49b48cff598168a80449295fcc",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "fc2950687fd723f578ddaa5c9c586d6b48953197dbef69b872e380b8ea1339a8",
@@ -1367,7 +1367,7 @@
     "domain/trail_encounters.gd": "6541f279b79223fe9b320714ce5e520dba4561e4e455b7b1990cdbecd52f8851",
     "domain/trail_rules.gd": "134af5482fa595f183ea39f12ef9672e66b3f4173bd261518a213707319d36e0",
     "domain/travel_recovery_rules.gd": "38f467372afc18708b855313f82fab9c3a182f7d97708477f4323483848d08e9",
-    "export_presets.cfg": "a21b7a126dd0a29586d1ff910a9bb84c6af4cdaebd38767689a70f42c2aa69e0",
+    "export_presets.cfg": "5c9e9f954a813f1fe64e63a1fd514bf41abd8d2b5389a8ae47839ebd3e4ec6d9",
     "infrastructure/audio_preferences.gd": "25e7df089867c48e01e514afb2ae386085aeb4e1ae29bbc91bfd65efc90795c6",
     "infrastructure/campaign_catalog.gd": "75bbb4c662e160aa51637501e9c81c2ea140ffbe622be60e18d849182cdd8c91",
     "infrastructure/json_campaign_store.gd": "ac2d125ca4ad2a6353945e74509e319db35881523537c857fb5ee9b593bc0e14",
