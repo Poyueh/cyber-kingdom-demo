@@ -12,9 +12,17 @@
   },
   "all_platform_artifacts": "passed; Main 46 / Demo 47 checks per platform; macOS executable launch; Android signature and 16 KiB alignment verified",
   "pending": [
-    "upload and Pages",
     "human comprehension",
     "Windows and mobile device playtests"
   ],
-  "superseded": "v0.0.57 draft was removed before publication; tag and verification history retained"
+  "superseded": "v0.0.57 draft was removed before publication; tag and verification history retained",
+  "publication": {
+    "release_id": 416298089,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.58",
+    "release_assets_verified": 13,
+    "pages_run": 39107179039,
+    "pages_result": "success",
+    "public_files_verified": 22,
+    "public_browser": "Demo intro and main menu; specification v0.0.58 revision 41; no console errors; no public player journey created"
+  }
 }
