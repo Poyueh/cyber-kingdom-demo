@@ -7,6 +7,7 @@ func run_scene() -> void:
  check(scene.sim.core_loop.enabled and not scene.sim.core_loop.trial,"main scene starts guided campaign")
  check(scene.journey!=null and scene.journey.configs.size()==7,"main scene owns seven-world progress")
  check(scene.hud.core_hud.wallet.visible,"shared guidance HUD is visible in main game")
+ check(scene.hud.guide_view.visible and scene.hud.guide_view.modulate.a>0.9,"main onboarding visibly restores the spirit companion")
  scene.knight.position.x=scene.sim.world.sites.hall
  await frames(3)
  var action: Button=scene.hud.core_hud.action_button
