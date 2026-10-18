@@ -41,6 +41,17 @@ func _initialize() -> void:
   check(sim.spirit.advice(sim,30).get("mood")=="guard","dusk switches companion to defensive warning")
   sim.core_loop.stage=3
   check(sim.spirit.advice(sim,30).get("mood")=="rest","independent preparation does not prescribe a new task")
+  if main_game:
+   sim.core_loop.skipped=true
+   var shrine: float=sim.spirit.shrine_x(sim.world.sites.hall)
+   var crystals: int=sim.pouch.amount
+   check(sim.interact(shrine,"spirit"),"main-game shrine accepts a real paid recall during independent preparation")
+   var recalled: Dictionary=sim.spirit.advice(sim,shrine)
+   check(not recalled.is_empty() and not recalled.get("core",false),"explicit paid recall overrides quiet or skipped core guidance")
+   check(sim.pouch.amount==crystals-1,"recall uses the existing one-crystal cost")
+   ticks(sim,600,shrine)
+   check(sim.spirit.advice(sim,shrine).is_empty(),"paid visit expires normally and keeps hidden core preference")
+   sim.core_loop.skipped=false
   sim.core_loop.stage=5
   check(sim.spirit.advice(sim,30).is_empty(),"completed onboarding leaves the player free")
  print("Core spirit: %d assertions, %d failures"%[assertions,failures]);quit(1 if failures else 0)
