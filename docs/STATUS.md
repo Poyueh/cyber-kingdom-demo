@@ -1,6 +1,10 @@
-## v0.0.58 鬼魂與付費召回（發布準備中）
+## v0.0.58 活的引導鬼魂與付費召回（已發布）
 
-最後驗收重現主遊戲首夜後付晶召回被核心自主提示覆蓋；補上付費召回的優先權，包含已略過引導。原期限、費用及快照v22不變。v0.0.57 tag保留，不重寫；尚未發布的候選附件將由本版取代。規格修訂41。完整回歸（既有4565項）、鬼魂44項、原生35項及成品操作Main19／Demo16項通過；兩套五平台內容、原生啟動及簽章已核對，13份附件待上傳及Pages驗證。
+修復核心流程隱藏鬼魂，讓鬼魂依真實採集、持晶與防線狀態帶路、等待、接晶與警戒；主遊戲及 Demo 共用。補上主遊戲首夜後付晶召回的優先權，包含已略過引導。原期限、費用及快照 v22 不變。v0.0.57 未公開的候選附件已撤回，tag 與驗收歷史保留。規格修訂 41。
+
+完整回歸（既有 4565 項）、鬼魂 44 項、原生 35 項及成品操作 Main 19／Demo 16 項通過；兩套五平台內容、macOS 啟動及簽章已核對。Release 416298089 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39107179039 成功，22 個公開檔案與 Demo 成品一致。公開前導、主選單及規格版本已用瀏覽器驗收，無 console errors，未建立玩家旅程。真人理解度及 Windows／手機真機仍待測；iOS 為 Xcode 匯出專案。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.58) · [主遊戲／Demo 下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.58) · [企劃書](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.58) · [驗收紀錄](reports/release-0.0.58/preflight.json) · [設計](design/living-spirit-guide.md) · [Godot 小課](lessons/135-spirit-read-only-projection.md)。
 
 ## v0.0.57 活的引導鬼魂（未發布候選，由v0.0.58取代）
 
