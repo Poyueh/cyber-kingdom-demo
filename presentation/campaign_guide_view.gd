@@ -4,6 +4,8 @@ const Motion=preload("res://presentation/spirit_motion.gd")
 const Art=preload("res://presentation/spirit_companion_art.gd")
 const Style=preload("res://data/spirit_companion.tres")
 const SYMBOLS={"rest":"camp","resident_income":"crystal","work_income":"hammer","merchant_return":"trade","merchant_wait":"trade","merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
+## These tasks already say "follow me" in their own words.
+const LEADING_KINDS: Array[String]=["explore"]
 const LESSON_RANKS: Array[String]=["core.light","core.recruit","core.hammer","core.harvest","core.working","core.collect","core.bow","core.wall","core.assign","core.first_warning","core.first_night","core.autonomy","core.second_night"]
 const GOALS: Dictionary={"resident_income":"guide.income","work_income":"guide.work_income","merchant_return":"guide.merchant_return","merchant_wait":"guide.merchant_wait","merchant":"靠近商人領取龍晶；付一顆委託，隔天再補給。","camp":"拔出劍，點亮最後的營火。","recruit":"把龍晶交給流浪者，邀他留下。","tool":"提供工程錘，居民會自行取用。","harvest":"guide.harvest_local","hunter":"提供弓，讓居民狩獵和防守。","wall":"投入龍晶，讓工匠築起城牆。","defend":"夜色降臨，回去保護營火。","chest":"打開寶箱，補充龍晶。","collect":"靠近龍晶，自動收入袋中。","explore":"沿著荒地探索，尋找居民與資源。"}
 @export_range(18.0,30.0,2.0) var guidance_icon_size: float=22.0
@@ -78,16 +80,17 @@ func _track_progress(game_time: float) -> void:
  if hint.get("mood")=="rest":modulate.a=clampf(1.0-(game_time-_changed_at-7.0)/2.0,0.0,1.0)
 
 func _needs_caption() -> bool:
- # A brief first-use cue, then silence. Only a stalled player gets a spaced reminder.
- if absf(spirit_pose.speed)>35:return false
+ # Each new task is spoken at once, even on the move; arrival and a stalled player are answered soon.
  if hint.get("mood")=="rest" or hint.kind=="farewell":return spirit_pose.age>=0.8 and spirit_pose.age<3.8
+ if spirit_pose.age>=Style.caption_delay and spirit_pose.age<Style.caption_delay+Style.announce_seconds:return true
+ if absf(spirit_pose.speed)>35:return false
  if spirit_pose.near and spirit_pose.near_age>=Style.caption_delay and spirit_pose.near_age<Style.caption_delay+Style.caption_seconds:return true
  return spirit_pose.idle>=Style.reminder_interval and fposmod(spirit_pose.idle-Style.reminder_interval,Style.reminder_interval)<Style.reminder_seconds
 
 func _present_caption() -> void:
  if not is_instance_valid(_guide_label):return
  var goal: String=tr(hint.get("goal",GOALS.get(hint.kind,"擴建避難所，封印裂隙並擊敗巨龍。")))
- if not spirit_pose.near and spirit_pose.mood not in ["rest","guard"]:goal=tr("spirit.follow")
+ if not spirit_pose.near and spirit_pose.mood not in ["rest","guard"] and hint.kind not in LEADING_KINDS:goal=tr("spirit.lead %s")%goal
  if hint.kind=="farewell":goal=tr("你已學會建立家園。需要指引時，回營火旁的引魂壇找我。")
  _guide_label.text=goal
  _guide_label.size=Vector2(minf(260,safe.size.x-24),0)

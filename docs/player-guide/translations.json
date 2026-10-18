@@ -2431,13 +2431,13 @@
     "zh_CN": "新主旅程的鬼魂陪你完成首次经营与防守；两夜后自由继续。旧旅程沿用原开场期限。完整游戏需要后续指引时，可在营火右侧引魂坛投入一晶召回，停留约 18 秒。",
     "en": "The spirit accompanies new main journeys through the first economy and defence loop. Continue freely after two nights. Legacy journeys retain their opening deadline. In the full game, offer one crystal at the shrine right of the fire for about 18 seconds of further guidance."
   },
-  "鬼魂會陪走、回頭等你，靠近目標時用手勢指引；眨眼、披風與收晶反應會跟著情境變化。移動時不顯示引導文字，首次靠近或久未行動時才短暫提醒。圖示縮到手邊，避開騎士、按鈕與互動資訊；可略過或重新顯示。": {
-    "zh_CN": "鬼魂会陪走、回头等你，靠近目标时用手势指引；眨眼、披风与收晶反应会跟着情境变化。移动时不显示引导文字，首次靠近或久未行动时才短暂提醒。图标缩到手边，避开骑士、按钮与互动信息；可略过或重新显示。",
-    "en": "The spirit travels with you, looks back and waits, then gestures beside the target. Blinks, flowing cloth and collection reactions respond to the situation. Guidance text stays hidden while moving and appears briefly on first approach or after a long pause. Small symbols sit by its hand, clear of the knight, controls and interaction information. Hide or restore guidance at any time."
+  "一開始就站在營火旁幾步。鬼魂會陪走、回頭等你；每換一個任務就立刻說出要做什麼，走動中也會說，離目標遠時說「跟我來」，停太久會再提醒。靠近目標時用手勢指引，圖示縮到手邊，避開騎士、按鈕與互動資訊；可略過或重新顯示。": {
+    "zh_CN": "一开始就站在营火旁几步。鬼魂会陪走、回头等你；每换一个任务就立刻说出要做什么，走动中也会说，离目标远时说「跟我来」，停太久会再提醒。靠近目标时用手势指引，图标缩到手边，避开骑士、按钮与互动信息；可略过或重新显示。",
+    "en": "You start a few steps from the campfire. The spirit travels with you and waits; it names each new task at once, even while you move, says \"This way\" when the target is far, and reminds you if you stop too long. Beside the target it gestures; small symbols sit by its hand, clear of the knight, controls and interaction information. Hide or restore guidance at any time."
   },
-  "v0.0.60：森林 Demo 改為完整森林冒險；兩版加快引導，下令弓兵就開始首夜 20 秒預警。": {
-    "zh_CN": "v0.0.60：森林 Demo 改为完整森林冒险；两版加快引导，下令弓兵就开始首夜 20 秒预警。",
-    "en": "v0.0.60: The forest demo becomes the whole forest adventure, and both editions move faster: the 20-second first-night warning starts as soon as an archer is ordered."
+  "v0.0.61：一開始就在營火旁，鬼魂換任務時直接說出要做什麼；主遊戲也有網頁版（試玩站 main/ 路徑）。": {
+    "zh_CN": "v0.0.61：一开始就在营火旁，鬼魂换任务时直接说出要做什么；主游戏也有网页版（试玩站 main/ 路径）。",
+    "en": "v0.0.61: You start beside the campfire and the spirit names each new task at once. The main game now has a web build too, at the main/ path of the trial site."
   },
   "主遊戲選「開始旅程」，Demo 選「開始森林冒險」，兩者都直接引導。先點火、招募、製造錘子，再到附近樹木投入一晶委託採集。靠近工匠收晶後，才開放弓與防線。": {
     "zh_CN": "主游戏选「开始旅程」，Demo 选「开始森林冒险」，两者都直接引导。先点火、招募、制造锤子，再到附近树木投入一晶委托采集。靠近工匠收晶后，才开放弓与防线。",
@@ -2459,8 +2459,8 @@
     "zh_CN": "新主旅程直接带入引导，学会后继续七星旅程。森林 Demo 走同一套引导与完整森林，打倒森林巨龙即完成，另附短指南与独立存档；旧记录保留原设定。",
     "en": "New main journeys start with guidance and continue to the seven worlds. The forest demo follows the same guidance through the whole forest and ends when the forest dragon falls; it has a short guide and separate saves. Older saves keep their original settings."
   },
-  "v0.0.60 起 Demo 是完整森林冒險：主遊戲與 Demo 的包、名稱和存檔分開，共用玩法由主線同步；公開試玩站使用 Demo，不含其餘六星關卡。": {
-    "zh_CN": "v0.0.60 起 Demo 是完整森林冒险：主游戏与 Demo 的包、名称和存档分开，共用玩法由主线同步；公开试玩站使用 Demo，不含其余六星关卡。",
-    "en": "From v0.0.60 the demo is the whole forest adventure. Main-game and demo packages, names and saves stay separate; gameplay updates come from the same main branch. The public trial site runs the demo, without the six later worlds."
+  "v0.0.60 起 Demo 是完整森林冒險：主遊戲與 Demo 的包、名稱和存檔分開，共用玩法由主線同步；試玩站根目錄是 Demo（不含其餘六星關卡），main/ 路徑是主遊戲網頁版。": {
+    "zh_CN": "v0.0.60 起 Demo 是完整森林冒险：主游戏与 Demo 的包、名称和存档分开，共用玩法由主线同步；试玩站根目录是 Demo（不含其余六星关卡），main/ 路径是主游戏网页版。",
+    "en": "From v0.0.60 the demo is the whole forest adventure. Main-game and demo packages, names and saves stay separate; gameplay updates come from the same main branch. The trial site root runs the demo, without the six later worlds; the main/ path runs the main game's web build."
   }
 }

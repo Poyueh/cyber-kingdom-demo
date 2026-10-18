@@ -1,0 +1,19 @@
+{
+  "version": "0.0.61",
+  "source": "50bc3eb6ab74f63beb95d8c98eaccf9430ba3ce9",
+  "spec_revision": 48,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4572,
+  "new_behaviour_tests": {
+    "spirit_voice": "new task spoken within 0.5 s while walking, far caption names the task, arrival within 0.5 s, stall reminder within 8 s",
+    "spawn": "campfire on the first screen",
+    "pages": "Demo at root, Main under main/, checksums, unsafe paths, legacy releases"
+  },
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform (Windows, macOS, Web, Android assets, iOS PCK); macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified; Demo user directory isolated",
+  "local_browser": "Pages layout rebuilt locally with tools/unpack_release_site.py: Main at main/ (intro, menu, journey, spawn beside campfire, ghost names light then recruit within a second, real E lighting) and Demo at root (spawn and ghost caption 1-3 s after start); no console errors",
+  "native_probe": "ghost caption visible 0.32-4.33 s after start and again from 6.03 s while standing still, same at 800x600 and 1440x810",
+  "pending": [
+    "human comprehension of the spoken guidance",
+    "Windows and mobile device playtests"
+  ]
+}
