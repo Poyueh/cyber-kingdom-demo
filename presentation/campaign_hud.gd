@@ -286,6 +286,10 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	var ready: bool=not advice.is_empty() and advice.action in ["invest","open"] and advice.key==choice.key and not interact_button.disabled
 	guide_view.target_cost=int(choice.cost) if ready else 0
 	guide_view.reserved_regions=core_hud.exclusion_rects()
+	for control: Control in [module_button,core_hud.interaction,core_hud.wallet,core_hud.stamina]:
+		if control.is_visible_in_tree():guide_view.reserved_regions.append(control.get_global_rect())
+	for button: TouchScreenButton in [$attack,$pause]:
+		if button.is_visible_in_tree():guide_view.reserved_regions.append(Rect2(button.position,button.texture_normal.get_size()))
 	guide_view.touch_hint=touch
 	guide_view.reserved_caption=immersive_feedback.day_caption_bounds()
 	var growth_bounds: Rect2=settlement_growth.caption_bounds()

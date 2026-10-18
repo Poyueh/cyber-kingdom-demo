@@ -2450,5 +2450,13 @@
   "新主旅程的鬼魂陪你完成首次經營與防守；兩夜後自由繼續。舊旅程沿用原開場期限。完整遊戲需要後續指引時，可在營火右側引魂壇投入一晶召回，停留約 18 秒。": {
     "zh_CN": "新主旅程的鬼魂陪你完成首次经营与防守；两夜后自由继续。旧旅程沿用原开场期限。完整游戏需要后续指引时，可在营火右侧引魂坛投入一晶召回，停留约 18 秒。",
     "en": "The spirit accompanies new main journeys through the first economy and defence loop. Continue freely after two nights. Legacy journeys retain their opening deadline. In the full game, offer one crystal at the shrine right of the fire for about 18 seconds of further guidance."
+  },
+  "鬼魂會陪走、回頭等你，靠近目標時用手勢指引；眨眼、披風與收晶反應會跟著情境變化。移動時不顯示引導文字，首次靠近或久未行動時才短暫提醒。圖示縮到手邊，避開騎士、按鈕與互動資訊；可略過或重新顯示。": {
+    "zh_CN": "鬼魂会陪走、回头等你，靠近目标时用手势指引；眨眼、披风与收晶反应会跟着情境变化。移动时不显示引导文字，首次靠近或久未行动时才短暂提醒。图标缩到手边，避开骑士、按钮与互动信息；可略过或重新显示。",
+    "en": "The spirit travels with you, looks back and waits, then gestures beside the target. Blinks, flowing cloth and collection reactions respond to the situation. Guidance text stays hidden while moving and appears briefly on first approach or after a long pause. Small symbols sit by its hand, clear of the knight, controls and interaction information. Hide or restore guidance at any time."
+  },
+  "v0.0.59：鬼魂重製為探索夥伴，帶路、回頭等待、指向目標與警戒以動作呈現；短句只在需要時出現。主遊戲和 Demo 同步，規則及存檔不變。": {
+    "zh_CN": "v0.0.59：鬼魂重制为探索伙伴，带路、回头等待、指向目标与警戒以动作呈现；短句只在需要时出现。主游戏和 Demo 同步，规则及存档不变。",
+    "en": "v0.0.59: the spirit becomes an exploring companion, with leading, looking back, waiting, pointing and warning gestures. Short cues appear only when needed. Updated in both Main and Demo; rules and saves are unchanged."
   }
 }
