@@ -135,6 +135,7 @@ func _ready() -> void:
 	add_child(settlement_growth)
 	move_child(dashboard,get_child_count()-1)
 	move_child($pause,get_child_count()-1)
+	move_child(core_hud,get_child_count()-1)
 
 func _button_texture(key: String, side: int=64, glyph_size: int=32) -> Texture2D:
 	return preload("res://presentation/refuge_theme.gd").touch_texture(key,side,glyph_size)

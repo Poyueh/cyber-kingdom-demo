@@ -1,0 +1,17 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real frontier opens the independent core trial
+PASS: core wallet is visible in the scene
+PASS: camp exposes a tappable contextual action
+PASS: real pointer click lights camp through input adapter
+PASS: keyboard runs the core knight
+PASS: real attack input works at exhausted stamina
+PASS: orders pause the actual world
+PASS: orders replace pause options without overlap
+PASS: Escape closes orders and resumes cleanly
+PASS: core action stays inside the safe area
+PASS: core action stays inside the safe area
+FAIL: pause menu leaves preparation retry clickable and restores funds
+PASS: retry appears after camp blackout completes
+PASS: retry is clickable above defeat blackout and restores camp
+Core scene assertions: 14; failures: 1

@@ -52,15 +52,16 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  if not paused:panel.hide()
  for binding: Dictionary in _bindings:binding.button.text=tr(binding.key)
  var core: RefCounted=sim.core_loop
+ wallet.visible=not paused or panel.visible
  wallet.text=tr("core.wallet %d")%sim.pouch.amount;wallet.position=safe.position+Vector2(92,22)
  stamina.position=safe.position+Vector2(92,52);stamina.size=Vector2(120,8)
  stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina
  orders_button.position=safe.position+Vector2(18,72);orders_button.visible=core.income>0 and sim.is_running() and (not paused or panel.visible)
  guide_button.position=safe.position+Vector2(18,122);guide_button.visible=sim.is_running() and core.stage<3 and not paused
  guide_button.text=tr("core.show" if core.skipped else "core.skip")
- retry_button.position=safe.position+Vector2(18,172);retry_button.visible=terminal_ready and (paused or not sim.is_running()) and not panel.visible
+ retry_button.position=Vector2(safe.end.x-218,safe.position.y+84);retry_button.size=Vector2(200,44);retry_button.visible=terminal_ready and (paused or not sim.is_running()) and not panel.visible
  retry_button.text=tr("core.retry" if core.checkpoint_index>0 else "core.restart")
- title_button.position=safe.position+Vector2(18,222);title_button.visible=terminal_ready and not sim.is_running()
+ title_button.position=Vector2(safe.end.x-218,safe.position.y+136);title_button.size=Vector2(200,44);title_button.visible=terminal_ready and not sim.is_running()
  caption.position=Vector2(safe.get_center().x-220,safe.position.y+20);caption.size=Vector2(minf(440,safe.size.x-280),74)
  caption.text=tr(core.hint(sim));caption.visible=not paused and (not core.skipped or core.stage>=2) and (sim.is_running() or core.stage==5)
  if sim.mission.outcome=="defeat" and terminal_ready:
