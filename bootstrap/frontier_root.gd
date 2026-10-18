@@ -39,6 +39,9 @@ const PLANET_PROFILES=[preload("res://data/planets/forest.tres"),preload("res://
 @export var journey_paces: Resource=preload("res://data/journey_paces.tres")
 var _journey_pace: int=0
 var journey: Voyage
+@export var core_profile: Resource=preload("res://data/core_loop.tres")
+var _core_trial: bool=false
+var _core_controller: Node
 var _star_travel: Node
 var _arrival_banner: CanvasLayer
 func _planet_profiles() -> Array[Dictionary]:
@@ -63,6 +66,7 @@ func _ready() -> void:
 		get_tree().remove_meta("campaign_launch")
 		campaign_save_path=launch.path
 		if launch.seed>=0:
+			_core_trial=bool(launch.get("core",false))
 			_journey_pace=int(launch.get("pace",0))
 			tuning=tuning.duplicate()
 			tuning.map_seed=launch.seed
@@ -147,6 +151,7 @@ func _ready() -> void:
 	_present_save()
 	_sync_knight_equipment()
 	audio.observe(0,sim,knight.position.x,true)
+	_core_controller=preload("res://bootstrap/core_loop_controller.gd").new();_core_controller.root=self;add_child(_core_controller)
 
 func _click(kind: String) -> void:
 	if is_instance_valid(audio):audio.request(kind)
@@ -159,6 +164,8 @@ func _remember_volumes() -> void:
 	preferences.write(audio.music_volume,audio.effects_volume,audio.ambience_volume,not audio.enabled)
 
 func restart() -> void:
+	if _core_trial and is_instance_valid(_core_controller) and sim.core_loop.checkpoint_index>0:
+		_core_controller.retry();return
 	if progress!=null:
 		# Explicit restart archives the last run; failed storage cannot discard it.
 		if progress.status!="protected" and not save_campaign():return
@@ -173,7 +180,9 @@ func restart() -> void:
 		"person_speed":tuning.resident_speed,"shield_value":tuning.shield_per_crystal}
 	config.merge(tuning.campaign_rules(),true)
 	journey=null
-	if int(config.get("immersive_loop",0))==1:
+	if _core_trial:
+		config=core_profile.resolve(config)
+	elif int(config.get("immersive_loop",0))==1:
 		assert(journey_paces.valid())
 		config.ruin_variation=ruin_variation.rules()
 		config.level_design=planet_levels.rules()
@@ -216,6 +225,7 @@ func _physics_process(seconds: float) -> void:
 	var was_paused:=paused
 	var was_running:=sim.is_running()
 	super._physics_process(seconds)
+	if is_instance_valid(_core_controller):_core_controller.observe()
 	if is_instance_valid(_star_travel):_star_travel.observe()
 	if paused and not was_paused:hud.cancel_touch_gestures()
 	if _requested_throw and not paused and not CampReveal.extracting(sim,knight.position.x):
@@ -308,8 +318,9 @@ func save_campaign() -> bool:
 
 func _apply_restored(restored: Dictionary) -> void:
 	sim=restored.session
+	_core_trial=sim.core_loop.enabled
 	journey=restored.get("journey")
-	if journey==null and sim.life.enabled:
+	if journey==null and sim.life.enabled and not _core_trial:
 		journey=Voyage.new(restored.config,_planet_profiles())
 		# Keep the exact old forest configuration/layout while enabling the envelope.
 		journey.configs[0]=restored.config.duplicate(true)

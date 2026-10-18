@@ -74,3 +74,7 @@ func record_status(available: bool,saved: bool,failed: bool=false) -> void:
 
 func _refresh_language() -> void:
 	for control in _tooltips:control.tooltip_text=tr(_tooltips[control])
+
+func set_core_trial(enabled: bool) -> void:
+	var star: Button=find_child("StarChart",true,false)
+	if star!=null:star.visible=not enabled

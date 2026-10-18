@@ -1,6 +1,7 @@
 extends "res://presentation/frontier_hud.gd"
 const Options=preload("res://presentation/campaign_options.gd")
 @export_enum("Automatic","Touch","Desktop") var control_mode:int=0
+var core_hud: Control
 var options_menu: PanelContainer
 var exploration_map: PanelContainer
 const Guide=preload("res://application/campaign_guide.gd")
@@ -46,6 +47,7 @@ var settlement_growth: Control
 
 func _ready() -> void:
 	super._ready()
+	core_hud=preload("res://presentation/core_loop_hud.gd").new();add_child(core_hud)
 	interact_button.action_mode=BaseButton.ACTION_MODE_BUTTON_PRESS
 	interact_button.button_down.connect(func(): interact_held=true)
 	interact_button.button_up.connect(func(): interact_held=false)
@@ -193,6 +195,7 @@ func _refresh_gesture_exclusions() -> void:
 			drag_controls.exclusions.append(Rect2(button.position-Vector2.ONE*margin,Vector2.ONE*(side+margin*2)))
 	if is_instance_valid(module_button) and module_button.visible:
 		drag_controls.exclusions.append(Rect2(module_button.position,module_button.size))
+	if is_instance_valid(core_hud):drag_controls.exclusions.append_array(core_hud.exclusion_rects())
 	drag_controls.queue_redraw()
 
 func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
@@ -286,6 +289,11 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 		guide_view.reserved_caption=guide_view.reserved_caption.merge(growth_bounds) if guide_view.reserved_caption.has_area() else growth_bounds
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
 	guide_view.track(get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),sim.workforce.elapsed)
+	if sim.core_loop.enabled:
+		guide_view.hide();night_watch_view.hide();settlement_growth.hide();module_hint.hide()
+		if core_hud.panel.visible:options_menu.hide()
+	options_menu.set_core_trial(sim.core_loop.enabled)
+	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition())
 	if not sim.is_running():
 		for overlay: CanvasItem in [immersive_feedback,night_watch_view,settlement_growth,module_hint,guide_view]:overlay.hide()
 

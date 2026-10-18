@@ -2358,5 +2358,41 @@
   "適用 v0.0.53：遺跡先預告能力用途，解開後指引領取，取得後說明操作；既有旅程與獎勵保留。": {
     "en": "For v0.0.53: ruins preview reward benefits, guide collection after solving, and explain how to activate the acquired ability. Existing journeys and rewards are preserved.",
     "zh_CN": "适用 v0.0.53：遗迹先预告能力用途，解开后指引领取，取得后说明操作；既有旅程与奖励保留。"
+  },
+  "森林核心試玩：先學會讓營火活過兩夜。": {
+    "zh_CN": "森林核心试玩：先学会让营火活过两夜。",
+    "en": "Forest core trial: keep the campfire alive for two nights."
+  },
+  "主選單選「森林核心試玩」建立獨立紀錄。先點火、招募居民、製造錘子，再到近處樹木投入一晶委託採集。居民完成後靠近收晶，才開放弓與防線；略過引導不會跳過這個條件。": {
+    "zh_CN": "主选单选「森林核心试玩」建立独立记录。先点火、招募居民、制造锤子，再到近处树木投入一晶委托采集。居民完成后靠近收晶，才开放弓与防线；略过引导不会跳过这个条件。",
+    "en": "Choose Forest core trial for a separate save. Light the fire, recruit a resident, supply a hammer, then invest one crystal at a nearby tree. Collect the worker’s harvest to unlock bows and defences; hiding guidance does not skip this requirement."
+  },
+  "先備妥右牆與弓兵，再用「配置守軍」免費指定右側。建造完成且弓兵真正到位，才開始首夜預警；不用擔心閱讀提示時夜襲突然開始。": {
+    "zh_CN": "先备妥右墙与弓兵，再用「配置守军」免费指定右侧。建造完成且弓兵真正到位，才开始首夜预警；不用担心阅读提示时夜袭突然开始。",
+    "en": "Build the right wall and equip an archer. Use Assign guards to send them right for free. The first warning waits for completed construction and the archer’s actual arrival."
+  },
+  "首夜過後時間正常推進，下一夜兩側先後受襲。可以再採集、招募、加固或探索：西側林間有安靜補給，東側晶巢有守獸。弓兵白天在所屬側活動並提前回防；駐塔者留在塔上。": {
+    "zh_CN": "首夜过后时间正常推进，下一夜两侧先后受袭。可以再采集、招募、加固或探索：西侧林间有安静补给，东侧晶巢有守兽。弓兵白天在所属侧活动并提前回防；驻塔者留在塔上。",
+    "en": "After the first night, time advances normally and both sides will be attacked. Harvest, recruit, reinforce or explore: quiet supplies lie west, a guarded nest east. Archers hunt on their assigned side and return early; tower guards stay at their posts."
+  },
+  "核心試玩顯示小型龍晶數字與情境體力條。普攻不耗體力，衝刺耗盡仍能一般跑步並恢復。暫停或失敗後可重試：第一筆採集收入後的準備點，或首夜結束後的自主準備點；資源與世界完整回復，不保留後來收益。": {
+    "zh_CN": "核心试玩显示小型龙晶数字与情境体力条。普攻不耗体力，冲刺耗尽仍能一般跑步并恢复。暂停或失败后可重试：第一笔采集收入后的准备点，或首夜结束后的自主准备点；资源与世界完整恢复，不保留后来收益。",
+    "en": "The core trial shows a small crystal count and a contextual stamina bar. Basic attacks are free; exhaustion permits normal running and recovery. Retry from pause or defeat restores the preparation point after first harvest income, or after the first night, including all resources and world state. Later rewards are not retained."
+  },
+  "以下七星旅程章節保留完整模式的規則；核心試玩沒有星球航行、巨龍或部件收集。": {
+    "zh_CN": "以下七星旅程章节保留完整模式的规则；核心试玩没有星球航行、巨龙或部件收集。",
+    "en": "The seven-world chapters below describe the full journey. The core trial excludes space travel, dragons and module collection."
+  },
+  "本次更新加入獨立森林核心試玩：收入引導、免費守軍配置、兩夜防守與完整準備點重試；七星旅程與既有獎勵保留。": {
+    "zh_CN": "本次更新加入独立森林核心试玩：收入引导、免费守军配置、两夜防守与完整准备点重试；七星旅程与既有奖励保留。",
+    "en": "This update adds an independent forest core trial: harvest guidance, free guard assignments, two nights of defence and complete preparation-point retries. Existing journeys and rewards remain intact."
+  },
+  "本指南同時介紹森林核心試玩與七星旅程；兩種模式的體力、引導和守軍規則不同，請先閱讀核心試玩專節。舊紀錄保留原設定。": {
+    "zh_CN": "本指南同时介绍森林核心试玩与七星旅程；两种模式的体力、引导和守军规则不同，请先阅读核心试玩专节。旧记录保留原设置。",
+    "en": "This guide covers the forest core trial and the seven-world journey. Their stamina, guidance and guard rules differ; read the core-trial section first. Existing saves retain their rules."
+  },
+  "七星旅程以掉晶、喘息與天色提示狀態；核心試玩另提供小型晶數與情境體力條。兩種模式都用物件發光及龍晶格提示互動與費用。": {
+    "zh_CN": "七星旅程以掉晶、喘息与天色提示状态；核心试玩另提供小型晶数与情境体力条。两种模式都用物件发光及龙晶格提示互动与费用。",
+    "en": "The seven-world journey conveys state through dropped crystals, breathing and the sky. The core trial adds a small crystal count and contextual stamina bar. Both modes highlight interactable objects and show crystal costs."
   }
 }

@@ -9,6 +9,7 @@ static func number(value) -> bool:
 	return value is int or value is float
 
 static func config_valid(config: Dictionary) -> bool:
+	if not preload("res://domain/core_loop_rules.gd").valid(config):return false
 	if not preload("res://domain/rift_layout.gd").valid_config(config):return false
 	if not preload("res://domain/planet_level_layout.gd").valid_config(config):return false
 	if not preload("res://domain/trail_rules.gd").valid_config(config):return false

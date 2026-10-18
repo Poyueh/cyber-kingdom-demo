@@ -2,6 +2,7 @@ extends RefCounted
 ## Ready -> compulsory breathing stop -> winded slow walk -> recovering run -> rested sprint.
 const Rules=preload("res://domain/travel_recovery_rules.gd")
 var rules: Rules=Rules.new()
+var core_sprint: RefCounted
 var exhausted: bool=false
 var fast_multiplier: float=1.65
 var drain_per_second: float=18.0
@@ -14,9 +15,11 @@ var breath_ticks: int=0
 
 func configure(config: Dictionary) -> void:
  rules.apply(config)
+ if config.get("core_loop_version",0)==1:core_sprint=preload("res://application/core_sprint.gd").new(float(config.core_sprint_ratio))
 
 func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> float:
  if seconds<=0 or not is_finite(seconds) or not hero.is_alive():return 0
+ if core_sprint!=null:return core_sprint.axis(self,hero,request,seconds)
  if not forced_rest:return _legacy_axis(hero,request,seconds)
  var elapsed: int=maxi(0,tick-last_tick)
  last_tick=tick
