@@ -1,0 +1,59 @@
+{
+  "version": "0.0.55",
+  "source_commit": "7f4433ac7894bcf9a184e9af8b1ce444dad9572e",
+  "source_tree": "61b92fbebe0d3b0d58ec04eca4bb4d9fb54e9f2f",
+  "spec_revision": 35,
+  "save_schema": 22,
+  "full_check": true,
+  "behavior_assertions": 4565,
+  "core_flow_assertions": 72,
+  "native_core_assertions": 14,
+  "archive_integrity_verified": true,
+  "published": false,
+  "assets": [
+    {
+      "name": "Cyber-Kingdom-Android-v0.0.55-debug.apk",
+      "size": 103472790,
+      "sha256": "19ad131bb906fbab007e4eebcb627337d549408e71b7c6b95c57e2f250ffc547"
+    },
+    {
+      "name": "Cyber-Kingdom-Guide-v0.0.55.html",
+      "size": 15821880,
+      "sha256": "342c75ddbdbaf65b7c2af13323865a34d4940faa7eb9da1a9a7c75b533020029"
+    },
+    {
+      "name": "Cyber-Kingdom-Web-v0.0.55.zip",
+      "size": 104656922,
+      "sha256": "742ac0a73e9ce94579313569680440dd8a8f6c69918d5ceb0e0489f6ff6d6d6f"
+    },
+    {
+      "name": "Cyber-Kingdom-Windows-v0.0.55.zip",
+      "size": 112127251,
+      "sha256": "347a66052e6ccd8f0ba99b423d780d1ac01a935ec411e9c866bad1f4dfb00fdb"
+    },
+    {
+      "name": "Cyber-Kingdom-iOS-v0.0.55-Xcode.zip",
+      "size": 186900776,
+      "sha256": "6b212ba30ddfda36637503479cc0ae58b86196c22352955035cb14f39874f65a"
+    },
+    {
+      "name": "Cyber-Kingdom-macOS-v0.0.55.zip",
+      "size": 134549296,
+      "sha256": "8fc2405137ddbcf88bb03dce4631d0b99b06d3128cae6d56195259ddef421e2a"
+    }
+  ],
+  "limitations": [
+    "five-novice playtest not performed",
+    "10–15 minute human playtime distribution not measured",
+    "Windows and mobile physical devices not tested",
+    "macOS ad-hoc, not notarized",
+    "Android debug certificate",
+    "iOS Xcode project requires signing"
+  ],
+  "packaged_core_assertions": 72,
+  "packaged_scene_assertions": 14,
+  "macos_signature_verified": true,
+  "android_signature_and_alignment_verified": true,
+  "local_browser_core_entry_verified": true,
+  "local_browser_errors": 0
+}
