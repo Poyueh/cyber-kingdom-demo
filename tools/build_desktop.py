@@ -24,7 +24,7 @@ def run_logged(args, path, env=None):
     if result.returncode or re.search(r"SCRIPT ERROR:|(?:^|\s)ERROR:", output):
         raise RuntimeError("Build failed; see " + str(path))
 
-def prepare_tree(ref, destination):
+def prepare_tree(ref, destination, edition=None, configure_edition=True):
     tree = git("rev-parse", "--verify", "--end-of-options", ref + "^{tree}").decode().strip()
     with tarfile.open(fileobj=io.BytesIO(git("archive", tree))) as archive:
         for member in archive.getmembers():
@@ -53,6 +53,8 @@ def prepare_tree(ref, destination):
     else:
         content += "\n[rendering]\n" + setting + "=true\n"
     project.write_text(content)
+    from build_distribution import configure
+    if configure_edition:configure(destination, edition)
     return tree
 
 def main():
@@ -60,22 +62,27 @@ def main():
     parser.add_argument("--ref", default="HEAD", help="Commit or staged tree to export")
     parser.add_argument("--output", type=Path, required=True, help="New output directory (must not exist)")
     parser.add_argument("--godot", default=os.environ.get("GODOT_BIN", "/Applications/Godot.app/Contents/MacOS/Godot"))
+    parser.add_argument("--edition", choices=["full","demo"])
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     with tempfile.TemporaryDirectory(prefix="cyber-desktop-") as folder:
         stage = Path(folder)
-        tree = prepare_tree(args.ref, stage)
+        tree = prepare_tree(args.ref, stage, args.edition)
+        shutil.copyfile(stage / "distribution-manifest.json", output / "distribution-manifest.json")
         engine = [args.godot, "--headless", "--path", str(stage)]
         run_logged(engine + ["--editor", "--import"], output / "import.log")
+        edition_name = json.loads((stage / "distribution-manifest.json").read_text())["edition"]
+        app_name = "Cyber Kingdom Forest Demo" if edition_name=="demo" else "Cyber Kingdom"
         mac = output / "macOS"
         windows = output / "Windows"
         mac.mkdir()
         windows.mkdir()
-        run_logged(engine + ["--export-release", "macOS Demo", str(mac / "Cyber Kingdom Demo.app")], output / "macOS-export.log")
-        run_logged(engine + ["--export-release", "Windows Demo", str(windows / "Cyber Kingdom Demo.exe")], output / "Windows-export.log")
+        run_logged(engine + ["--export-release", "macOS Demo", str(mac / (app_name + ".app"))], output / "macOS-export.log")
+        run_logged(engine + ["--export-release", "Windows Demo", str(windows / (app_name + ".exe"))], output / "Windows-export.log")
+        run_logged([args.godot, "--headless", "--main-pack", str(mac / (app_name + ".app") / "Contents/Resources" / (app_name + ".pck")), "--script", str(stage / "tools/test_exported_distribution.gd")], output / "distribution-test.log")
         # ditto retains the app bundle's executable bits and macOS metadata.
-        run_logged(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent", str(mac / "Cyber Kingdom Demo.app"), str(output / "Cyber-Kingdom-macOS.zip")], output / "macOS-zip.log")
+        run_logged(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent", str(mac / (app_name + ".app")), str(output / "Cyber-Kingdom-macOS.zip")], output / "macOS-zip.log")
         shutil.make_archive(str(output / "Cyber-Kingdom-Windows"), "zip", windows)
         checksums = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in output.glob("*.zip")}
         version = subprocess.check_output([args.godot, "--version"], text=True).strip()

@@ -41,6 +41,7 @@ var _journey_pace: int=0
 var journey: Voyage
 @export var core_profile: Resource=preload("res://data/core_loop.tres")
 var _core_trial: bool=false
+var _guided_campaign: bool=false
 var _core_controller: Node
 var _star_travel: Node
 var _arrival_banner: CanvasLayer
@@ -50,6 +51,9 @@ func _planet_profiles() -> Array[Dictionary]:
 	return result
 
 func _ready() -> void:
+	if preload("res://infrastructure/distribution.gd").demo():
+		_core_trial=true
+		if campaign_save_path=="user://campaign_v1.json":campaign_save_path="user://forest_demo_v1.json"
 	sword_feedback = SwordFeedback.new()
 	sword_feedback.style = sword_style
 	sword_feedback.camera = $Knight/Camera2D
@@ -66,7 +70,8 @@ func _ready() -> void:
 		get_tree().remove_meta("campaign_launch")
 		campaign_save_path=launch.path
 		if launch.seed>=0:
-			_core_trial=bool(launch.get("core",false))
+			_core_trial=bool(launch.get("core",false)) or preload("res://infrastructure/distribution.gd").demo()
+			_guided_campaign=not _core_trial
 			_journey_pace=int(launch.get("pace",0))
 			tuning=tuning.duplicate()
 			tuning.map_seed=launch.seed
@@ -111,7 +116,8 @@ func _ready() -> void:
 	if not campaign_save_path.is_empty() and ProjectSettings.get_setting("campaign/persistence_enabled",true) and (campaign_save_path!="user://campaign_v1.json" or "--no-campaign-save" not in OS.get_cmdline_user_args()):
 		progress=CampaignProgress.new(CampaignStore.new(campaign_save_path))
 		var restored: Dictionary=progress.open()
-		if not restored.is_empty():
+		if not restored.is_empty() and not preload("res://infrastructure/distribution.gd").accepts(restored):progress.status="protected"
+		if not restored.is_empty() and preload("res://infrastructure/distribution.gd").accepts(restored):
 			_apply_restored(restored)
 		elif progress.status=="protected":
 			paused=true
@@ -191,6 +197,8 @@ func restart() -> void:
 		journey=preload("res://application/journey_setup.gd").create(config,_planet_profiles(),journey_paces.find(_journey_pace).rules())
 		for id: int in range(journey.configs.size()):
 			journey.configs[id].merge({"rift_layout_version":1,"rift_left_count":PLANET_PROFILES[id].left_gates,"rift_right_count":PLANET_PROFILES[id].right_gates})
+		if _guided_campaign:
+			for id: int in range(journey.configs.size()):journey.configs[id]=core_profile.resolve_campaign(journey.configs[id])
 		config=journey.configs[0]
 	_campaign_config=config
 	sim = FrontierSession.new(config,Mapper.knight_stats(knight_tuning,combo_tuning))
@@ -318,7 +326,8 @@ func save_campaign() -> bool:
 
 func _apply_restored(restored: Dictionary) -> void:
 	sim=restored.session
-	_core_trial=sim.core_loop.enabled
+	_core_trial=sim.core_loop.trial
+	_guided_campaign=sim.core_loop.enabled and not _core_trial
 	journey=restored.get("journey")
 	if journey==null and sim.life.enabled and not _core_trial:
 		journey=Voyage.new(restored.config,_planet_profiles())

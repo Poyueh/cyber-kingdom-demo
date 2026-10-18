@@ -266,9 +266,9 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	if not sim.core_loop.restore(data.core_loop):return _invalid()
 	if sim.core_loop.enabled:
 		if sim.core_loop.orders.targets.size()>sim.world.people.size():return _invalid()
-		if sim.core_loop.stage>0 and sim.core_loop.income<=0:return _invalid()
-		if sim.core_loop.stage>=3 and sim.clock.survived<1:return _invalid()
-		if sim.core_loop.stage==5 and sim.clock.survived<2:return _invalid()
+		if sim.core_loop.stage>0 and sim.core_loop.income<=0 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
+		if sim.core_loop.stage>=3 and sim.clock.survived<1 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
+		if sim.core_loop.stage==5 and sim.clock.survived<2 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
 		var point: Dictionary=sim.core_loop.checkpoint
 		if embedded:
 			if not point.is_empty() or sim.core_loop.checkpoint_pending!=0:return _invalid()

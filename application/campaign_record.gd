@@ -8,4 +8,4 @@ static func describe(store: Store) -> Dictionary:
 	if restored.is_empty():return {"status":progress.status}
 	var sim=restored.session
 	return {"status":"ready","day":sim.clock.day,"settlement":sim.frontier.city_level,
-		"core":sim.core_loop.enabled,"pace":int(restored.config.get("journey_style",-1)),"seed":sim.map_seed,"outcome":sim.mission.outcome,"crystals":sim.pouch.amount}
+		"core":sim.core_loop.trial,"pace":int(restored.config.get("journey_style",-1)),"seed":sim.map_seed,"outcome":sim.mission.outcome,"crystals":sim.pouch.amount}

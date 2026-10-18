@@ -1,7 +1,7 @@
 name: Check game specification sync
 on:
   push:
-    branches: [main, develop, 'feature/**', 'release/**', 'hotfix/**']
+    branches: [main, develop, demo, 'feature/**', 'release/**', 'hotfix/**']
   pull_request:
 permissions:
   contents: read

@@ -291,9 +291,11 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	guide_view.present(advice,_last_safe_rect,at,Rect2(interact_button.position,interact_button.size),ready)
 	guide_view.track(get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),sim.workforce.elapsed)
 	if sim.core_loop.enabled:
-		guide_view.hide();night_watch_view.hide();settlement_growth.hide();module_hint.hide()
+		guide_view.hide()
+		if sim.core_loop.trial or sim.core_loop.stage<3:
+			night_watch_view.hide();settlement_growth.hide();module_hint.hide()
 		if core_hud.panel.visible:options_menu.hide()
-	options_menu.set_core_trial(sim.core_loop.enabled)
+	options_menu.set_core_trial(sim.core_loop.trial)
 	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition())
 	if not sim.is_running():
 		for overlay: CanvasItem in [immersive_feedback,night_watch_view,settlement_growth,module_hint,guide_view]:overlay.hide()

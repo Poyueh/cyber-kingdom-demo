@@ -15,7 +15,7 @@ var breath_ticks: int=0
 
 func configure(config: Dictionary) -> void:
  rules.apply(config)
- if config.get("core_loop_version",0)==1:core_sprint=preload("res://application/core_sprint.gd").new(float(config.core_sprint_ratio))
+ if config.get("core_loop_version",0) in [1,2]:core_sprint=preload("res://application/core_sprint.gd").new(float(config.core_sprint_ratio))
 
 func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> float:
  if seconds<=0 or not is_finite(seconds) or not hero.is_alive():return 0
