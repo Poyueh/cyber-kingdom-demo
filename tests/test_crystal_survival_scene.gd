@@ -5,7 +5,7 @@ func run_scene() -> void:
  game.knight.position=Vector2(800,430);game.sim.world.people.clear();await frames(4)
  var purse=game.hud.immersive_feedback.purse
  await frames(230)
- check(purse.modulate.a<0.01,"idle crystal purse fades completely out")
+ check(purse.visible and purse.modulate.a>0.9,"the crystal purse stays on screen while idle")
  key(KEY_Q,true);await frames(2);key(KEY_Q,false);await frames(2)
  check(purse.modulate.a>0.9 and not purse._flights.is_empty(),"throwing crystal reveals purse and animates removal")
  game.sim.pouch.drops.clear()

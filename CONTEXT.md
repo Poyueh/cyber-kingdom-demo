@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-20 v0.0.66：體力條在騎士腳下；晶袋常駐，持有量為龍晶圖示加「×N」（`core_loop_hud.wallet_icon`）。引導後鬼魂喊目標：`application/spirit_callouts.gd`（mood `cheer`，每 20 秒重喊）。點火組裝動畫依 `site_visible` 決定是否組裝部件工坊（`camp_reveal.assembling_sites`）。快照v22不變。
+
 2026-10-20 v0.0.65：引導版森林城牆 -1000／1060、塔 -880／970，營地內相鄰建築至少 150（`core_loop_layout.gd`）；引魂壇 hall+330。部件工坊找到部件才出現。沒派守城的獵人第一夜後白天狩獵；動物依位置歸區（`_game_discovered`）。全螢幕：`presentation/fullscreen_switch.gd`＋`web/fullscreen.js`。網頁效能：`data/web_performance.tres`（手機 30 幀／物理 30Hz、電腦 60 幀、音樂串流）、`web/frame-pacing.js`（不用 Engine.max_fps）、`web/phone-display.js`（像素比上限 2）。快照v22不變。
 
 2026-10-19 v0.0.64：居民被打回流浪者時移除 `roam_role`，在倒下處重新漫遊（有工作的居民可能從未漫遊，舊錨點仍是野外）。Demo 開局 12 晶（`demo_starting_crystals`），主遊戲 6 晶。網頁外殼的 `web/touch-guard.*` 阻止下拉重新整理。快照v22不變。

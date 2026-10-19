@@ -2399,9 +2399,9 @@
     "zh_CN": "暂停后在画面右侧点「重试准备阶段」；失败时等黑幕结束再重试。首次采集前尚未建立准备点，会显示重新开始。",
     "en": "Pause and select Retry preparation on the right. After defeat, wait for the blackout to finish. Before the first harvest, no preparation point exists, so the button restarts the trial."
   },
-  "新主旅程與 Demo 的晶數在右上晶袋旁，體力條只在消耗時出現在騎士頭頂；另有用途與付款進度。": {
-    "zh_CN": "新主旅程与 Demo 的晶数在右上晶袋旁，体力条只在消耗时出现在骑士头顶；另有用途与付款进度。",
-    "en": "In new journeys and the demo, the crystal count sits beside the pouch at top right, and the stamina bar appears over the knight's head only while it is spent. Use and payment progress are shown too."
+  "新主旅程與 Demo 的晶袋常駐在右上，旁邊以龍晶圖示加「×數字」顯示持有量；體力條只在消耗時出現在騎士腳下；另有用途與付款進度。": {
+    "zh_CN": "新主旅程与 Demo 的晶袋常驻在右上，旁边以龙晶图标加「×数字」显示持有量；体力条只在消耗时出现在骑士脚下；另有用途与付款进度。",
+    "en": "In new journeys and the demo the pouch stays at top right, with a crystal icon and \"×count\" beside it; the stamina bar appears under the knight's feet only while it is spent. Use and payment progress are shown too."
   },
   "從營火學會經營與防守": {
     "en": "Learn to build and defend your refuge",
@@ -2431,9 +2431,9 @@
     "zh_CN": "新主旅程的鬼魂陪你完成首次经营与防守；两夜后自由继续。旧旅程沿用原开场期限。完整游戏需要后续指引时，可在营火右侧引魂坛投入一晶召回，停留约 18 秒。",
     "en": "The spirit accompanies new main journeys through the first economy and defence loop. Continue freely after two nights. Legacy journeys retain their opening deadline. In the full game, offer one crystal at the shrine right of the fire for about 18 seconds of further guidance."
   },
-  "一開始就站在營火旁幾步。鬼魂會陪走、回頭等你；每換一個任務就立刻說出要做什麼，走動中也會說，離目標遠時說「跟我來」，停太久會再提醒。靠近目標時用手勢指引，圖示縮到手邊，避開騎士、按鈕與互動資訊；可略過或重新顯示。": {
-    "zh_CN": "一开始就站在营火旁几步。鬼魂会陪走、回头等你；每换一个任务就立刻说出要做什么，走动中也会说，离目标远时说「跟我来」，停太久会再提醒。靠近目标时用手势指引，图标缩到手边，避开骑士、按钮与互动信息；可略过或重新显示。",
-    "en": "You start a few steps from the campfire. The spirit travels with you and waits; it names each new task at once, even while you move, says \"This way\" when the target is far, and reminds you if you stop too long. Beside the target it gestures; small symbols sit by its hand, clear of the knight, controls and interaction information. Hide or restore guidance at any time."
+  "一開始就站在營火旁幾步。鬼魂會陪走、回頭等你；每換一個任務就立刻說出要做什麼，走動中也會說，離目標遠時說「跟我來」，停太久會再提醒。引導結束後，鬼魂會持續喊出當下目標：建造、採集龍晶、撐過夜襲、封門。靠近目標時用手勢指引，圖示縮到手邊，避開騎士、按鈕與互動資訊；可略過或重新顯示。": {
+    "zh_CN": "一开始就站在营火旁几步。鬼魂会陪走、回头等你；每换一个任务就立刻说出要做什么，走动中也会说，离目标远时说「跟我来」，停太久会再提醒。引导结束后，鬼魂会持续喊出当下目标：建造、采集龙晶、撑过夜袭、封门。靠近目标时用手势指引，图标缩到手边，避开骑士、按钮与互动信息；可略过或重新显示。",
+    "en": "You start a few steps from the campfire. The spirit travels with you and waits; it names each new task at once, even while you move, says \"This way\" when the target is far, and reminds you if you stop too long. After the guided opening it keeps calling the goal of the moment: build, gather crystals, survive the night raid, seal the gates. Beside the target it gestures; small symbols sit by its hand, clear of the knight, controls and interaction information. Hide or restore guidance at any time."
   },
   "v0.0.61：一開始就在營火旁，鬼魂換任務時直接說出要做什麼；主遊戲也有網頁版（試玩站 main/ 路徑）。": {
     "zh_CN": "v0.0.61：一开始就在营火旁，鬼魂换任务时直接说出要做什么；主游戏也有网页版（试玩站 main/ 路径）。",

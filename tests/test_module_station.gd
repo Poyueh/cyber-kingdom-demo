@@ -17,3 +17,12 @@ func test_module_workshop_waits_for_the_first_module(t):
 	sim.modules.found.append(str(sim.modules.relics[0].id))
 	t.truth(sim.site_visible("drill"),"the workshop appears once a module is found")
 	t.truth(sim.can_use_module_station(station),"and it can be used right away")
+
+## Lighting the camp assembled the workshop with scaffolding, then the normal view hid it again.
+func test_founding_does_not_flash_the_hidden_module_workshop(t):
+	var sim: RefCounted=load("res://tests/test_resident_revert.gd").new().guided()
+	var reveal: RefCounted=load("res://presentation/camp_reveal.gd").new()
+	t.truth(not reveal.assembling_sites(sim).has("drill"),"the founding assembly leaves out a workshop with no module")
+	sim.modules.found.append(str(sim.modules.relics[0].id))
+	sim.core_loop.stage=3
+	t.truth(reveal.assembling_sites(sim).has("drill"),"once a module is found the workshop is part of the camp")
