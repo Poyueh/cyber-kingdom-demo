@@ -25,6 +25,13 @@ func run_scene() -> void:
  game.sim.spirit.opening_finished=true;game.sim.spirit.expires_tick=0
  for region: Dictionary in game.sim.frontier.regions:region.discovered=true
  for site: String in ["workshop","farm_tools","hunt_tools","armory"]:game.sim.built[site]=true
+ # The artificer's workshop appears only once a module has been found: claim one the normal way.
+ for shrine: RefCounted in game.sim.trials.sites:
+  for station: int in shrine.order:
+   game.sim.advance(0.1,shrine.positions[station])
+   game.sim.interact(shrine.positions[station],"trial:%s:%d"%[shrine.id,station])
+ game.sim.advance(0.1,game.sim.modules.relics[0].x)
+ check(not game.sim.modules.found.is_empty(),"a module is found before visiting the artificer")
  var body: Dictionary={"x":0.0,"y":430.0,"vx":0.0,"vy":0.0}
  place(2000);step(10)
  var before: Dictionary=Codec.new().capture(game.sim,game._campaign_config,body)
