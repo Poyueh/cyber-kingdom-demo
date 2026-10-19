@@ -1,0 +1,53 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: world data membership: desert
+PASS: level membership: desert
+PASS: encounter membership: desert
+PASS: dragon data membership: desert
+PASS: dragon atlas membership: desert
+PASS: planet scenery membership: desert
+PASS: world data membership: frost
+PASS: level membership: frost
+PASS: encounter membership: frost
+PASS: dragon data membership: frost
+PASS: dragon atlas membership: frost
+PASS: planet scenery membership: frost
+PASS: world data membership: swamp
+PASS: level membership: swamp
+PASS: encounter membership: swamp
+PASS: dragon data membership: swamp
+PASS: dragon atlas membership: swamp
+PASS: planet scenery membership: swamp
+PASS: world data membership: volcanic
+PASS: level membership: volcanic
+PASS: encounter membership: volcanic
+PASS: dragon data membership: volcanic
+PASS: dragon atlas membership: volcanic
+PASS: planet scenery membership: volcanic
+PASS: world data membership: storm
+PASS: level membership: storm
+PASS: encounter membership: storm
+PASS: dragon data membership: storm
+PASS: dragon atlas membership: storm
+PASS: planet scenery membership: storm
+PASS: world data membership: void
+PASS: level membership: void
+PASS: encounter membership: void
+PASS: dragon data membership: void
+PASS: dragon atlas membership: void
+PASS: planet scenery membership: void
+PASS: only main edition offers full journey
+PASS: edition uses isolated record directory
+PASS: shipped scene resolves correct guidance mode
+PASS: demo cannot create a seven-world envelope
+PASS: both editions play the full forest map
+PASS: both editions ship the merchant and ruin discoveries
+PASS: both editions ship gates for engineers to seal
+PASS: only the main edition can build a rocket and travel
+PASS: common guidance UI renders in shipped scene
+PASS: shipped companion is visible with a real core objective
+PASS: shipped UI has no duplicate static tutorial
+PASS: shipped companion survives the old time limit
+PASS: edition accepts its own record
+PASS: demo refuses seven-world record
+Distribution assertions: 50; failures: 0

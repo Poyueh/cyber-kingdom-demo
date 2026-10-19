@@ -1,3 +1,4 @@
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -5,18 +6,31 @@ from unittest.mock import patch
 from build_web import export_project, validate_export
 
 class WebBuildTests(unittest.TestCase):
-    def test_export_bundles_reader_assets_from_committed_source(self):
-        from build_web import install_guide_reader
+    def test_export_bundles_page_assets_from_committed_source(self):
+        from build_web import PAGE_ASSETS, install_page_assets
         with tempfile.TemporaryDirectory() as folder:
             stage=Path(folder)/'source'; web=Path(folder)/'web'
             (stage/'web').mkdir(parents=True); web.mkdir()
-            for name in ('guide-reader.js','guide-reader.css'):
+            for name in PAGE_ASSETS:
                 (stage/'web'/name).write_text('committed '+name)
-            install_guide_reader(stage,web)
-            for name in ('guide-reader.js','guide-reader.css'):
+            install_page_assets(stage,web)
+            for name in PAGE_ASSETS:
                 self.assertEqual((web/name).read_text(),'committed '+name)
             (stage/'web/guide-reader.js').unlink()
-            with self.assertRaises(FileNotFoundError):install_guide_reader(stage,web)
+            with self.assertRaises(FileNotFoundError):install_page_assets(stage,web)
+
+    def test_page_shell_guards_phone_swipes(self):
+        # A downward swipe invests crystals; it must never pull-to-refresh the page.
+        from build_web import PAGE_ASSETS
+        root=Path(__file__).resolve().parents[1]
+        head=re.search(r'^html/head_include="(.*)"$',(root/'export_presets.cfg').read_text(),re.M).group(1)
+        for name in ('touch-guard.css','touch-guard.js','guide-reader.css','guide-reader.js'):
+            self.assertIn(name,PAGE_ASSETS)
+            self.assertIn(name,head)
+        css=(root/'web/touch-guard.css').read_text()
+        self.assertIn('overscroll-behavior: none',css)
+        script=(root/'web/touch-guard.js').read_text()
+        self.assertIn("'touchmove'",script);self.assertIn('passive: false',script)
 
     def test_existing_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as folder:

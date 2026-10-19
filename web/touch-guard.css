@@ -1,0 +1,13 @@
+/* Phones: a downward swipe invests crystals, so it must never pull-to-refresh or bounce the page. */
+html {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  overscroll-behavior: none;
+  touch-action: none;
+}

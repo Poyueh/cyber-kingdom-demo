@@ -107,6 +107,9 @@ func hit_person(index: int) -> bool:
 		return false
 	people[index].role = "wanderer"
 	people[index].hurt = 2.0
+	# Working roles may never have roamed, so the old wild anchor can still be stored.
+	# Dropping it makes the new wanderer roam where they fell.
+	people[index].erase("roam_role")
 	return true
 
 func wall_operational(id: String) -> bool:
