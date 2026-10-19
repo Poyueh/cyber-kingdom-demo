@@ -1,9 +1,9 @@
 extends Node2D
-## A small bounded, physical heap in an activity-only HUD purse.
+## A small bounded, physical heap in an always-visible HUD purse. The heap only simulates
+## for a few seconds after crystals move, then rests until the next change.
 const Gem=preload("res://presentation/purse_gem.gd")
 const DRAW_SCALE: float=0.62
-const HOLD_SECONDS: float=3.0
-const FADE_SECONDS: float=0.65
+const HOLD_SECONDS: float=3.65 # How long the heap keeps settling after crystals move.
 const FLIGHT_SECONDS: float=0.42
 const CAPACITY: int=30
 const MAX_FLIGHTS: int=42 # Up to 30 incoming and 12 outgoing decorations.
@@ -28,8 +28,7 @@ func reset() -> void:
  _rng.seed=71843
 
 func reveal() -> void:
- _remaining=HOLD_SECONDS+FADE_SECONDS
- modulate.a=1.0
+ _remaining=HOLD_SECONDS
  queue_redraw()
 
 func _new_gem() -> Gem:
@@ -90,7 +89,6 @@ func _process(seconds: float) -> void:
  if not visible or _paused or _remaining<=0:return
  var elapsed: float=minf(seconds,0.067)
  _remaining=maxf(0,_remaining-seconds)
- modulate.a=smoothstep(0,FADE_SECONDS,_remaining)
  _pulse=maxf(0,_pulse-elapsed)
  for i in range(_flights.size()-1,-1,-1):
   var gem: Gem=_flights[i]
@@ -157,7 +155,7 @@ func _gem(gem: Gem, at: Vector2, alpha: float=1.0) -> void:
  draw_line(points[0],at,Color(gem.ink.lightened(0.35),alpha),1)
 
 func _draw() -> void:
- if _shown<0 or modulate.a<=0:return
+ if _shown<0:return
  var bounce: float=sin(_pulse/0.45*TAU)*(_pulse/0.45)
  draw_set_transform(bounds.get_center(),bounce*0.018,Vector2.ONE*DRAW_SCALE)
  var outline: PackedVector2Array=PackedVector2Array([Vector2(-32,-52),Vector2(32,-52),Vector2(28,-32),Vector2(35,-13),Vector2(49,12),Vector2(49,36),Vector2(35,56),Vector2(15,67),Vector2(-15,67),Vector2(-35,56),Vector2(-49,36),Vector2(-49,12),Vector2(-35,-13),Vector2(-28,-32)])

@@ -1,0 +1,19 @@
+{
+  "version": "0.0.66",
+  "source": "802e4d172e9301abe165357e2bda026c3c32cc1c",
+  "spec_revision": 53,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4613,
+  "changes": {
+    "stamina": "under the knight's feet and the warhorse's hooves",
+    "crystal_count": "crystal icon and ×N beside an always-visible pouch",
+    "ghost_callouts": "after the first-night hand-over and after onboarding: survive / dragon / seal / gather / build, called at once and every 20 s; not for hidden guidance, paid recalls or the old trial",
+    "founding_flash": "camp reveal assembles the module workshop only where site_visible allows"
+  },
+  "native_visual": "free day capture: ghost calls 採集龍晶！ with the crystal symbol, ×2 beside the persistent pouch, stamina under the knight",
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform; macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified",
+  "pending": [
+    "new player reading of the callouts",
+    "phone check of the persistent pouch placement"
+  ]
+}
