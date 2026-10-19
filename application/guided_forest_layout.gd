@@ -20,6 +20,10 @@ static func apply(sim: RefCounted, config: Dictionary) -> void:
    var area: Dictionary=map.regions[i]
    if node.x>=area.x and node.x<area.x+area.width:node.region=i;break
  map.nodes.append_array(distant)
+ for animal: Dictionary in map.animals:
+  for i in range(map.regions.size()):
+   var area: Dictionary=map.regions[i]
+   if animal.x>=area.x and animal.x<area.x+area.width:animal.region=i;break
  map.left_boundary=bounds.x;map.right_boundary=bounds.y
  sim.pouch.left_boundary=bounds.x;sim.pouch.right_boundary=bounds.y
  sim.defenses=preload("res://domain/frontier_defenses.gd").new(sim.world,map,config)
