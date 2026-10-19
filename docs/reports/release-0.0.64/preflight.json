@@ -15,5 +15,15 @@
   "pending": [
     "pull-to-refresh confirmation on the reporter's phone and browser (desktop Chromium cannot reproduce the browser gesture itself)",
     "new player feel of the richer demo start"
-  ]
+  ],
+  "publication": {
+    "release_id": 417404193,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.64",
+    "release_assets_verified": 13,
+    "pages_run": 39271575463,
+    "pages_result": "success",
+    "public_files_verified": 64,
+    "public_main_files_verified": 32,
+    "public_browser": "Demo loads; touch guard live (html/body overscroll none, body fixed, swipes on canvas/body/html prevented); no console errors; no public player journey created"
+  }
 }
