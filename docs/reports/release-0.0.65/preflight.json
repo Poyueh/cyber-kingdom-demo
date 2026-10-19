@@ -1,0 +1,29 @@
+{
+  "version": "0.0.65",
+  "source": "9ddbfcd61a17e5751bf9b28b3c30e320dda22741",
+  "spec_revision": 52,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4600,
+  "changes": {
+    "camp_layout": "guided forest walls -1000/1060, towers -880/970; test checks every drawn neighbour >=150 px (tower-wall >=80); older saves keep their stored layout",
+    "module_workshop": "hidden until the first module is found",
+    "hunters": "animals filed by position (old saves judged by position); unposted hunters hunt by day from the first free day inside the work range and return before dusk",
+    "fullscreen": "start and pause menus on phone and desktop; web press arms, release switches; spy check: one requestFullscreen call within a single automated click",
+    "web_performance": {
+      "in_game_main_thread_ms_per_s": {
+        "v0.0.64_uncapped_120hz": 300,
+        "phone_profile_30fps_30hz_physics": 142
+      },
+      "intro_js_heap_mb": {
+        "v0.0.64": 453,
+        "v0.0.65": 105
+      },
+      "engine_max_fps_rejected": "30 fps via Engine.max_fps kept the main thread 98% busy (busy-wait); replaced by web/frame-pacing.js"
+    }
+  },
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform; macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified. Main Android import crashed once at the font import under parallel load (as in v0.0.60) and passed on retry",
+  "pending": [
+    "fullscreen and heat on the reporter's phone and browser (the embedded test browser cannot enter fullscreen)",
+    "new player feel of the wider camp"
+  ]
+}

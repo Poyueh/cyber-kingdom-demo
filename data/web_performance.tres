@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WebPerformance" load_steps=2 format=3]
+[ext_resource type="Script" path="res://data/web_performance.gd" id="1"]
+[resource]
+script = ExtResource("1")
+phone_fps = 30
+desktop_fps = 60
+phone_physics_hz = 30
+stream_music = true

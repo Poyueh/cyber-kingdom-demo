@@ -29,6 +29,7 @@ func run_scene() -> void:
 	menu.campaigns_directory=folder;menu.legacy_path="";menu.audio_preferences_path=""
 	root.add_child(menu);current_scene=menu
 	await settle()
+	check(menu.view.fullscreen_button!=null and menu.view.fullscreen_button.visible,"the start menu offers a fullscreen switch")
 	await click(menu.view.new_button)
 	check(current_scene==menu,"new game offers a pace choice before creating a journey")
 	if current_scene!=menu:quit(1);return

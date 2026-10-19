@@ -18,6 +18,7 @@ var _list: VBoxContainer
 var _error: Label
 var _heading: Label
 var replay_button: Button
+var fullscreen_button: Button
 var _entrance: Tween
 var pace_picker: VBoxContainer
 
@@ -66,6 +67,11 @@ func _ready() -> void:
 	if OS.has_feature("web"):
 		var guide=_button(_home,"玩家圖文指南","book");guide.custom_minimum_size.y=40;guide.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
 		guide.pressed.connect(preload("res://presentation/web_player_guide.gd").open)
+	var fullscreen: Script=preload("res://presentation/fullscreen_switch.gd")
+	fullscreen_button=_button(_home,"全螢幕","fullscreen");fullscreen_button.custom_minimum_size.y=40
+	fullscreen_button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
+	fullscreen_button.button_down.connect(func()->void:fullscreen.request(get_window()))
+	fullscreen_button.visible=fullscreen.available()
 	replay_button=_button(_home,"opening.replay","restore");replay_button.custom_minimum_size.y=36
 	replay_button.add_theme_font_size_override("font_size",preload("res://data/scene_finish.tres").action_size)
 	replay_button.pressed.connect(func() -> void:prologue_requested.emit())

@@ -7,7 +7,7 @@ const TICKS_PER_SECOND: int=Clock.TICKS_PER_SECOND
 const OPENING_SECONDS: float=150.0
 const VISIT_SECONDS: float=18.0
 const FADE_TICKS: int=60
-const SHRINE_OFFSET: float=270.0
+const SHRINE_OFFSET: float=330.0
 var opening_finished: bool=false
 var summoned: bool=false
 var expires_tick: int

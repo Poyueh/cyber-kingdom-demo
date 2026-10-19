@@ -141,12 +141,15 @@ func second_route(source: Dictionary, explore: bool) -> void:
    for tick: int in range(2400):
     ticks(sim,1,node.x)
     if sim.pouch.amount>before:break
+ # Like a player: recruit someone reachable, unless harvest already brought an idle resident.
  var recruit: int=-1
  for i: int in range(sim.world.people.size()):
-  if sim.world.people[i].role=="wanderer":recruit=i;break
- check(recruit>=0,"autonomous route still has a recruit")
- if recruit<0:return
- pay(sim,sim.world.people[recruit].x,"recruit:%d"%recruit,1)
+  var person: Dictionary=sim.world.people[i]
+  if person.role=="wanderer" and sim.context_for_key(person.x,"recruit:%d"%i).get("enabled",false):recruit=i;break
+ var idle: bool=sim.world.people.any(func(p: Dictionary)->bool:return p.role=="citizen")
+ check(recruit>=0 or idle,"autonomous route has a recruit or an idle resident for the bow")
+ if recruit<0 and not idle:return
+ if not idle:pay(sim,sim.world.people[recruit].x,"recruit:%d"%recruit,1)
  pay(sim,sim.world.sites.hunt_tools,"hunt_tools",3)
  var wall: Dictionary=sim.context(sim.world.sites.wall_left)
  check(wall.id=="wall_left","opposite front has a usable wall site")
