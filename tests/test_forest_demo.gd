@@ -40,6 +40,7 @@ func _initialize() -> void:
  check(not sim.planet.enabled,"demo has no rocket or star travel")
  pacing()
  packaged_catalogs()
+ first_day_budget(config)
  if not sim.core_loop.enabled or sim.core_loop.trial:
   print("Forest demo: %d assertions, %d failures"%[assertions,failures]);quit(1);return
  run_flow()
@@ -61,6 +62,14 @@ func verify_completion(sim: RefCounted, config: Dictionary, codec: RefCounted) -
  sim.advance(0.1,30)
  check(sim.mission.outcome=="victory" and sim.finished(),"defeating the forest dragon completes the demo")
  check(Ops.candidates(sim,Ops.rocket_x(sim),430.0).is_empty(),"demo offers no rocket after the dragon")
+
+## Players asked for room to manage: the guided first day must be affordable from the
+## starting crystals and one harvest, with crystals to spare.
+func first_day_budget(config: Dictionary) -> void:
+ var prices: Dictionary=config.prices
+ var guided: int=int(prices.recruit)*2+int(prices.workshop)+int(prices.mark)+int(prices.hunt_tools)+int(prices.wall)
+ var spare: int=int(config.starting_crystals)+int(config.tree_crystals)-guided
+ check(spare>=4,"one harvest pays for the guided first day and leaves at least 4 to manage (spare %d)"%spare)
 
 ## The Demo package strips the other six worlds from the route and roadside catalogs.
 func packaged_catalogs() -> void:
