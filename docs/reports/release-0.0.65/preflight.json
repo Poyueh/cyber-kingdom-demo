@@ -25,5 +25,15 @@
   "pending": [
     "fullscreen and heat on the reporter's phone and browser (the embedded test browser cannot enter fullscreen)",
     "new player feel of the wider camp"
-  ]
+  ],
+  "publication": {
+    "release_id": 417550443,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.65",
+    "release_assets_verified": 13,
+    "pages_run": 39293552401,
+    "pages_result": "success",
+    "public_files_verified": 70,
+    "public_main_files_verified": 35,
+    "public_browser": "Demo loads; frame pacing, fullscreen switch and swipe guard live; no console errors; no public player journey created"
+  }
 }
