@@ -1,0 +1,20 @@
+{
+  "release_id": 417597725,
+  "version": "0.0.66",
+  "verified_assets": 13,
+  "asset_digests": {
+    "Cyber-Kingdom-Demo-Android-debug-v0.0.66.apk": "sha256:5e468c5fcc7debf701bb1e088255260f313c1c77daa814878401b0918c4168be",
+    "Cyber-Kingdom-Demo-Guide-v0.0.66.html": "sha256:4dbfba372238a5027ff949ed2282c1593824643b2c25f981d44f4c27f5450d8f",
+    "Cyber-Kingdom-Demo-Web-v0.0.66.zip": "sha256:7a238396d8a94273cd69634f4d668f947d5f022b34907143dccd5d4a9b6ddd76",
+    "Cyber-Kingdom-Demo-Windows-v0.0.66.zip": "sha256:6949753d35b447ef6c25d6dc016eb853abf25684545f7f07c81ac2ca42849f65",
+    "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.66.zip": "sha256:05bb69d4d834f0747d5e83ec092cd65205730b1ccf083ad4ac1fafe043a0d575",
+    "Cyber-Kingdom-Demo-macOS-v0.0.66.zip": "sha256:2c716c3782b1c8149f060736f043c7ae59f6fbb61c1dc8aff1449981aaebf866",
+    "Cyber-Kingdom-Main-Android-debug-v0.0.66.apk": "sha256:b3f96ddd73ad991d0eb13ea251619cc3a71267fe3dd55957ec2752c53f48711e",
+    "Cyber-Kingdom-Main-Guide-v0.0.66.html": "sha256:7c9817ed1028f1765c08c998b425fddbb025ee5b63ce9f25259c27c3a31e39b0",
+    "Cyber-Kingdom-Main-Web-v0.0.66.zip": "sha256:668c3516ac69d2df3deefaa0d5a864d3a8dd771d8ff24711e9c8b18a60c582b8",
+    "Cyber-Kingdom-Main-Windows-v0.0.66.zip": "sha256:63bea6e905c7b944a93904bab2d496fe2d3ff2a40eb846966c3697fb92eb6275",
+    "Cyber-Kingdom-Main-iOS-Xcode-v0.0.66.zip": "sha256:bc5439100a072ff132dd5fedee4e54f925f15810d5178c1c44f9f92d29e33d87",
+    "Cyber-Kingdom-Main-macOS-v0.0.66.zip": "sha256:1ca023aee8e9ad41da4a4b973e614274f7427a0694e60cdabd0c4b1be88a1762",
+    "SHA256SUMS.txt": "sha256:60f8f477d4e5e288b1ba82c30437346b0aaaa4f09d26fd2a741fe91546e5e902"
+  }
+}
