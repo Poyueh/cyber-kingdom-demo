@@ -1,8 +1,12 @@
-## v0.0.64 手機試玩三項修正（發佈中）
+## v0.0.64 手機試玩三項修正（已發布）
 
 使用者手機試玩回報三項。①居民被打回流浪者會走回當初野外位置：有工作的居民（如弓兵）從未經過漫遊，`roam_role` 仍是招募前的「流浪者」，被打回後誤沿用舊野外錨點；改為受擊退回時移除漫遊錨點，測試重現走回 447 像素、修正後留在倒下處附近。②Demo 前期龍晶不足：量測最快玩法首日需採集兩輪、第二夜準備後只剩 3 晶；Demo 開局改 12 晶，首日一次採集即可完成並留 5 晶，主遊戲維持 6 晶。③下滑投入龍晶觸發瀏覽器下拉重新整理：網頁外殼加入觸控防護（固定頁面、overscroll-behavior: none、頁面層攔截滑動，指南除外）。規格修訂 51。教學：[第141課](lessons/141-stale-state-and-page-gestures.md)。
 
 完整回歸通過（核心 4575、森林 Demo 97 項，無 SCRIPT ERROR／ERROR）。匯出頁面實測：html／body overscroll 為 none、body 固定，從畫布、body、html 開始的下滑都被攔下，指南視窗仍可捲動；線上 v0.0.63 對照為 auto 且 body／html 未攔。Demo 開局顯示 12 晶，無 console errors。Main／Demo 五平台 10 組成品由 79eb4a8 建置，內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊通過。[驗收紀錄](reports/release-0.0.64/preflight.json)。下拉重新整理需回報者手機確認（桌面瀏覽器無法重現瀏覽器本身的手勢）。
+
+Release 417404193 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39271575463 成功，64 個公開檔案（含 main/ 32 個）與發行包逐一相同，企劃 v0.0.64／修訂 51；公開頁面觸控防護已生效，無 console errors。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.64) · [主遊戲網頁版](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.64) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.64) · [Godot 小課](lessons/141-stale-state-and-page-gestures.md)。
 
 ## v0.0.63 修正手機網頁版玩到一半重整（已發布）
 
