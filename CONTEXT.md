@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-20 v0.0.65：引導版森林城牆 -1000／1060、塔 -880／970，營地內相鄰建築至少 150（`core_loop_layout.gd`）；引魂壇 hall+330。部件工坊找到部件才出現。沒派守城的獵人第一夜後白天狩獵；動物依位置歸區（`_game_discovered`）。全螢幕：`presentation/fullscreen_switch.gd`＋`web/fullscreen.js`。網頁效能：`data/web_performance.tres`（手機 30 幀／物理 30Hz、電腦 60 幀、音樂串流）、`web/frame-pacing.js`（不用 Engine.max_fps）、`web/phone-display.js`（像素比上限 2）。快照v22不變。
+
 2026-10-19 v0.0.64：居民被打回流浪者時移除 `roam_role`，在倒下處重新漫遊（有工作的居民可能從未漫遊，舊錨點仍是野外）。Demo 開局 12 晶（`demo_starting_crystals`），主遊戲 6 晶。網頁外殼的 `web/touch-guard.*` 阻止下拉重新整理。快照v22不變。
 
 2026-10-19 v0.0.63：Web 匯出以樣本模式播放音訊，每個新的 AudioStream 實例都會變成無法釋放的 WebAudio 緩衝。音樂、環境音、循環音效一律從 `presentation/shared_audio_streams.gd` 取共用實例，不在執行中 duplicate／重載；這修正了手機網頁版玩到一半自動重整。快照v22不變。
