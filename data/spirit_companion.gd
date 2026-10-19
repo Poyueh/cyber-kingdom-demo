@@ -17,3 +17,6 @@ extends Resource
 @export var reminder_interval: float
 @export var reminder_seconds: float
 @export var cue_seconds: float
+## After the guided opening the ghost repeats the goal of the moment this often, for this long.
+@export var callout_interval: float
+@export var callout_seconds: float

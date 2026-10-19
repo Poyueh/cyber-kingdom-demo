@@ -2,12 +2,15 @@ extends RefCounted
 ## Persisted visits use simulation ticks. Advice is a read-only projection of the world.
 const Opening=preload("res://application/campaign_guide.gd")
 const Expedition=preload("res://application/expedition_guide.gd")
+const Callouts=preload("res://application/spirit_callouts.gd")
 const Clock=preload("res://domain/time/tick_clock.gd")
 const TICKS_PER_SECOND: int=Clock.TICKS_PER_SECOND
 const OPENING_SECONDS: float=150.0
 const VISIT_SECONDS: float=18.0
 const FADE_TICKS: int=60
 const SHRINE_OFFSET: float=330.0
+## The first-night hand-over is said first; after it the ghost calls the goal of the day.
+const HANDOVER_SECONDS: float=10.0
 var opening_finished: bool=false
 var summoned: bool=false
 var expires_tick: int
@@ -47,7 +50,14 @@ func advice(sim: RefCounted, x: float, opening: bool=true, expedition: bool=true
  var tick: int=int(sim.workforce.elapsed*TICKS_PER_SECOND)
  var recalled: bool=not sim.core_loop.trial and sim.core_loop.stage>=3 and summoned and active(tick)
  if sim.core_loop.enabled and sim.core_loop.stage<5 and not recalled:
-  return preload("res://application/core_spirit_guide.gd").next(sim,x) if opening else {}
+  if not opening:return {}
+  var lesson: Dictionary=preload("res://application/core_spirit_guide.gd").next(sim,x)
+  if not sim.core_loop.trial and lesson.get("kind","")=="rest" and sim.clock.day_seconds-sim.clock.remaining>=HANDOVER_SECONDS:return Callouts.next(sim,x)
+  return lesson
+ # The old two-night trial ends after its lessons; current journeys keep calling the goal.
+ if sim.core_loop.enabled and not sim.core_loop.trial and not recalled:
+  if not opening or sim.core_loop.skipped or not sim.is_running():return {}
+  return Callouts.next(sim,x)
  if not sim.is_running() or not active(tick):return {}
  if opening_finished and not summoned:
   return {"kind":"farewell","x":shrine_x(sim.world.sites.hall),"y":430.0,"key":"spirit","action":"move","stage":0}
