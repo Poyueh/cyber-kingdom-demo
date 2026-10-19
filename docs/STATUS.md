@@ -1,8 +1,12 @@
-## v0.0.63 修正手機網頁版玩到一半重整（發佈中）
+## v0.0.63 修正手機網頁版玩到一半重整（已發布）
 
 使用者回報手機玩 H5 到一半會自動重整。先量測：原生場景 30 分鐘、8 個日夜的記憶體與物件數持平（約 280 MB），排除遊戲邏輯洩漏；網頁外殼的 reload 只在啟動安裝 service worker 時使用，`touch-action: none` 已擋下拉重新整理。實際網頁量測找到原因：Web 預設以樣本模式播放，音樂播放器只保留四首、逐出後重載並 duplicate，每次產生約 40 MB 無法釋放的 WebAudio 緩衝；以真實 `CampaignMusic` 切換 50 次，JS 記憶體升到 1.47 GB 仍在上升。改為音樂、環境音、循環音效全程共用一份實例後，同樣測試約 350 MB 持平。先寫失敗測試（重回曲目、重建場景須共用同一實例）再修正；規格修訂 50。教學：[第140課](lessons/140-web-audio-samples.md)。
 
 完整回歸通過（核心 4570 項，無 SCRIPT ERROR／ERROR）。真實 Demo 網頁加監測：點火後在營地與野外來回 6 趟，音訊 260～304 MB、JS 記憶體 294～376 MB，無上升趨勢，無 console errors。Main／Demo 五平台 10 組成品由 d1c5e50 建置，內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊通過。[驗收紀錄](reports/release-0.0.63/preflight.json)。待回報者手機確認；聽過全部曲目後音訊仍約 270 MB，之後可評估網頁音樂改串流播放。
+
+Release 417085373 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39226962484 成功，60 個公開檔案（含 main/ 30 個）與發行包逐一相同，企劃 v0.0.63／修訂 50；公開 Demo 載入無 console errors。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.63) · [主遊戲網頁版](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.63) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.63) · [Godot 小課](lessons/140-web-audio-samples.md)。
 
 ## v0.0.62 數值貼近物件（已發布）
 

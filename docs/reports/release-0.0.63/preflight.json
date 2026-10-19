@@ -26,5 +26,15 @@
   "pending": [
     "confirmation on the reporter's phone",
     "bounded audio still holds ~270 MB once every track has played; streaming music on web could lower it later"
-  ]
+  ],
+  "publication": {
+    "release_id": 417085373,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.63",
+    "release_assets_verified": 13,
+    "pages_run": 39226962484,
+    "pages_result": "success",
+    "public_files_verified": 60,
+    "public_main_files_verified": 30,
+    "public_browser": "Demo intro loads; no console errors; no public player journey created"
+  }
 }
