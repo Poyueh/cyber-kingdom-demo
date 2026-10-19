@@ -7,6 +7,7 @@ var exploration_map: PanelContainer
 const Guide=preload("res://application/campaign_guide.gd")
 const ExpeditionGuide=preload("res://application/expedition_guide.gd")
 @export var expedition_guidance:=true
+const Fullscreen=preload("res://presentation/fullscreen_switch.gd")
 const GuideView=preload("res://presentation/campaign_guide_view.gd")
 @export var first_day_guidance:=true
 var guide_view: Node2D
@@ -76,7 +77,8 @@ func _ready() -> void:
 	fullscreen_button.name="Fullscreen"
 	add_child(fullscreen_button)
 	_skin(fullscreen_button,"fullscreen")
-	fullscreen_button.pressed.connect(_toggle_fullscreen)
+	# Pressed, not released: the web page needs the press to arm its own gesture switch.
+	fullscreen_button.button_down.connect(func():Fullscreen.request(get_window()))
 	drop_button=Button.new()
 	drop_button.name="DropCrystal"
 	add_child(drop_button)
@@ -176,7 +178,7 @@ func _layout() -> void:
 	dashboard.queue_redraw()
 	$attack.position=_last_safe_rect.end-Vector2(ATTACK_SIZE+12,ATTACK_SIZE+12)
 	_attack_home=$attack.position
-	fullscreen_button.visible=_pause_icon_state and not uses_touch_controls()
+	fullscreen_button.visible=_pause_icon_state and Fullscreen.available()
 	if is_instance_valid(options_menu):
 		options_menu.size=Vector2(minf(370,_last_safe_rect.size.x-24),244)
 		options_menu.position=_last_safe_rect.position+Vector2(16,90) if dashboard.immersive else Vector2(_last_safe_rect.get_center().x-options_menu.size.x/2,minf(layout.buttons.new_map.end.y+8,_last_safe_rect.end.y-options_menu.size.y-12))
@@ -234,7 +236,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	$attack.visible=$attack.visible and sim.can_wield_sword()
 	for pair in [["attack",sim.hero.stats.attack_cost],["jump",sim.hero.stats.jump_cost],["dash",sim.hero.stats.dash_cost]]:
 		get_node(pair[0]).modulate=Color(1,1,1,0.88 if sim.hero.stamina>=pair[1] else 0.3)
-	fullscreen_button.visible=is_paused and not touch
+	fullscreen_button.visible=is_paused and Fullscreen.available()
 	if not is_paused:exploration_map.hide()
 	if exploration_map.visible:exploration_map.fit(_last_safe_rect)
 	options_menu.visible=is_paused and not module_menu.visible and not exploration_map.visible
@@ -330,10 +332,6 @@ func _present_modules(sim: RefCounted, at: float, is_paused: bool, touch: bool) 
 	module_hint.position=Vector2(_last_safe_rect.get_center().x-hint_width/2,_last_safe_rect.end.y-184)
 	if module_menu.visible:
 		for button in [fullscreen_button,save_button,audio_button,new_map_button,$restart]:button.hide()
-
-func _toggle_fullscreen() -> void:
-	var window:=get_window()
-	window.mode=Window.MODE_WINDOWED if window.mode==Window.MODE_FULLSCREEN else Window.MODE_FULLSCREEN
 
 func present_save(status: String, is_paused: bool) -> void:
 	if not is_instance_valid(save_button):return

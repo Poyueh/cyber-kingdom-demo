@@ -32,6 +32,37 @@ class WebBuildTests(unittest.TestCase):
         script=(root/'web/touch-guard.js').read_text()
         self.assertIn("'touchmove'",script);self.assertIn('passive: false',script)
 
+    def test_page_shell_caps_phone_pixel_ratio(self):
+        # 3x phone screens would fill 2.25x more pixels than 2x for no visible gain in pixel art.
+        from build_web import PAGE_ASSETS
+        root=Path(__file__).resolve().parents[1]
+        head=re.search(r'^html/head_include="(.*)"$',(root/'export_presets.cfg').read_text(),re.M).group(1)
+        self.assertIn('phone-display.js',PAGE_ASSETS)
+        self.assertLess(head.index('phone-display.js'),head.index('touch-guard.js'),'cap applies before anything reads the ratio')
+        script=(root/'web/phone-display.js').read_text()
+        for name in ('devicePixelRatio','maxTouchPoints','MAX_PHONE_RATIO = 2'):self.assertIn(name,script)
+
+    def test_page_shell_caps_frames_without_blocking(self):
+        # Engine.max_fps busy-waits on a single-threaded page; the cap skips animation frames instead.
+        from build_web import PAGE_ASSETS
+        root=Path(__file__).resolve().parents[1]
+        head=re.search(r'^html/head_include="(.*)"$',(root/'export_presets.cfg').read_text(),re.M).group(1)
+        self.assertIn('frame-pacing.js',PAGE_ASSETS);self.assertIn('frame-pacing.js',head)
+        script=(root/'web/frame-pacing.js').read_text()
+        for name in ('requestAnimationFrame','CyberKingdomFrames','cap:'):self.assertIn(name,script)
+        pacing=(root/'bootstrap/frame_pacing.gd').read_text()
+        self.assertNotIn('max_fps =',pacing);self.assertIn('CyberKingdomFrames',pacing)
+
+    def test_page_shell_switches_fullscreen_inside_the_players_gesture(self):
+        # Browsers only allow fullscreen within a tap or click; Godot handles buttons a frame later.
+        from build_web import PAGE_ASSETS
+        root=Path(__file__).resolve().parents[1]
+        head=re.search(r'^html/head_include="(.*)"$',(root/'export_presets.cfg').read_text(),re.M).group(1)
+        self.assertIn('fullscreen.js',PAGE_ASSETS);self.assertIn('fullscreen.js',head)
+        self.assertIn('apple-mobile-web-app-capable',head)
+        script=(root/'web/fullscreen.js').read_text()
+        for name in ("'pointerup'","'touchend'",'arm','requestFullscreen','webkitRequestFullscreen'):self.assertIn(name,script)
+
     def test_existing_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as folder:
             output=Path(folder); marker=output/'player-save';marker.write_text('keep')

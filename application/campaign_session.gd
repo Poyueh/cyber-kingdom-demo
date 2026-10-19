@@ -200,6 +200,8 @@ func site_visible(site: String) -> bool:
 	if core_loop.enabled and (core_loop.trial or core_loop.stage<3):return core_loop.site_allowed(site,self)
 	if site=="trade":return false
 	if not life.enabled:return true
+	# The module workshop means nothing until the knight has found a module to fit.
+	if site=="drill":return not modules.found.is_empty()
 	if site in ["forge","heal"]:return false
 	if site=="armory":return frontier.city_level>=3
 	if site in ["farm","farm_tools"]:return agriculture_available()
@@ -583,6 +585,8 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		person["y"]=340.0 if tower and arrived else 430.0
 		_shoot_nearest_raider(person,tower_range if tower and arrived else hunter_range,archer_damage(),hunter_interval)
 		if core_loop.orders.must_return(self,index):
+			# A hunter without a wall post goes after game in the hunting range by day.
+			if target.is_empty() and not _hunter_prey(person).is_empty():return NAN
 			person["sheltering"]=true;person["work_state"]="walk"
 			return core_loop.orders.destination(self,index)
 		return NAN
@@ -915,16 +919,27 @@ func _engineer_target(index: int, seconds: float) -> float:
 		return Roaming.destination(person,index,world.sites.workshop,120,seconds,frontier.left_boundary,frontier.right_boundary)
 	return target
 
+## Judged by where the animal stands: older guided forests filed game under the wrong region.
+func _game_discovered(animal: Dictionary) -> bool:
+	for area: Dictionary in frontier.regions:
+		if animal.x>=area.x and animal.x<area.x+area.width:return area.discovered
+	return frontier.regions[animal.region].discovered
+
 func _hunter_prey(person: Dictionary) -> Dictionary:
 	var prey: Dictionary={};var nearest:=INF
 	for animal in frontier.animals:
-		if not animal.alive or not frontier.regions[animal.region].discovered:continue
+		if not animal.alive or not _game_discovered(animal):continue
 		if core_loop.enabled:
 			var index: int=world.people.find(person)
-			var target: String=core_loop.orders.targets[index]
-			if core_loop.orders.must_return(self,index) or target.is_empty():continue
-			if signf(animal.x-world.sites.hall)!=core_loop.orders.side(self,target):continue
-			if (absf(person.x-animal.x)+absf(animal.x-core_loop.orders.destination(self,index)))/_person_speed+return_margin>=clock.remaining:continue
+			var target: String=core_loop.orders.targets[index] if index<core_loop.orders.targets.size() else ""
+			if target.is_empty():
+				# Unposted hunters roam the hunting range by day and are back at the bow rack by dusk.
+				if core_loop.stage<3 or clock.is_night or life.threatened(person,raiders):continue
+				if (absf(person.x-animal.x)+absf(animal.x-world.sites.hunt_tools))/_person_speed+return_margin>=clock.remaining:continue
+			else:
+				if core_loop.orders.must_return(self,index):continue
+				if signf(animal.x-world.sites.hall)!=core_loop.orders.side(self,target):continue
+				if (absf(person.x-animal.x)+absf(animal.x-core_loop.orders.destination(self,index)))/_person_speed+return_margin>=clock.remaining:continue
 		if life.enabled and not work_area.contains(animal.x):continue
 		var travel: float=(absf(person.x-animal.x)+absf(animal.x-world.sites.hall))/_person_speed
 		if not life.enabled and (clock.is_night or travel+return_margin+3>clock.remaining):continue
