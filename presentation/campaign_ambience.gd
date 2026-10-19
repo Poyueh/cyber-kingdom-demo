@@ -1,6 +1,7 @@
 extends Node
 ## Plays the ambience beds at the levels the cue chooser asks for, fading between them.
 const Cues = preload("res://presentation/campaign_ambience_cues.gd")
+const Streams = preload("res://presentation/shared_audio_streams.gd")
 const FADE := 1.8
 
 @export_range(0.0, 1.0, 0.01) var volume: float = 0.6
@@ -16,13 +17,10 @@ var _players: Dictionary = {}
 func _ready() -> void:
 	for bed in Cues.BEDS:
 		var path := "res://art/audio/ambience-v002/%s.ogg" % bed
-		if not ResourceLoader.exists(path):
+		var stream := Streams.shared(path, true)
+		if stream == null:
 			push_error("missing ambience bed: %s" % path)
 			continue
-		var stream: AudioStream = load(path)
-		if stream is AudioStreamOggVorbis:
-			stream = stream.duplicate()
-			stream.loop = true
 		var player := AudioStreamPlayer.new()
 		player.bus = "Ambience"
 		player.stream = stream

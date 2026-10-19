@@ -1,6 +1,7 @@
 extends Node
 ## Plays the continuous effect loops at the levels the chooser asks for.
 const Cues = preload("res://presentation/campaign_loop_cues.gd")
+const Streams = preload("res://presentation/shared_audio_streams.gd")
 const FADE := 0.45
 
 @export_range(0.0, 1.0, 0.01) var volume: float = 0.8
@@ -16,14 +17,10 @@ var _players: Dictionary = {}
 func _ready() -> void:
 	for loop in Cues.LOOPS:
 		var path := "res://art/audio/campaign-v002/%s.wav" % loop
-		if not ResourceLoader.exists(path):
+		var stream := Streams.shared(path, true)
+		if stream == null:
 			push_error("missing effect loop: %s" % path)
 			continue
-		var stream: AudioStream = load(path)
-		if stream is AudioStreamWAV:
-			stream = stream.duplicate()
-			stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-			stream.loop_end = stream.data.size() / 2
 		var player := AudioStreamPlayer.new()
 		player.bus = "SFX"
 		player.stream = stream

@@ -101,11 +101,32 @@ func test_a_restored_camp_is_not_founded_again(t):
 	t.equal(cues.sample(sim,sim.world.sites.hall,false).sting,"","loading a built refuge holds no ceremony")
 	t.equal(cues.sample(sim,sim.world.sites.hall,false).sting,"","and none on the frame after")
 
-func test_the_score_does_not_hoard_every_track_it_has_played(t):
+## Web exports decode every new stream instance into a WebAudio buffer that is never
+## released, so a track must stay one shared instance however often it returns.
+func test_each_track_is_one_shared_stream_however_often_it_returns(t):
 	var script=load("res://presentation/campaign_music.gd")
 	var player=script.new()
-	for name in script.LOOPS:
-		t.truth(player._stream(name)!=null,"%s loads" % name)
-	t.truth(player._cache.size()<=script.CACHE_LIMIT,
-		"playing through the score keeps at most %d tracks resident" % script.CACHE_LIMIT)
-	player.free()
+	var first: Dictionary={}
+	for name in script.LOOPS+script.STINGS:first[name]=player._stream(name)
+	var renewed: Array[String]=[]
+	for round in range(3):
+		for name in script.LOOPS+script.STINGS:
+			if not is_same(player._stream(name),first[name]):renewed.append(name)
+	t.equal(renewed,[] as Array[String],"returning tracks reuse their stream instead of loading a new copy")
+	var next=script.new() # A new scene builds a new music player.
+	var rebuilt: Array[String]=[]
+	for name in script.LOOPS+script.STINGS:
+		if not is_same(next._stream(name),first[name]):rebuilt.append(name)
+	t.equal(rebuilt,[] as Array[String],"a rebuilt scene shares the same streams")
+	t.truth(first.day_explore.loop and not first.victory_theme.loop,"loops still loop and stings still end")
+	player.free();next.free()
+
+func test_ambience_and_effect_loops_share_streams_across_scenes(t):
+	for path in ["res://presentation/campaign_ambience.gd","res://presentation/campaign_loops.gd"]:
+		var first=load(path).new();var second=load(path).new()
+		first._ready();second._ready()
+		var renewed: Array=[]
+		for key in first._players:
+			if not is_same(first._players[key].stream,second._players[key].stream):renewed.append(key)
+		t.equal(renewed,[],"%s: a rebuilt scene shares every looping stream" % path.get_file())
+		first.free();second.free()
