@@ -53,7 +53,11 @@ func _initialize() -> void:
    check(sim.spirit.advice(sim,shrine).is_empty(),"paid visit expires normally and keeps hidden core preference")
    sim.core_loop.skipped=false
   sim.core_loop.stage=5
-  check(sim.spirit.advice(sim,30).is_empty(),"completed onboarding leaves the player free")
+  # v0.0.66: after onboarding the ghost only calls the goal of the moment; it no longer leads to tasks.
+  # The old two-night trial ends with its lessons.
+  var call: Dictionary=sim.spirit.advice(sim,30)
+  if main_game:check(call.get("mood","")=="cheer" and str(call.get("goal","")).begins_with("spirit.call."),"completed onboarding leaves the player free, with the goal called aloud")
+  else:check(call.is_empty(),"the old trial ends quietly after its lessons")
  print("Core spirit: %d assertions, %d failures"%[assertions,failures]);quit(1 if failures else 0)
 
 func main_configuration() -> Dictionary:

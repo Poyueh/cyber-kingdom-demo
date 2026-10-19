@@ -3,6 +3,11 @@ extends RefCounted
 const ROWS=[
  ["spirit.lead %s", "跟我來。%s", "跟我来。%s", "This way. %s"],
  ["全螢幕", "全螢幕", "全屏", "Fullscreen"],
+ ["spirit.call.build", "建造！", "建造！", "Build!"],
+ ["spirit.call.gather", "採集龍晶！", "采集龙晶！", "Gather crystals!"],
+ ["spirit.call.survive", "撐過夜襲！", "撑过夜袭！", "Survive the night raid!"],
+ ["spirit.call.seal", "封門！", "封门！", "Seal the gates!"],
+ ["spirit.call.dragon", "擊敗巨龍！", "击败巨龙！", "Defeat the dragon!"],
  ["spirit.core.wait_tool", "等他來領器具。", "等他来领器具。", "Let them take the tool."],
  ["spirit.core.wait_wall", "等工匠把牆築好。", "等工匠把墙筑好。", "Let the worker finish the wall."],
 
@@ -43,7 +48,6 @@ const ROWS=[
  ["core.retry", "重試準備階段", "重试准备阶段", "Retry preparation"],
  ["core.restart", "重新開始", "重新开始", "Start again"],
  ["core.title", "返回主選單", "返回主菜单", "Main menu"],
- ["core.wallet %d", "龍晶 %d", "龙晶 %d", "Crystals %d"],
  ["core.price %d %d", "已投入 %d / %d 晶", "已投入 %d / %d 晶", "Paid %d / %d crystals"],
  ["core.yield %d", "採集可得 %d 晶", "采集可得 %d 晶", "Harvest yields %d"],
  ["core.count %d %d", "已指定 %d · 到位 %d", "已指定 %d · 到位 %d", "Assigned %d · Arrived %d"],

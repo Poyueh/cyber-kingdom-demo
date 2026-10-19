@@ -38,7 +38,7 @@ func sample(hint: Dictionary, hero: Vector2, world_x: float, safe: Rect2, time: 
  var offset: float=clampf(distance,-style.lead_distance,style.lead_distance)
  if absf(distance)<200:offset=distance-_direction*style.companion_distance
  if state=="wait":offset=_direction*(style.lead_distance-22)
- if mood=="rest":offset=-style.companion_distance
+ if mood in ["rest","cheer"]:offset=-style.companion_distance
  if mood=="guard":offset=clampf(distance,-82,82)
  var goal: Vector2=hero+Vector2(offset,-style.follow_height)
  # Keep the entire pixel silhouette out of controls, captions and the knight's face.
@@ -64,7 +64,7 @@ func sample(hint: Dictionary, hero: Vector2, world_x: float, safe: Rect2, time: 
   "age":time-_started_at,"near_age":time-_arrived_at if _arrived_at>=0 else -1.0,"looking_back":looking_back}
 
 func _state(mood: String, near: bool, time: float) -> String:
- if mood=="rest":return "rest"
+ if mood in ["rest","cheer"]:return "rest"
  if mood=="guard":return "guard"
  if near and mood=="work":return "observe"
  if near and mood=="receive":return "receive"

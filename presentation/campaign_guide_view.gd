@@ -3,7 +3,7 @@ const Icons=preload("res://presentation/ui_icons.gd")
 const Motion=preload("res://presentation/spirit_motion.gd")
 const Art=preload("res://presentation/spirit_companion_art.gd")
 const Style=preload("res://data/spirit_companion.tres")
-const SYMBOLS={"rest":"camp","resident_income":"crystal","work_income":"hammer","merchant_return":"trade","merchant_wait":"trade","merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map"}
+const SYMBOLS={"rest":"camp","resident_income":"crystal","work_income":"hammer","merchant_return":"trade","merchant_wait":"trade","merchant":"trade","dragon":"dragon","upgrade":"camp","core":"camp","delivery":"hammer","escort":"hammer","join":"rift","fight":"rift","seal":"rift","clear_enemies":"sword","rift":"rift","camp":"camp","recruit":"person","tool":"hammer","harvest":"tree","hunter":"bow","guard":"sword","wall":"wall","defend":"camp","chest":"chest","trade":"trade","collect":"crystal","explore":"map","call_build":"hammer","call_gather":"crystal","call_survive":"sword","call_seal":"rift","call_dragon":"dragon"}
 ## These tasks already say "follow me" in their own words.
 const LEADING_KINDS: Array[String]=["explore"]
 const LESSON_RANKS: Array[String]=["core.light","core.recruit","core.hammer","core.harvest","core.working","core.collect","core.bow","core.wall","core.assign","core.first_warning","core.first_night","core.autonomy","core.second_night"]
@@ -82,6 +82,10 @@ func _track_progress(game_time: float) -> void:
 func _needs_caption() -> bool:
  # Each new task is spoken at once, even on the move; arrival and a stalled player are answered soon.
  if hint.get("mood")=="rest" or hint.kind=="farewell":return spirit_pose.age>=0.8 and spirit_pose.age<3.8
+ # A called goal is said at once and again every interval while it stands, walking or not.
+ if hint.get("mood")=="cheer":
+  var since: float=fposmod(spirit_pose.age,Style.callout_interval)
+  return since>=Style.caption_delay and since<Style.caption_delay+Style.callout_seconds
  if spirit_pose.age>=Style.caption_delay and spirit_pose.age<Style.caption_delay+Style.announce_seconds:return true
  if absf(spirit_pose.speed)>35:return false
  if spirit_pose.near and spirit_pose.near_age>=Style.caption_delay and spirit_pose.near_age<Style.caption_delay+Style.caption_seconds:return true
@@ -90,7 +94,7 @@ func _needs_caption() -> bool:
 func _present_caption() -> void:
  if not is_instance_valid(_guide_label):return
  var goal: String=tr(hint.get("goal",GOALS.get(hint.kind,"擴建避難所，封印裂隙並擊敗巨龍。")))
- if not spirit_pose.near and spirit_pose.mood not in ["rest","guard"] and hint.kind not in LEADING_KINDS:goal=tr("spirit.lead %s")%goal
+ if not spirit_pose.near and spirit_pose.mood not in ["rest","guard","cheer"] and hint.kind not in LEADING_KINDS:goal=tr("spirit.lead %s")%goal
  if hint.kind=="farewell":goal=tr("你已學會建立家園。需要指引時，回營火旁的引魂壇找我。")
  _guide_label.text=goal
  _guide_label.size=Vector2(minf(260,safe.size.x-24),0)
