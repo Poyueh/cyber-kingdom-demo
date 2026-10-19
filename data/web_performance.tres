@@ -4,4 +4,5 @@
 script = ExtResource("1")
 phone_fps = 30
 desktop_fps = 60
+phone_physics_hz = 30
 stream_music = true

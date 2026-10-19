@@ -10,9 +10,9 @@ import sys
 from build_desktop import prepare_tree, run_logged, git
 
 
-# Loaded by the page shell (html/head_include): phone pixel ratio cap, swipe guard, fullscreen
-# and the guide reader.
-PAGE_ASSETS = ('phone-display.js', 'touch-guard.css', 'touch-guard.js', 'fullscreen.js', 'guide-reader.js', 'guide-reader.css')
+# Loaded by the page shell (html/head_include): phone pixel ratio cap, frame cap, swipe guard,
+# fullscreen and the guide reader.
+PAGE_ASSETS = ('phone-display.js', 'frame-pacing.js', 'touch-guard.css', 'touch-guard.js', 'fullscreen.js', 'guide-reader.js', 'guide-reader.css')
 
 
 def install_page_assets(stage: Path, web: Path) -> None:
