@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-19 v0.0.64：居民被打回流浪者時移除 `roam_role`，在倒下處重新漫遊（有工作的居民可能從未漫遊，舊錨點仍是野外）。Demo 開局 12 晶（`demo_starting_crystals`），主遊戲 6 晶。網頁外殼的 `web/touch-guard.*` 阻止下拉重新整理。快照v22不變。
+
 2026-10-19 v0.0.63：Web 匯出以樣本模式播放音訊，每個新的 AudioStream 實例都會變成無法釋放的 WebAudio 緩衝。音樂、環境音、循環音效一律從 `presentation/shared_audio_streams.gd` 取共用實例，不在執行中 duplicate／重載；這修正了手機網頁版玩到一半自動重整。快照v22不變。
 
 2026-10-18 v0.0.62：龍晶數字在右上晶袋左側，耐力條跟著騎士顯示在頭頂（騎馬時升高），只在未滿時出現；`core_loop_hud.present()` 需要騎士畫面座標與晶袋範圍。快照v22不變。

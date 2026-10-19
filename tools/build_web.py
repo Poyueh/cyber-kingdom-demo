@@ -10,8 +10,12 @@ import sys
 from build_desktop import prepare_tree, run_logged, git
 
 
-def install_guide_reader(stage: Path, web: Path) -> None:
-    for name in ('guide-reader.js', 'guide-reader.css'):
+# Loaded by the page shell (html/head_include): phone swipe guard and the guide reader.
+PAGE_ASSETS = ('touch-guard.css', 'touch-guard.js', 'guide-reader.js', 'guide-reader.css')
+
+
+def install_page_assets(stage: Path, web: Path) -> None:
+    for name in PAGE_ASSETS:
         shutil.copyfile(stage / 'web' / name, web / name)
 
 
@@ -53,7 +57,7 @@ def export_project(ref: str, output: Path, godot: str, edition=None) -> Path:
             shutil.copyfile(stage / 'docs/player-guide/demo.html', web / 'guide.html')
         else:
             run_logged([sys.executable, str(stage / 'tools/build_player_guide.py'), '--output', str(web / 'guide.html')], output / 'guide.log')
-        install_guide_reader(stage, web)
+        install_page_assets(stage, web)
         run_logged([sys.executable, str(stage / "tools/install_social_preview.py"),
                     "--site", str(web), "--edition", distribution["edition"]], output / "social-preview.log")
         shutil.copyfile(stage / 'art/fonts/noto-sans-tc/OFL.txt', web / 'FONT-LICENSE.txt')
