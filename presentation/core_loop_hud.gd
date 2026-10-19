@@ -7,6 +7,7 @@ signal guidance_toggled
 signal title_requested
 var action_button: Button
 var wallet: Label
+var wallet_icon: TextureRect
 var stamina: ProgressBar
 var caption: Label
 var interaction: Label
@@ -18,11 +19,12 @@ var panel: PanelContainer
 var rows: Dictionary={}
 var row_buttons: Dictionary={}
 var _bindings: Array[Dictionary]=[]
-## Values sit beside what they describe: stamina over the knight, the crystal count by the pouch.
+## Values sit beside what they describe: stamina under the knight, the crystal count by the pouch.
 const WALLET_GAP: float=4.0
+const WALLET_ICON: float=24.0
+const WALLET_COLOR: Color=Color("dff6ee")
 const STAMINA_SIZE: Vector2=Vector2(56,6)
-const STAMINA_LIFT: float=82.0 # From the knight's anchor to the bar's top; the idle helmet top is about 68 above it.
-const MOUNTED_LIFT: float=28.0 # The warhorse rider's helmet sits about 27 higher than on foot.
+const STAMINA_DROP: float=22.0 # From the knight's anchor to the bar's top; the feet (and hooves) are about 16 below it.
 const STAMINA_TRACK: Color=Color("25363b")
 const STAMINA_EDGE: Color=Color("0b1519")
 const STAMINA_FULL: Color=Color("afd58b")
@@ -32,7 +34,11 @@ func _ready() -> void:
  mouse_filter=Control.MOUSE_FILTER_IGNORE
  theme=preload("res://presentation/refuge_theme.gd").make()
  action_button=_button(self,"core.pay",func()->void:interaction_requested.emit())
- wallet=_label(self,18);stamina=ProgressBar.new();stamina.show_percentage=false;stamina.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(stamina)
+ wallet=_label(self,20);wallet.add_theme_color_override("font_color",WALLET_COLOR)
+ wallet.add_theme_color_override("font_shadow_color",Color(0.01,0.03,0.04,0.95));wallet.add_theme_constant_override("shadow_offset_x",2);wallet.add_theme_constant_override("shadow_offset_y",2)
+ wallet_icon=TextureRect.new();wallet_icon.texture=preload("res://presentation/ui_icons.gd").get_icon("crystal");wallet_icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;wallet_icon.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+ wallet_icon.custom_minimum_size=Vector2.ONE*WALLET_ICON;wallet_icon.size=Vector2.ONE*WALLET_ICON;wallet_icon.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(wallet_icon)
+ stamina=ProgressBar.new();stamina.show_percentage=false;stamina.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(stamina)
  stamina.add_theme_stylebox_override("background",_bar_box(STAMINA_TRACK,1));stamina.add_theme_stylebox_override("fill",_bar_box(STAMINA_FULL,0))
  caption=_label(self,16);caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;caption.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  interaction=_label(self,16);interaction.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;interaction.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -66,10 +72,12 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  if not paused:panel.hide()
  for binding: Dictionary in _bindings:binding.button.text=tr(binding.key)
  var core: RefCounted=sim.core_loop
- wallet.visible=not paused or panel.visible
- wallet.text=tr("core.wallet %d")%sim.pouch.amount;wallet.size=wallet.get_minimum_size()
- wallet.position=Vector2(purse.position.x-wallet.size.x-WALLET_GAP,purse.get_center().y-wallet.size.y/2) if purse.has_area() else safe.position+Vector2(92,22)
- stamina.size=STAMINA_SIZE;stamina.position=hero_screen+Vector2(-STAMINA_SIZE.x/2,-STAMINA_LIFT-(MOUNTED_LIFT if sim.mounted() else 0.0))
+ wallet.visible=not paused or panel.visible;wallet_icon.visible=wallet.visible
+ # The bag says what is counted, so the number needs no word: a crystal icon and a multiplier.
+ wallet.text="×%d"%sim.pouch.amount;wallet.size=wallet.get_minimum_size()
+ wallet.position=Vector2(purse.position.x-wallet.size.x-WALLET_GAP,purse.get_center().y-wallet.size.y/2) if purse.has_area() else safe.position+Vector2(92+WALLET_ICON,22)
+ wallet_icon.position=Vector2(wallet.position.x-WALLET_ICON,wallet.position.y+(wallet.size.y-WALLET_ICON)/2)
+ stamina.size=STAMINA_SIZE;stamina.position=hero_screen+Vector2(-STAMINA_SIZE.x/2,STAMINA_DROP)
  stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina
  var low: bool=sim.hero.stamina<=sim.hero.stats.max_stamina*STAMINA_LOW_RATIO
  (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_FULL
