@@ -9,6 +9,8 @@ class_name CoreLoopTuning
 @export var harvest_crystals: int=4
 @export var cache_crystals: int=8
 @export var starting_crystals: int=6
+## The Demo is a first impression: one harvest should pay for the guided first day with room to manage.
+@export_range(0,30,1) var demo_starting_crystals: int=12
 @export var enemy_health: int=28
 @export var enemy_damage: int=8
 @export var wall_damage: int=8
@@ -62,4 +64,5 @@ func resolve_demo(base: Dictionary) -> Dictionary:
  var result: Dictionary=resolve_campaign(base)
  result.core_loop_version=3
  result.voyage_enabled=0
+ result.starting_crystals=demo_starting_crystals
  return result

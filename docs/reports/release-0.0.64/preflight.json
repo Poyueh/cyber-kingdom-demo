@@ -1,0 +1,19 @@
+{
+  "version": "0.0.64",
+  "source": "79eb4a88b18fe63f3a8b571250b492108d54e183",
+  "spec_revision": 51,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4575,
+  "forest_demo_assertions": 97,
+  "fixes": {
+    "resident_revert": "roam anchor dropped on hit; regression test reproduced a 447 px walk back to the wild recruit spot, now stays within 100 px of where they fell",
+    "demo_economy": "demo starts with 12 crystals; probe: one harvest before the first night, 5 spare (was two harvests, 2 spare); test checks start + one harvest - guided first-day prices >= 4",
+    "pull_to_refresh": "page shell touch guard; in the exported page html/body overscroll-behavior none, body fixed, downward touchmove prevented from canvas, body and html; guide dialog swipes still allowed. Live v0.0.63 for comparison: overscroll auto, body/html swipes not prevented"
+  },
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform (Windows, macOS, Web, Android assets, iOS PCK); macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified; Demo user directory isolated",
+  "local_browser": "Demo web export: journey starts with 12 crystals beside the pouch; no console errors",
+  "pending": [
+    "pull-to-refresh confirmation on the reporter's phone and browser (desktop Chromium cannot reproduce the browser gesture itself)",
+    "new player feel of the richer demo start"
+  ]
+}

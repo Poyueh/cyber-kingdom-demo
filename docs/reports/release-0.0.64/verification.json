@@ -1,0 +1,84 @@
+{
+  "main": {
+    "source_tree": "3d7d4dc971b42659c8b4dda806354e635a305c9e",
+    "distribution_assertions_per_platform": 49,
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android assets",
+      "iOS PCK"
+    ],
+    "removed_paths": 0,
+    "web_pck_bytes": 75615508,
+    "user_directory": "User data directory: /Users/jenpoyueh/Library/Application Support/Godot/app_userdata/Cyber Kingdom Demo"
+  },
+  "demo": {
+    "source_tree": "3d7d4dc971b42659c8b4dda806354e635a305c9e",
+    "distribution_assertions_per_platform": 50,
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android assets",
+      "iOS PCK"
+    ],
+    "removed_paths": 136,
+    "web_pck_bytes": 63595440,
+    "user_directory": "User data directory: /Users/jenpoyueh/Library/Application Support/Cyber Kingdom Forest Demo"
+  },
+  "assets": {
+    "Cyber-Kingdom-Demo-Android-debug-v0.0.64.apk": {
+      "sha256": "fd75c127783893751e9415c4dd51d896c128265fd38ae424f10fd81931fd7708",
+      "bytes": 91442517
+    },
+    "Cyber-Kingdom-Demo-Guide-v0.0.64.html": {
+      "sha256": "bfbb33b9fbb48527375b22934682bb9f0925d79983c819560e0d503f6854e7e9",
+      "bytes": 7392
+    },
+    "Cyber-Kingdom-Demo-Web-v0.0.64.zip": {
+      "sha256": "7a0e3bc7a3dc5fa14823e008358fe9ecabab7c2d04d376c77625dfa00c5c7db8",
+      "bytes": 81348584
+    },
+    "Cyber-Kingdom-Demo-Windows-v0.0.64.zip": {
+      "sha256": "b28ccaff5d00f1e63659b56ae423006445eaac2b3e00baffbcf5f6204f063727",
+      "bytes": 100182602
+    },
+    "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.64.zip": {
+      "sha256": "ddc42d72124371a8c1fd4d397d9e267841c7e038979a3fbd9b26b931b551dc54",
+      "bytes": 174984905
+    },
+    "Cyber-Kingdom-Demo-macOS-v0.0.64.zip": {
+      "sha256": "edc482de4766d35d82203a79b4ff1020022b082c5a837155640e9fe7ffe8a6cd",
+      "bytes": 122605111
+    },
+    "Cyber-Kingdom-Main-Android-debug-v0.0.64.apk": {
+      "sha256": "38c9abdc09d29857e3557139f010ee4d30fee52a94485385c7e31fefe6bbdf53",
+      "bytes": 103502899
+    },
+    "Cyber-Kingdom-Main-Guide-v0.0.64.html": {
+      "sha256": "9f10649df0efbc9d992938241e41105ae08654107a6c11f516ec12dbfea919f8",
+      "bytes": 15832825
+    },
+    "Cyber-Kingdom-Main-Web-v0.0.64.zip": {
+      "sha256": "dd8251fe007aec22e8b9727eae3ea2fde1a7ec496bf817f80cfd5f7da77a018d",
+      "bytes": 105181014
+    },
+    "Cyber-Kingdom-Main-Windows-v0.0.64.zip": {
+      "sha256": "d450b8f3499fb119465e91b722aa73ba1adc379fc101cba0adf3768cf8b35bb3",
+      "bytes": 112150371
+    },
+    "Cyber-Kingdom-Main-iOS-Xcode-v0.0.64.zip": {
+      "sha256": "694ef776c9623279e1ded1a3a47345ad5bfc2ff0bcb8d95d5881ecd5485dd6a4",
+      "bytes": 186955625
+    },
+    "Cyber-Kingdom-Main-macOS-v0.0.64.zip": {
+      "sha256": "64beef93bc55b677f9c12214c40fd611a296de6b3dcc803fa62564041467f5fd",
+      "bytes": 134572096
+    },
+    "SHA256SUMS.txt": {
+      "sha256": "137e088115df4f6c6fd605975b8919c88b5a30f68c06a746a1774703d9bf65c3",
+      "bytes": 1262
+    }
+  }
+}
