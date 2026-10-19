@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 [autoload]
 
 GameLanguage="*res://bootstrap/localization.gd"
+FramePacing="*res://bootstrap/frame_pacing.gd"
 
 [display]
 

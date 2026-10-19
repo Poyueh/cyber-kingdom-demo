@@ -153,6 +153,8 @@ data/            Resource 定義與內容檔。
 - 熱路徑（每 tick、每幀）避免重建陣列與字典。`x = x.filter(...)` 每次都配置一個新陣列。
 - 量測用的計時程式碼放呈現層或 bootstrap，**不得進 `domain/` 或 `application/`**，
   且要能用旗標關掉，不留在熱路徑上。
+- **Web 不用 `Engine.max_fps` 限幀。** 單執行緒網頁上它以忙等湊時間，主執行緒反而滿載；
+  幀數上限由 `web/frame-pacing.js` 跳過動畫幀，數值在 `data/web_performance.tres`。
 - **Web 音訊不得在執行中複製或重新載入 AudioStream。** Web 匯出預設以樣本模式播放，
   每個新的串流實例都會解壓成整段 WebAudio 緩衝（兩分鐘音樂約 40 MB），引擎無法釋放；
   `duplicate()`、快取逐出後再 `load()` 都會讓記憶體持續上升，直到手機瀏覽器重整頁面。
@@ -177,3 +179,4 @@ data/            Resource 定義與內容檔。
 - [ ] 沒有同一份資料在同一幀被算兩次
 - [ ] 新增的集合有上限或存活時間
 - [ ] 執行中沒有 `duplicate()` 或重新 `load()` 音訊串流（Web 會累積無法釋放的緩衝）
+- [ ] 沒有用 `Engine.max_fps` 限制 Web 幀數（會忙等）

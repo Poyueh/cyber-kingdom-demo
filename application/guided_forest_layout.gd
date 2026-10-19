@@ -20,13 +20,17 @@ static func apply(sim: RefCounted, config: Dictionary) -> void:
    var area: Dictionary=map.regions[i]
    if node.x>=area.x and node.x<area.x+area.width:node.region=i;break
  map.nodes.append_array(distant)
+ for animal: Dictionary in map.animals:
+  for i in range(map.regions.size()):
+   var area: Dictionary=map.regions[i]
+   if animal.x>=area.x and animal.x<area.x+area.width:animal.region=i;break
  map.left_boundary=bounds.x;map.right_boundary=bounds.y
  sim.pouch.left_boundary=bounds.x;sim.pouch.right_boundary=bounds.y
  sim.defenses=preload("res://domain/frontier_defenses.gd").new(sim.world,map,config)
  sim.work_area=preload("res://domain/resident_work_area.gd").new(sim.world,sim.defenses,float(config.get("work_margin",850.0)))
  sim.workforce.work_area=sim.work_area
- sim.buildings=Sites.generate(map,sim.map_seed,-610.0)
- sim.buildings["core_tower_right"]=Sites._site("tower",670.0,-1,-1)
+ sim.buildings=Sites.generate(map,sim.map_seed,CoreLayout.LEFT_TOWER)
+ sim.buildings["core_tower_right"]=Sites._site("tower",CoreLayout.RIGHT_TOWER,-1,-1)
  sim._register_building_walls()
  sim.mission.rifts.assign(original_rifts)
  sim.modules.relics.assign(original_relics)

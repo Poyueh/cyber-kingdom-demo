@@ -63,5 +63,9 @@ func run_scene() -> void:
  scene._notification(Node.NOTIFICATION_APPLICATION_FOCUS_OUT)
  scene._physics_process(1.0/60);scene.paused=false;scene._physics_process(1.0/60)
  check(scene.sim.pouch.ground_total()==drops,"background cancels queued quick swipe before resume")
+ hud.present_world(scene.sim,true,scene.knight.position.x,true)
+ check(hud.fullscreen_button.visible,"phones also get the fullscreen switch in the pause menu")
+ hud.present_world(scene.sim,false,scene.knight.position.x,true)
+ check(not hud.fullscreen_button.visible,"the switch stays inside the menu")
  scene.queue_free();await process_frame
  print("Mobile scene assertions: %d; failures: %d"%[assertions,failures]);quit(0 if failures==0 else 1)

@@ -34,6 +34,8 @@ func _ready() -> void:
 		_players.append(player)
 	_layer_player = AudioStreamPlayer.new(); _layer_player.bus = "Music"; add_child(_layer_player)
 	_sting_player = AudioStreamPlayer.new(); _sting_player.bus = "Music"; add_child(_sting_player)
+	var playback: int = load("res://data/web_performance.tres").music_playback(WebPerformance.current_features())
+	for player in _players + [_layer_player, _sting_player]: player.playback_type = playback
 
 func _stream(name: String) -> AudioStream:
 	if name.is_empty(): return null
