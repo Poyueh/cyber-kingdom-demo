@@ -12,9 +12,13 @@ func run_scene() -> void:
 	sim.clock.survived=1
 	music.observe(0.05,sim,sim.world.sites.hall,false)
 	check(music._sting_player.stream!=null,"a newly requested sting cannot evict itself before being bound")
-	check(music._cache.has("dawn_sting"),"requested dawn audio survives cache admission")
+	check(is_same(music._sting_player.stream,music._stream("dawn_sting")),"the bound sting is the shared dawn stream")
+	var night: AudioStream=music._players[0].stream
+	sim.clock.is_night=false;sim.raiders.clear()
 	music.observe(0.05,sim,sim.world.sites.hall,false)
-	check(music._cache.size()<=music.CACHE_LIMIT,"cache returns to its bounded size after binding the new cue")
+	sim.clock.is_night=true
+	music.observe(0.05,sim,sim.world.sites.hall,false)
+	check(is_same(music._players[0].stream,night),"night returns on the same stream rather than a new copy")
 	music.queue_free();await process_frame
 	print("Music cache scene assertions: %d; failures: %d"%[assertions,failures])
 	quit(0 if failures==0 else 1)

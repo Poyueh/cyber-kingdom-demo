@@ -1,5 +1,7 @@
 # Cyber Kingdom 遊戲術語
 
+2026-10-19 v0.0.63：Web 匯出以樣本模式播放音訊，每個新的 AudioStream 實例都會變成無法釋放的 WebAudio 緩衝。音樂、環境音、循環音效一律從 `presentation/shared_audio_streams.gd` 取共用實例，不在執行中 duplicate／重載；這修正了手機網頁版玩到一半自動重整。快照v22不變。
+
 2026-10-18 v0.0.62：龍晶數字在右上晶袋左側，耐力條跟著騎士顯示在頭頂（騎馬時升高），只在未滿時出現；`core_loop_hud.present()` 需要騎士畫面座標與晶袋範圍。快照v22不變。
 
 2026-10-18 v0.0.61：新旅程在營火左側 260 像素出生（`data/campaign_tuning.gd` 的 arrival_walk_distance），一開畫面就看得到營火。鬼魂每換任務 0.3 秒內說出要做什麼（走動中也說，遠處為「跟我來。」＋任務，鍵 `spirit.lead %s`），停滯 6 秒再提醒。Pages 根目錄是 Demo，`main/` 是主遊戲 Web 版（`tools/unpack_release_site.py`）。快照v22不變。
