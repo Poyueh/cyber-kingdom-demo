@@ -1,0 +1,30 @@
+{
+  "version": "0.0.63",
+  "source": "d1c5e50373ac226c904de6cbd8580f54fd8eb9f9",
+  "spec_revision": 50,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "base_assertions": 4570,
+  "root_cause": "Web exports play audio as samples; every new AudioStream instance became an unreleasable ~40 MB WebAudio buffer. CampaignMusic evicted beyond four tracks and reloaded with duplicate(); ambience and effect loops duplicated per scene.",
+  "evidence": {
+    "native_scene_soak": "30 game minutes, 8 days: static memory ~280 MB flat, objects/nodes/resources flat",
+    "web_probe_real_campaign_music_50_switches": {
+      "before": {
+        "live_audio_mb": 1252,
+        "js_heap_mb": 1470,
+        "trend": "rising"
+      },
+      "after": {
+        "live_audio_mb": 270,
+        "js_heap_mb": 352,
+        "trend": "flat"
+      }
+    },
+    "web_real_demo_six_camp_wild_trips": "live audio 260-304 MB, JS heap 294-376 MB, no upward trend; no console errors"
+  },
+  "new_tests": "returning tracks and rebuilt scenes reuse one stream instance; ambience and effect loops share streams across scenes",
+  "all_platform_artifacts": "passed; Main 49 / Demo 50 content checks per platform (Windows, macOS, Web, Android assets, iOS PCK); macOS executables launch and signatures verify; Android signatures and 16 KiB alignment verified; Demo user directory isolated",
+  "pending": [
+    "confirmation on the reporter's phone",
+    "bounded audio still holds ~270 MB once every track has played; streaming music on web could lower it later"
+  ]
+}

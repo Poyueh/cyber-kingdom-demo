@@ -1,15 +1,13 @@
 extends Node
-## Plays the score the cue chooser asks for. Tracks are loaded on demand so a phone
-## never holds every piece in memory at once.
+## Plays the score the cue chooser asks for. Tracks load on first use and are then shared
+## for the whole run: on the web a reloaded track would become another unreleasable buffer.
 const Cues = preload("res://presentation/campaign_music_cues.gd")
+const Streams = preload("res://presentation/shared_audio_streams.gd")
 const LOOPS := ["title", "day_explore", "day_refuge", "night_watch", "night_raid", "dragon_boss"]
 const STINGS := ["victory_theme", "defeat_theme", "dawn_sting"]
 const CROSSFADE := 2.0
 const LAYER_FADE := 1.0
 const PAUSE_DUCK_DB := -12.0
-## Enough for the two crossfading loops, the raid layer and a sting; a phone does
-## not need every piece resident once it has been heard.
-const CACHE_LIMIT := 4
 
 signal track_changed(name: String)
 
@@ -27,7 +25,6 @@ var _layer_player: AudioStreamPlayer
 var _sting_player: AudioStreamPlayer
 var _mix := 1.0
 var _layer_mix := 0.0
-var _cache: Dictionary = {}
 
 func _ready() -> void:
 	for index in range(2):
@@ -40,31 +37,10 @@ func _ready() -> void:
 
 func _stream(name: String) -> AudioStream:
 	if name.is_empty(): return null
-	if not _cache.has(name):
-		var folder := "res://art/audio/music-v002/%s.ogg" % name
-		if not ResourceLoader.exists(folder):
-			push_error("missing music track: %s" % folder)
-			return null
-		var stream: AudioStream = load(folder)
-		if stream is AudioStreamOggVorbis:
-			stream = stream.duplicate()
-			stream.loop = name in LOOPS
-		_cache[name] = stream
-	_forget_unused(name)
-	return _cache[name]
-
-## Only what is on a player right now must stay loaded.
-func _forget_unused(reserved: String = "") -> void:
-	if _cache.size() <= CACHE_LIMIT: return
-	var live: Array = [current, layer, reserved]
-	for name in _cache.keys():
-		if _cache.size() <= CACHE_LIMIT: return
-		if live.has(name): continue
-		if _sting_player != null and _cache[name] == _sting_player.stream: continue
-		for player in _players:
-			if player.stream == _cache[name]: live.append(name)
-		if live.has(name): continue
-		_cache.erase(name)
+	var path := "res://art/audio/music-v002/%s.ogg" % name
+	var stream := Streams.shared(path, name in LOOPS)
+	if stream == null: push_error("missing music track: %s" % path)
+	return stream
 
 func observe(seconds: float, sim, x: float, paused: bool) -> void:
 	var silent: bool = not enabled or suspended or volume <= 0
@@ -76,7 +52,6 @@ func observe(seconds: float, sim, x: float, paused: bool) -> void:
 	_advance_track(seconds, wanted.track)
 	_advance_layer(seconds, wanted.layer)
 	if not wanted.sting.is_empty(): _play_sting(wanted.sting)
-	_forget_unused() # New streams now own their player; old entries can be released.
 
 func _duck(paused: bool) -> void:
 	var bus := AudioServer.get_bus_index("Music")
@@ -138,5 +113,4 @@ func _exit_tree() -> void:
 		if is_instance_valid(player): player.stream = null
 	if is_instance_valid(_layer_player): _layer_player.stream = null
 	if is_instance_valid(_sting_player): _sting_player.stream = null
-	_cache.clear()
 	cues = null
