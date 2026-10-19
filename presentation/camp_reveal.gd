@@ -26,6 +26,15 @@ func progress() -> float:
 	if _age<0:return 1.0
 	return smoothstep(EXTRACTION_SECONDS,EXTRACTION_SECONDS+Style.assembly_seconds,_age)
 
+## What rises with the camp: built tool racks, and the module workshop only where it is shown
+## (in new journeys it waits for the first module).
+func assembling_sites(sim: RefCounted) -> Array[String]:
+	var result: Array[String]=[]
+	for site: String in ["workshop","hunt_tools"]:
+		if sim.built.get(site,false):result.append(site)
+	if sim.site_visible("drill"):result.append("drill")
+	return result
+
 func draw_on(view: Node2D, sim: RefCounted) -> void:
 	var amount: float=progress()
 	var hall: float=sim.world.sites.hall
@@ -34,8 +43,7 @@ func draw_on(view: Node2D, sim: RefCounted) -> void:
 	var tint: Color=Color(1,1,1,amount)
 	view._prop("hall-%d"%sim.frontier.city_level,Vector2(hall,430),1.0,tint)
 	view._prop("campfire",Vector2(hall+104,430),0.7,tint)
-	for site: String in ["workshop","hunt_tools","drill"]:
-		if site!="drill" and not sim.built.get(site,false):continue
+	for site: String in assembling_sites(sim):
 		var at: Vector2=Vector2(sim.world.sites[site],430)
 		if not view._on_screen(at.x,320):continue
 		view._prop(site,at,1.0,tint)
