@@ -1,8 +1,12 @@
-## v0.0.65 營地空間、部件工坊、獵人、全螢幕與網頁效能（發佈中）
+## v0.0.65 營地空間、部件工坊、獵人、全螢幕與網頁效能（已發布）
 
 使用者手機試玩回饋五項，皆先寫失敗測試再修正。①營地太擠：使用者選擇城牆外移，引導版森林城牆各外移約 280，牆內相鄰至少 150 像素（測試以實際繪製物件檢查）。②部件工坊找到第一個部件才出現。③獵人不狩獵：動物被歸到錯誤區域、沒派守城的獵人一律被叫回，兩處修正後沒派守城的獵人白天在工作範圍內狩獵並在天黑前回來。④全螢幕按鈕：開始選單與暫停選單，電腦與手機都有；網頁於同一次點擊內切換。⑤手機發燙與重整：先量測（120Hz 下主執行緒 300 ms／秒、Engine.max_fps 在網頁會忙等），改為網頁端跳幀（手機 30 幀＋物理 30Hz、電腦 60 幀）、手機像素比上限 2、網頁音樂串流；遊戲中主執行緒約 142 ms／秒（−53%），開場 JS 記憶體 453→約 105 MB。規格修訂 52。教學：[第142課](lessons/142-measure-the-web-frame.md)。
 
 完整回歸通過（核心 4600 項，無 SCRIPT ERROR／ERROR）。Main／Demo 五平台 10 組成品由 9ddbfcd 建置，內容各 49／50 項、macOS 啟動與簽章、Android 簽章與 16 KiB 對齊通過（Main Android 匯入時字型處理偶發中斷一次，重跑通過）。全螢幕在內嵌測試瀏覽器無法真正進入，以替身確認單次點擊內呼叫 requestFullscreen 一次。[驗收紀錄](reports/release-0.0.65/preflight.json)。待回報者手機確認全螢幕與發燙。
+
+Release 417550443 已公開，13 份遠端附件尺寸與雜湊一致；Pages 39293552401 成功，70 個公開檔案（含 main/ 35 個）與發行包逐一相同，企劃 v0.0.65／修訂 52；公開頁面幀數控制、全螢幕與觸控防護皆已載入，無 console errors。
+
+[森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.65) · [主遊戲網頁版](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.65) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.65) · [Godot 小課](lessons/142-measure-the-web-frame.md)。
 
 ## v0.0.64 手機試玩三項修正（已發布）
 
