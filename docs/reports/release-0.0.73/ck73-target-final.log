@@ -8,4 +8,4 @@ PASS test_max_camp_shows_no_false_price
 PASS test_archers_follow_new_outer_tower_and_fall_back_without_payment
 PASS test_mid_swing_save_replays_the_same_hit_and_rejects_bad_rules
 PASS test_blocking_a_hit_does_not_dismiss_an_expedition_soldier
-Assertions: 35; failures: 0
+Assertions: 36; failures: 0
