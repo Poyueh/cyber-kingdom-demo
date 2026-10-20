@@ -1,6 +1,8 @@
 class_name TravelRecoveryRules
 extends Resource
 const Clock=preload("res://domain/time/tick_clock.gd")
+const LEGACY_GUIDED_RATIO: float=0.3
+@export_range(0.2,0.8,0.01) var guided_sprint_recovery_ratio: float=1.0/3.0
 ## Canonical defaults shared by Inspector data and standalone core simulations.
 @export_range(0.2,0.8,0.02) var tired_speed_multiplier: float=0.42
 @export_range(0.1,0.5,0.05) var run_recovery_ratio: float=0.30
@@ -24,3 +26,9 @@ func apply(config: Dictionary) -> void:
  sprint_rest_seconds=clampf(config.get("sprint_rest_seconds",sprint_rest_seconds),0.5,5.0)
 
  rest_tick_limit=Clock.ticks_for(sprint_rest_seconds)
+
+## The old guided default was 30%; existing records adopt the corrected one-third
+## threshold without replacing their saved map, pacing or other configuration.
+func guided_ratio(config: Dictionary) -> float:
+ var saved: float=float(config.get("core_sprint_ratio",guided_sprint_recovery_ratio))
+ return guided_sprint_recovery_ratio if is_equal_approx(saved,LEGACY_GUIDED_RATIO) else clampf(saved,0.2,0.8)

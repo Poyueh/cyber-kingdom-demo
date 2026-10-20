@@ -55,6 +55,8 @@ var return_margin: float = 15.0
 var hunter_damage: int = 12
 var hunter_range: float = 170.0
 var hunter_interval: float = 1.2
+const HuntRules=preload("res://domain/hunter_roaming_rules.gd")
+var hunter_roaming: HuntRules=HuntRules.new()
 var _hero_x: float = 0.0
 var _night_spawn_index := 0
 const Pouch = preload("res://domain/crystal_pouch.gd")
@@ -114,6 +116,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 		hero.hp=hero.stats.max_hp
 	travel.forced_rest=life.enabled
 	travel.configure(config)
+	hunter_roaming.apply(config)
 	world.add_wall("wall_left",left_post)
 	mission=Mission.new(config)
 	growth=Growth.new(config,world.shield_value)
@@ -830,8 +833,11 @@ func kingdom_established() -> bool:
 		var w: Dictionary=world.walls[defenses.active_post(side)]
 		return w.level>=2 and w.hp>0) and citizens>=3
 
-func _receive_hunt(at: float) -> void:
-	pouch.drop(2,at)
+func _receive_hunt(at: float, person: Dictionary={}) -> void:
+	if life.enabled and not person.is_empty():
+		person["crystals"]=int(person.get("crystals",0))+HuntRules.CATCH_CRYSTALS
+		return
+	pouch.drop(HuntRules.CATCH_CRYSTALS,at)
 
 func _advance_farm(seconds: float, farmers: int) -> void:
 	if not agriculture_available():return
@@ -927,10 +933,12 @@ func _game_discovered(animal: Dictionary) -> bool:
 	return frontier.regions[animal.region].discovered
 
 func _hunter_prey(person: Dictionary) -> Dictionary:
+	if life.enabled and int(person.get("crystals",0))+HuntRules.CATCH_CRYSTALS>Life.CARRY_LIMIT:return {}
 	var prey: Dictionary={};var nearest:=INF
 	for animal in frontier.animals:
 		if not animal.alive or not _game_discovered(animal):continue
 		if core_loop.enabled:
+			if not hunter_roaming.contains(animal.x,world.sites[defenses.active_post(-1)],world.sites[defenses.active_post(1)]):continue
 			var index: int=world.people.find(person)
 			var target: String=core_loop.orders.targets[index] if index<core_loop.orders.targets.size() else ""
 			if target.is_empty():
@@ -952,10 +960,10 @@ func _hunter_patrol_center(person: Dictionary) -> float:
 	var index: int=world.people.find(person)
 	var side: int=-1 if index%2==0 else 1
 	var edge: float=world.sites[defenses.active_post(side)]
-	return work_area.clamp_target(edge+side*220.0)
+	return work_area.clamp_target(edge+side*minf(hunter_roaming.patrol_depth,hunter_roaming.wall_margin-hunter_roaming.patrol_radius))
 
 func _hunter_can_roam(person: Dictionary) -> bool:
-	if core_loop.stage<1 or clock.is_night or life.threatened(person,raiders):return false
+	if core_loop.stage<1 or clock.is_night or life.threatened(person,raiders) or int(person.get("crystals",0))+HuntRules.CATCH_CRYSTALS>Life.CARRY_LIMIT:return false
 	var home: float=world.sites.hunt_tools
 	var outside: float=_hunter_patrol_center(person)
 	var trip: float=(absf(person.x-outside)+absf(outside-home))/_person_speed
@@ -966,7 +974,7 @@ func _idle_hunter_target(person: Dictionary, seconds: float) -> float:
 		var index: int=world.people.find(person)
 		if not core_loop.orders.targets[index].is_empty() or not _hunter_can_roam(person):return core_loop.orders.destination(self,index)
 		var center: float=_hunter_patrol_center(person)
-		return Roaming.destination(person,index,center,65,seconds,center-65,center+65)
+		return Roaming.destination(person,index,center,hunter_roaming.patrol_radius,seconds,center-hunter_roaming.patrol_radius,center+hunter_roaming.patrol_radius)
 	var index: int=world.people.find(person)
 	var center: float=world.sites.hunt_tools
 	var forests=frontier.regions.filter(func(r):return r.discovered and r.kind=="forest")
