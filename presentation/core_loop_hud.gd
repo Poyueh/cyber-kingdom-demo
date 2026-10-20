@@ -9,6 +9,7 @@ var action_button: Button
 var wallet: Label
 var wallet_icon: TextureRect
 var stamina: ProgressBar
+var stamina_ready: ColorRect
 var caption: Label
 var interaction: Label
 var orders_button: Button
@@ -29,6 +30,7 @@ const STAMINA_DROP: float=22.0 # From the knight's anchor to the bar's top; the 
 const STAMINA_TRACK: Color=Color("25363b")
 const STAMINA_EDGE: Color=Color("0b1519")
 const STAMINA_FULL: Color=Color("afd58b")
+const STAMINA_RECOVERING: Color=Color("d8b776")
 const STAMINA_LOW: Color=Color("d7826d")
 const STAMINA_LOW_RATIO: float=0.18
 func _ready() -> void:
@@ -39,8 +41,9 @@ func _ready() -> void:
  wallet.add_theme_color_override("font_shadow_color",Color(0.01,0.03,0.04,0.95));wallet.add_theme_constant_override("shadow_offset_x",2);wallet.add_theme_constant_override("shadow_offset_y",2)
  wallet_icon=TextureRect.new();wallet_icon.texture=preload("res://presentation/ui_icons.gd").get_icon("crystal");wallet_icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE;wallet_icon.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
  wallet_icon.custom_minimum_size=Vector2.ONE*WALLET_ICON;wallet_icon.size=Vector2.ONE*WALLET_ICON;wallet_icon.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(wallet_icon)
- stamina=ProgressBar.new();stamina.show_percentage=false;stamina.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(stamina)
+ stamina=ProgressBar.new();stamina.step=0.01;stamina.show_percentage=false;stamina.mouse_filter=Control.MOUSE_FILTER_IGNORE;add_child(stamina)
  stamina.add_theme_stylebox_override("background",_bar_box(STAMINA_TRACK,1));stamina.add_theme_stylebox_override("fill",_bar_box(STAMINA_FULL,0))
+ stamina_ready=ColorRect.new();stamina_ready.color=Color("e9deba");stamina_ready.mouse_filter=Control.MOUSE_FILTER_IGNORE;stamina.add_child(stamina_ready)
  caption=_label(self,16);caption.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;caption.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  interaction=_label(self,16);interaction.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;interaction.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
  orders_button=_button(self,"core.orders",func()->void:panel.visible=not panel.visible;orders_toggled.emit(panel.visible))
@@ -82,7 +85,9 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  stamina.size=STAMINA_SIZE;stamina.position=hero_screen+Vector2(-STAMINA_SIZE.x/2,STAMINA_DROP)
  stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina
  var low: bool=sim.hero.stamina<=sim.hero.stats.max_stamina*STAMINA_LOW_RATIO
- (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_FULL
+ var ratio: float=sim.travel.core_sprint.recovery_ratio if sim.travel.core_sprint!=null else sim.travel.rules.sprint_recovery_ratio
+ stamina_ready.position=Vector2(roundf(STAMINA_SIZE.x*ratio),0);stamina_ready.size=Vector2(1,STAMINA_SIZE.y)
+ (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_RECOVERING if sim.travel.exhausted else STAMINA_FULL
  orders_button.position=safe.position+Vector2(18,72);orders_button.visible=core.income>0 and sim.is_running() and (not paused or panel.visible)
  guide_button.position=safe.position+Vector2(18,122);guide_button.visible=sim.is_running() and core.stage<5 and not paused
  guide_button.text=tr("core.show" if core.skipped else "core.skip")

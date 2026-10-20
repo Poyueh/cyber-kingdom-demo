@@ -1,0 +1,37 @@
+{
+  "version": "0.0.71",
+  "source": "2c6e106d3b8b7725487da81e25c627f7341433cc",
+  "spec_revision": 61,
+  "changes": [
+    "one-third stamina restart and continuous recovery feedback",
+    "tutorial repeats every 6 seconds while moving; later callouts every 8 seconds",
+    "daytime archers hunt within 300 world pixels of active walls and return for night/threats",
+    "hunter keeps each 2-crystal catch in existing resident wallet until the knight approaches"
+  ],
+  "root_causes": [
+    "Demo v3 was omitted from shared sprint configuration",
+    "idle-only reminder timing reset on movement",
+    "hunt reward went straight to ground drops; prey selection only respected the wider work territory"
+  ],
+  "target_red": "16 expected failures among 39 assertions before implementation",
+  "target_green": "all 39 initial targeted assertions passed; further save-continuity and invalid-limit cases passed in full regression",
+  "full_check": "4744 core assertions and all scene checks passed; no SCRIPT ERROR or ERROR",
+  "native_scene_assertions": {
+    "recovery_feedback": 12,
+    "hunter_delivery": 2
+  },
+  "save": "actual JSON retained the catch and recovery state; continued sprint timing and stamina match uninterrupted inputs; snapshot remains v23",
+  "platform_content_assertions": {
+    "main": 69,
+    "demo": 70
+  },
+  "packaged_assets": 13,
+  "desktop_build": "first concurrent import ended without a script error; isolated clean Main and Demo rebuilds passed, followed by executable/content/signature checks",
+  "local_web": "fresh exported Demo: founding, double-tap sprint, depleted recovery bar/threshold, normal movement and repeated ghost instruction visible; no console errors",
+  "pending": [
+    "public release/Pages verification",
+    "Windows runtime playtest",
+    "Android/iPhone/iPad hardware playtest",
+    "subjective player feedback"
+  ]
+}

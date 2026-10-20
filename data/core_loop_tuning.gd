@@ -20,7 +20,7 @@ class_name CoreLoopTuning
 @export var second_enemies: int=4
 @export var second_side_delay: float=18.0
 @export var arrival_radius: float=45.0
-@export var sprint_recovery_ratio: float=0.3
+@export var sprint_recovery_ratio: float=preload("res://domain/travel_recovery_rules.gd").new().guided_sprint_recovery_ratio
 @export var return_margin: float=30.0
 @export var prices: Dictionary={"recruit":1,"workshop":2,"hunt_tools":3,"mark":1,"wall":3,"wall_upgrade":4}
 func resolve(base: Dictionary) -> Dictionary:
