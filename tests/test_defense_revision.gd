@@ -24,16 +24,18 @@ func test_orders_require_local_payment_and_fail_without_spending(t):
 func test_unfinished_outer_wall_never_pulls_a_live_defense_out(t):
  var sim: RefCounted=fresh()
  var id: String=sim.defenses.plots.keys().filter(func(k: String)->bool:return sim.defenses.plots[k].side==1)[0]
- sim.world.walls[id].level=1;sim.world.walls[id].hp=40;sim.world.walls[id].pending=true
+ sim.world.walls[id].level=0;sim.world.walls[id].hp=0;sim.world.walls[id].pending=true
  t.truth(sim.core_loop.orders.assign(sim,"wall",1),"initial defense assigned")
  t.equal(sim.core_loop.orders.position(sim,"wall"),sim.world.sites.wall-90,"unfinished wall is not a new live line")
- sim.world.walls[id].pending=false
+ sim.world.walls[id].pending=false;sim.world.walls[id].level=1;sim.world.walls[id].hp=40
  t.equal(sim.core_loop.orders.position(sim,"wall"),sim.world.sites[id]-90,"finished outer wall receives the same defenders")
  sim.world.walls[id].hp=0
  t.equal(sim.core_loop.orders.position(sim,"wall"),sim.world.sites.wall-90,"destroyed outer wall falls back without a new order")
  t.equal(sim.core_loop.orders.targets[0],"wall","logical right-side assignment survives expansion and collapse")
  sim.world.walls.wall.pending=true
- t.equal(sim.defenses.work_bounds().y,sim.world.sites.hall+220,"no operational right wall uses the camp fallback")
+ t.equal(sim.defenses.work_bounds().y,sim.world.sites.wall,"existing wall upgrade retains worker territory until its health is lost")
+ sim.world.walls.wall.hp=0
+ t.equal(sim.defenses.work_bounds().y,sim.world.sites.hall+220,"destroyed last wall uses the camp fallback")
 func test_shield_blocks_a_front_hit_but_not_a_back_hit(t):
  for front: bool in [true,false]:
   var sim: RefCounted=fresh();var person: Dictionary=sim.world.people[0]
