@@ -1,8 +1,10 @@
-## v0.0.75 龍晶重機（驗證完成，發布中）
+## v0.0.75 龍晶重機（已發布）
 
 以龍晶重機取代戰馬，完整騎姿、四段騎乘斬擊、受擊及休息，獨立輪轂按正負速度旋轉，整車不再跟著馬步上下跳。加入重機車庫、核心座與停放無人車，替換發動／行駛音效及三語指示。原有兩導流器、6晶修復、25%移速、夜襲預警、跨星與v24紀錄保留。主遊戲及森林Demo共用；現有已解鎖坐騎直接換成重機。
 
-原生兩版已擷取車庫、停車、轉向、騎乘斬擊及觸控畫面；實際鍵盤操作的核心回收與6晶上下車流程8項通過。4852項核心斷言與完整場景回歸通過，無SCRIPT ERROR／ERROR。兩版五平台同源297bead；Web規格另帶入cd9081b兩份純文件校對，所有非規格檔案位元保持一致。實體內容Main78／Demo79項、macOS執行、Android簽章及16KiB對齊通過，13附件完成。正式Web成品已確認Main主選單與Demo新局移動、點火、後續引導，無console errors。正發布到既有試玩站，尚未宣告上線。教學：第152課；驗收素材見docs/reports/release-0.0.75。
+原生兩版已擷取車庫、停車、轉向、騎乘斬擊及觸控畫面；實際鍵盤操作的核心回收與6晶上下車流程8項通過。4852項核心斷言與完整場景回歸通過，無SCRIPT ERROR／ERROR。兩版五平台同源297bead；Web規格另帶入cd9081b兩份純文件校對，所有非規格檔案位元保持一致。實體內容Main78／Demo79項、macOS執行、Android簽章及16KiB對齊通過，13附件完成。正式Web成品已確認Main主選單與Demo新局移動、點火、後續引導，無console errors。發布418754687已公開，13份附件大小與SHA-256一致；Pages39480634183成功，72份公開檔案與兩版成品逐一一致，規格v0.0.75／修訂77。公開Main／Demo前導與選單、規格重機實景圖片已確認，無console errors；手機真機與Windows實玩尚未驗收。教學：第152課；驗收素材見docs/reports/release-0.0.75。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.75) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.75) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.75) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.75) · [公開驗收](reports/release-0.0.75/publication.json)。
 
 ## v0.0.74 網頁長時間遊玩（已發布）
 
