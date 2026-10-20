@@ -1,0 +1,215 @@
+{
+  "version": "0.0.74",
+  "source": "47136600ab26b83f4e67fef1cfea6d20ac9c0122",
+  "documentation_source": "83001755ccfafad1b07a08bd04d6333f983b8417",
+  "documentation_only_delta": [
+    "docs/game-spec/content.json",
+    "docs/game-spec/sync.json"
+  ],
+  "spec_revision": 73,
+  "change": "Web default playback switches all sound effects and ambience from Sample to Stream; six-player pool, original timing/volume/pause, native audio and v24 gameplay/save retained",
+  "full_check": "4852 core assertions plus all scene tests; no SCRIPT ERROR, ERROR or FAIL",
+  "audio_regression": "13 real touch/combo/cooldown/mute/background/restart assertions passed",
+  "audio_comparison": {
+    "baseline": {
+      "at_120_seconds": {
+        "accepted": 3760,
+        "complete": false,
+        "elapsed": 120,
+        "fps": 57,
+        "godot_bytes": 0,
+        "mode": "baseline",
+        "nodes": 32,
+        "objects": 1710,
+        "peak_db": -17.3914470672607,
+        "process_ms": 7.1,
+        "requests": 6859,
+        "texture_bytes": 30044451,
+        "audio": {
+          "buffers": 3802,
+          "pcmBytes": 561869584,
+          "sources": 3782,
+          "gains": 22635,
+          "splitters": 3770,
+          "mergers": 3770,
+          "starts": 3782,
+          "stops": 3770,
+          "ended": 3773,
+          "disconnects": 37720
+        },
+        "jsHeap": 129382219
+      },
+      "after_5_seconds_stop": {
+        "accepted": 3760,
+        "complete": true,
+        "elapsed": 125,
+        "fps": 55,
+        "godot_bytes": 0,
+        "mode": "baseline",
+        "nodes": 32,
+        "objects": 1696,
+        "peak_db": -200,
+        "process_ms": 9.9,
+        "requests": 6859,
+        "texture_bytes": 30044451,
+        "audio": {
+          "buffers": 3802,
+          "pcmBytes": 561869584,
+          "sources": 3782,
+          "gains": 22635,
+          "splitters": 3770,
+          "mergers": 3770,
+          "starts": 3782,
+          "stops": 3770,
+          "ended": 3782,
+          "disconnects": 37720
+        },
+        "jsHeap": 107687979
+      }
+    },
+    "stream": {
+      "at_120_seconds": {
+        "accepted": 3779,
+        "complete": false,
+        "elapsed": 120,
+        "fps": 55,
+        "godot_bytes": 0,
+        "mode": "stream",
+        "nodes": 32,
+        "objects": 1710,
+        "peak_db": -11.5545234680176,
+        "process_ms": 6.3,
+        "requests": 6845,
+        "texture_bytes": 30044451,
+        "audio": {
+          "buffers": 0,
+          "pcmBytes": 0,
+          "sources": 0,
+          "gains": 15,
+          "splitters": 0,
+          "mergers": 0,
+          "starts": 0,
+          "stops": 0,
+          "ended": 0,
+          "disconnects": 8
+        },
+        "jsHeap": 79210607
+      },
+      "after_5_seconds_stop": {
+        "accepted": 3779,
+        "complete": true,
+        "elapsed": 125,
+        "fps": 57,
+        "godot_bytes": 0,
+        "mode": "stream",
+        "nodes": 32,
+        "objects": 1696,
+        "peak_db": -200,
+        "process_ms": 4.5,
+        "requests": 6845,
+        "texture_bytes": 30044451,
+        "audio": {
+          "buffers": 0,
+          "pcmBytes": 0,
+          "sources": 0,
+          "gains": 15,
+          "splitters": 0,
+          "mergers": 0,
+          "starts": 0,
+          "stops": 0,
+          "ended": 0,
+          "disconnects": 8
+        },
+        "jsHeap": 79244545
+      }
+    }
+  },
+  "native_baseline": "30 accelerated simulation minutes with seven JSON restores; warm objects 1733, static memory about 46.5 MB; stable collections; not a browser/iPhone test",
+  "real_time_campaign": {
+    "environment": "Desktop Codex in-app browser, phone 30 FPS/30 Hz preset, actual game scene/audio/art, isolated test save",
+    "fixture_source": "v0.0.73 plus the exact production Web Stream setting; no game-code difference from 4713660 other than version/comments/docs",
+    "conditions": "Protected knight/camp, real movement/attacks, up to 12 synthetic raiders and four extra SFX requests per second; reaches prolonged day-3 night combat; does not claim multiple completed day/night cycles",
+    "duration_seconds": 1920,
+    "restores": 6,
+    "failures": 0,
+    "samples": 65,
+    "accepted_cues": 22134,
+    "audio": {
+      "buffers": 0,
+      "pcmBytes": 0,
+      "sources": 0,
+      "gains": 15,
+      "splitters": 0,
+      "mergers": 0,
+      "starts": 0,
+      "stops": 0,
+      "ended": 0,
+      "disconnects": 8
+    },
+    "ranges": {
+      "objects": {
+        "min": 3371,
+        "max": 3573,
+        "last": 3466
+      },
+      "nodes": {
+        "min": 316,
+        "max": 316,
+        "last": 316
+      },
+      "texture_bytes": {
+        "min": 107771545,
+        "max": 131673003,
+        "last": 131651159
+      },
+      "jsHeap": {
+        "min": 78328873,
+        "max": 192123873,
+        "last": 173021008
+      },
+      "fps": {
+        "min": 28,
+        "max": 30,
+        "last": 30
+      },
+      "enemies": {
+        "min": 1,
+        "max": 12,
+        "last": 12
+      },
+      "effects": {
+        "min": 0,
+        "max": 15,
+        "last": 15
+      },
+      "drops": {
+        "min": 0,
+        "max": 1,
+        "last": 0
+      }
+    },
+    "texture_warmup": "Initial scene loads to about 131.65 MB within 30 seconds; subsequent save/restore dip is below 64 KiB, no increasing texture count trend",
+    "console_errors": 0,
+    "fixture_retry": "First attempt omitted synthetic raider side/direction/exit metadata and failed snapshot validation. Fixed only diagnostic fixture, verified valid JSON, restarted timer from zero. Discarded earlier run is not counted as a pass."
+  },
+  "platform_content_assertions": {
+    "main": 75,
+    "demo": 76
+  },
+  "packaged_assets": 13,
+  "local_web": "Formal Demo new game, movement, founding, save, load, resume and attack; Main menu; no console errors. Shipped PCK retains all-Web Stream and original menu; diagnostic entry excluded. Reviewed spec version 0.0.74 revision 73.",
+  "limits": [
+    "Desktop browser cannot prove a fix on the reporting iPhone/Chrome hardware",
+    "Audio allocation counts are cumulative churn, not retained/live memory or proof of a leak",
+    "Browser JS heap is not total process/WASM/GPU memory; engine static memory monitor is unavailable on Web",
+    "Reported JS heap changed from 78328873 to 173021008 bytes; other same-site test tabs were opened/closed during the run. This is not evidence of a flat heap or that every source of memory growth has been removed",
+    "Other builds/browser tabs ran concurrently; FPS samples are not a controlled performance comparison",
+    "Web Stream latency/crackle, heat and long-session stability still require phone hardware testing",
+    "Windows/Android/iOS runtime hardware playtests pending"
+  ],
+  "pending": [
+    "public release/Pages verification",
+    "phone hardware long-session and audio latency verification",
+    "Windows runtime playtest"
+  ]
+}

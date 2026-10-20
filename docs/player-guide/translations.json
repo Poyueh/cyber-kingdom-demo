@@ -2534,5 +2534,13 @@
   "劍盾兵能舉盾擋正面近戰，先蓄勢再斬擊；出招破綻、背擊與龍息仍危險。戰馬重製跑步、攻擊、受擊與休息，收步回到接地姿勢；移速與取得方式不變。": {
     "zh_CN": "剑盾兵能举盾挡正面近战，先蓄势再斩击；出招破绽、背击与龙息仍危险。战马重制跑步、攻击、受击与休息，收步回到接地姿势；移速与取得方式不变。",
     "en": "Swordsmen block frontal melee with shields and wind up before cutting. Attack openings, rear hits and dragon breath remain dangerous. Mount gallop, attack, hit and rest animations are rebuilt, settling onto planted hooves when stopping. Speed and unlock conditions are unchanged."
+  },
+  "v0.0.74：改善手機網頁長時間遊玩的音效資源負擔，音樂、環境音與戰鬥音效改用串流播放；主遊戲與森林 Demo 同步，保留原有畫面、操作與存檔。": {
+    "zh_CN": "v0.0.74：改善手机网页长时间游玩的音效资源负担，音乐、环境音与战斗音效改用流式播放；主游戏与森林 Demo 同步，保留原有画面、操作与存档。",
+    "en": "v0.0.74 reduces repeated browser audio allocations during long sessions. Music, ambience and combat effects use streaming playback in both Main and Forest Demo; visuals, controls and saves are preserved."
+  },
+  "首夜後開放完整森林：龍晶商人、遺跡解謎取得部件、戰馬與拓荒。西側安靜補給，東側有守獸，第二夜左右先後來襲。兩夜後帶工匠封印龍門、召喚並擊敗森林巨龍。領取龍核、投入20晶讓工匠建好火箭，Demo 即完成並回主選單；主遊戲則搭火箭繼續七星旅程。": {
+    "zh_CN": "首夜后开放完整森林：龙晶商人、遗迹解谜取得部件、战马与拓荒。西侧安静补给，东侧有守兽，第二夜左右先后来袭。两夜后带工匠封印龙门、召唤并击败森林巨龙。领取龙核、投入20晶让工匠建好火箭，Demo 即完成并回主菜单；主游戏则搭火箭继续七星旅程。",
+    "en": "After the first night, explore the full forest: the merchant, relic parts, warhorse and expansion sites. The west offers supplies; a beast guards the east. After two nights, escort builders to seal the gates and defeat the forest dragon. Claim its core and invest 20 crystals for builders to finish the rocket. Demo then ends and returns to the menu; Main continues to the other planets."
   }
 }

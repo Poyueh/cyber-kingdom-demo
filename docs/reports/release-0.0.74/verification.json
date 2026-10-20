@@ -1,0 +1,85 @@
+{
+  "main": {
+    "source_tree": "f9a6edbde083a8a8d4c41c184fb34c5b1a030917",
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android",
+      "iOS project"
+    ],
+    "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed",
+    "native_game_source": "47136600ab26b83f4e67fef1cfea6d20ac9c0122",
+    "web_source": "83001755ccfafad1b07a08bd04d6333f983b8417"
+  },
+  "demo": {
+    "source_tree": "f9a6edbde083a8a8d4c41c184fb34c5b1a030917",
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android",
+      "iOS project"
+    ],
+    "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed",
+    "native_game_source": "47136600ab26b83f4e67fef1cfea6d20ac9c0122",
+    "web_source": "83001755ccfafad1b07a08bd04d6333f983b8417"
+  },
+  "assets": {
+    "Cyber-Kingdom-Demo-Android-debug-v0.0.74.apk": {
+      "sha256": "9a8bbc3294a7e8b54d3bfb29fa0f4ba84fdbf5296cd34d49712e35eaa31d41a6",
+      "bytes": 92199940
+    },
+    "Cyber-Kingdom-Demo-Web-v0.0.74.zip": {
+      "sha256": "1a8182bc6dea1e8a9cc01161a3431253d7fe12c6e47eeef0f254d53ea6fb33bc",
+      "bytes": 82090889
+    },
+    "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.74.zip": {
+      "sha256": "8fbfa8887479321a9ac0ce2dca83f04c440ad971efe961f06c59782a8ba3608d",
+      "bytes": 175638342
+    },
+    "Cyber-Kingdom-Main-Guide-v0.0.74.html": {
+      "sha256": "f1421310e1c1ad2cb810681f3ed5b81fb78776dd5274b8dda4ea45b0dde196c9",
+      "bytes": 15850852
+    },
+    "Cyber-Kingdom-Demo-Guide-v0.0.74.html": {
+      "sha256": "d5c89145592ce37a65efa8c5598f450f2d84494594dad5fb5fc46b141c7acff6",
+      "bytes": 15621
+    },
+    "Cyber-Kingdom-Main-macOS-v0.0.74.zip": {
+      "sha256": "ed3e206a6f397c41d30d61a17a98fdb95d2cc8bad9ae3737afb65a438c2ca328",
+      "bytes": 135298956
+    },
+    "Cyber-Kingdom-Main-Android-debug-v0.0.74.apk": {
+      "sha256": "7b1e08872afd98132a5ffe5eee19be12a588a4acc2004178b9d710db93b02ca2",
+      "bytes": 104256226
+    },
+    "Cyber-Kingdom-Main-Windows-v0.0.74.zip": {
+      "sha256": "15655fd964dbc84c2e167f9aa5d34cbc0d9fc8188cca1e2a4f7335b3460c0efe",
+      "bytes": 112877226
+    },
+    "Cyber-Kingdom-Main-Web-v0.0.74.zip": {
+      "sha256": "04972219dfc7d8fc899ac8467dd52de33258ed35cf0958bad23bc1532ad5fc70",
+      "bytes": 105926396
+    },
+    "Cyber-Kingdom-Main-iOS-Xcode-v0.0.74.zip": {
+      "sha256": "2b8f280c4ce0f711332827b1e4ed36b89800a250e02bd14ed122f4098afb7d06",
+      "bytes": 187604962
+    },
+    "SHA256SUMS.txt": {
+      "sha256": "6f06348bafe5269a1ad70269130ba8e1653876be4c08665a96cf29718ba6bdaa",
+      "bytes": 1262
+    },
+    "Cyber-Kingdom-Demo-Windows-v0.0.74.zip": {
+      "sha256": "4df804cee8340fa8043a88ff3c4536d43ab63675f3ef97eec8dec6a2ccd9770a",
+      "bytes": 100910091
+    },
+    "Cyber-Kingdom-Demo-macOS-v0.0.74.zip": {
+      "sha256": "976f44c4dc7f2124210ebfeec31a6ec01669fc7314c08ad8c64995cf924c72e9",
+      "bytes": 123332600
+    }
+  },
+  "spec_revision": 73,
+  "game_source": "47136600ab26b83f4e67fef1cfea6d20ac9c0122",
+  "web_documentation_source": "83001755ccfafad1b07a08bd04d6333f983b8417"
+}

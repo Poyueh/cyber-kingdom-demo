@@ -1,0 +1,7 @@
+Main Windows Distribution assertions: 75; failures: 0
+Main iOS Distribution assertions: 75; failures: 0
+Main Android Distribution assertions: 75; failures: 0
+Demo Windows Distribution assertions: 76; failures: 0
+Demo iOS Distribution assertions: 76; failures: 0
+Demo Android Distribution assertions: 76; failures: 0
+Validated and packaged 13 release assets
