@@ -1,5 +1,7 @@
 # 第146課：用Resource拆開物種造型與狩獵規則
 
+> 本課保留v0.0.69歷史做法；v0.0.70已以[完整動作圖集](147-native-wildlife-atlases.md)取代五色色塊與獨立矩形腿。
+
 在Godot開啟 `data/wildlife/fox.tres`，Inspector 的 Stride 是一輪腳步對應的移動距離；數值越大，走過同樣距離時腳步越慢。Tail Sway 調整尾巴上下擺動幅度，Shadow 是地面陰影半寬。這些只改外觀，不會改狐狸的實際移速或狩獵收益。
 
 七種新圖案共用 `WildlifeAppearance` Resource。圖案每一字元是一個兩像素色塊，句點透明，a到e對應五個色階；腿的位置與身體圖案分開，才能讓雉雞雙足、山羊長腿及陸龜短腳使用同一個繪製器而維持不同輪廓。鹿沿用既有貼圖。

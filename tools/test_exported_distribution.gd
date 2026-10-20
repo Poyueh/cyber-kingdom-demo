@@ -38,6 +38,8 @@ func verify() -> void:
  check(ResourceLoader.exists("res://presentation/wildlife_art.gd"),"shipped game includes wildlife renderer")
  for species: String in ["hare","boar","fox","badger","goat","pheasant","tortoise"]:
   check(ResourceLoader.exists("res://data/wildlife/"+species+".tres"),"shipped huntable species resource: "+species)
+  var appearance: Resource=load("res://data/wildlife/"+species+".tres")
+  check(appearance.texture!=null and appearance.texture.get_size()==Vector2(384,160),"shipped complete wildlife atlas: "+species)
  check(game.hud.guide_view._motion.style.body_half_size==Vector2(30,34),"shipped ghost uses compact shared clearance")
  check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
  check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")

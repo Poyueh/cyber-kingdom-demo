@@ -1,0 +1,72 @@
+{
+  "hare": {
+    "height": 40,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 24,
+    "shadow": 14
+  },
+  "boar": {
+    "height": 39,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 38,
+    "shadow": 22
+  },
+  "fox": {
+    "height": 36,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 40,
+    "shadow": 20
+  },
+  "badger": {
+    "height": 30,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 28,
+    "shadow": 20
+  },
+  "goat": {
+    "height": 56,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 42,
+    "shadow": 19
+  },
+  "pheasant": {
+    "height": 40,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 20,
+    "shadow": 13
+  },
+  "tortoise": {
+    "height": 24,
+    "frames": 8,
+    "cell": [
+      96,
+      80
+    ],
+    "stride": 18,
+    "shadow": 17
+  }
+}
