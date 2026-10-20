@@ -94,7 +94,7 @@ func _draw_activity() -> void:
 		if _on_screen(raider.x):_raider(raider)
 	for effect in _sim.effects:
 		match effect.kind:
-			"bolt": draw_line(Vector2(effect.x,396),Vector2(effect.to,396),Color("91ece3"),2)
+			"bolt": draw_line(Vector2(effect.x,effect.get("y",396)),Vector2(effect.to,effect.get("target_y",396)),Color("91ece3"),2)
 			"pay": draw_circle(Vector2(effect.x,380-(0.45-effect.life)*50),4,Color("f0ce82"))
 			"hit": _hit_effect(effect)
 	_draw_interaction()

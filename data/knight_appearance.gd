@@ -15,6 +15,10 @@ extends Resource
 @export var mounted_offset: Vector2=Vector2(0,-26)
 @export var mounted_gait_frames: int=2
 @export_range(1,40) var mounted_fps: float=18.0
+@export var mounted_reference_speed: float=206.25
+@export var mounted_max_fps: float=24.0
+## Per-pose saddle anchors compensate for cropped source poses, without stretching the horse.
+@export var mounted_offsets: Array[Vector2]=[]
 @export var mounted_attack_start: int=3
 @export_range(3,8) var mounted_attack_frames: int=3
 @export var mounted_idle_start: int=0

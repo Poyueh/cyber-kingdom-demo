@@ -144,6 +144,7 @@ func _ready() -> void:
 		audio.music_volume=music;audio.effects_volume=effects;audio.ambience_volume=bed
 		audio.enabled=music>0.0 or effects>0.0 or bed>0.0
 		_remember_volumes())
+	hud.options_menu.resume_requested.connect(_resume_from_menu)
 	hud.options_menu.save_checkpoint_requested.connect(func():
 		_click("ui_save");save_manual_campaign())
 	hud.options_menu.load_checkpoint_requested.connect(func():
@@ -244,7 +245,7 @@ func _physics_process(seconds: float) -> void:
 	var was_running:=sim.is_running()
 	super._physics_process(seconds)
 	if is_instance_valid(_core_controller):_core_controller.observe()
-	if is_instance_valid(_star_travel):_star_travel.observe()
+	if is_instance_valid(_star_travel):_star_travel.observe(seconds)
 	if paused and not was_paused:hud.cancel_touch_gestures()
 	if _requested_throw and not paused and not CampReveal.extracting(sim,knight.position.x):
 		sim.throw_crystal(knight.position.x,knight.position.y,sim.hero.facing)
@@ -334,6 +335,12 @@ func save_campaign() -> bool:
 	_present_save()
 	return result
 
+func _resume_from_menu() -> void:
+	paused=false
+	controls.release_all();hud.cancel_touch_gestures()
+	hud.module_menu.hide();hud.exploration_map.hide();hud.core_hud.panel.hide()
+	hud.present_world(sim,false,knight.position.x,knight.is_on_floor())
+
 func _apply_restored(restored: Dictionary) -> void:
 	sim=restored.session
 	_core_trial=sim.core_loop.trial
@@ -368,6 +375,9 @@ func _apply_restored(restored: Dictionary) -> void:
 	_sync_investment_focus()
 	_build_terrain()
 	paused=true
+	hud.module_menu.hide();hud.exploration_map.hide();hud.core_hud.panel.hide()
+	# A resumed outcome has already happened. Do not re-enter a frozen fade that locks Pause.
+	hud.dashboard.restore_outcome(sim.mission.outcome)
 	knight.refresh_visual(0.0)
 	view.present(sim,knight.position.x)
 	hud.present_world(sim,paused,knight.position.x,knight.is_on_floor())

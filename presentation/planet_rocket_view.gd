@@ -11,7 +11,8 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
   var tint: Color=Color(1.2,1.35,1.35) if absf(view._view_player_x-x)<73 else Color.WHITE
   var source:=Rect2i(frame*180,0,180,188)
   view.draw_texture_rect_region(ATLAS,Ground.frame_rect(ATLAS,source,Vector2(roundf(x),430)),Rect2(source),tint)
-  view._icon("map" if sim.planet.rocket_ready else "hammer",Vector2(x,218),29,Color("9de0db"))
+  # The Demo's finished rocket opens no star chart, so it offers no map.
+  if not (sim.planet.finale and sim.planet.rocket_ready):view._icon("map" if sim.planet.rocket_ready else "hammer",Vector2(x,218),29,Color("9de0db"))
   if sim.planet.rocket_pending:
    view.draw_line(Vector2(x-32,237),Vector2(x+32,237),Color("24434d"),4)
    view.draw_line(Vector2(x-32,237),Vector2(x-32+64*sim.planet.work/sim.planet.work_required,237),Color("8ce4de"),4)

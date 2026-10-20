@@ -195,8 +195,8 @@ func _advance_people(seconds: float) -> void:
 func _override_resident_target(_index: int, _seconds: float) -> float:
 	return NAN
 
-func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float) -> bool:
-	if person.cooldown > 0.0 or absf(person.get("y",430.0)-430.0)>42:
+func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float, elevated: bool=false) -> bool:
+	if person.cooldown > 0.0 or (not elevated and absf(person.get("y",430.0)-430.0)>42):
 		return false
 	var nearest: Dictionary = {}
 	var distance := reach
@@ -208,7 +208,8 @@ func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interv
 	if nearest.is_empty(): return false
 	nearest.fighter.take_damage(attack_damage_against(nearest,damage))
 	person.cooldown = interval
-	effects.append({"kind":"bolt","x":person.x,"to":nearest.x,"life":0.18})
+	person["direction"]=signf(nearest.x-person.x)
+	effects.append({"kind":"bolt","x":person.x,"y":person.get("y",430.0)-34.0,"to":nearest.x,"target_y":nearest.get("y",430.0)-34.0,"life":0.18})
 	return true
 
 func _engineer_target(index: int, seconds: float) -> float:

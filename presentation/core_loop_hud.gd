@@ -16,6 +16,7 @@ var retry_button: Button
 var guide_button: Button
 var title_button: Button
 var panel: PanelContainer
+var troop_count: Label
 var rows: Dictionary={}
 var row_buttons: Dictionary={}
 var _bindings: Array[Dictionary]=[]
@@ -50,6 +51,7 @@ func _ready() -> void:
  panel.add_theme_stylebox_override("panel",preload("res://presentation/refuge_theme.gd").plate(Color("0b1925f5"),Color("a38e65"),16))
  var body: VBoxContainer=VBoxContainer.new();body.add_theme_constant_override("separation",8);panel.add_child(body)
  var heading: Label=_label(body,20);heading.text=tr("core.orders")
+ troop_count=_label(body,16)
  for target: String in ["wall_left","wall","beacon","core_tower_right"]:
   var row: HBoxContainer=HBoxContainer.new();body.add_child(row)
   var label: Label=_label(row,16);label.size_flags_horizontal=Control.SIZE_EXPAND_FILL;rows[target]=label
@@ -104,15 +106,24 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
   if choice.cost>0:interaction.text+="\n"+tr("core.price %d %d")%[choice.paid,choice.cost]
   if choice.id=="mark":interaction.text+=" · "+tr("core.yield %d")%sim.frontier.nodes[choice.node_index].crystals
   if not choice.enabled:interaction.text+="\n"+tr(_reason(sim,choice))
- panel.position=Vector2(safe.get_center().x-220,safe.get_center().y-160);panel.size=Vector2(440,320)
+ panel.position=Vector2(safe.get_center().x-220,safe.get_center().y-180);panel.size=Vector2(440,360)
  if panel.visible:
   caption.hide();interaction.hide();action_button.hide()
+  var total: int=0
+  var free: int=0
+  for i: int in range(sim.world.people.size()):
+   if sim.world.people[i].role!="hunter":continue
+   total+=1
+   if i>=core.orders.targets.size() or core.orders.targets[i].is_empty():free+=1
+  troop_count.text=tr("core.archers %d %d %d")%[total,total-free,free]
   for target: String in rows:
    var assigned: int=core.orders.targets.count(target)
    var arrived: int=core.orders.arrived(sim,target,core.arrival_radius)
-   rows[target].text=tr("core.post."+target)+"\n"+tr("core.count %d %d")%[assigned,arrived]
+   var counts: String=tr("core.count %d %d")%[assigned,arrived]
+   if target in ["beacon","core_tower_right"]:counts=tr("core.tower.count %d %d %d")%[assigned,core.orders.capacity(sim,target),arrived]
+   rows[target].text=tr("core.post."+target)+"\n"+counts
    row_buttons[target][0].disabled=assigned==0
-   row_buttons[target][1].disabled=not core.orders.usable(sim,target) or (target in ["beacon","core_tower_right"] and assigned>=1)
+   row_buttons[target][1].disabled=not core.orders.usable(sim,target) or (target in ["beacon","core_tower_right"] and assigned>=core.orders.capacity(sim,target))
 func exclusion_rects() -> Array[Rect2]:
  var result: Array[Rect2]=[]
  if not visible:return result

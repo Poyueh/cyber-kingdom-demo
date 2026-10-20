@@ -34,7 +34,7 @@ func _initialize() -> void:
   if key.begins_with("core_") and key not in ["core_max_hp","core_recharge"]:legacy.erase(key)
  var old: RefCounted=Campaign.new(legacy)
  var old_packet: Dictionary=codec.capture(old,legacy,body)
- old_packet.erase("core_loop");old_packet.version=21
+ old_packet.erase("core_loop");old_packet.erase("planet");old_packet.version=21
  check(not codec.restore(old_packet).is_empty(),"v21 journey migrates without adopting core trial rules")
  run_flow()
  print("Core loop: %d assertions, %d failures"%[assertions,failures])
