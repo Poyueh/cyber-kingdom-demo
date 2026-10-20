@@ -1,9 +1,11 @@
-## v0.0.69 八種狩獵生物（驗收中）
+## v0.0.69 八種狩獵生物（已發布）
 
 v0.0.69 可狩獵生物擴為八種：鹿、野兔、野豬、狐狸、獾、山羊、雉雞、陸龜。狐狸有蓬鬆擺尾，獾有低身與白面紋，山羊有角與長腿，雉雞有長尾及雙足步態，陸龜有分節甲殼及短腳；每種有獨立像素輪廓、配色、步幅與抬腳設定。造型由既有獵物位置的穩定索引輪替，不消耗世界亂數，讀檔、日出恢復和返訪不重新抽外觀。新旅程、主遊戲、Demo與舊紀錄共用外觀；不再加密數量，仍近郊左右各三隻、遠林每補給區三隻，舊無標記紀錄保留原數量。全部是既有獵人實際可狩獵的獵物，每次仍得2晶；不新增任務、掉落種類、動物速度或防守負擔。快照仍v23。
 
 
-完整回歸通過（4707核心斷言及全場景，無SCRIPT ERROR／ERROR）；Godot原生八種輪廓、雙向步態及近郊／遠林實景已檢查。正式Demo包在瀏覽器新局、移動、拔劍及東側狐狸／獾／山羊正常，無console errors。Main／Demo五平台同源6bbef9d，內容各59／60項、macOS啟動與簽章、Android簽章及16KiB對齊通過；13附件已整理。公開部署待驗證，手機真機仍待試玩。教學：[第146課](lessons/146-wildlife-resource-silhouettes.md)。
+完整回歸通過（4707核心斷言及全場景，無SCRIPT ERROR／ERROR）；Godot原生八種輪廓、雙向步態及近郊／遠林實景已檢查。正式Demo包在瀏覽器新局、移動、拔劍及東側狐狸／獾／山羊正常，無console errors。Main／Demo五平台同源6bbef9d，內容各59／60項、macOS啟動與簽章、Android簽章及16KiB對齊通過；13附件已整理。發布 418169202 已公開；Pages 39395236586 成功，70份公開檔案逐一與成品一致，規格 v0.0.69／修訂59。公開Demo前導／主選單與規格已瀏覽器確認，無console errors；手機真機仍待試玩。教學：[第146課](lessons/146-wildlife-resource-silhouettes.md)。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.69) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.69) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.69) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.69) · [驗收](reports/release-0.0.69/preflight.json)。
 
 ## v0.0.68 電漿鬼魂與狩獵生物（已發布）
 
