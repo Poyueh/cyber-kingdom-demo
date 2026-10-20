@@ -15,9 +15,9 @@
   "native_scene_assertions": 3,
   "population": "unchanged from v0.0.68; old saves keep original counts",
   "pending": [
-    "public deployment",
     "Windows runtime playtest",
-    "Android/iPhone/iPad hardware playtest"
+    "Android/iPhone/iPad hardware playtest",
+    "subjective player feedback"
   ],
   "source": "6bbef9d",
   "full_check": "passed: 4707 core assertions and all scene checks, no SCRIPT ERROR or ERROR",
@@ -26,5 +26,17 @@
     "demo": 60
   },
   "packaged_assets": 13,
-  "local_web": "fresh exported Demo journey: actual movement, sword/camp interaction and eastern fox/badger/goat woodland visible; no console errors"
+  "local_web": "fresh exported Demo journey: actual movement, sword/camp interaction and eastern fox/badger/goat woodland visible; no console errors",
+  "publication": {
+    "release_id": 418169202,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.69",
+    "verified_assets": 13,
+    "pages_run": 39395236586,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.69",
+    "spec_revision": 59,
+    "public_browser": "Demo prologue/menu and revision59 eight-species specification verified; no console errors"
+  }
 }
