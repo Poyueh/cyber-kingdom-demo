@@ -24,5 +24,7 @@
     "stable western clearing",
     "distance-driven mounted cadence, 24 fps cap and saddle height offsets",
     "loaded defeat cannot lock pause; explicit resume button"
-  ]
+  ],
+  "all_platform_artifacts": "Main 49 / Demo 50 content checks on each of five platforms; macOS executable and signature; Android signature and 16 KiB alignment passed",
+  "release_assets": 13
 }
