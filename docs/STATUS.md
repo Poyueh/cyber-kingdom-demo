@@ -1,8 +1,12 @@
-## v0.0.76 分階段耐力恢復（驗證完成，發布中）
+## v0.0.76 分階段耐力恢復（已發布）
 
 v0.0.76：引導主遊戲、森林Demo與既有引導紀錄改採分階段耐力恢復。耗盡先原地喘息2.5秒，期間不自然回復；結束後可慢走並恢復，達最大值三分之一可一般跑步，全滿才解除衝刺鎖定，無須額外站定。步行與重機共用耐力規則，保留普攻免費與移動恢復。腳下耐力條全程顯示，三分之一刻度代表跑步門檻。沿用快照v24，保存剩餘喘息與階段；不重置地圖、人口、龍晶或重機。舊無引導標記旅程沿用歷史規則。
 
 驗收：4886項核心斷言與完整場景回歸通過，無SCRIPT ERROR／ERROR。原生Main／Demo真實按鍵與免費普攻共20項通過，已目視喘息、慢走、跑步與衝刺畫面。跨更新頻率成品檢查找出倒數遺失刻度，先重現兩項失敗再修正；舊存檔時計保護仍通過。兩版五平台同源07d8d61，規格修訂83；成品內容Main80／Demo81項、macOS執行、Android簽章及16KiB對齊通過，13附件完成。最終Demo Web已實際操作新局、點火、衝刺耗盡停喘與恢復移動，無console errors。手機真機與Windows實玩尚未驗收。教學：[第153課](lessons/153-stamina-recovery-stages.md)；[驗收證據](reports/release-0.0.76/preflight.json)。
+
+發布418808193已公開，13份附件大小與SHA-256一致；Pages39488170500成功，72份公開檔案與成品逐一一致，規格v0.0.76／修訂83。公開主遊戲與Demo主選單、規格新耐力流程已瀏覽器確認，無console errors。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.76) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.76) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.76) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.76) · [公開驗收](reports/release-0.0.76/publication.json)。
 
 ## v0.0.75 龍晶重機（已發布）
 
