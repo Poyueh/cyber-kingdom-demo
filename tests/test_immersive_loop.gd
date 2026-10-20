@@ -14,7 +14,7 @@ func test_unlit_camp_and_tools(t) -> void:
  t.truth(sim.context_for_key(sim.world.sites.forge,"forge").id.is_empty(),"shield equipment absent")
  t.truth(sim.context_for_key(sim.world.sites.armory,"armory").id.is_empty(),"spear rack locked before tier three")
  sim.frontier.city_level=3
- t.truth(sim.context_for_key(sim.world.sites.armory,"armory").enabled,"tier three unlocks spear equipment")
+ t.truth(sim.context_for_key(sim.command.barracks_x(),"command_armory").enabled,"tier three unlocks sword-and-shield equipment at the outer barracks")
 
 func test_unfinished_payment_returns_to_ground(t) -> void:
  var sim=Campaign.new({"immersive_loop":1})

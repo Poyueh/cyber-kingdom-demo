@@ -125,7 +125,7 @@ func _draw_interaction() -> void:
 			draw_circle(Vector2(x+(index-(_context.cost-1)*0.5)*12,258),3,Color("b9e9d9") if _context.currency=="龍晶" else Color("d6b87e"))
 
 func _tool(at: Vector2, kind: String) -> void:
-	var key: String="spear" if kind=="blade" else kind
+	var key: String="sword" if kind=="blade" else kind
 	var texture: Texture2D=preload("res://presentation/ui_icons.gd").get_icon(key)
 	draw_texture_rect(texture,Rect2(at.round()-Vector2(16,20),Vector2(32,40)),false)
 

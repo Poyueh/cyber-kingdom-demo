@@ -48,6 +48,9 @@ func verify() -> void:
  var right: float=game.sim.world.sites.wall
  check(game.sim.hunter_roaming.contains(right+250,game.sim.world.sites.wall_left,right) and not game.sim.hunter_roaming.contains(right+500,game.sim.world.sites.wall_left,right),"shipped hunting stays near the walls")
  check(game.hud.guide_view._motion.style.body_half_size==Vector2(30,34),"shipped ghost uses compact shared clearance")
+ check(game.sim.command.enabled,"both editions include command squads and rescue")
+ check(ResourceLoader.exists("res://art/settlement/rescue-v001/rescue-ship.png"),"shipped native rescue ship atlas")
+ check(game.sim.command.rules.rally_cost==2 and game.sim.command.rules.repair_cost==6 and game.sim.command.rules.recruit_cost==4,"shipped command economy")
  check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
  check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")
  check(game.sim.planet.enabled and game.sim.planet.finale==demo,"main builds a rocket to travel; the demo's rocket is its finale")

@@ -42,7 +42,7 @@ func assign(sim: RefCounted, target: String, delta: int) -> bool:
  var selected: int=-1
  var distance: float=INF
  for i: int in range(targets.size()):
-  if sim.world.people[i].role!="hunter" or targets[i]==target:continue
+  if sim.world.people[i].role!="hunter" or targets[i]==target or sim.command.contains(i):continue
   var score: float=absf(sim.world.people[i].x-position(sim,target))+(0 if targets[i].is_empty() else 10000)
   if score<distance:selected=i;distance=score
  if selected<0:return false

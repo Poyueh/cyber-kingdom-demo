@@ -1,0 +1,39 @@
+{
+  "version": "0.0.72",
+  "source": "f3bc9ba1eb276db8abad2d1f054f129b5be1c49b",
+  "spec_revision": 67,
+  "documentation_source": "e89bb522bbe206461691c31f48015f39216a6f96",
+  "documentation_only_delta": [
+    "docs/game-spec/content.json",
+    "docs/game-spec/sync.json"
+  ],
+  "changes": [
+    "Camp three: two live outer-wall rally flags; two crystals rally six existing residents, max three squads",
+    "Three swordsmen, two unposted archers and one engineer; visible shortages, no payment on shortage",
+    "Follow, combat, nearby construction and gate assistance; town entry dismisses squads without removing professions",
+    "Barracks and keeper follow the current outer wall, retaining proximity and service animations",
+    "Six-crystal rescue ship, one passenger per dawn up to three, four crystals per citizen",
+    "First-use guidance learned on actual use and retained across save/load and travel"
+  ],
+  "targeted": "87 assertions passed; initial absent-feature tests failed as expected; overlapping recruit reproduced three failures and corrected",
+  "full_check": "4816 core assertions and every scene passed; no SCRIPT ERROR or ERROR",
+  "native_scene_assertions": {
+    "main": 10,
+    "demo": 10,
+    "existing_attendants": 51
+  },
+  "native_visuals": "Inspected real missing-role HUD, three squads, working barracks keeper, wreck and repaired ship with passenger bays",
+  "save": "v24 closed command graph, real JSON continuation, v23 migration preserving people, corrupt membership/passenger count rejected, no duplicate dawn production after reload",
+  "platform_content_assertions": {
+    "main": 72,
+    "demo": 73
+  },
+  "packaged_assets": 13,
+  "local_web": "Exported Demo game and reviewed spec verified in browser; see browser evidence",
+  "pending": [
+    "public release/Pages verification",
+    "Windows runtime playtest",
+    "Android/iPhone/iPad hardware playtest",
+    "subjective player feedback"
+  ]
+}

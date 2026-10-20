@@ -109,8 +109,16 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
   if choice.id=="hall" and sim.frontier.city_level>0:key=""
   interaction.text=tr(key) if not key.is_empty() and tr(key)!=key else tr(str(choice.get("text",choice.id)))
   if choice.cost>0:interaction.text+="\n"+tr("core.price %d %d")%[choice.paid,choice.cost]
+  if choice.id=="rally":
+   interaction.position.y-=28;interaction.size.y=100
+   interaction.text+=" · "+tr("command.count %d %d")%[sim.command.squads.size(),sim.command.rules.squad_limit]
+   if not choice.get("prerequisites",[]).is_empty():
+    var missing: Array[String]=[]
+    for item: Dictionary in choice.prerequisites:missing.append(tr("command.role."+item.icon)+" ×%d"%item.value)
+    interaction.text+="\n"+tr("command.shortage %s")%" · ".join(missing)
+  if choice.id=="rescue_recruit":interaction.text+=" · %d/%d"%[sim.command.waiting,sim.command.rules.passenger_limit]
   if choice.id=="mark":interaction.text+=" · "+tr("core.yield %d")%sim.frontier.nodes[choice.node_index].crystals
-  if not choice.enabled:interaction.text+="\n"+tr(_reason(sim,choice))
+  if not choice.enabled and not (choice.id=="rally" and not choice.get("prerequisites",[]).is_empty()):interaction.text+="\n"+tr(_reason(sim,choice))
  panel.position=Vector2(safe.get_center().x-220,safe.get_center().y-180);panel.size=Vector2(440,360)
  if panel.visible:
   caption.hide();interaction.hide();action_button.hide()
@@ -119,7 +127,7 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
   for i: int in range(sim.world.people.size()):
    if sim.world.people[i].role!="hunter":continue
    total+=1
-   if i>=core.orders.targets.size() or core.orders.targets[i].is_empty():free+=1
+   if (i>=core.orders.targets.size() or core.orders.targets[i].is_empty()) and not sim.command.contains(i):free+=1
   troop_count.text=tr("core.archers %d %d %d")%[total,total-free,free]
   for target: String in rows:
    var assigned: int=core.orders.targets.count(target)
@@ -138,6 +146,7 @@ func exclusion_rects() -> Array[Rect2]:
  return result
 
 func _reason(sim: RefCounted, choice: Dictionary) -> String:
+ if str(choice.reason).begins_with("command."):return choice.reason
  if choice.reason=="core.need_engineer":return choice.reason
  if choice.cost>0 and sim.pouch.amount==0:return "core.empty"
  if choice.id=="mark":return "core.working"

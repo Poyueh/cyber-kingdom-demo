@@ -4,7 +4,7 @@ const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
 const PlanetState=preload("res://domain/planet_state.gd")
-const VERSION:=23
+const VERSION:=24
 # JSON can round the final decimal just below a half-tick; never allow a full future tick.
 const JSON_TICK_EPSILON: float=0.0000001
 const SESSION_SKIP=["raiders","effects","opened_chests"]
@@ -74,7 +74,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 	var opened: Dictionary={}
 	for key in sim.opened_chests:opened[str(key)]=sim.opened_chests[key]
 	return {"version":VERSION,"config":rules,"body":body.duplicate(true),
-		"core_loop":sim.core_loop.capture(),"session":_fields(sim,SESSION_SKIP),"world":_fields(sim.world,["wall"]),
+		"command":sim.command.capture(),"core_loop":sim.core_loop.capture(),"session":_fields(sim,SESSION_SKIP),"world":_fields(sim.world,["wall"]),
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area","core_loop"]),
@@ -129,16 +129,17 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("modules")
-	if data.get("version",0) in [14,15,16,17,18,19,20,21,22,23]:keys.append("merchant")
-	if data.get("version",0) in [15,16,17,18,19,20,21,22,23]:keys.append("trials")
-	if data.get("version",0) in [16,17,18,19,20,21,22,23]:keys.append("mount")
-	if data.get("version",0) in [20,21,22,23]:keys.append("trails")
-	if data.get("version",0) in [22,23]:keys.append("core_loop")
-	if data.get("version",0)==23:keys.append("planet")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17,18,19,20,21,22,23,24]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17,18,19,20,21,22,23,24]:keys.append("trials")
+	if data.get("version",0) in [16,17,18,19,20,21,22,23,24]:keys.append("mount")
+	if data.get("version",0) in [20,21,22,23,24]:keys.append("trails")
+	if data.get("version",0) in [22,23,24]:keys.append("core_loop")
+	if data.get("version",0) in [23,24]:keys.append("planet")
+	if data.get("version",0)==24:keys.append("command")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -206,6 +207,9 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 		if not data.config is Dictionary or not Rules.config_valid(data.config) or not data.mission is Dictionary:return _invalid()
 		data["planet"]=_legacy_planet(data.config,data.mission)
 		data.version=23
+	if data.version==23:
+		data["command"]={"squads":[],"used":[],"repaired":false,"waiting":0,"last_day":0}
+		data.version=24
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -271,6 +275,10 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	sim.world.wall=sim.world.walls.wall
 	if not sim.core_loop.restore(data.core_loop):return _invalid()
 	if not _restore_planet(sim,data.planet):return _invalid()
+	if not sim.command.restore(data.command,sim.clock.day):return _invalid()
+	for group: RefCounted in sim.command.squads:
+		for index: int in group.members:
+			if index<sim.core_loop.orders.targets.size() and not sim.core_loop.orders.targets[index].is_empty():return _invalid()
 	if sim.core_loop.enabled:
 		if sim.core_loop.orders.targets.size()>sim.world.people.size():return _invalid()
 		for post: String in ["beacon","core_tower_right"]:
