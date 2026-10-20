@@ -26,6 +26,18 @@ func test_the_ghost_calls_the_goal_of_the_moment(t):
 	sim.clock.is_night=true
 	t.equal(callout(sim),"spirit.call.survive","at night: survive the raid")
 
+func test_after_the_dragon_the_ghost_calls_for_the_core_then_the_rocket(t):
+	var sim: RefCounted=after_guidance()
+	sim.pouch.amount=10
+	for rift: Dictionary in sim.mission.rifts:rift.sealed=true
+	sim.mission.dragon_summoned=true;sim.mission.dragon_defeated=true
+	sim.advance(1.0/30.0,sim.world.sites.hall)
+	t.equal(callout(sim),"spirit.call.core","the dragon is down: claim its core")
+	t.truth(sim.interact(preload("res://application/planet_operations.gd").core_x(sim),"dragon_core"),"the core can be claimed")
+	t.equal(callout(sim),"spirit.call.rocket","with the core: build the rocket")
+	sim.planet.rocket_pending=true
+	t.equal(callout(sim),"spirit.call.rocket","while engineers build it the call stays on the rocket")
+
 func test_callouts_start_once_the_first_night_message_has_been_said(t):
 	var sim: RefCounted=after_guidance(3)
 	sim.clock.remaining=sim.clock.day_seconds-2.0

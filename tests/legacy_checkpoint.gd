@@ -26,6 +26,11 @@ static func before_ruin_mechanisms(packet: Dictionary) -> void:
   if key.begins_with("mechanism_"):packet.config.erase(key)
 
 static func before_trails(packet: Dictionary) -> void:
+ before_planet(packet)
  packet.erase("core_loop")
  packet.erase("trails")
  if packet.has("merchant"):packet.merchant.erase("trip_end_x")
+
+## v23 added the world's planet state; every older shape lacks it.
+static func before_planet(packet: Dictionary) -> void:
+ packet.erase("planet")

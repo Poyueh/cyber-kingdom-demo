@@ -148,7 +148,7 @@ func restore(data: Variant) -> bool:
   if data.stage==2 and data.checkpoint_index!=1:return false
   if data.stage>=4 and (trial or data.stage<5) and data.checkpoint_index!=2:return false
   if not trial and not forest and data.stage!=5:return false
-  if data.orders.count("beacon")>1 or data.orders.count("core_tower_right")>1:return false
+  if data.orders.count("beacon")>3 or data.orders.count("core_tower_right")>3:return false
  if not enabled and data!={"stage":0,"income":0,"skipped":false,"orders":[],"checkpoint_index":0,"checkpoint":{},"checkpoint_pending":0,"harvest_held":{},"harvest_drops":[]}:return false
  stage=data.stage;income=data.income;skipped=data.skipped
  orders.targets.assign(data.orders)

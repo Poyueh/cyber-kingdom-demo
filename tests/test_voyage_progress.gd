@@ -2,6 +2,7 @@ extends RefCounted
 const Voyage=preload("res://application/star_voyage.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Report=preload("res://application/voyage_progress.gd")
+const Ops=preload("res://application/planet_operations.gd")
 const NAMES: Array[String]=["forest","desert","frost","swamp","volcanic","storm","void"]
 const BODY={"x":-730.0,"y":430.0,"vx":0.0,"vy":0.0}
 func trip() -> RefCounted:
@@ -17,9 +18,9 @@ func defeat_dragon(sim: RefCounted) -> void:
 func test_claiming_a_core_has_its_own_once_only_reward_signal(t: SceneTree) -> void:
 	var journey: RefCounted=trip();var sim: RefCounted=Campaign.new(journey.configs[0])
 	defeat_dragon(sim);var crystals: int=sim.pouch.amount
-	t.truth(sim.interact(-185,"dragon_core"),"actual free interaction claims the earned core")
+	t.truth(sim.interact(Ops.core_x(sim),"dragon_core"),"actual free interaction claims the earned core")
 	t.equal(sim.effects.filter(func(e: Dictionary)->bool:return e.kind=="planet_core_claimed").size(),1,"core has its own liberation signal rather than an ordinary chest burst")
-	t.truth(not sim.interact(-185,"dragon_core"),"claimed core cannot be taken again")
+	t.truth(not sim.interact(Ops.core_x(sim),"dragon_core"),"claimed core cannot be taken again")
 	t.equal(sim.pouch.amount,crystals,"celebration does not create or spend currency")
 	t.equal(sim.effects.filter(func(e: Dictionary)->bool:return e.kind=="planet_core_claimed").size(),1,"repeated input cannot replay liberation")
 func test_chart_recognizes_partial_colony_and_hides_unvisited_merits(t: SceneTree) -> void:
@@ -32,7 +33,7 @@ func test_chart_recognizes_partial_colony_and_hides_unvisited_merits(t: SceneTre
 func test_first_core_identifies_only_newly_opened_routes(t: SceneTree) -> void:
 	var journey: RefCounted=trip();var sim: RefCounted=Campaign.new(journey.configs[0])
 	t.equal(Report.newly_opened(journey,sim,0),[],"there is no route celebration before claiming a core")
-	defeat_dragon(sim);sim.interact(-185,"dragon_core")
+	defeat_dragon(sim);sim.interact(Ops.core_x(sim),"dragon_core")
 	t.equal(Report.newly_opened(journey,sim,0),[1,2,3,4,5,6],"first reactor opens all six destinations")
 
 func complete_optional_goals(sim: RefCounted) -> void:
@@ -55,7 +56,7 @@ func test_optional_achievements_use_real_progress_without_granting_rewards(t: Sc
 	t.equal(journey.capture(sim,BODY),before,"reading all planet cards changes no world, currency or timers")
 func test_away_colony_and_restored_journey_show_the_same_earned_merits(t: SceneTree) -> void:
 	var journey: RefCounted=trip();var sim: RefCounted=Campaign.new(journey.configs[0])
-	defeat_dragon(sim);complete_optional_goals(sim);sim.interact(-185,"dragon_core");sim.planet.rocket_ready=true
+	defeat_dragon(sim);complete_optional_goals(sim);sim.interact(Ops.core_x(sim),"dragon_core");sim.planet.rocket_ready=true
 	var before: Dictionary=Report.read(journey,sim,0)
 	var moved: Dictionary=journey.prepare(sim,BODY,1)
 	t.truth(not moved.is_empty(),"real rocket transaction reaches the next world")
@@ -82,7 +83,7 @@ func test_branch_order_announces_only_routes_that_really_unlock(t: SceneTree) ->
 			t.truth(not moved.is_empty(),"test follows a legal route to world "+str(id))
 			if moved.is_empty():return
 			journey=moved.journey;sim=moved.session
-		defeat_dragon(sim);sim.interact(-185,"dragon_core")
+		defeat_dragon(sim);sim.interact(Ops.core_x(sim),"dragon_core")
 		t.equal(Report.newly_opened(journey,sim,id),expected[id],"route announcement honors all prerequisite cores at world "+str(id))
 		t.truth(not Report.read(journey,sim,id).goals[2].complete,"beating a dragon does not pretend the colony is fully built")
 	journey.observe(sim)

@@ -1,6 +1,8 @@
 extends RefCounted
-## Per-world expedition state. Persisted by the bounded voyage envelope.
+## Per-world expedition state, saved with the world. In the Demo's rocket finale the
+## finished rocket ends the run instead of opening star travel.
 var enabled: bool=false
+var finale: bool=false
 var id: int=0
 var cleared: bool=false
 var core_claimed: bool=false
@@ -18,7 +20,8 @@ var volley: int=0
 var attack: RefCounted
 func _init(config: Dictionary={}) -> void:
  attack=preload("res://domain/dragon_pattern.gd").new(config)
- enabled=int(config.get("voyage_enabled",0))==1
+ finale=int(config.get("rocket_finale",0))==1
+ enabled=int(config.get("voyage_enabled",0))==1 or finale
  id=int(config.get("planet_id",0))
  work_required=float(config.get("rocket_work",30.0))
  build_cost=int(config.get("rocket_cost",20));repair_cost=int(config.get("rocket_repair",12))

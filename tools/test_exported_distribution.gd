@@ -35,7 +35,7 @@ func verify() -> void:
  check(game.sim.frontier.right_boundary>5000,"both editions play the full forest map")
  check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
  check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")
- check(game.sim.planet.enabled==not demo,"only the main edition can build a rocket and travel")
+ check(game.sim.planet.enabled and game.sim.planet.finale==demo,"main builds a rocket to travel; the demo's rocket is its finale")
  check(game.hud.core_hud.wallet.visible,"common guidance UI renders in shipped scene")
  check(game.hud.guide_view.visible and game.hud.guide_view.hint.get("core",false),"shipped companion is visible with a real core objective")
  check(not game.hud.core_hud.caption.visible,"shipped UI has no duplicate static tutorial")

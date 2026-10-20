@@ -3,7 +3,8 @@ extends RefCounted
 const RecoveryClock=preload("res://domain/time/tick_clock.gd")
 const Campaign=preload("res://application/campaign_session.gd")
 const Rules=preload("res://application/campaign_checkpoint_rules.gd")
-const VERSION:=22
+const PlanetState=preload("res://domain/planet_state.gd")
+const VERSION:=23
 # JSON can round the final decimal just below a half-tick; never allow a full future tick.
 const JSON_TICK_EPSILON: float=0.0000001
 const SESSION_SKIP=["raiders","effects","opened_chests"]
@@ -77,7 +78,7 @@ func capture(sim, config: Dictionary, body: Dictionary) -> Dictionary:
 		"frontier":_fields(sim.frontier,["nodes"]),"nodes":nodes,"clock":_fields(sim.clock),
 		"mission":_fields(sim.mission),"growth":_fields(sim.growth),"ecology":_fields(sim.ecology),
 		"pouch":_fields(sim.pouch,["pickups"]),"workforce":_fields(sim.workforce,["deliveries","work_area","core_loop"]),
-		"trails":sim.trails.capture(),"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel,["core_sprint"]),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
+		"planet":sim.planet.capture(),"trails":sim.trails.capture(),"mount":sim.mount_quest.capture(),"trials":sim.trials.capture(),"merchant":sim.merchant.capture(),"modules":sim.modules.capture(),"spirit":_fields(sim.spirit),"travel":_fields(sim.travel,["core_sprint"]),"survival":_fields(sim.survival),"hero":_fighter(sim.hero),"raiders":enemies,"hero_hits":hit_indices,"opened":opened}
 
 func _normalize(value):
 	if value is StringName:return str(value)
@@ -128,15 +129,16 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	if not raw is Dictionary or not _plain(raw):return _invalid()
 	var data: Dictionary=_normalize(raw)
 	var keys=["version","config","body","session","world","frontier","nodes","clock","mission","growth","ecology","pouch","workforce","hero","raiders","hero_hits","opened"]
-	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("travel")
-	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("survival")
-	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("spirit")
-	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21,22]:keys.append("modules")
-	if data.get("version",0) in [14,15,16,17,18,19,20,21,22]:keys.append("merchant")
-	if data.get("version",0) in [15,16,17,18,19,20,21,22]:keys.append("trials")
-	if data.get("version",0) in [16,17,18,19,20,21,22]:keys.append("mount")
-	if data.get("version",0) in [20,21,22]:keys.append("trails")
-	if data.get("version",0)==22:keys.append("core_loop")
+	if data.get("version",0) in [7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("travel")
+	if data.get("version",0) in [8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("survival")
+	if data.get("version",0) in [9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("spirit")
+	if data.get("version",0) in [10,11,12,13,14,15,16,17,18,19,20,21,22,23]:keys.append("modules")
+	if data.get("version",0) in [14,15,16,17,18,19,20,21,22,23]:keys.append("merchant")
+	if data.get("version",0) in [15,16,17,18,19,20,21,22,23]:keys.append("trials")
+	if data.get("version",0) in [16,17,18,19,20,21,22,23]:keys.append("mount")
+	if data.get("version",0) in [20,21,22,23]:keys.append("trails")
+	if data.get("version",0) in [22,23]:keys.append("core_loop")
+	if data.get("version",0)==23:keys.append("planet")
 	if data.size()!=keys.size() or not keys.all(func(k):return data.has(k)):return _invalid()
 	var legacy_economy: bool=data.version in [1,2]
 	if data.version==2:data.version=3
@@ -200,6 +202,10 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 		if not data.config is Dictionary or data.config.has("core_loop_version"):return _invalid()
 		data["core_loop"]=preload("res://application/core_loop.gd").new().capture()
 		data.version=22
+	if data.version==22:
+		if not data.config is Dictionary or not Rules.config_valid(data.config) or not data.mission is Dictionary:return _invalid()
+		data["planet"]=_legacy_planet(data.config,data.mission)
+		data.version=23
 	if data.version!=VERSION or not data.config is Dictionary or not data.body is Dictionary:return _invalid()
 	if not Rules.config_valid(data.config):return _invalid()
 	for key in ["x","y","vx","vy"]:
@@ -264,8 +270,11 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	if not sim.world.walls.has("wall"):return _invalid()
 	sim.world.wall=sim.world.walls.wall
 	if not sim.core_loop.restore(data.core_loop):return _invalid()
+	if not _restore_planet(sim,data.planet):return _invalid()
 	if sim.core_loop.enabled:
 		if sim.core_loop.orders.targets.size()>sim.world.people.size():return _invalid()
+		for post: String in ["beacon","core_tower_right"]:
+			if sim.core_loop.orders.targets.count(post)>sim.core_loop.orders.capacity(sim,post):return _invalid()
 		if sim.core_loop.stage>0 and sim.core_loop.income<=0 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
 		if sim.core_loop.stage>=3 and sim.clock.survived<1 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
 		if sim.core_loop.stage==5 and sim.clock.survived<2 and (sim.core_loop.trial or sim.core_loop.forest):return _invalid()
@@ -282,6 +291,22 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 		elif not embedded and sim.core_loop.checkpoint_index>0:return _invalid()
 	if legacy_economy:sim.convert_legacy_resources()
 	return {"session":sim,"config":data.config,"body":data.body}
+
+## Before v23 the world's planet lived only in the voyage envelope, which still overrides it.
+## A fallen dragon leaves its core to claim; a kept victory stays complete.
+func _legacy_planet(config: Dictionary, mission: Dictionary) -> Dictionary:
+	var planet: PlanetState=PlanetState.new(config)
+	if planet.enabled:
+		planet.cleared=mission.get("dragon_defeated")==true
+		planet.completed=mission.get("outcome")=="victory"
+	return planet.capture()
+
+## A world without a rocket keeps an untouched planet; a cleared world needs its fallen dragon.
+func _restore_planet(sim: RefCounted, saved) -> bool:
+	var untouched: Dictionary=sim.planet.capture()
+	if not sim.planet.restore(saved):return false
+	if not sim.planet.enabled and not Rules.same(sim.planet.capture(),untouched):return false
+	return not sim.planet.cleared or sim.mission.dragon_defeated
 
 func _upgrade_v12(data: Dictionary) -> bool:
 	if not data.config is Dictionary or not Rules.config_valid(data.config):return false

@@ -1,6 +1,7 @@
 extends PanelContainer
 ## Pause menu has large touch targets and shares the same controls on desktop.
 const Icons=preload("res://presentation/ui_icons.gd")
+signal resume_requested
 signal volume_changed(music: float,effects: float,ambience: float)
 signal save_checkpoint_requested
 signal load_checkpoint_requested
@@ -8,6 +9,7 @@ signal title_requested
 signal exploration_requested
 signal star_chart_requested
 const LanguageSelector=preload("res://presentation/language_selector.gd")
+var resume_button: Button
 var music: HSlider
 var effects: HSlider
 var ambience: HSlider
@@ -22,6 +24,8 @@ func _ready() -> void:
 	add_theme_stylebox_override("panel",style)
 	preload("res://presentation/refuge_theme.gd").decorate(self)
 	var box:=VBoxContainer.new();box.add_theme_constant_override("separation",10);add_child(box)
+	resume_button=_button(box,"play");resume_button.name="Resume";_tooltips[resume_button]="返回遊戲"
+	resume_button.pressed.connect(func():resume_requested.emit())
 	var selector=LanguageSelector.new();box.add_child(selector);selector.owner=self;selector.unique_name_in_owner=true
 	music=_volume_row(box,"music")
 	effects=_volume_row(box,"sound")
@@ -53,7 +57,7 @@ func _volume_row(box: VBoxContainer, key: String) -> HSlider:
 	var slider:=HSlider.new();slider.min_value=0;slider.max_value=100;slider.step=1;slider.custom_minimum_size=Vector2(200,48);slider.size_flags_horizontal=Control.SIZE_EXPAND_FILL;row.add_child(slider)
 	var number:=Label.new();number.custom_minimum_size=Vector2(42,48);number.vertical_alignment=VERTICAL_ALIGNMENT_CENTER;row.add_child(number);_numbers.append(number)
 	return slider
-func _button(row: HBoxContainer,key: String) -> Button:
+func _button(row: BoxContainer,key: String) -> Button:
 	var button:=Button.new();button.icon=Icons.get_icon(key);button.expand_icon=true;button.add_theme_constant_override("icon_max_width",28);button.custom_minimum_size=Vector2(52,52);button.focus_mode=Control.FOCUS_NONE;row.add_child(button)
 	return button
 func _volume_changed(_value: float) -> void:

@@ -5,15 +5,16 @@ const Trails=preload("res://domain/trail_encounters.gd")
 const Clock=preload("res://domain/time/tick_clock.gd")
 const Sites=preload("res://domain/building_sites.gd")
 ## Camp spacing: every structure between the walls keeps at least 150 px from its neighbour
-## (a tower may stand close to its wall). Hall 30; module workshop hall+180; shrine hall+330.
+## (a tower may stand close to its wall). Hall 30; module workshop hall+180; shrine hall+330;
+## the rocket pad hall-760 between the left tower and the hunting tools.
 const LEFT_WALL: float=-1000.0
 const LEFT_TOWER: float=-880.0
 const RIGHT_TOWER: float=970.0
 const RIGHT_WALL: float=1060.0
-const CAMP_SITES: Dictionary={"farm_tools":-150.0,"farm":-330.0,"hunt_tools":-680.0,"workshop":670.0,"armory":820.0}
+const CAMP_SITES: Dictionary={"farm_tools":-130.0,"farm":-280.0,"hunt_tools":-580.0,"workshop":670.0,"armory":820.0}
 ## The two trees inside the camp are authored exactly; the wild ones keep seed variation.
 ## Wild trees and game stay inside the discovered camp regions (west of -1300 is an unexplored room).
-const CAMP_TREES: Array[float]=[-500.0,510.0]
+const CAMP_TREES: Array[float]=[-430.0,510.0]
 const WILD_TREES: Array[float]=[-1270.0,-1150.0,1260.0,1450.0]
 const GAME: Array[float]=[-1220.0,1380.0]
 const TREE_JITTER: float=28.0
