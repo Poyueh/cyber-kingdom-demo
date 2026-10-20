@@ -213,3 +213,12 @@ func test_old_guided_clock_cannot_skip_a_new_breathing_stop(t: Object) -> void:
  var resumed: RefCounted=loaded.session
  t.equal(tick(resumed),0.0,"historical elapsed time cannot instantly consume a new breathing interval")
  t.truth(resumed.travel.breath_ticks>=74,"old saves retain the complete new breathing stop")
+
+func test_breathing_clock_survives_half_tick_start_phase(t: Object) -> void:
+ var sim: RefCounted=Campaign.new(configuration())
+ for frame: int in range(11):sim.advance(1.0/60.0,30)
+ sim.hero.stamina=0
+ sim.travel_axis(1,STEP)
+ for frame: int in range(75):sim.advance(STEP,30)
+ t.equal(sim.travel.breath_ticks,0,"half-tick start phase does not lose breathing countdown ticks")
+ t.truth(sim.travel_axis(1,STEP)>0,"breathing releases walking after the same 2.5 seconds at a mixed frame cadence")

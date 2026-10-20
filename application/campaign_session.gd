@@ -514,7 +514,7 @@ func _advance_hero(seconds: float) -> void:
 		hero.advance(seconds)
 		return
 	var tick: int=roundi((workforce.elapsed+seconds)*RecoveryClock.TICKS_PER_SECOND)
-	travel.core_sprint.advance(travel,hero,seconds,tick)
+	travel.core_sprint.advance(travel,hero,seconds,tick,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 
 func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if seconds<=0 or not is_finite(seconds):return
