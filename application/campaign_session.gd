@@ -583,10 +583,10 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		var tower: bool=target in ["beacon","core_tower_right"] and core_loop.orders.usable(self,target)
 		var arrived: bool=absf(person.x-core_loop.orders.destination(self,index))<core_loop.arrival_radius
 		person["y"]=340.0 if tower and arrived else 430.0
-		_shoot_nearest_raider(person,tower_range if tower and arrived else hunter_range,archer_damage(),hunter_interval)
+		_shoot_nearest_raider(person,tower_range if tower and arrived else hunter_range,archer_damage(),hunter_interval,tower and arrived)
 		if core_loop.orders.must_return(self,index):
 			# A hunter without a wall post goes after game in the hunting range by day.
-			if target.is_empty() and not _hunter_prey(person).is_empty():return NAN
+			if target.is_empty() and _hunter_can_roam(person):return NAN
 			person["sheltering"]=true;person["work_state"]="walk"
 			return core_loop.orders.destination(self,index)
 		return NAN
@@ -877,9 +877,9 @@ func _summon_dragon(hero_x: float) -> void:
 func raider_speed(enemy: Dictionary, base: float=70.0) -> float:
 	return modules.movement_speed(enemy,RaidMarch.speed(enemy,base,_hero_x,world,buildings,march),roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 
-func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float) -> bool:
+func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float, elevated: bool=false) -> bool:
 	var adjusted: int=modules.arrow_damage(person,damage,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
-	var fired: bool=super._shoot_nearest_raider(person,reach,adjusted,interval)
+	var fired: bool=super._shoot_nearest_raider(person,reach,adjusted,interval,elevated)
 	if fired and person.has("module_command_until"):
 		person.erase("module_command_until")
 		if adjusted>damage:effects.append({"kind":"module_arrow","x":person.x,"to":effects.back().to,"life":0.4})
@@ -922,7 +922,7 @@ func _engineer_target(index: int, seconds: float) -> float:
 ## Judged by where the animal stands: older guided forests filed game under the wrong region.
 func _game_discovered(animal: Dictionary) -> bool:
 	for area: Dictionary in frontier.regions:
-		if animal.x>=area.x and animal.x<area.x+area.width:return area.discovered
+		if animal.x>=area.x and animal.x<area.x+area.width and area.discovered:return true
 	return frontier.regions[animal.region].discovered
 
 func _hunter_prey(person: Dictionary) -> Dictionary:
@@ -934,7 +934,7 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 			var target: String=core_loop.orders.targets[index] if index<core_loop.orders.targets.size() else ""
 			if target.is_empty():
 				# Unposted hunters roam the hunting range by day and are back at the bow rack by dusk.
-				if core_loop.stage<3 or clock.is_night or life.threatened(person,raiders):continue
+				if not _hunter_can_roam(person):continue
 				if (absf(person.x-animal.x)+absf(animal.x-world.sites.hunt_tools))/_person_speed+return_margin>=clock.remaining:continue
 			else:
 				if core_loop.orders.must_return(self,index):continue
@@ -947,8 +947,25 @@ func _hunter_prey(person: Dictionary) -> Dictionary:
 		if distance<nearest:nearest=distance;prey=animal
 	return prey
 
+func _hunter_patrol_center(person: Dictionary) -> float:
+	var index: int=world.people.find(person)
+	var side: int=-1 if index%2==0 else 1
+	var edge: float=world.sites[defenses.active_post(side)]
+	return work_area.clamp_target(edge+side*220.0)
+
+func _hunter_can_roam(person: Dictionary) -> bool:
+	if core_loop.stage<1 or clock.is_night or life.threatened(person,raiders):return false
+	var home: float=world.sites.hunt_tools
+	var outside: float=_hunter_patrol_center(person)
+	var trip: float=(absf(person.x-outside)+absf(outside-home))/_person_speed
+	return clock.remaining>trip+return_margin
+
 func _idle_hunter_target(person: Dictionary, seconds: float) -> float:
-	if core_loop.enabled:return core_loop.orders.destination(self,world.people.find(person))
+	if core_loop.enabled:
+		var index: int=world.people.find(person)
+		if not core_loop.orders.targets[index].is_empty() or not _hunter_can_roam(person):return core_loop.orders.destination(self,index)
+		var center: float=_hunter_patrol_center(person)
+		return Roaming.destination(person,index,center,65,seconds,center-65,center+65)
 	var index: int=world.people.find(person)
 	var center: float=world.sites.hunt_tools
 	var forests=frontier.regions.filter(func(r):return r.discovered and r.kind=="forest")

@@ -23,6 +23,19 @@ func run_scene() -> void:
  check(visual.fatigue.texture.atlas==visual.get_node("MountedKnight").texture.atlas,"resting on horseback retains the same rider and horse artwork")
  check(visual.fatigue.material==visual.get_node("MountedKnight").material,"mounted rest preserves the rider and horse palette")
  visual.breathing=false
+ var gallop: Dictionary={"alive":true,"hp":100,"shield":0,"facing":1,"moving":true,"grounded":true,"invulnerable":false,"attack_progress":1.0,"horizontal_speed":402.0}
+ visual.reset_pose();visual.set_mounted(true)
+ var previous_frame: int=-1
+ var skipped: int=0
+ for sample: int in range(90):
+  visual.present(gallop,1.0/30)
+  var index: int=roundi(visual.get_node("MountedKnight").texture.region.position.x/160)
+  if previous_frame>=0 and posmod(index-previous_frame,8)>1:skipped+=1
+  previous_frame=index
+ check(skipped==0,"sprinting horse displays every gait pose even at phone 30 fps")
+ var held_region: Rect2=visual.get_node("MountedKnight").texture.region
+ visual.present(gallop,0.0)
+ check(visual.get_node("MountedKnight").texture.region==held_region,"paused presentation cannot advance a horse stride")
  var config: Dictionary=scene._campaign_config
  var packet=load("res://application/campaign_snapshot.gd").new().capture(scene.sim,config,{"x":scene.knight.position.x,"y":scene.knight.position.y,"vx":scene.knight.velocity.x,"vy":scene.knight.velocity.y})
  var restored=load("res://application/campaign_snapshot.gd").new().restore(packet)

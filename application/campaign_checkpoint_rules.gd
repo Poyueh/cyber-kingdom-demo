@@ -25,6 +25,8 @@ static func config_valid(config: Dictionary) -> bool:
 	if config.has("route_requires") and (not config.route_requires is int or config.route_requires<0 or config.route_requires>127):return false
 	if not preload("res://domain/dragon_pattern.gd").valid_config(config):return false
 	if config.has("voyage_enabled") and config.voyage_enabled not in [0,1]:return false
+	# Only the contained Demo forest ends with a rocket instead of star travel.
+	if config.has("rocket_finale") and (config.rocket_finale not in [0,1] or (config.rocket_finale==1 and config.get("core_loop_version",0)!=3)):return false
 	for key in ["rocket_cost","rocket_repair"]:
 		if config.has(key) and (not in_range(config[key],1,30) or floorf(config[key])!=config[key]):return false
 	if config.has("rocket_work") and not in_range(config.rocket_work,1,120):return false
@@ -209,7 +211,7 @@ static func valid(data: Dictionary, base: Dictionary) -> bool:
 		if not shape(drop,{"x":0.0,"taken":false}):return false
 	for key in data.session.investments:
 		var value=data.session.investments[key]
-		var limit: int=30 if key=="rocket" and data.config.get("voyage_enabled",0)==1 else 12
+		var limit: int=30 if key=="rocket" and (data.config.get("voyage_enabled",0)==1 or data.config.get("rocket_finale",0)==1) else 12
 		if not value is int or value<1 or value>limit:return false
 	for value in data.session.built.values():
 		if not value is bool:return false

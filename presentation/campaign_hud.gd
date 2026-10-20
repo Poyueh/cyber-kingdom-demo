@@ -275,6 +275,7 @@ func present_world(sim, is_paused: bool, at: float, grounded: bool) -> void:
 	dashboard.is_paused=is_paused
 	dashboard.dead=sim.mission.outcome=="defeat"
 	dashboard.victory=sim.mission.outcome=="victory"
+	dashboard.rocket_finale=sim.planet.finale and sim.planet.completed
 	dashboard.queue_redraw()
 	$pause.visible=not (sim.life.enabled and dashboard.camp_transition())
 	core_hud.present(sim,_last_safe_rect,is_paused,choice,not dashboard.camp_transition(),get_viewport().get_canvas_transform()*Vector2(at,sim._player_y),immersive_feedback.purse.bounds)

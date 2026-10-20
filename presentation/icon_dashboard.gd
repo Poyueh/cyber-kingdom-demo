@@ -12,6 +12,8 @@ var is_paused:=false
 var pause_overlay:=true
 var dead:=false
 var victory:=false
+## The Demo's finished rocket closes the run with its own epilogue.
+var rocket_finale:=false
 var outcome_age:=0.0
 var _previous_outcome:=""
 var _font:=ThemeDB.fallback_font
@@ -76,6 +78,10 @@ func _draw() -> void:
 	elif is_paused and pause_overlay:
 		draw_style_box(_panel(),panels.overlay)
 		icon("pause",panels.overlay.get_center(),44)
+func restore_outcome(outcome: String) -> void:
+	_previous_outcome=outcome if outcome in ["victory","defeat"] else ""
+	outcome_age=Direction.message_end if not _previous_outcome.is_empty() else 0.0
+
 func _process(seconds: float) -> void:
 	var outcome: String="victory" if victory else "defeat" if dead else ""
 	if outcome!=_previous_outcome:
@@ -120,12 +126,7 @@ func _draw_epilogue() -> void:
 	var viewport: Rect2=get_viewport_rect()
 	var reveal: float=message_alpha() if dead else smoothstep(0.6,2.8,outcome_age)
 	draw_rect(viewport,Color(0,0,0,blackout_alpha()) if dead else Color(0.015,0.025,0.04,reveal*0.48))
-	var lines: Array[String]=[]
-	if victory:
-		lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
-		if preload("res://infrastructure/distribution.gd").demo():lines.append("森林試玩完成。完整版還有六顆星球與六條巨龍。")
-	elif values.get("defeat_reason","")=="core":lines.assign(["營火熄滅了。","人類的希望之火，再度逝去。"])
-	else:lines.assign(["無劍的騎士啊，","這一次，你未能守住任何事物。"])
+	var lines: Array[String]=epilogue_lines()
 	var font: Font=preload("res://presentation/localized_font.gd").current()
 	for i in range(lines.size()):
 		var text: String=tr(lines[i])
@@ -139,6 +140,15 @@ func _draw_epilogue() -> void:
 		var width: float=font.get_string_size(text,HORIZONTAL_ALIGNMENT_LEFT,-1,16).x
 		# Sits under however many epilogue lines were drawn (the Demo adds one).
 		draw_string(font,Vector2(viewport.get_center().x-width/2,viewport.get_center().y-13+lines.size()*50),text,HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color(0.64,0.72,0.73,reveal))
+
+func epilogue_lines() -> Array[String]:
+	var lines: Array[String]=[]
+	if victory and rocket_finale:lines.assign(["火箭完成了。","龍晶之火將帶人類飛向星海。"])
+	elif victory:lines.assign(["黎明再次升起。","人類的火光，終於照亮了這片荒野。"])
+	elif values.get("defeat_reason","")=="core":lines.assign(["營火熄滅了。","人類的希望之火，再度逝去。"])
+	else:lines.assign(["無劍的騎士啊，","這一次，你未能守住任何事物。"])
+	if victory and preload("res://infrastructure/distribution.gd").demo():lines.append("森林試玩完成。完整版還有六顆星球與六條巨龍。")
+	return lines
 
 func _draw_mission() -> void:
 	if not values.has("core_hp"):return

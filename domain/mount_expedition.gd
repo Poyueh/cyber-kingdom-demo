@@ -18,7 +18,7 @@ var extra_enemies: int=0
 var recovery_discount: int=0
 func _init(config: Dictionary, home: float) -> void:
  enabled=config.get("mount_enabled",0)==1 and config.get("planet_id",0)==0
- stable_x=home-1000
+ stable_x=home-1640 # Dedicated western clearing, clear of the wall, tower and rocket pad.
  if config.get("mount_enabled",0)!=1:return
  ruin_x=home-float(config.mount_distance)
  levers.assign([ruin_x+float(config.mount_spacing)*2,ruin_x+float(config.mount_spacing)])

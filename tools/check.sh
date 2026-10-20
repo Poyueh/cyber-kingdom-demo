@@ -36,6 +36,7 @@ run_check core_loop --script res://tests/test_core_loop.gd
 run_check core_spirit --script res://tests/test_core_spirit.gd
 run_check guided_campaign --script res://tests/test_guided_campaign.gd
 run_check forest_demo --script res://tests/test_forest_demo.gd
+run_check demo_finale --script res://tests/test_demo_finale_scene.gd
 run_check core_loop_scene --script res://tests/test_core_loop_scene.gd
 run_check core_spirit_scene --script res://tests/test_core_spirit_scene.gd
 run_check guided_scene --script res://tests/test_guided_scene.gd
@@ -77,6 +78,7 @@ run_check journey_pacing --script res://tests/test_journey_pacing_scene.gd
 run_check cycle_menu --script res://tests/test_cycle_menu_scene.gd
 run_check star_voyage --script res://tests/test_star_voyage_scene.gd
 run_check campaign_save --script res://tests/test_campaign_save_scene.gd
+run_check restore_menu --script res://tests/test_restore_menu_scene.gd
 run_check large_attack --script res://tests/test_large_attack_scene.gd
 run_check mobile --script res://tests/test_mobile_scene.gd
 run_check modules --script res://tests/test_modules_scene.gd

@@ -22,7 +22,7 @@ func ready_core(game: Node) -> void:
 	game.sim.spirit.opening_finished=true;game.sim.spirit.expires_tick=0
 	game.sim.clock.remaining=game.sim.clock.day_seconds*0.65
 	game.sim.advance(0.1,30);game.paused=false
-	game.knight.position=Vector2(-185,430);game.knight.velocity=Vector2.ZERO
+	game.knight.position=Vector2(preload("res://application/planet_operations.gd").core_x(game.sim),430);game.knight.velocity=Vector2.ZERO
 	game._physics_process(1.0/30);game._arrival_banner.hide()
 	_heard.clear()
 func claim(game: Node, mobile: bool) -> void:
@@ -59,7 +59,7 @@ func verify_pause_and_restore(game: Node) -> void:
 	check(not ceremony.visible and ceremony._age==age,"pause hides and freezes the ceremony")
 	game.paused=false;game._physics_process(1.0/30)
 	check(ceremony.visible,"resume restores the remaining celebration")
-	var state: Dictionary=game.journey.capture(game.sim,{"x":-185.0,"y":430.0,"vx":0.0,"vy":0.0})
+	var state: Dictionary=game.journey.capture(game.sim,{"x":game.knight.position.x,"y":430.0,"vx":0.0,"vy":0.0})
 	var restored: Dictionary=Voyage.restore(JSON.parse_string(JSON.stringify(state)))
 	check(not restored.is_empty(),"actual multiworld save restores after reclaiming core")
 	if restored.is_empty():return
