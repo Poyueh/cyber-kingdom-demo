@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/wildlife_appearance.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"badger"
+rows = Array[String](["................bbbb....", "....bbbbbbbb...bdeeeb...", "..bbccccccccbbbdeaaedb..", ".bccccccccccccdeaaaeedb.", "bccccccccccccdeaaeeddcba", "bcddccccccccccdeeeeddcb.", ".bcccccccccccccddddcbb..", "..bbbbbbbbbbbbbbbbb...."])
+colors = PackedColorArray(0.15294117647058825, 0.1843137254901961, 0.20784313725490197, 1, 0.2549019607843137, 0.2823529411764706, 0.28627450980392155, 1, 0.4, 0.43529411764705883, 0.4196078431372549, 1, 0.5882352941176471, 0.6196078431372549, 0.5568627450980392, 1, 0.8745098039215686, 0.8745098039215686, 0.7686274509803922, 1)
+origin = Vector2(-24, -24)
+legs = PackedVector2Array(-13, -8, 13, -8)
+stride = 28.0
+step = 2.0
+lift = 2.0
+bounce = 0.0
+shadow = 23.0

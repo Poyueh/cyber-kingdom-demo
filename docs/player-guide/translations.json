@@ -2482,5 +2482,13 @@
   "獵人每次狩獵留下 2 龍晶。新主旅程與 Demo 的未指派獵人白天在工作範圍內狩獵，天黑前返城；遇敵會射箭反擊。": {
     "zh_CN": "猎人每次狩猎留下 2 龙晶。新主旅程与 Demo 的未指派猎人白天在工作范围内狩猎，天黑前返城；遇敌会射箭反击。",
     "en": "Each successful hunt yields 2 crystals. In new main journeys and the demo, unassigned hunters hunt within the work area by day and return before night; they shoot back when threatened."
+  },
+  "v0.0.69 · 八種荒野生物": {
+    "zh_CN": "v0.0.69 · 八种荒野生物",
+    "en": "v0.0.69 · Eight woodland species"
+  },
+  "可狩獵生物現在有八種：鹿、野兔、野豬、狐狸、獾、山羊、雉雞、陸龜，各有不同輪廓與步態。近郊和遠林分散出現，數量不再加密；獵人照原規則狩獵，每次仍得2晶。舊紀錄保留原獵物數量與生死狀態。": {
+    "zh_CN": "可狩猎生物现在有八种：鹿、野兔、野猪、狐狸、獾、山羊、雉鸡、陆龟，各有不同轮廓与步态。近郊和远林分散出现，数量不再加密；猎人照原规则狩猎，每次仍得2晶。旧记录保留原猎物数量与生死状态。",
+    "en": "There are now eight huntable species: deer, hare, boar, fox, badger, goat, pheasant and tortoise, each with its own silhouette and gait. They are spread across nearby and distant woodland without increasing population density. Hunters follow the same rules and still earn 2 crystals per catch. Existing saves keep their prey counts and survival state."
   }
 }

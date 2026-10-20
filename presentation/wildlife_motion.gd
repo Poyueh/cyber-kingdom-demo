@@ -33,9 +33,9 @@ func present(sim: RefCounted) -> void:
  _time=now
 
 func draw(canvas: Node2D, texture: Texture2D, index: int, at: Vector2, scale: float, tint: Color) -> void:
- # Stable slot identity chooses deer / hare / boar, including saved populations.
- if index%3!=0:
-  Art.paint(canvas,index%3,at,_directions[index],_distances[index]/Finish.wildlife_stride*TAU,_moving[index]!=0,tint)
+ # Stable slot identity expands visual species without adding prey or changing saves.
+ if index%Art.CAST.size()!=0:
+  Art.paint(canvas,index%Art.CAST.size(),at,_directions[index],_distances[index],_moving[index]!=0,tint)
   return
  var size: Vector2=texture.get_size()*scale
  var lift: float=roundf(absf(sin(_distances[index]/Finish.wildlife_stride*TAU))*Finish.wildlife_step_height) if _moving[index] else 0.0
