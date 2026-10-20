@@ -2466,5 +2466,21 @@
   "本版更新：箭塔一至三級可派1／2／3名弓兵，配置介面可查看總數、未指派與到位數；未指派獵人白天出城巡獵、晚上進城。馬廄移至西側獨立空地，戰馬跑動減少跳格。讀檔後可點選單內的播放圖示返回畫面。": {
     "en": "Update: tier 1/2/3 towers hold 1/2/3 archers. Guard orders show total, free and arrived troops. Free hunters patrol outside by day and return before night. The stable has its own western clearing, horse animation skips fewer poses, and the pause menu has a play icon to return after loading.",
     "zh_CN": "本版更新：箭塔一至三级可派1／2／3名弓兵，配置界面可查看总数、未指派与到位数；未指派猎人白天出城巡猎、晚上进城。马厩移至西侧独立空地，战马跑动减少跳帧。读档后可点菜单内的播放图标返回画面。"
+  },
+  "v0.0.68 · 電漿夥伴與荒野生機": {
+    "zh_CN": "v0.0.68 · 电浆伙伴与荒野生机",
+    "en": "v0.0.68 · Plasma companion and wildlife"
+  },
+  "鬼魂改為更小的青藍電漿夥伴，保留帶路與招手；移動時本體穩定發光，避開按鈕和提示。": {
+    "zh_CN": "鬼魂改为更小的青蓝电浆伙伴，保留带路与招手；移动时本体稳定发光，避开按钮和提示。",
+    "en": "The spirit is now a smaller cyan plasma companion. It still leads and gestures, keeps a steady core while moving, and stays clear of controls and hints."
+  },
+  "新旅程森林近郊左右各有三隻獵物，遠處林區也有少量鹿、野兔和野豬。未指派獵人白天出城狩獵，天黑前回城，每次成功仍得2晶；保留森林才能在日出恢復獵物。舊存檔保留原數量。": {
+    "zh_CN": "新旅程森林近郊左右各有三只猎物，远处林区也有少量鹿、野兔和野猪。未指派猎人白天出城狩猎，天黑前回城，每次成功仍得2晶；保留森林才能在日出恢复猎物。旧存档保留原数量。",
+    "en": "New forest journeys have three prey animals beyond each side of camp, plus small groups of deer, hares and boars in distant woodlands. Unassigned hunters hunt by day, return before night, and still earn 2 crystals per catch. Standing woodland renews prey at dawn. Older saves keep their population."
+  },
+  "獵人每次狩獵留下 2 龍晶。新主旅程與 Demo 的未指派獵人白天在工作範圍內狩獵，天黑前返城；遇敵會射箭反擊。": {
+    "zh_CN": "猎人每次狩猎留下 2 龙晶。新主旅程与 Demo 的未指派猎人白天在工作范围内狩猎，天黑前返城；遇敌会射箭反击。",
+    "en": "Each successful hunt yields 2 crystals. In new main journeys and the demo, unassigned hunters hunt within the work area by day and return before night; they shoot back when threatened."
   }
 }

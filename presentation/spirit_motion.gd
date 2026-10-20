@@ -75,16 +75,30 @@ func _state(mood: String, near: bool, time: float) -> String:
  return "lead"
 
 func _clear_position(wanted: Vector2, safe: Rect2, blocked: Array[Rect2]) -> Vector2:
- var limit: Rect2=safe.grow(-12)
- var center: Vector2=Vector2(clampf(wanted.x,limit.position.x+42,limit.end.x-42),clampf(wanted.y,limit.position.y+48,limit.end.y-42))
+ # Solve against real obstacle edges. Fixed 64/80 px hops could all remain under
+ # one wide interaction caption, making the view suppress the whole companion.
+ var half: Vector2=style.body_half_size
+ var inset: Vector2=half+Vector2(14,14)
+ var center: Vector2=_clamp_center(wanted,safe,inset)
  var candidates: Array[Vector2]=[center]
- for offset: Vector2 in [Vector2(0,-64),Vector2(-80,0),Vector2(80,0),Vector2(-80,-64),Vector2(80,-64),Vector2(0,64)]:
-  candidates.append(Vector2(clampf(center.x+offset.x,limit.position.x+42,limit.end.x-42),clampf(center.y+offset.y,limit.position.y+48,limit.end.y-42)))
+ for region: Rect2 in blocked:
+  if not region.has_area():continue
+  var edge: Rect2=region.grow(10)
+  for point: Vector2 in [Vector2(center.x,edge.position.y-half.y),Vector2(edge.position.x-half.x,center.y),Vector2(edge.end.x+half.x,center.y),Vector2(center.x,edge.end.y+half.y)]:
+   candidates.append(_clamp_center(point,safe,inset))
+ # Safe-area corners remain available when several overlapping UI regions meet.
+ for x: float in [safe.position.x+inset.x,safe.end.x-inset.x]:
+  for y: float in [safe.position.y+inset.y,safe.end.y-inset.y]:candidates.append(Vector2(x,y))
+ var best: Vector2=center
+ var distance: float=INF
  for candidate: Vector2 in candidates:
-  var bounds: Rect2=Rect2(candidate-Vector2(40,46),Vector2(80,86))
+  var bounds: Rect2=Rect2(candidate-half,half*2)
   var clear: bool=true
   for region: Rect2 in blocked:
    if region.has_area() and bounds.intersects(region.grow(8)):clear=false;break
-  if clear:return candidate
- # Dense/modal layout: the view suppresses the decoration instead of covering input.
- return center
+  if clear and candidate.distance_squared_to(wanted)<distance:
+   best=candidate;distance=candidate.distance_squared_to(wanted)
+ return best
+
+func _clamp_center(point: Vector2, safe: Rect2, inset: Vector2) -> Vector2:
+ return Vector2(clampf(point.x,safe.position.x+inset.x,safe.end.x-inset.x),clampf(point.y,safe.position.y+inset.y,safe.end.y-inset.y))

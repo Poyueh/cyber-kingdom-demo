@@ -110,6 +110,7 @@ func campaign_rules() -> Dictionary:
 
 	rules.merge(night_pressure.rules(),true)
 	if immersive_loop:
+		rules.merge(preload("res://data/wildlife_population.tres").rules(),true)
 		rules.merge(night_patterns.rules(),true)
 		rules.merge(invasion_march.rules(),true)
 		assert(preload("res://domain/invasion_march.gd").valid_config(rules),"Invalid invasion march profile")

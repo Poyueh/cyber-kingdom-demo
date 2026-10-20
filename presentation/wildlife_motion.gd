@@ -1,6 +1,7 @@
 extends RefCounted
 ## Bounded presentation state follows actual displacement, including old saves.
 const Finish = preload("res://data/scene_finish.tres")
+const Art = preload("res://presentation/wildlife_art.gd")
 const Ground = preload("res://presentation/grounded_art.gd")
 var _source: RefCounted
 var _positions: PackedFloat64Array=[]
@@ -32,6 +33,10 @@ func present(sim: RefCounted) -> void:
  _time=now
 
 func draw(canvas: Node2D, texture: Texture2D, index: int, at: Vector2, scale: float, tint: Color) -> void:
+ # Stable slot identity chooses deer / hare / boar, including saved populations.
+ if index%3!=0:
+  Art.paint(canvas,index%3,at,_directions[index],_distances[index]/Finish.wildlife_stride*TAU,_moving[index]!=0,tint)
+  return
  var size: Vector2=texture.get_size()*scale
  var lift: float=roundf(absf(sin(_distances[index]/Finish.wildlife_stride*TAU))*Finish.wildlife_step_height) if _moving[index] else 0.0
  canvas.draw_line(at+Vector2(-11,1),at+Vector2(11,1),Color(0.03,0.07,0.06,tint.a*0.32),2)

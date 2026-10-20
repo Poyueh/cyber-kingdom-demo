@@ -1,0 +1,32 @@
+{
+  "version": "0.0.68",
+  "source": "834b13e",
+  "spec_revision": 58,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "core_assertions": 4707,
+  "new_wildlife_assertions": 38,
+  "dense_spirit_scene_assertions": 2,
+  "native_motion": {
+    "sampled_frames": 210,
+    "hidden_frames": 0,
+    "actions": [
+      "run",
+      "stop",
+      "turn"
+    ],
+    "video": "/tmp/ck68-final-motion.avi"
+  },
+  "root_cause_evidence": "original placement script hides the whole body when all seven fixed candidates overlap a dense hint region; same scene fails before and passes after edge-based clearance",
+  "actual_habitat": "all six near-camp slots in the shipped forest have standing-tree habitat and can renew at dawn",
+  "local_web": "exported Demo: new journey, real movement, sword draw/camp ignition and nearby woodland; plasma ghost and hare visible; no console errors",
+  "platform_content_assertions": {
+    "main": 52,
+    "demo": 53
+  },
+  "packaged_assets": 13,
+  "pending": [
+    "Windows runtime playtest",
+    "Android and iPhone/iPad hardware playtest",
+    "subjective player feedback"
+  ]
+}
