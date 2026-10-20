@@ -2312,7 +2312,7 @@
     "zh_CN": "v0.0.51 原生起停实录 · 稳定承重、八格换脚与走跑切换。"
   },
   "v0.0.51 原生遊戲實錄 · 紮實站姿、三段連斬與穩定收勢。": {
-    "en": "v0.0.51 native gameplay · Grounded stance, three-hit combo and stable recovery.",
+    "en": "v0.0.51 native gameplay · Grounded stance, three-hit combo and garage recovery.",
     "zh_CN": "v0.0.51 原生游戏实录 · 扎实站姿、三段连斩与稳定收势。"
   },
   "一般移動就是跑步；疲勞時才慢走。": {
@@ -2542,5 +2542,97 @@
   "首夜後開放完整森林：龍晶商人、遺跡解謎取得部件、戰馬與拓荒。西側安靜補給，東側有守獸，第二夜左右先後來襲。兩夜後帶工匠封印龍門、召喚並擊敗森林巨龍。領取龍核、投入20晶讓工匠建好火箭，Demo 即完成並回主選單；主遊戲則搭火箭繼續七星旅程。": {
     "zh_CN": "首夜后开放完整森林：龙晶商人、遗迹解谜取得部件、战马与拓荒。西侧安静补给，东侧有守兽，第二夜左右先后来袭。两夜后带工匠封印龙门、召唤并击败森林巨龙。领取龙核、投入20晶让工匠建好火箭，Demo 即完成并回主菜单；主游戏则搭火箭继续七星旅程。",
     "en": "After the first night, explore the full forest: the merchant, relic parts, warhorse and expansion sites. The west offers supplies; a beast guards the east. After two nights, escort builders to seal the gates and defeat the forest dragon. Claim its core and invest 20 crystals for builders to finish the rocket. Demo then ends and returns to the menu; Main continues to the other planets."
+  },
+  "劍術與義肢電容都升到最高階後，自動騎上龍晶龍晶重機；移動更快，第一刀仍需站定。讀取既有滿級紀錄也會恢復騎乘。": {
+    "zh_CN": "剑术与义肢电容都升到最高阶后，自动骑上龙晶龙晶重机；移动更快，第一刀仍需站定。读取既有满级记录也会恢复骑乘。",
+    "en": "Max out both sword training and the prosthetic capacitor to automatically ride a dragon-crystal motorcycle. Travel is faster, but the first slash still stops movement. Loading an existing fully upgraded journey restores the mount."
+  },
+  "投入龍晶升級劍術，較高階需要較高的聚落等級。最高階自動騎上龍晶重機；原有義肢電容設備已移除。": {
+    "zh_CN": "投入龙晶升级剑术，较高阶需要较高的聚落等级。最高阶自动骑上龙晶重机；原有义肢电容设备已移除。",
+    "en": "Invest crystals in sword training. Higher tiers require a stronger settlement. The highest tier grants a mechanical mount. The former capacitor facility is removed."
+  },
+  "循著纜線，喚醒重機。": {
+    "zh_CN": "循着缆线，唤醒重机。",
+    "en": "Follow the cables. Awaken the motorcycle."
+  },
+  "新旅程的微光林地西方藏著重機遺跡。沿地上的纜線找兩座導流器，按 E／手機下滑轉動指針，對準各自的發光接點。機關沒有倒數，轉錯可以重試，進度會保存。": {
+    "zh_CN": "新旅程的微光林地西方藏着重机遗迹。沿地上的缆线找两座导流器，按 E／手机下滑转动指针，对准各自的发光接点。机关没有倒数，转错可以重试，进度会保存。",
+    "en": "A motorcycle ruin lies west of camp in new Glimmerwood journeys. Follow the cables to two conduits. Press E or swipe down to align each handle with its glowing socket. There is no timer; retry freely and save your progress."
+  },
+  "能量接通後，在遺跡互動取回核心。回營地西側的重機車庫投入 6 顆龍晶，即可騎乘；靠近重機車庫再次互動可免費上下車。重機移動快 25%，體力與晶袋規則不變，也能帶往其他星球。掉劍會被迫下車，取回劍後可回重機車庫再騎。": {
+    "zh_CN": "能量接通后，在遗迹互动取回核心。回营地西侧的重机车库投入 6 颗龙晶，即可骑乘；靠近重机车库再次互动可免费上下车。重机移动快 25%，体力与晶袋规则不变，也能带往其他星球。掉剑会被迫下车，取回剑后可回重机车库再骑。",
+    "en": "Once powered, interact with the ruin to claim its core. Restore the garage west of camp for 6 crystals. Interact there to mount or dismount freely. Riding is 25% faster; stamina and pouch rules stay the same. Your mount travels between worlds. Losing your sword forces a dismount; recover it before remounting at a garage."
+  },
+  "修復重機車庫會驚動雙門：先出現橘色警訊，至少準備 70 秒後，下一個夜晚才額外來襲 6 隻魔物，仍由地圖兩端入侵。襲擊後下一晚少 4 隻、至少仍有 1 隻，趁空檔修牆、補器具，再出發。每趟森林旅程只觸發一次。": {
+    "zh_CN": "修复重机车库会惊动双门：先出现橘色警讯，至少准备 70 秒后，下一个夜晚才额外来袭 6 只魔物，仍由地图两端入侵。袭击后下一晚少 4 只、至少仍有 1 只，趁空档修墙、补器具，再出发。每趟森林旅程只触发一次。",
+    "en": "Restoring the garage stirs both gates. Orange omens allow at least 70 seconds to prepare before an eligible night brings 6 extra enemies from the map edges. The following night has 4 fewer enemies, with a minimum of 1: repair, resupply, and explore again. This forest event happens once per journey."
+  },
+  "實際遊戲中的重機車庫、騎乘騎士與襲擊預告。": {
+    "zh_CN": "实际游戏中的重机车库、骑乘骑士与袭击预告。",
+    "en": "The in-game garage, mounted knight and assault warning."
+  },
+  "適用 v0.0.24：七星球遠征、八件部件與收藏里程碑、森林重機、預警襲擊，以及六地的三類新機關。請開新旅程體驗新機關；舊紀錄保留原配置與解謎進度。更多坐騎、武器與探索事件仍待後續開發。": {
+    "zh_CN": "适用 v0.0.24：七星球远征、八件部件与收藏里程碑、森林重机、预警袭击，以及六地的三类新机关。请开新旅程体验新机关；旧记录保留原配置与解谜进度。更多坐骑、武器与探索事件仍待后续开发。",
+    "en": "For v0.0.24: seven worlds, eight collectible modules, the forest motorcycle, a telegraphed assault and three new mechanism families across six destinations. Start a new journey for the new puzzles; existing saves retain their configuration and progress. More mounts, weapons and exploration events remain future work."
+  },
+  "解開當地機關。森林也計入重機導流核心；到別的星球仍需解開當地遺跡。": {
+    "zh_CN": "解开当地机关。森林也计入重机导流核心；到别的星球仍需解开当地遗迹。",
+    "en": "Solve local mechanisms. The forest includes the mount circuit; bringing a mount elsewhere does not solve that world’s ruins."
+  },
+  "v0.0.36 的新旅程採分區關卡：森林不再重複限時中繼，仍保留選做的重機探索。舊紀錄完整保留原地圖、寶箱、機關與已完成進度。": {
+    "zh_CN": "v0.0.36 的新旅程采用分区关卡：森林不再重复限时中继，仍保留选做的重机探索。旧记录完整保留原地图、宝箱、机关与已完成进度。",
+    "en": "New journeys in v0.0.36 use authored zones. The forest no longer repeats a timed relay and still offers the optional motorcycle expedition. Existing journeys retain their original maps, chests, puzzles and progress."
+  },
+  "適用 v0.0.36：七星球分區關卡、每星一座主要聖所、稀疏遺藏與空曠前庭。保留八件部件、森林重機與噬晶異獸演出；新配置從新旅程開始，舊紀錄照常續玩。": {
+    "zh_CN": "适用 v0.0.36：七星球分区关卡、每星一座主要圣所、稀疏遗藏与空旷前庭。保留八件部件、森林重机与噬晶异兽演出；新配置从新旅程开始，旧记录照常续玩。",
+    "en": "For v0.0.36: authored zones on seven worlds, one main sanctuary per world, sparse caches and open rift approaches. All eight modules, the forest motorcycle and devourer animations remain. Start a new journey for the new layouts; existing saves continue unchanged."
+  },
+  "微光林地：先在近郊建立補給；向西尋重機與雷槍，向東挑戰古龍符序。": {
+    "zh_CN": "微光林地：先在近郊建立补给；向西寻重机与雷枪，向东挑战古龙符序。",
+    "en": "Glimmerwood: establish supplies nearby. Seek the motorcycle and lance westward; decipher the runestones to the east."
+  },
+  "遺跡與重機皆可選做，不是封門或取得龍核的必經條件。新地圖不會重排舊存檔；請從主選單另開旅程體驗。": {
+    "zh_CN": "遗迹与重机皆可选做，不是封门或取得龙核的必经条件。新地图不会重排旧存档；请从主菜单另开旅程体验。",
+    "en": "Ruins and the motorcycle are optional; neither blocks sealing the rifts or claiming a dragon core. Existing maps are preserved. Start a new journey from the main menu to try these routes."
+  },
+  "適用 v0.0.37：每星兩處稀疏路邊遭遇與發現、六種駐點 NPC 與建築新造型。保留每星一座主要聖所、八件部件與森林重機；新遭遇從新旅程開始，舊地圖和進度照常保留。": {
+    "zh_CN": "适用 v0.0.37：每星两处稀疏路边遭遇与发现、六种驻点 NPC 与建筑新造型。保留每星一座主要圣所、八件部件与森林重机；新遭遇从新旅程开始，旧地图和进度照常保留。",
+    "en": "Applies to v0.0.37: two sparse roadside encounters and finds per planet, six distinct facility attendants, and new building silhouettes. Each planet retains one main shrine; all eight modules and the woodland mount remain. Start a new journey for the encounters; existing maps and progress are preserved."
+  },
+  "遺跡不是通關必做。靠近機關先看獎勵用途：解開後依箭頭走回座台，靠近即可領取並免費裝備；按 K／雙指向上滑發動。已領取的遺跡不再提示獎勵，收藏里程碑也不會蓋掉能力說明。重機遺跡提供核心，仍需回營地西側投入 6 晶修復重機車庫才能騎乘。": {
+    "en": "Ruins are optional. Nearby devices preview what their reward does. Once a seal opens, follow the arrow to its pedestal; approach to collect and equip the ability for free. Press K or swipe up with two fingers to activate it. Claimed ruins stop advertising rewards, and collection milestones no longer cover ability instructions. The motorcycle ruin grants a core; spend 6 crystals at the garage west of camp before riding.",
+    "zh_CN": "遗迹不是通关必做。靠近机关先看奖励用途：解开后依箭头走回座台，靠近即可领取并免费装备；按 K／双指向上滑发动。已领取的遗迹不再提示奖励，收藏里程碑也不会盖掉能力说明。重机遗迹提供核心，仍需回营地西侧投入 6 晶修复重机车库才能骑乘。"
+  },
+  "首夜後開放完整森林：龍晶商人、遺跡解謎取得部件、重機與拓荒。西側安靜補給，東側有守獸，第二夜左右先後來襲。兩夜後帶工匠封印龍門、召喚並擊敗森林巨龍；Demo 到此完成，主遊戲再建火箭繼續七星旅程。": {
+    "zh_CN": "首夜后开放完整森林：龙晶商人、遗迹解谜取得部件、重机与拓荒。西侧安静补给，东侧有守兽，第二夜左右先后来袭。两夜后带工匠封印龙门、召唤并击败森林巨龙；Demo 到此完成，主游戏再建火箭继续七星旅程。",
+    "en": "After night one the whole forest opens: the crystal merchant, ruin puzzles that award modules, the motorcycle and new outposts. Quiet supplies lie west and a guarded nest lies east; night two attacks both sides in sequence. Then escort engineers to seal the gates, summon the forest dragon and defeat it. That completes the demo; the main game builds a rocket and continues to the other worlds."
+  },
+  "本版更新：箭塔一至三級可派1／2／3名弓兵，配置介面可查看總數、未指派與到位數；未指派獵人白天出城巡獵、晚上進城。重機車庫移至西側獨立空地，重機跑動減少跳格。讀檔後可點選單內的播放圖示返回畫面。": {
+    "en": "Update: tier 1/2/3 towers hold 1/2/3 archers. Guard orders show total, free and arrived troops. Free hunters patrol outside by day and return before night. The garage has its own western clearing, motorcycle animation skips fewer poses, and the pause menu has a play icon to return after loading.",
+    "zh_CN": "本版更新：箭塔一至三级可派1／2／3名弓兵，配置界面可查看总数、未指派与到位数；未指派猎人白天出城巡猎、晚上进城。重机车库移至西侧独立空地，重机跑动减少跳帧。读档后可点菜单内的播放图标返回画面。"
+  },
+  "v0.0.73 · 守軍、拓荒與重機": {
+    "zh_CN": "v0.0.73 · 守军、拓荒与重机",
+    "en": "v0.0.73 · Defense, outposts and mounts"
+  },
+  "劍盾兵能舉盾擋正面近戰，先蓄勢再斬擊；出招破綻、背擊與龍息仍危險。重機重製跑步、攻擊、受擊與休息，收步回到接地姿勢；移速與取得方式不變。": {
+    "zh_CN": "剑盾兵能举盾挡正面近战，先蓄势再斩击；出招破绽、背击与龙息仍危险。重机重制跑步、攻击、受击与休息，收步回到接地姿势；移速与取得方式不变。",
+    "en": "Swordsmen block frontal melee with shields and wind up before cutting. Attack openings, rear hits and dragon breath remain dangerous. Mount gallop, attack, hit and rest animations are rebuilt, settling onto planted hooves when stopping. Speed and unlock conditions are unchanged."
+  },
+  "首夜後開放完整森林：龍晶商人、遺跡解謎取得部件、重機與拓荒。西側安靜補給，東側有守獸，第二夜左右先後來襲。兩夜後帶工匠封印龍門、召喚並擊敗森林巨龍。領取龍核、投入20晶讓工匠建好火箭，Demo 即完成並回主選單；主遊戲則搭火箭繼續七星旅程。": {
+    "zh_CN": "首夜后开放完整森林：龙晶商人、遗迹解谜取得部件、重机与拓荒。西侧安静补给，东侧有守兽，第二夜左右先后来袭。两夜后带工匠封印龙门、召唤并击败森林巨龙。领取龙核、投入20晶让工匠建好火箭，Demo 即完成并回主菜单；主游戏则搭火箭继续七星旅程。",
+    "en": "After the first night, explore the full forest: the merchant, relic parts, motorcycle and expansion sites. The west offers supplies; a beast guards the east. After two nights, escort builders to seal the gates and defeat the forest dragon. Claim its core and invest 20 crystals for builders to finish the rocket. Demo then ends and returns to the menu; Main continues to the other planets."
+  },
+  "v0.0.75：戰馬改為龍晶重機，搭配獨立轉輪、完整騎姿、騎乘揮劍與引擎音效；馬廄改為車庫。舊紀錄已解鎖的坐騎直接換成重機，不需重新購買。": {
+    "zh_CN": "v0.0.75：战马改为龙晶重机，搭配独立转轮、完整骑姿、骑乘挥剑与引擎音效；马厩改为车库。旧记录已解锁的坐骑直接换成重机，不需重新购买。",
+    "en": "v0.0.75 replaces the steed with a crystal motorcycle: independently rotating wheels, complete riding and sword poses, and motor audio. The stable becomes a garage. Previously unlocked mounts become motorcycles without another purchase."
+  },
+  "本版更新：箭塔一至三級可派1／2／3名弓兵，配置介面可查看總數、未指派與到位數；未指派獵人白天出城巡獵、晚上進城。重機車庫移至西側獨立空地，重機改用接地車身與獨立輪轂。讀檔後可點選單內的播放圖示返回畫面。": {
+    "zh_CN": "箭塔一至三级可派1／2／3名弓兵，配置介面可查看总数、未指派与到位数；未指派猎人白天出城巡猎、晚上进城。重机车库位于西侧独立空地，重机车身接地、轮毂独立转动。读档后可点选单内的播放图示返回画面。",
+    "en": "Towers hold 1/2/3 archers by level. Orders show total, free and stationed archers. Free hunters hunt nearby by day and return at night. The motorcycle garage occupies its own western clearing; the chassis stays grounded and hubs rotate independently. Use the play icon inside the menu to resume after loading."
+  },
+  "劍盾兵能舉盾擋正面近戰，先蓄勢再斬擊；出招破綻、背擊與龍息仍危險。v0.0.75起改騎龍晶重機，車身接地、輪轂獨立轉動，保留騎乘斬擊；移速與取得方式不變。": {
+    "zh_CN": "剑盾兵能举盾挡正面近战，先蓄势再斩击；出招破绽、背击与龙息仍危险。v0.0.75起改骑龙晶重机，车身接地、轮毂独立转动，保留骑乘斩击；移速与取得方式不变。",
+    "en": "Sword-and-shield troops block frontal melee and wind up before cutting; recovery, rear strikes and dragon breath remain dangerous. Since v0.0.75 the rider uses a crystal motorcycle with a grounded chassis, independently rotating hubs and mounted sword attacks. Speed and acquisition are unchanged."
   }
 }

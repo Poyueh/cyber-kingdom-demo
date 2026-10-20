@@ -26,7 +26,7 @@
 - v0.0.56新主旅程core_loop_version=2，直接引導，兩夜後原地繼續七星；小型晶數、情境體力、用途、號令台每名1晶配置守軍、普攻免費與移動恢復為兩版共用。舊無標記紀錄維持原規則，v1核心試玩仍兩夜結束。
 - CP1／CP2完整還原，主遊戲兩夜完成後準備點退役，Demo保留。快照結構v24（v0.0.72加入隊伍、救援船與首次使用引導；v23加入星球狀態）；真人與真機驗收另列。
 - 共用功能先更新main/develop，再合併長期demo支線；demo只改distribution.json預設edition。每版發布Main／Demo兩套五平台附件，Pages根目錄用Demo Web；完整Web另附下載。
-- Demo實體排除六星關卡和專用素材，使用獨立存檔與識別碼，不能只隱藏選單。v0.0.60起Demo新旅程為core_loop_version=3：與主遊戲相同引導與完整森林（商人、遺跡部件、戰馬、封門、森林巨龍），不能出航；v0.0.67起（使用者要求）打倒森林巨龍後領取龍核、建造火箭，火箭完成即通關並自動回主選單（`rocket_finale=1`）；v0.0.60–0.0.66的v3紀錄仍打倒巨龍即完成，舊v1兩夜紀錄照原規則。詳見docs/design/guided-campaign-and-demo.md；舊Release不重寫。
+- Demo實體排除六星關卡和專用素材，使用獨立存檔與識別碼，不能只隱藏選單。v0.0.60起Demo新旅程為core_loop_version=3：與主遊戲相同引導與完整森林（商人、遺跡部件、龍晶重機、封門、森林巨龍），不能出航；v0.0.67起（使用者要求）打倒森林巨龍後領取龍核、建造火箭，火箭完成即通關並自動回主選單（`rocket_finale=1`）；v0.0.60–0.0.66的v3紀錄仍打倒巨龍即完成，舊v1兩夜紀錄照原規則。詳見docs/design/guided-campaign-and-demo.md；舊Release不重寫。
 
 ## 架構
 
@@ -68,3 +68,5 @@
 - 本地 Matt Pocock 技能包作為按需參考；適配與來源版本以 adoption 文件為準。保留現有 Godot、Clean Architecture、TDD、Gitflow 及使用者授權。
 - 遊戲術語集中在 `CONTEXT.md`，進度集中在 `docs/STATUS.md`。
 - 教學前讀 `docs/lessons/learning-records/`，以使用者實際回饋更新掌握程度。
+
+- v0.0.75起依使用者要求以龍晶重機取代戰馬；所有旅程共用重機、車庫、引擎音效與三語指示。保留取得費用、移速及v24存檔進度；不要恢復馬步、馬廄或馬蹄音。詳見 docs/design/mount-expedition.md。
