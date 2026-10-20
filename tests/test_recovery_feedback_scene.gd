@@ -33,6 +33,7 @@ func run_scene() -> void:
   check(is_equal_approx(game.knight.position.x,stopped_x) and is_zero_approx(game.sim.hero.stamina),edition+": held sprint cannot move or regenerate during breathing")
   await shot(edition+"-breathing")
   key(KEY_J,true);await step(game,1);key(KEY_J,false);await step(game,3)
+  check(game.sim.hero.attack_remaining>0,edition+": free ordinary attack still works while catching breath")
   check(is_equal_approx(game.knight.position.x,stopped_x),edition+": free attack cannot step through the breathing stop")
   await step(game,35)
   check(game.knight.velocity.x>0 and game.knight.velocity.x<run*0.6 and not game.knight.visual.breathing,edition+": after breathing movement becomes slow walking")

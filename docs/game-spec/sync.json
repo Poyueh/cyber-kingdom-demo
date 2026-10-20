@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.76",
-  "revision": 79,
-  "review_note": "v0.0.76：引導主遊戲、森林Demo與既有引導紀錄改採分階段耐力恢復。耗盡先原地喘息2.5秒，期間不自然回復；結束後可慢走並恢復，達最大值三分之一可一般跑步，全滿才解除衝刺鎖定，無須額外站定。步行與重機共用耐力規則，保留普攻免費與移動恢復。腳下耐力條全程顯示，三分之一刻度代表跑步門檻。沿用快照v24，保存剩餘喘息與階段；不重置地圖、人口、龍晶或重機。舊無引導標記旅程沿用歷史規則。 發布前校對：Demo三語列表同步新門檻，清除舊1/3衝刺說明；恢復設定由Inspector資源解析並驗證保存值範圍。",
-  "content_sha256": "fd2755c774944a1ac9a857931a00acc59045f81379c125ee73e846c7153815b1",
+  "revision": 80,
+  "review_note": "v0.0.76：引導主遊戲、森林Demo與既有引導紀錄改採分階段耐力恢復。耗盡先原地喘息2.5秒，期間不自然回復；結束後可慢走並恢復，達最大值三分之一可一般跑步，全滿才解除衝刺鎖定，無須額外站定。步行與重機共用耐力規則，保留普攻免費與移動恢復。腳下耐力條全程顯示，三分之一刻度代表跑步門檻。沿用快照v24，保存剩餘喘息與階段；不重置地圖、人口、龍晶或重機。舊無引導標記旅程沿用歷史規則。 發布前校對：Demo三語列表同步新門檻，清除舊1/3衝刺說明；恢復設定由Inspector資源解析並驗證保存值範圍。 回歸校對：引導版解除舊疲勞普攻封鎖，喘息期間可原地防身，踏斬仍不能繞過停喘。",
+  "content_sha256": "93d54462406ff73911457e97f0ba4747b91bbcac8877ac7f82f49152c7932a0b",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "912729a3e20875bca34575d15eabb35c640e306b33a63ab62c91354296c41cad",
@@ -1034,7 +1034,7 @@
     "art/ui/v001/wood.svg": "ca9d38200cf4c69e6bd3360f4fc2a57536846c8f0a6f602c5a1a3de067be019a",
     "bootstrap/core_loop_controller.gd": "29f49aee0b595de36ee3f8baa9b3817b8af619fca71d353e496c00f8d0319585",
     "bootstrap/frame_pacing.gd": "8f69911a4cdf15566bb18fccd08af7241d92f2a87d6c3a6dd0911bb2e51fd22f",
-    "bootstrap/frontier_root.gd": "4c82d3b6a4ca4643382714087d716d273f9ce355965e30edcec895497bb887fc",
+    "bootstrap/frontier_root.gd": "141680a13be1c2dd1560f4e8ea80e6a2d810996afffdcf04fd240fa188fd2ef4",
     "bootstrap/localization.gd": "eb2c91d75bf6d63d1edb09f092f1fff6f03ee4a4a8703a2b0454ad215ec0f976",
     "bootstrap/planet_travel_controller.gd": "d5fc4e8619b3c97ea72e1a660fa6780c7736ce2a9fb68e23f849e6ff75763fa3",
     "bootstrap/prologue_stage.gd": "a5fbb10504fa75adad6cd91d4b433926bad97cd7368a0cda025397dec1be2c2b",
