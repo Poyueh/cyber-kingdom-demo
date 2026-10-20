@@ -48,6 +48,9 @@ func verify() -> void:
  var right: float=game.sim.world.sites.wall
  check(game.sim.hunter_roaming.contains(right+250,game.sim.world.sites.wall_left,right) and not game.sim.hunter_roaming.contains(right+500,game.sim.world.sites.wall_left,right),"shipped hunting stays near the walls")
  check(game.hud.guide_view._motion.style.body_half_size==Vector2(30,34),"shipped ghost uses compact shared clearance")
+ check(ResourceLoader.exists("res://art/characters/sword-guard-v001/guard.png"),"shipped shield combat atlas")
+ check(ResourceLoader.exists("res://art/characters/mounted-v002/mounted.png") and ResourceLoader.exists("res://art/characters/mounted-v002/mounted-unarmed.png"),"shipped coherent armed and unarmed horse cycles")
+ check(game.sim.core_loop.orders.rules.assignment_cost==1,"shipped paid command station")
  check(game.sim.command.enabled,"both editions include command squads and rescue")
  check(ResourceLoader.exists("res://art/settlement/rescue-v001/rescue-ship.png"),"shipped native rescue ship atlas")
  check(game.sim.command.rules.rally_cost==2 and game.sim.command.rules.repair_cost==6 and game.sim.command.rules.recruit_cost==4,"shipped command economy")

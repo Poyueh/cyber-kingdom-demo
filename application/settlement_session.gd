@@ -187,9 +187,10 @@ func _advance_people(seconds: float) -> void:
 				"guard":
 					target = world.sites.wall-65-index*18
 					_shoot_nearest_raider(person,190.0,20,0.85)
-		person["moving"] = absf(target-person.x)>1
+		var speed: float=_resident_speed(index)
+		person["moving"] = speed>0 and absf(target-person.x)>1
 		if person.moving: person["direction"] = signf(target-person.x)
-		person.x = move_toward(person.x,target,_resident_speed(index)*seconds)
+		person.x = move_toward(person.x,target,speed*seconds)
 
 func _resident_speed(_index: int) -> float:return _person_speed
 
@@ -303,7 +304,7 @@ func _advance_raider(raider: Dictionary, seconds: float, hero_x: float, hero_y: 
 						if absf(hero_y-430)<42: hit_hero(raider.fighter.stats.damage,hero_x,hero_y)
 					"wall","core": _hit_structure(target,raider.get("wall_damage",20))
 					"person":
-						if absf(world.people[target.index].get("y",430)-430)<42: world.hit_person(target.index)
+						if absf(world.people[target.index].get("y",430)-430)<42: world.hit_person(target.index,raider.x)
 				effects.append({"kind":"hit","x":at,"to":at,"life":0.25})
 		return
 	var target := _target(raider,hero_x,hero_y)

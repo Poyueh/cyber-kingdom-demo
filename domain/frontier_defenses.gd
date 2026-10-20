@@ -41,7 +41,7 @@ func prerequisites(id: String) -> Array[Dictionary]:
 func active_post(side: int) -> String:
 	var result: String="wall" if side>0 else "wall_left"
 	for id in plots:
-		if plots[id].side==side and world.walls[id].hp>0 and side*world.sites[id]>side*world.sites[result]:
+		if plots[id].side==side and world.wall_operational(id) and side*world.sites[id]>side*world.sites[result]:
 			result=id
 	return result
 
@@ -60,4 +60,4 @@ func shelter(from_x: float, fallback: float) -> float:
 
 func work_bounds() -> Vector2:
 	var left: String=active_post(-1);var right: String=active_post(1)
-	return Vector2(world.sites[left] if world.walls[left].hp>0 else world.sites.hall-220,world.sites[right] if world.walls[right].hp>0 else world.sites.hall+220)
+	return Vector2(world.sites[left] if world.wall_operational(left) else world.sites.hall-220,world.sites[right] if world.wall_operational(right) else world.sites.hall+220)

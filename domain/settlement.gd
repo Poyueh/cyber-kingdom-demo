@@ -12,8 +12,10 @@ var wall := {"level":0, "hp":0, "pending":false, "progress":0.0, "repair":false}
 var walls: Dictionary = {}
 var barrier: int = 0
 var shield_value: int
+var defense_rules: Resource=preload("res://domain/defense_rules.gd").new()
 
 func _init(config: Dictionary = {}) -> void:
+	defense_rules.apply(config)
 	walls["wall"] = wall
 	scrap = maxi(0, int(config.get("scrap",14)))
 	crystals = maxi(0,int(config.get("crystals",3)))
@@ -99,9 +101,15 @@ func power_refuge() -> bool:
 	barrier += 1
 	return true
 
-func hit_person(index: int) -> bool:
+func hit_person(index: int, source_x: float=NAN) -> bool:
 	if index < 0 or index >= people.size() or people[index].role == "wanderer":
 		return false
+	var person: Dictionary=people[index]
+	if person.role=="guard" and is_finite(source_x):
+		var facing: float=person.get("direction",1.0)
+		if (source_x-person.x)*facing>=0 and person.cooldown<=defense_rules.strike_remaining:
+			person.hurt=defense_rules.shield_reaction
+			return false
 	if barrier > 0:
 		barrier -= 1
 		return false

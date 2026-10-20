@@ -10,6 +10,7 @@ static func number(value) -> bool:
 
 static func config_valid(config: Dictionary) -> bool:
 	if not preload("res://domain/command_rules.gd").valid(config):return false
+	if not preload("res://domain/defense_rules.gd").valid(config):return false
 	if not preload("res://domain/hunter_roaming_rules.gd").valid(config):return false
 	if not preload("res://application/wildlife_population.gd").valid(config):return false
 	if not preload("res://domain/core_loop_rules.gd").valid(config):return false

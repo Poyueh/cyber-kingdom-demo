@@ -9,7 +9,7 @@ func _ready() -> void:
  hud.orders_toggled.connect(func(open: bool)->void:
   root.paused=open;root.controls.release_all();root.hud.cancel_touch_gestures())
  hud.order_requested.connect(func(target: String, amount: int)->void:
-  if root.sim.core_loop.enabled:root.sim.core_loop.orders.assign(root.sim,target,amount))
+  if root.sim.core_loop.enabled:root.sim.core_loop.orders.order(root.sim,target,amount,root.knight.position.x))
  hud.guidance_toggled.connect(func()->void:root.sim.core_loop.skipped=not root.sim.core_loop.skipped)
  hud.retry_requested.connect(func()->void:
   if root.sim.core_loop.checkpoint_index>0:retry()

@@ -63,6 +63,8 @@ func _ready() -> void:
   minus.custom_minimum_size=Vector2(48,48);plus.custom_minimum_size=Vector2(48,48)
   row_buttons[target]=[minus,plus]
  _button(body,"core.close",func()->void:panel.hide();orders_toggled.emit(false))
+func open_orders() -> void:
+ panel.show();orders_toggled.emit(true)
 func _bar_box(color: Color, edge: int) -> StyleBoxFlat:
  var box: StyleBoxFlat=StyleBoxFlat.new();box.bg_color=color;box.border_color=STAMINA_EDGE;box.set_border_width_all(edge)
  return box
@@ -88,7 +90,7 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  var ratio: float=sim.travel.core_sprint.recovery_ratio if sim.travel.core_sprint!=null else sim.travel.rules.sprint_recovery_ratio
  stamina_ready.position=Vector2(roundf(STAMINA_SIZE.x*ratio),0);stamina_ready.size=Vector2(1,STAMINA_SIZE.y)
  (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_RECOVERING if sim.travel.exhausted else STAMINA_FULL
- orders_button.position=safe.position+Vector2(18,72);orders_button.visible=core.income>0 and sim.is_running() and (not paused or panel.visible)
+ orders_button.position=safe.position+Vector2(18,72);orders_button.visible=false
  guide_button.position=safe.position+Vector2(18,122);guide_button.visible=sim.is_running() and core.stage<5 and not paused
  guide_button.text=tr("core.show" if core.skipped else "core.skip")
  retry_button.position=Vector2(safe.end.x-218,safe.position.y+84);retry_button.size=Vector2(200,44);retry_button.visible=(core.trial or core.stage<5) and terminal_ready and (paused or not sim.is_running()) and not panel.visible
@@ -128,7 +130,7 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
    if sim.world.people[i].role!="hunter":continue
    total+=1
    if (i>=core.orders.targets.size() or core.orders.targets[i].is_empty()) and not sim.command.contains(i):free+=1
-  troop_count.text=tr("core.archers %d %d %d")%[total,total-free,free]
+  troop_count.text=tr("core.archers %d %d %d")%[total,total-free,free]+"\n"+tr("defense.price %d")%core.orders.rules.assignment_cost
   for target: String in rows:
    var assigned: int=core.orders.targets.count(target)
    var arrived: int=core.orders.arrived(sim,target,core.arrival_radius)
@@ -136,7 +138,7 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
    if target in ["beacon","core_tower_right"]:counts=tr("core.tower.count %d %d %d")%[assigned,core.orders.capacity(sim,target),arrived]
    rows[target].text=tr("core.post."+target)+"\n"+counts
    row_buttons[target][0].disabled=assigned==0
-   row_buttons[target][1].disabled=not core.orders.usable(sim,target) or (target in ["beacon","core_tower_right"] and assigned>=core.orders.capacity(sim,target))
+   row_buttons[target][1].disabled=not core.orders.has_candidate(sim,target) or sim.pouch.amount<core.orders.rules.assignment_cost or not core.orders.at_station(sim,sim._hero_x) or not core.orders.usable(sim,target) or (target in ["beacon","core_tower_right"] and assigned>=core.orders.capacity(sim,target))
 func exclusion_rects() -> Array[Rect2]:
  var result: Array[Rect2]=[]
  if not visible:return result
@@ -146,7 +148,7 @@ func exclusion_rects() -> Array[Rect2]:
  return result
 
 func _reason(sim: RefCounted, choice: Dictionary) -> String:
- if str(choice.reason).begins_with("command."):return choice.reason
+ if str(choice.reason).begins_with("command.") or str(choice.reason).begins_with("defense."):return choice.reason
  if choice.reason=="core.need_engineer":return choice.reason
  if choice.cost>0 and sim.pouch.amount==0:return "core.empty"
  if choice.id=="mark":return "core.working"
