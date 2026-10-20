@@ -49,6 +49,10 @@ func opacity(tick: int) -> float:
 func advice(sim: RefCounted, x: float, opening: bool=true, expedition: bool=true) -> Dictionary:
  var tick: int=int(sim.workforce.elapsed*TICKS_PER_SECOND)
  var recalled: bool=not sim.core_loop.trial and sim.core_loop.stage>=3 and summoned and active(tick)
+ var handing_over: bool=sim.core_loop.stage==3 and sim.clock.day_seconds-sim.clock.remaining<HANDOVER_SECONDS
+ if sim.core_loop.stage>=3 and opening and not recalled and not handing_over:
+  var unlocked: Dictionary=preload("res://application/feature_lessons.gd").next(sim,x)
+  if not unlocked.is_empty():return unlocked
  if sim.core_loop.enabled and sim.core_loop.stage<5 and not recalled:
   if not opening:return {}
   var lesson: Dictionary=preload("res://application/core_spirit_guide.gd").next(sim,x)

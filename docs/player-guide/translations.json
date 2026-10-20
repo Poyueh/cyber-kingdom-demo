@@ -2506,5 +2506,13 @@
   "耐力恢復到三分之一就能再衝刺，腳下細條會持續顯示恢復進度與門檻。鬼魂未完成的新手指示每6秒重播，走動也會提醒。未指派弓兵白天在城牆附近300像素內巡獵，提前回城守夜，遇敵可反擊並撤回城內。每次狩獵2晶先由獵人隨身保管，騎士靠近才交付；袋滿12晶先回防。": {
     "zh_CN": "耐力恢复到三分之一就能再冲刺，脚下细条会持续显示恢复进度与门槛。鬼魂未完成的新手指示每6秒重播，走动也会提醒。未指派弓兵白天在城墙附近300像素内巡猎，提前回城守夜，遇敌可反击并撤回城内。每次狩猎2晶先由猎人随身保管，骑士靠近才交付；袋满12晶先回防。",
     "en": "Sprint again once stamina recovers to one third. The bar below the knight shows recovery and its threshold. The ghost repeats unfinished tutorial instructions every 6 seconds, even while moving. Unassigned archers hunt within 300 world pixels of the walls by day, return before night, and can fire while retreating from monsters. Hunters keep the 2 crystals from each catch until the knight approaches; a full 12-crystal bag sends them home."
+  },
+  "營火三級後，最外牆兩側的號令旗可花2晶集結現有3劍盾兵、2未指派弓兵、1工匠，最多3隊；缺員不扣款。隊伍會跟隨迎敵，工匠協助附近建造／封門；騎士回到城內全部解散，再出征要重新集結。劍盾兵營在右側最外牆內，城牆倒塌時跟著退回。野外太空船三級後花6晶修好，從次日黎明每天接應1人、最多等3人，每4晶招募1人。新功能由鬼魂帶路，使用過後不再重教，讀檔和跨星也記得。": {
+    "zh_CN": "营火三级后，最外墙两侧的号令旗可花2晶集结现有3剑盾兵、2未指派弓兵、1工匠，最多3队；缺员不扣款。队伍会跟随迎敌，工匠协助附近建造／封门；骑士回到城内全部解散，再出征要重新集结。剑盾兵营在右侧最外墙内，城墙倒塌时跟着退回。野外太空船三级后花6晶修好，从次日黎明每天接应1人、最多等3人，每4晶招募1人。新功能由鬼魂带路，使用过后不再重教，读档和跨星也记得。",
+    "en": "At camp level 3, flags beyond the outer walls rally 3 existing swordsmen, 2 unassigned archers and 1 worker for 2 crystals. Lead up to 3 squads; missing people never consume crystals. Troops follow and fight, and workers assist nearby construction and gate sealing. Re-enter town to dismiss all squads; rally again for the next expedition. The sword barracks follows the current outer right wall. Repair the wild rescue ship for 6 crystals at camp level 3. From the next dawn it receives one passenger daily, holding up to 3; recruit one for 4 crystals. The ghost guides newly unlocked features, then stops teaching them after use. Learned features survive saving and travel."
+  },
+  "v0.0.72 · 號令旗隊伍與救援船": {
+    "zh_CN": "v0.0.72 · 号令旗队伍与救援船",
+    "en": "v0.0.72 · Command squads and rescue ship"
   }
 }

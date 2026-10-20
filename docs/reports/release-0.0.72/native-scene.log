@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: barracks has playable gear interaction
+PASS: barracks keeper moves with the real command post
+PASS: real gear purchase triggers the barracks service animation
+PASS: missing roster remains visible but unavailable
+PASS: actual E investment forms a company
+PASS: three companies remain together outside town
+PASS: entering town releases all squads in the real scene
+PASS: actual input repairs the wreck
+PASS: three real passengers light the ship bays
+PASS: actual input recruits a passenger
+Command scene: 10 assertions; failures: 0

@@ -189,7 +189,9 @@ func _advance_people(seconds: float) -> void:
 					_shoot_nearest_raider(person,190.0,20,0.85)
 		person["moving"] = absf(target-person.x)>1
 		if person.moving: person["direction"] = signf(target-person.x)
-		person.x = move_toward(person.x,target,_person_speed*seconds)
+		person.x = move_toward(person.x,target,_resident_speed(index)*seconds)
+
+func _resident_speed(_index: int) -> float:return _person_speed
 
 ## Campaign policies can take priority over routine job destinations.
 func _override_resident_target(_index: int, _seconds: float) -> float:

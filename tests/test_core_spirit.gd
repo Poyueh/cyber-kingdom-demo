@@ -53,10 +53,14 @@ func _initialize() -> void:
    check(sim.spirit.advice(sim,shrine).is_empty(),"paid visit expires normally and keeps hidden core preference")
    sim.core_loop.skipped=false
   sim.core_loop.stage=5
-  # v0.0.66: after onboarding the ghost only calls the goal of the moment; it no longer leads to tasks.
+  # New feature lessons are offered until actually learned, then ordinary goal calls resume.
   # The old two-night trial ends with its lessons.
   var call: Dictionary=sim.spirit.advice(sim,30)
-  if main_game:check(call.get("mood","")=="cheer" and str(call.get("goal","")).begins_with("spirit.call."),"completed onboarding leaves the player free, with the goal called aloud")
+  if main_game:
+   check(str(call.get("goal","")).begins_with("command.guide."),"completed onboarding can introduce an unused feature")
+   for feature: String in preload("res://application/feature_lessons.gd").IDS:sim.command.learn(feature)
+   call=sim.spirit.advice(sim,30)
+   check(call.get("mood","")=="cheer" and str(call.get("goal","")).begins_with("spirit.call."),"used features give way to ordinary strategic goals")
   else:check(call.is_empty(),"the old trial ends quietly after its lessons")
  print("Core spirit: %d assertions, %d failures"%[assertions,failures]);quit(1 if failures else 0)
 
