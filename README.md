@@ -7,14 +7,14 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.75 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.75)
+- [v0.0.76 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.76)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 - [遊戲企劃規格書](https://poyueh.github.io/cyber-kingdom-demo/spec/)（隨功能同步；[維護流程](docs/game-spec/README.md)）
 
 此 demo 倉庫是目前的玩家下載入口；原 cyber-kingdom 倉庫保留早期開發歷史。
 
-v0.0.75 將戰馬改為龍晶重機：獨立轉輪、完整騎姿與騎乘斬擊、核心座、車庫及引擎聲。主遊戲和森林 Demo 共用，既有解鎖紀錄直接換車，6晶修復與25%移速不變。
+v0.0.76 耐力耗盡先停喘2.5秒，之後慢走恢復，1/3跑步、全滿可再衝刺；主遊戲和森林 Demo 共用，沿用重機與存檔進度。
 
 ## 本機開發
 

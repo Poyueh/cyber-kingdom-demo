@@ -1,0 +1,5 @@
+# 153｜把喘息時間與動作分開
+
+本次用既有breath_ticks保存喘息剩餘時間，core_sprint的advance隨模擬前進，沒有方向輸入也會倒數；axis只依狀態決定可走多快。畫面讀同一狀態播放喘息，避免動畫播完但角色仍被鎖住。Combatant仍更新攻擊與受擊時間，只暫停自然耐力恢復。
+
+試著在Godot開啟data/travel_recovery.tres，將Guided Breath Stop Seconds從2.5改為3，建立新旅程觀察停喘變化。新旅程把參數保存，已有新格式旅程保留建立時數值；不修改既有地圖與人口。完成後改回2.5。guided_run_recovery_ratio為1/3，guided_sprint_recovery_ratio為1；兩個門檻分別控制跑步與再次衝刺。

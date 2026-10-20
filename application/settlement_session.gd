@@ -127,10 +127,13 @@ func begin_raid() -> bool:
 	_spawn_timer = 0.0
 	return true
 
+func _advance_hero(seconds: float) -> void:
+	hero.advance(seconds)
+
 func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if seconds <= 0 or not is_finite(seconds) or not is_running():
 		return
-	hero.advance(seconds)
+	_advance_hero(seconds)
 	for effect in effects:
 		effect.life -= seconds
 	effects = effects.filter(func(effect): return effect.life > 0)
