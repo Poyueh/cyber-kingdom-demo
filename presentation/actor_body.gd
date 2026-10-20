@@ -122,7 +122,7 @@ func _draw_slash(reach: float, facing: int) -> void:
 	var rising := model.combo_step == 2
 	var heavy := model.combo_step == 3
 	var leading_angle := lerpf(0.1, 0.8, progress)
-	var origin := Vector2(12*facing, -65) if mounted else Vector2(0, -27)
+	var origin := Vector2(12*facing, -48) if mounted else Vector2(0, -27)
 	var points := PackedVector2Array()
 	# A tapered crescent travels downward; mirroring preserves sword direction.
 	for index in range(9):

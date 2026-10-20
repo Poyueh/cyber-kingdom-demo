@@ -11,10 +11,10 @@ static func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]
    if absf(x-q.levers[i])<=44 and Known.known(sim,q.levers[i]):
     var row: Dictionary=sim._choice("mount_lever",q.levers[i],"轉動導流器")
     row.key="mount_lever:%d"%i;row["lever"]=i;result.append(row)
-  if absf(x-q.ruin_x)<=60 and Known.known(sim,q.ruin_x) and q.powered():result.append(sim._choice("mount_recover",q.ruin_x,"喚醒機械戰馬"))
+  if absf(x-q.ruin_x)<=60 and Known.known(sim,q.ruin_x) and q.powered():result.append(sim._choice("mount_recover",q.ruin_x,"啟動龍晶重機"))
  if sim.frontier.city_level>0 and absf(x-q.stable_x)<=60:
-  if q.unlocked and sim.can_wield_sword():result.append(sim._choice("mount_switch",q.stable_x,"下馬" if q.riding else "騎乘機械戰馬"))
-  elif q.recovered and not q.unlocked and sim.can_wield_sword():result.append(sim._choice("mount_stable",q.stable_x,"修復馬廄",q.cost))
+  if q.unlocked and sim.can_wield_sword():result.append(sim._choice("mount_switch",q.stable_x,"下車" if q.riding else "騎乘龍晶重機"))
+  elif q.recovered and not q.unlocked and sim.can_wield_sword():result.append(sim._choice("mount_stable",q.stable_x,"修復重機車庫",q.cost))
  return result
 static func execute(sim: RefCounted, choice: Dictionary) -> void:
  var q: RefCounted=sim.mount_quest
