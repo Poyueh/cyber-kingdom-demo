@@ -159,6 +159,10 @@ func _person(person: Dictionary, protected: bool) -> void:
 		texture=art.citizens_atlas
 	draw_set_transform(at,0,Vector2(direction,1))
 	_draw_person_texture(texture,source,Color(1,0.65,0.65) if person.hurt>0 else Color.WHITE)
+	if person.role=="hunter" and int(person.get("crystals",0))>0:
+		# A small filled belt pouch identifies who holds the catch, without a label.
+		draw_rect(Rect2(8,-20,7,8),Color("533f30"))
+		draw_colored_polygon(PackedVector2Array([Vector2(11,-20),Vector2(13,-17),Vector2(11,-14),Vector2(9,-17)]),Color("9de1cc"))
 	draw_set_transform(Vector2.ZERO)
 	if protected and person.role!="wanderer": draw_arc(at+Vector2(0,-24),29,PI,TAU,16,Color("81ddda"),1)
 	var label: String={"wanderer":tr("流浪者"),"citizen":tr("居民"),"engineer":tr("工匠"),"farmer":tr("農夫"),"hunter":tr("獵人"),"guard":tr("守備兵")}[person.role]

@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL test_main_and_demo_resume_at_one_third_while_moving
+FAIL test_exhausted_demo_save_recovers_without_compulsory_rest
+FAIL test_unassigned_hunters_stay_near_walls_instead_of_chasing_far_game
+FAIL test_catch_stays_with_the_hunter_until_the_knight_approaches
+PASS test_hunters_return_for_night_and_retreat_from_monsters
+FAIL test_full_hunting_bag_preserves_live_prey
+PASS test_new_task_is_spoken_at_once_while_walking
+PASS test_arrival_and_stalls_are_answered_quickly
+FAIL test_same_tutorial_task_repeats_while_the_knight_keeps_walking
+sprint remains locked immediately below one third: expected 1.0, got 1.95
+sprint remains locked immediately below one third: expected 1.0, got 1.95
+empty guided knight keeps running, mode 3: expected 1.0, got 0.0
+sprint remains locked immediately below one third: expected 1.0, got 0.0
+exactly one third rearms sprint without stopping: expected true, got false
+empty guided knight keeps running, mode 3: expected 1.0, got 0.0
+sprint remains locked immediately below one third: expected 1.0, got 0.0
+exactly one third rearms sprint without stopping: expected true, got false
+recovering knight can keep moving: expected true, got false
+loaded knight can sprint again after recovering one third on the move: expected true, got false
+distant game is not pursued beyond the walls: expected true, got false
+free archer patrol remains within 300 pixels of the wall: expected true, got false
+hunter keeps both crystals from its own catch: expected 2, got 0
+loaded hunter still carries the catch: expected 2, got 0
+a full hunter does not kill prey and discard its reward: expected true, got false
+same unfinished task repeats by eight seconds even during continuous movement: expected true, got false
+Assertions: 39; failures: 16
