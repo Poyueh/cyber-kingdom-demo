@@ -374,7 +374,10 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	elif pose.get("moving",false) or pose.get("dashing",false):
 		var count: int=appearance.mounted_gait_frames if appearance!=null else 2
 		if appearance!=null:
-			_mounted_time+=maxf(0,seconds)*appearance.mounted_fps*clampf(absf(pose.get("horizontal_speed",206.0))/206.0,0.25,1.8)
+			# Keep one complete cycle visible on a 30 Hz phone. Distance controls cadence;
+			# changing speed never restarts the stride or adds a minimum sliding cadence.
+			var cadence: float=minf(appearance.mounted_max_fps,appearance.mounted_fps*absf(pose.get("horizontal_speed",206.25))/appearance.mounted_reference_speed)
+			_mounted_time=fposmod(_mounted_time+maxf(0,seconds)*cadence,float(count))
 			index=int(_mounted_time)%count
 		else:index=1+int(_gait_time*24/STRIDE_FRAMES)%2
 	if hurt_active:index=appearance.mounted_hurt_frame if appearance!=null else 0
@@ -384,6 +387,8 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	_mount_frame.region=Rect2(index%columns*160,index/columns*128,160,128)
 	_mount.texture=_mount_frame
 	_mount.position=Vector2.ZERO if appearance!=null else Vector2(0,sin(_motion_time*2)*0.5)
+	if appearance!=null and index<appearance.mounted_offsets.size():
+		_mount.position=appearance.mounted_offsets[index]*Vector2(pose.facing,1)
 
 	# Brace the horse through the cut, then ease back to a balanced stance.
 	if progress<1 and not hurt_active:

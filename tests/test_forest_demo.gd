@@ -1,6 +1,7 @@
 extends "res://tests/test_core_loop.gd"
 ## The public Demo plays the whole forest with the main guidance, but cannot travel:
-## the forest dragon is its finale. Shared pacing changes are pinned here as well.
+## after the forest dragon the knight claims its core and builds the rocket; the finished
+## rocket ends the Demo. Shared pacing changes are pinned here as well.
 const Setup=preload("res://application/journey_setup.gd")
 const Ops=preload("res://application/planet_operations.gd")
 const Distribution=preload("res://infrastructure/distribution.gd")
@@ -29,6 +30,13 @@ func _initialize() -> void:
  check(not Rules.config_valid(wrong),"contained forest cannot claim star travel")
  var main_like: Dictionary=config.duplicate(true);main_like.core_loop_version=2
  check(not Rules.config_valid(main_like),"main guidance still requires star travel")
+ check(config.get("rocket_finale",0)==1,"demo journeys end with the rocket finale")
+ var legacy: Dictionary=config.duplicate(true);legacy.erase("rocket_finale")
+ check(Rules.config_valid(legacy),"older demo records without the rocket finale still load")
+ check(not Campaign.new(legacy).planet.enabled,"older demo records keep their dragon ending")
+ var main_baseline: Dictionary=config.duplicate(true);main_baseline.core_loop_version=2;main_baseline.voyage_enabled=1;main_baseline.erase("rocket_finale")
+ var main_finale: Dictionary=main_baseline.duplicate(true);main_finale.rocket_finale=1
+ check(Rules.config_valid(main_baseline) and not Rules.config_valid(main_finale),"the rocket finale belongs to the contained demo only")
  var sim: RefCounted=Campaign.new(config)
  check(sim.core_loop.enabled and not sim.core_loop.trial,"demo keeps the main outcome-driven guidance")
  check(sim.core_loop.get("contained")==true,"demo run knows it is the contained forest")
@@ -37,7 +45,7 @@ func _initialize() -> void:
  check(sim.modules.relics.size()>0,"demo includes ruin puzzles and their modules")
  check(sim.mount_quest.enabled,"demo includes the forest warhorse expedition")
  check(sim.mission.rifts.size()==int(config.rift_left_count)+int(config.rift_right_count),"demo has the forest gates for engineers to seal")
- check(not sim.planet.enabled,"demo has no rocket or star travel")
+ check(sim.planet.enabled and sim.planet.finale,"demo builds a rocket as its finale, without star travel")
  pacing()
  packaged_catalogs()
  first_day_budget(config)
@@ -58,10 +66,29 @@ func verify_completion(sim: RefCounted, config: Dictionary, codec: RefCounted) -
   ProjectSettings.set_setting("distribution/edition","full")
  for rift: Dictionary in sim.mission.rifts:rift.sealed=true
  sim.mission.dragon_summoned=true;sim.mission.dragon_defeated=true;sim.mission.dragon_day=6
- sim.raiders.clear()
+ sim.raiders=sim.raiders.filter(func(enemy: Dictionary)->bool:return enemy.has("trail_slot")) # Trail creatures stay with their encounters.
  sim.advance(0.1,30)
- check(sim.mission.outcome=="victory" and sim.finished(),"defeating the forest dragon completes the demo")
- check(Ops.candidates(sim,Ops.rocket_x(sim),430.0).is_empty(),"demo offers no rocket after the dragon")
+ check(sim.is_running() and sim.planet.cleared,"defeating the forest dragon opens the rocket finale instead of ending the demo")
+ var core: float=Ops.core_x(sim)
+ check(sim.context(core).id=="dragon_core" and sim.interact(core,"dragon_core"),"the knight claims the forest dragon core")
+ var pad: float=Ops.rocket_x(sim)
+ var build: Dictionary=sim.context(pad)
+ check(build.id=="rocket" and build.cost==int(config.rocket_cost),"the claimed core lets the knight fund the rocket")
+ sim.pouch.amount=maxi(sim.pouch.amount,int(build.cost))
+ pay(sim,pad,"rocket",int(build.cost))
+ check(sim.planet.rocket_pending,"a fully funded rocket waits for engineers")
+ var saved: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(codec.capture(sim,config,body))))
+ check(not saved.is_empty() and saved.session.planet.core_claimed and saved.session.planet.rocket_pending,"a demo saved mid-construction keeps its core and rocket")
+ if not sim.world.people.any(func(p: Dictionary)->bool:return p.role=="engineer"):
+  for person: Dictionary in sim.world.people:
+   if person.role!="wanderer":person.role="engineer";break
+ for tick: int in range(30*180):
+  ticks(sim,1,pad)
+  if sim.finished():break
+ check(sim.planet.rocket_ready and sim.mission.outcome=="victory" and sim.finished(),"the finished rocket completes the demo")
+ check(Ops.candidates(sim,pad,430.0).is_empty(),"the demo rocket never opens a star chart")
+ var done: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(codec.capture(sim,config,body))))
+ check(not done.is_empty() and done.session.finished() and done.session.mission.outcome=="victory","the completed demo record stays completed")
 
 ## Players asked for room to manage: the guided first day must be affordable from the
 ## starting crystals and one harvest, with crystals to spare.

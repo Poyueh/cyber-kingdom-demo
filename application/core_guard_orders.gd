@@ -5,6 +5,16 @@ func clean(sim: RefCounted) -> void:
  while targets.size()<sim.world.people.size():targets.append("")
  for i: int in range(targets.size()):
   if i>=sim.world.people.size() or sim.world.people[i].role!="hunter":targets[i]=""
+ # A destroyed/downgraded tower releases only slots that no longer exist.
+ for post: String in ["beacon","core_tower_right"]:
+  var kept: int=0
+  for i: int in range(targets.size()):
+   if targets[i]!=post:continue
+   kept+=1
+   if kept>capacity(sim,post):targets[i]=""
+func capacity(sim: RefCounted, target: String) -> int:
+ if target in ["wall","wall_left"]:return sim.world.people.size()
+ return clampi(int(sim.buildings[target].level),0,3) if sim.buildings.has(target) else 0
 func usable(sim: RefCounted, target: String) -> bool:
  if target in ["wall","wall_left"]:
   var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1) if not sim.core_loop.trial and sim.core_loop.stage>=3 else target
@@ -28,7 +38,7 @@ func assign(sim: RefCounted, target: String, delta: int) -> bool:
   for i: int in range(targets.size()-1,-1,-1):
    if targets[i]==target:targets[i]="";return true
   return false
- if not usable(sim,target) or (target not in ["wall","wall_left"] and targets.count(target)>=1):return false
+ if not usable(sim,target) or (target not in ["wall","wall_left"] and targets.count(target)>=capacity(sim,target)):return false
  var selected: int=-1
  var distance: float=INF
  for i: int in range(targets.size()):
@@ -57,7 +67,13 @@ func destination(sim: RefCounted, index: int) -> float:
  var target: String=targets[index]
  if target.is_empty():return sim.world.sites.hunt_tools
  if not usable(sim,target):return sim.world.sites.hall+side(sim,target)*100.0
- return position(sim,target)
+ var at: float=position(sim,target)
+ if target in ["beacon","core_tower_right"]:
+  var rank: int=0
+  for i: int in range(index):
+   if targets[i]==target:rank+=1
+  at+=(rank-(targets.count(target)-1)*0.5)*20.0
+ return at
 func must_return(sim: RefCounted, index: int) -> bool:
  if index>=targets.size() or targets[index].is_empty():return true
  var target: String=targets[index]

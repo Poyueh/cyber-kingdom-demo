@@ -2127,9 +2127,9 @@
     "zh_CN": "适用 v0.0.37：每星两处稀疏路边遭遇与发现、六种驻点 NPC 与建筑新造型。保留每星一座主要圣所、八件部件与森林战马；新遭遇从新旅程开始，旧地图和进度照常保留。",
     "en": "Applies to v0.0.37: two sparse roadside encounters and finds per planet, six distinct facility attendants, and new building silhouettes. Each planet retains one main shrine; all eight modules and the woodland mount remain. Start a new journey for the encounters; existing maps and progress are preserved."
   },
-  "首次在營火西側領取龍核，再投入 20 龍晶建造火箭；最多兩名工匠完成 30 工秒施工。靠近完工火箭按 E／手機下滑，選星球後再按啟航。場上仍有入侵敵人或沒有劍時不能出發；領域內的選做異獸不阻擋啟航。": {
-    "zh_CN": "首次在营火西侧领取龙核，再投入 20 龙晶建造火箭；最多两名工匠完成 30 工秒施工。靠近完工火箭按 E／手机下滑，选星球后再按启航。场上仍有入侵敌人或没有剑时不能出发；领域内的选做异兽不阻挡启航。",
-    "en": "Claim the first core west of the campfire, then invest 20 crystals in a rocket; up to two engineers complete 30 work-seconds of construction. Use E or swipe down by the finished rocket, select a planet, then confirm launch. Invaders or a missing sword block departure; optional territorial beasts do not."
+  "首次在營火旁領取龍核，再到營火西側投入 20 龍晶建造火箭；最多兩名工匠完成 30 工秒施工。靠近完工火箭按 E／手機下滑，選星球後再按啟航。場上仍有入侵敵人或沒有劍時不能出發；領域內的選做異獸不阻擋啟航。": {
+    "zh_CN": "首次在营火旁领取龙核，再到营火西侧投入 20 龙晶建造火箭；最多两名工匠完成 30 工秒施工。靠近完工火箭按 E／手机下滑，选星球后再按启航。场上仍有入侵敌人或没有剑时不能出发；领域内的选做异兽不阻挡启航。",
+    "en": "Claim the first core beside the campfire, then invest 20 crystals in a rocket west of camp; up to two engineers complete 30 work-seconds of construction. Use E or swipe down by the finished rocket, select a planet, then confirm launch. Invaders or a missing sword block departure; optional territorial beasts do not."
   },
   "守望者提燈巡看、機械師敲修工具、育種師拈種篩籃、獵務官整理箭簇、晶工校準晶片、軍需官檢查盾具。各職業有自己的工作停頓與收手節奏。": {
     "zh_CN": "守望者提灯巡看、机械师敲修工具、育种师拈种筛篮、猎务官整理箭簇、晶工校准晶片、军需官检查盾具。各职业有自己的工作停顿与收手节奏。",
@@ -2223,9 +2223,9 @@
     "zh_CN": "封住全部龙门会召唤巨龙；击败它，再清除入侵残敌。",
     "en": "Seal every gate to summon the dragon. Defeat it and clear the remaining invaders."
   },
-  "每顆星球封印全部龍門、擊敗巨龍並清除入侵殘敵後，營火西側會出現龍核。七顆龍核全部領取，才完成這次遠征。": {
-    "zh_CN": "每颗星球封印全部龙门、击败巨龙并清除入侵残敌后，营火西侧会出现龙核。七颗龙核全部领取，才完成这次远征。",
-    "en": "Seal all local gates, defeat the dragon and clear the invaders to reveal a core west of camp. Claim all seven cores to complete the expedition."
+  "每顆星球封印全部龍門、擊敗巨龍並清除入侵殘敵後，營火旁會出現龍核。七顆龍核全部領取，才完成這次遠征。": {
+    "zh_CN": "每颗星球封印全部龙门、击败巨龙并清除入侵残敌后，营火旁会出现龙核。七颗龙核全部领取，才完成这次远征。",
+    "en": "Seal all local gates, defeat the dragon and clear the invaders to reveal a core beside the campfire. Claim all seven cores to complete the expedition."
   },
   "營火被毀時，畫面先逐漸變黑；黑幕完成才淡入失敗訊息並鎖住移動。過渡中可走完最後幾步，戰鬥和花費已停止。訊息出現後可開選單返回主頁。騎士死亡也會先黑幕後文字。": {
     "zh_CN": "营火被毁时，画面先逐渐变黑；黑幕完成才淡入失败讯息并锁住移动。过渡中可走完最后几步，战斗和花费已停止。讯息出现后可开选单返回主页。骑士死亡也会先黑幕后文字。",
@@ -2455,12 +2455,16 @@
     "zh_CN": "暂停后右侧可重试准备阶段；战败先等黑幕结束。收入后与首夜后各有准备点，完整恢复资源、工作和世界，不保留后来收益。两夜教学结束后准备点退役；旧 Demo 两夜记录仍可重试。",
     "en": "Pause to retry preparation on the right; after defeat, wait for the blackout. Checkpoints follow first harvest income and the first night. Resources, work and the world restore fully without later gains. Preparation retries retire after the two-night introduction; older two-night demo saves can still retry."
   },
-  "新主旅程直接帶入引導，學會後繼續七星旅程。森林 Demo 走同一套引導與完整森林，打倒森林巨龍即完成，另附短指南與獨立存檔；舊紀錄保留原設定。": {
-    "zh_CN": "新主旅程直接带入引导，学会后继续七星旅程。森林 Demo 走同一套引导与完整森林，打倒森林巨龙即完成，另附短指南与独立存档；旧记录保留原设定。",
-    "en": "New main journeys start with guidance and continue to the seven worlds. The forest demo follows the same guidance through the whole forest and ends when the forest dragon falls; it has a short guide and separate saves. Older saves keep their original settings."
+  "新主旅程直接帶入引導，學會後繼續七星旅程。森林 Demo 走同一套引導與完整森林，打倒森林巨龍後領取龍核、建好火箭即完成，另附短指南與獨立存檔；舊紀錄保留原設定。": {
+    "zh_CN": "新主旅程直接带入引导，学会后继续七星旅程。森林 Demo 走同一套引导与完整森林，打倒森林巨龙后领取龙核、建好火箭即完成，另附短指南与独立存档；旧记录保留原设定。",
+    "en": "New main journeys start with guidance and continue to the seven worlds. The forest demo follows the same guidance through the whole forest: defeat the forest dragon, claim its core and build the rocket to finish. It has a short guide and separate saves. Older saves keep their original settings."
   },
   "v0.0.60 起 Demo 是完整森林冒險：主遊戲與 Demo 的包、名稱和存檔分開，共用玩法由主線同步；試玩站根目錄是 Demo（不含其餘六星關卡），main/ 路徑是主遊戲網頁版。": {
     "zh_CN": "v0.0.60 起 Demo 是完整森林冒险：主游戏与 Demo 的包、名称和存档分开，共用玩法由主线同步；试玩站根目录是 Demo（不含其余六星关卡），main/ 路径是主游戏网页版。",
     "en": "From v0.0.60 the demo is the whole forest adventure. Main-game and demo packages, names and saves stay separate; gameplay updates come from the same main branch. The trial site root runs the demo, without the six later worlds; the main/ path runs the main game's web build."
+  },
+  "本版更新：箭塔一至三級可派1／2／3名弓兵，配置介面可查看總數、未指派與到位數；未指派獵人白天出城巡獵、晚上進城。馬廄移至西側獨立空地，戰馬跑動減少跳格。讀檔後可點選單內的播放圖示返回畫面。": {
+    "en": "Update: tier 1/2/3 towers hold 1/2/3 archers. Guard orders show total, free and arrived troops. Free hunters patrol outside by day and return before night. The stable has its own western clearing, horse animation skips fewer poses, and the pause menu has a play icon to return after loading.",
+    "zh_CN": "本版更新：箭塔一至三级可派1／2／3名弓兵，配置界面可查看总数、未指派与到位数；未指派猎人白天出城巡猎、晚上进城。马厩移至西侧独立空地，战马跑动减少跳帧。读档后可点菜单内的播放图标返回画面。"
   }
 }

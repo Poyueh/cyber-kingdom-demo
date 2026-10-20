@@ -58,11 +58,13 @@ func resolve_campaign(base: Dictionary) -> Dictionary:
   result.economy.work_seconds=harvest_seconds
  return result
 
-## Demo: the guided main forest in full, but contained: no rocket or voyage, so the
-## forest dragon is the finale. Other worlds are not in the Demo package at all.
+## Demo: the guided main forest in full, but contained: no voyage. After the forest
+## dragon the knight claims its core and builds the rocket; the finished rocket is the
+## finale. Other worlds are not in the Demo package at all.
 func resolve_demo(base: Dictionary) -> Dictionary:
  var result: Dictionary=resolve_campaign(base)
  result.core_loop_version=3
  result.voyage_enabled=0
+ result.rocket_finale=1
  result.starting_crystals=demo_starting_crystals
  return result

@@ -1,9 +1,11 @@
 extends RefCounted
 static func rocket_x(sim: RefCounted) -> float:return sim.world.sites.hall-760.0
-static func core_x(sim: RefCounted) -> float:return sim.world.sites.hall-215.0
+## Beside the campfire, between it and the module workshop, clear of other sites' reach.
+static func core_x(sim: RefCounted) -> float:return sim.world.sites.hall+100.0
 static func resolve(sim: RefCounted) -> void:
  sim.mission.resolve(sim.hero.is_alive(),sim.invasion_empty())
  if not sim.planet.enabled:return
+ if sim.planet.finale and sim.planet.rocket_ready:sim.planet.completed=true
  if sim.mission.outcome=="victory" and not sim.planet.completed:
   sim.planet.cleared=true;sim.mission.outcome="active"
 static func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]:
@@ -13,6 +15,7 @@ static func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]
   result.append(sim._choice("dragon_core",core_x(sim),"planet.claim_core",0))
  if absf(x-rocket_x(sim))>=73 or not sim.planet.reactor:return result
  if sim.planet.rocket_ready:
+  if sim.planet.finale:return result # The Demo ends here; no star chart.
   result.append(sim._choice("star_map",rocket_x(sim),"planet.launch",0,sim.invasion_empty() and sim.can_wield_sword(),"planet.unsafe"))
  elif not sim.planet.rocket_pending:
   result.append(sim._choice("rocket",rocket_x(sim),"planet.rebuild" if sim.planet.wrecked else "planet.build",sim.planet.cost()))
