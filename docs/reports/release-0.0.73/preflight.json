@@ -31,9 +31,20 @@
   "packaged_assets": 13,
   "local_web": "Final Main menu loaded; final Demo new journey and keyboard movement tested without console errors; spec v0.0.73 revision 71 verified",
   "pending": [
-    "public release/Pages verification",
     "Windows runtime playtest",
     "Android/iPhone/iPad hardware playtest",
     "subjective player feedback"
-  ]
+  ],
+  "publication": {
+    "release_id": 418656226,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.73",
+    "verified_assets": 13,
+    "pages_run": 39464977386,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.73",
+    "spec_revision": 71,
+    "public_browser": "Demo game and live defense/mounted motion specification confirmed; no console errors"
+  }
 }
