@@ -1,0 +1,28 @@
+{
+  "version": "0.0.67",
+  "source": "4cf6d95",
+  "spec_revision": 55,
+  "full_check": "passed, no SCRIPT ERROR or ERROR",
+  "full_check_core_assertions": 4666,
+  "latest_core_assertions": 4669,
+  "new_scene_checks": {
+    "demo_finale": 9,
+    "restore_menu": 3,
+    "mounted": 14
+  },
+  "native_visual": "guard panel shows 6 archers, 3 assigned and 3 free; tier 3 tower 3/3 arrived; stable in separate clearing; actual mounted scene recorded with running/sprinting/stopping/turning",
+  "web_playtest": "exported Demo: start forest, save, load, resume button closes menu; no console errors",
+  "pending": [
+    "Windows runtime playtest",
+    "Android and iPhone/iPad hardware playtest",
+    "subjective riding feel from players"
+  ],
+  "changes": [
+    "Demo dragon core and worker-built rocket finale",
+    "elevated archers shoot; tower capacity 1/2/3 and troop counts",
+    "free hunters patrol outside by day and return before night",
+    "stable western clearing",
+    "distance-driven mounted cadence, 24 fps cap and saddle height offsets",
+    "loaded defeat cannot lock pause; explicit resume button"
+  ]
+}
