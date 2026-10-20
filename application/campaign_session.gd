@@ -191,6 +191,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 		elif core_loop.forest:preload("res://application/guided_forest_layout.gd").apply(self,config)
 		hero.stats.attack_cost=0
 		workforce.core_loop=core_loop
+	preload("res://application/wildlife_population.gd").apply(self,config)
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:

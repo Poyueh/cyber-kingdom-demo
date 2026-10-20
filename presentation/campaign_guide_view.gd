@@ -60,7 +60,7 @@ func track(hero_screen: Vector2, game_time: float) -> void:
  pulse=fposmod(game_time,2)
  _target_screen=hero_screen+Vector2(float(hint.get("x",player_x))-player_x,float(hint.get("y",430))-430)
  _track_progress(game_time)
- var art_bounds: Rect2=Rect2(spirit_pose.position-Vector2(40,46),Vector2(80,86))
+ var art_bounds: Rect2=Rect2(spirit_pose.position-Style.body_half_size,Style.body_half_size*2)
  _art_clear=_is_clear(art_bounds)
  var near_age: float=spirit_pose.near_age
  _show_symbol=spirit_pose.near and ((near_age>=0 and near_age<Style.cue_seconds) or spirit_pose.idle>=Style.reminder_interval)

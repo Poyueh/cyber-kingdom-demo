@@ -3,7 +3,7 @@
 [resource]
 script = ExtResource("style")
 lead_distance = 108.0
-follow_height = 98.0
+follow_height = 90.0
 companion_distance = 76.0
 arrive_distance = 78.0
 wait_seconds = 1.5
@@ -19,3 +19,4 @@ reminder_seconds = 3.0
 cue_seconds = 4.0
 callout_interval = 20.0
 callout_seconds = 3.5
+body_half_size = Vector2(30, 34)
