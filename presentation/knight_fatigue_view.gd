@@ -1,10 +1,10 @@
 extends Sprite2D
 ## Authored hunched poses with a bounded breathing loop; feet remain planted.
 const SHEET=preload("res://art/characters/exhaustion-v001/rest.png")
-const MOUNTED_SHEET=preload("res://art/characters/mounted-v001/mounted.png")
+const MOUNTED_SHEET=preload("res://art/characters/motorcycle-v001/mounted.png")
 @export var sheet: Texture2D = SHEET
 @export var mounted_sheet: Texture2D = MOUNTED_SHEET
-@export var mounted_offset: Vector2=Vector2(0,-26)
+@export var mounted_offset: Vector2=Vector2.ZERO
 var authored_transition: bool=false
 var mounted_rest_frame: int=0
 const LOOP: Array[int]=[0,1,2,3,2,1]

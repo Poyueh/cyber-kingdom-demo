@@ -15,13 +15,13 @@ func run_scene() -> void:
  scene.sim.hero.start_attack();scene.knight.advance_motion(1,false,1.0/60)
  check(scene.knight.velocity.x==0,"mounted first slash still roots movement")
  scene.knight.refresh_visual(0.05)
- check(scene.knight.visual.get_node("MountedKnight").visible,"mounted attack retains horse and rider")
+ check(scene.knight.visual.get_node("MountedKnight").visible,"mounted attack retains motorcycle and rider")
  var visual: Node=scene.knight.visual
  visual.breathing=true
  var rest_pose: Dictionary={"alive":true,"hp":100,"shield":0,"facing":1,"moving":false,"grounded":true,"invulnerable":false,"attack_progress":1.0}
  visual.present(rest_pose,1.0)
- check(visual.fatigue.texture.atlas==visual.get_node("MountedKnight").texture.atlas,"resting on horseback retains the same rider and horse artwork")
- check(visual.fatigue.material==visual.get_node("MountedKnight").material,"mounted rest preserves the rider and horse palette")
+ check(visual.fatigue.texture.atlas==visual.get_node("MountedKnight").texture.atlas,"resting on the motorcycle retains the same rider and motorcycle artwork")
+ check(visual.fatigue.material==visual.get_node("MountedKnight").material,"mounted rest preserves the rider and motorcycle palette")
  visual.breathing=false
  var gallop: Dictionary={"alive":true,"hp":100,"shield":0,"facing":1,"moving":true,"grounded":true,"invulnerable":false,"attack_progress":1.0,"horizontal_speed":402.0}
  visual.reset_pose();visual.set_mounted(true)
@@ -32,10 +32,10 @@ func run_scene() -> void:
   var index: int=roundi(visual.get_node("MountedKnight").texture.region.position.x/160)
   if previous_frame>=0 and posmod(index-previous_frame,8)>1:skipped+=1
   previous_frame=index
- check(skipped==0,"sprinting horse displays every gait pose even at phone 30 fps")
+ check(skipped==0,"moving motorcycle displays every gait pose even at phone 30 fps")
  var held_region: Rect2=visual.get_node("MountedKnight").texture.region
  visual.present(gallop,0.0)
- check(visual.get_node("MountedKnight").texture.region==held_region,"paused presentation cannot advance a horse stride")
+ check(visual.get_node("MountedKnight").texture.region==held_region,"paused presentation cannot advance a riding pose")
  var config: Dictionary=scene._campaign_config
  var packet=load("res://application/campaign_snapshot.gd").new().capture(scene.sim,config,{"x":scene.knight.position.x,"y":scene.knight.position.y,"vx":scene.knight.velocity.x,"vy":scene.knight.velocity.y})
  var restored=load("res://application/campaign_snapshot.gd").new().restore(packet)
