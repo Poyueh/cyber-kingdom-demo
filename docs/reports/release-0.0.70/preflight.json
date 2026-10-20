@@ -1,0 +1,32 @@
+{
+  "version": "0.0.70",
+  "source": "9634a33e9042fab27a677a9c98b8bff41ef38596",
+  "spec_revision": 60,
+  "species": [
+    "deer",
+    "hare",
+    "boar",
+    "fox",
+    "badger",
+    "goat",
+    "pheasant",
+    "tortoise"
+  ],
+  "art": "deer retained; seven eight-pose native atlases, source prompts archived; all 56 poses inspected",
+  "native_visual": "Godot gallery, both directions, 180-frame walk/stop/turn capture, actual near/distant woodland reviewed",
+  "native_scene_assertions": 3,
+  "population": "unchanged; old saves keep original counts and survival state",
+  "full_check": "passed: 4707 core assertions and all scene checks; no SCRIPT ERROR or ERROR",
+  "platform_content_assertions": {
+    "main": 66,
+    "demo": 67
+  },
+  "packaged_assets": 13,
+  "local_web": "fresh exported Demo journey: actual movement, sword/camp interaction and eastern fox/badger/goat woodland visible; no console errors",
+  "pending": [
+    "public release/Pages verification",
+    "Windows runtime playtest",
+    "Android/iPhone/iPad hardware playtest",
+    "subjective player feedback"
+  ]
+}

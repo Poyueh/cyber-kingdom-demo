@@ -1,16 +1,15 @@
-[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/wildlife_appearance.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/wildlife-v002/hare.png" id="2"]
 
 [resource]
 script = ExtResource("1")
 id = &"hare"
-rows = Array[String](["...........bbbb.....", "..........bcddcb....", "..........bcdecba...", "..bbbbb...bccdcb....", ".bccdddccccddccb....", "bcddeedddddddcb.....", "bcddddddddddcb......", ".bccddddddccb.......", "..bbbbbbbbbb........"])
-colors = PackedColorArray(0.18823529411764706, 0.22745098039215686, 0.21568627450980393, 1, 0.38823529411764707, 0.3411764705882353, 0.27450980392156865, 1, 0.6470588235294118, 0.5843137254901961, 0.4392156862745098, 1, 0.792156862745098, 0.7098039215686275, 0.5411764705882353, 1, 0.9254901960784314, 0.8901960784313725, 0.7411764705882353, 1)
-origin = Vector2(-20, -24)
-legs = PackedVector2Array(-9, -6, 9, -6)
+texture = ExtResource("2")
+frame_size = Vector2i(96, 80)
+columns = 4
+frame_count = 8
+ground_pivot = Vector2(48, 74)
 stride = 24.0
-step = 3.0
-lift = 3.0
-bounce = 2.0
-shadow = 16.0
+shadow = 14.0

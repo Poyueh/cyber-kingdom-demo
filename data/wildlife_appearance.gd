@@ -1,16 +1,11 @@
 extends Resource
 class_name WildlifeAppearance
-## Pixel artwork and distance-driven gait; never written into campaign snapshots.
+## Native full-body artwork and distance-driven gait; no campaign snapshot data.
 @export var id: StringName
-@export var rows: Array[String]
-@export var colors: PackedColorArray
-@export var origin: Vector2
-@export var legs: PackedVector2Array
-@export var stride: float
-@export var step: float
-@export var lift: float
-@export var bounce: float
-@export var shadow: float
-@export var tail_rows: Array[String]
-@export var tail_origin: Vector2
-@export var tail_sway: float
+@export var texture: Texture2D
+@export var frame_size: Vector2i = Vector2i(96,80)
+@export var columns: int = 4
+@export var frame_count: int = 8
+@export var ground_pivot: Vector2 = Vector2(48,74)
+@export var stride: float = 32.0
+@export var shadow: float = 20.0
