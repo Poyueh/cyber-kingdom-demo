@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/wildlife_appearance.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"pheasant"
+rows = Array[String](["................bb.....", "...............bccb....", "...............bcca....", "...............beeeb...", "..............bcdddcb..", ".........bbbbbddddccb..", "bb......bcddedddddccb..", "cdbb...bcddeddddddcb...", "bccdbbbcddedddddccb....", ".bccccccccccccccbb.....", "..bbbbbbbbbbbbbbb......"])
+colors = PackedColorArray(0.15294117647058825, 0.1843137254901961, 0.21176470588235294, 1, 0.2235294117647059, 0.30196078431372547, 0.2784313725490196, 1, 0.32941176470588235, 0.4823529411764706, 0.4117647058823529, 1, 0.6862745098039216, 0.44313725490196076, 0.28627450980392155, 1, 0.8980392156862745, 0.7764705882352941, 0.5411764705882353, 1)
+origin = Vector2(-24, -30)
+legs = PackedVector2Array(4, -8)
+stride = 20.0
+step = 3.0
+lift = 3.0
+bounce = 1.0
+shadow = 21.0
