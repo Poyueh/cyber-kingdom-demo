@@ -12,6 +12,9 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
  if not command.enabled:return
  var time: float=sim.workforce.elapsed
  if command.ship_visible() and view._on_screen(command.ship_x,200):_ship(view,command,time)
+ if sim.core_loop.enabled and sim.core_loop.income>0 and sim.frontier.city_level>0:
+  var station: float=sim.core_loop.orders.station_x(sim)
+  if view._on_screen(station,80):_station(view,station,time)
  if not command.unlocked():return
  for side: int in [-1,1]:
   var x: float=command.flag_x(side)
@@ -58,18 +61,6 @@ static func _ship(view: Node2D, command: RefCounted, time: float) -> void:
   if command.repaired:
    view.draw_string(view._font,at+Vector2(21,-117),"%d/%d"%[command.waiting,command.rules.passenger_limit],HORIZONTAL_ALIGNMENT_LEFT,-1,16,Color("dbe7d4"))
 static func _panel(view: Node2D, polygon: PackedVector2Array, color: Color) -> void:view.draw_colored_polygon(polygon,color)
-static func soldier(view: Node2D, person: Dictionary, time: float) -> void:
- var facing: float=person.get("direction",1.0)
- var attack: float=clampf((person.cooldown-0.82)/0.28,0,1)
- view.draw_set_transform(Vector2(roundf(person.x),roundf(person.get("y",430.0))-26),0,Vector2(facing,1))
- # Broad shield, slim straight blade: no spear protruding from the body.
- var tip: Vector2=Vector2(21+attack*8,-14+attack*20).round()
- view.draw_line(Vector2(9,2),tip,INK,4)
- view.draw_line(Vector2(10,1),tip,Color("b8ccc7"),2)
- view.draw_line(Vector2(7,-1),Vector2(15,5),BRASS,3)
- if attack>0:
-  view.draw_line(tip+Vector2(-6,-9),tip+Vector2(8,7),Color("daecb8"),2)
- view.draw_set_transform(Vector2.ZERO)
 static func squad_badge(view: Node2D, sim: RefCounted, index: int) -> void:
  for i: int in range(sim.command.squads.size()):
   if index not in sim.command.squads[i].members:continue
@@ -78,3 +69,16 @@ static func squad_badge(view: Node2D, sim: RefCounted, index: int) -> void:
   view.draw_rect(Rect2(at-Vector2(4,4),Vector2(8,8)),INK)
   view.draw_rect(Rect2(at-Vector2(2,2),Vector2(4,4)),GROUPS[i])
   return
+
+static func _station(view: Node2D, x: float, time: float) -> void:
+ view.draw_set_transform(Vector2(roundf(x),432))
+ view.draw_rect(Rect2(-25,-7,50,10),INK);view.draw_rect(Rect2(-21,-8,42,5),STEEL)
+ for side: int in [-1,1]:
+  view.draw_rect(Rect2(side*18-3,-77,6,72),INK)
+  view.draw_rect(Rect2(side*18-1,-76,2,69),BRASS)
+ view.draw_rect(Rect2(-25,-81,50,53),INK);view.draw_rect(Rect2(-21,-77,42,45),BRASS)
+ view.draw_rect(Rect2(-19,-75,38,41),Color("173940"))
+ view._icon("bow",Vector2(0,-54),27,CYAN)
+ for i: int in range(3):view.draw_rect(Rect2(-12+i*9,-24,6,4),BRASS)
+ view.draw_rect(Rect2(-4,-88,8,6),CYAN.lerp(STEEL,0.3+sin(time*1.4)*0.2))
+ view.draw_set_transform(Vector2.ZERO)

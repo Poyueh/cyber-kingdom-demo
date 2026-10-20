@@ -306,7 +306,9 @@ func _person(person: Dictionary, protected: bool) -> void:
 	_world_alpha=_region_reveal(person.get("region",-1)) if person.role=="wanderer" else 1.0
 	var state: String=person.get("work_state","idle")
 	var hit:=hit_feedback.resident_pose(_sim.world.people.find(person))
-	if person.role=="engineer" and state in ["work","haul","climb"] and not hit.active:
+	if person.role=="guard" and _sim.life.enabled:
+		preload("res://presentation/sword_guard_view.gd").draw_on(self,_sim,person)
+	elif person.role=="engineer" and state in ["work","haul","climb"] and not hit.active:
 		# Preserve authored hammer, cargo and ladder silhouettes for real work.
 		super._person(person,protected)
 	else:
@@ -324,7 +326,6 @@ func _person(person: Dictionary, protected: bool) -> void:
 	var key: String={"wanderer":"person","citizen":"person","engineer":"hammer","farmer":"hoe","hunter":"bow","guard":"sword"}[person.role]
 	_icon(key,Vector2(person.x,person.get("y",430)-50),17,Color("b4e7df") if person.role!="wanderer" else Color("d4c3a7"))
 
-	if _sim.life.enabled and person.role=="guard":preload("res://presentation/command_view.gd").soldier(self,person,_sim.workforce.elapsed)
 	preload("res://presentation/command_view.gd").squad_badge(self,_sim,_sim.world.people.find(person))
 	if hit.demoted:_draw_demotion(person,hit)
 	_world_alpha=1.0

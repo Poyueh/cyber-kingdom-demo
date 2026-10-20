@@ -1,0 +1,73 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: unknown core mode cannot be loaded as an ordinary journey
+PASS: first preparation has no deadline before actual readiness
+PASS: core knight can attack at zero stamina
+PASS: exhausted core knight keeps normal running instead of compulsory stop
+PASS: resolved core trial configuration is save-admissible
+PASS: core mode and state survive actual JSON save/load
+PASS: v21 journey migrates without adopting core trial rules
+PASS: valid paid action: hall
+PASS: valid paid action: recruit:0
+PASS: valid paid action: workshop
+PASS: valid paid action: workshop
+PASS: recruited resident actually equips the hammer
+PASS: defence service stays closed before real harvest income
+PASS: valid paid action: node:3
+PASS: real harvested crystals reach wallet and unlock preparation
+PASS: CP1 captures before major defence investment
+PASS: valid paid action: node:2
+PASS: valid paid action: recruit:1
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: valid paid action: wall:0:false
+PASS: paid wall is actually constructed
+PASS: unassigned guards cannot prematurely start first night
+PASS: an available archer accepts right-side assignment
+PASS: first real assignment is affordable and costs one crystal
+PASS: arrival of real defender opens first dusk once
+PASS: baseline guard and wall survive first night without knight attacks
+PASS: first wave finishes before autonomous phase and CP2
+PASS: CP1 can be restored after actual combat
+PASS: retry restores original funds without retaining later harvests
+PASS: retry restores investment choices instead of spent night-start state
+PASS: CP2 captures autonomous preparation
+PASS: corrupt preparation stage is rejected without replacing the run
+PASS: duplicated tower assignments are rejected
+PASS: autonomous route restores preparation
+PASS: quiet landmark gives a real exploration reward
+PASS: autonomous route has a recruit or an idle resident for the bow
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through exploration
+PASS: core completion stops simulation without seven-world victory
+PASS: completed run retries from second preparation
+PASS: autonomous route restores preparation
+PASS: valid paid action: node:1
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: valid paid action: node:4
+PASS: harvest arrives as crystals or a nearby recruited resident
+PASS: autonomous route has a recruit or an idle resident for the bow
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: valid paid action: hunt_tools
+PASS: opposite front has a usable wall site
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: valid paid action: wall_left:0:false
+PASS: second guard can defend opposite side
+PASS: two-sided second night completes through additional harvests
+PASS: core completion stops simulation without seven-world victory
+PASS: completed run retries from second preparation
+PASS: world and embedded preparation point survive JSON restart
+PASS: saved continuation matches uninterrupted core simulation
+Core loop: 70 assertions, 0 failures

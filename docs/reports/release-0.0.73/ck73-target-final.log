@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS test_orders_require_local_payment_and_fail_without_spending
+PASS test_unfinished_outer_wall_never_pulls_a_live_defense_out
+PASS test_shield_blocks_a_front_hit_but_not_a_back_hit
+PASS test_sword_has_a_real_windup_before_damage
+PASS test_max_camp_shows_no_false_price
+PASS test_archers_follow_new_outer_tower_and_fall_back_without_payment
+PASS test_mid_swing_save_replays_the_same_hit_and_rejects_bad_rules
+PASS test_blocking_a_hit_does_not_dismiss_an_expedition_soldier
+Assertions: 36; failures: 0

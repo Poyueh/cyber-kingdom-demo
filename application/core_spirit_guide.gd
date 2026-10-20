@@ -16,12 +16,15 @@ static func next(sim: RefCounted, x: float) -> Dictionary:
   "core.wall":
    var wall: Dictionary=sim.world.walls.wall
    hint=make("wall",sim.world.sites.wall,"wall:0:false","wait" if wall.pending else "invest")
-  "core.assign":hint=make("guard",sim.world.sites.wall,"","wait")
+  "core.assign":hint=make("guard",sim.core_loop.orders.station_x(sim),"guard_station","invest")
   "core.first_warning","core.first_night","core.second_night":
    var side: String="wall_left" if lesson=="core.second_night" and sim.raid_pressure().left>sim.raid_pressure().right else "wall"
    hint=make("defend",sim.world.sites[side],"","wait")
   "core.autonomy":hint=make("rest",x,"","wait")
  if hint.is_empty():return {}
+ if hint.kind=="guard" and not sim.core_loop.orders.targets.has("wall") and sim.pouch.amount<sim.core_loop.orders.rules.assignment_cost:
+  var source: Dictionary=Opening.funding_hint(sim,x)
+  if not source.is_empty():hint=source
  hint=Opening.funded_hint(sim,x,hint)
  if hint.is_empty():return {}
  var mood: String="lead"
