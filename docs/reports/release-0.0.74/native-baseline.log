@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+minutes,memory_bytes,objects,drops,loot,effects,save_bytes,save_us
+0,46310531,1731,3,0,0,16392,5462
+5,46499043,1733,28,0,0,22259,6208
+10,46556891,1733,27,0,0,23816,7078
+15,46550467,1733,25,0,0,23605,6934
+20,46562215,1733,25,7,0,23855,6665
+25,46540831,1733,22,0,0,23256,6342
+30,46534399,1733,20,0,0,22971,6501
+PASS: 30-minute accelerated simulation and seven save restores

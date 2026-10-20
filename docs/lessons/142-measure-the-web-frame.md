@@ -23,3 +23,5 @@
 ## 一起做的版面修正
 
 營地間距的測試不寫死座標，而是檢查「實際畫出來的東西」相鄰是否至少 150 像素（塔可以貼牆）。版面數值集中在 `application/core_loop_layout.gd` 的常數，`guided_forest_layout.gd` 直接引用，不再各寫一份。
+
+後續v0.0.74修正：短音效也改用Stream。反覆Sample播放在長時間手機試玩仍有音訊配置壓力，詳見[第151課](151-web-audio-allocation-and-soak.md)；上面的「短音效仍用樣本」為v0.0.65歷史決策。

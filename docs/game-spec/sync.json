@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "game_version": "0.0.73",
-  "revision": 71,
-  "review_note": "v0.0.73：射箭場旁號令台以E／下滑開啟守軍面板，每次指派一名弓兵1晶，撤回免費；拒絕遠端與缺晶指令，維持總數／已派／未派及到位統計。左右防線跟隨實際完工外牆，倒塌退回內牆或營火近防線；左右箭塔使用城內最外側完工塔，塔消失或降級時溢出守軍轉同側城牆，自動調動不再收費。營火最高三級，明示滿級、移除不可能支付的升級費，指向兵營、號令旗與救援船。拓荒站付款前說明區域外牆解鎖和就近避難用途，完工提示下一步建外牆，首次使用後停止教學。劍盾兵重製整身行軍、蓄勢、斬擊、收勢及舉盾；正面盾防能擋近戰，出招前搖、背擊與龍息仍危險，刀落下才造成傷害。戰馬與持劍／徒手騎士重製完整八格跑步、四格攻擊及休息／受擊，固定像素比例、接地，步頻漸變及收步，保留戰馬。主遊戲與森林Demo共用，快照v24不變，既有攻擊冷卻／受擊時間支持途中存讀，不重置地圖、人口或財產。 已審訂操作、經濟、聚落、核心引導、戰鬥與動畫章節，取代歷史免費守軍配置。 最終校對：成功格擋不退出遠征隊；無可派人時按鈕停用；無運作外牆使用營火近防線。 施工邊界校正：尚無耐久的新外牆不擴張範圍，既有城牆升級保留工作領域，避免施工自我阻塞。 發布前文字校對：版本邊界摘要對齊v0.0.73；不改遊戲程式或規則。",
-  "content_sha256": "1779bf0c2498965692b8383efe354a1b800362cf0c367428d15b65d2aaf92e84",
+  "game_version": "0.0.74",
+  "revision": 73,
+  "review_note": "v0.0.74 發布前文字校對：沿用修訂72的Web全音效Stream修正與驗證限制；保存章節依目前frontier_root實作校正為約20秒自動保存，核心流程摘要對齊v0.0.73現行號令台每名弓兵1晶、撤回及防線自動移動免費。這次只更正文句，不改遊戲、經濟或保存頻率。",
+  "content_sha256": "59aab27ec0d2686caf0855f43148335b856b1062856d6113e911c63d1de20d96",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "08f18b8d935aa26485c8d5b6fd46cc7621ade81917d60131fc503cd69a530701",
@@ -1183,7 +1183,7 @@
     "data/trails/void.tres": "64232b1ebdca5d73db8c3c6eec514be6f4d3b4322f36b6752fc1a0ab8a77bf8a",
     "data/trails/volcanic.tres": "10d79c44c54576339714bdf9026d5bc5dd4191cba22b2077ad3b919f600644e5",
     "data/travel_recovery.tres": "2caa7fba2bf33496f8d5a1630a19507c630047b2c20d349b43a3cc1e59767508",
-    "data/web_performance.gd": "df1dcac801f3a164e4ae5fa687fb8cc13b18b4ba2421a6e656cbb9c9f76f89ee",
+    "data/web_performance.gd": "fa3416179eb8392146c7172999aa8f9fc000c8cf03cf7490617d218065c2146f",
     "data/web_performance.tres": "87a0025db4bbbe479439991adbd6b707792a3b645a6dadacaee676a45404e0dc",
     "data/wildlife/badger.tres": "2085efdd0d8c9435682ca1bc7239f77fe405b2e2a128eb1e82f58df5be7f6e15",
     "data/wildlife/boar.tres": "207d4a050398fbb77af9c5e2efa4d04725fc409929e6bffd180c4946e035f345",
@@ -1245,7 +1245,7 @@
     "docs/design/guided-campaign-and-demo.md": "89c23015ff0cf31a1268dd2b54956ca265a4ff2c60133fe8907463e7c808ef29",
     "docs/design/hero-presence-and-motion.md": "b68df310c7216f8ba7dade379f40a637341747685e11c0546b97e1c2c91dad99",
     "docs/design/immersive-kingdom-loop.md": "03da302ff87f79acd0d102ef86c0f5fd49386e54ff58b2d9db3338be4add9ce1",
-    "docs/design/immersive-performance.md": "6f1fb2a8d5c3310faf0c9d51abc67fdef358449d335e28942ca932664043e0c3",
+    "docs/design/immersive-performance.md": "9f4be48050199c787a9f2db8c6f53a862f598a41c34eebeec6d8c20a281981bc",
     "docs/design/invasion-march.md": "46e25e0c677ec7a867efc595d742e6573c78fdb0c345e225bbb7ffaae6b3300f",
     "docs/design/ios-device-delivery.md": "fbd770fff1ca475d8621a964261504463a79b8dd4ce55ce025e7838bb4c38772",
     "docs/design/journey-pacing.md": "ee68b0412848972b0c6a06fe394659fe9707f3fd78997841525e01fb38d4d2a1",
@@ -1433,7 +1433,7 @@
     "domain/trail_encounters.gd": "6541f279b79223fe9b320714ce5e520dba4561e4e455b7b1990cdbecd52f8851",
     "domain/trail_rules.gd": "ef5a48889255b375c05665a1fc92fbebdef92f0bee4f69e04c06e19c7b9c7348",
     "domain/travel_recovery_rules.gd": "2a3b8c7300ddb9c1199317fc76224f0fac886923c848ebdc154dd1fcf58c9389",
-    "export_presets.cfg": "a66e4abadac28c89979f2d0eb33d2a7c010d57ed33bf118f27038e6734b55397",
+    "export_presets.cfg": "2a225b08e0ebb82018f8ce749eef39af3bda4c58d8b8a7e4322aafe9fa79a8ef",
     "infrastructure/audio_preferences.gd": "25e7df089867c48e01e514afb2ae386085aeb4e1ae29bbc91bfd65efc90795c6",
     "infrastructure/campaign_catalog.gd": "75bbb4c662e160aa51637501e9c81c2ea140ffbe622be60e18d849182cdd8c91",
     "infrastructure/distribution.gd": "9b528ae2af18c15ff0948c45d59d2595b3dc3452e29264cf01464c64c4f09c7e",
@@ -1581,6 +1581,6 @@
     "scenes/start_menu.tscn": "a254d537e1ea4931f6811e9aefb5567611e4508228a1bd866d2e43b2480384f5",
     "scenes/training.tscn": "328c208454be4ed474c04c17b5bfd865272cb882b7f622dec5240d5b37accf27",
     "scenes/training_hud.tscn": "d8b958e3d626f078c85df95e706a055f4855cc136bc3467cd01947d32e538be1",
-    "project.godot": "43104fe03d6f021464ed7ec6eadd7af349c59288031886bd229b37fe37893b6e"
+    "project.godot": "60ead327fcf60d6113f4f8eb1a7ea2b419e3d6c9ebee73268d3eb6cb12a29068"
   }
 }
