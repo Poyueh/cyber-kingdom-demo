@@ -26,5 +26,15 @@
     "loaded defeat cannot lock pause; explicit resume button"
   ],
   "all_platform_artifacts": "Main 49 / Demo 50 content checks on each of five platforms; macOS executable and signature; Android signature and 16 KiB alignment passed",
-  "release_assets": 13
+  "release_assets": 13,
+  "publication": {
+    "release_id": 418099957,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.67",
+    "remote_assets_verified": 13,
+    "pages_run": 39385082400,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "public_browser": "Demo main menu loaded without console errors; specification v0.0.67 revision55 read in browser; no public player journey created"
+  }
 }
