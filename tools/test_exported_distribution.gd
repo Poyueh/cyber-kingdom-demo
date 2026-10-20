@@ -41,9 +41,21 @@ func verify() -> void:
   var appearance: Resource=load("res://data/wildlife/"+species+".tres")
   check(appearance.texture!=null and appearance.texture.get_size()==Vector2(384,160),"shipped complete wildlife atlas: "+species)
  game.sim.hero.stamina=0
- check(is_equal_approx(game.sim.travel_axis(1,1.0/30),1.0),"shipped exhausted knight keeps running")
+ check(is_zero_approx(game.sim.travel_axis(1,1.0/30)),"shipped exhausted knight stops to catch breath")
+ # The scene may start on a 60 Hz half-tick boundary. Observe the transition
+ # itself, allowing one 30 Hz quantization tick but no regeneration during it.
+ var breathing_frames: int=0
+ var no_early_recovery: bool=true
+ while game.sim.travel.breath_ticks>0 and breathing_frames<76:
+  game.sim.advance(1.0/30,game.knight.position.x)
+  breathing_frames+=1
+  no_early_recovery=no_early_recovery and is_zero_approx(game.sim.hero.stamina)
+ var walking: float=game.sim.travel_axis(1,1.0/30)
+ check(breathing_frames>=74 and walking>0 and walking<1 and no_early_recovery,"shipped breathing lasts approximately 2.5 seconds before slow walking without early recovery")
  game.sim.hero.stamina=game.sim.hero.stats.max_stamina/3.0
- check(game.sim.travel_axis(1,1.0/30)>1.5,"shipped sprint resumes at one-third stamina")
+ check(is_equal_approx(game.sim.travel_axis(1,1.0/30),1.0),"shipped one-third stamina unlocks running, not sprinting")
+ game.sim.hero.stamina=game.sim.hero.stats.max_stamina
+ check(game.sim.travel_axis(1,1.0/30)>1.5,"shipped full stamina restores sprinting")
  game.sim.hero.stamina=game.sim.hero.stats.max_stamina
  var right: float=game.sim.world.sites.wall
  check(game.sim.hunter_roaming.contains(right+250,game.sim.world.sites.wall_left,right) and not game.sim.hunter_roaming.contains(right+500,game.sim.world.sites.wall_left,right),"shipped hunting stays near the walls")

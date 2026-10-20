@@ -1,5 +1,5 @@
 extends RefCounted
-const LIMITS: Dictionary={"core_loop_version":Vector2(1,3),"core_enemy_health":Vector2(1,200),"core_enemy_damage":Vector2(1,50),"core_wall_damage":Vector2(1,50),"core_warning":Vector2(20,90),"core_min_defenders":Vector2(1,3),"core_arrival_radius":Vector2(16,80),"core_sprint_ratio":Vector2(0.2,0.8),"core_second_gap":Vector2(10,40)}
+const LIMITS: Dictionary={"core_loop_version":Vector2(1,3),"core_enemy_health":Vector2(1,200),"core_enemy_damage":Vector2(1,50),"core_wall_damage":Vector2(1,50),"core_warning":Vector2(20,90),"core_min_defenders":Vector2(1,3),"core_arrival_radius":Vector2(16,80),"core_sprint_ratio":Vector2(0.2,1.0),"core_second_gap":Vector2(10,40)}
 static func valid(config: Dictionary) -> bool:
  if not LIMITS.keys().any(func(k: String) -> bool:return config.has(k)):return true
  for key: String in LIMITS:

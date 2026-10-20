@@ -1,8 +1,11 @@
 class_name TravelRecoveryRules
 extends Resource
+const GUIDED_LIMITS: Dictionary={"guided_breath_seconds":Vector2(1,4),"guided_run_ratio":Vector2(0.1,0.5),"guided_sprint_ratio":Vector2(0.5,1)}
 const Clock=preload("res://domain/time/tick_clock.gd")
-const LEGACY_GUIDED_RATIO: float=0.3
-@export_range(0.2,0.8,0.01) var guided_sprint_recovery_ratio: float=1.0/3.0
+@export_range(1.0,4.0,0.1) var guided_breath_stop_seconds: float=2.5
+@export_range(0.1,0.5,0.01) var guided_run_recovery_ratio: float=1.0/3.0
+@export_range(0.5,1.0,0.01) var guided_sprint_recovery_ratio: float=1.0
+var guided_breath_tick_limit: int=Clock.ticks_for(guided_breath_stop_seconds)
 ## Canonical defaults shared by Inspector data and standalone core simulations.
 @export_range(0.2,0.8,0.02) var tired_speed_multiplier: float=0.42
 @export_range(0.1,0.5,0.05) var run_recovery_ratio: float=0.30
@@ -14,10 +17,25 @@ const LEGACY_GUIDED_RATIO: float=0.3
 var breath_tick_limit: int=Clock.ticks_for(breath_stop_seconds)
 var rest_tick_limit: int=Clock.ticks_for(sprint_rest_seconds)
 
+func guided_configuration() -> Dictionary:
+ return {"guided_breath_seconds":guided_breath_stop_seconds,"guided_run_ratio":guided_run_recovery_ratio,"guided_sprint_ratio":guided_sprint_recovery_ratio}
+
+static func valid_guided(config: Dictionary) -> bool:
+ for key: String in GUIDED_LIMITS:
+  if not config.has(key):continue
+  var bounds: Vector2=GUIDED_LIMITS[key]
+  var value: Variant=config[key]
+  if not (value is int or value is float) or not is_finite(float(value)) or value<bounds.x or value>bounds.y:return false
+ return true
+
 func configuration() -> Dictionary:
  return {"breath_stop_seconds":breath_stop_seconds,"tired_speed_multiplier":tired_speed_multiplier,"run_recovery_ratio":run_recovery_ratio,"sprint_recovery_ratio":sprint_recovery_ratio,"sprint_rest_seconds":sprint_rest_seconds}
 
 func apply(config: Dictionary) -> void:
+ guided_breath_stop_seconds=float(config.get("guided_breath_seconds",guided_breath_stop_seconds))
+ guided_run_recovery_ratio=float(config.get("guided_run_ratio",guided_run_recovery_ratio))
+ guided_sprint_recovery_ratio=float(config.get("guided_sprint_ratio",guided_sprint_recovery_ratio))
+ guided_breath_tick_limit=Clock.ticks_for(guided_breath_stop_seconds)
  breath_stop_seconds=clampf(config.get("breath_stop_seconds",breath_stop_seconds),1.0,4.0)
  breath_tick_limit=Clock.ticks_for(breath_stop_seconds)
  tired_speed_multiplier=clampf(config.get("tired_speed_multiplier",tired_speed_multiplier),0.2,0.8)
@@ -26,9 +44,3 @@ func apply(config: Dictionary) -> void:
  sprint_rest_seconds=clampf(config.get("sprint_rest_seconds",sprint_rest_seconds),0.5,5.0)
 
  rest_tick_limit=Clock.ticks_for(sprint_rest_seconds)
-
-## The old guided default was 30%; existing records adopt the corrected one-third
-## threshold without replacing their saved map, pacing or other configuration.
-func guided_ratio(config: Dictionary) -> float:
- var saved: float=float(config.get("core_sprint_ratio",guided_sprint_recovery_ratio))
- return guided_sprint_recovery_ratio if is_equal_approx(saved,LEGACY_GUIDED_RATIO) else clampf(saved,0.2,0.8)

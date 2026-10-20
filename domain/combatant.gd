@@ -103,14 +103,14 @@ func take_damage(amount: int) -> bool:
 	invulnerability_remaining = stats.hurt_invulnerability
 	return true
 
-func advance(seconds: float) -> void:
+func advance(seconds: float, recover_stamina: bool=true) -> void:
 	_pending_attack_travel = 0.0
 	if seconds <= 0.0 or not is_finite(seconds):
 		return
 	_advance_attack(seconds)
 	dash_remaining = maxf(0.0, dash_remaining - seconds)
 	invulnerability_remaining = maxf(0.0, invulnerability_remaining - seconds)
-	if is_alive():
+	if is_alive() and recover_stamina:
 		stamina = minf(stats.max_stamina, stamina + stats.stamina_regen * seconds)
 
 func _advance_attack(seconds: float) -> void:

@@ -469,4 +469,4 @@ func _sync_knight_equipment() -> void:
 		_sword_trail.finisher_extension=sim.sword_contact.finisher_extension
 		_sword_trail.present(sim.hero,sim.can_wield_sword(),sim.mounted())
 
-func _can_attack() -> bool:return sim.can_wield_sword() and not CampReveal.extracting(sim,knight.position.x) and not (sim.life.enabled and sim.travel.winded)
+func _can_attack() -> bool:return sim.can_wield_sword() and not CampReveal.extracting(sim,knight.position.x) and not (sim.life.enabled and sim.travel.winded and not sim.core_loop.enabled)
