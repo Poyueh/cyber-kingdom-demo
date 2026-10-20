@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real E input aligns both physical junctions
+PASS: real E input claims the reactor
+PASS: stable is selectable without a nearby building stealing input
+PASS: crystal sockets unlock the real motorcycle presentation
+PASS: same E input dismounts at the stable
+PASS: same E input mounts again
+PASS: reward actually increases ground speed
+PASS: mobile presentation retains touch input
+Mount expedition scene assertions: 8; failures: 0

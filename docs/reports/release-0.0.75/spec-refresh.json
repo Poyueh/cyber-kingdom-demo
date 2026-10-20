@@ -1,0 +1,60 @@
+{
+  "game_source": "297bead",
+  "specification_source": "cd9081bbb59fe38b9b3e86d4226783d773ce86dc",
+  "source_diff": [
+    "docs/game-spec/content.json",
+    "docs/game-spec/sync.json"
+  ],
+  "editions": {
+    "main": {
+      "unchanged_game_and_guide_files": {
+        "index.apple-touch-icon.png": "e897c283312c594efcc72737fd3652971a914651b0c1980b61998155d1e16afb",
+        "index.wasm": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+        "index.icon.png": "156c0c98a2f251765922f2835f8c386239914f05f7e57b25f49c77727c292618",
+        "guide-reader.css": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+        "FONT-LICENSE.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+        "index.html": "82891e1c619ece78003f260de7bd043a851c14413ad40dc10c2d72556d779400",
+        "guide.html": "1eb8b3e1977a9c1f2382e8cb2116ba5315a57d3bbdd1e63b59ec0be28184ba07",
+        "index.png": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+        "touch-guard.css": "4521dadc9ae7fa48b7220e1062a7c546a3736ee92b58f9b7a54e8426f6d308d8",
+        "index.audio.worklet.js": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+        "phone-display.js": "d7a4c88afedaa4d3f04138309a91ad2ddae059c11a99a1db10316667c174460f",
+        "index.js": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+        "frame-pacing.js": "6cca948c379080fc1a56d5644904629c2ec606e2e06f8662ad7aff93ec3f2e1e",
+        "touch-guard.js": "dc541ee252d0382ede2dff3d2ae1c5da503bf9ce80c428689052fd8a9f92979e",
+        "index.audio.position.worklet.js": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+        "README.txt": "966f4558abb7fbbe7e6fd13000c8568f1a2723ba726f679776d0c4d6077325df",
+        "index.pck": "362c2c92cc0f17cc91ee91641e5c3a2514daaaa538406f39da9089e1f395ae52",
+        "guide-reader.js": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+        "fullscreen.js": "d09585acd74c5a0d598dcf9773d701185fad7e84b9d372ca581db07ad87ade32",
+        "social/forest-companion-v59.png": "5f346e975fc33385c8c527d8df9cdc130dbf402f05c914c72bfb331f50e0a615"
+      },
+      "revision": 77
+    },
+    "demo": {
+      "unchanged_game_and_guide_files": {
+        "index.apple-touch-icon.png": "e897c283312c594efcc72737fd3652971a914651b0c1980b61998155d1e16afb",
+        "index.wasm": "fc74679e3b97f76878947fcd4fbe1268cbfa6188182a2e33bbc3f5dc9bfa57d0",
+        "index.icon.png": "156c0c98a2f251765922f2835f8c386239914f05f7e57b25f49c77727c292618",
+        "guide-reader.css": "ef1b454dda28e6ddc8752566f1db78b5f305859365dad63f8c427d0f886d0056",
+        "FONT-LICENSE.txt": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
+        "index.html": "00b0c319dba62cde42643c7fb6701dbfc316380bbca416ae8c85c2749c584542",
+        "guide.html": "ee95dc34903a31ee5c1ccd4a5c563479d91faee13c377dfd412dfea744c3b7f3",
+        "index.png": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+        "touch-guard.css": "4521dadc9ae7fa48b7220e1062a7c546a3736ee92b58f9b7a54e8426f6d308d8",
+        "index.audio.worklet.js": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3",
+        "phone-display.js": "d7a4c88afedaa4d3f04138309a91ad2ddae059c11a99a1db10316667c174460f",
+        "index.js": "33c94cb3175f3333b82e2a3be5e8e86f77986f0aa2042b1631f6367a4e5bb6ba",
+        "frame-pacing.js": "6cca948c379080fc1a56d5644904629c2ec606e2e06f8662ad7aff93ec3f2e1e",
+        "touch-guard.js": "dc541ee252d0382ede2dff3d2ae1c5da503bf9ce80c428689052fd8a9f92979e",
+        "index.audio.position.worklet.js": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+        "README.txt": "966f4558abb7fbbe7e6fd13000c8568f1a2723ba726f679776d0c4d6077325df",
+        "index.pck": "fa1a42e8b036a8d59df2afc42bc528840f3d6785305bfb6d3655a6ca4c4687e4",
+        "guide-reader.js": "8d621053cf1659a1fa51252bb12733962fccadcf26d83de24953b8ed9c1699be",
+        "fullscreen.js": "d09585acd74c5a0d598dcf9773d701185fad7e84b9d372ca581db07ad87ade32",
+        "social/forest-companion-v59.png": "5f346e975fc33385c8c527d8df9cdc130dbf402f05c914c72bfb331f50e0a615"
+      },
+      "revision": 77
+    }
+  }
+}

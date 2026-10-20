@@ -1,0 +1,107 @@
+{
+  "version": "0.0.75",
+  "game_source": "297bead",
+  "specification_source": "cd9081b",
+  "specification_revision": 77,
+  "full_regression": "passed; no SCRIPT ERROR / ERROR / FAIL",
+  "core_assertions": 4852,
+  "mount_acquisition_scene": {
+    "assertions": 8,
+    "failures": 0
+  },
+  "native_visual_review": [
+    "Main garage, parked motorcycle, driving, turning, sword attacks, touch UI",
+    "Demo same scene and final signed-velocity wheel phase"
+  ],
+  "formal_web_browser": {
+    "main": "prologue and full-journey menu",
+    "demo": "forest menu, new journey, movement, ignition and next tutorial stage",
+    "specification": "revision 77; motorcycle image loaded; legacy horse claim removed",
+    "console_errors": 0
+  },
+  "platforms": {
+    "main": {
+      "source_tree": "7713921dca3d26c56d6e7d4311ac7ee29c567848",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "demo": {
+      "source_tree": "7713921dca3d26c56d6e7d4311ac7ee29c567848",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "assets": {
+      "Cyber-Kingdom-Demo-Web-v0.0.75.zip": {
+        "sha256": "08350bbfbb0aa0b1ac380eca4cb7f0cfed87e1ae86d154f2ff18891e5c5b1109",
+        "bytes": 83217834
+      },
+      "Cyber-Kingdom-Demo-Android-debug-v0.0.75.apk": {
+        "sha256": "f9da32e50ec24dcc571f113522541820f06aad334588f4c25bfcea4c6922c051",
+        "bytes": 92394261
+      },
+      "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.75.zip": {
+        "sha256": "5cadbb1ce038752ee25213ff7fee7965a8f01243e4b8550795ca57e0bff318f8",
+        "bytes": 175824426
+      },
+      "Cyber-Kingdom-Demo-Guide-v0.0.75.html": {
+        "sha256": "ee95dc34903a31ee5c1ccd4a5c563479d91faee13c377dfd412dfea744c3b7f3",
+        "bytes": 16263
+      },
+      "Cyber-Kingdom-Main-Guide-v0.0.75.html": {
+        "sha256": "1eb8b3e1977a9c1f2382e8cb2116ba5315a57d3bbdd1e63b59ec0be28184ba07",
+        "bytes": 16872595
+      },
+      "Cyber-Kingdom-Main-Android-debug-v0.0.75.apk": {
+        "sha256": "c5041b5e2b01afd787ac5b54e1b7c23a709e4ef132e95a9347c616060bea83cf",
+        "bytes": 104454643
+      },
+      "Cyber-Kingdom-Main-macOS-v0.0.75.zip": {
+        "sha256": "5e7afb0eaa7a4de4f819472c2f093efef05bf7d6214fa56b72b435fca4aab320",
+        "bytes": 135485194
+      },
+      "Cyber-Kingdom-Main-Windows-v0.0.75.zip": {
+        "sha256": "3a1c47b63929c85b31d219871aa3dd1ae45c5d287414d0b29632f3c8edfe06ce",
+        "bytes": 113063466
+      },
+      "Cyber-Kingdom-Main-iOS-Xcode-v0.0.75.zip": {
+        "sha256": "40e49e58651220aa843610df236d0a9d40ad58886d6116f2698faf893c56854b",
+        "bytes": 187791200
+      },
+      "Cyber-Kingdom-Main-Web-v0.0.75.zip": {
+        "sha256": "bb4d6329a07a5ee007008e880134639f9eb2e7486b10a206989c0bc8baac06c6",
+        "bytes": 107819502
+      },
+      "SHA256SUMS.txt": {
+        "sha256": "ff122ee2fcdcea9e1f6ec6bdd5615c4614a6bc5135988d1921b0ee29a7867f8c",
+        "bytes": 1262
+      },
+      "Cyber-Kingdom-Demo-macOS-v0.0.75.zip": {
+        "sha256": "6e564b7429901fad0d01d2db364de941313e747a5231bbc11d379132b190477d",
+        "bytes": 123518675
+      },
+      "Cyber-Kingdom-Demo-Windows-v0.0.75.zip": {
+        "sha256": "5647813500479ac2c7796e28fa6c305a945bd666151032d132fcf15ae17a8545",
+        "bytes": 101096170
+      }
+    }
+  },
+  "limitations": [
+    "iPhone/iPad/Android physical devices not playtested in this run",
+    "Windows interaction not playtested",
+    "iOS exported Xcode project still needs signing",
+    "macOS ad-hoc signing; Android debug APK"
+  ],
+  "audio": "small deterministic synthesis, shared stream cache; no new WebAudio buffers per mount event"
+}
