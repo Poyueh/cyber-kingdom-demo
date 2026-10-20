@@ -7,7 +7,8 @@ extends Resource
 ## The simulation clock already runs at 30 ticks; at 60 physics ticks every other tick only
 ## re-prepares the same frame for the knight, view and HUD.
 @export_range(0, 120, 1) var phone_physics_hz: int = 30
-## Web music plays as a stream instead of a fully decoded sample. Effects stay samples.
+## Music explicitly streams on Web; project.godot also makes effects/ambience stream.
+## Keep this override for callers with a custom music profile. Native stays unchanged.
 @export var stream_music: bool = true
 
 static func current_features() -> PackedStringArray:
