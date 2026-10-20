@@ -1,6 +1,8 @@
 extends "res://data/frontier_tuning.gd"
 @export_group("Merchant and scarce treasure")
 @export var crystal_merchant: Resource=preload("res://data/crystal_merchant.tres")
+@export_group("Defense commands")
+@export var defense_rules: Resource=preload("res://data/defense_rules.tres")
 @export_group("Expedition command")
 @export var command_rules: Resource=preload("res://data/command_rules.tres")
 @export_group("Hunting near the walls")
@@ -114,6 +116,7 @@ func campaign_rules() -> Dictionary:
 
 	rules.merge(hunter_roaming.configuration(),true)
 	rules.merge(command_rules.configuration(),true)
+	rules.merge(defense_rules.configuration(),true)
 	rules.merge(night_pressure.rules(),true)
 	if immersive_loop:
 		rules.merge(preload("res://data/wildlife_population.tres").rules(),true)

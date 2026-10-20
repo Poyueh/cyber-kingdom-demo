@@ -1,8 +1,10 @@
 extends RefCounted
 ## Learn from successful actions and actual use, never from showing a caption.
-const IDS: Array[String]=["barracks","rally","rescue_repair","rescue_recruit","farm","farm_tools","module","mount","rift","rocket","star_map","merchant","tower","ruin","mount_stable"]
+const IDS: Array[String]=["guard_station","outpost","barracks","rally","rescue_repair","rescue_recruit","farm","farm_tools","module","mount","rift","rocket","star_map","merchant","tower","ruin","mount_stable"]
 static func observe(sim: RefCounted) -> void:
  var command: RefCounted=sim.command
+ if sim.core_loop.orders.targets.any(func(target: String)->bool:return not target.is_empty()):command.learn("guard_station")
+ if sim.frontier.regions.any(func(r: Dictionary)->bool:return r.outpost_built):command.learn("outpost")
  if sim.frontier.farm_active:command.learn("farm")
  if sim.world.tools.hoe>0 or sim.world.people.any(func(p: Dictionary)->bool:return p.role=="farmer"):command.learn("farm_tools")
  if sim.world.tools.blade>0 or sim.world.people.any(func(p: Dictionary)->bool:return p.role=="guard"):command.learn("barracks")
@@ -12,7 +14,7 @@ static func observe(sim: RefCounted) -> void:
  if sim.planet.rocket_ready or sim.planet.rocket_pending:command.learn("rocket")
  if sim.buildings.values().any(func(b: Dictionary)->bool:return b.kind=="tower" and b.level>0):command.learn("tower")
 static func executed(sim: RefCounted, id: String) -> void:
- var mapped: String={"command_armory":"barracks","armory":"barracks","mount_switch":"mount","mount_stable":"mount_stable","module_station":"module","merchant":"merchant","rift":"rift","rocket":"rocket","star_map":"star_map","farm":"farm","farm_tools":"farm_tools","tower":"tower","trial":"ruin"}.get(id,"")
+ var mapped: String={"outpost":"outpost","command_armory":"barracks","armory":"barracks","mount_switch":"mount","mount_stable":"mount_stable","module_station":"module","merchant":"merchant","rift":"rift","rocket":"rocket","star_map":"star_map","farm":"farm","farm_tools":"farm_tools","tower":"tower","trial":"ruin"}.get(id,"")
  if not mapped.is_empty():sim.command.learn(mapped)
 static func next(sim: RefCounted, x: float) -> Dictionary:
  if not sim.command.enabled or sim.core_loop.skipped or not sim.is_running():return {}
@@ -24,6 +26,12 @@ static func next(sim: RefCounted, x: float) -> Dictionary:
   var feature: String="rocket" if existing.get("key")=="rocket" else "star_map" if existing.get("key")=="star_map" else ""
   if feature.is_empty() or feature not in sim.command.used:return existing
  var choices: Array[Dictionary]=[]
+ if "guard_station" not in sim.command.used and sim.core_loop.income>0 and sim.world.people.any(func(p: Dictionary)->bool:return p.role=="hunter"):
+  choices.append(sim.command._hint("guard_station",sim.core_loop.orders.station_x(sim),"guard_station","tool"))
+ if "outpost" not in sim.command.used and sim.frontier.city_level>=2:
+  for index: int in range(sim.frontier.regions.size()):
+   var region: Dictionary=sim.frontier.regions[index]
+   if region.discovered and region.outpost_ready and not region.outpost_built and sim.frontier.expansion_cleared(index):choices.append(sim.command._hint("outpost",region.outpost_x,"outpost:%d"%index,"tool"))
  if sim.frontier.city_level>=2:
   if "farm_tools" not in sim.command.used:choices.append(sim.command._hint("farm_tools",sim.world.sites.farm_tools,"farm_tools","tool"))
   if "farm" not in sim.command.used:choices.append(sim.command._hint("farm",sim.world.sites.farm,"farm","harvest"))

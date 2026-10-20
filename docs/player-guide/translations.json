@@ -2514,5 +2514,25 @@
   "v0.0.72 · 號令旗隊伍與救援船": {
     "zh_CN": "v0.0.72 · 号令旗队伍与救援船",
     "en": "v0.0.72 · Command squads and rescue ship"
+  },
+  "右牆完工後，到射箭場旁號令台花1晶派弓兵；撤回免費。指派後開始首夜20秒預警，弓兵到位前不會入夜。缺晶時跟鬼魂領取收入。": {
+    "zh_CN": "右墙完工后，到射箭场旁号令台花1晶派弓兵；撤回免费。指派后开始首夜20秒预警，弓兵到位前不会入夜。缺晶时跟鬼魂领取收入。",
+    "en": "Once the right wall is built, assign an archer for 1 crystal at the archery command post. Release is free. The 20-second first-night warning starts after assignment and waits for arrival. Follow the ghost to income if short on crystals."
+  },
+  "v0.0.73 · 守軍、拓荒與戰馬": {
+    "zh_CN": "v0.0.73 · 守军、拓荒与战马",
+    "en": "v0.0.73 · Defense, outposts and mounts"
+  },
+  "射箭場旁號令台：靠近按E／下滑開啟，＋派一名弓兵花1晶，－撤回免費。守軍隨完工外牆前移、倒塌後退，不再收費；箭塔依等級容納1／2／3人，守軍會改駐城內最外側完工塔，失去位置者回同側城牆。": {
+    "zh_CN": "射箭场旁号令台：靠近按E／下滑开启，＋派一名弓兵花1晶，－撤回免费。守军随完工外墙前移、倒塌后退，不再收费；箭塔依等级容纳1／2／3人，守军会改驻城内最外侧完工塔，失去位置者回同侧城墙。",
+    "en": "At the archery command post, press E or swipe down. + assigns an archer for 1 crystal; − releases for free. Defenders follow completed outer walls and retreat after collapse at no extra cost. Towers hold 1/2/3 archers by level; they move to the outermost completed tower within town, with overflow defending the same side wall."
+  },
+  "營火三級已滿級，接著發展兵營、號令旗與救援船。拓荒站解鎖區域外牆並提供就近避難；再築起外牆，擴大安全工作範圍。鬼魂會提示用途，使用後不重複教學。": {
+    "zh_CN": "营火三级已满级，接着发展兵营、号令旗与救援船。拓荒站解锁区域外墙并提供就近避难；再筑起外墙，扩大安全工作范围。鬼魂会提示用途，使用后不重复教学。",
+    "en": "Camp level 3 is the maximum. Develop barracks, rally flags and the rescue ship next. An outpost unlocks its regional outer wall and nearby shelter; build that wall to extend the safe work area. The ghost explains each function until you use it."
+  },
+  "劍盾兵能舉盾擋正面近戰，先蓄勢再斬擊；出招破綻、背擊與龍息仍危險。戰馬重製跑步、攻擊、受擊與休息，收步回到接地姿勢；移速與取得方式不變。": {
+    "zh_CN": "剑盾兵能举盾挡正面近战，先蓄势再斩击；出招破绽、背击与龙息仍危险。战马重制跑步、攻击、受击与休息，收步回到接地姿势；移速与取得方式不变。",
+    "en": "Swordsmen block frontal melee with shields and wind up before cutting. Attack openings, rear hits and dragon breath remain dangerous. Mount gallop, attack, hit and rest animations are rebuilt, settling onto planted hooves when stopping. Speed and unlock conditions are unchanged."
   }
 }

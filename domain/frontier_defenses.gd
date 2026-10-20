@@ -41,7 +41,7 @@ func prerequisites(id: String) -> Array[Dictionary]:
 func active_post(side: int) -> String:
 	var result: String="wall" if side>0 else "wall_left"
 	for id in plots:
-		if plots[id].side==side and world.walls[id].hp>0 and side*world.sites[id]>side*world.sites[result]:
+		if plots[id].side==side and world.walls[id].level>0 and world.walls[id].hp>0 and side*world.sites[id]>side*world.sites[result]:
 			result=id
 	return result
 

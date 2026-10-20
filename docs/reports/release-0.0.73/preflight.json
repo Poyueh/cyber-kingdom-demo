@@ -1,0 +1,39 @@
+{
+  "version": "0.0.73",
+  "source": "6710e89eba83a26f2af17f93bd4c17c852feeb6c",
+  "spec_revision": 71,
+  "documentation_source": "6431642deb6a112cb0e3f621a89966a64cd44ef4",
+  "documentation_only_delta": [
+    "docs/game-spec/content.json",
+    "docs/game-spec/sync.json"
+  ],
+  "changes": [
+    "Local command station beside archery equipment; one crystal per successful archer assignment, free withdrawal",
+    "Live outer walls and outermost usable towers; collapse overflow falls back to same-side wall without charging",
+    "Camp maximum remains three; clear next steps and outpost purpose with first-use guidance",
+    "Full-body sword/shield atlas, front melee blocks, real windup and contact, no squad removal on a blocked hit",
+    "New armed/unarmed mounted atlases with fixed scale and ground anchor, eased cadence and stop settling",
+    "Existing walls retain worker territory during upgrades; new unfinished walls do not extend it"
+  ],
+  "targeted": "36 assertions passed; absent-feature RED and blocked-squad RED captured; JSON attack continuation tested",
+  "full_check": "4852 core assertions and every scene passed; no SCRIPT ERROR, ERROR or FAIL",
+  "native_scene_assertions": {
+    "main": 7,
+    "demo": 7
+  },
+  "opening_paid_flow_assertions": 70,
+  "native_visuals": "Actual local orders panel, counts and one-crystal transaction, max camp, sword/shield poses, mounted movement and stopping inspected",
+  "save": "Existing v24 schema retained, actual JSON mid-swing continuation and invalid resource configuration rejection passed",
+  "platform_content_assertions": {
+    "main": 75,
+    "demo": 76
+  },
+  "packaged_assets": 13,
+  "local_web": "Final Main menu loaded; final Demo new journey and keyboard movement tested without console errors; spec v0.0.73 revision 71 verified",
+  "pending": [
+    "public release/Pages verification",
+    "Windows runtime playtest",
+    "Android/iPhone/iPad hardware playtest",
+    "subjective player feedback"
+  ]
+}
