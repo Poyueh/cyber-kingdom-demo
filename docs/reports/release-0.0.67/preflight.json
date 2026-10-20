@@ -35,6 +35,16 @@
     "pages_conclusion": "success",
     "online_files_verified": 70,
     "online_main_files_verified": 35,
-    "public_browser": "Demo main menu loaded without console errors; specification v0.0.67 revision55 read in browser; no public player journey created"
+    "public_browser": "Demo main menu loaded without console errors; specification v0.0.67 revision55 read in browser; no public player journey created",
+    "spec_refresh": {
+      "pages_run": 39385477445,
+      "conclusion": "success",
+      "game_version": "0.0.67",
+      "spec_revision": 56,
+      "online_files_verified": 70,
+      "main_files_verified": 35,
+      "public_browser": "revision56, v23 snapshot and rocket finale summary confirmed; no console errors",
+      "release_artifacts": "unchanged; bundled specification revision55"
+    }
   }
 }
