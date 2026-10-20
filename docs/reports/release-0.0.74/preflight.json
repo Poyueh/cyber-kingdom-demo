@@ -208,8 +208,19 @@
     "Windows/Android/iOS runtime hardware playtests pending"
   ],
   "pending": [
-    "public release/Pages verification",
     "phone hardware long-session and audio latency verification",
     "Windows runtime playtest"
-  ]
+  ],
+  "publication": {
+    "release_id": 418696541,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.74",
+    "verified_assets": 13,
+    "pages_run": 39473057676,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.74",
+    "spec_revision": 73,
+    "public_browser": "Demo and Main menus loaded without console errors; reviewed Stream performance specification visible"
+  }
 }
