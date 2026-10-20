@@ -41,9 +41,14 @@ func verify() -> void:
   var appearance: Resource=load("res://data/wildlife/"+species+".tres")
   check(appearance.texture!=null and appearance.texture.get_size()==Vector2(384,160),"shipped complete wildlife atlas: "+species)
  game.sim.hero.stamina=0
- check(is_equal_approx(game.sim.travel_axis(1,1.0/30),1.0),"shipped exhausted knight keeps running")
+ check(is_zero_approx(game.sim.travel_axis(1,1.0/30)),"shipped exhausted knight stops to catch breath")
+ for frame: int in range(75):game.sim.advance(1.0/30,game.knight.position.x)
+ var walking: float=game.sim.travel_axis(1,1.0/30)
+ check(walking>0 and walking<1 and is_zero_approx(game.sim.hero.stamina),"shipped breathing lasts 2.5 seconds before slow walking")
  game.sim.hero.stamina=game.sim.hero.stats.max_stamina/3.0
- check(game.sim.travel_axis(1,1.0/30)>1.5,"shipped sprint resumes at one-third stamina")
+ check(is_equal_approx(game.sim.travel_axis(1,1.0/30),1.0),"shipped one-third stamina unlocks running, not sprinting")
+ game.sim.hero.stamina=game.sim.hero.stats.max_stamina
+ check(game.sim.travel_axis(1,1.0/30)>1.5,"shipped full stamina restores sprinting")
  game.sim.hero.stamina=game.sim.hero.stats.max_stamina
  var right: float=game.sim.world.sites.wall
  check(game.sim.hunter_roaming.contains(right+250,game.sim.world.sites.wall_left,right) and not game.sim.hunter_roaming.contains(right+500,game.sim.world.sites.wall_left,right),"shipped hunting stays near the walls")
