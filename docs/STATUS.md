@@ -1,10 +1,12 @@
-## v0.0.68 電漿鬼魂與狩獵生物（驗收中）
+## v0.0.68 電漿鬼魂與狩獵生物（已發布）
 
 v0.0.68 鬼魂重製為較小的賽博電漿夥伴：青藍核心、電路節點、分段電容光環與短尾流；穩定的本體不做閃爍，只讓周圍能量緩慢呼吸。保留帶路、回頭、招手與警戒，沿用少量目標短句；避讓以實際提示框邊緣找安全位置，與繪製共用30×34半尺寸，不再因有限候選點都被擋住就反覆整隻隱藏。引魂壇共用新造型；主遊戲、Demo及既有旅程都使用新版呈現。
 
 v0.0.68 可狩獵生物包括鹿、野兔與野豬；野兔／野豬使用原生兩像素網格、依實際移動推進腳步，停下及暫停不滑步。新主旅程與Demo森林近郊左右各三隻，遠處森林補給區每區三個固定獵物位置；不增加謎題或事件點。獵人照原工作範圍白天狩獵、提前回城，每次成功仍為2晶。只在真實日出、有棲地時恢復既有獵物位置，不逐幀增生；砍光森林不再恢復。wildlife_version=1與數值保存於建立時設定，快照仍v23；無標記的舊存檔保留原數量與生死狀態，僅套用新外觀。
 
-完整回歸通過（核心4707項，無SCRIPT ERROR／ERROR）；獵物38項與密集提示區2項通過，原版相同場景失敗。原生真實跑步／停步／轉身210個採樣，鬼魂隱藏0次；新造型錄影與截圖已驗收。正式Demo Web新局、移動、拔劍點火與近郊野兔顯示正常，無console errors。Main／Demo五平台由834b13e建置，內容各52／53項、macOS執行與簽章、Android簽章與16 KiB對齊通過，13附件已封裝；公開部署待完成。教學：[第145課](lessons/145-shared-clearance-and-new-world-rules.md)。
+完整回歸通過（核心4707項，無SCRIPT ERROR／ERROR）；獵物38項與密集提示區2項通過，原版相同場景失敗。原生真實跑步／停步／轉身210個採樣，鬼魂隱藏0次；新造型錄影與截圖已驗收。正式Demo Web新局、移動、拔劍點火與近郊野兔顯示正常，無console errors。Main／Demo五平台由834b13e建置，內容各52／53項、macOS執行與簽章、Android簽章與16 KiB對齊通過，13附件遠端尺寸與SHA256一致。Release 418149957已公開，Pages 39392405016成功；70份公開檔案（Main35份）與發行包逐一一致，企劃v0.0.68／修訂58，公開前導／主選單與規格已用瀏覽器驗收，無console errors。教學：[第145課](lessons/145-shared-clearance-and-new-world-rules.md)。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.68) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.68) · [企劃規格](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.68) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.68) · [驗收紀錄](reports/release-0.0.68/preflight.json)。
 
 ## v0.0.67 火箭終章、駐軍與探索修正（已發布）
 

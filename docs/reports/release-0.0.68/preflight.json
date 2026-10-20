@@ -28,5 +28,17 @@
     "Windows runtime playtest",
     "Android and iPhone/iPad hardware playtest",
     "subjective player feedback"
-  ]
+  ],
+  "publication": {
+    "release_id": 418149957,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.68",
+    "remote_assets_verified": 13,
+    "pages_run": 39392405016,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.68",
+    "spec_revision": 58,
+    "public_browser": "Demo prologue and main menu loaded; specification version58 and plasma/wildlife rules verified; no console errors; no public player journey created"
+  }
 }
