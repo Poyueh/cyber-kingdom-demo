@@ -31,9 +31,20 @@
   "packaged_assets": 13,
   "local_web": "Exported Demo game and reviewed spec verified in browser; see browser evidence",
   "pending": [
-    "public release/Pages verification",
     "Windows runtime playtest",
     "Android/iPhone/iPad hardware playtest",
     "subjective player feedback"
-  ]
+  ],
+  "publication": {
+    "release_id": 418559874,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.72",
+    "verified_assets": 13,
+    "pages_run": 39450058916,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.72",
+    "spec_revision": 67,
+    "public_browser": "Demo game and live command/rescue specification confirmed; no console errors"
+  }
 }
