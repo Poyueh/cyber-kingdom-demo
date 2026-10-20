@@ -29,9 +29,20 @@
   "desktop_build": "first concurrent import ended without a script error; isolated clean Main and Demo rebuilds passed, followed by executable/content/signature checks",
   "local_web": "fresh exported Demo: founding, double-tap sprint, depleted recovery bar/threshold, normal movement and repeated ghost instruction visible; no console errors",
   "pending": [
-    "public release/Pages verification",
     "Windows runtime playtest",
     "Android/iPhone/iPad hardware playtest",
     "subjective player feedback"
-  ]
+  ],
+  "publication": {
+    "release_id": 418254284,
+    "release_url": "https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.71",
+    "verified_assets": 13,
+    "pages_run": 39405925663,
+    "pages_conclusion": "success",
+    "online_files_verified": 70,
+    "online_main_files_verified": 35,
+    "spec_game_version": "0.0.71",
+    "spec_revision": 61,
+    "public_browser": "Demo prologue/menu and revision61 recovery and hunting specification verified; no console errors"
+  }
 }
