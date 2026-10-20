@@ -1,0 +1,106 @@
+{
+  "version": "0.0.76",
+  "game_source": "07d8d618d3c9bcddf91ff340f54d1f697c4b4e86",
+  "specification_revision": 83,
+  "export_audit_source": "d2a8622",
+  "full_regression": "passed; no SCRIPT ERROR / ERROR / FAIL",
+  "core_assertions": 4886,
+  "native_recovery_scene": {
+    "assertions": 20,
+    "failures": 0
+  },
+  "native_visual_review": [
+    "Main and Demo breathing, walking, running and sprinting",
+    "free ordinary attack works while breathing but cannot move the player"
+  ],
+  "formal_web_browser": {
+    "demo": "final exported new forest journey, ignition, double-tap sprint, exhausted breathing stop with visible empty bar, movement after recovery",
+    "console_errors": 0
+  },
+  "timing_regression": "11 advances at 60 Hz then 75 at 30 Hz no longer lose countdown ticks; saved last_tick=0 cannot skip new breathing stop",
+  "export_audit": "actual transition observed within one 30 Hz quantization tick of 2.5 seconds; no stamina regeneration before breathing ends",
+  "platforms": {
+    "main": {
+      "source_tree": "93758455597b14909005bc1006df09264dd2ced5",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "demo": {
+      "source_tree": "93758455597b14909005bc1006df09264dd2ced5",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "assets": {
+      "Cyber-Kingdom-Demo-Web-v0.0.76.zip": {
+        "sha256": "4d99a1cbd29883f438411ef5c974e6a2d6fd51ab98cc9a4b6b9477574eb3bc95",
+        "bytes": 83219632
+      },
+      "Cyber-Kingdom-Demo-Android-debug-v0.0.76.apk": {
+        "sha256": "8ea35e509bbb73e0bcc8540e296eb453f4b85d6c7dea0fa4ec49e3213826cca5",
+        "bytes": 92398357
+      },
+      "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.76.zip": {
+        "sha256": "82174747f484f807709b075139d19aa515018082ac093a6cd0a5d35d13bf2249",
+        "bytes": 175825569
+      },
+      "Cyber-Kingdom-Main-Guide-v0.0.76.html": {
+        "sha256": "906717b0789114ed3eafe9b952c5c0a5b2ac2024e0c196e6c3d3c7a19e744b08",
+        "bytes": 16876188
+      },
+      "Cyber-Kingdom-Main-Android-debug-v0.0.76.apk": {
+        "sha256": "d6b981f308618568fe30383028e3746b7d369116921a05f3c018218386be0ecd",
+        "bytes": 104454643
+      },
+      "Cyber-Kingdom-Main-macOS-v0.0.76.zip": {
+        "sha256": "0cab872b96388ece3c8720d768f4cdc2fc2dcdd326bfac37d0410b050e348607",
+        "bytes": 135486168
+      },
+      "Cyber-Kingdom-Demo-Guide-v0.0.76.html": {
+        "sha256": "af406a1afeb2078ac378ef51584c8fcf8687361ba7394724ed1316303ba75be9",
+        "bytes": 17358
+      },
+      "Cyber-Kingdom-Main-iOS-Xcode-v0.0.76.zip": {
+        "sha256": "46d8a84349b34e00271927ed42f224cc82c67c66bf70a19673c3cbaa75c31592",
+        "bytes": 187792186
+      },
+      "Cyber-Kingdom-Main-Web-v0.0.76.zip": {
+        "sha256": "35729820531e14663e35fbd6b8fa956288281d099bc29b7169bf13405e77b71d",
+        "bytes": 107822070
+      },
+      "Cyber-Kingdom-Main-Windows-v0.0.76.zip": {
+        "sha256": "9b835f568294b2bbe7ed91e81ef68c5928c5e3dae49245f6bad88a16f95ffeef",
+        "bytes": 113064442
+      },
+      "Cyber-Kingdom-Demo-macOS-v0.0.76.zip": {
+        "sha256": "92e0d14ddb8cb2166c3a5fb6257b857394428953211fb0e1602144821c1679f9",
+        "bytes": 123519827
+      },
+      "SHA256SUMS.txt": {
+        "sha256": "1fa9ed4774f8060791c1bc6dde495680577c5e2e427b8f9de2c64362b971ac44",
+        "bytes": 1262
+      },
+      "Cyber-Kingdom-Demo-Windows-v0.0.76.zip": {
+        "sha256": "2fdd45a4e554474d4ace19716701807c5f9c781228f159329de05229d8e6db3f",
+        "bytes": 101097308
+      }
+    }
+  },
+  "limitations": [
+    "iPhone/iPad/Android physical devices not playtested in this run",
+    "Windows interaction not playtested",
+    "iOS Xcode project requires signing",
+    "macOS ad-hoc signing; Android debug APK retained"
+  ]
+}

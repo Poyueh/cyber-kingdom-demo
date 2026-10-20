@@ -1,0 +1,24 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: full: real double-tap starts sprinting
+PASS: full: exhausted input stops in the breathing pose
+PASS: full: held sprint cannot move or regenerate during breathing
+PASS: full: free ordinary attack still works while catching breath
+PASS: full: free attack cannot step through the breathing stop
+PASS: full: after breathing movement becomes slow walking
+PASS: full: walking recovery is visible below one third
+PASS: full: one third restores running while sprint remains locked
+PASS: full: reaching full rearms held sprint without another stop
+PASS: full: fully recovered bar retires after reaching full
+PASS: demo: real double-tap starts sprinting
+PASS: demo: exhausted input stops in the breathing pose
+PASS: demo: held sprint cannot move or regenerate during breathing
+PASS: demo: free ordinary attack still works while catching breath
+PASS: demo: free attack cannot step through the breathing stop
+PASS: demo: after breathing movement becomes slow walking
+PASS: demo: walking recovery is visible below one third
+PASS: demo: one third restores running while sprint remains locked
+PASS: demo: reaching full rearms held sprint without another stop
+PASS: demo: fully recovered bar retires after reaching full
+Recovery feedback scene: 20 assertions; failures: 0

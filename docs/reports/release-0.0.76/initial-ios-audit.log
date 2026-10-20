@@ -1,0 +1,83 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: world data membership: desert
+PASS: level membership: desert
+PASS: encounter membership: desert
+PASS: dragon data membership: desert
+PASS: dragon atlas membership: desert
+PASS: planet scenery membership: desert
+PASS: world data membership: frost
+PASS: level membership: frost
+PASS: encounter membership: frost
+PASS: dragon data membership: frost
+PASS: dragon atlas membership: frost
+PASS: planet scenery membership: frost
+PASS: world data membership: swamp
+PASS: level membership: swamp
+PASS: encounter membership: swamp
+PASS: dragon data membership: swamp
+PASS: dragon atlas membership: swamp
+PASS: planet scenery membership: swamp
+PASS: world data membership: volcanic
+PASS: level membership: volcanic
+PASS: encounter membership: volcanic
+PASS: dragon data membership: volcanic
+PASS: dragon atlas membership: volcanic
+PASS: planet scenery membership: volcanic
+PASS: world data membership: storm
+PASS: level membership: storm
+PASS: encounter membership: storm
+PASS: dragon data membership: storm
+PASS: dragon atlas membership: storm
+PASS: planet scenery membership: storm
+PASS: world data membership: void
+PASS: level membership: void
+PASS: encounter membership: void
+PASS: dragon data membership: void
+PASS: dragon atlas membership: void
+PASS: planet scenery membership: void
+PASS: only main edition offers full journey
+PASS: edition uses isolated record directory
+PASS: shipped scene resolves correct guidance mode
+PASS: demo cannot create a seven-world envelope
+PASS: both editions play the full forest map
+PASS: new shipped forest has six near-camp prey slots
+PASS: shipped game includes wildlife renderer
+PASS: shipped huntable species resource: hare
+PASS: shipped complete wildlife atlas: hare
+PASS: shipped huntable species resource: boar
+PASS: shipped complete wildlife atlas: boar
+PASS: shipped huntable species resource: fox
+PASS: shipped complete wildlife atlas: fox
+PASS: shipped huntable species resource: badger
+PASS: shipped complete wildlife atlas: badger
+PASS: shipped huntable species resource: goat
+PASS: shipped complete wildlife atlas: goat
+PASS: shipped huntable species resource: pheasant
+PASS: shipped complete wildlife atlas: pheasant
+PASS: shipped huntable species resource: tortoise
+PASS: shipped complete wildlife atlas: tortoise
+PASS: shipped exhausted knight stops to catch breath
+FAIL: shipped breathing lasts 2.5 seconds before slow walking
+FAIL: shipped one-third stamina unlocks running, not sprinting
+FAIL: shipped full stamina restores sprinting
+PASS: shipped hunting stays near the walls
+PASS: shipped ghost uses compact shared clearance
+PASS: shipped shield combat atlas
+PASS: shipped coherent armed and unarmed motorcycle poses
+PASS: shipped active rider actually uses the motorcycle
+PASS: shipped reactor and garage
+PASS: shipped crystal engine audio
+PASS: shipped paid command station
+PASS: both editions include command squads and rescue
+PASS: shipped native rescue ship atlas
+PASS: shipped command economy
+PASS: both editions ship the merchant and ruin discoveries
+PASS: both editions ship gates for engineers to seal
+PASS: main builds a rocket to travel; the demo's rocket is its finale
+PASS: common guidance UI renders in shipped scene
+PASS: shipped companion is visible with a real core objective
+PASS: shipped UI has no duplicate static tutorial
+PASS: shipped companion survives the old time limit
+PASS: edition accepts its own record
+Distribution assertions: 80; failures: 3
