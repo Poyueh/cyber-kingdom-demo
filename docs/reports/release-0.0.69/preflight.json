@@ -1,0 +1,23 @@
+{
+  "version": "0.0.69",
+  "species": [
+    "deer",
+    "hare",
+    "boar",
+    "fox",
+    "badger",
+    "goat",
+    "pheasant",
+    "tortoise"
+  ],
+  "spec_revision": 59,
+  "native_visual": "eight silhouettes, alternate movement phase and facing; actual near/distant woodland scenes reviewed",
+  "native_scene_assertions": 3,
+  "population": "unchanged from v0.0.68; old saves keep original counts",
+  "pending": [
+    "full regression completion",
+    "five-platform Main/Demo packages",
+    "public deployment",
+    "phone hardware playtest"
+  ]
+}

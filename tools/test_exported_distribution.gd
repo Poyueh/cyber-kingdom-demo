@@ -35,7 +35,9 @@ func verify() -> void:
  check(game.sim.frontier.right_boundary>5000,"both editions play the full forest map")
  var near: Array=game.sim.frontier.animals.filter(func(a: Dictionary)->bool:return absf(a.x)<1500)
  check(near.size()==6,"new shipped forest has six near-camp prey slots")
- check(ResourceLoader.exists("res://presentation/wildlife_art.gd"),"shipped game includes hare and boar artwork")
+ check(ResourceLoader.exists("res://presentation/wildlife_art.gd"),"shipped game includes wildlife renderer")
+ for species: String in ["hare","boar","fox","badger","goat","pheasant","tortoise"]:
+  check(ResourceLoader.exists("res://data/wildlife/"+species+".tres"),"shipped huntable species resource: "+species)
  check(game.hud.guide_view._motion.style.body_half_size==Vector2(30,34),"shipped ghost uses compact shared clearance")
  check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
  check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")
