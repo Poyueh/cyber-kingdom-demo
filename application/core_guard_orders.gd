@@ -1,7 +1,21 @@
 extends RefCounted
-## Targets align with stable resident indices; reassignment costs travel, never crystals.
+## Stable side orders follow live defenses; the station owns payment and access.
+const Rules=preload("res://domain/defense_rules.gd")
+var rules: Rules=Rules.new()
+func station_x(sim: RefCounted) -> float:return sim.world.sites.hunt_tools+rules.station_offset
+func at_station(sim: RefCounted, x: float) -> bool:return sim.core_loop.enabled and sim.frontier.city_level>0 and sim.core_loop.income>0 and absf(x-station_x(sim))<=rules.station_radius
+func order(sim: RefCounted, target: String, delta: int, x: float) -> bool:
+ if not at_station(sim,x) or not sim.is_running() or delta not in [-1,1]:return false
+ if delta>0 and sim.pouch.amount<rules.assignment_cost:return false
+ if not assign(sim,target,delta):return false
+ if delta>0:
+  sim.command.learn("guard_station")
+  sim.pouch.amount-=rules.assignment_cost
+  sim.effects.append({"kind":"crystal_spent","x":station_x(sim),"life":0.5})
+ return true
 var targets: Array[String]=[]
 func clean(sim: RefCounted) -> void:
+ if targets.size()>sim.world.people.size():targets.resize(sim.world.people.size())
  while targets.size()<sim.world.people.size():targets.append("")
  for i: int in range(targets.size()):
   if i>=sim.world.people.size() or sim.world.people[i].role!="hunter":targets[i]=""
@@ -11,26 +25,44 @@ func clean(sim: RefCounted) -> void:
   for i: int in range(targets.size()):
    if targets[i]!=post:continue
    kept+=1
-   if kept>capacity(sim,post):targets[i]=""
+   if kept>capacity(sim,post):targets[i]="wall_left" if side(sim,post)<0 else "wall"
+func tower_id(sim: RefCounted, target: String) -> String:
+ var direction: int=-1 if target=="beacon" else 1
+ var result: String=target
+ var bounds: Vector2=sim.defenses.work_bounds()
+ for id: String in sim.buildings:
+  var site: Dictionary=sim.buildings[id]
+  if site.kind!="tower" or site.level<=0 or site.pending:continue
+  if direction*(site.x-sim.world.sites.hall)<=0:continue
+  if site.x<bounds.x or site.x>bounds.y:continue
+  if not sim.buildings.has(result) or sim.buildings[result].level<=0 or direction*site.x>direction*sim.buildings[result].x:result=id
+ return result
 func capacity(sim: RefCounted, target: String) -> int:
  if target in ["wall","wall_left"]:return sim.world.people.size()
- return clampi(int(sim.buildings[target].level),0,3) if sim.buildings.has(target) else 0
+ var id: String=tower_id(sim,target)
+ return clampi(int(sim.buildings[id].level),0,3) if sim.buildings.has(id) else 0
 func usable(sim: RefCounted, target: String) -> bool:
  if target in ["wall","wall_left"]:
-  var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1) if not sim.core_loop.trial and sim.core_loop.stage>=3 else target
+  var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1)
   var wall: Dictionary=sim.world.walls[post]
   return wall.level>0 and wall.hp>0 and not wall.pending
  if sim.buildings.has(target):
-  var site: Dictionary=sim.buildings[target]
+  var site: Dictionary=sim.buildings[tower_id(sim,target)]
   return site.kind=="tower" and site.level>0 and not site.pending
  return false
 func position(sim: RefCounted, target: String) -> float:
  if target in ["wall","wall_left"]:
-  var post: String=sim.defenses.active_post(-1 if target=="wall_left" else 1) if not sim.core_loop.trial and sim.core_loop.stage>=3 else target
-  return sim.world.sites[post]+(90.0 if target=="wall_left" else -90.0)
- return float(sim.buildings[target].x) if sim.buildings.has(target) else sim.world.sites.hall
+  var direction: int=-1 if target=="wall_left" else 1
+  var bounds: Vector2=sim.defenses.work_bounds()
+  return (bounds.x if direction<0 else bounds.y)-direction*90.0
+ var id: String=tower_id(sim,target)
+ return float(sim.buildings[id].x) if sim.buildings.has(id) else sim.world.sites.hall
 func side(sim: RefCounted, target: String) -> int:
  return -1 if position(sim,target)<sim.world.sites.hall else 1
+func has_candidate(sim: RefCounted, target: String) -> bool:
+ for i: int in range(sim.world.people.size()):
+  if sim.world.people[i].role=="hunter" and not sim.command.contains(i) and (i>=targets.size() or targets[i]!=target):return true
+ return false
 func assign(sim: RefCounted, target: String, delta: int) -> bool:
  clean(sim)
  if target not in ["wall","wall_left","beacon","core_tower_right"]:return false

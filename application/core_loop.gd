@@ -97,7 +97,7 @@ func filter_choices(sim: RefCounted, choices: Array[Dictionary]) -> Array[Dictio
  if not enabled or (not trial and stage>=3):return choices
  var result: Array[Dictionary]=[]
  for choice: Dictionary in choices:
-  if choice.id not in ["hall","core_charge","recruit","workshop","hunt_tools","mark","chest","trail_cache","wall","wall_left","tower"]:continue
+  if choice.id not in ["guard_station","hall","core_charge","recruit","workshop","hunt_tools","mark","chest","trail_cache","wall","wall_left","tower"]:continue
   if choice.id in ["hunt_tools","wall","wall_left","tower"] and income<=0:continue
   if choice.id=="hall" and sim.frontier.city_level>0:continue
   if choice.id=="mark" and not sim.world.people.any(func(p: Dictionary)->bool:return p.role=="engineer"):

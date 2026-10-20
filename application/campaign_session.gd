@@ -152,6 +152,8 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	world.sites.erase("horn")
 	world.sites.merge({"trade":-700.0,"heal":-850.0})
 	frontier.city_level = 0
+	world.defense_rules.apply(config)
+	core_loop.orders.rules.apply(config)
 	world.people.clear()
 	for x in [180.0,245.0]: _add_person(x,-1)
 	for index in range(frontier.regions.size()):
@@ -248,7 +250,7 @@ func context(x: float) -> Dictionary:
 	var candidates: Array[Dictionary]=_interaction_candidates(x)
 	# At the flag, an unavailable roster must not become an unrelated purchase.
 	for candidate: Dictionary in candidates:
-		if candidate.id=="rally" and absf(candidate.x-x)<28:return candidate
+		if candidate.id in ["rally","guard_station"] and absf(candidate.x-x)<28:return candidate
 	for candidate in candidates:
 		if selected.id.is_empty() or (candidate.enabled and not selected.enabled) or (candidate.enabled==selected.enabled and absf(candidate.x-x)<absf(selected.x-x)):
 			selected=candidate
@@ -267,6 +269,8 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	if not is_running():return candidates
 	var choice: Dictionary
 	candidates.append_array(command.candidates(self,x,_player_y))
+	if core_loop.orders.at_station(self,x) and absf(_player_y-430)<=42:
+		candidates.append(_choice("guard_station",core_loop.orders.station_x(self),"defense.station",0))
 	candidates.append_array(TrailActivity.candidates(self,x,_player_y))
 	candidates.append_array(PlanetOps.candidates(self,x,_player_y))
 	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
@@ -310,7 +314,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 		var region: Dictionary = frontier.regions[index]
 		if not region.outpost_ready or absf(region.outpost_x-x)>=73.0 or absf(_player_y-430)>42: continue
 		if not (region.outpost_built or region.outpost_pending or frontier.expansion_cleared(index)):continue
-		choice = _choice("outpost",region.outpost_x,"建立拓荒站",prices.outpost,not region.outpost_pending and not region.outpost_built,"工匠施工中" if region.outpost_pending else "拓荒站已建成")
+		choice = _choice("outpost",region.outpost_x,"defense.outpost_build",prices.outpost,not region.outpost_pending and not region.outpost_built,"工匠施工中" if region.outpost_pending else "defense.outpost_ready")
 		choice["region_index"] = index
 		choice.key = "outpost:%d" % index
 		candidates.append(choice)
@@ -348,7 +352,8 @@ func _campaign_site(site: String) -> Dictionary:
 		choice.key = "hall:%d" % frontier.city_level
 		choice.cost = mini(12,prices.hall+2*(frontier.city_level-1))
 		choice.enabled = frontier.city_level<3
-		choice.reason = "王城已完成 · 繼續守住居民"
+		choice.reason = "defense.camp_max"
+		if frontier.city_level>=3:choice.cost=0;choice.text="defense.camp_complete"
 
 		return choice
 	if frontier.city_level==0:
@@ -617,7 +622,7 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		return NAN
 	if life.enabled:
 		if person.role=="guard":
-			_shoot_nearest_raider(person,90.0,24,1.1)
+			preload("res://application/sword_guard.gd").advance(self,person,seconds)
 			return _defense_position(index,28.0)
 		if life.threatened(person,raiders) and person.role not in ["wanderer","guard","hunter"]:
 			person["sheltering"]=true;person["work_state"]="walk"
@@ -669,6 +674,8 @@ func _override_resident_target(index: int, seconds: float) -> float:
 	return home
 
 func _resident_speed(index: int) -> float:
+	var person: Dictionary=world.people[index]
+	if person.role=="guard" and (person.cooldown>0 or person.hurt>0 or preload("res://application/sword_guard.gd").bracing(self,person)):return 0.0
 	return command.rules.march_speed if command.contains(index) else _person_speed
 
 func travel_axis(request: float, seconds: float) -> float:
@@ -704,7 +711,8 @@ func _defense_position(index: int, inset: float) -> float:
 	for i in range(index):
 		if world.people[i].get("defense_post","")==post: rank+=1
 	var side:=1.0 if post=="wall" else -1.0
-	return world.sites[defenses.active_post(int(side))]-side*(inset+mini(rank,4)*18.0)
+	var bounds: Vector2=defenses.work_bounds()
+	return (bounds.x if side<0 else bounds.y)-side*(inset+mini(rank,4)*18.0)
 
 func planned_night_count() -> int:
 	if core_loop.enabled and core_loop.forest and clock.day<=2:return core_loop.first_count if clock.day==1 else core_loop.second_count
@@ -1057,7 +1065,7 @@ func _advance_towers(seconds: float) -> void:
 	if core_loop.trial:return # Trial towers require a real assigned archer.
 	for id: String in buildings:
 		var site: Dictionary=buildings[id]
-		if core_loop.enabled and id in ["beacon","core_tower_right"]:continue
+		if core_loop.enabled:continue # Occupied tower lanes fire through their actual archers.
 		if site.kind!="tower" or site.level<=0 or site.pending:continue
 		site.cooldown=maxf(0,site.cooldown-seconds)
 		if site.cooldown>0:continue

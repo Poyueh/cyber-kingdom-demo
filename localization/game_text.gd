@@ -1,6 +1,15 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["command.guide.guard_station", "號令台每派一名弓兵收 1 晶，守軍會跟隨外牆。", "号令台每派一名弓兵收 1 晶，守军会跟随外墙。", "Assign archers here for 1 crystal each. They follow the outer wall."],
+ ["defense.station", "號令台 · 配置弓兵駐守", "号令台 · 配置弓兵驻守", "Command post · Assign archers"],
+ ["defense.price %d", "每派 1 人：%d 晶 · 撤回免費", "每派 1 人：%d 晶 · 撤回免费", "Assign one: %d crystal · Release free"],
+ ["defense.camp_complete", "三級營火 · 已滿級", "三级营火 · 已满级", "Camp level 3 · Maximum"],
+ ["defense.camp_max", "發展兵營、號令旗與救援船", "发展兵营、号令旗与救援船", "Develop barracks, rally flags and the rescue ship"],
+ ["defense.outpost_build", "拓荒站 · 解鎖外牆並提供就近避難", "拓荒站 · 解锁外墙并提供就近避难", "Outpost · Unlock an outer wall and nearby shelter"],
+ ["defense.outpost_ready", "下一步：建外牆，擴大安全工作範圍", "下一步：建外墙，扩大安全工作范围", "Next: build the outer wall to expand the safe work area"],
+ ["command.guide.outpost", "拓荒站能開拓新防線；築起外牆，居民就能往外工作。", "拓荒站能开拓新防线；筑起外墙，居民就能往外工作。", "An outpost opens a new defense line. Build its wall to extend safe work."],
+
  ["command.guide.merchant", "商人能帶回補給，一晶委託他出遊。", "商人能带回补给，一晶委托他出游。", "Send the merchant for supplies with one crystal."],
  ["command.guide.mount", "戰馬準備好了，靠近馬廄就能騎乘。", "战马准备好了，靠近马厩就能骑乘。", "Your mount is ready. Ride at the stable."],
  ["command.guide.mount_stable", "找到了戰馬！回馬廄修復，就能騎乘。", "找到了战马！回马厩修复，就能骑乘。", "Mount recovered! Repair the stable to ride."],
@@ -51,7 +60,7 @@ const ROWS=[
  ["spirit.core.collect", "靠近，把龍晶收好。", "靠近，把龙晶收好。", "Come close. Collect your crystals."],
  ["spirit.core.hunter", "三晶備一把弓，居民就能守城。", "三晶备一把弓，居民就能守城。", "Three crystals for a bow. Equip a defender."],
  ["spirit.core.wall", "先築右牆。", "先筑右墙。", "Build the right wall first."],
- ["spirit.core.assign", "點「配置守軍」，派一人守右側。調動免費。", "点“配置守军”，派一人守右侧。调动免费。", "Open Guard Orders. Send one to the right wall, free."],
+ ["spirit.core.assign", "跟我到射箭場號令台，花 1 晶派弓兵守右側。", "跟我到射箭场号令台，花 1 晶派弓兵守右侧。", "Follow me to the archery command post. Assign the right wall for 1 crystal."],
  ["spirit.core.arriving", "弓兵來了，等他就位。", "弓兵来了，等他就位。", "The archer is coming. Let them arrive."],
  ["spirit.core.defend", "守住這裡，別追遠。", "守住这里，别追远。", "Hold here. Stay close."],
  ["spirit.core.rest", "守住了！下一夜兩側來襲，準備就交給你。", "守住了！下一夜两侧来袭，准备就交给你。", "You held! Both sides attack next night. Plan your defence."],
@@ -96,7 +105,7 @@ const ROWS=[
  ["core.collect", "靠近持晶工匠，讓採集收入進入晶袋。", "靠近持晶工匠，让采集收入进入晶袋。", "Approach the worker carrying crystals to receive your harvest income."],
  ["core.bow", "防守已開放：招募另一名居民，再製作獵弓。缺晶可再採集。", "防守已开放：招募另一名居民，再制作猎弓。缺晶可再采集。", "Defence unlocked: recruit another resident and buy a bow. Harvest again if needed."],
  ["core.wall", "在右側投入龍晶築牆，等待工匠完成。", "在右侧投入龙晶筑墙，等待工匠完成。", "Fund the right wall, then wait for your worker to finish it."],
- ["core.assign", "打開「配置守軍」，增派右防線並等弓兵到位。調動免費。", "打开“配置守军”，增派右防线并等弓兵到位。调动免费。", "Assign an archer to the right wall and wait for their arrival. Orders are free."],
+ ["core.assign", "到射箭場號令台花 1 晶派弓兵守右側。", "到射箭场号令台花 1 晶派弓兵守右侧。", "At the archery command post, assign the right wall for 1 crystal."],
  ["core.first_warning", "東方傳來低吼。守軍已就位，準備迎接第一夜。", "东方传来低吼。守军已就位，准备迎接第一夜。", "Growls rise in the east. Your guards are ready for the first night."],
  ["core.first_night", "敵群從右側接近。讓防線迎敵，你可以觀察或支援。", "敌群从右侧接近。让防线迎敌，你可以观察或支援。", "Enemies approach from the right. Let the defence fight; observe or help."],
  ["core.autonomy", "下一夜兩側會先後受襲。自行選擇採集、加固或增兵；西方林間有補給，東方晶巢有守獸。", "下一夜两侧会先后受袭。自行选择采集、加固或增兵；西方林间有补给，东方晶巢有守兽。", "Both sides will be attacked next night. Harvest, reinforce or recruit. Find supplies west, or a guarded crystal nest east."],

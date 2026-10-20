@@ -44,6 +44,9 @@ var _stride: RefCounted = preload("res://presentation/knight_stride.gd").new()
 var _distance_stride: bool = false
 var locomotion_transition: Sprite2D=preload("res://presentation/knight_locomotion_transition.gd").new()
 var _mounted_time: float=0.0
+var _mount_moving: bool=false
+var _mount_settle: int=0
+var _mount_cadence: float=0.0
 @export_range(20,44,0.5) var walking_frame_rate: float=32.0
 @export_range(32,60,0.5) var running_frame_rate: float=48.0
 var _gait_rate: float=32.0
@@ -147,6 +150,7 @@ func reset_pose() -> void:
 	_stride.reset()
 	locomotion_transition.reset()
 	_mounted_time=0
+	_mount_moving=false;_mount_settle=0;_mount_cadence=0
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
 	fatigue.reset()
@@ -361,6 +365,11 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	var idle_start: int=appearance.mounted_idle_start if appearance!=null else 0
 	var idle_count: int=appearance.mounted_idle_frames if appearance!=null else 1
 	var index: int=idle_start+int(_motion_time*2)%idle_count
+	var moving: bool=pose.get("moving",false) or pose.get("dashing",false)
+	if seconds>0:
+		if _mount_moving and not moving:_mount_settle=posmod(4-int(_mounted_time)%4,4)
+		_mount_moving=moving
+		if moving:_mount_settle=0
 	if progress<1:
 		var start: int=appearance.mounted_attack_start if appearance!=null else 3
 		var count: int=appearance.mounted_attack_frames if appearance!=null else 3
@@ -371,13 +380,17 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 			index=start+(0 if progress<active_start*0.5 else 1 if progress<active_start else 2 if progress<active_end else 3)
 		else:index=start+mini(count-1,int(progress*count))
 	elif not pose.get("grounded",true):index=2
-	elif pose.get("moving",false) or pose.get("dashing",false):
+	elif moving or _mount_settle>0:
 		var count: int=appearance.mounted_gait_frames if appearance!=null else 2
 		if appearance!=null:
 			# Keep one complete cycle visible on a 30 Hz phone. Distance controls cadence;
 			# changing speed never restarts the stride or adds a minimum sliding cadence.
 			var cadence: float=minf(appearance.mounted_max_fps,appearance.mounted_fps*absf(pose.get("horizontal_speed",206.25))/appearance.mounted_reference_speed)
-			_mounted_time=fposmod(_mounted_time+maxf(0,seconds)*cadence,float(count))
+			if not moving:cadence=18.0
+			_mount_cadence=move_toward(_mount_cadence,cadence,maxf(0,seconds)*100.0)
+			var before: int=int(_mounted_time)
+			_mounted_time=fposmod(_mounted_time+maxf(0,seconds)*_mount_cadence,float(count))
+			if not moving:_mount_settle=maxi(0,_mount_settle-posmod(int(_mounted_time)-before,count))
 			index=int(_mounted_time)%count
 		else:index=1+int(_gait_time*24/STRIDE_FRAMES)%2
 	if hurt_active:index=appearance.mounted_hurt_frame if appearance!=null else 0

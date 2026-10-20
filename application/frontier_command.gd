@@ -115,7 +115,7 @@ func observe(sim: RefCounted) -> void:
  if repaired and sim.clock.day>last_day:
   waiting=mini(rules.passenger_limit,waiting+sim.clock.day-last_day);last_day=sim.clock.day
  for squad: Squad in squads:
-  squad.members=squad.members.filter(func(i: int)->bool:return i<_world.people.size() and _world.people[i].role in ["guard","hunter","engineer"] and _world.people[i].hurt<=0)
+  squad.members=squad.members.filter(func(i: int)->bool:return i<_world.people.size() and _world.people[i].role in ["guard","hunter","engineer"])
  squads=squads.filter(func(s: Squad)->bool:return not s.members.is_empty())
  if not squads.is_empty() and inside(sim._hero_x):
   squads.clear();sim.effects.append({"kind":"command_dismissed","x":sim._hero_x,"life":2.0})
@@ -132,7 +132,7 @@ func target(sim: RefCounted, index: int, seconds: float) -> float:
  var person: Dictionary=_world.people[index]
  if not contains(index):return _claim_sword(sim,person)
  person["y"]=430.0;person["work_state"]="walk";person["sheltering"]=true
- if person.role=="guard":sim._shoot_nearest_raider(person,90.0,24,1.1)
+ if person.role=="guard":preload("res://application/sword_guard.gd").advance(sim,person,seconds)
  elif person.role=="hunter":sim._shoot_nearest_raider(person,sim.hunter_range,sim.archer_damage(),sim.hunter_interval)
  else:
   var work: float=_escort_work(sim,index,seconds)

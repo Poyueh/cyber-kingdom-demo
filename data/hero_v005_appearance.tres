@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" path="res://art/characters/hero-v011/jump-unarmed.png" id="unarmed_jump"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v011/rest.png" id="rest"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v011/ceremony.png" id="ceremony"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v011/mounted.png" id="mounted"]
-[ext_resource type="Texture2D" path="res://art/characters/hero-v011/mounted-unarmed.png" id="unarmed_mounted"]
+[ext_resource type="Texture2D" path="res://art/characters/mounted-v002/mounted.png" id="mounted"]
+[ext_resource type="Texture2D" path="res://art/characters/mounted-v002/mounted-unarmed.png" id="unarmed_mounted"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v011/transition.png" id="locomotion_transition"]
 [ext_resource type="Texture2D" path="res://art/characters/hero-v011/transition-unarmed.png" id="unarmed_locomotion_transition"]
 
@@ -50,7 +50,7 @@ mounted_gait_frames = 8
 mounted_fps = 12.0
 mounted_reference_speed = 206.25
 mounted_max_fps = 24.0
-mounted_offsets = Array[Vector2]([Vector2(0, 0), Vector2(0, 0), Vector2(0, -4), Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, -4), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, -1), Vector2(0, -1), Vector2(0, -1)])
+mounted_offsets = Array[Vector2]([])
 mounted_attack_start = 8
 mounted_attack_frames = 4
 mounted_idle_start = 12

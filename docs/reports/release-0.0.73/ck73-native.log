@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 4.1 Metal - 90.5 - Compatibility - Using Device: Apple - Apple M3 Pro
+
+PASS: station owns the real E interaction
+PASS: E opens the building's orders panel
+PASS: the real panel assigns one archer and spends one crystal
+PASS: maximum camp does not accept payment
+PASS: sword and shield survive a telegraphed front strike
+PASS: new mount returns to a planted stop
+PASS: pause freezes mounted motion
+Defense scene: 7 assertions; failures: 0
