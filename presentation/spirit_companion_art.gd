@@ -1,110 +1,89 @@
 extends RefCounted
-## Native two-pixel artwork: articulated hood, eyes, sleeves, crystal heart and wisps.
-const INK: Dictionary={"a":Color("234551"),"b":Color("367b87"),"c":Color("67bcb9"),"d":Color("a7e2d1"),"e":Color("e2fff1"),"g":Color("d9bd83")}
-const HOOD: Array[String]=[
- "........bbb.........", "......bbcccbb.......", ".....bcdddcccb......",
- "....bcdeeedcccb.....", "...bcddcccccccb.....", "...bcdbaaaaabcb.....",
- "..bcdbbaaaaabbcb....", "..bcdbaaaaaaabcb....", "...bcbaaaaaaabcb....",
- "...bcddbaaaabdcb....", "....bcddbbbddcb.....", ".....bccdddccb......"]
-const CLOAK: Array[String]=[
- ".......gggg.........", "....bbbcddcbbb......", "...bcddcddcddcb.....",
- "..bcddccddccddcb....", "...bccdcddcdccb.....", "....bccddddccb......",
- ".....bcddddcb.......", ".....bcddddcb.......", "....bccddddccb......",
- "....bcddddddcb......", "...bcddccccddcb.....", "...bcccb..bccccb....",
- "....bcb....bccb.....", "....bb......bb......"]
+## A compact plasma familiar on the same two-pixel grid as the world.
+## The solid core never flickers: only peripheral energy slowly breathes.
+const INK: Dictionary={"a":Color("102c48"),"b":Color("236b9b"),"c":Color("33bad5"),"d":Color("78eaf0"),"e":Color("ddffff"),"v":Color("6579c3")}
+const HEAD: Array[String]=[
+ ".....cccc.....","...ccddddcc...","..cdddeedddc..",".cddcaaaacddc.",
+ ".cdbaaaaaabdc.",".cdaaaaaaaadc.","..cdaaaaaadc..","...ccddddcc..."]
+const CORE: Array[String]=[
+ "...bccddccb...","..bcddccddcb..",".bcddcaacddcb.",".bccddccddccb.",
+ "..bcddeeddcb..","...bcddddcb...","....bcddcb....",".....bccb....."]
 
 static func paint(canvas: Node2D, pose: Dictionary, celebrate: bool) -> void:
- var at: Vector2=pose.position
- var t: float=pose.phase
- var look: float=pose.look
- var state: String="celebrate" if celebrate else pose.state
- var lean: float=roundf(pose.lean)
- var beat: float=sin(t*3.6)
- # A few fading motes, never a screen-wide trail or collision surface.
- for i: int in range(4):
-  var life: float=fposmod(t*0.55+i*0.25,1.0)
-  var tail: Vector2=Vector2(-pose.direction*(12+life*24)-lean,18+life*21)
-  _pixel(canvas,at+tail,2,Color(0.46,0.84,0.80,(1-life)*0.38))
- canvas.draw_set_transform(at.round())
- # Two separate cloth tails lag behind forward motion.
- for side: int in [-1,1]:
-  for i: int in range(7):
-   var sway: float=roundf(sin(t*3.2-i*0.42+side)*i*0.65-lean*i*0.7)
-   _pixel(canvas,Vector2(side*7+sway,13+i*3),maxi(2,7-i),Color(0.35,0.73,0.73,0.72-i*0.07))
- _pattern(canvas,CLOAK,Vector2(-20,-7),t,lean,true)
- # Head tracks the knight independently; the whole body never snaps to its mirror.
- var head: Vector2=Vector2(roundf(look*2+lean*0.5),roundf(sin(t*2.6)*1.2))
- _pattern(canvas,HOOD,Vector2(-20,-29)+head,t,0,false)
- var blink: bool=fposmod(t+0.8,4.7)>4.53
- var eye_y: float=-15+head.y
- for side: int in [-1,1]:
-  var eye: Vector2=Vector2(side*5+roundf(look*1.5)+head.x,eye_y)
-  if state=="celebrate":
-   _pixel(canvas,eye+Vector2(-2,0),2,INK.e);_pixel(canvas,eye+Vector2(0,-2),2,INK.e);_pixel(canvas,eye+Vector2(2,0),2,INK.e)
-  else:canvas.draw_rect(Rect2(eye.round(),Vector2(4,2 if blink else 4)),INK.e)
- _pixel(canvas,Vector2(roundf(look)+head.x,-7+head.y),2,INK.c)
- # Small warm broken crown, with staggered highlights instead of a large UI halo.
- for i: int in range(5):
-  var angle: float=PI+float(i)*PI/4+sin(t*1.4)*0.12
-  var crown: Vector2=Vector2(cos(angle)*18,-29+sin(angle)*7)+head
-  _pixel(canvas,crown,3,Color(0.85,0.74,0.52,0.60+0.18*sin(t*2+i)))
- # Breathing crystal set into the clasp.
- var heart: Vector2=Vector2(lean*0.4,1)
- _diamond(canvas,heart,5,INK.b);_diamond(canvas,heart,3,Color(0.80,1,0.91,0.8+0.2*sin(t*3)))
- var facing: float=pose.direction
- var elbow: Vector2=Vector2(17,3)
- var hand: Vector2=Vector2(20,9+beat*2)
- match state:
-  "lead","return":elbow=Vector2(17,1-absf(beat)*2);hand=Vector2(25,-2-beat*3)
-  "greet","wait":
-   facing=signf(look);elbow=Vector2(17,-7);hand=Vector2(22+beat*4,-19-absf(beat)*3)
-  "point":elbow=Vector2(20,-1);hand=Vector2(29,7+sin(t*2)*2)
-  "observe":elbow=Vector2(15,5);hand=Vector2(11,9+sin(t*1.8)*2)
-  "receive":elbow=Vector2(18,2);hand=Vector2(27,1-absf(beat)*3)
-  "guard":elbow=Vector2(18,-7);hand=Vector2(20,-21+sin(t*2)*1.5)
-  "celebrate":elbow=Vector2(17,-12);hand=Vector2(21,-28)
-  "rest":elbow=Vector2(13,6);hand=Vector2(18,12)
- if facing==0:facing=1
- _arm(canvas,Vector2(11*facing,-1),elbow*Vector2(facing,1),hand*Vector2(facing,1))
- var back: Vector2=Vector2(-17*facing,6+sin(t*2.4+1)*3)
- if state=="receive":back=Vector2(-23*facing,2)
- if state=="celebrate":back=Vector2(-19*facing,-21)
- _arm(canvas,Vector2(-10*facing,0),Vector2(-14*facing,3),back)
- if celebrate:
-  for i: int in range(5):
-   var angle: float=TAU*i/5+t
-   _pixel(canvas,Vector2(cos(angle),sin(angle))*34,2,INK.g)
+ canvas.draw_set_transform(pose.position.round())
+ _body(canvas,pose.phase,pose.look,pose.lean,pose.direction,"celebrate" if celebrate else pose.state,1.0)
  canvas.draw_set_transform(Vector2.ZERO)
 
-static func _pattern(canvas: Node2D, rows: Array[String], origin: Vector2, t: float, lean: float, cloth: bool, opacity: float=1.0) -> void:
+static func _body(canvas: Node2D, t: float, look: float, lean: float, direction: float, state: String, opacity: float) -> void:
+ # Layered pixel corona, with no high-frequency noise or alpha holes in the body.
+ for band: int in range(3):
+  var glow: Color=INK.c;glow.a=opacity*(0.035+0.01*sin(t*1.8))/(band+1)
+  var radius: float=28+band*2
+  for row: int in range(-int(radius),int(radius),4):
+   var half: float=roundf((20+band*3)*sqrt(maxf(0,1.0-pow(float(row)/radius,2)))/2)*2
+   canvas.draw_rect(Rect2(-half,row,half*2,4),glow)
+ for side: int in [-1,1]:
+  for segment: int in range(6):
+   var lag: float=roundf(sin(t*2.4-segment*0.5+side)*segment*0.6-lean*segment*0.45)*2
+   var ink: Color=INK.c;ink.a=opacity*(0.72-segment*0.09)
+   _pixel(canvas,Vector2(side*4+lag,12+segment*2),maxi(2,6-segment),ink)
+ _pattern(canvas,CORE,Vector2(-14,-4),opacity)
+ var head: Vector2=Vector2(roundf(look),roundf(sin(t*2.2)))*2
+ _pattern(canvas,HEAD,Vector2(-14,-22)+head,opacity)
+ var blink: bool=fposmod(t+0.8,4.7)>4.55
+ for side: int in [-1,1]:
+  var eye: Vector2=Vector2(side*4+roundf(look)*2,-12)+head
+  _rect(canvas,Rect2(eye,Vector2(4,2 if blink else 4)),INK.e,opacity)
+ # Orbiting capacitor segments replace the old gold crown.
+ for i: int in range(4):
+  var angle: float=PI+PI*i/3.0
+  _pixel(canvas,Vector2(cos(angle)*13,-22+sin(angle)*5)+head,2,Color(0.4,0.77,1,opacity*0.85))
+ _rect(canvas,Rect2(-2,0,4,8),INK.e,opacity)
+ _rect(canvas,Rect2(-6,2,12,2),INK.d,opacity)
+ # Tiny circuit paths make the plasma read as technology, not fabric.
+ for side: int in [-1,1]:
+  _rect(canvas,Rect2(side*8-1,0,2,6),INK.c,opacity)
+  _pixel(canvas,Vector2(side*6,8),2,INK.e*Color(1,1,1,opacity))
+ var beat: float=sin(t*3.0)
+ var hand: Vector2=Vector2(18,4+roundf(beat)*2)
+ var elbow: Vector2=Vector2(12,0)
+ var facing: float=direction
+ match state:
+  "lead","return":hand=Vector2(22,-4+roundf(beat)*2)
+  "greet","wait":facing=signf(look);elbow=Vector2(12,-6);hand=Vector2(18+roundf(beat)*2,-16)
+  "point":hand=Vector2(22,2)
+  "observe":hand=Vector2(12,8)
+  "receive":hand=Vector2(20,0)
+  "guard":elbow=Vector2(12,-8);hand=Vector2(16,-18)
+  "celebrate":elbow=Vector2(12,-8);hand=Vector2(18,-20)
+  "rest":hand=Vector2(14,10)
+ if facing==0:facing=1
+ _arm(canvas,Vector2(8*facing,-2),elbow*Vector2(facing,1),hand*Vector2(facing,1),opacity)
+ _arm(canvas,Vector2(-8*facing,0),Vector2(-10*facing,4),Vector2(-14*facing,8+roundf(beat)*2),opacity)
+ for i: int in range(3):
+  var life: float=fposmod(t*0.35+i/3.0,1.0)
+  var mote: Color=INK.d;mote.a=opacity*(1-life)*0.32
+  _pixel(canvas,Vector2(-direction*(8+life*14),14+life*10),2,mote)
+
+static func _pattern(canvas: Node2D, rows: Array[String], origin: Vector2, opacity: float) -> void:
  for y: int in range(rows.size()):
-  var sway: float=roundf(sin(t*2.8-y*0.23)*maxf(0,y-5)*0.15-lean*maxf(0,y-3)*0.12) if cloth else 0.0
   for x: int in range(rows[y].length()):
-   var ink: String=rows[y][x]
-   if INK.has(ink):
-    var color: Color=INK[ink];color.a=(0.91 if not cloth else 0.9-y*0.014)*opacity
-    canvas.draw_rect(Rect2((origin+Vector2(x*2+sway,y*2)).round(),Vector2(2,2)),color)
+   if INK.has(rows[y][x]):_rect(canvas,Rect2(origin+Vector2(x*2,y*2),Vector2(2,2)),INK[rows[y][x]],opacity)
 
-static func _arm(canvas: Node2D, shoulder: Vector2, elbow: Vector2, hand: Vector2) -> void:
- _stroke(canvas,shoulder,elbow,6,INK.b)
- _stroke(canvas,elbow,hand,4,INK.d)
- _pixel(canvas,hand,5,INK.e)
+static func _arm(canvas: Node2D, start: Vector2, elbow: Vector2, hand: Vector2, opacity: float) -> void:
+ for pair: Array in [[start,elbow],[elbow,hand]]:
+  var steps: int=maxi(1,int(pair[0].distance_to(pair[1])/2))
+  for i: int in range(steps+1):_pixel(canvas,pair[0].lerp(pair[1],float(i)/steps),4,INK.c*Color(1,1,1,opacity))
+ _pixel(canvas,hand,4,INK.e*Color(1,1,1,opacity))
 
-static func _stroke(canvas: Node2D, start: Vector2, end: Vector2, width: int, color: Color) -> void:
- var steps: int=maxi(1,int(start.distance_to(end)/2))
- for i: int in range(steps+1):_pixel(canvas,start.lerp(end,float(i)/steps),width,color)
+static func _rect(canvas: Node2D, rect: Rect2, color: Color, opacity: float) -> void:
+ color.a*=opacity;canvas.draw_rect(rect,color)
 
-static func _pixel(canvas: Node2D, point: Vector2, width: int, color: Color) -> void:
- canvas.draw_rect(Rect2((point/2).round()*2-Vector2.ONE*floorf(width/2.0),Vector2.ONE*width),color)
-
-static func _diamond(canvas: Node2D, at: Vector2, radius: int, color: Color) -> void:
- for y: int in range(-radius,radius+1,2):
-  var half: int=radius-absi(y)
-  canvas.draw_rect(Rect2((at+Vector2(-half,y)).round(),Vector2(maxi(2,half*2),2)),color)
+static func _pixel(canvas: Node2D, at: Vector2, width: int, color: Color) -> void:
+ canvas.draw_rect(Rect2((at/2).round()*2-Vector2.ONE*floorf(width/2.0),Vector2.ONE*width),color)
 
 static func projection(canvas: Node2D, at: Vector2, time: float, opacity: float) -> void:
- _pattern(canvas,CLOAK,at+Vector2(-20,-7),time,0,true,opacity)
- _pattern(canvas,HOOD,at+Vector2(-20,-29),time,0,false,opacity)
- for side: int in [-1,1]:
-  var eye: Color=INK.e;eye.a=opacity
-  _pixel(canvas,at+Vector2(side*5,-14),3,eye)
+ # Shrine has a local transform already; keep it rather than resetting the canvas.
+ canvas.draw_set_transform(at)
+ _body(canvas,time,1,0,1,"rest",opacity)
+ canvas.draw_set_transform(Vector2.ZERO)

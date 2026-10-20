@@ -17,7 +17,8 @@ static func draw_on(canvas: Node2D, at: Vector2, time: float, selected: bool, av
  canvas.draw_rect(Rect2(-2,-27,4,7),Color("b0edd5"))
  var bob: float=roundf(sin(time*2)*2)*2
  var alpha: float=(0.75+0.15*sin(time*2.5)) if available else 0.25
- Ghost.projection(canvas,Vector2(0,-65+bob),time,alpha)
+ Ghost.projection(canvas,at+Vector2(0,-65+bob),time,alpha)
+ canvas.draw_set_transform(at)
  if available:
   for i in range(3):
    var rise: float=fposmod(time*0.4+i*0.33,1)

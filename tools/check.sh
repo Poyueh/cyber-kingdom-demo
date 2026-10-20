@@ -39,6 +39,7 @@ run_check forest_demo --script res://tests/test_forest_demo.gd
 run_check demo_finale --script res://tests/test_demo_finale_scene.gd
 run_check core_loop_scene --script res://tests/test_core_loop_scene.gd
 run_check core_spirit_scene --script res://tests/test_core_spirit_scene.gd
+run_check plasma_spirit --script res://tests/test_plasma_spirit_scene.gd
 run_check guided_scene --script res://tests/test_guided_scene.gd
 run_check integration --script res://tests/test_scene.gd
 run_check combo --script res://tests/test_combo_scene.gd

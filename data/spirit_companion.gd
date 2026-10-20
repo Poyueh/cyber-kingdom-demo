@@ -20,3 +20,6 @@ extends Resource
 ## After the guided opening the ghost repeats the goal of the moment this often, for this long.
 @export var callout_interval: float
 @export var callout_seconds: float
+
+## Pixel silhouette and glow clearance, shared by placement and drawing.
+@export var body_half_size: Vector2

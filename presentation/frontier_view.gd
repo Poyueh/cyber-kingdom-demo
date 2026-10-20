@@ -31,13 +31,6 @@ func _draw() -> void:
 		if not _on_screen(resource.x):continue
 		_world_alpha=_region_reveal(resource.region)
 		if _world_alpha>0:_resource(resource)
-	_wildlife.present(_sim)
-	for animal_index: int in range(map.animals.size()):
-		var animal: Dictionary=map.animals[animal_index]
-		if not _on_screen(animal.x):continue
-		_world_alpha=_region_reveal(animal.region)
-		if animal.alive and _world_alpha>0:_wildlife.draw(self,art.props.deer,animal_index,Vector2(animal.x,430),0.75,Color(1,1,1,_world_alpha))
-	_world_alpha=1.0
 	for region in map.regions:
 		if not region.outpost_ready: continue
 		if not _on_screen(region.outpost_x,LABEL_MARGIN):continue
@@ -50,6 +43,17 @@ func _draw() -> void:
 			_text(tr("施工 %d%%") % int(100*region.outpost_progress/map.outpost_seconds),at.x,315,Color("edd19d"),13)
 		else: _text(tr("拓荒站") if region.outpost_built else tr("已清理 · 可拓建"),at.x,312,Color("b6dfd0"),13)
 	super._draw()
+	_draw_wildlife()
+
+func _draw_wildlife() -> void:
+	var map: RefCounted=_sim.frontier
+	_wildlife.present(_sim)
+	for animal_index: int in range(map.animals.size()):
+		var animal: Dictionary=map.animals[animal_index]
+		if not _on_screen(animal.x):continue
+		_world_alpha=_region_reveal(animal.region)
+		if animal.alive and _world_alpha>0:_wildlife.draw(self,art.props.deer,animal_index,Vector2(animal.x,430),0.75,Color(1,1,1,_world_alpha))
+	_world_alpha=1.0
 
 var _world_alpha:=1.0
 func _region_reveal(index: int) -> float:
