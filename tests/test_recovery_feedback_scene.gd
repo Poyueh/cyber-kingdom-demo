@@ -27,17 +27,29 @@ func run_scene() -> void:
   key(KEY_D,false);await step(game,2);key(KEY_D,true);await step(game,4)
   check(game.knight.velocity.x>run*1.5,edition+": real double-tap starts sprinting")
   game.sim.hero.stamina=0;await step(game,2)
-  check(game.knight.velocity.x>=run-0.1,edition+": exhausted input keeps ordinary movement")
-  await step(game,45)
+  check(is_zero_approx(game.knight.velocity.x) and game.knight.visual.breathing,edition+": exhausted input stops in the breathing pose")
+  var stopped_x: float=game.knight.position.x
+  await step(game,40)
+  check(is_equal_approx(game.knight.position.x,stopped_x) and is_zero_approx(game.sim.hero.stamina),edition+": held sprint cannot move or regenerate during breathing")
+  await shot(edition+"-breathing")
+  key(KEY_J,true);await step(game,1);key(KEY_J,false);await step(game,3)
+  check(game.sim.hero.attack_remaining>0,edition+": free ordinary attack still works while catching breath")
+  check(is_equal_approx(game.knight.position.x,stopped_x),edition+": free attack cannot step through the breathing stop")
+  await step(game,35)
+  check(game.knight.velocity.x>0 and game.knight.velocity.x<run*0.6 and not game.knight.visual.breathing,edition+": after breathing movement becomes slow walking")
   var bar: ProgressBar=game.hud.core_hud.stamina
   var recovering: float=bar.value
-  check(bar.is_visible_in_tree() and recovering>0 and recovering<game.sim.hero.stats.max_stamina/3,edition+": recovery is visibly filling below the one-third marker")
-  await shot(edition+"-recovering")
-  await step(game,10)
-  check(bar.visible and bar.value>recovering,edition+": bar stays visible while stamina restores")
-  await step(game,50)
-  check(game.knight.velocity.x>run*1.5 and not game.sim.travel.exhausted,edition+": held sprint resumes at one-third without a compulsory stop")
-  await shot(edition+"-ready")
+  check(bar.is_visible_in_tree() and recovering>0 and recovering<game.sim.hero.stats.max_stamina/3,edition+": walking recovery is visible below one third")
+  await shot(edition+"-walking")
+  await step(game,105)
+  check(is_equal_approx(game.knight.velocity.x,run) and game.sim.travel.exhausted,edition+": one third restores running while sprint remains locked")
+  await shot(edition+"-running")
+  var resumed: bool=false
+  for frame: int in range(230):
+   await step(game,1)
+   if game.knight.velocity.x>run*1.5:resumed=true;break
+  check(resumed and not game.sim.travel.exhausted,edition+": reaching full rearms held sprint without another stop")
+  await shot(edition+"-sprinting")
   key(KEY_D,false);await step(game,240)
   check(not bar.visible and is_equal_approx(game.sim.hero.stamina,game.sim.hero.stats.max_stamina),edition+": fully recovered bar retires after reaching full")
   game.queue_free();await frames(3)

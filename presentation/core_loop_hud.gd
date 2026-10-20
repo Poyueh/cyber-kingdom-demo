@@ -26,7 +26,7 @@ const WALLET_GAP: float=4.0
 const WALLET_ICON: float=24.0
 const WALLET_COLOR: Color=Color("dff6ee")
 const STAMINA_SIZE: Vector2=Vector2(56,6)
-const STAMINA_DROP: float=22.0 # From the knight's anchor to the bar's top; the feet (and hooves) are about 16 below it.
+const STAMINA_DROP: float=22.0 # From the knight's anchor to the bar's top; the feet (and tires) are about 16 below it.
 const STAMINA_TRACK: Color=Color("25363b")
 const STAMINA_EDGE: Color=Color("0b1519")
 const STAMINA_FULL: Color=Color("afd58b")
@@ -85,9 +85,9 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
  wallet.position=Vector2(purse.position.x-wallet.size.x-WALLET_GAP,purse.get_center().y-wallet.size.y/2) if purse.has_area() else safe.position+Vector2(92+WALLET_ICON,22)
  wallet_icon.position=Vector2(wallet.position.x-WALLET_ICON,wallet.position.y+(wallet.size.y-WALLET_ICON)/2)
  stamina.size=STAMINA_SIZE;stamina.position=hero_screen+Vector2(-STAMINA_SIZE.x/2,STAMINA_DROP)
- stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina
+ stamina.max_value=sim.hero.stats.max_stamina;stamina.value=sim.hero.stamina;stamina.visible=sim.hero.stamina<sim.hero.stats.max_stamina or sim.travel.breath_ticks>0
  var low: bool=sim.hero.stamina<=sim.hero.stats.max_stamina*STAMINA_LOW_RATIO
- var ratio: float=sim.travel.core_sprint.recovery_ratio if sim.travel.core_sprint!=null else sim.travel.rules.sprint_recovery_ratio
+ var ratio: float=sim.travel.rules.guided_run_recovery_ratio if sim.travel.core_sprint!=null else sim.travel.rules.run_recovery_ratio
  stamina_ready.position=Vector2(roundf(STAMINA_SIZE.x*ratio),0);stamina_ready.size=Vector2(1,STAMINA_SIZE.y)
  (stamina.get_theme_stylebox("fill") as StyleBoxFlat).bg_color=STAMINA_LOW if low else STAMINA_RECOVERING if sim.travel.exhausted else STAMINA_FULL
  orders_button.position=safe.position+Vector2(18,72);orders_button.visible=false

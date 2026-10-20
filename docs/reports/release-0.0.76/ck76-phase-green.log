@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: half-tick start phase does not lose breathing countdown ticks
+PASS: breathing releases walking after the same 2.5 seconds at a mixed frame cadence

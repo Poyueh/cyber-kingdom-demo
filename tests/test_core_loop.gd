@@ -22,7 +22,7 @@ func _initialize() -> void:
  sim.hero.stamina=0
  check(sim.hero.stats.attack_cost==0,"core knight can attack at zero stamina")
  var axis: float=sim.travel_axis(1.0,1.0/30)
- check(axis>=1.0,"exhausted core knight keeps normal running instead of compulsory stop")
+ check(is_zero_approx(axis),"exhausted core knight must catch breath before walking")
  check(Rules.config_valid(config),"resolved core trial configuration is save-admissible")
  var codec: RefCounted=load("res://application/campaign_snapshot.gd").new()
  var body: Dictionary={"x":30.0,"y":430.0,"vx":0.0,"vy":0.0}
