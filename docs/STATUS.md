@@ -1,8 +1,10 @@
-## v0.0.70 狩獵生物美術統一（驗收中）
+## v0.0.70 狩獵生物美術統一（已發布）
 
 v0.0.70 以原有鹿的細緻像素質感統一其餘七種可狩獵生物：野兔、野豬、狐狸、獾、山羊、雉雞與陸龜全部重製完整八格動作，補上毛皮、羽毛、角、甲殼與有體積的明暗。移除五色粗方塊身體與獨立矩形腿，改讀預先整理為原生一像素密度的完整動作圖集；每個物種全循環固定比例與地面錨點，依實際行進距離換格，停步／暫停保留姿勢，轉身只鏡射整張圖。鹿保留原圖與既有呈現。主遊戲、Demo與舊紀錄共用，維持八種外觀、原數量與每次狩獵2晶，不改AI、速度、分布或存檔v23。
 
-完整回歸通過（4707核心斷言及全場景，無SCRIPT ERROR／ERROR）。Godot原生八種品質對照、56格完整姿勢、180格走動／停步／轉向錄影與近郊／遠林實景已檢查；正式Demo Web新局移動、拔劍、森林動物顯示正常，無console errors。Main／Demo五平台同源9634a33，實體內容與圖集各66／67項、macOS啟動與簽章、Android簽章及16KiB對齊通過；13附件完成。公開部署待驗證，手機真機仍待試玩。教學：[第147課](lessons/147-native-wildlife-atlases.md)。
+完整回歸通過（4707核心斷言及全場景，無SCRIPT ERROR／ERROR）。Godot原生八種品質對照、56格完整姿勢、180格走動／停步／轉向錄影與近郊／遠林實景已檢查；正式Demo Web新局移動、拔劍、森林動物顯示正常，無console errors。Main／Demo五平台同源9634a33，實體內容與圖集各66／67項、macOS啟動與簽章、Android簽章及16KiB對齊通過；13附件完成。發布 418202597 已公開；Pages 39398912905 成功，70份公開檔案與成品逐一一致，規格 v0.0.70／修訂60。公開Demo前導／主選單與規格已瀏覽器確認，無console errors；手機真機仍待試玩。教學：[第147課](lessons/147-native-wildlife-atlases.md)。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.70) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.70) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.70) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.70) · [驗收](reports/release-0.0.70/preflight.json)。
 
 ## v0.0.69 八種狩獵生物（已發布）
 
