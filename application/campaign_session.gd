@@ -509,6 +509,13 @@ func _execute(choice: Dictionary) -> void:
 			hero.stats.damage+=frontier.training_damage
 		"heal": hero.hp=mini(hero.stats.max_hp,hero.hp+30)
 
+func _advance_hero(seconds: float) -> void:
+	if travel.core_sprint==null:
+		hero.advance(seconds)
+		return
+	var tick: int=roundi((workforce.elapsed+seconds)*RecoveryClock.TICKS_PER_SECOND)
+	travel.core_sprint.advance(travel,hero,seconds,tick,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
+
 func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if seconds<=0 or not is_finite(seconds):return
 	PlanetOps.resolve(self)

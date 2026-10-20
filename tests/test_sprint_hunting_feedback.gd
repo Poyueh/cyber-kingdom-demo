@@ -12,36 +12,61 @@ func configuration(mode: int=3) -> Dictionary:
  if mode!=3:config.erase("rocket_finale")
  return config
 
-func test_main_and_demo_resume_at_one_third_while_moving(t):
- for mode: int in [2,3]:
-  for old_default: bool in [false,true]:
-   var config: Dictionary=configuration(mode)
-   if old_default:config.core_sprint_ratio=0.3
-   var sim: RefCounted=Campaign.new(config)
-   sim.hero.stamina=0
-   t.equal(sim.travel_axis(1,STEP),1.0,"empty guided knight keeps running, mode %d"%mode)
-   sim.hero.stamina=sim.hero.stats.max_stamina/3.0-0.01
-   t.equal(sim.travel_axis(1,STEP),1.0,"sprint remains locked immediately below one third")
-   sim.hero.stamina=sim.hero.stats.max_stamina/3.0
-   t.truth(sim.travel_axis(1,STEP)>1.5,"exactly one third rearms sprint without stopping")
+func tick(sim: RefCounted, request: float=1.0) -> float:
+ sim.advance(STEP,30)
+ return sim.travel_axis(request,STEP)
 
-func test_exhausted_demo_save_recovers_without_compulsory_rest(t):
- var config: Dictionary=configuration()
- config.core_sprint_ratio=0.3
- var sim: RefCounted=Campaign.new(config)
- sim.hero.stamina=0;sim.travel_axis(1,STEP)
- var codec: RefCounted=Codec.new()
- var saved: Dictionary=codec.capture(sim,config,BODY)
- var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(saved)))
- t.truth(not loaded.is_empty(),"exhausted Demo round-trips through actual JSON")
- if loaded.is_empty():return
- var copy: RefCounted=loaded.session
- var kept_moving: bool=true
- for tick: int in range(102):
-  kept_moving=kept_moving and copy.travel_axis(0.5,STEP)>=1.0
-  copy.advance(STEP,30)
- t.truth(kept_moving,"recovering knight can keep moving")
- t.truth(copy.travel_axis(1,STEP)>1.5,"loaded knight can sprint again after recovering one third on the move")
+func test_guided_exhaustion_stops_then_walks_runs_and_rearms_at_full(t: Object) -> void:
+ for mode: int in [1,2,3]:
+  var sim: RefCounted=Campaign.new(configuration(mode))
+  sim.hero.stamina=0
+  t.equal(sim.travel_axis(1,STEP),0.0,"empty knight stops in all guided editions")
+  var stopped: bool=true
+  for frame: int in range(74):
+   stopped=stopped and is_zero_approx(tick(sim,-1)) and is_zero_approx(sim.hero.stamina)
+  t.truth(stopped,"turning or held sprint cannot bypass 2.5 seconds of breathing; no natural regeneration yet")
+  var walk: float=tick(sim,1)
+  t.truth(walk>0 and walk<1,"after 75 ticks the knight can slow-walk")
+  tick(sim,0.5)
+  t.truth(sim.hero.stamina>0,"natural recovery starts after breathing, even while moving")
+  sim.hero.stamina=sim.hero.stats.max_stamina/3.0-0.01
+  t.truth(sim.travel_axis(1,STEP)<1,"below one third remains walking")
+  sim.hero.stamina=sim.hero.stats.max_stamina/3.0
+  t.equal(sim.travel_axis(1,STEP),1.0,"exactly one third unlocks ordinary running")
+  sim.hero.stamina=sim.hero.stats.max_stamina-0.01
+  t.equal(sim.travel_axis(1,STEP),1.0,"sprint stays locked until completely full")
+  sim.hero.stamina=sim.hero.stats.max_stamina
+  t.truth(sim.travel_axis(1,STEP)>1.5,"full stamina rearms sprint without another stationary rest")
+
+func test_breathing_and_recovery_save_resume_match_continuous_inputs(t: Object) -> void:
+ for checkpoint: int in [20,100,220]:
+  var config: Dictionary=configuration()
+  config.core_sprint_ratio=0.3 # Older guided saves adopt the new movement rules.
+  var direct: RefCounted=Campaign.new(config)
+  direct.hero.stamina=0;direct.travel_axis(1,STEP)
+  for frame: int in range(checkpoint):tick(direct,0.5)
+  var codec: RefCounted=Codec.new()
+  var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(codec.capture(direct,config,BODY))))
+  t.truth(not loaded.is_empty(),"breathing/walking/running recovery survives actual JSON: "+codec.last_error)
+  if loaded.is_empty():continue
+  var copy: RefCounted=loaded.session
+  var identical: bool=true
+  for frame: int in range(430):
+   identical=identical and is_equal_approx(tick(direct),tick(copy)) and is_equal_approx(direct.hero.stamina,copy.hero.stamina)
+  t.truth(identical,"same input keeps the same stamina and stage after save/load")
+  t.equal(codec.capture(direct,config,BODY).travel,codec.capture(copy,config,BODY).travel,"travel timer state is deterministic")
+
+func test_breathing_progresses_without_movement_and_pause_preserves_it(t: Object) -> void:
+ var sim: RefCounted=Campaign.new(configuration())
+ sim.hero.stamina=0;sim.travel_axis(0,STEP)
+ t.truth(sim.travel.breath_ticks>0,"zero energy triggers breathing even with no direction held")
+ var before: int=sim.travel.breath_ticks
+ for frame: int in range(10):sim.advance(0,30);sim.travel_axis(1,0)
+ t.equal(sim.travel.breath_ticks,before,"pause never consumes breathing time")
+ for frame: int in range(75):sim.advance(STEP,30)
+ t.equal(sim.travel.breath_ticks,0,"simulation time releases breathing without polling movement input")
+ t.equal(sim.hero.stamina,0.0,"breathing interval does not naturally recharge stamina")
+ t.truth(tick(sim,0.5)>0 and sim.hero.stamina>0,"walking and recovery start after breathing")
 
 func forest() -> RefCounted:
  var sim: RefCounted=Campaign.new(configuration())
@@ -152,3 +177,48 @@ func test_bad_hunting_limits_are_rejected_before_restoring(t):
  t.truth(codec.restore(packet).is_empty(),"nonnumeric hunting radius is rejected safely")
  packet.config.hunt_wall_margin=10000
  t.truth(codec.restore(packet).is_empty(),"out-of-range hunting radius is rejected")
+
+func test_custom_breath_duration_and_corrupt_recovery_settings(t: Object) -> void:
+ var config: Dictionary=configuration()
+ config.guided_breath_seconds=3.0
+ var sim: RefCounted=Campaign.new(config)
+ sim.hero.stamina=0;sim.travel_axis(1,STEP)
+ for frame: int in range(89):tick(sim)
+ t.equal(sim.travel_axis(1,STEP),0.0,"configured three-second breathing still stops before the boundary")
+ t.truth(tick(sim)>0,"configured breathing ends on its 90th tick")
+ var codec: RefCounted=Codec.new()
+ var packet: Dictionary=codec.capture(sim,config,BODY)
+ packet.config.guided_breath_seconds=100
+ t.truth(codec.restore(packet).is_empty(),"out-of-range breathing settings cannot corrupt a save")
+ packet.config.guided_breath_seconds=3.0;packet.travel.breath_ticks=91
+ t.truth(codec.restore(packet).is_empty(),"remaining breathing time cannot exceed its configured duration")
+
+func test_exact_last_sprint_cost_enters_breathing_immediately(t: Object) -> void:
+ var sim: RefCounted=Campaign.new(configuration())
+ sim.hero.stamina=(sim.travel.drain_per_second+sim.hero.stats.stamina_regen)*STEP
+ t.equal(sim.travel_axis(1,STEP),0.0,"spending the exact last stamina enters breathing without one extra sprint frame")
+ t.truth(sim.travel.breath_ticks>0,"exact depletion receives the full breathing interval")
+
+func test_old_guided_clock_cannot_skip_a_new_breathing_stop(t: Object) -> void:
+ var config: Dictionary=configuration()
+ var sim: RefCounted=Campaign.new(config)
+ for frame: int in range(300):sim.advance(STEP,30)
+ var codec: RefCounted=Codec.new()
+ var packet: Dictionary=codec.capture(sim,config,BODY)
+ # v0.0.75 guided travel did not update this clock; a zero-energy module can save before a sprint request.
+ packet.travel.last_tick=0;packet.hero.state.stamina=0
+ var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(packet)))
+ t.truth(not loaded.is_empty(),"old guided clock shape remains admissible")
+ if loaded.is_empty():return
+ var resumed: RefCounted=loaded.session
+ t.equal(tick(resumed),0.0,"historical elapsed time cannot instantly consume a new breathing interval")
+ t.truth(resumed.travel.breath_ticks>=74,"old saves retain the complete new breathing stop")
+
+func test_breathing_clock_survives_half_tick_start_phase(t: Object) -> void:
+ var sim: RefCounted=Campaign.new(configuration())
+ for frame: int in range(11):sim.advance(1.0/60.0,30)
+ sim.hero.stamina=0
+ sim.travel_axis(1,STEP)
+ for frame: int in range(75):sim.advance(STEP,30)
+ t.equal(sim.travel.breath_ticks,0,"half-tick start phase does not lose breathing countdown ticks")
+ t.truth(sim.travel_axis(1,STEP)>0,"breathing releases walking after the same 2.5 seconds at a mixed frame cadence")

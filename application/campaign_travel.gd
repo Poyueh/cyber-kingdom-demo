@@ -15,7 +15,7 @@ var breath_ticks: int=0
 
 func configure(config: Dictionary) -> void:
  rules.apply(config)
- if config.get("core_loop_version",0) in [1,2,3]:core_sprint=preload("res://application/core_sprint.gd").new(rules.guided_ratio(config))
+ if config.get("core_loop_version",0) in [1,2,3]:core_sprint=preload("res://application/core_sprint.gd").new(rules)
 
 func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> float:
  if seconds<=0 or not is_finite(seconds) or not hero.is_alive():return 0
@@ -40,6 +40,9 @@ func axis(hero: RefCounted, request: float, seconds: float, tick: int=0) -> floa
   breath_ticks=rules.breath_tick_limit
   return 0
  return signf(request)*fast_multiplier
+
+func breathing_limit() -> int:
+ return rules.guided_breath_tick_limit if core_sprint!=null else rules.breath_tick_limit
 
 func breath_load(hero: RefCounted) -> float:
  if not forced_rest:return 0

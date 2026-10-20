@@ -1184,7 +1184,7 @@ const ROWS=[
  ["module.detail.command", "強化附近三名弓兵的下一箭；沒有弓兵不消耗。", "强化附近三名弓兵的下一箭；没有弓兵不消耗。", "Empowers the next arrow of three nearby archers. No archers, no cost."],
  ["module.name.capacitor", "電容卸載", "电容卸载", "Reserve Cell"],
  ["module.role.capacitor", "續航", "续航", "Recover"],
- ["module.detail.capacitor", "體力不足時緩慢充能；不跳過喘息或衝刺休息。", "体力不足时缓慢充能；不跳过喘息或冲刺休息。", "Recharges low stamina gradually. Does not skip fatigue or sprint recovery."],
+ ["module.detail.capacitor", "體力不足時緩慢充能；不跳過喘息，耗盡後須全滿才能再衝刺。", "体力不足时缓慢充能；不跳过喘息，耗尽后须全满才能再冲刺。", "Recharges low stamina gradually. Breathing still completes; sprint rearms at full after exhaustion."],
  ["module.collection %d/%d", "星際遺物  ·  %d/%d", "星际遗物  ·  %d/%d", "STAR RELICS  ·  %d/%d"],
  ["module.clue %s", "線索：%s 的遠方遺跡", "线索：%s 的远方遗迹", "Clue: a distant ruin in %s"],
  ["module.cooldown %d", "冷卻 %d 秒", "冷却 %d 秒", "%d s cooldown"],

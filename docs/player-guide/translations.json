@@ -2634,5 +2634,17 @@
   "劍盾兵能舉盾擋正面近戰，先蓄勢再斬擊；出招破綻、背擊與龍息仍危險。v0.0.75起改騎龍晶重機，車身接地、輪轂獨立轉動，保留騎乘斬擊；移速與取得方式不變。": {
     "zh_CN": "剑盾兵能举盾挡正面近战，先蓄势再斩击；出招破绽、背击与龙息仍危险。v0.0.75起改骑龙晶重机，车身接地、轮毂独立转动，保留骑乘斩击；移速与取得方式不变。",
     "en": "Sword-and-shield troops block frontal melee and wind up before cutting; recovery, rear strikes and dragon breath remain dangerous. Since v0.0.75 the rider uses a crystal motorcycle with a grounded chassis, independently rotating hubs and mounted sword attacks. Speed and acquisition are unchanged."
+  },
+  "耐力耗盡先停下喘息約2.5秒；結束後可慢走並開始恢復，回到三分之一可跑步，全滿才可再次衝刺。恢復時腳下耐力條持續顯示，刻度代表跑步門檻；不必再站定休息。": {
+    "zh_CN": "耐力耗尽先停下喘息约2.5秒；结束后可慢走并开始恢复，回到三分之一可跑步，全满才可再次冲刺。恢复时脚下耐力条持续显示，刻度代表跑步门槛；不必再站定休息。",
+    "en": "Empty stamina forces a 2.5-second breathing stop. Then walk slowly to recover, run at one third, and sprint again only at full stamina. The bar stays visible during recovery; its marker indicates running readiness. No extra stationary rest is required."
+  },
+  "耐力耗盡先停下喘息約2.5秒；結束後可慢走並開始恢復，回到三分之一可跑步，全滿才可再次衝刺。恢復時腳下耐力條持續顯示，刻度代表跑步門檻；不必再站定休息。鬼魂未完成的新手指示每6秒重播，走動也會提醒。未指派弓兵白天在城牆附近300像素內巡獵，提前回城守夜，遇敵可反擊並撤回城內。每次狩獵2晶先由獵人隨身保管，騎士靠近才交付；袋滿12晶先回防。": {
+    "zh_CN": "耐力耗尽先停下喘息约2.5秒；结束后可慢走并开始恢复，回到三分之一可跑步，全满才可再次冲刺。恢复时脚下耐力条持续显示，刻度代表跑步门槛；不必再站定休息。鬼魂未完成的新手指示每6秒重播，走动也会提醒。未指派弓兵白天在城墙附近300像素内巡猎，提前回城守夜，遇敌可反击并撤回城内。每次狩猎2晶先由猎人随身保管，骑士靠近才交付；袋满12晶先回防。",
+    "en": "Empty stamina forces a 2.5-second breathing stop. Then walk slowly to recover, run at one third, and sprint again only at full stamina. The bar stays visible during recovery; its marker indicates running readiness. No extra stationary rest is required. The ghost repeats unfinished tutorial instructions every 6 seconds, even while moving. Unassigned archers hunt within 300 world pixels of the walls by day, return before night, and can fire while retreating from monsters. Hunters keep the 2 crystals from each catch until the knight approaches; a full 12-crystal bag sends them home."
+  },
+  "v0.0.76：耐力耗盡先停下喘息約2.5秒；結束後可慢走並開始恢復，回到三分之一可跑步，全滿才可再次衝刺。恢復時腳下耐力條持續顯示，刻度代表跑步門檻；不必再站定休息。": {
+    "zh_CN": "v0.0.76：耐力耗尽先停下喘息约2.5秒；结束后可慢走并开始恢复，回到三分之一可跑步，全满才可再次冲刺。恢复时脚下耐力条持续显示，刻度代表跑步门槛；不必再站定休息。",
+    "en": "v0.0.76: Empty stamina forces a 2.5-second breathing stop. Then walk slowly to recover, run at one third, and sprint again only at full stamina. The bar stays visible during recovery; its marker indicates running readiness. No extra stationary rest is required."
   }
 }
