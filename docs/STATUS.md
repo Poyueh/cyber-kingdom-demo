@@ -6,7 +6,7 @@
 
 完整回歸通過（4666項核心斷言；另增三弓兵JSON存讀回歸後核心4669項通過），無SCRIPT ERROR／ERROR。Demo終章9項、讀檔選單3項、騎乘14項場景驗證通過；原生駐軍數與馬廄截圖、跑步／衝刺／停步／轉向錄影完成。正式Demo Web包實際存檔→讀檔→按播放圖示返回遊戲成功，無瀏覽器錯誤。Main／Demo五平台已發布，13份遠端附件尺寸與SHA256一致；macOS執行及簽章、Android簽章與16 KiB對齊通過。
 
-Release 418099957 已公開，Pages 39385082400 成功，70個公開檔案（Main 35個）與發行包一致。公開Demo主選單及規格修訂55已用瀏覽器驗收，無console errors，未建立公開玩家旅程。另純文件校正現行摘要與快照版本為修訂56，原發行包維持修訂55。
+Release 418099957 已公開，Pages 39385082400 成功，70個公開檔案（Main 35個）與發行包一致。公開Demo主選單及規格修訂55已用瀏覽器驗收，無console errors，未建立公開玩家旅程。另純文件校正現行摘要與快照版本為修訂56（Pages 39385477445成功）；70個公開檔案再次核對一致，瀏覽器確認修訂56，無錯誤。原發行包維持修訂55。
 
 [森林 Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.67) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.67) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.67) · [驗收紀錄](reports/release-0.0.67/preflight.json)。
 
