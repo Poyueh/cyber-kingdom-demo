@@ -1,7 +1,7 @@
 extends RefCounted
 ## Continuous effect loops: how loud each should sit right now.
 ## Read-only observer: it never touches the model.
-const LOOPS := ["horse_gallop", "dragon_wing", "seal_progress"]
+const LOOPS := ["motorcycle_drive", "dragon_wing", "seal_progress"]
 const EARSHOT := 1200.0
 const MOVING := 8.0
 
@@ -16,7 +16,8 @@ func sample(sim, x: float, seconds: float, paused: bool) -> Dictionary:
 		_started = true
 		return mix
 	var moving: bool = _started and seconds > 0 and absf(x - _x) / seconds >= MOVING
-	if moving and sim.has_method("mounted") and sim.mounted(): mix.horse_gallop = 1.0
+	if moving and sim.has_method("mounted") and sim.mounted():
+		mix.motorcycle_drive = clampf(absf(x-_x)/maxf(seconds,0.001)/402.0,0.35,1.0)
 	for raider in sim.raiders:
 		if raider.get("kind", "") == "dragon" and raider.fighter.is_alive() and absf(raider.x - x) <= EARSHOT:
 			mix.dragon_wing = 1.0

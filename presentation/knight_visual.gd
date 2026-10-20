@@ -9,7 +9,7 @@ const Appearance = preload("res://data/knight_appearance.gd")
 @export var combo_motion: Resource
 const EquipmentShader=preload("res://presentation/knight_equipment.gdshader")
 var equipment_material: ShaderMaterial
-const MountedSheet=preload("res://art/characters/mounted-v001/mounted.png")
+const MountedSheet=preload("res://art/characters/motorcycle-v001/mounted.png")
 const STRIDE_FRAMES: int=16
 const STRIDE_COLUMNS: int=8
 const UnarmedRun=preload("res://art/characters/grounded-run-v001/run-unarmed.png")
@@ -37,6 +37,7 @@ var fatigue: Sprite2D=preload("res://presentation/knight_fatigue_view.gd").new()
 var mounted:=false
 var _mount: Sprite2D
 var _mount_frame:=AtlasTexture.new()
+var _drive: Node2D=preload("res://presentation/motorcycle_drive.gd").new()
 var weapon_tier:=0
 var armor_tier:=0
 var _gait_time:=0.0
@@ -69,8 +70,9 @@ func _init() -> void:
 	_mount=Sprite2D.new()
 	_mount.name="MountedKnight"
 	_mount.visible=false
-	_mount.offset=Vector2(0,-26)
+	_mount.offset=Vector2.ZERO
 	add_child(_mount)
+	_mount.add_child(_drive)
 	_moving_attack=Sprite2D.new()
 	_moving_attack.name="MovingAttack"
 	_moving_attack.visible=false
@@ -150,6 +152,7 @@ func reset_pose() -> void:
 	_stride.reset()
 	locomotion_transition.reset()
 	_mounted_time=0
+	_drive.reset()
 	_mount_moving=false;_mount_settle=0;_mount_cadence=0
 	self_modulate=Color.WHITE
 	_hide_alternate_bodies()
@@ -186,7 +189,7 @@ func present(pose: Dictionary, seconds: float) -> void:
 	elif _fatigue_weight>0.0:
 		var weight: float=smoothstep(0,1,_fatigue_weight)
 		_dim_body(0.0 if fatigue.authored_transition else 1.0-weight)
-		# Cavalry has its own baked top-tier palette; do not recolour its horse.
+		# The motorcycle and rider keep their authored palette.
 		fatigue.material=_mount.material if mounted else equipment_material
 		if mounted and unarmed and appearance!=null and appearance.unarmed_mounted!=null:
 			fatigue.mounted_sheet=appearance.unarmed_mounted
@@ -373,7 +376,7 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	if progress<1:
 		var start: int=appearance.mounted_attack_start if appearance!=null else 3
 		var count: int=appearance.mounted_attack_frames if appearance!=null else 3
-		# Always play forward: the previous reversed second cut snapped through the horse.
+		# Always play forward: every cut retains the same registered rider and chassis.
 		if count==4:
 			var active_start: float=0.25 if int(pose.get("combo_step",1))==2 else 0.4
 			var active_end: float=0.65 if int(pose.get("combo_step",1))==2 else 0.75
@@ -399,16 +402,12 @@ func _present_mount(pose: Dictionary, seconds: float) -> void:
 	var columns: int=roundi(_mount_frame.atlas.get_width()/160.0)
 	_mount_frame.region=Rect2(index%columns*160,index/columns*128,160,128)
 	_mount.texture=_mount_frame
-	_mount.position=Vector2.ZERO if appearance!=null else Vector2(0,sin(_motion_time*2)*0.5)
+	_mount.position=Vector2.ZERO
+	_drive.present(pose,seconds)
 	if appearance!=null and index<appearance.mounted_offsets.size():
 		_mount.position=appearance.mounted_offsets[index]*Vector2(pose.facing,1)
 
-	# Brace the horse through the cut, then ease back to a balanced stance.
-	if progress<1 and not hurt_active:
-		var thrust:=sin(clampf((progress-0.2)/0.65,0,1)*PI)
-		var weight:=1.5 if int(pose.get("combo_step",1))==3 else 1.0
-		var advance: float=thrust*3.5*weight if pose.get("attack_advancing",false) else 0.0
-		_mount.position+=Vector2(pose.facing*advance,thrust*1.5)
+	# Wheel contact stays fixed through attacks; only the rider changes pose.
 
 func armor_socket() -> Vector2:
 	return _module_attachment.socket_for(self)

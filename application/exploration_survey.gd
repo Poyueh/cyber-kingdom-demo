@@ -1,7 +1,7 @@
 extends RefCounted
 ## Read-only UI data. Unknown regions never disclose terrain or unclaimed rewards.
 const TITLES: Dictionary={"forest":"旅人林地","quarry":"龍脊晶谷","ruins":"斷環聖所"}
-const LEVEL_TITLES: Array[String]=["補給區","靜謐荒野","封印聖所","旅人遺藏","龍門前庭","戰馬遺跡"]
+const LEVEL_TITLES: Array[String]=["補給區","靜謐荒野","封印聖所","旅人遺藏","龍門前庭","重機遺跡"]
 static func read(sim: RefCounted, knight_x: float) -> Dictionary:
  var regions: Array[Dictionary]=[]
  var markers: Array[Dictionary]=[_marker("camp",sim.world.sites.hall,"營火")]
@@ -19,8 +19,8 @@ static func read(sim: RefCounted, knight_x: float) -> Dictionary:
   if not sim.modules.found.has(relic.id) and sim.frontier.regions[relic.region].discovered:
    markers.append(_marker("gear" if sim.trials.unlocked(relic.id) else "lock",relic.x,"特殊部件" if sim.trials.unlocked(relic.id) else "封印遺跡"))
  var q: RefCounted=sim.mount_quest
- if q.enabled and not q.recovered and preload("res://application/ruin_interactions.gd").known(sim,q.ruin_x):markers.append(_marker("mount",q.ruin_x,"機械戰馬遺跡"))
- if q.recovered or q.unlocked:markers.append(_marker("mount",q.stable_x,"馬廄"))
+ if q.enabled and not q.recovered and preload("res://application/ruin_interactions.gd").known(sim,q.ruin_x):markers.append(_marker("mount",q.ruin_x,"重機核心遺跡"))
+ if q.recovered or q.unlocked:markers.append(_marker("mount",q.stable_x,"重機車庫"))
  for rift: Dictionary in sim.mission.rifts:
   if rift.discovered:markers.append(_marker("check" if rift.sealed else "rift",rift.x,"已封印" if rift.sealed else "地獄之門"))
  return {"left":float(sim.frontier.left_boundary),"right":float(sim.frontier.right_boundary),"knight":knight_x,"regions":regions,"markers":markers}

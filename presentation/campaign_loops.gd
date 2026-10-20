@@ -16,7 +16,7 @@ var _players: Dictionary = {}
 
 func _ready() -> void:
 	for loop in Cues.LOOPS:
-		var path := "res://art/audio/campaign-v002/%s.wav" % loop
+		var path: String = "res://art/audio/motorcycle-v001/drive.wav" if loop == "motorcycle_drive" else "res://art/audio/campaign-v002/%s.wav" % loop
 		var stream := Streams.shared(path, true)
 		if stream == null:
 			push_error("missing effect loop: %s" % path)
@@ -39,6 +39,8 @@ func observe(seconds: float, sim, x: float, paused: bool) -> void:
 		levels[loop] = clampf(current + clampf(target - current, -step, step), 0.0, 1.0)
 		var player: AudioStreamPlayer = _players[loop]
 		player.volume_db = linear_to_db(maxf(0.0001, levels[loop] * volume))
+		if loop == "motorcycle_drive":
+			player.pitch_scale = move_toward(player.pitch_scale,0.82+target*0.38,maxf(0,seconds)*1.8)
 		if levels[loop] <= 0.0:
 			if player.playing: player.stop()
 		elif not player.playing and DisplayServer.get_name() != "headless":

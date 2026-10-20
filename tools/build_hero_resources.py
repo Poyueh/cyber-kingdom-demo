@@ -3,7 +3,9 @@ import json
 ROOT=Path(__file__).resolve().parents[1]
 OUT='res://art/characters/hero-v011/'
 GAIT='res://art/characters/hero-v011/'
-def atlas_path(file): return (GAIT if file.startswith('gait-') or file.startswith('transition') else OUT)+file+'.png'
+def atlas_path(file):
+ if file.startswith('mounted'):return 'res://art/characters/motorcycle-v001/'+file+'.png'
+ return (GAIT if file.startswith('gait-') or file.startswith('transition') else OUT)+file+'.png'
 clips={'idle':('idle',4,4,3),'run':('gait-run',8,4,14),'sprint':('gait-run',8,4,22),'tired_walk':('gait-tired',8,4,8),'attack':('idle',4,4,12),'dash':('gait-run',8,4,22),'jump':('jump',4,4,12),'hurt':('hurt',4,4,12),'death':('death',4,4,6)}
 files=list(dict.fromkeys(x[0] for x in clips.values()))
 lines=['[gd_resource type="SpriteFrames" format=3]','']
@@ -40,6 +42,7 @@ for key in textures:lines.append(f'{key} = ExtResource("{key}")')
 lines+=['idle_frames = 4','idle_columns = 4','stride_frames = 8','stride_columns = 4','run_fps = 14.0','sprint_fps = 22.0','tired_fps = 8.0','run_reference_speed = 165.0','sprint_reference_speed = 321.75','tired_reference_speed = 69.3','reaction_frames = 4','mounted_offset = Vector2(0, 0)','mounted_gait_frames = 8','mounted_attack_start = 8','mounted_attack_frames = 4','mounted_idle_start = 12','mounted_idle_frames = 2','mounted_hurt_frame = 14','mounted_rest_frame = 15','rest_transition_frames = true','start_seconds = 0.16','stop_seconds = 0.20','turn_seconds = 0.24','module_sockets = {']
 sockets=json.loads((ROOT/'art/characters/hero-v011/sockets.json').read_text())
 sockets.update(json.loads((ROOT/'art/characters/hero-v011/locomotion-sockets.json').read_text()))
+sockets.update(json.loads((ROOT/'art/characters/motorcycle-v001/sockets.json').read_text()))
 for name,points in sockets.items():
  lines.append('"'+name+'": ['+', '.join(f'Vector2({p[0]}, {p[1]})' for p in points)+'],')
 lines.append('}')

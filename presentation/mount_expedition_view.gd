@@ -1,8 +1,9 @@
 extends RefCounted
 const Ground=preload("res://presentation/grounded_art.gd")
 const Junction=preload("res://art/structures/mount-v001/junction.png")
-const Cradle=preload("res://art/structures/mount-v001/cradle.png")
-const Stable=preload("res://art/structures/mount-v001/stable.png")
+const Cradle=preload("res://art/structures/motorcycle-v001/cradle.png")
+const Garage=preload("res://art/structures/motorcycle-v001/garage.png")
+const Parked=preload("res://art/characters/motorcycle-v001/parked.png")
 const Ruins=preload("res://presentation/ruin_visual.gd")
 const Known=preload("res://application/ruin_interactions.gd")
 const Icons=preload("res://presentation/ui_icons.gd")
@@ -25,16 +26,18 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
    if q.recovered:tint=Color(0.38,0.48,0.5,tint.a)
    _prop(view,Cradle,q.ruin_x,tint)
    if absf(view._view_player_x-q.ruin_x)<120 and not q.recovered:
-    Ruins._caption(view,Vector2(q.ruin_x,223),"喚醒機械戰馬" if q.powered() else "沿纜線對準兩座導流器",Color("c5e9df"))
+    Ruins._caption(view,Vector2(q.ruin_x,430-Cradle.get_height()-18),"啟動龍晶重機" if q.powered() else "沿纜線對準兩座導流器",Color("c5e9df"))
    if q.powered() and not q.recovered:
-    view.draw_arc(Ground.anchor(Cradle,Vector2(q.ruin_x,356)),36,-PI,PI,20,Color(0.3,1,0.82,0.5+sin(sim.workforce.elapsed*3)*0.2),2)
+    view.draw_arc(Ground.anchor(Cradle,Vector2(q.ruin_x,376)),23,-PI,PI,20,Color(0.3,1,0.82,0.5+sin(sim.workforce.elapsed*3)*0.2),2)
  if (q.recovered or q.unlocked) and sim.frontier.city_level>0 and view._on_screen(q.stable_x,200):
   var tint:=Color.WHITE if q.unlocked else Color(0.53,0.66,0.67,0.75)
   if absf(view._view_player_x-q.stable_x)<65:tint=tint.lightened(0.3)
-  _prop(view,Stable,q.stable_x,tint)
+  _prop(view,Garage,q.stable_x,tint)
+  if q.unlocked and not q.riding:
+   view.draw_texture(Parked,Ground.anchor(Parked,Vector2(q.stable_x-80,430-128)),tint)
   if absf(view._view_player_x-q.stable_x)<90:
-   var key: String=("下馬" if q.riding else "騎乘機械戰馬") if q.unlocked else "修復馬廄"
-   Ruins._caption(view,Vector2(q.stable_x,223),key,Color("e2d0a5"))
+   var key: String=("下車" if q.riding else "騎乘龍晶重機") if q.unlocked else "修復重機車庫"
+   Ruins._caption(view,Vector2(q.stable_x,430-Garage.get_height()-18),key,Color("e2d0a5"))
 static func _prop(view: Node2D, texture: Texture2D, x: float, tint: Color) -> void:
  view.draw_texture(texture,Ground.anchor(texture,Vector2(roundf(x-texture.get_width()*0.5),430-texture.get_height())),tint)
 static func _junction(view: Node2D, sim: RefCounted, index: int) -> void:

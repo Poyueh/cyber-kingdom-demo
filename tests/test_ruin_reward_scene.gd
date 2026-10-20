@@ -44,7 +44,7 @@ func run_scene() -> void:
  TranslationServer.set_locale("en")
  var q: RefCounted=sim.mount_quest
  game.hud._present_modules(sim,q.levers[0],false,false)
- check(game.hud.module_hint.text.contains("steed core"),"conductor previews the steed reward")
+ check(game.hud.module_hint.text.contains("motorcycle reactor"),"conductor previews the motorcycle reward")
  for i: int in range(2):
   while q.rotations[i]!=i+1:sim.interact(q.levers[i],"mount_lever:%d"%i)
  game.hud._present_modules(sim,q.ruin_x,false,false)

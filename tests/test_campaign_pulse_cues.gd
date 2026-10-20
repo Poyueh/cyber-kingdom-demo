@@ -75,11 +75,11 @@ func test_loops_hold_under_a_gallop_a_dragon_and_a_seal(t):
 	var sim=Session.new()
 	sim.life.enabled=true
 	var at: float=sim.world.sites.hall
-	t.equal(cues.sample(sim,at,0.016,false).get("horse_gallop",0.0),0.0,"walking on foot is not a gallop")
+	t.equal(cues.sample(sim,at,0.016,false).get("motorcycle_drive",0.0),0.0,"walking on foot is not a gallop")
 	sim.frontier.drill_level=3
 	cues.sample(sim,at,0.016,false)
-	t.truth(cues.sample(sim,at+5.0,0.016,false).get("horse_gallop",0.0)>0.0,"a moving rider gallops")
-	t.equal(cues.sample(sim,at+5.0,0.016,false).get("horse_gallop",0.0),0.0,"a halted rider stops galloping")
+	t.truth(cues.sample(sim,at+5.0,0.016,false).get("motorcycle_drive",0.0)>0.0,"a moving rider gallops")
+	t.equal(cues.sample(sim,at+5.0,0.016,false).get("motorcycle_drive",0.0),0.0,"a halted rider stops galloping")
 	var dragon=sim._spawn_raider()
 	dragon.kind="dragon";dragon.x=at
 	sim.raiders.append(dragon)

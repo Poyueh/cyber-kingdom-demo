@@ -1,5 +1,6 @@
 extends RefCounted
-## Forest-local circuit and raid; the unlocked mount travels with the knight.
+## Forest-local reactor and raid; the motorcycle travels with the knight.
+## Legacy mount/stable field names preserve existing v24 saves without re-purchasing.
 const Clock=preload("res://domain/time/tick_clock.gd")
 var enabled: bool=false
 var ruin_x: float=0.0
