@@ -37,7 +37,7 @@ func run_scene() -> void:
  var before: Dictionary=Codec.new().capture(game.sim,game._campaign_config,body)
  for index: int in range(6):
   var site: StringName=attendants.Cast.sites[index]
-  var x: float=game.sim.world.sites[site]+attendants.Cast.offsets[index].x
+  var x: float=attendants.site_x(site)+attendants.Cast.offsets[index].x
   place(x-70);step(10)
   var state: RefCounted=attendants.states[index]
   check(state.mode==1,"approaching "+site+" triggers a brief greeting")

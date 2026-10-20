@@ -1,5 +1,7 @@
 extends "res://application/frontier_session.gd"
 ## Playable campaign orchestration. Wallet and calendar rules remain in domain.
+const Command=preload("res://application/frontier_command.gd")
+var command: Command
 const Trails=preload("res://domain/trail_encounters.gd")
 const TrailActivity=preload("res://application/trail_activity.gd")
 var trails: Trails
@@ -195,12 +197,14 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 		hero.stats.attack_cost=0
 		workforce.core_loop=core_loop
 	preload("res://application/wildlife_population.gd").apply(self,config)
+	command=Command.new(world,frontier,defenses,config)
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:
 	return not life.enabled or frontier.city_level>=2
 
 func site_visible(site: String) -> bool:
+	if site=="armory" and command!=null and command.enabled:return false
 	if core_loop.enabled and (core_loop.trial or core_loop.stage<3):return core_loop.site_allowed(site,self)
 	if site=="trade":return false
 	if not life.enabled:return true
@@ -212,6 +216,7 @@ func site_visible(site: String) -> bool:
 	return true
 
 func _can_claim_tool(kind: String) -> bool:
+	if kind=="blade" and command!=null and command.enabled:return false
 	return kind!="hoe" or agriculture_available()
 
 func can_use_module_station(x: float) -> bool:
@@ -220,6 +225,7 @@ func can_use_module_station(x: float) -> bool:
 func equip_module(id: String, x: float) -> bool:
 	if not can_use_module_station(x) or pouch.amount<modules.swap_cost or not modules.equip(id):return false
 	for crystal: int in range(modules.swap_cost):pouch.spend()
+	command.learn("module")
 	effects.append({"kind":"module_equipped","x":x,"life":4.0})
 	return true
 
@@ -239,7 +245,11 @@ func _choice(id: String, x: float, title: String, cost: int = 0, allowed: bool =
 
 func context(x: float) -> Dictionary:
 	var selected := _no_interaction(x)
-	for candidate in _interaction_candidates(x):
+	var candidates: Array[Dictionary]=_interaction_candidates(x)
+	# At the flag, an unavailable roster must not become an unrelated purchase.
+	for candidate: Dictionary in candidates:
+		if candidate.id=="rally" and absf(candidate.x-x)<28:return candidate
+	for candidate in candidates:
 		if selected.id.is_empty() or (candidate.enabled and not selected.enabled) or (candidate.enabled==selected.enabled and absf(candidate.x-x)<absf(selected.x-x)):
 			selected=candidate
 	return selected
@@ -256,6 +266,7 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 	var candidates: Array[Dictionary] = []
 	if not is_running():return candidates
 	var choice: Dictionary
+	candidates.append_array(command.candidates(self,x,_player_y))
 	candidates.append_array(TrailActivity.candidates(self,x,_player_y))
 	candidates.append_array(PlanetOps.candidates(self,x,_player_y))
 	candidates.append_array(RuinInteractions.candidates(self,x,_player_y))
@@ -438,7 +449,9 @@ func interact(x: float, target_key: String = "") -> bool:
 	return true
 
 func _execute(choice: Dictionary) -> void:
+	preload("res://application/feature_lessons.gd").executed(self,choice.id)
 	match choice.id:
+		"rally","command_armory","rescue_repair","rescue_recruit":command.execute(self,choice)
 		"trail_cache": TrailActivity.execute(self,int(choice.trail_index))
 		"dragon_core","rocket","star_map": PlanetOps.execute(self,choice.id)
 		"trial": RuinInteractions.execute(self,choice)
@@ -496,6 +509,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	PlanetOps.resolve(self)
 	if not is_running():return
 	_hero_x=hero_x
+	command.observe(self)
 	trails.observe(hero_x)
 	if life.enabled and agriculture_available():built.farm_tools=true
 	if survival.advance(seconds,hero,hero_x,hero_y):effects.append({"kind":"sword_recovered","x":hero_x,"y":hero_y,"life":0.7})
@@ -546,6 +560,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 		spirit.advance(int(workforce.elapsed*Spirit.TICKS_PER_SECOND),opening_goal)
 		if not core_loop.trial:modules.observe(self,hero_x,hero_y)
 	core_loop.observe(self)
+	command.observe(self)
 
 func throw_crystal(x: float, y: float, facing: int) -> bool:
 	return is_running() and pouch.toss(x,y,facing)
@@ -557,7 +572,11 @@ func _receive_delivery(delivery: Dictionary) -> void:
 	pouch.drop(crystals,delivery.x)
 
 func _advance_people(seconds: float) -> void:
-	expedition.prepare()
+	var unavailable: Array[int]=[]
+	for group: RefCounted in command.squads:
+		for index: int in group.members:
+			if world.people[index].role=="engineer" and not mission.rifts.any(func(r: Dictionary)->bool:return r.ordered and not r.sealed and absf(r.x-_hero_x)<=command.rules.escort_radius):unavailable.append(index)
+	expedition.prepare(unavailable)
 	_assign_defense_posts()
 	_advance_towers(seconds)
 	var previous: Array=[]
@@ -582,6 +601,8 @@ func _advance_people(seconds: float) -> void:
 
 func _override_resident_target(index: int, seconds: float) -> float:
 	var person: Dictionary = world.people[index]
+	var command_target: float=command.target(self,index,seconds)
+	if is_finite(command_target):return command_target
 	if core_loop.enabled and person.role=="hunter":
 		var target: String=core_loop.orders.targets[index]
 		var tower: bool=target in ["beacon","core_tower_right"] and core_loop.orders.usable(self,target)
@@ -647,6 +668,9 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		return Roaming.destination(person,index,center,radius,seconds,center-radius,center+radius)
 	return home
 
+func _resident_speed(index: int) -> float:
+	return command.rules.march_speed if command.contains(index) else _person_speed
+
 func travel_axis(request: float, seconds: float) -> float:
 	return travel.axis(hero,request,seconds,int(round(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND)))
 
@@ -656,6 +680,7 @@ func _assign_defense_posts() -> void:
 	if core_loop.enabled:
 		core_loop.orders.clean(self)
 		for i: int in range(world.people.size()):
+			if world.people[i].role=="guard":world.people[i]["defense_post"]="wall_left" if i%2==0 else "wall"
 			if world.people[i].role=="hunter":
 				var target: String=core_loop.orders.targets[i]
 				world.people[i]["defense_post"]="wall_left" if not target.is_empty() and core_loop.orders.side(self,target)<0 else "wall"
@@ -887,6 +912,7 @@ func raider_speed(enemy: Dictionary, base: float=70.0) -> float:
 func _shoot_nearest_raider(person: Dictionary, reach: float, damage: int, interval: float, elevated: bool=false) -> bool:
 	var adjusted: int=modules.arrow_damage(person,damage,roundi(workforce.elapsed*RecoveryClock.TICKS_PER_SECOND))
 	var fired: bool=super._shoot_nearest_raider(person,reach,adjusted,interval,elevated)
+	if fired and person.role=="guard":effects.back().kind="guard_slash"
 	if fired and person.has("module_command_until"):
 		person.erase("module_command_until")
 		if adjusted>damage:effects.append({"kind":"module_arrow","x":person.x,"to":effects.back().to,"life":0.4})

@@ -51,7 +51,7 @@ var focus_key := ""
 var _view_player_x := 0.0
 var investment_progress := 0.0
 const Icons=preload("res://presentation/ui_icons.gd")
-const SITE_ICONS={"trail_cache":"chest","rocket":"hammer","star_map":"map","dragon_core":"crystal","merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
+const SITE_ICONS={"rally":"sword","command_armory":"sword","rescue_repair":"hammer","rescue_recruit":"person","trail_cache":"chest","rocket":"hammer","star_map":"map","dragon_core":"crystal","merchant":"trade","shield_charge":"shield","rift":"rift","core_charge":"camp","hall":"camp","workshop":"hammer","armory":"bow","farm_tools":"hoe","hunt_tools":"bow","forge":"gear","beacon":"tower","tower":"tower","field":"hoe","wall":"wall","wall_left":"wall","farm":"food","drill":"sword","trade":"trade","heal":"heal","outpost":"outpost","recruit":"person","chest":"chest","mark":"hammer"}
 const EXTRA_ART := {"tower-1":preload("res://art/structures/fortifications-v001/tower-1.png"),"tower-2":preload("res://art/structures/fortifications-v001/tower-2.png"),"tower-3":preload("res://art/structures/fortifications-v001/tower-3.png"),"drill":preload("res://art/structures/immersive-v001/drill.png"),"wall-1":preload("res://art/structures/immersive-v001/wall-1.png"),"wall-2":preload("res://art/structures/immersive-v001/wall-2.png"),"wall-3":preload("res://art/structures/immersive-v001/wall-3.png"),"campfire":preload("res://art/campaign/v001/campfire.png"),"stone":preload("res://art/campaign/v001/stone.png"),"herbs":preload("res://art/campaign/v001/herbs.png"),"plot":preload("res://art/campaign/v001/plot.png")}
 
 func present(sim, player_x: float) -> void:
@@ -157,6 +157,7 @@ func _draw_structures() -> void:
 	if camp_reveal.progress()<1.0:
 		camp_reveal.draw_on(self,_sim);return
 	TrailView.draw_on(self,_sim)
+	preload("res://presentation/command_view.gd").draw_on(self,_sim)
 	preload("res://presentation/planet_rocket_view.gd").draw_on(self,_sim)
 	var world = _sim.world
 	var map = _sim.frontier
@@ -323,14 +324,8 @@ func _person(person: Dictionary, protected: bool) -> void:
 	var key: String={"wanderer":"person","citizen":"person","engineer":"hammer","farmer":"hoe","hunter":"bow","guard":"sword"}[person.role]
 	_icon(key,Vector2(person.x,person.get("y",430)-50),17,Color("b4e7df") if person.role!="wanderer" else Color("d4c3a7"))
 
-	if _sim.life.enabled and person.role=="guard":
-		var dir: float=person.get("direction",1.0)
-		var at: Vector2=Vector2(person.x,person.get("y",430)-28)
-		var thrust: float=maxf(0,person.cooldown-0.85)*36
-		draw_line(at+Vector2(dir*5,-5),at+Vector2(dir*(49+thrust),-5),Color("b8aa85"),2)
-		draw_colored_polygon(PackedVector2Array([at+Vector2(dir*(60+thrust),-5),at+Vector2(dir*(47+thrust),-9),at+Vector2(dir*(47+thrust),-1)]),Color("bfebdd"))
-		draw_rect(Rect2(at+Vector2(dir*9-6,-3),Vector2(12,21)),Color("53657a"))
-		draw_line(at+Vector2(dir*9,-1),at+Vector2(dir*9,17),Color("c5b17d"),2)
+	if _sim.life.enabled and person.role=="guard":preload("res://presentation/command_view.gd").soldier(self,person,_sim.workforce.elapsed)
+	preload("res://presentation/command_view.gd").squad_badge(self,_sim,_sim.world.people.find(person))
 	if hit.demoted:_draw_demotion(person,hit)
 	_world_alpha=1.0
 
@@ -433,7 +428,7 @@ func _draw_interaction() -> void:
 	if not interactions_visible:return
 	if _context.id.is_empty() or _context.id in ["trial","mount_lever"]: return
 	if _sim.life.enabled and not _context.enabled:
-		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id):
+		if _context.get("prerequisites",[]).size()>0 and not _sim.world.walls.has(_context.id) and _context.id not in ["rally","rescue_repair","rescue_recruit"]:
 			if _context.has("building_id") and _sim.buildings[_context.building_id].level==0:return
 		if _context.has("wall_id") and _sim.world.walls[_context.wall_id].level==0 and not _context.get("prerequisites",[]).is_empty():return
 	var requirements: Dictionary=_context.get("requirements",{})
@@ -457,6 +452,7 @@ func _draw_interaction() -> void:
 	var y:=ground-(24 if _context.cost>10 else 0)-(184 if _context.id=="rift" else 141)-(height-62)
 	if _context.id=="tower":y-=90
 	elif _context.id in ["rocket","star_map"]:y-=80
+	elif _context.id in ["rally","command_armory","rescue_repair","rescue_recruit"]:y-=30
 	elif _context.id in ["mount_stable","mount_switch","mount_recover"]:y-=40
 	elif _context.has("wall_id"):y-=50
 	# Floating cost sockets stay in the world; no rectangular signboard.

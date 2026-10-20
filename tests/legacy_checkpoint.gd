@@ -34,3 +34,4 @@ static func before_trails(packet: Dictionary) -> void:
 ## v23 added the world's planet state; every older shape lacks it.
 static func before_planet(packet: Dictionary) -> void:
  packet.erase("planet")
+ packet.erase("command")

@@ -23,15 +23,20 @@ func present(sim: RefCounted, hero_x: float, cinematic: bool=false) -> void:
  for index: int in range(states.size()):
   _observe(index,hero_x,delta,reset,cinematic)
 
+func site_x(site: StringName) -> float:
+ if site==&"armory" and _sim.command.enabled:return _sim.command.barracks_x()
+ return _sim.world.sites[site]
+
 func _observe(index: int, hero_x: float, delta: float, reset: bool, cinematic: bool) -> void:
  var state: State=states[index]
  var site: StringName=Cast.sites[index]
- var x: float=_sim.world.sites[site]+Cast.offsets[index].x
+ var x: float=site_x(site)+Cast.offsets[index].x
  var work_facing: float=-signf(Cast.offsets[index].x)
  var value: int=_service_value(site)
- var payment: Dictionary=_latest_effect(&"pay",_sim.world.sites[site])
+ var payment: Dictionary=_latest_effect(&"pay",site_x(site))
  var module: Dictionary=_latest_effect(&"module_equipped",_sim.world.sites[site]) if site==&"drill" else {}
  var visible: bool=_sim.frontier.city_level>0 and _sim.site_visible(site) and (site in [&"hall",&"drill"] or _sim.built.get(site,false))
+ if site==&"armory" and _sim.command.enabled:visible=_sim.command.unlocked()
  var initialized: bool=reset or not state.visible
  var paid: bool=not initialized and not payment.is_empty() and not is_same(payment,state.payment)
  var changed_module: bool=not module.is_empty() and not is_same(module,state.module_event)
@@ -94,6 +99,7 @@ func _service_value(site: StringName) -> int:
  return 0
 
 func _pending(site: StringName) -> bool:
+ if site==&"armory" and _sim.command.enabled:return _sim.investments.has("command_armory")
  var prefix: String=str(site)+":"
  for key: String in _sim.investments:
   if key==str(site) or key.begins_with(prefix) or (site==&"hall" and key=="core_charge"):return true
@@ -137,7 +143,7 @@ func draw_on(view: Node2D) -> void:
  for index: int in range(states.size()):
   var state: State=states[index]
   if not state.visible:continue
-  var at: Vector2=Vector2(_sim.world.sites[Cast.sites[index]],FLOOR_Y)+Cast.offsets[index]
+  var at: Vector2=Vector2(site_x(Cast.sites[index]),FLOOR_Y)+Cast.offsets[index]
   if not view._on_screen(at.x,Cast.cell.x):continue
   view.draw_set_transform(at.round(),0,Vector2(state.facing,1))
   view.draw_texture_rect_region(Cast.attendants,Rect2(-Cast.cell.x*0.5,-Cast.baseline,Cast.cell.x,Cast.cell.y),Rect2(state.frame*Cast.cell.x,index*Cast.cell.y,Cast.cell.x,Cast.cell.y))

@@ -132,7 +132,7 @@ func test_v19_route_save_upgrades_without_added_wildlife(t: SceneTree) -> void:
 	var sim: RefCounted=Campaign.new(config)
 	var body: Dictionary={"x":30.0,"y":430.0,"vx":0.0,"vy":0.0}
 	var packet: Dictionary=codec.capture(sim,config,body)
-	packet.erase("core_loop");packet.erase("planet");packet.erase("trails");packet.version=19;packet.merchant.erase("trip_end_x")
+	packet.erase("core_loop");packet.erase("planet");packet.erase("command");packet.erase("trails");packet.version=19;packet.merchant.erase("trip_end_x")
 	var restored: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(packet)))
 	t.truth(not restored.is_empty(),"v19 authored maps upgrade to v20 without a new event layer")
 	if not restored.is_empty():
