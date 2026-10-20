@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.76",
-  "revision": 82,
-  "review_note": "v0.0.76補充倒數驗證：引導旅程在60／30Hz切換或半tick起始相位時，以當次模擬前後的刻度差扣除喘息，避免逐步上限截斷而延長；保留舊last_tick=0存檔保護。玩家仍為停喘2.5秒、慢走恢復、1/3跑步、全滿衝刺，快照v24不變。",
-  "content_sha256": "e073b3d837f87a018048b88cd3b7b07ebd179b1ac510075dc80d8afdaeaa2aa8",
+  "revision": 83,
+  "review_note": "v0.0.76補充倒數驗證：引導旅程在60／30Hz切換或半tick起始相位時，以當次模擬前後的刻度差扣除喘息，避免逐步上限截斷而延長；保留舊last_tick=0存檔保護。玩家仍為停喘2.5秒、慢走恢復、1/3跑步、全滿衝刺，快照v24不變。補齊修訂表與跨更新頻率驗收紀錄；玩法與快照欄位不變。",
+  "content_sha256": "20fb4db39504a7c701e892a57e8fe8e457b230fa59704695193ec1fe50fd62f0",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "912729a3e20875bca34575d15eabb35c640e306b33a63ab62c91354296c41cad",
