@@ -1,16 +1,15 @@
-[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/wildlife_appearance.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/wildlife-v002/tortoise.png" id="2"]
 
 [resource]
 script = ExtResource("1")
 id = &"tortoise"
-rows = Array[String]([".......bbbbbbbb.........", ".....bbccccccccbb.......", "....bcddeedddddccb......", "...bcdddddddddddccb.....", "..bcddcddcddcddcdcb.bbb.", "..bcddddddddddddccbbedba", ".abccccccccccccccbbddbba", "...bbbbbbbbbbbbbb..bb..."])
-colors = PackedColorArray(0.2, 0.24705882352941178, 0.20784313725490197, 1, 0.29411764705882354, 0.3568627450980392, 0.25098039215686274, 1, 0.48627450980392156, 0.5215686274509804, 0.3137254901960784, 1, 0.6901960784313725, 0.6431372549019608, 0.40784313725490196, 1, 0.8823529411764706, 0.8, 0.5686274509803921, 1)
-origin = Vector2(-24, -20)
-legs = PackedVector2Array(-12, -4, 11, -4)
+texture = ExtResource("2")
+frame_size = Vector2i(96, 80)
+columns = 4
+frame_count = 8
+ground_pivot = Vector2(48, 74)
 stride = 18.0
-step = 1.0
-lift = 1.0
-bounce = 0.0
-shadow = 22.0
+shadow = 17.0

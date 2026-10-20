@@ -1,19 +1,15 @@
-[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="WildlifeAppearance" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://data/wildlife_appearance.gd" id="1"]
+[ext_resource type="Texture2D" path="res://art/characters/wildlife-v002/fox.png" id="2"]
 
 [resource]
 script = ExtResource("1")
 id = &"fox"
-rows = Array[String]([".................b...b....", "................bdb.bdb...", "...............bcdddddcb..", "....bbbbbbbbbbbcddddddccb.", "..bbdddddddddddddddddddecb", ".bcdddddddddddddddddddeeba", "bcdddeeeedddddddcccdeeeeb.", "bcddddddddddddccc.beeebb..", ".bccccccccccccbb...bb....", "..bbbbbbbbbbbb..........."])
-colors = PackedColorArray(0.1450980392156863, 0.1843137254901961, 0.2235294117647059, 1, 0.44313725490196076, 0.23529411764705882, 0.20784313725490197, 1, 0.6549019607843137, 0.3333333333333333, 0.21176470588235294, 1, 0.8509803921568627, 0.5411764705882353, 0.2823529411764706, 1, 0.9411764705882353, 0.8392156862745098, 0.6274509803921569, 1)
-origin = Vector2(-24, -28)
-legs = PackedVector2Array(-12, -8, 13, -8)
+texture = ExtResource("2")
+frame_size = Vector2i(96, 80)
+columns = 4
+frame_count = 8
+ground_pivot = Vector2(48, 74)
 stride = 40.0
-step = 3.0
-lift = 2.0
-bounce = 1.0
-shadow = 24.0
-tail_rows = Array[String](["..bb........", ".bdcbb......", "beedddbb....", "beeeddccbb..", ".beedddcccb.", "..bbccccccb.", "....bbbbbb.."])
-tail_origin = Vector2(-42, -24)
-tail_sway = 2.0
+shadow = 20.0
