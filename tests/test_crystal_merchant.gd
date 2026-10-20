@@ -185,7 +185,7 @@ func test_v20_merchant_upgrade_preserves_existing_journey(t: SceneTree) -> void:
 	var sim: RefCounted=Campaign.new(config)
 	var codec: RefCounted=Codec.new()
 	var saved: Dictionary=codec.capture(sim,config,BODY)
-	saved.version=20;saved.erase("core_loop");saved.erase("planet");saved.merchant.erase("trip_end_x")
+	saved.version=20;saved.erase("core_loop");saved.erase("planet");saved.erase("command");saved.merchant.erase("trip_end_x")
 	var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(saved)))
 	t.truth(not loaded.is_empty(),"v20 merchant checkpoint migrates without discarding journey")
 	if loaded.is_empty():return

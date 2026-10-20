@@ -7,7 +7,7 @@ func _init(settlement, map, objective) -> void:
 	world=settlement
 	frontier=map
 	mission=objective
-func prepare() -> void:
+func prepare(unavailable: Array[int]=[]) -> void:
 	var assigned: Array[int]=[]
 	for rift in mission.rifts:
 		if rift.sealed:rift.worker=-1
@@ -18,7 +18,7 @@ func prepare() -> void:
 		var nearest:=INF
 		for i in range(world.people.size()):
 			var person: Dictionary=world.people[i]
-			if person.role!="engineer" or i in assigned:continue
+			if person.role!="engineer" or i in assigned or i in unavailable:continue
 			if frontier.nodes.any(func(n):return n.worker==i and n.carried):continue
 			if absf(person.x-rift.x)<nearest:
 				nearest=absf(person.x-rift.x)

@@ -7,6 +7,8 @@ func after_guidance(stage: int=5) -> RefCounted:
 	sim.core_loop.income=6;sim.core_loop.stage=stage;sim.core_loop.checkpoint_index=2;sim.core_loop.checkpoint_pending=0
 	sim.clock.is_night=false;sim.clock.remaining=sim.clock.day_seconds-30.0
 	sim.raiders.clear()
+	# These tests cover recurring goals after optional feature lessons are learned.
+	for feature: String in preload("res://application/feature_lessons.gd").IDS:sim.command.learn(feature)
 	return sim
 
 func callout(sim: RefCounted) -> String:
