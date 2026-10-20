@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.74",
-  "revision": 72,
-  "review_note": "v0.0.74：針對手機Chrome遊玩20分鐘以上重整的回饋，Web預設音訊由Sample改為Stream，補齊先前只處理音樂、未處理短音效與環境音的範圍。保留六路音效池、共用音檔、音量、暫停與音效時機；原生平台預設不變，手機Web仍30幀／物理30Hz／像素比上限2，電腦Web60幀。以實際音效架對照與完整場景實時測試驗證；不以累計配置量當作即時記憶體，不宣稱已完成iPhone真機驗收。主遊戲／Demo共用，快照v24與玩法不變。同步三語指南，並校正Demo短指南仍寫免費駐軍與舊版本的落差。",
-  "content_sha256": "b39572619ee2e6c9fe6214c1efa7eed161f4cc7f0cb708e3f1acf2d646412947",
+  "revision": 73,
+  "review_note": "v0.0.74 發布前文字校對：沿用修訂72的Web全音效Stream修正與驗證限制；保存章節依目前frontier_root實作校正為約20秒自動保存，核心流程摘要對齊v0.0.73現行號令台每名弓兵1晶、撤回及防線自動移動免費。這次只更正文句，不改遊戲、經濟或保存頻率。",
+  "content_sha256": "59aab27ec0d2686caf0855f43148335b856b1062856d6113e911c63d1de20d96",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "08f18b8d935aa26485c8d5b6fd46cc7621ade81917d60131fc503cd69a530701",
