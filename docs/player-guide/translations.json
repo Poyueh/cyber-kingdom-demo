@@ -1183,10 +1183,6 @@
     "zh_CN": "连按 A／D，第二下按住",
     "en": "Double-tap A / D and hold"
   },
-  "手機拉長拖曳可衝刺。耗盡先停下喘息，再逐步恢復慢走、跑步；停下休息後才能再次衝刺。": {
-    "zh_CN": "手机拉长拖曳可冲刺。耗尽先停下喘息，再逐步恢复慢走、跑步；停下休息后才能再次冲刺。",
-    "en": "On touchscreens, drag farther to sprint. Exhaustion first forces a breathing stop, then a slow walk and normal running. Rest before sprinting again."
-  },
   "使用鍵盤／滑鼠操作；靠近物件後，看它上方的圖示與龍晶格。": {
     "zh_CN": "使用键盘／鼠标操作；靠近物件后，看它上方的图标与龙晶格。",
     "en": "Use the keyboard and mouse; approach objects and look for their icons and crystal slots."
@@ -2407,10 +2403,6 @@
     "en": "Learn to build and defend your refuge",
     "zh_CN": "从营火学会经营与防守"
   },
-  "新主旅程與 Demo 普攻不耗體力，但須先拔劍。衝刺耗盡仍能一般跑步，移動中恢復至30%可再衝刺；舊紀錄保留原恢復規則。": {
-    "en": "Ordinary attacks are free in new main journeys and the demo, but require your sword. Exhaustion becomes normal running; recover while moving and sprint again at 30%. Older saves retain their recovery rules.",
-    "zh_CN": "新主旅程与 Demo 普攻不耗体力，但须先拔剑。冲刺耗尽仍能一般跑步，移动中恢复至30%可再冲刺；旧记录保留原恢复规则。"
-  },
   "電腦：A/D移動、同方向雙按並按住衝刺、J或滑鼠左鍵攻擊、E互動、Q丟晶、Esc暫停。觸控：拖曳移動、劍鈕攻擊、靠近後點投入按鈕。": {
     "en": "Keyboard: A/D move; double-tap and hold a direction to sprint; J or left click attacks; E interacts; Q drops a crystal; Esc pauses. Touch: drag to move, use the sword button and the nearby payment button.",
     "zh_CN": "电脑：A/D移动、同方向双按并按住冲刺、J或鼠标左键攻击、E互动、Q丢晶、Esc暂停。触控：拖曳移动、剑钮攻击、靠近后点投入按钮。"
@@ -2498,5 +2490,21 @@
   "以鹿的細緻像素風格統一其餘七種動物：野兔、野豬、狐狸、獾、山羊、雉雞與陸龜都有完整八格動作，補上毛皮、羽毛及甲殼層次。走動、停步與轉身保持身形和腳底位置一致。原有狩獵收益、數量與存檔維持原規則。": {
     "zh_CN": "以鹿的细致像素风格统一其余七种动物：野兔、野猪、狐狸、獾、山羊、雉鸡与陆龟都有完整八帧动作，补上毛皮、羽毛及甲壳层次。走动、停步与转身保持身形和脚底位置一致。原有狩猎收益、数量与存档维持原规则。",
     "en": "The seven other huntable animals now match the detailed pixel-art style of the deer. Hare, boar, fox, badger, goat, pheasant and tortoise each have eight complete animation poses with detailed fur, feathers or shell shading. Movement, stopping and turning use a consistent body scale and ground anchor. Hunting rewards, population and saved progress follow the existing rules."
+  },
+  "主遊戲與 Demo 普攻不耗體力，但須先拔劍。衝刺耗盡仍能一般跑步，移動中恢復至三分之一即可再衝刺；恢復過程會顯示腳下耐力條與門檻刻度。": {
+    "zh_CN": "主游戏与 Demo 普攻不耗体力，但须先拔剑。冲刺耗尽仍能一般跑步，移动中恢复至三分之一即可再冲刺；恢复过程会显示脚下耐力条与门槛刻度。",
+    "en": "Ordinary attacks cost no stamina in the main game and Demo, but require your sword. After exhaustion, keep running and recover to one third to sprint again. The bar below the knight shows recovery and its threshold."
+  },
+  "手機拉長拖曳可衝刺。耗盡後仍可一般跑步；耐力恢復到三分之一，就能再次衝刺，恢復進度顯示在腳下。": {
+    "zh_CN": "手机拉长拖曳可冲刺。耗尽后仍可一般跑步；耐力恢复到三分之一，就能再次冲刺，恢复进度显示在脚下。",
+    "en": "On touchscreens, drag farther to sprint. After exhaustion you can keep running; sprint again at one-third stamina, with recovery shown below the knight."
+  },
+  "v0.0.71 · 耐力、提醒與近郊狩獵": {
+    "zh_CN": "v0.0.71 · 耐力、提醒与近郊狩猎",
+    "en": "v0.0.71 · Recovery, reminders and nearby hunting"
+  },
+  "耐力恢復到三分之一就能再衝刺，腳下細條會持續顯示恢復進度與門檻。鬼魂未完成的新手指示每6秒重播，走動也會提醒。未指派弓兵白天在城牆附近300像素內巡獵，提前回城守夜，遇敵可反擊並撤回城內。每次狩獵2晶先由獵人隨身保管，騎士靠近才交付；袋滿12晶先回防。": {
+    "zh_CN": "耐力恢复到三分之一就能再冲刺，脚下细条会持续显示恢复进度与门槛。鬼魂未完成的新手指示每6秒重播，走动也会提醒。未指派弓兵白天在城墙附近300像素内巡猎，提前回城守夜，遇敌可反击并撤回城内。每次狩猎2晶先由猎人随身保管，骑士靠近才交付；袋满12晶先回防。",
+    "en": "Sprint again once stamina recovers to one third. The bar below the knight shows recovery and its threshold. The ghost repeats unfinished tutorial instructions every 6 seconds, even while moving. Unassigned archers hunt within 300 world pixels of the walls by day, return before night, and can fire while retreating from monsters. Hunters keep the 2 crystals from each catch until the knight approaches; a full 12-crystal bag sends them home."
   }
 }

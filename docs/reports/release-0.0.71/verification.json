@@ -1,0 +1,78 @@
+{
+  "main": {
+    "source_tree": "db22459aee350035aecf51e2227a2545de58a566",
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android",
+      "iOS project"
+    ],
+    "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+  },
+  "demo": {
+    "source_tree": "db22459aee350035aecf51e2227a2545de58a566",
+    "platforms": [
+      "macOS",
+      "Windows",
+      "Web",
+      "Android",
+      "iOS project"
+    ],
+    "checks": "content graph and edition, macOS executable/signature, Android signature and 16KiB alignment passed"
+  },
+  "assets": {
+    "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.71.zip": {
+      "sha256": "5d6108ba6311243c6d6349f913c61b9946eaf1c394b19d66b6c552fcc5e33994",
+      "bytes": 175104739
+    },
+    "Cyber-Kingdom-Demo-Android-debug-v0.0.71.apk": {
+      "sha256": "daf620a5ca380618728817e83149ca8e396c0d5bb68cf1252203c4e288df6ac6",
+      "bytes": 91660695
+    },
+    "Cyber-Kingdom-Demo-Web-v0.0.71.zip": {
+      "sha256": "b6676af956676e28e311ffb9731fefd43a79df906bc1e24b076b4091992fd226",
+      "bytes": 81551752
+    },
+    "Cyber-Kingdom-Main-Android-debug-v0.0.71.apk": {
+      "sha256": "26d69a266293b49b2bfe77e7a7ba25ff52b93124b741c41b4c9efab544d56dfd",
+      "bytes": 103716981
+    },
+    "Cyber-Kingdom-Main-macOS-v0.0.71.zip": {
+      "sha256": "090bdc77e14f955a5719d4c207b3043d988e43c69a53d6264a0f9121ee63fe70",
+      "bytes": 134764587
+    },
+    "Cyber-Kingdom-Demo-Windows-v0.0.71.zip": {
+      "sha256": "e866e3253df332c445f1bbb3c742f94a32335063b2e24566a6ca0d3fa0b3adab",
+      "bytes": 100376480
+    },
+    "Cyber-Kingdom-Main-Guide-v0.0.71.html": {
+      "sha256": "8ec6fe279dd20e60a569b3c7f811679ed512c458756f6ecfcdcb57173d5a57e3",
+      "bytes": 15842333
+    },
+    "Cyber-Kingdom-Demo-macOS-v0.0.71.zip": {
+      "sha256": "70215cff6f72545f151ce3373237c400382f558b861019ccf8b27634a937a17a",
+      "bytes": 122798988
+    },
+    "Cyber-Kingdom-Demo-Guide-v0.0.71.html": {
+      "sha256": "9b2a88470cdc7feaf466cfd071cfe7dedb7c287af9b0dfaac9b82e32d16f40a0",
+      "bytes": 13308
+    },
+    "SHA256SUMS.txt": {
+      "sha256": "fb928ed75ee91aa3483907cf1fad2fdcb8b337a343100a66ca000bb785f92b99",
+      "bytes": 1262
+    },
+    "Cyber-Kingdom-Main-Web-v0.0.71.zip": {
+      "sha256": "263cdcc6ea98460542837c0e99ecf48937fb1e7e3e05e4287870e937a3b9c1c7",
+      "bytes": 105384257
+    },
+    "Cyber-Kingdom-Main-iOS-Xcode-v0.0.71.zip": {
+      "sha256": "d99c08697fd0a4edf01e7f97bab679c7f7a3b97205f3dd5c29e8dbf5c434818c",
+      "bytes": 187070622
+    },
+    "Cyber-Kingdom-Main-Windows-v0.0.71.zip": {
+      "sha256": "ff0d1205af10b61ebb6411acbe9e1999f287edaf819cb308bb12b1363bc6a9f5",
+      "bytes": 112342861
+    }
+  }
+}

@@ -40,6 +40,13 @@ func verify() -> void:
   check(ResourceLoader.exists("res://data/wildlife/"+species+".tres"),"shipped huntable species resource: "+species)
   var appearance: Resource=load("res://data/wildlife/"+species+".tres")
   check(appearance.texture!=null and appearance.texture.get_size()==Vector2(384,160),"shipped complete wildlife atlas: "+species)
+ game.sim.hero.stamina=0
+ check(is_equal_approx(game.sim.travel_axis(1,1.0/30),1.0),"shipped exhausted knight keeps running")
+ game.sim.hero.stamina=game.sim.hero.stats.max_stamina/3.0
+ check(game.sim.travel_axis(1,1.0/30)>1.5,"shipped sprint resumes at one-third stamina")
+ game.sim.hero.stamina=game.sim.hero.stats.max_stamina
+ var right: float=game.sim.world.sites.wall
+ check(game.sim.hunter_roaming.contains(right+250,game.sim.world.sites.wall_left,right) and not game.sim.hunter_roaming.contains(right+500,game.sim.world.sites.wall_left,right),"shipped hunting stays near the walls")
  check(game.hud.guide_view._motion.style.body_half_size==Vector2(30,34),"shipped ghost uses compact shared clearance")
  check(game.sim.merchant.enabled and game.sim.modules.relics.size()>0,"both editions ship the merchant and ruin discoveries")
  check(game.sim.mission.rifts.size()>0,"both editions ship gates for engineers to seal")

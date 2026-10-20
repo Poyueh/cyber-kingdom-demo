@@ -87,6 +87,9 @@ func _needs_caption() -> bool:
   var since: float=fposmod(spirit_pose.age,Style.callout_interval)
   return since>=Style.caption_delay and since<Style.caption_delay+Style.callout_seconds
  if spirit_pose.age>=Style.caption_delay and spirit_pose.age<Style.caption_delay+Style.announce_seconds:return true
+ # Repeat by task age, not idle time: walking must not postpone the same lesson forever.
+ var repeat_age: float=fposmod(spirit_pose.age,Style.reminder_interval)
+ if spirit_pose.age>=Style.reminder_interval and repeat_age>=Style.caption_delay and repeat_age<Style.caption_delay+Style.reminder_seconds:return true
  if absf(spirit_pose.speed)>35:return false
  if spirit_pose.near and spirit_pose.near_age>=Style.caption_delay and spirit_pose.near_age<Style.caption_delay+Style.caption_seconds:return true
  return spirit_pose.idle>=Style.reminder_interval and fposmod(spirit_pose.idle-Style.reminder_interval,Style.reminder_interval)<Style.reminder_seconds

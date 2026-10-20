@@ -20,9 +20,9 @@ func make_hunter(sim: RefCounted) -> int:
 			return i
 	return -1
 
-func game_beyond_walls(sim: RefCounted) -> Dictionary:
+func game_near_walls(sim: RefCounted) -> Dictionary:
 	for animal: Dictionary in sim.frontier.animals:
-		if animal.alive and (animal.x<sim.world.sites.wall_left or animal.x>sim.world.sites.wall):return animal
+		if animal.alive and (animal.x<sim.world.sites.wall_left or animal.x>sim.world.sites.wall) and animal.x>=sim.world.sites.wall_left-300 and animal.x<=sim.world.sites.wall+300:return animal
 	return {}
 
 func test_forest_animals_belong_to_the_region_they_stand_in(t):
@@ -36,7 +36,7 @@ func test_forest_animals_belong_to_the_region_they_stand_in(t):
 func test_an_unposted_hunter_hunts_beyond_the_wall_by_day(t):
 	var sim: RefCounted=free_forest()
 	var index: int=make_hunter(sim)
-	var animal: Dictionary=game_beyond_walls(sim)
+	var animal: Dictionary=game_near_walls(sim)
 	t.truth(index>=0 and not animal.is_empty(),"a hunter and game outside the walls")
 	if index<0 or animal.is_empty():return
 	t.truth(sim.work_area.contains(animal.x),"the game is inside the hunting range")

@@ -17,6 +17,6 @@ caption_seconds = 4.0
 reminder_interval = 6.0
 reminder_seconds = 3.0
 cue_seconds = 4.0
-callout_interval = 20.0
+callout_interval = 8.0
 callout_seconds = 3.5
 body_half_size = Vector2(30, 34)

@@ -56,3 +56,17 @@ func test_arrival_and_stalls_are_answered_quickly(t):
  heard=spoken_at(view,hint,quiet,quiet+10.0,300.0,0.0)
  t.truth(heard>=0 and heard<=8.0,"a stalled player hears the task again within eight seconds (heard at %s)"%heard)
  view.free()
+
+func test_same_tutorial_task_repeats_while_the_knight_keeps_walking(t):
+ var view: Node2D=guide()
+ var hint: Dictionary=task("recruit",9000.0)
+ var repeated: bool=false
+ var quiet: bool=false
+ for tick: int in range(301):
+  var time: float=tick*FRAME
+  view.present(hint,SAFE,100+tick*3,Rect2(),false);view.track(HERO,time)
+  if time>4.5 and time<5.5 and not view._guide_label.visible:quiet=true
+  if time>=6 and time<8 and view._guide_label.visible:repeated=true
+ t.truth(quiet,"first instruction leaves a short quiet interval")
+ t.truth(repeated,"same unfinished task repeats by eight seconds even during continuous movement")
+ view.free()
