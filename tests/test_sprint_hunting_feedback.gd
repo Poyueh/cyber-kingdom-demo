@@ -198,3 +198,18 @@ func test_exact_last_sprint_cost_enters_breathing_immediately(t: Object) -> void
  sim.hero.stamina=(sim.travel.drain_per_second+sim.hero.stats.stamina_regen)*STEP
  t.equal(sim.travel_axis(1,STEP),0.0,"spending the exact last stamina enters breathing without one extra sprint frame")
  t.truth(sim.travel.breath_ticks>0,"exact depletion receives the full breathing interval")
+
+func test_old_guided_clock_cannot_skip_a_new_breathing_stop(t: Object) -> void:
+ var config: Dictionary=configuration()
+ var sim: RefCounted=Campaign.new(config)
+ for frame: int in range(300):sim.advance(STEP,30)
+ var codec: RefCounted=Codec.new()
+ var packet: Dictionary=codec.capture(sim,config,BODY)
+ # v0.0.75 guided travel did not update this clock; a zero-energy module can save before a sprint request.
+ packet.travel.last_tick=0;packet.hero.state.stamina=0
+ var loaded: Dictionary=codec.restore(JSON.parse_string(JSON.stringify(packet)))
+ t.truth(not loaded.is_empty(),"old guided clock shape remains admissible")
+ if loaded.is_empty():return
+ var resumed: RefCounted=loaded.session
+ t.equal(tick(resumed),0.0,"historical elapsed time cannot instantly consume a new breathing interval")
+ t.truth(resumed.travel.breath_ticks>=74,"old saves retain the complete new breathing stop")

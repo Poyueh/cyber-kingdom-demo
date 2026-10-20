@@ -1,5 +1,6 @@
 extends RefCounted
 ## Guided journeys: breathing stop -> slow walk -> run -> full-energy sprint.
+const Clock=preload("res://domain/time/tick_clock.gd")
 const Rules=preload("res://domain/travel_recovery_rules.gd")
 var rules: Rules
 var recovery_ratio: float
@@ -22,7 +23,9 @@ func _recover(travel: RefCounted, hero: RefCounted) -> void:
 func advance(travel: RefCounted, hero: RefCounted, seconds: float, tick: int) -> void:
  _depleted(travel,hero)
  var breathing: bool=travel.breath_ticks>0
- var elapsed: int=maxi(0,tick-travel.last_tick)
+ # Older guided saves left last_tick at zero. Never charge historical world
+ # time against a newly entered breathing interval.
+ var elapsed: int=clampi(tick-travel.last_tick,0,Clock.ticks_for(seconds))
  travel.last_tick=tick
  # Combat timers still advance; only natural stamina regeneration waits.
  hero.advance(seconds,not breathing)
