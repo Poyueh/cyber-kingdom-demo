@@ -30,6 +30,8 @@ static func config_valid(config: Dictionary) -> bool:
 	if config.has("route_requires") and (not config.route_requires is int or config.route_requires<0 or config.route_requires>127):return false
 	if not preload("res://domain/dragon_pattern.gd").valid_config(config):return false
 	if config.has("voyage_enabled") and config.voyage_enabled not in [0,1]:return false
+	var economy: Variant=config.get("economy",{})
+	if economy is Dictionary and economy.has("forest_clearing") and economy.forest_clearing not in [0,1]:return false
 	# Only the contained Demo forest ends with a rocket instead of star travel.
 	if config.has("rocket_finale") and (config.rocket_finale not in [0,1] or (config.rocket_finale==1 and config.get("core_loop_version",0)!=3)):return false
 	for key in ["rocket_cost","rocket_repair"]:

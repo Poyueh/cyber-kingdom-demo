@@ -15,7 +15,13 @@ const CAMP_SITES: Dictionary={"farm_tools":-130.0,"farm":-280.0,"hunt_tools":-58
 ## The two trees inside the camp are authored exactly; the wild ones keep seed variation.
 ## Wild trees and game stay inside the discovered camp regions (west of -1300 is an unexplored room).
 const CAMP_TREES: Array[float]=[-430.0,510.0]
+## Saved worlds are checked against these exact positions; never move them.
 const WILD_TREES: Array[float]=[-1270.0,-1150.0,1260.0,1450.0]
+const CAMP_WANDERERS: Array[float]=[180.0,245.0]
+## One wanderer waits on open ground in the wild beyond each wall, near these spots,
+## within WILD_RING of the wall (the discovered camp ends 300 px past the west wall).
+const WILD_WANDERERS: Array[float]=[-1250.0,1300.0]
+const WILD_RING: float=300.0
 const GAME: Array[float]=[-1220.0,1380.0]
 const TREE_JITTER: float=28.0
 ## Small authored skeleton; seed variation never removes the essential income path.
@@ -34,7 +40,8 @@ static func apply(sim: RefCounted, config: Dictionary) -> void:
  configure_trails(sim,config)
  for position: float in GAME:map.animals.append({"x":position,"region":0 if position<0 else 1,"alive":true})
  sim.world.people.clear()
- for position: float in [180.0,245.0,-1250.0,1300.0]:sim._add_person(position,-1)
+ for position: float in CAMP_WANDERERS:sim._add_person(position,-1)
+ for position: float in WILD_WANDERERS:sim._add_person(wild_spot(map.nodes,position),-1)
  sim.world.sites.wall=RIGHT_WALL;sim.world.sites.wall_left=LEFT_WALL;sim.world.sites.beacon=LEFT_TOWER
  sim.world.sites.merge(CAMP_SITES,true)
  for id: String in sim.world.walls.keys():
@@ -48,6 +55,11 @@ static func apply(sim: RefCounted, config: Dictionary) -> void:
  sim.pouch.platforms.clear();sim.pouch.left_boundary=map.left_boundary;sim.pouch.right_boundary=map.right_boundary
  sim.merchant.enabled=false
  sim.modules.relics.clear()
+
+static func wild_spot(nodes: Array, near: float) -> float:
+ var Ground: Script=preload("res://domain/open_ground.gd")
+ if near<0:return Ground.settle(near,nodes,LEFT_WALL-WILD_RING,LEFT_WALL-Ground.BODY_HALF)
+ return Ground.settle(near,nodes,RIGHT_WALL+Ground.BODY_HALF,RIGHT_WALL+WILD_RING)
 
 static func configure_trails(sim: RefCounted, config: Dictionary) -> void:
  var trails: Trails=sim.trails

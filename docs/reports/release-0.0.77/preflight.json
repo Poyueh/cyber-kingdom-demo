@@ -1,0 +1,105 @@
+{
+  "version": "0.0.77",
+  "game_source": "ae05c4c48745d861e7afb73677a1e0243f4548a8",
+  "specification_revision": 84,
+  "full_regression": "passed; no SCRIPT ERROR / ERROR / FAIL",
+  "core_assertions": 4982,
+  "wanderer_ground": {
+    "rule": "body (14 px half) never overlaps a standing tree's sprite (actual texture half-width + 3 px sway); at least one more body width of clearing",
+    "covered": [
+      "Demo forest and all seven Main worlds, seeds 1054/7/4242/99, at creation",
+      "dawn newcomers",
+      "a minute of strolling",
+      "a wanderer left under a tree walks out",
+      "old dense woods keep newcomers in their own region"
+    ]
+  },
+  "save_compatibility": "v0.0.76 guided Demo and Main records (tests/fixtures/guided-forest-v24-*.json) still load; moving a camp tree makes that test fail",
+  "economy": "trees in reach at start: forest 13->12, other worlds unchanged",
+  "native_visual_review": [
+    "Demo start: wild wanderers beyond both walls stand in the open",
+    "Demo dawn newcomers in distant forests stand in clearings"
+  ],
+  "platforms": {
+    "main": {
+      "source_tree": "0c8b43930a3f7256944b440eb4c1cbc4c84d2dcf",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition (80 per platform), macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "demo": {
+      "source_tree": "0c8b43930a3f7256944b440eb4c1cbc4c84d2dcf",
+      "platforms": [
+        "macOS",
+        "Windows",
+        "Web",
+        "Android",
+        "iOS project"
+      ],
+      "checks": "content graph and edition (81 per platform), macOS executable/signature, Android signature and 16KiB alignment passed"
+    },
+    "assets": {
+      "Cyber-Kingdom-Demo-Android-debug-v0.0.77.apk": {
+        "sha256": "4985763033a3dd5725e761753df3f7bddeb5e6ade657c295d66c90dc384a6fad",
+        "bytes": 92406873
+      },
+      "Cyber-Kingdom-Demo-Guide-v0.0.77.html": {
+        "sha256": "19a7de1798a9ba2b83a5845a1a5dea6b7c68545e41709f91edc59a588534f962",
+        "bytes": 17807
+      },
+      "Cyber-Kingdom-Demo-Web-v0.0.77.zip": {
+        "sha256": "a7bd96d555eff9b8b53b77e2cf31eb1ed373fc2ee7ebacb2ded4013ac4bdec6b",
+        "bytes": 83226930
+      },
+      "Cyber-Kingdom-Demo-Windows-v0.0.77.zip": {
+        "sha256": "873c76e7ba593e83e37a258fcb6e70ec22d72e2195c79ce6b89f382f5012079d",
+        "bytes": 101104121
+      },
+      "Cyber-Kingdom-Demo-iOS-Xcode-v0.0.77.zip": {
+        "sha256": "9ab3f6153928d8afeb8fd5b579e21ce7127d13c3db64452795c9e82d71bcfbff",
+        "bytes": 175908234
+      },
+      "Cyber-Kingdom-Demo-macOS-v0.0.77.zip": {
+        "sha256": "65fea2d871117534d9242e25764265971a921b60d38e27f77c5f6ffc8809d687",
+        "bytes": 123526633
+      },
+      "Cyber-Kingdom-Main-Android-debug-v0.0.77.apk": {
+        "sha256": "16b091a3aaacd95a0affbd631423962f515c5e5f558fd7438e75d0c4dd36bed4",
+        "bytes": 104463159
+      },
+      "Cyber-Kingdom-Main-Guide-v0.0.77.html": {
+        "sha256": "ef99b071cc039e870fb18d0661dae4fee6b1bbe6ca21f9c992a3b64f91839d0d",
+        "bytes": 16876326
+      },
+      "Cyber-Kingdom-Main-Web-v0.0.77.zip": {
+        "sha256": "27f1809e83c3b5a68a9b188d8bb53eddaf371f61eae412ee7a3c2a74e07c86ee",
+        "bytes": 107829511
+      },
+      "Cyber-Kingdom-Main-Windows-v0.0.77.zip": {
+        "sha256": "3f17e7f37623bfc9c27d0a576f663482ff206b584fef63a63f27fa38f8d228f7",
+        "bytes": 113071493
+      },
+      "Cyber-Kingdom-Main-iOS-Xcode-v0.0.77.zip": {
+        "sha256": "0d04022864f42099198ede553628ff8ce67baa5a1b8ffa602e1468151e032a63",
+        "bytes": 187878578
+      },
+      "Cyber-Kingdom-Main-macOS-v0.0.77.zip": {
+        "sha256": "16e9bb147a59477a3d0b35e632682004e6c851a032132e6b39bacfc11c8ce615",
+        "bytes": 135493222
+      },
+      "SHA256SUMS.txt": {
+        "sha256": "1247786e055ff6b1472420f589a3a70c801bbd2ce18df1252eb5e3634609db35",
+        "bytes": 1262
+      }
+    }
+  },
+  "limitations": [
+    "no phone or Windows hands-on play this round",
+    "old saves keep their original trees; their dense woods may have no clearing"
+  ]
+}
