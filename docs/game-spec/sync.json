@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "game_version": "0.0.78",
-  "revision": 90,
-  "review_note": "v0.0.78 H5森林Demo發行：將修訂85–89完成的建築佔地排他、集結成員不拾晶、左右劍盾兵營與付費駐守公開；玩法與存檔v24規則不再變更。三語指南同步正式版本。僅重建Demo Web；保留上一版主遊戲Web v0.0.77原始附件及main/全部內容，其他平台不重建。共用程式同步main/develop/demo。",
-  "content_sha256": "af4ad7c97e8612c8bbb45aeaac3d9046d5bb21ff3d6dd0794bac5e1aeaaa3775",
+  "revision": 91,
+  "review_note": "v0.0.78 H5森林Demo發行：將修訂85–89完成的建築佔地排他、集結成員不拾晶、左右劍盾兵營與付費駐守公開；玩法與存檔v24規則不再變更。三語指南同步正式版本。僅重建Demo Web；保留上一版主遊戲Web v0.0.77原始附件及main/全部內容，其他平台不重建。共用程式同步main/develop/demo。 發佈前閱讀版校對：現行章節移除尚未發布標記，版本邊界明示Demo v0.0.78與保留的Main v0.0.77；歷史審訂紀錄保留。遊戲執行檔與指南不變。",
+  "content_sha256": "c890c24f489325a9c2b497dde6d38d3b8fb8ad7f73f9d63a6761e95622003941",
   "sources": {
     "application/biome_dragon_assault.gd": "83b506a385bd94d453f3f4a57e428c5a45c470247382188dbe2cf50f9bd39328",
     "application/campaign_checkpoint_rules.gd": "693c54b2420fca7cab200e72f1e976f3ab392eed5bbbcc6d8d24451d2d47940e",
