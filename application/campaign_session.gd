@@ -202,6 +202,7 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 		workforce.core_loop=core_loop
 	preload("res://application/wildlife_population.gd").apply(self,config)
 	command=Command.new(world,frontier,defenses,config)
+	command.bind_space(self)
 	time_to_raid = clock.remaining
 
 func agriculture_available() -> bool:
@@ -252,7 +253,7 @@ func context(x: float) -> Dictionary:
 	var candidates: Array[Dictionary]=_interaction_candidates(x)
 	# At the flag, an unavailable roster must not become an unrelated purchase.
 	for candidate: Dictionary in candidates:
-		if candidate.id in ["rally","guard_station"] and absf(candidate.x-x)<28:return candidate
+		if candidate.id in ["rally","guard_station","sword_station"] and absf(candidate.x-x)<28:return candidate
 	for candidate in candidates:
 		if selected.id.is_empty() or (candidate.enabled and not selected.enabled) or (candidate.enabled==selected.enabled and absf(candidate.x-x)<absf(selected.x-x)):
 			selected=candidate
@@ -336,6 +337,10 @@ func _interaction_candidates(x: float) -> Array[Dictionary]:
 			choice.reason="封印完成" if rift.sealed else "護送工匠、擊退守門者並留在裂隙附近"
 		candidates.append(choice)
 	for candidate in candidates:
+		if candidate.id=="outpost" and not frontier.regions[candidate.region_index].outpost_built and not frontier.regions[candidate.region_index].outpost_pending and not command.space.available(self,candidate.key,candidate.x):
+			candidate.enabled=false;candidate.reason="placement.blocked"
+		if candidate.has("wall_id") and world.walls[candidate.wall_id].level<=0 and not world.walls[candidate.wall_id].pending and not command.space.available(self,candidate.wall_id,candidate.x,24):
+			candidate.enabled=false;candidate.reason="placement.blocked"
 		candidate.paid = int(investments.get(candidate.key,0))
 		if candidate.enabled and candidate.cost>0 and pouch.amount<=0:
 			candidate.enabled = false
@@ -544,7 +549,7 @@ func advance(seconds: float, hero_x: float, hero_y: float = 430.0) -> void:
 	if not is_running():return
 	if life.enabled:
 		hero.shield=0;world.barrier=0
-		life.collect(world,pouch,raiders,hero_x,hero_y,core_loop)
+		life.collect(world,pouch,raiders,hero_x,hero_y,core_loop,command.reserved_indices(self))
 	# Legacy offering-only recruitment.
 	for person in world.people:
 		if not life.enabled and person.role=="wanderer" and person.hurt<=0 and person_visible(person) and pouch.consume_offering(person.x,person.get("y",430)):
@@ -643,12 +648,14 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		return NAN
 	if life.enabled:
 		if person.role=="guard":
+			person["y"]=430.0
 			preload("res://application/sword_guard.gd").advance(self,person,seconds)
-			return _defense_position(index,28.0)
+			return core_loop.orders.guard_destination(self,index) if core_loop.enabled else _defense_position(index,28.0)
 		if life.threatened(person,raiders) and person.role not in ["wanderer","guard","hunter"]:
 			person["sheltering"]=true;person["work_state"]="walk"
 			return defenses.shelter(person.x,world.sites.hall+(index%5-2)*22)
 		var crystal_x: float=life.crystal_target(person,pouch,_hero_x)
+		if is_finite(crystal_x) and index in command.reserved_indices(self):crystal_x=NAN
 		if is_finite(crystal_x) and not life.threatened(person,raiders):
 			if person.role not in ["engineer","hunter"] or work_area.contains(crystal_x):return crystal_x
 	var expedition_target:=expedition.target(index,seconds)
@@ -716,7 +723,9 @@ func _assign_defense_posts() -> void:
 	if core_loop.enabled:
 		core_loop.orders.clean(self)
 		for i: int in range(world.people.size()):
-			if world.people[i].role=="guard":world.people[i]["defense_post"]="wall_left" if i%2==0 else "wall"
+			if world.people[i].role=="guard":
+				var target: String=core_loop.orders.targets[i]
+				world.people[i]["defense_post"]="wall_left" if target=="sword_left" or (target.is_empty() and i%2==0) else "wall"
 			if world.people[i].role=="hunter":
 				var target: String=core_loop.orders.targets[i]
 				world.people[i]["defense_post"]="wall_left" if not target.is_empty() and core_loop.orders.side(self,target)<0 else "wall"
@@ -1081,6 +1090,8 @@ func building_context(id: String) -> Dictionary:
 	choice.key="building:%s:%d"%[id,site.level]
 	choice.enabled=building_visible(id) and not site.pending and site.level<limit and frontier.city_level>site.level
 	choice.reason="等待工匠施工，或先升級聚落"
+	if site.level<=0 and not site.pending and not command.space.available(self,id,site.x,36 if tower else 70):
+		choice.enabled=false;choice.reason="placement.blocked"
 	choice["prerequisites"]=[]
 	if site.level<limit and frontier.city_level<=site.level:choice.prerequisites.append({"icon":"camp","value":site.level+1})
 	if site.pending or site.level>=limit:choice.cost=0

@@ -107,4 +107,5 @@ run_check immersive --script res://tests/test_immersive_scene.gd
 run_check crystal_survival --script res://tests/test_crystal_survival_scene.gd
 run_check scene --quit-after 120
 run_check defense_revision --script res://tests/test_defense_revision_scene.gd
+run_check sword_defense --script res://tests/test_frontier_revision_scene.gd
 echo 'PASS: architecture, import, behavior, and main scene smoke checks.'
