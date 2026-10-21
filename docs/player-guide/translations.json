@@ -1023,9 +1023,9 @@
     "zh_CN": "开局没有剑。靠近营火互动，拔剑点火，不需付款；工程与弓箭设施会搭起。此后守住这团火。",
     "en": "You start without a sword. Interact at the campfire to draw it and kindle the fire for free. The workshop and bow rack assemble. Protect this fire."
   },
-  "在流浪者附近丟下一顆龍晶。他會自己撿起，成為居民。": {
-    "zh_CN": "在流浪者附近丢下一颗龙晶。他会自己捡起，成为居民。",
-    "en": "Drop a crystal near a wanderer. They will pick it up and join your settlement."
+  "流浪者在沒有樹的空地等待。在他附近丟下一顆龍晶，他會自己撿起，成為居民。": {
+    "zh_CN": "流浪者在没有树的空地等待。在他附近丢下一颗龙晶，他会自己捡起，成为居民。",
+    "en": "Wanderers wait in clearings, not under trees. Drop a crystal near one; they will pick it up and join your settlement."
   },
   "必須持續投入到填滿。放開、走遠或龍晶不足，未完成的付款會掉回地面，需要重新收取。": {
     "zh_CN": "必须持续投入到填满。放开、走远或龙晶不足，未完成的付款会掉回地面，需要重新收取。",
