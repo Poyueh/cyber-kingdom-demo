@@ -1,6 +1,14 @@
 extends RefCounted
 ## Stable source text, Traditional Chinese, Simplified Chinese, English.
 const ROWS=[
+ ["command.guide.sword_station", "在兵營指派劍盾兵守牆內；每人一晶。", "在兵营指派剑盾兵守墙内；每人一晶。", "Post shield troops inside the walls here: one crystal each."],
+ ["placement.blocked", "此處已有建築或施工，請使用其他空地。", "此处已有建筑或施工，请使用其他空地。", "Ground occupied by a building or construction. Use another plot."],
+ ["defense.sword_station", "劍盾兵營 · 配置牆內守軍", "剑盾兵营 · 配置墙内守军", "Sword barracks · Assign shield defenders"],
+ ["defense.buy_sword", "備妥劍盾裝備", "备妥剑盾装备", "Stock sword and shield gear"],
+ ["defense.buy_sword %d %d", "備妥劍盾 %d 晶 · 庫存 %d／3", "备妥剑盾 %d 晶 · 库存 %d／3", "Stock sword gear: %d crystals · Stock %d/3"],
+ ["defense.swords %d %d %d", "劍盾兵 %d · 已指派 %d · 未指派 %d", "剑盾兵 %d · 已指派 %d · 未指派 %d", "Swordsmen %d · Assigned %d · Free %d"],
+ ["core.post.sword_left", "左側城牆內", "左侧城墙内", "Inside left wall"],
+ ["core.post.sword_right", "右側城牆內", "右侧城墙内", "Inside right wall"],
  ["command.guide.guard_station", "號令台每派一名弓兵收 1 晶，守軍會跟隨外牆。", "号令台每派一名弓兵收 1 晶，守军会跟随外墙。", "Assign archers here for 1 crystal each. They follow the outer wall."],
  ["defense.station", "號令台 · 配置弓兵駐守", "号令台 · 配置弓兵驻守", "Command post · Assign archers"],
  ["defense.price %d", "每派 1 人：%d 晶 · 撤回免費", "每派 1 人：%d 晶 · 撤回免费", "Assign one: %d crystal · Release free"],
@@ -21,7 +29,7 @@ const ROWS=[
  ["command.barracks", "劍盾兵營 · 備妥裝備讓居民領取", "剑盾兵营 · 备妥装备让居民领取", "Sword barracks · Equip a resident"],
  ["command.rescue_repair", "修復太空船 · 每天接應 1 名居民", "修复太空船 · 每天接应 1 名居民", "Repair rescue ship · One passenger each dawn"],
  ["command.rescue_recruit", "招募 1 名居民 · 每人 4 晶", "招募 1 名居民 · 每人 4 晶", "Recruit one passenger · 4 crystals each"],
- ["command.missing", "人員不足；已指派守軍需先解除指派。", "人员不足；已指派守军需先解除指派。", "Need more people. Release posted archers first."],
+ ["command.missing", "人員不足；已指派守軍需先解除指派。", "人员不足；已指派守军需先解除指派。", "Need more people. Release posted soldiers first."],
  ["command.limit", "最多率領 3 隊，入城後解散。", "最多率领 3 队，入城后解散。", "Up to 3 squads. Re-enter town to dismiss them."],
  ["command.population", "居民已達上限，待招募者會留在船內。", "居民已达上限，待招募者会留在船内。", "Population full. Passengers remain aboard."],
  ["command.wait", "下個黎明接應新居民，船內最多等待 3 人。", "下个黎明接应新居民，船内最多等待 3 人。", "Next passenger at dawn. Up to 3 can wait aboard."],
@@ -30,7 +38,7 @@ const ROWS=[
  ["command.role.sword", "劍盾兵", "剑盾兵", "Swordsmen"],
  ["command.role.bow", "弓兵", "弓兵", "Archers"],
  ["command.role.hammer", "工匠", "工匠", "Workers"],
- ["command.guide.barracks", "新兵營！備好劍盾，居民就能領取。", "新兵营！备好剑盾，居民就能领取。", "New barracks! Buy sword gear for your residents."],
+ ["command.guide.barracks", "兩側兵營可備妥劍盾、指派牆內守軍。", "两侧兵营可备妥剑盾、指派墙内守军。", "Stock gear and post shield defenders at either barracks."],
  ["command.guide.rally", "旗邊兩晶集結一隊，入城便解散。", "旗边两晶集结一队，入城便解散。", "Two crystals rally a squad here. Town dismisses it."],
  ["command.guide.rescue_repair", "六晶修好飛船，每天接應一名居民。", "六晶修好飞船，每天接应一名居民。", "Repair this ship for six. A passenger arrives each dawn."],
  ["command.guide.rescue_recruit", "船上有人！四晶邀一人加入。", "船上有人！四晶邀一人加入。", "A passenger! Four crystals to recruit one."],

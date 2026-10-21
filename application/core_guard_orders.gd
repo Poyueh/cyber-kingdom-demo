@@ -18,7 +18,7 @@ func clean(sim: RefCounted) -> void:
  if targets.size()>sim.world.people.size():targets.resize(sim.world.people.size())
  while targets.size()<sim.world.people.size():targets.append("")
  for i: int in range(targets.size()):
-  if i>=sim.world.people.size() or sim.world.people[i].role!="hunter":targets[i]=""
+  if i>=sim.world.people.size() or sim.world.people[i].role!=("guard" if targets[i] in ["sword_left","sword_right"] else "hunter"):targets[i]=""
  # A destroyed/downgraded tower releases only slots that no longer exist.
  for post: String in ["beacon","core_tower_right"]:
   var kept: int=0
@@ -97,6 +97,7 @@ func arrived(sim: RefCounted, target: String, radius: float) -> int:
 func destination(sim: RefCounted, index: int) -> float:
  clean(sim)
  var target: String=targets[index]
+ if target in ["sword_left","sword_right"]:return guard_destination(sim,index)
  if target.is_empty():return sim.world.sites.hunt_tools
  if not usable(sim,target):return sim.world.sites.hall+side(sim,target)*100.0
  var at: float=position(sim,target)
@@ -113,3 +114,55 @@ func must_return(sim: RefCounted, index: int) -> bool:
  if sim.core_loop.stage<3 or sim.clock.is_night:return true
  var journey: float=absf(sim.world.people[index].x-destination(sim,index))/sim._person_speed
  return sim.clock.remaining<=journey+sim.return_margin or sim.life.threatened(sim.world.people[index],sim.raiders)
+
+func guard_order(sim: RefCounted, target: String, delta: int, x: float) -> bool:
+ if not sim.core_loop.enabled or target not in ["sword_left","sword_right"] or delta not in [-1,1] or not sim.command.unlocked() or not sim.is_running():return false
+ var local: bool=false
+ for direction: int in [-1,1]:
+  if is_finite(sim.command.barracks_x(direction)) and absf(x-sim.command.barracks_x(direction))<=rules.station_radius:local=true
+ if not local:return false
+ clean(sim)
+ if delta<0:
+  for i: int in range(targets.size()-1,-1,-1):
+   if targets[i]==target:targets[i]="";return true
+  return false
+ if sim.pouch.amount<rules.assignment_cost:return false
+ var selected: int=-1;var best: float=INF
+ for i: int in range(targets.size()):
+  var person: Dictionary=sim.world.people[i]
+  if person.role!="guard" or person.hurt>0 or sim.command.contains(i) or targets[i]==target:continue
+  var score: float=absf(person.x-guard_position(sim,target))+(0 if targets[i].is_empty() else 10000)
+  if score<best:selected=i;best=score
+ if selected<0:return false
+ targets[selected]=target;sim.pouch.amount-=rules.assignment_cost
+ sim.command.learn("sword_station")
+ sim.world.people[selected]["defense_post"]="wall_left" if target=="sword_left" else "wall"
+ sim.effects.append({"kind":"crystal_spent","x":x,"life":0.5})
+ return true
+func guard_position(sim: RefCounted, target: String) -> float:
+ var direction: int=-1 if target=="sword_left" else 1
+ return sim.command.edge(direction)-direction*28.0
+func guard_destination(sim: RefCounted, index: int) -> float:
+ var person: Dictionary=sim.world.people[index]
+ var target: String=targets[index]
+ if target not in ["sword_left","sword_right"]:target="sword_left" if person.defense_post=="wall_left" else "sword_right"
+ var direction: int=-1 if target=="sword_left" else 1
+ var post: String=sim.defenses.active_post(direction)
+ var at: float=guard_position(sim,target)
+ for enemy: Dictionary in sim.raiders:
+  if not enemy.fighter.is_alive() or direction*(enemy.x-sim.world.sites.hall)<0:continue
+  if absf(enemy.x-person.x)>sim.world.defense_rules.sword_reach+80 or not sim._blocking_wall(person.x,enemy.x).is_empty():continue
+  var intercept: float=enemy.x-direction*44
+  # A living outer wall still constrains the shield line to the city side.
+  if sim.world.walls[post].hp>0 and direction*(person.x-sim.world.sites[post])<=0:intercept= minf(intercept,at) if direction>0 else maxf(intercept,at)
+  return intercept
+ var rank: int=0
+ for i: int in range(index):
+  if sim.world.people[i].role=="guard" and targets[i]==target:rank+=1
+ return at-direction*mini(rank,3)*12
+func guard_count(sim: RefCounted, target: String, arrived_only: bool=false) -> int:
+ var count: int=0
+ for i: int in range(mini(targets.size(),sim.world.people.size())):
+  if targets[i]!=target or sim.world.people[i].role!="guard":continue
+  if not arrived_only or absf(sim.world.people[i].x-guard_position(sim,target))<=sim.core_loop.arrival_radius:count+=1
+ return count

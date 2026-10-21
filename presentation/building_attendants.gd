@@ -36,7 +36,7 @@ func _observe(index: int, hero_x: float, delta: float, reset: bool, cinematic: b
  var payment: Dictionary=_latest_effect(&"pay",site_x(site))
  var module: Dictionary=_latest_effect(&"module_equipped",_sim.world.sites[site]) if site==&"drill" else {}
  var visible: bool=_sim.frontier.city_level>0 and _sim.site_visible(site) and (site in [&"hall",&"drill"] or _sim.built.get(site,false))
- if site==&"armory" and _sim.command.enabled:visible=_sim.command.unlocked()
+ if site==&"armory" and _sim.command.enabled:visible=_sim.command.unlocked() and is_finite(x)
  var initialized: bool=reset or not state.visible
  var paid: bool=not initialized and not payment.is_empty() and not is_same(payment,state.payment)
  var changed_module: bool=not module.is_empty() and not is_same(module,state.module_event)

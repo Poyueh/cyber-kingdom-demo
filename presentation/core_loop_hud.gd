@@ -2,6 +2,11 @@ extends Control
 signal interaction_requested
 signal orders_toggled(open: bool)
 signal order_requested(target: String, amount: int)
+signal sword_requested
+var order_role: String="hunter"
+var heading: Label
+var sword_button: Button
+var row_nodes: Dictionary={}
 signal retry_requested
 signal guidance_toggled
 signal title_requested
@@ -53,18 +58,19 @@ func _ready() -> void:
  panel=PanelContainer.new();add_child(panel);panel.hide()
  panel.add_theme_stylebox_override("panel",preload("res://presentation/refuge_theme.gd").plate(Color("0b1925f5"),Color("a38e65"),16))
  var body: VBoxContainer=VBoxContainer.new();body.add_theme_constant_override("separation",8);panel.add_child(body)
- var heading: Label=_label(body,20);heading.text=tr("core.orders")
+ heading=_label(body,20);heading.text=tr("core.orders")
  troop_count=_label(body,16)
- for target: String in ["wall_left","wall","beacon","core_tower_right"]:
-  var row: HBoxContainer=HBoxContainer.new();body.add_child(row)
+ for target: String in ["wall_left","wall","beacon","core_tower_right","sword_left","sword_right"]:
+  var row: HBoxContainer=HBoxContainer.new();body.add_child(row);row_nodes[target]=row
   var label: Label=_label(row,16);label.size_flags_horizontal=Control.SIZE_EXPAND_FILL;rows[target]=label
   var minus: Button=_button(row,"−",func()->void:order_requested.emit(target,-1))
   var plus: Button=_button(row,"+",func()->void:order_requested.emit(target,1))
   minus.custom_minimum_size=Vector2(48,48);plus.custom_minimum_size=Vector2(48,48)
   row_buttons[target]=[minus,plus]
+ sword_button=_button(body,"defense.buy_sword",func()->void:sword_requested.emit())
  _button(body,"core.close",func()->void:panel.hide();orders_toggled.emit(false))
-func open_orders() -> void:
- panel.show();orders_toggled.emit(true)
+func open_orders(role: String="hunter") -> void:
+ order_role=role;panel.show();orders_toggled.emit(true)
 func _bar_box(color: Color, edge: int) -> StyleBoxFlat:
  var box: StyleBoxFlat=StyleBoxFlat.new();box.bg_color=color;box.border_color=STAMINA_EDGE;box.set_border_width_all(edge)
  return box
@@ -126,12 +132,27 @@ func present(sim: RefCounted, safe: Rect2, paused: bool, choice: Dictionary, ter
   caption.hide();interaction.hide();action_button.hide()
   var total: int=0
   var free: int=0
+  var swords: bool=order_role=="guard"
+  heading.text=tr("defense.sword_station" if swords else "core.orders")
+  sword_button.visible=swords
+  var gear: Dictionary=sim.context_for_key(sim._hero_x,"command_armory:-1" if sim._hero_x<sim.world.sites.hall else "command_armory")
+  sword_button.disabled=gear.id!="command_armory" or not gear.enabled or sim.pouch.amount<int(gear.get("cost",0))-int(gear.get("paid",0))
+  sword_button.text=tr("defense.buy_sword %d %d")%[sim.prices.armory-int(gear.get("paid",0)),sim.world.tools.blade]
   for i: int in range(sim.world.people.size()):
-   if sim.world.people[i].role!="hunter":continue
+   if sim.world.people[i].role!=order_role:continue
    total+=1
    if (i>=core.orders.targets.size() or core.orders.targets[i].is_empty()) and not sim.command.contains(i):free+=1
-  troop_count.text=tr("core.archers %d %d %d")%[total,total-free,free]+"\n"+tr("defense.price %d")%core.orders.rules.assignment_cost
+  troop_count.text=tr("defense.swords %d %d %d" if swords else "core.archers %d %d %d")%[total,total-free,free]+"\n"+tr("defense.price %d")%core.orders.rules.assignment_cost
   for target: String in rows:
+   row_nodes[target].visible=(target in ["sword_left","sword_right"])==swords
+   if not row_nodes[target].visible:continue
+   if swords:
+    var assigned: int=core.orders.guard_count(sim,target)
+    var arrived: int=core.orders.guard_count(sim,target,true)
+    rows[target].text=tr("core.post."+target)+"\n"+tr("core.count %d %d")%[assigned,arrived]
+    row_buttons[target][0].disabled=assigned==0
+    row_buttons[target][1].disabled=sim.pouch.amount<core.orders.rules.assignment_cost or not sim.command.unlocked() or not sim.world.people.any(func(p: Dictionary)->bool:return p.role=="guard" and not sim.command.contains(sim.world.people.find(p)) and core.orders.targets[sim.world.people.find(p)]!=target)
+    continue
    var assigned: int=core.orders.targets.count(target)
    var arrived: int=core.orders.arrived(sim,target,core.arrival_radius)
    var counts: String=tr("core.count %d %d")%[assigned,arrived]
@@ -148,7 +169,7 @@ func exclusion_rects() -> Array[Rect2]:
  return result
 
 func _reason(sim: RefCounted, choice: Dictionary) -> String:
- if str(choice.reason).begins_with("command.") or str(choice.reason).begins_with("defense."):return choice.reason
+ if str(choice.reason).begins_with("command.") or str(choice.reason).begins_with("defense.") or str(choice.reason).begins_with("placement."):return choice.reason
  if choice.reason=="core.need_engineer":return choice.reason
  if choice.cost>0 and sim.pouch.amount==0:return "core.empty"
  if choice.id=="mark":return "core.working"

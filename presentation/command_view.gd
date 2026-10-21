@@ -19,15 +19,18 @@ static func draw_on(view: Node2D, sim: RefCounted) -> void:
  for side: int in [-1,1]:
   var x: float=command.flag_x(side)
   if view._on_screen(x,100):_flag(view,Vector2(x,430),side,time,command.squads.size(),command.rules.squad_limit)
- var x: float=command.barracks_x()
- if view._on_screen(x,180):
-  view._prop("armory",Vector2(x,432))
-  _flag(view,Vector2(x-53,432),1,time,-1,0)
-  view._icon("sword",Vector2(x,350),25,BRASS)
-  for i: int in range(sim.world.tools.blade):view._tool(Vector2(x-22+i*22,414),"blade")
-  # Inset stone base and pennants distinguish the marching corps from the bow rack.
-  view.draw_rect(Rect2(x-69,428,138,6),INK)
-  for i: int in range(6):view.draw_rect(Rect2(x-66+i*22,428,20,3),STEEL)
+ for side: int in [-1,1]:
+  var x: float=command.barracks_x(side)
+  if not is_finite(x) or not view._on_screen(x,180):continue
+  _barracks(view,sim,x,side,time)
+static func _barracks(view: Node2D, sim: RefCounted, x: float, side: int, time: float) -> void:
+ view._prop("armory",Vector2(x,432))
+ _flag(view,Vector2(x-53,432),side,time,-1,0)
+ view._icon("sword",Vector2(x,350),25,BRASS)
+ for i: int in range(sim.world.tools.blade):view._tool(Vector2(x-22+i*22,414),"blade")
+ # Inset stone base and pennants distinguish the marching corps from the bow rack.
+ view.draw_rect(Rect2(x-69,428,138,6),INK)
+ for i: int in range(6):view.draw_rect(Rect2(x-66+i*22,428,20,3),STEEL)
 static func _flag(view: Node2D, at: Vector2, side: int, time: float, count: int, limit: int) -> void:
  view.draw_set_transform(at.round())
  view.draw_rect(Rect2(-14,-4,28,6),INK);view.draw_rect(Rect2(-10,-7,20,5),STEEL)

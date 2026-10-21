@@ -11,38 +11,63 @@ var waiting: int=0
 var last_day: int=0
 var ship_x: float=0.0
 var enabled: bool=false
+var _ship_placed: bool=false
+var _orders_enabled: bool=false
 var _world: RefCounted
 var _frontier: RefCounted
 var _defenses: RefCounted
+var space: RefCounted
 func _init(world: RefCounted, frontier: RefCounted, defenses: RefCounted, config: Dictionary) -> void:
  _world=world;_frontier=frontier;_defenses=defenses;rules.apply(config)
+ space=preload("res://application/construction_space.gd").new(world,frontier,defenses)
  enabled=int(config.get("immersive_loop",0))==1 and int(config.get("core_loop_version",0))!=1
- ship_x=_wreck_location()
+ ship_x=_world.sites.hall+2200 # Final placement binds the actual building blueprints immediately after construction.
 func unlocked() -> bool:return enabled and _frontier.city_level>=3
 func edge(side: int) -> float:
  var bounds: Vector2=_defenses.work_bounds()
  return bounds.x if side<0 else bounds.y
 func flag_x(side: int) -> float:return edge(side)+side*rules.flag_offset
-func barracks_x() -> float:return edge(1)-rules.barracks_inset
+func barracks_x(side: int=1) -> float:return space.barracks_x(side,rules.barracks_inset)
+func bind_space(sim: RefCounted) -> void:
+ _orders_enabled=sim.core_loop.enabled
+ if not _ship_placed:
+  ship_x=_wreck_location(sim.buildings);_ship_placed=true
+ space.buildings=sim.buildings;space.investments=sim.investments
+ space.reserved.assign([Vector2(ship_x,192),Vector2(sim.mount_quest.stable_x,100),Vector2(sim.spirit.shrine_x(_world.sites.hall),40),Vector2(preload("res://application/planet_operations.gd").rocket_x(sim),70)])
+func reserved_indices(sim: RefCounted) -> Array[int]:
+ var result: Array[int]=[]
+ for squad: Squad in squads:
+  for index: int in squad.members:result.append(index)
+ if sim.investments.get("rally:-1",0)>0 or sim.investments.get("rally:1",0)>0:
+  for index: int in roster(sim):
+   if index not in result:result.append(index)
+ return result
 func contains(index: int) -> bool:
  for squad: Squad in squads:
   if index in squad.members:return true
  return false
 func inside(x: float) -> bool:return x>edge(-1)+rules.city_inset and x<edge(1)-rules.city_inset
-func _wreck_location() -> float:
- # Deterministic, beyond the starting town, clear of existing interaction anchors.
- var anchors: Array[float]=[]
- for value: Variant in _world.sites.values():anchors.append(float(value))
- for node: RefCounted in _frontier.nodes:anchors.append(node.x)
+func _wreck_location(buildings: Dictionary={}) -> float:
+ # A ship is wide: prefer actual free building footprints over distance to a single resource point.
+ var anchors: Array[Vector2]=[]
+ for id: String in _world.sites:
+  anchors.append(Vector2(float(_world.sites[id]),24 if _world.walls.has(id) else 70))
+ for site: Dictionary in buildings.values():anchors.append(Vector2(site.x,36 if site.kind=="tower" else 24 if site.kind=="wall" else 70))
  for region: Dictionary in _frontier.regions:
-  if region.get("outpost_ready",false):anchors.append(region.outpost_x)
- var best: float=minf(_world.sites.hall+2200,_frontier.right_boundary-500)
- var clearance: float=-1.0
- for x: float in range(roundi(_world.sites.hall+1750),roundi(minf(_world.sites.hall+3500,_frontier.right_boundary-500)),40):
-  if not _frontier.regions.any(func(region: Dictionary)->bool:return x>=region.x+150 and x<=region.x+region.width-150):continue
-  var gap: float=10000.0
-  for anchor: float in anchors:gap=minf(gap,absf(anchor-x))
-  if gap>clearance:clearance=gap;best=x
+  if region.get("outpost_ready",false):anchors.append(Vector2(region.outpost_x,70))
+ var best: float=minf(_world.sites.hall+2200,_frontier.right_boundary-250)
+ var clearance: float=-INF
+ var best_nature: float=-INF
+ for x: int in range(roundi(_world.sites.hall+1750),roundi(minf(_world.sites.hall+3500,_frontier.right_boundary-210)),20):
+  if not _frontier.regions.any(func(region: Dictionary)->bool:return x>=region.x+100 and x<=region.x+region.width-100):continue
+  var gap: float=INF
+  for anchor: Vector2 in anchors:gap=minf(gap,absf(anchor.x-x)-anchor.y)
+  var nature: float=INF
+  for node: RefCounted in _frontier.nodes:nature=minf(nature,absf(node.x-x))
+  # Once the complete ship fits, keep it reasonably close rather than always pushing it to the far edge.
+  var usable: float=minf(gap,202.0)
+  if usable>clearance or (is_equal_approx(usable,clearance) and nature>best_nature):
+   clearance=usable;best_nature=nature;best=x
  return best
 func ship_visible() -> bool:
  if not enabled:return false
@@ -56,7 +81,7 @@ func roster(sim: RefCounted) -> Array[int]:
   for i: int in range(_world.people.size()):
    var person: Dictionary=_world.people[i]
    if person.role!=role or person.hurt>0 or contains(i) or i in result:continue
-   if role=="hunter" and i<sim.core_loop.orders.targets.size() and not sim.core_loop.orders.targets[i].is_empty():continue
+   if role in ["hunter","guard"] and i<sim.core_loop.orders.targets.size() and not sim.core_loop.orders.targets[i].is_empty():continue
    if role=="engineer" and (sim.mission.rifts.any(func(r: Dictionary)->bool:return r.worker==i and r.ordered and not r.sealed) or _frontier.nodes.any(func(n: RefCounted)->bool:return n.worker==i and n.carried)):continue
    var distance: float=absf(person.x-sim._hero_x)
    if distance<nearest:selected=i;nearest=distance
@@ -82,8 +107,15 @@ func candidates(sim: RefCounted, x: float, y: float) -> Array[Dictionary]:
    choice.key="rally:%d"%side;choice["side"]=side;choice["prerequisites"]=missing
    if squads.size()>=rules.squad_limit:choice.reason="command.limit";choice.prerequisites=[]
    result.append(choice)
-  if absf(x-barracks_x())<73:
-   result.append(sim._choice("command_armory",barracks_x(),"command.barracks",sim.prices.armory,_world.tools.blade<3,"core.stock"))
+  for side: int in [-1,1]:
+   var at: float=barracks_x(side)
+   if not is_finite(at) or absf(x-at)>=73:continue
+   var station: Dictionary=sim._choice("sword_station",at,"defense.sword_station",0)
+   station.key="sword_station:%d"%side;station["side"]=side
+   if sim.core_loop.enabled:result.append(station)
+   var gear: Dictionary=sim._choice("command_armory",at,"command.barracks",sim.prices.armory,_world.tools.blade<3,"core.stock")
+   gear.key="command_armory" if side>0 else "command_armory:-1"
+   result.append(gear)
  if ship_visible() and absf(x-ship_x)<73:
   var id: String="rescue_recruit" if repaired else "rescue_repair"
   var capacity: bool=_world.people.size()<40
@@ -108,10 +140,18 @@ func execute(sim: RefCounted, choice: Dictionary) -> void:
    if waiting<=0:return
    waiting-=1;sim._add_person(ship_x,-1);_world.people.back().role="citizen";learn("rescue_recruit")
    sim.effects.append({"kind":"recruited","x":ship_x,"y":430.0,"life":0.7})
+func stock_gear(sim: RefCounted, x: float) -> bool:
+ var key: String="command_armory:-1" if x<_world.sites.hall else "command_armory"
+ var choice: Dictionary=sim.context_for_key(x,key)
+ if choice.id!="command_armory" or not choice.enabled or sim.pouch.amount<choice.cost-choice.paid:return false
+ for unit: int in range(choice.cost-choice.paid):
+  if not sim.interact(x,key):return false
+ return true
 func learn(id: String) -> void:
  if enabled and id in Lessons.IDS and id not in used:used.append(id)
 func observe(sim: RefCounted) -> void:
  if not enabled:return
+ bind_space(sim)
  if repaired and sim.clock.day>last_day:
   waiting=mini(rules.passenger_limit,waiting+sim.clock.day-last_day);last_day=sim.clock.day
  for squad: Squad in squads:
@@ -147,7 +187,9 @@ func target(sim: RefCounted, index: int, seconds: float) -> float:
  return at
 func _claim_sword(sim: RefCounted, person: Dictionary) -> float:
  if not unlocked() or person.role!="citizen" or _world.tools.blade<=0:return NAN
- var at: float=barracks_x()
+ var left: float=barracks_x(-1);var right: float=barracks_x(1)
+ var at: float=left if is_finite(left) and (not is_finite(right) or absf(person.x-left)<absf(person.x-right)) else right
+ if not is_finite(at):return NAN
  for kind: String in _world.tools:
   if kind!="blade" and sim._can_claim_tool(kind) and _world.tools[kind]>0 and absf(_world.tool_location(kind)-person.x)<absf(at-person.x):return NAN
  if sim.life.threatened(person,sim.raiders):return NAN
@@ -176,9 +218,13 @@ func _escort_work(sim: RefCounted, index: int, seconds: float) -> float:
 func guidance(x: float) -> Dictionary:
  if not unlocked():return {}
  var choices: Array[Dictionary]=[]
- if "barracks" not in used:choices.append(_hint("barracks",barracks_x(),"command_armory","tool"))
+ var side: int=-1 if x<_world.sites.hall else 1
+ if "barracks" not in used and is_finite(barracks_x(side)):
+  var key: String="sword_station:%d"%side if _orders_enabled else "command_armory" if side>0 else "command_armory:-1"
+  choices.append(_hint("barracks",barracks_x(side),key,"tool"))
+ if _orders_enabled and "sword_station" not in used and _world.people.any(func(p: Dictionary)->bool:return p.role=="guard") and is_finite(barracks_x(side)):
+  choices.append(_hint("sword_station",barracks_x(side),"sword_station:%d"%side,"guard"))
  if "rally" not in used:
-  var side: int=-1 if x<_world.sites.hall else 1
   choices.append(_hint("rally",flag_x(side),"rally:%d"%side,"guard"))
  if "rescue_repair" not in used:choices.append(_hint("rescue_repair",ship_x,"rescue_repair","tool"))
  elif waiting>0 and "rescue_recruit" not in used:choices.append(_hint("rescue_recruit",ship_x,"rescue_recruit","recruit"))
