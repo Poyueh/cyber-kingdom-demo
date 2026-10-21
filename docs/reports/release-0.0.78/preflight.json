@@ -1,0 +1,56 @@
+{
+  "version": "0.0.78",
+  "game_source": "098119b13fdf9a59977931a39c0743fcb1dba990",
+  "source_tree": "c861688a596873613ab7deb42754f004a53095a4",
+  "specification_revision": 91,
+  "core_assertions": 5057,
+  "full_regression": "passed; 5057 core assertions and all scenes; no SCRIPT ERROR / ERROR / FAIL",
+  "rebuilt_platforms": [
+    "Demo Web"
+  ],
+  "retained_main": {
+    "version": "0.0.77",
+    "archive": "Cyber-Kingdom-Main-Web-v0.0.77.zip",
+    "sha256": "27f1809e83c3b5a68a9b188d8bb53eddaf371f61eae412ee7a3c2a74e07c86ee",
+    "files_byte_identical": 36
+  },
+  "edition_audit": {
+    "assertions": 81,
+    "failures": 0,
+    "scope": "forest only; six other worlds and their exclusive content removed; demo save isolation"
+  },
+  "packaged_ambience": "passed",
+  "browser_playtest": {
+    "target": "exported Demo served from localhost",
+    "checks": [
+      "prologue",
+      "main menu",
+      "new forest journey",
+      "movement",
+      "ghost guidance",
+      "draw sword and found camp",
+      "pause"
+    ],
+    "console_errors": []
+  },
+  "assets": {
+    "Cyber-Kingdom-Demo-Guide-v0.0.78.html": {
+      "sha256": "4a7e06d7d22a08176c4704e2f90d82f9a231b15c2b5c50fd9e3b289c9a7a9a4a",
+      "bytes": 20008
+    },
+    "Cyber-Kingdom-Demo-Web-v0.0.78.zip": {
+      "sha256": "7dbf167ad7d5600dbce7340869f4a0098816dc2ce2467ffc4af4f198b2335874",
+      "bytes": 83240119
+    },
+    "Cyber-Kingdom-Main-Web-v0.0.77.zip": {
+      "sha256": "27f1809e83c3b5a68a9b188d8bb53eddaf371f61eae412ee7a3c2a74e07c86ee",
+      "bytes": 107829511
+    }
+  },
+  "limitations": [
+    "No additional phone hardware or native Windows playtest",
+    "No native platform rebuild in this release"
+  ],
+  "spec_source": "7f889d84fb97394a7f1670e84cb597be5d8770db",
+  "unchanged_game_pck_sha256": "31132bcd74b7e1409c79e7ffda8cf139fd690413873f1cf2f2ae3f21fd606ef0"
+}

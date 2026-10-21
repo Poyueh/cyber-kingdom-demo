@@ -135,7 +135,7 @@ func restore(data: Variant) -> bool:
  if not data.get("harvest_drops") is Array or data.harvest_drops.size()>64:return false
  if not data.get("orders") is Array or data.orders.size()>40:return false
  for target: Variant in data.orders:
-  if not target is String or target not in ["","wall","wall_left","beacon","core_tower_right"]:return false
+  if not target is String or target not in ["","wall","wall_left","beacon","core_tower_right","sword_left","sword_right"]:return false
  for key: Variant in data.harvest_held:
   if not key is String or not key.is_valid_int() or int(key)<0 or int(key)>=40:return false
   if not data.harvest_held[key] is int or data.harvest_held[key]<0 or data.harvest_held[key]>12:return false

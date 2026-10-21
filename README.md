@@ -7,16 +7,22 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.76 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.76)
+- [v0.0.78 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.78)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 - [遊戲企劃規格書](https://poyueh.github.io/cyber-kingdom-demo/spec/)（隨功能同步；[維護流程](docs/game-spec/README.md)）
 
 此 demo 倉庫是目前的玩家下載入口；原 cyber-kingdom 倉庫保留早期開發歷史。
 
-v0.0.76 耐力耗盡先停喘2.5秒，之後慢走恢復，1/3跑步、全滿可再衝刺；主遊戲和森林 Demo 共用，沿用重機與存檔進度。
+v0.0.78 H5森林Demo：建築不重疊、集結中及編隊成員不拾晶；三級營火左右各有劍盾兵營，以1晶指派牆內守軍。共用程式同步主遊戲與Demo；本次僅更新H5 Demo與規格／指南，既有main/主遊戲網頁保留v0.0.77，其他平台附件維持原版本。
+
+## 發佈預設（2026-10-21起）
+
+新功能預設為 **只實作，先不要發佈**；完成本機更新與必要驗證後，由代理啟動本地主遊戲供操作試玩。主遊戲與Demo共同程式及本機企劃／指南仍同步。只有明確下發佈指令才公開更新；發佈未指定平台時僅H5森林Demo。過往五平台附件保留。開發聊天可輸入`/ck run main`或`/ck publish h5 demo`，完整對照見 [Gitflow與聊天指令](docs/GITFLOW.md#聊天指令)。這些短指令是在聊天使用，不是終端機程式。
 
 ## 本機開發
+
+常用本機啟動、平台打包與 H5 部署命令：[終端機操作筆記](docs/TERMINAL_COMMANDS.md)。
 
 1. 安裝 Godot 4.7.2 Standard。
 2. 匯入專案根目錄的 `project.godot`。
@@ -48,7 +54,7 @@ v0.0.24 新旅程的六顆後續星球新增連動燈、冷熱平衡與脈衝亮
 
 首次火箭 20 龍晶、落地殘骸重建 12 晶，均需工匠施工；城鎮、居民、採集與日數分開保存，騎士攜帶龍晶、劍與部件。舊三地存檔（包含三核已勝利）可以接著探索新四地。
 
-說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新說明、測試並發佈試玩版。十四種部件謎題、完整集結隊伍與更深入的龍戰機關仍待後續開發；本版實作範圍見 [七地遠征](docs/design/seven-playable-worlds.md)。
+說明同步繁中、簡中、英文。每次新功能完成後，依專案規範更新本機說明、完成必要驗證並啟動本地試玩；明確指定發佈後才公開更新。十四種部件謎題、完整集結隊伍與更深入的龍戰機關仍待後續開發；本版實作範圍見 [七地遠征](docs/design/seven-playable-worlds.md)。
 
 目前新旅程包含農具工坊、居民近域採集、施工中的防線停用、日夜循環、龍晶背包和戰鬥原型。詳情請看 [開發進度](docs/STATUS.md)、[架構說明](docs/ARCHITECTURE.md) 與 [Gitflow 流程](docs/GITFLOW.md)。
 

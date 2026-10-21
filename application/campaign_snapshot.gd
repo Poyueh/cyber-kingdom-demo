@@ -276,6 +276,11 @@ func restore(raw, embedded: bool=false) -> Dictionary:
 	if not sim.core_loop.restore(data.core_loop):return _invalid()
 	if not _restore_planet(sim,data.planet):return _invalid()
 	if not sim.command.restore(data.command,sim.clock.day):return _invalid()
+	sim.command.bind_space(sim)
+	for i: int in range(sim.core_loop.orders.targets.size()):
+		var target: String=sim.core_loop.orders.targets[i]
+		if target.is_empty():continue
+		if i>=sim.world.people.size() or sim.world.people[i].role!=("guard" if target in ["sword_left","sword_right"] else "hunter"):return _invalid()
 	for group: RefCounted in sim.command.squads:
 		for index: int in group.members:
 			if index<sim.core_loop.orders.targets.size() and not sim.core_loop.orders.targets[index].is_empty():return _invalid()

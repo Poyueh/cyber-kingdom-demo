@@ -301,8 +301,9 @@ func _apply_interaction(command: Dictionary, seconds: float) -> void:
 		investment.cancel();_sync_investment_focus();_sync_knight_equipment();return
 	# Keep a completed swipe until physics consumes it; each new swipe releases the previous order.
 	var pressed: bool=_requested_interaction or command.get("interaction_pressed",false)
-	if pressed and sim.context(knight.position.x).id=="guard_station":
-		investment.cancel();hud.core_hud.open_orders();return
+	if pressed and sim.context(knight.position.x).id in ["guard_station","sword_station"]:
+		var swords: bool=sim.context(knight.position.x).id=="sword_station"
+		investment.cancel();hud.core_hud.open_orders("guard" if swords else "hunter");return
 	if pressed:investment.step(0.0,false,true,sim,knight.position.x)
 	var held: bool=command.interaction_held or hud.interact_held or pressed
 	investment.step(seconds,held,knight.is_on_floor() and not (command.jump or command.jump_held) and sim.is_running(),sim,knight.position.x)

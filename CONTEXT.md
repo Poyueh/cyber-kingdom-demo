@@ -1,3 +1,9 @@
+# v0.0.78 · 雙側劍盾防線（H5森林Demo）
+
+三級營火左右兵營，各自E／下滑開啟劍盾守軍面板；1晶指派、免費撤回、不能上塔。建築佔地與首晶預留由application/construction_space.gd檢查；隊伍成員與未付滿的集結名單不拾晶。守軍使用既有orders欄位的sword_left／sword_right，快照v24不變。詳見docs/design/bilateral-sword-defense.md。
+
+本次只更新公開H5森林Demo與其規格／指南；main/維持v0.0.77原包，其他平台不重建。
+
 # v0.0.77 流浪者站在空地
 
 v0.0.77：流浪者（開局、黎明新來者、倒下退回者）選最近的空地等待，徘徊只在所在空地內。規則在 `domain/open_ground.gd`：`tree_cover()` 以樹幹±`TREE_CANOPY`（85）為樹冠，`spot()` 只選至少多留一個身體寬（`CLEARING` 28）的空地，`home_for()` 讓留在樹下的人走出來（`REACH` 240；站在自己區域內的人限在該區域，`campaign_session._home_region()`），樹太密時 `settle()` 取區域內離樹幹最遠處。聚集點由 `domain/wanderer_gathering.gd` 決定：新旅程（economy `forest_clearing=1`）在區域外側 12%，森林四棵樹改排在空地與營火側之間（`frontier._clearing_tree`）；舊世界照原規則（西緣 12%、樹在 50 至寬度-50），因為存檔會以種子重建世界並逐棵比對樹木座標。引導版森林營地樹（`CoreLoopLayout.WILD_TREES`）不可移動；牆外流浪者由 `wild_spot()` 放在各城牆外 `WILD_RING`（300）內。`tests/fixtures/guided-forest-v24-*.json` 是 v0.0.76 的引導版紀錄，用來確認舊紀錄仍可讀。快照 v24 不變。
