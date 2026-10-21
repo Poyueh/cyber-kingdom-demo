@@ -35,7 +35,8 @@ func test_a_hit_archer_stays_where_they_fell(t):
 	advance(sim,1.0,away) # Roaming anchors them to their wild spot.
 	var person: Dictionary=sim.world.people[index]
 	var wild: float=person.x
-	person.role="hunter";person.x=sim.world.sites.wall
+	# Posted on the wall across camp from where they were found.
+	person.role="hunter";person.x=sim.world.sites.wall_left if wild>sim.world.sites.hall else sim.world.sites.wall
 	advance(sim,2.0,away)
 	var fell: float=person.x
 	t.truth(absf(fell-wild)>300,"the archer now stands far from where they were found")

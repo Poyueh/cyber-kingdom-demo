@@ -1,9 +1,10 @@
 extends RefCounted
 ## Deterministic idle destinations; jobs and recruitment are selected by the session.
-static func destination(person: Dictionary, index: int, center: float, radius: float, seconds: float, left: float, right: float) -> float:
+## wild_home: where a new wanderer settles (open ground); defaults to where they stand.
+static func destination(person: Dictionary, index: int, center: float, radius: float, seconds: float, left: float, right: float, wild_home: float=NAN) -> float:
 	if person.get("roam_role","")!=person.role:
 		person.roam_role=person.role
-		person.roam_home=person.x if person.role=="wanderer" else center
+		person.roam_home=(person.x if is_nan(wild_home) else wild_home) if person.role=="wanderer" else center
 		person.roam_leg=0
 		person.roam_wait=1.2+fmod(index*0.37,1.0)
 		person.roam_target=clampf(person.x,person.roam_home-radius,person.roam_home+radius)

@@ -3,6 +3,11 @@ extends RefCounted
 const Level=preload("res://domain/planet_level_layout.gd")
 const Streams=preload("res://domain/rng/rng_streams.gd")
 const Harvest = preload("res://domain/harvest_node.gd")
+const OpenGround=preload("res://domain/open_ground.gd")
+const Gathering=preload("res://domain/wanderer_gathering.gd")
+## With a clearing, the nearest tree's canopy stops short of a wanderer standing at the
+## gathering spot, even after the tree's 10 px jitter.
+const FOREST_CLEARING: float=OpenGround.TREE_CANOPY+OpenGround.BODY_HALF+11.0
 var regions: Array[Dictionary] = []
 var nodes: Array[RefCounted] = []
 var animals: Array[Dictionary] = []
@@ -62,7 +67,7 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 		else:
 			right_boundary += width
 		regions.append({"kind":types[index],"x":x,"width":width,"discovered":false,"outpost_x":0.0,"outpost_ready":false,"outpost_pending":false,"outpost_built":false,"outpost_progress":0.0})
-		_populate(index,types[index],x,width,rng)
+		_populate(index,types[index],x,width,rng,Gathering.new(rules))
 	# Keep the original six regions and random sequence intact for legacy saves.
 	var extra:=clampi(int(rules.get("outer_regions_per_side",0)),0,8)
 	for side in [-1,1]:
@@ -82,7 +87,7 @@ func _init(map_seed: int, rules: Dictionary = {}) -> void:
 			var kind: String=outer_types[depth%3]
 			var index:=regions.size()
 			regions.append({"kind":kind,"x":x,"width":width,"discovered":false,"outpost_x":0.0,"outpost_ready":false,"outpost_pending":false,"outpost_built":false,"outpost_progress":0.0})
-			_populate(index,kind,x,width,rng)
+			_populate(index,kind,x,width,rng,Gathering.new(rules))
 
 	if rules.get("flat_ground",0):
 		for node in nodes:node.y=430.0;node.pickup_y=430.0
@@ -92,15 +97,18 @@ func _authored_regions(rules: Dictionary, rng: RandomNumberGenerator) -> void:
 	for zone: Level.Zone in Level.zones(rules):
 		regions.append({"kind":String(zone.kind),"x":zone.x,"width":zone.width,"level_role":zone.role,"discovered":false,"outpost_x":0.0,"outpost_ready":false,"outpost_pending":false,"outpost_built":false,"outpost_progress":0.0})
 		left_boundary=minf(left_boundary,zone.x);right_boundary=maxf(right_boundary,zone.x+zone.width)
-		if zone.role==Level.Role.SUPPLY:_populate(zone.index,String(zone.kind),zone.x,zone.width,rng)
+		if zone.role==Level.Role.SUPPLY:_populate(zone.index,String(zone.kind),zone.x,zone.width,rng,Gathering.new(rules))
 		elif zone.role==Level.Role.TREASURE:_add(zone.index,"cache",zone.x+zone.width*0.5,430,0,0,0,4)
 	for node: RefCounted in nodes:node.y=430.0;node.pickup_y=430.0
 
-func _populate(index: int, kind: String, x: float, width: float, rng: RandomNumberGenerator) -> void:
+## New journeys keep a clearing where the forest's wanderers gather (see wanderer_gathering).
+func _populate(index: int, kind: String, x: float, width: float, rng: RandomNumberGenerator, gathering: Gathering) -> void:
 	match kind:
 		"forest":
 			for tree in range(4):
-				_add(index,"tree",x+50+tree*(width-100)/3.0+rng.randf_range(-10,10),430,3,0,1 if tree == 0 else 0,0)
+				var at: float=x+50+tree*(width-100)/3.0
+				if gathering.clearing:at=_clearing_tree(x,width,gathering.x(x,width),tree)
+				_add(index,"tree",at+rng.randf_range(-10,10),430,3,0,1 if tree == 0 else 0,0)
 			_add(index,"berries",x+width*0.5,430,0,2,0,0)
 			for animal in range(2):
 				animals.append({"x":x+90+animal*(width-180),"region":index,"alive":true})
@@ -110,6 +118,14 @@ func _populate(index: int, kind: String, x: float, width: float, rng: RandomNumb
 		"ruins":
 			_add(index,"cache",x+width*0.35,366,0,0,0,4)
 			_add(index,"cache",x+width*0.75,430,0,0,0,4)
+## The four trees stand between the far edge and the clearing at the gathering spot.
+func _clearing_tree(x: float, width: float, gather: float, tree: int) -> float:
+	var first: float=x+50.0
+	var last: float=x+width-50.0
+	if gather<x+width*0.5:first=gather+FOREST_CLEARING
+	else:last=gather-FOREST_CLEARING
+	return first+tree*(last-first)/3.0
+
 func _add(region_index: int, kind: String, x: float, y: float, timber: int, rations: int, crystal: int, salvage: int) -> void:
 	var node := Harvest.new()
 	node.region = region_index

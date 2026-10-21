@@ -35,6 +35,8 @@ const Spirit=preload("res://application/spirit_guidance.gd")
 @export var ruin_mechanisms: Resource=preload("res://data/ruin_mechanisms.tres")
 @export var ruin_trials: Resource=preload("res://data/ruin_trials.tres")
 @export_range(0,8,1) var outer_regions_per_side: int = 7
+## New journeys keep a clearing where each forest's wanderers gather (not under trees).
+@export var forest_clearing: bool=true
 @export_range(150,1250,10) var arrival_walk_distance: float=260.0
 @export_group("Final dragon")
 @export_range(2,20,1) var dragon_baseline_day: int=6
@@ -135,4 +137,5 @@ func campaign_rules() -> Dictionary:
 func economy_rules() -> Dictionary:
 	var rules:=super.economy_rules()
 	rules["outer_regions_per_side"]=outer_regions_per_side
+	rules["forest_clearing"]=1 if forest_clearing else 0
 	return rules
