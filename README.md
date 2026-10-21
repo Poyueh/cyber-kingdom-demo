@@ -7,14 +7,14 @@
 目前所有正式測試包、GitHub Release 與 GitHub Pages 試玩站，都統一發布在：
 
 - [Cyber Kingdom Demo（最新倉庫）](https://github.com/Poyueh/cyber-kingdom-demo)
-- [v0.0.76 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.76)
+- [v0.0.78 Release](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.78)
 - [H5 線上試玩](https://poyueh.github.io/cyber-kingdom-demo/)
 - [玩家圖文指南](https://poyueh.github.io/cyber-kingdom-demo/guide.html)
 - [遊戲企劃規格書](https://poyueh.github.io/cyber-kingdom-demo/spec/)（隨功能同步；[維護流程](docs/game-spec/README.md)）
 
 此 demo 倉庫是目前的玩家下載入口；原 cyber-kingdom 倉庫保留早期開發歷史。
 
-v0.0.76 耐力耗盡先停喘2.5秒，之後慢走恢復，1/3跑步、全滿可再衝刺；主遊戲和森林 Demo 共用，沿用重機與存檔進度。
+v0.0.78 H5森林Demo：建築不重疊、集結中及編隊成員不拾晶；三級營火左右各有劍盾兵營，以1晶指派牆內守軍。共用程式同步主遊戲與Demo；本次僅更新H5 Demo與規格／指南，既有main/主遊戲網頁保留v0.0.77，其他平台附件維持原版本。
 
 ## 發佈預設（2026-10-21起）
 

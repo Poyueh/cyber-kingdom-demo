@@ -41,6 +41,17 @@ class UnpackReleaseSiteTests(unittest.TestCase):
         self.assertTrue((self.site/'.nojekyll').is_file())
         self.assertEqual(result, {'demo': demo.name, 'main': main.name})
 
+    def test_demo_only_update_retains_previous_main_byte_for_byte(self):
+        demo = archive(self.release, 'Cyber-Kingdom-Demo-Web-v0.0.78.zip', marker='new-demo')
+        main = archive(self.release, 'Cyber-Kingdom-Main-Web-v0.0.77.zip', marker='retained-main')
+        checksums(self.release, demo, main)
+        result = unpack(self.release, self.site)
+        self.assertEqual(result['main'], main.name)
+        with zipfile.ZipFile(main) as bundle:
+            for name in bundle.namelist():
+                self.assertEqual((self.site/'main'/name).read_bytes(), bundle.read(name))
+        self.assertEqual((self.site/'index.pck').read_text(), 'new-demo:index.pck')
+
     def test_older_release_without_main_still_deploys(self):
         legacy = archive(self.release, 'Cyber-Kingdom-Web-v0.0.38.zip')
         checksums(self.release, legacy)

@@ -1,6 +1,8 @@
-# 本機develop · 雙側劍盾防線（未發布）
+# v0.0.78 · 雙側劍盾防線（H5森林Demo）
 
 三級營火左右兵營，各自E／下滑開啟劍盾守軍面板；1晶指派、免費撤回、不能上塔。建築佔地與首晶預留由application/construction_space.gd檢查；隊伍成員與未付滿的集結名單不拾晶。守軍使用既有orders欄位的sword_left／sword_right，快照v24不變。詳見docs/design/bilateral-sword-defense.md。
+
+本次只更新公開H5森林Demo與其規格／指南；main/維持v0.0.77原包，其他平台不重建。
 
 # v0.0.77 流浪者站在空地
 

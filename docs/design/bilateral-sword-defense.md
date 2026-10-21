@@ -1,4 +1,4 @@
-# 雙側劍盾守軍與建築佔地（本機開發版）
+# 雙側劍盾守軍與建築佔地（v0.0.78）
 
 2026-10-21使用者要求；尚未公開發布，兩個遊戲版別共用。
 
@@ -24,6 +24,6 @@
 
 ## 驗收
 
-tests/test_frontier_revision.gd涵蓋首晶／施工／完成建物衝突、免費拒付、集結拾晶、雙側移動、破牆攔截、非法指派及JSON接續；tests/test_frontier_revision_scene.gd操作真實E鍵與面板，截圖另在test-results記錄。主遊戲／Demo共用程式；本次只本機試玩，不匯出其他平台或公開發布。
+tests/test_frontier_revision.gd涵蓋首晶／施工／完成建物衝突、免費拒付、集結拾晶、雙側移動、破牆攔截、非法指派及JSON接續；tests/test_frontier_revision_scene.gd操作真實E鍵與面板，截圖另在test-results記錄。主遊戲／Demo共用程式；v0.0.78僅公開更新H5森林Demo；主遊戲共用程式同步，既有main/網頁保留v0.0.77，不重建其他平台。
 
 舊無引導旅程保留直接投晶買裝備與原自動守軍，不打開只存在核心介面的指派面板。新主遊戲、森林Demo及已建立的引導紀錄使用新指派，避免舊介面被不可見面板鎖住。
