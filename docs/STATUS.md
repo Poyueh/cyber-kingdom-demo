@@ -1,8 +1,12 @@
-## v0.0.77 流浪者站在空地（發佈中）
+## v0.0.77 流浪者站在空地（已發布）
 
 使用者回報流浪者站在樹下。先寫失敗測試（以實際樹木圖寬檢查身體是否與樹冠重疊、是否夾在兩棵樹之間，涵蓋Demo、主遊戲七顆星與四組種子、黎明新來者、一分鐘徘徊、被打回流浪者），再實作：開局、黎明與倒下的位置都改到最近空地，徘徊不進樹下。新旅程森林在外側留聚集空地、樹往營火側排。途中曾移動營地野外樹，完整回歸發現舊存檔會因樹木座標比對而無法讀取，已還原並加入 v0.0.76 引導版紀錄的讀取測試。規格修訂84。教學：[第154課](lessons/154-open-ground.md)。
 
 驗收：4982項核心斷言與完整場景回歸通過，無SCRIPT ERROR／ERROR。原生截圖確認Demo開局牆外兩位流浪者與遠方森林黎明新來者都站在空地。Main／Demo五平台10組成品由ae05c4c建置，成品內容Main80／Demo81項、macOS啟動與簽章、Android簽章與16KiB對齊通過。[驗收紀錄](reports/release-0.0.77/preflight.json)。
+
+發布419106090已公開，13份附件大小與SHA-256一致；Pages39537715684成功，72份公開檔案（含main/ 36份）與成品逐一一致，規格v0.0.77／修訂84。公開Demo略過前導、開新森林旅程至第1天，鬼魂引導與營地流浪者正常顯示，無console errors。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.77) · [主遊戲](https://poyueh.github.io/cyber-kingdom-demo/main/?v=0.0.77) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.77) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.77) · [公開驗收](reports/release-0.0.77/publication.json)。
 
 ## v0.0.76 分階段耐力恢復（已發布）
 
