@@ -1,6 +1,8 @@
-## v0.0.78 H5森林Demo發行準備
+## v0.0.78 H5森林Demo（已發布）
 
-使用者明確要求發佈上網。從已驗收的develop整合建立release/0.0.78；遊戲玩法無新增修改，更新版本與三語指南、企劃修訂91。只重建H5森林Demo；main/沿用v0.0.77原包並保留原分享資訊。其餘平台不重建。完整tools/check.sh與5057項核心斷言、全部場景通過；Web包81項版別查核與封包環境照明通過。瀏覽器前導、選單、新局、移動、點火與暫停正常，無console errors。Main原包36檔逐一相同。企劃閱讀版校對至修訂91，僅替換spec/，PCK不變。部署完成後另記公開版本、檔案比對與工作流程結果。
+使用者明確要求發佈上網。從已驗收的develop整合建立release/0.0.78；遊戲玩法無新增修改，更新版本與三語指南、企劃修訂91。只重建H5森林Demo；main/沿用v0.0.77原包並保留原分享資訊。其餘平台不重建。完整tools/check.sh與5057項核心斷言、全部場景通過；Web包81項版別查核與封包環境照明通過。瀏覽器前導、選單、新局、移動、點火與暫停正常，無console errors。Main原包36檔逐一相同。企劃閱讀版校對至修訂91，僅替換spec/，PCK不變。Release v0.0.78已公開，4份附件的大小與SHA-256均一致。Pages 39578915371部署成功，公開72份檔案逐一相同，其中main/36份原封保留v0.0.77。線上規格為v0.0.78／修訂91；公開Demo已進主選單，無console errors。遊戲PCK仍為098119b同一份，純規格校對未重匯出。三條分支已同步，demo僅distribution.json不同。詳見[公開驗收](reports/release-0.0.78/publication.json)。
+
+[森林Demo](https://poyueh.github.io/cyber-kingdom-demo/?v=0.0.78) · [企劃](https://poyueh.github.io/cyber-kingdom-demo/spec/?v=0.0.78) · [下載](https://github.com/Poyueh/cyber-kingdom-demo/releases/tag/v0.0.78)。
 
 ## 本機develop · 建築佔地與雙側劍盾守軍（未發布）
 
