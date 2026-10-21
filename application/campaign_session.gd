@@ -52,6 +52,7 @@ const RiftWorkforce=preload("res://application/rift_workforce.gd")
 var expedition: RiftWorkforce
 const Schedule = preload("res://domain/resident_schedule.gd")
 const Roaming = preload("res://domain/resident_roaming.gd")
+const OpenGround=preload("res://domain/open_ground.gd")
 var stroll_speed: float = 24.0
 var return_margin: float = 15.0
 var hunter_damage: int = 12
@@ -156,10 +157,11 @@ func _init(config: Dictionary = {}, hero_stats: Stats = null) -> void:
 	core_loop.orders.rules.apply(config)
 	world.people.clear()
 	for x in [180.0,245.0]: _add_person(x,-1)
+	var gathering: RefCounted=preload("res://domain/wanderer_gathering.gd").new(config.get("economy",{}))
 	for index in range(frontier.regions.size()):
 		var region: Dictionary = frontier.regions[index]
 		if not Level.is_supply(region):continue
-		_add_person(region.x+region.width*0.12,index)
+		_add_person(OpenGround.settle(gathering.x(region.x,region.width),frontier.nodes,region.x+Ecology.REGION_EDGE,region.x+region.width-Ecology.REGION_EDGE),index)
 		var node := Harvest.new()
 		node.kind = "stone" if region.kind=="quarry" else "herbs"
 		node.x = region.x+region.width*0.88
@@ -595,6 +597,7 @@ func _advance_people(seconds: float) -> void:
 	for person in world.people: previous.append(float(person.x))
 	super._advance_people(seconds)
 	BuildingSites.separate_outposts(frontier,buildings,world.sites,investments)
+	var cover: Array[Vector2]=OpenGround.tree_cover(frontier.nodes)
 	for index in range(world.people.size()):
 		var person: Dictionary=world.people[index]
 		# Supplies, tools and occupations have already chosen their real destinations.
@@ -602,7 +605,18 @@ func _advance_people(seconds: float) -> void:
 		if person.role=="wanderer" and absf(person.x-_hero_x)<=72: continue
 		var before: float=person.x
 		var radius:=64.0 if person.role=="wanderer" else 100.0
-		var target:=Roaming.destination(person,index,world.sites.hall,radius,seconds,frontier.left_boundary+16,frontier.right_boundary-16)
+		var low: float=frontier.left_boundary+16
+		var high: float=frontier.right_boundary-16
+		var home: float=NAN
+		if person.role=="wanderer":
+			# Wanderers stroll only on the open stretch around their spot, never under trees,
+			# and one waiting in their own region keeps to it.
+			var area: Vector2=_home_region(person)
+			low=maxf(low,area.x);high=minf(high,area.y)
+			home=OpenGround.home_for(person,cover,low,high)
+			var ground: Vector2=OpenGround.span(home,cover,low,high)
+			low=ground.x;high=ground.y
+		var target:=Roaming.destination(person,index,world.sites.hall,radius,seconds,low,high,home)
 		person.x=move_toward(person.x,target,stroll_speed*seconds)
 		person.moving=absf(person.x-before)>0.01
 		if person.moving: person.direction=signf(person.x-before)
@@ -679,6 +693,14 @@ func _override_resident_target(index: int, seconds: float) -> float:
 		var radius: float=minf(110,width*0.35)
 		return Roaming.destination(person,index,center,radius,seconds,center-radius,center+radius)
 	return home
+
+## The region a wanderer waits in, while they stand inside it; otherwise no limit.
+func _home_region(person: Dictionary) -> Vector2:
+	var index: int=person.get("region",-1)
+	if index<0 or index>=frontier.regions.size():return Vector2(-INF,INF)
+	var region: Dictionary=frontier.regions[index]
+	if person.x<region.x or person.x>region.x+region.width:return Vector2(-INF,INF)
+	return Vector2(region.x+Ecology.REGION_EDGE,region.x+region.width-Ecology.REGION_EDGE)
 
 func _resident_speed(index: int) -> float:
 	var person: Dictionary=world.people[index]
