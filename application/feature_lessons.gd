@@ -1,6 +1,6 @@
 extends RefCounted
 ## Learn from successful actions and actual use, never from showing a caption.
-const IDS: Array[String]=["guard_station","outpost","barracks","rally","rescue_repair","rescue_recruit","farm","farm_tools","module","mount","rift","rocket","star_map","merchant","tower","ruin","mount_stable"]
+const IDS: Array[String]=["sword_station","guard_station","outpost","barracks","rally","rescue_repair","rescue_recruit","farm","farm_tools","module","mount","rift","rocket","star_map","merchant","tower","ruin","mount_stable"]
 static func observe(sim: RefCounted) -> void:
  var command: RefCounted=sim.command
  if sim.core_loop.orders.targets.any(func(target: String)->bool:return not target.is_empty()):command.learn("guard_station")

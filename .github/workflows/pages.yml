@@ -75,7 +75,10 @@ jobs:
           RELEASE_TAG: ${{ inputs.tag }}
         run: |
           python3 tools/install_social_preview.py --site _site --edition demo --tag "$RELEASE_TAG"
-          if [ -d _site/main ]; then python3 tools/install_social_preview.py --site _site/main --edition full --tag "$RELEASE_TAG"; fi
+          # Demo-only releases retain an older Main archive unchanged, including its sharing metadata.
+          if [ -f "release/Cyber-Kingdom-Main-Web-${RELEASE_TAG}.zip" ]; then
+            python3 tools/install_social_preview.py --site _site/main --edition full --tag "$RELEASE_TAG"
+          fi
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload site

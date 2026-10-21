@@ -9,7 +9,11 @@ func _ready() -> void:
  hud.orders_toggled.connect(func(open: bool)->void:
   root.paused=open;root.controls.release_all();root.hud.cancel_touch_gestures())
  hud.order_requested.connect(func(target: String, amount: int)->void:
-  if root.sim.core_loop.enabled:root.sim.core_loop.orders.order(root.sim,target,amount,root.knight.position.x))
+  if not root.sim.core_loop.enabled:return
+  if hud.order_role=="guard":root.sim.core_loop.orders.guard_order(root.sim,target,amount,root.knight.position.x)
+  else:root.sim.core_loop.orders.order(root.sim,target,amount,root.knight.position.x))
+ hud.sword_requested.connect(func()->void:
+  root.sim.command.stock_gear(root.sim,root.knight.position.x))
  hud.guidance_toggled.connect(func()->void:root.sim.core_loop.skipped=not root.sim.core_loop.skipped)
  hud.retry_requested.connect(func()->void:
   if root.sim.core_loop.checkpoint_index>0:retry()
