@@ -15,11 +15,13 @@ class LoadingLogoTest(unittest.TestCase):
         (self.site / 'main').mkdir()
         for path in ('index.png', 'loading-illustration.css', 'index.pck', 'index.wasm', 'index.html', 'main/index.png', 'main/index.pck'):
             (self.site / path).write_bytes(('original ' + path).encode())
+        (self.site / 'index.html').write_text('<img src="index.png"><link href="loading-illustration.css">')
         d = {'schema': 1, 'scope': 'forest-demo-loading-only', 'label': 'v0.0.85-logo1', 'base_release': 'v0.0.85', 'runtime_game_version': '0.0.85', 'runtime_spec_revision': 218, 'assets': {}, 'original': {}}
         for p in ('index.png', 'loading-illustration.css'):
             data = ('new ' + p).encode(); (self.branding / p).write_bytes(data)
             d['assets'][p] = {'file': p, 'sha256': hashlib.sha256(data).hexdigest()}
             d['original'][p] = hashlib.sha256((self.site / p).read_bytes()).hexdigest()
+        d['original']['index.html'] = hashlib.sha256((self.site / 'index.html').read_bytes()).hexdigest()
         (self.branding / 'logo-trial.json').write_text(json.dumps(d))
 
     def tearDown(self):
@@ -28,9 +30,10 @@ class LoadingLogoTest(unittest.TestCase):
     def test_changes_only_root_loading_assets(self):
         before = snapshot(self.site)
         result = apply(self.site, self.branding, 'v0.0.85')
-        self.assertEqual(result['changed_files'], ['index.png', 'loading-illustration.css'])
+        self.assertEqual(result['changed_files'], ['index.html', 'index.png', 'loading-illustration.css'])
+        self.assertEqual((self.site / 'index.html').read_text().count('?branding=v0.0.85-logo1'), 2)
         after = snapshot(self.site)
-        for p in before.keys() - {'index.png', 'loading-illustration.css'}:
+        for p in before.keys() - {'index.html', 'index.png', 'loading-illustration.css'}:
             self.assertEqual(before[p], after[p])
         self.assertEqual(json.loads((self.site / 'logo-trial.json').read_text())['runtime_spec_revision'], 218)
 

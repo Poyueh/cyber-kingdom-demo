@@ -8,7 +8,8 @@
   "source_feature_commit": "fdc558bc1a216c3e5f4be0570607a69fe0479647",
   "original": {
     "index.png": "73267fe9e3f9c45de24cc1085dbf9854285c87995234f9119e4f065d25de7f74",
-    "loading-illustration.css": "bd69db7db2cfef080ed27e5653e963b0ae7e92e17f21029d6bf23dda735cf5ee"
+    "loading-illustration.css": "bd69db7db2cfef080ed27e5653e963b0ae7e92e17f21029d6bf23dda735cf5ee",
+    "index.html": "f954b3a3be3e3fe21704bf68ed1f20505d15309ccba4d60e755e65018836001c"
   },
   "assets": {
     "index.png": {
@@ -19,5 +20,6 @@
       "file": "loading-logo.css",
       "sha256": "c6210b93f01a96ef7bd598e5b66d2afbf5d3ec8380f143f25318b157cd8ba87f"
     }
-  }
+  },
+  "cache_revision": 1
 }

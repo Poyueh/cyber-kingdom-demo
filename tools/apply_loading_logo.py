@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 
@@ -20,9 +21,18 @@ def apply(site, branding, release_tag):
     if request['schema'] != 1 or request['scope'] != 'forest-demo-loading-only':
         raise ValueError('Unsupported branding scope')
     expected = {'index.png', 'loading-illustration.css'}
-    if set(request['assets']) != expected or set(request['original']) != expected:
+    if set(request['assets']) != expected or set(request['original']) != expected | {'index.html'}:
         raise ValueError('Only root loading image and CSS may change')
+    if not re.fullmatch(r'v[0-9]+\.[0-9]+\.[0-9]+-logo[0-9]+', request['label']):
+        raise ValueError('Unsafe branding label')
     before = snapshot(site)
+    if before.get('index.html') != request['original']['index.html']:
+        raise ValueError('Unexpected HTML shell')
+    html = (site / 'index.html').read_text()
+    for old in ('src="index.png"', 'href="loading-illustration.css"'):
+        if html.count(old) != 1:
+            raise ValueError('Unexpected loading asset reference')
+        html = html.replace(old, old[:-1] + '?branding=' + request['label'] + '"')
     assets = {}
     for target, asset in request['assets'].items():
         name = asset['file']
@@ -35,6 +45,8 @@ def apply(site, branding, release_tag):
     # Validate every asset before changing any file. Never touch .pck, .wasm or main/.
     for target, data in assets.items():
         (site / target).write_bytes(data)
+    (site / 'index.html').write_text(html)
+    expected.add('index.html')
     after = snapshot(site)
     changed = {p for p in before.keys() | after.keys() if before.get(p) != after.get(p)}
     if changed != expected:
