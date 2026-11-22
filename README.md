@@ -10,7 +10,7 @@
 - [公開遊戲規格](https://poyueh.github.io/cyber-kingdom-demo/spec/)
 - [已發布成品](https://github.com/Poyueh/cyber-kingdom-demo/releases)
 
-森林 Demo H5 根目錄現行為 v0.0.87，完整主遊戲 `/main/` 保留 v0.0.86，兩版使用獨立存檔。主遊戲保留完整七星戰役，Demo 僅含森林篇。最新版公開規格與指南為 v0.0.87／修訂 233。
+森林 Demo 與完整主遊戲 H5 同為 v0.0.88，附修訂269企劃規格與三語操作指南。Demo 可玩至森林火箭啟航。主遊戲可帶居民探索七顆星球，兩版各自保存旅程。
 GitHub 自動產生的「Source code」壓縮檔只有本倉庫的發布工具，並非遊戲原始碼。
 
 ## 維護
@@ -21,7 +21,7 @@ Pages 只下載已發布成品，驗證校驗碼後部署；不讀取私有倉�
 只更新其中一版時，Release 必須同時帶入另一版原有 Web 附件，保留其原版本號與校驗碼。同版補發主遊戲可使用 `v<版本>-main` 獨立標籤，不替換既有附件。
 
 ```bash
-gh workflow run pages.yml --repo Poyueh/cyber-kingdom-demo --ref main -f tag=v0.0.87
+gh workflow run pages.yml --repo Poyueh/cyber-kingdom-demo --ref main -f tag=v0.0.88
 ```
 
 發布授權與本機開發是不同操作，不因原始碼更新自動發布。
